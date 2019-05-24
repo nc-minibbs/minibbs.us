@@ -1,0 +1,49 @@
+p, br, a {font: 9pt/normal Times, serif}
+pre {font: 9pt/normal Courier, serif}
+
+table tr td {font: 9pt/normal Times, serif}
+table table tr td {font: 9pt/normal Times, serif}
+table th {font: bold 9pt/normal Times, serif}
+
+li {font: 9pt/normal Times, serif}
+ul li {font: 9pt/normal Times, serif}
+dl dt {font: 9pt/normal Times, serif}
+dl dd {font: 9pt/normal Times, serif}
+em {font: bold 9pt/normal Times, serif}
+b {font: bold 9pt/normal Times, serif}
+center {font: bold 9pt/normal Times, serif}
+font {font: bold 9pt/normal Times, serif}
+/ul {font: 9pt/normal Times, serif}
+/dl {font: 9pt/normal Times, serif}
+/em {font: 9pt/normal Times, serif}
+/b {font: 9pt/normal Times, serif}
+/center {font: 9pt/normal Times, serif}
+/font {font: 9pt/normal Times, serif}
+/pre {font: 9pt/normal Times, serif}
+
+h4 {font: bold 10pt/normal Times, serif}
+h3 {font: bold 11pt/normal Times, serif}
+h2 {font: bold 13pt/normal Times, serif}
+h1 {font: bold 15pt/normal Times, serif}
+/h4 {font: 9pt/normal Times, serif}
+/h3 {font: 9pt/normal Times, serif}
+/h2 {font: 9pt/normal Times, serif}
+/h1 {font: 9pt/normal Times, serif}
+
+.red {color: red}}
+.norm {font: 9pt/normal Times, serif}
+.small {font: 8pt/normal Times, serif}
+
+<!--
+<style type="text/css" media="screen,print">
+
+START COMMENT HERE
+
+@import
+
+"http://www.unc.edu/~rhwiley/courses/biol072/notes/style_notes.css";
+   
+END COMMENT HERE
+
+</style>
+-->

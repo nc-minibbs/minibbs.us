@@ -1,0 +1,225 @@
+## set your own working directory
+setwd("/Users/rhwiley/Desktop")
+
+## use revised data file
+MbbsAll <- read.table(file="MBBS_ALLCOUNTIES_REV.txt", header=TRUE, sep="", 
+	quote="", dec=".", 
+	na.strings="X", colClasses=NA, nrows=-1, skip=0, 
+	check.names=TRUE, strip.white=TRUE, blank.lines.skip=TRUE)
+
+names(MbbsAll)
+
+
+############################################
+
+
+# calculate values for each species for missing route-years
+# first create a new data.frame that excludes all years with missing routes (zzz)
+# use this data.frame to calculate the mean numbers for each species in years with data
+# substitute these means for each species in the original data.frame (MbbsAll) 
+
+#### SET THE COUNTY FOR THIS PROCEDURE ####
+County = "CHATHAM"
+RoutesWithMissingData = NULL
+NumRoutesWithMissingData = 0
+
+# create a new data.frame for this county
+### DONT FORGET THE COMMAS WHEN SELECTING COLUMNS OR ROWS!!
+zzz <- MbbsAll[MbbsAll$COUNTY==County, ]
+
+# then prune this data.frame to eliminate years with missing data
+# number of rows in MbbsAll = 394
+for (ii in 2:394)
+{
+	# if this row is in the correct county, get $DATE2 (column 6) from this row	
+	if(MbbsAll[MbbsAll$ROWNUM==ii,]$COUNTY == County) 
+	{
+		xxx = MbbsAll[ii, 6]  ## xxx = MbbsAll[MbbsAll$ROWNUM==ii,]$DATE2
+	}
+	# if the date (hence all data) is missing, add the route, year, and row number in MbbsAll to a list
+	if(is.na(xxx)) 
+	{
+		## yyy = TRUE
+		YearWithMissingData = MbbsAll[MbbsAll$ROWNUM==ii, ]$YEAR
+		RoutesWithMissingData = c(RoutesWithMissingData, MbbsAll[MbbsAll$ROWNUM==ii, ]$ROUTE)
+		RoutesWithMissingData = c(RoutesWithMissingData, YearWithMissingData, ii)
+		NumRoutesWithMissingData = NumRoutesWithMissingData + 1
+		
+		# now rewrite the pruned data.frame without this year
+		zzz = zzz[zzz$COUNTY==County & zzz$YEAR!=YearWithMissingData, ]
+	}
+}
+
+# some checks on progress so far
+summary(zzz[50])
+summary(zzz$ACFL)
+mean(zzz[50])
+round(mean(zzz[50]))
+unique(zzz$YEAR)
+RoutesWithMissingData
+NumRoutesWithMissingData
+
+# following line gives an error when used for an assignment in the loops below !!!
+mean(zzz[zzz$ROUTE==as.character(RoutesWithMissingData[1]), ][120])
+mean(zzz[120]) # mean over all routes
+
+# use the list of missing routes and the pruned data.frame to substitute values in MbbsAll
+for (jj in 1:NumRoutesWithMissingData)
+{
+	# rr is an index to the row numbers with missing data in MbbsAll (in the list RoutesWithMissingData) 
+	rr=(jj-1)*3
+	# get a route with missing data
+	MissingRoute = RoutesWithMissingData[rr+1]  # MissingRoute = as.character(RoutesWithMissingData[rr+1])
+
+	for (kk in 13:120)
+	{
+		# means for this route in years without missing data (species are in columns 13-120)
+		RouteMeanColumnKk = mean(zzz[zzz$ROUTE==MissingRoute, ][kk])
+		RouteMeanDate = mean(zzz[zzz$ROUTE==MissingRoute, ]$DATE2)
+		# substitute these means in the appropriate lines of MbbsAll
+		MbbsAll[RoutesWithMissingData[rr+3], kk] <- round(RouteMeanColumnKk)
+		MbbsAll[MbbsAll$ROWNUM==RoutesWithMissingData[rr+3], ]$DATE2 <- round(RouteMeanDate)
+	}
+}
+
+
+
+############################################
+
+
+
+
+## extract the data for one county at a time
+# County = "ORANGE"
+MbbsCountyTotals <- MbbsAll[MbbsAll$COUNTY==County & MbbsAll$ROUTE=="TOTALSP", ]
+
+## example of summary stats for Carolina Wren (CARW)
+x <- MbbsCountyTotals $CARW
+
+summary(x)
+
+boxplot.stats(x, coef = 1.5, do.conf = TRUE, do.out = TRUE)
+
+
+############################################
+
+
+## plot graphs for each species ## with line color and line type  ## better comments
+## prints ten pdfs in one file
+## quartz(width=9, height=12) ## for use on-screen -- delete pdf below -- also enable break below
+
+j = 1
+TotalSpecies = 120
+ListToPlot=NULL ##do not use list(NULL)
+
+for (i in 13:TotalSpecies+1)
+## column 13 has the annual totals for the first species of bird, column 118 has the totals for the last species 
+{
+	if (j <= 10 && i <= TotalSpecies)
+	# get a list of ten species to plot
+	{
+		# only include species with a mean annual number of individuals > 5
+		if (summary(MbbsCountyTotals[[i]])[[4]]>5)
+		# if mean>5 add the column number to the list to plot
+		{
+			ListToPlot = c(ListToPlot, i)
+			j=j+1
+		}
+	}
+
+	else
+	# plot these ten species and reset the list
+	{
+		NumberToPlot = j-1
+		# following data.frame is not used
+		MbbsCountySub <- subset(MbbsCountyTotals, 
+			ROUTE == "TOTALSP" & COUNTY == County,
+			select = ListToPlot)
+
+		if(i > TotalSpecies) LastNumber = TotalSpecies else LastNumber = i
+		Filename = paste("/Users/rhwiley/Desktop/", County, LastNumber, 
+			".pdf", sep="")
+		pdf(file=Filename, width=9, height=12, onefile=TRUE)
+
+		# two columns of five graphs
+		layout(
+			matrix(c(1,2,3,4,5,6,7,8,9,10),
+				ncol=2, nrow=5, byrow=FALSE),
+			widths=rep(lcm(10),2),
+			heights=c(rep(lcm(5),5)),
+			respect=FALSE	
+		)
+		par(
+			mar=c(4,4,0,2), # (2,4,2,4) B,L,T,R
+			oma=c(2,2,4,1), # (2,2,1,1)
+			mgp=c(3,1,0) # margin line for y axis labels, x axis labels, axis lines (3,1,0)
+		)
+
+		for (k in 1:NumberToPlot)
+		{	
+			Ltpk=ListToPlot[k]
+			YLabel = names(MbbsCountyTotals)[Ltpk] 
+			if(YLabel=="TOTALRT") YLabel="ALL SPECIES"
+			plot(
+				MbbsCountyTotals[[Ltpk]] ~ MbbsCountyTotals$YEAR, type="o",
+				xlab = "", ylab=YLabel,
+				ylim=c(0,10*((max(MbbsCountyTotals[[Ltpk]])%/%10)+1)), 
+				#log="y",
+				#main="MINI BREEDING BIRD SURVEY",
+				#sub=paste(County, " COUNTY, NC"),
+				main=""
+			)
+
+			# calculate the regression line
+			Ltpk_lm = lm(MbbsCountyTotals[[Ltpk]] ~ MbbsCountyTotals$YEAR)
+			Ltpk_lm_summ <- summary(Ltpk_lm)
+
+			# get the P level for the regression			
+			if(Ltpk_lm_summ$coefficients[2,4]>0.1) Psymbol="X";
+			if(Ltpk_lm_summ$coefficients[2,4]<=0.1 & Ltpk_lm_summ$coefficients[2,4]>0.05) Psymbol="";
+			if(Ltpk_lm_summ$coefficients[2,4]<=0.05 & Ltpk_lm_summ$coefficients[2,4]>0.01) Psymbol="*";
+			if(Ltpk_lm_summ $coefficients[2,4]<=0.01) Psymbol="**";
+
+			# if P<0.1 plot the line, if P<0.05 show the significance level
+			# adjust line type and width to reflect P level
+			# lty = 2 for dashed line, lwd = 3 for 3x wider than default
+			if (Psymbol!="X")
+			{	
+
+				# default values
+				LineType=1
+				LineWidth=1
+				LineColor="black"
+
+				# lty=2 for dashed line
+				if(Psymbol == "") LineType = 2
+
+				# colored lines are too much!	
+#				else 
+#				{
+#					if(Ltpk_lm_summ$coefficients[2,1]<0) LineColor ="red"
+#					else LineColor ="green"
+#				}
+
+				# lwd=3 for 3x wider than default	
+				if(Psymbol =="**") LineWidth =3
+				
+				abline(Ltpk_lm, lty=LineType, lwd=LineWidth, col=LineColor)
+				ycoord=10*((max(MbbsCountyTotals[[Ltpk]])%/%10)+0.5)
+				text(2008, ycoord, Psymbol, font=2, cex=3) 
+				##font=2 is bold, cex=2 multiplies size by 2
+				##coordinates for text are the coordinates of the plot itself!!!
+			}
+		}
+		title(line=1, main=paste(County, " County\nMini Breeding Bird Survey"), cex.main=1.5,
+			outer=TRUE)
+
+		# break # if you need to do some de-bugging!
+		dev.off()
+
+		# clear list of species to plot and reset j
+		ListToPlot=NULL
+		j = 1
+	}
+}
+
