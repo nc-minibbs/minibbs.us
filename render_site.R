@@ -1,2 +1,2 @@
 
-rmarkdown::render_site("inst/site")
+rmarkdown::render_site()
