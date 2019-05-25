@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>procedures.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Mini-Bird Breeding Survey Results</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="procedures.html">Procedures</a>
+</li>
+<li>
+  <a href="species_trends.html">Species Trends</a>
+</li>
+<li>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdh5F7DVnqi3HxiB91lpBPp4n9dusD_oA752fHm2FHvBuc6_g/viewform">Participate</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/bsaul/mbbs">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="procedures" class="section level1">
+<h1>Procedures</h1>
+<p>More information about <a href="old-mbbs/introtombbs.html">our procedures</a> including <a href="old-mbbs/introtombbs.html">descriptions and maps of our routes</a>, <a href="old-mbbs/mbbsbirds.html">a list of birds breeding in our area</a>, and <a href="old-mbbs/dataforms/index.html">printable forms for MBBS data</a></p>
+<div id="why-ebird-for-reporting-data" class="section level2">
+<h2>Why eBird for reporting data?</h2>
+<ul>
+<li>By using eBird, our numbers become available fo anyone to use for scientific analysis!</li>
+<li>It is easier to start an MBBS in other counties or in other states or wherever (see needs below)!</li>
+</ul>
+</div>
+<div id="entering-counts-in-ebird" class="section level2">
+<h2>Entering Counts in Ebird</h2>
+<ul>
+<li><a href="old-mbbs/allhabitats.html">Entering all habitat codes</a></li>
+<li><p><a href="old-mbbs/twentytotals.html">Entering totals for all stops</a></p></li>
+<li><p>Option for counting night birds* (beginning in 2013) … arrive at the starting point 15 minutes early (45 minutes before sunrise, approximately 5:15 at our time of year) and count all birds heard during those 15 minutes, and then start your first 3-minute count and continue the survey as usual. <em>Enter counts for the extra 15 minutes in the Comments box</em> (see below for an example).</p></li>
+</ul>
+<p>Once you have run your route (review <a href=#procedures> our procedures</a> below) …</p>
+<ul>
+<li>add up the total number of each species for the entire 20 stops</li>
+<li>log into ebird.org <a href="old-mbbs/loggingintoebird.html">how to log in</a></li>
+<li>after logging in, click the tab “Submit Observations” near the top</li>
+</ul>
+<p>On the page that appears …</p>
+<p><img src="old-mbbs/jpgs/locs.jpg" /></p>
+<ol style="list-style-type: decimal">
+<li>choose your route in the drop-down menu “Select from My Locations” …</li>
+<li>then click “Continue”</li>
+</ol>
+<p>On the next page …</p>
+<p><img src="old-mbbs/jpgs/date.jpg" /></p>
+<ol style="list-style-type: decimal">
+<li>enter the date you ran your route</li>
+<li>click the button for “Traveling”</li>
+</ol>
+<p>… which expands the page so you can enter …</p>
+<p><img src="old-mbbs/jpgs/comment.jpg" /></p>
+<ol style="list-style-type: decimal">
+<li>the start time (usually 5:30 – don’t forget to add AM)</li>
+<li>the duration (within 10 minutes or so)</li>
+<li>the distance covered (always 10.0 miles)</li>
+<li>the number (of observers) in your party (normally 1 or 2)</li>
+<li>and “Comments” about your route</li>
+</ol>
+<p>Your comments should include …</p>
+<ol style="list-style-type: decimal">
+<li>names of observers (for instance, “observers=Firstname Lastname, Firstname Lastname”)</li>
+<li>names of other participants such as driver or recorder (for instance, “others=Firstname Lastname”)</li>
+<li>weather such as temperature, cloud cover, and wind in general terms (for instance, “weather=75F, partly cloudy, light wind, patches of fog early”)</li>
+<li>the total number of vehicles during the 20 three-minute obervations (for instance, “vehicles=23”, with no spaces), and</li>
+<li>any change in the habitat at any stop (for instance, “<a href="mailto:habitat@16R=B" class="email">habitat@16R=B</a>”, with no spaces, meaning the new habitat code on the righthand side of the route at stop 16 is now B)</li>
+<li>any other notes or observations (for instance, “notes=Cooper’s Hawk flew past after the count at stop 4, 3 Eastern Screech-Owls, 2 Barred Owls, 1 Great Horned Owl, 4 Whip-poor-wills, 2 Chuck-wills-widows during 15 minutes before the start”)</li>
+<li>use <b>semicolons to separate</b> these types of information (also omit the quotes from the examples above)</li>
+</ol>
+<p><em>Here’s an example</em> of a complete entry in this box …</p>
+<pre><code>observers=Haven Wiley, John Doe; others=Minna Wiley; weather=75F, partly 
+cloudy, light wind, patches of fog early; vehicles=23; habitat@4L=S; notes=1 
+Barred Owl in 15 minutes before the start</code></pre>
+<p>After entering these “Comments”, click “Continue” to reach the final page</p>
+<p><img src="old-mbbs/jpgs/what.jpg" /></p>
+<p>where you can enter your totals in the appopriate boxes (scroll down as necessary).</p>
+<p>Once your totals are entered and you reach the bottom of the page …</p>
+<ol style="list-style-type: decimal">
+<li>click the button “Yes” for submitting a complete checklist</li>
+<li>and then click the big green button “Submit”</li>
+</ol>
+<p><img src="old-mbbs/jpgs/submit.jpg" /></p>
+<p>On the next page, you are congratulated on a job well done:</p>
+<blockquote>
+<p>“Your checklist has been submitted! Please review it carefully and make any necessary changes.”</p>
+</blockquote>
+<p>Notice that you can change anything you have entered (if you made a mistake).</p>
+<p>Also notice the button near the top right corner “All Checklists”. Clicking this button takes you to a list of all checklists so far submitted!</p>
+<p>This list of checklists, allows you to “Edit” or “Delete” any of them (in case you think of a mistake later … but please do not delete anybody else’s list!). You can also “Share” your checklist with another eBirder (or with your own eBird account).</p>
+<p>Click the tab “My eBird” near the top to take you back to the MBBS home page … and finally “Sign Out” (although this step is not necessary if you close your web browser or the current tab).</p>
+<div id="more-comments-on-submitting-reports" class="section level3">
+<h3>More comments on submitting reports</h3>
+<div id="choosing-locations-from-the-drop-down-menu" class="section level4">
+<h4>Choosing locations from the drop-down menu</h4>
+<p>One reason for shifting to eBird is that our data become available to anybody who would like to analyze them. eBird follows the protocols for formatting data in the Avian Knowledge Network, so data can be downloaded for scientific study (it works although some programming is required!). To allow our MBBS data to be identified for downloading, it is crucial that <em>the names of the locations of our routes follow strict formats</em> including spaces, commas, and capitalization. Using the drop-down menu to select the location of an MBBS route solves this problem!</p>
+</div>
+<div id="vehicles-and-habitat-codes" class="section level4">
+<h4>Vehicles and habitat codes</h4>
+<p>A disadvantage of using eBird is that there is no easy way to enter the total number of vehicles on a route (those passing during the 20 three-minute observations) or any changes in habitat codes from year to year. By adding this information in the box for notes, it will be possible to retrieve it when data are downloaded from the Avian Knowledge Network, provided we use the format suggested above (for instance, “vehcles=17” and “<a href="mailto:habitat@7L=M" class="email">habitat@7L=M</a>”).</p>
+</div>
+<div id="sharing-mbbs-checklists-with-your-own-ebird-account" class="section level4">
+<h4>Sharing MBBS checklists with your own eBird account</h4>
+<p>It is best to enter the data in the appropriate MBBS account and then share it with your own account … that way you can use the drop-down menu in the MBBS account to select the location with the correct format … all of the species and numbers will also be tallied in your own account!</p>
+</div>
+<div id="locations-and-distances" class="section level4">
+<h4>Locations and distances</h4>
+<p>The locations of the routes are the <i>starting places</i> (please let me know if you spot a significant error!). eBird suggests using the coordinates for the aproximate center of a traveling count, but for us the starting position is much more critical. Although our routes only involve driving 9.5 miles from stop 1 to stop 20, we include all birds recorded within 0.25 miles of the first and last stops, so the total distance for an MBBS route is 10.0 miles.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

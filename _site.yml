@@ -1,9 +1,12 @@
 name: "MBBS"
+exclude: ["README", "TODO"]
 navbar:
   title: "Mini-Bird Breeding Survey Results"
   left:
     - text: "Home"
       href: index.html
+    - text: "Procedures"
+      href: procedures.html
     - text: "Species Trends"
       href: species_trends.html
     - text: "Participate"
