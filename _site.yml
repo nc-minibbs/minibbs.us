@@ -1,7 +1,7 @@
 name: "MBBS"
 exclude: ["README", "TODO"]
 navbar:
-  title: "Mini-Bird Breeding Survey Results"
+  title: "Mini-Bird Breeding Survey"
   left:
     - text: "Home"
       href: index.html
