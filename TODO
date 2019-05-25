@@ -1,3 +1,5 @@
-# 
-* change all absolute paths to relative
-* prepend all URLs to old mbbs site paths with `old-mbbs`
+# TODO list
+
+* ~change all absolute paths to relative~
+* ~prepend all URLs to old mbbs site paths with `old-mbbs`~
+* clean up/organize the repo
