@@ -13,6 +13,7 @@
 
 <title>index.utf8</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -24,6 +25,15 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -69,6 +79,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -289,7 +300,7 @@ $(document).ready(function () {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/bsaul/mbbs">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -312,49 +323,20 @@ $(document).ready(function () {
 <div id="history" class="section level2">
 <h2>History</h2>
 <p>An annual MBBS began in Orange County (12 routes) in 1999, in Chatham County (14 routes) in 2000, and in Durham County (8 routes) in 2002. The number of routes in each county varies with the size of the county.</p>
-<p><a href="old-mbbs/index.html">Click here for the old MBBS site</a>, while content is moved to the new site.</p>
-<div id="and-onwards" class="section level3">
-<h3>2010 and onwards</h3>
 <p>In 2010 we began to use eBird.org to store the results of our surveys. Coordinated by the Cornell Laboratory of Ornithology and the National Audubon Society, eBird.org is now a widely used database for observations of birds worldwide.</p>
-<p>By 2012 we had worked out kinks in this process and we covered all routes in Durham County and all but a few in Orange and Chatham Counties!</p>
-<p>In 2015 we covered 26 of our 34 routes overall</p>
+<p>By 2012 we had worked out kinks in this process and we covered all routes in Durham County and all but a few in Orange and Chatham Counties. In 2019, Professor Emeritus at UNC and local legend <a href="http://rhwiley.bio.unc.edu/">Haven Wiley</a> retired as organizer of the survey. <a href="http://labs.bio.unc.edu/hurlbert/index.html">Alan Hurlbert</a> and <a href="https://functionalstatistics.com/">Bradley Saul</a> took the reins.</p>
+<p>The original <a href="old-mbbs/index.html">MBBS site is available here</a>.</p>
+</div>
+<div id="qualifications" class="section level2">
+<h2>Qualifications</h2>
+<p>You need not be an expert birder to participate in the MBBS! We just ask that you can:</p>
 <ul>
-<li>6 (of 8) routes in Durham</li>
-<li>10 (of 12) in Orange</li>
-<li>10 (of 14) in Chatham Counties.</li>
+<li>identify our <a href="mbbsbirds.html">common breeding birds</a> by song or calls as well as by sight</li>
+<li>get up early one morning to drive (or have someone drive you) a survey route</li>
+<li>participate (or plan to) for multiple year</li>
+<li>submit observations by <a href="https://ebird.org">eBird</a></li>
 </ul>
-<p>Our goal is complete coverage in Durham and Orange and at least holding our own in Chatham!</p>
-</div>
-</div>
-<div id="what-we-need-now" class="section level2">
-<h2>What we need now</h2>
-<div id="participants-to-pick-up-vacant-routes" class="section level3">
-<h3>Participants to pick up vacant routes</h3>
-<ul>
-<li>Qualifications
-<ul>
-<li>ability to identify our breeding birds (especially the regular ones) by song or calls as well as by sight</li>
-<li>interest in out-of-the-way parts of the area where we live</li>
-<li>participation in successive years (when possible)</li>
-<li>and, last but not least, willingness to submit standard reports that can be used to evaluate trends in the numbers of our breeding birds</li>
-</ul></li>
-</ul>
-</div>
-<div id="county-coordinators-for-orange-and-chatham-counties" class="section level3">
-<h3>County coordinators for Orange and Chatham Counties</h3>
-<ul>
-<li>Qualifications
-<ul>
-<li>willingness to help in recruiting a few regularparticipants when needed (see above)</li>
-<li>a few minutes each week (for several weeks in the summer) to encourage participants to run their routes and to enter their results in eBird in a timely way.</li>
-</ul></li>
-</ul>
-</div>
-<div id="coordinators-for-additional-mini-breeding-birds-surveys-in-other-counties-states-or-elsewhere" class="section level3">
-<h3>Coordinators for additional Mini Breeding Birds Surveys in other counties, states, or elsewhere</h3>
-<p>To start a new MBBS, someone must select suitable routes (see the guidelines in our procedures), use Google Earth (or a GPS device) to obtain the coordinates of each starting location, spend a few hours with eBird to set up an account with the locations for the routes – and, most important, recruit some partcipants! It is also important to download and save the eBird checklists with each year’s results.</p>
 <p>If you have questions, please contact <a href="mailto:hurlbert@bio.unc.edu">Allen Hurlbert</a> or <a href="mailto:bradleysaul@gmail.com">Bradley Saul</a>.</p>
-</div>
 </div>
 </div>
 
@@ -367,7 +349,7 @@ $(document).ready(function () {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

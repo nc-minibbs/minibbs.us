@@ -82,7 +82,7 @@ create_details <- function(common_name, sci_name, img_trend){
     htmltools::p(
       htmltools::a(href = more_link, sci_name)
     ),
-    htmltools::img(src = "noun_Bird_2164644.png"),
+    htmltools::img(src = "images/noun_Bird_2164644.png"),
     img_trend
   )
 }

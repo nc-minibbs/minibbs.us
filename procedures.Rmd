@@ -1,115 +1,63 @@
 ---
-output: html_document
+title: Procedure
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
-# Procedures
+
+# Count birds
+
+## During the survey
+
+For each stop along your survey route, submit an [eBird](https://ebird.org) checklist of birds seen or heard during your 3 minute period using the [eBird mobile app](https://play.google.com/store/apps/details?id=edu.cornell.birds.ebird&hl=en_US&gl=US).
+
+[Click here for the current procedures document.](https://docs.google.com/document/d/1hBYRPsgAWblQkQFa4p4UEfWrtI0dr_kYohRqAgIy1DQ/edit)
+
+Habitat codes can be found [here](#habitat). 
+
+## After the survey
+
+Review the Comments fields of your checklists, and edit or update them as necessary. This may be easier to do on a computer back at home than on your phone. Share ALL 20 checklists from your survey route with the appropriate MBBS account (`mbbsorangenc`, `mbbsdurhamnc`, or `mbbschathamn`). This is an extremely important step, and without it, it is as if the surveys were never conducted as far as the project is concerned. We need the observations centralized in these accounts.
+
+# Habitat
+
+## Codes for Seven Major Habitat Categories
+
+* B -- building(s) (except permanently abandoned ones) and areas heavily used by humans (lawns, athletic fields, golf courses, barnyards)
+* H -- forest (treetops touching each other) with hardwoods composing more than 90% of the canopy
+* M -- forest with pines and hardwoods mixed in the canopy (hardwoods 50-90% of the canopy)
+* P -- forest with more than half the canopy pines (hardwoods less than 50% of the canopy)
+* S -- second-growth (including areas with shrubs or scattered trees)
+* 0 -- open areas with low vegetation (recent clear-cuts, agricultural fields including fallow and hay fields) -- but not lawns and athletic fields (these are coded B as explained above)
+* W -- water (lake, pond, river, stream) -- often used as a secondary code after one of the above codes
+
+## Recording Habitat
+
+* Each year take along your codes from previous years and use the same codes again -- except...
+* When you see that the habitat at a stop has changed (for instance, a clear-cut has become overgrown, a new clear-cut or development has replaced forest) -- mark the new habitat code with an asterisk.
+* Focus on the habitat directly to the left and right of the exact place where you stop (if the stop is at an edge between two kinds of habitat, make a decision about which side of the edge you are on, even if only by one foot!).
+* Ignore any narrow strip of habitat parallel to the road (for instance, a line of trees or shrubs between the road and a field).
+* Make a judgment about the predominant habitat within 50 meters (yards) of the road (half the length of a football field).
+* If more than one code applies to one place, list the appropriate codes in order from the most to the least predominant (three codes maximum, please!).
+* If there is a building (not permanently abandoned) within 50 meters (yards), record code B first, regardless of what surrounds the building.
+
+# Vehicle Count Procedure
+
+The objective in counting vehicles at each stop is to produce information about the overall level of human activity along a route and any changes in this level from year to year.
+
+* count the number of vehicles during a three-minute period at each stop. Usually you can count vehicles during the same three minutes you count birds. Any contraption moving on the ground with a motor counts as a vehicle!
+* If you extend the three minutes for counting birds to compensate for heavy traffic, do not make an extension for the traffic. Instead just count vehicles during the first three minutes -- whether or not the traffic is heavy!
+* If things are happening fast (lots of birds, lots of traffic), then the birds come first!   Count the birds the best you can -- and estimate (guess) the number of vehicles the best you can.
+
+# Routes
+
+* [Orange County routes](orange-county.html)
+* [Durham County routes](durham-county.html)
+* [Chatham County routes](chatham-county.html)
+
+# Procedure Archives
 
 More information about [our procedures](old-mbbs/introtombbs.html) including 
 [descriptions and maps of our routes](old-mbbs/introtombbs.html), [a list of birds breeding in our area](old-mbbs/mbbsbirds.html), and [printable forms for MBBS data](old-mbbs/dataforms/index.html)
 
-## Why eBird for reporting data?
-
-* By using eBird, our numbers become available fo anyone to use for 
-scientific analysis!
-* It is easier to start an MBBS in other counties or in 
-other states or wherever (see needs below)! 
-
-## Entering Counts in Ebird
-
-* [Entering all habitat codes](old-mbbs/allhabitats.html)
-* [Entering totals for all stops](old-mbbs/twentytotals.html)
-
-* Option for counting night birds* (beginning in 2013) ... arrive at the starting point 15 minutes early (45 minutes before sunrise, approximately 5:15 at our time of year) and count all birds heard during those 15 minutes, and then start your first 3-minute count and continue the survey as usual.  *Enter counts for the extra 15 minutes in the Comments box* (see below for an example).
-
-Once you have run your route (review <a href=#procedures> our procedures</a> below) ...
-
-* add up the total number of each species for the entire 20 stops
-* log into ebird.org [how to log 
-in](old-mbbs/loggingintoebird.html)
-* after logging in, click the tab "Submit Observations" near the top
-
-On the page that appears ...
-
-![](old-mbbs/jpgs/locs.jpg)
-
-1. choose your route in the drop-down menu "Select from My Locations" ...
-2. then click "Continue"
-
-On the next page ... 
-
-![](old-mbbs/jpgs/date.jpg)
-
-1. enter the date you ran your route
-2. click the button for "Traveling"
-
-
-... which expands the page so you can enter ...
-
-![](old-mbbs/jpgs/comment.jpg)
-
-1. the start time (usually 5:30 -- don't forget to add AM)
-2. the duration (within 10 minutes or so)
-3. the distance covered (always 10.0 miles)
-4. the number (of observers) in your party (normally 1 or 2)
-5. and "Comments" about your route
-
-Your comments should include ...
-
-1. names of observers (for instance, "observers=Firstname Lastname, Firstname Lastname")
-2. names of other participants such as driver or recorder (for instance, "others=Firstname Lastname")
-3. weather such as temperature, cloud cover, and wind in general terms (for instance, "weather=75F, partly cloudy, light wind, patches of fog early")
-4. the total number of vehicles during the 20 three-minute obervations (for instance, "vehicles=23", with no spaces), and
-5. any change in the habitat at any stop (for instance, "habitat@16R=B", with no spaces, meaning the new habitat code on the righthand side of the route at stop 16 is now B)
-6. any other notes or observations (for instance, "notes=Cooper's Hawk flew past after the count at stop 4, 3 Eastern Screech-Owls, 2 Barred Owls, 1 Great Horned Owl, 4 Whip-poor-wills, 2 Chuck-wills-widows during 15 minutes before the start")
-7. use <b>semicolons to separate</b> these types of information (also omit  the quotes from the examples above)
-
-*Here's an example* of a complete entry in this box ...
-
-```
-observers=Haven Wiley, John Doe; others=Minna Wiley; weather=75F, partly 
-cloudy, light wind, patches of fog early; vehicles=23; habitat@4L=S; notes=1 
-Barred Owl in 15 minutes before the start
-```
-
-After entering these "Comments", click "Continue" to reach the final page 
-
-![](old-mbbs/jpgs/what.jpg)
-
-where you can enter your totals in the appopriate boxes (scroll down as necessary).
-
-Once your totals are entered and you reach the bottom of the page  ...
-
-1. click the button "Yes" for submitting a complete checklist
-2. and then click the big green button "Submit"
-
-![](old-mbbs/jpgs/submit.jpg)
-
-On the next page, you are congratulated on a job well done:
-
-> "Your checklist has been submitted! Please review it carefully and make  any necessary changes."
-
-Notice that you can change anything you have entered (if you made a mistake).
-
-Also notice the button near the top right corner "All Checklists". Clicking this button takes you to a list of all checklists so far submitted!
-
-This list of checklists, allows you to "Edit" or "Delete" any of them (in case you think of a mistake later ... but please do not delete anybody else's list!).  You can also "Share" your checklist with another eBirder (or with your own eBird account).
-
-Click the tab "My eBird" near the top to take you back to the MBBS home page ... and finally "Sign Out" (although this step is not necessary if you close your web browser or the current tab).
-
-### More comments on submitting reports
-
-#### Choosing locations from the drop-down menu
-
-One reason for shifting to eBird is that our data become available to anybody who would like to analyze them. eBird follows the protocols for formatting data in the Avian Knowledge Network, so data can be downloaded for scientific study (it works although some programming is required!). To allow our MBBS data to be identified for downloading, it is crucial that *the names of the locations of our routes follow strict formats* including spaces, commas, and capitalization. Using the drop-down menu to select the location of an MBBS route solves this problem!
-
-#### Vehicles and habitat codes
-
-A disadvantage of using eBird is that there is no easy way to enter the total number of vehicles on a route (those passing during the 20 three-minute observations) or any changes in habitat codes from year to year.  By adding this information in the box for notes, it will be possible to retrieve it when data are downloaded from the Avian Knowledge Network, provided we use the format suggested above (for instance, "vehcles=17" and "habitat@7L=M").
-
-#### Sharing MBBS checklists with your own eBird account
-
-It is best to enter the data in the appropriate MBBS account and then share it with your own account ... that way you can use the drop-down menu in the MBBS account to select the location with the correct format ... all of the species and numbers will also be tallied in your own account!
-
-#### Locations and distances
-
-The locations of the routes are the <i>starting places</i> (please let me know if you spot a significant error!).  eBird suggests using the coordinates for the aproximate center of a traveling count, but for us the starting position is much more critical.  Although our routes only involve driving 9.5 miles from stop 1 to stop 20, we include all birds recorded within 0.25 miles of the first and last stops, so the total distance for an MBBS route is 10.0 
-miles.

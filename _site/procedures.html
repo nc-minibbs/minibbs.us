@@ -11,19 +11,32 @@
 
 
 
-<title>procedures.utf8</title>
+<title>Procedure</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -69,6 +82,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -250,6 +264,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -257,6 +334,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -289,7 +376,7 @@ $(document).ready(function () {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/bsaul/mbbs">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -302,109 +389,77 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">Procedure</h1>
 
 </div>
 
 
-<div id="procedures" class="section level1">
-<h1>Procedures</h1>
+<div id="count-birds" class="section level1">
+<h1>Count birds</h1>
+<div id="during-the-survey" class="section level2">
+<h2>During the survey</h2>
+<p>For each stop along your survey route, submit an <a href="https://ebird.org">eBird</a> checklist of birds seen or heard during your 3 minute period using the <a href="https://play.google.com/store/apps/details?id=edu.cornell.birds.ebird&amp;hl=en_US&amp;gl=US">eBird mobile app</a>.</p>
+<p><a href="https://docs.google.com/document/d/1hBYRPsgAWblQkQFa4p4UEfWrtI0dr_kYohRqAgIy1DQ/edit">Click here for the current procedures document.</a></p>
+<p>Habitat codes can be found <a href="#habitat">here</a>.</p>
+</div>
+<div id="after-the-survey" class="section level2">
+<h2>After the survey</h2>
+<p>Review the Comments fields of your checklists, and edit or update them as necessary. This may be easier to do on a computer back at home than on your phone. Share ALL 20 checklists from your survey route with the appropriate MBBS account (<code>mbbsorangenc</code>, <code>mbbsdurhamnc</code>, or <code>mbbschathamn</code>). This is an extremely important step, and without it, it is as if the surveys were never conducted as far as the project is concerned. We need the observations centralized in these accounts.</p>
+</div>
+</div>
+<div id="habitat" class="section level1">
+<h1>Habitat</h1>
+<div id="codes-for-seven-major-habitat-categories" class="section level2">
+<h2>Codes for Seven Major Habitat Categories</h2>
+<ul>
+<li>B – building(s) (except permanently abandoned ones) and areas heavily used by humans (lawns, athletic fields, golf courses, barnyards)</li>
+<li>H – forest (treetops touching each other) with hardwoods composing more than 90% of the canopy</li>
+<li>M – forest with pines and hardwoods mixed in the canopy (hardwoods 50-90% of the canopy)</li>
+<li>P – forest with more than half the canopy pines (hardwoods less than 50% of the canopy)</li>
+<li>S – second-growth (including areas with shrubs or scattered trees)</li>
+<li>0 – open areas with low vegetation (recent clear-cuts, agricultural fields including fallow and hay fields) – but not lawns and athletic fields (these are coded B as explained above)</li>
+<li>W – water (lake, pond, river, stream) – often used as a secondary code after one of the above codes</li>
+</ul>
+</div>
+<div id="recording-habitat" class="section level2">
+<h2>Recording Habitat</h2>
+<ul>
+<li>Each year take along your codes from previous years and use the same codes again – except…</li>
+<li>When you see that the habitat at a stop has changed (for instance, a clear-cut has become overgrown, a new clear-cut or development has replaced forest) – mark the new habitat code with an asterisk.</li>
+<li>Focus on the habitat directly to the left and right of the exact place where you stop (if the stop is at an edge between two kinds of habitat, make a decision about which side of the edge you are on, even if only by one foot!).</li>
+<li>Ignore any narrow strip of habitat parallel to the road (for instance, a line of trees or shrubs between the road and a field).</li>
+<li>Make a judgment about the predominant habitat within 50 meters (yards) of the road (half the length of a football field).</li>
+<li>If more than one code applies to one place, list the appropriate codes in order from the most to the least predominant (three codes maximum, please!).</li>
+<li>If there is a building (not permanently abandoned) within 50 meters (yards), record code B first, regardless of what surrounds the building.</li>
+</ul>
+</div>
+</div>
+<div id="vehicle-count-procedure" class="section level1">
+<h1>Vehicle Count Procedure</h1>
+<p>The objective in counting vehicles at each stop is to produce information about the overall level of human activity along a route and any changes in this level from year to year.</p>
+<ul>
+<li>count the number of vehicles during a three-minute period at each stop. Usually you can count vehicles during the same three minutes you count birds. Any contraption moving on the ground with a motor counts as a vehicle!</li>
+<li>If you extend the three minutes for counting birds to compensate for heavy traffic, do not make an extension for the traffic. Instead just count vehicles during the first three minutes – whether or not the traffic is heavy!</li>
+<li>If things are happening fast (lots of birds, lots of traffic), then the birds come first! Count the birds the best you can – and estimate (guess) the number of vehicles the best you can.</li>
+</ul>
+</div>
+<div id="routes" class="section level1">
+<h1>Routes</h1>
+<ul>
+<li><a href="orange-county.html">Orange County routes</a></li>
+<li><a href="durham-county.html">Durham County routes</a></li>
+<li><a href="chatham-county.html">Chatham County routes</a></li>
+</ul>
+</div>
+<div id="procedure-archives" class="section level1">
+<h1>Procedure Archives</h1>
 <p>More information about <a href="old-mbbs/introtombbs.html">our procedures</a> including <a href="old-mbbs/introtombbs.html">descriptions and maps of our routes</a>, <a href="old-mbbs/mbbsbirds.html">a list of birds breeding in our area</a>, and <a href="old-mbbs/dataforms/index.html">printable forms for MBBS data</a></p>
-<div id="why-ebird-for-reporting-data" class="section level2">
-<h2>Why eBird for reporting data?</h2>
-<ul>
-<li>By using eBird, our numbers become available fo anyone to use for scientific analysis!</li>
-<li>It is easier to start an MBBS in other counties or in other states or wherever (see needs below)!</li>
-</ul>
-</div>
-<div id="entering-counts-in-ebird" class="section level2">
-<h2>Entering Counts in Ebird</h2>
-<ul>
-<li><p><a href="old-mbbs/allhabitats.html">Entering all habitat codes</a></p></li>
-<li><p><a href="old-mbbs/twentytotals.html">Entering totals for all stops</a></p></li>
-<li><p>Option for counting night birds* (beginning in 2013) … arrive at the starting point 15 minutes early (45 minutes before sunrise, approximately 5:15 at our time of year) and count all birds heard during those 15 minutes, and then start your first 3-minute count and continue the survey as usual. <em>Enter counts for the extra 15 minutes in the Comments box</em> (see below for an example).</p></li>
-</ul>
-<p>Once you have run your route (review <a href=#procedures> our procedures</a> below) …</p>
-<ul>
-<li>add up the total number of each species for the entire 20 stops</li>
-<li>log into ebird.org <a href="old-mbbs/loggingintoebird.html">how to log in</a></li>
-<li>after logging in, click the tab “Submit Observations” near the top</li>
-</ul>
-<p>On the page that appears …</p>
-<p><img src="old-mbbs/jpgs/locs.jpg" /></p>
-<ol style="list-style-type: decimal">
-<li>choose your route in the drop-down menu “Select from My Locations” …</li>
-<li>then click “Continue”</li>
-</ol>
-<p>On the next page …</p>
-<p><img src="old-mbbs/jpgs/date.jpg" /></p>
-<ol style="list-style-type: decimal">
-<li>enter the date you ran your route</li>
-<li>click the button for “Traveling”</li>
-</ol>
-<p>… which expands the page so you can enter …</p>
-<p><img src="old-mbbs/jpgs/comment.jpg" /></p>
-<ol style="list-style-type: decimal">
-<li>the start time (usually 5:30 – don’t forget to add AM)</li>
-<li>the duration (within 10 minutes or so)</li>
-<li>the distance covered (always 10.0 miles)</li>
-<li>the number (of observers) in your party (normally 1 or 2)</li>
-<li>and “Comments” about your route</li>
-</ol>
-<p>Your comments should include …</p>
-<ol style="list-style-type: decimal">
-<li>names of observers (for instance, “observers=Firstname Lastname, Firstname Lastname”)</li>
-<li>names of other participants such as driver or recorder (for instance, “others=Firstname Lastname”)</li>
-<li>weather such as temperature, cloud cover, and wind in general terms (for instance, “weather=75F, partly cloudy, light wind, patches of fog early”)</li>
-<li>the total number of vehicles during the 20 three-minute obervations (for instance, “vehicles=23”, with no spaces), and</li>
-<li>any change in the habitat at any stop (for instance, “<a href="mailto:habitat@16R=B" class="email">habitat@16R=B</a>”, with no spaces, meaning the new habitat code on the righthand side of the route at stop 16 is now B)</li>
-<li>any other notes or observations (for instance, “notes=Cooper’s Hawk flew past after the count at stop 4, 3 Eastern Screech-Owls, 2 Barred Owls, 1 Great Horned Owl, 4 Whip-poor-wills, 2 Chuck-wills-widows during 15 minutes before the start”)</li>
-<li>use <b>semicolons to separate</b> these types of information (also omit the quotes from the examples above)</li>
-</ol>
-<p><em>Here’s an example</em> of a complete entry in this box …</p>
-<pre><code>observers=Haven Wiley, John Doe; others=Minna Wiley; weather=75F, partly 
-cloudy, light wind, patches of fog early; vehicles=23; habitat@4L=S; notes=1 
-Barred Owl in 15 minutes before the start</code></pre>
-<p>After entering these “Comments”, click “Continue” to reach the final page</p>
-<p><img src="old-mbbs/jpgs/what.jpg" /></p>
-<p>where you can enter your totals in the appopriate boxes (scroll down as necessary).</p>
-<p>Once your totals are entered and you reach the bottom of the page …</p>
-<ol style="list-style-type: decimal">
-<li>click the button “Yes” for submitting a complete checklist</li>
-<li>and then click the big green button “Submit”</li>
-</ol>
-<p><img src="old-mbbs/jpgs/submit.jpg" /></p>
-<p>On the next page, you are congratulated on a job well done:</p>
-<blockquote>
-<p>“Your checklist has been submitted! Please review it carefully and make any necessary changes.”</p>
-</blockquote>
-<p>Notice that you can change anything you have entered (if you made a mistake).</p>
-<p>Also notice the button near the top right corner “All Checklists”. Clicking this button takes you to a list of all checklists so far submitted!</p>
-<p>This list of checklists, allows you to “Edit” or “Delete” any of them (in case you think of a mistake later … but please do not delete anybody else’s list!). You can also “Share” your checklist with another eBirder (or with your own eBird account).</p>
-<p>Click the tab “My eBird” near the top to take you back to the MBBS home page … and finally “Sign Out” (although this step is not necessary if you close your web browser or the current tab).</p>
-<div id="more-comments-on-submitting-reports" class="section level3">
-<h3>More comments on submitting reports</h3>
-<div id="choosing-locations-from-the-drop-down-menu" class="section level4">
-<h4>Choosing locations from the drop-down menu</h4>
-<p>One reason for shifting to eBird is that our data become available to anybody who would like to analyze them. eBird follows the protocols for formatting data in the Avian Knowledge Network, so data can be downloaded for scientific study (it works although some programming is required!). To allow our MBBS data to be identified for downloading, it is crucial that <em>the names of the locations of our routes follow strict formats</em> including spaces, commas, and capitalization. Using the drop-down menu to select the location of an MBBS route solves this problem!</p>
-</div>
-<div id="vehicles-and-habitat-codes" class="section level4">
-<h4>Vehicles and habitat codes</h4>
-<p>A disadvantage of using eBird is that there is no easy way to enter the total number of vehicles on a route (those passing during the 20 three-minute observations) or any changes in habitat codes from year to year. By adding this information in the box for notes, it will be possible to retrieve it when data are downloaded from the Avian Knowledge Network, provided we use the format suggested above (for instance, “vehcles=17” and “<a href="mailto:habitat@7L=M" class="email">habitat@7L=M</a>”).</p>
-</div>
-<div id="sharing-mbbs-checklists-with-your-own-ebird-account" class="section level4">
-<h4>Sharing MBBS checklists with your own eBird account</h4>
-<p>It is best to enter the data in the appropriate MBBS account and then share it with your own account … that way you can use the drop-down menu in the MBBS account to select the location with the correct format … all of the species and numbers will also be tallied in your own account!</p>
-</div>
-<div id="locations-and-distances" class="section level4">
-<h4>Locations and distances</h4>
-<p>The locations of the routes are the <i>starting places</i> (please let me know if you spot a significant error!). eBird suggests using the coordinates for the aproximate center of a traveling count, but for us the starting position is much more critical. Although our routes only involve driving 9.5 miles from stop 1 to stop 20, we include all birds recorded within 0.25 miles of the first and last stops, so the total distance for an MBBS route is 10.0 miles.</p>
-</div>
-</div>
-</div>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -412,7 +467,7 @@ Barred Owl in 15 minutes before the start</code></pre>
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -437,6 +492,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
