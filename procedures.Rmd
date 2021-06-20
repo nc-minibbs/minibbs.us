@@ -6,15 +6,19 @@ output:
     toc_float: true
 ---
 
-# Count birds
+# Basics 
 
-## During the survey
+* Pick a day for your count between *May 15 and June 30*; a Sunday morning is a good time because there is little traffic then.
+* Arrive at the starting point in time to start your first count exactly 30 minutes before sunrise (about 5:30 EDT for our area in early June).
+* Drive exactly 0.5 miles between counts by the odometer in your car.
+* If it is unsafe to stop at the 0.5-mile mark (or the 0.5-mile mark falls on a numbered highway) continue to the first place on your route where it is safe to stop (for the next count, proceed 0.5 miles from this adjusted position)
+* Continue until you have made 20 stops (9.5 miles if all intervals are 0.5 miles)
 
-For each stop along your survey route, submit an [eBird](https://ebird.org) checklist of birds seen or heard during your 3 minute period using the [eBird mobile app](https://play.google.com/store/apps/details?id=edu.cornell.birds.ebird&hl=en_US&gl=US).
+## Performing a count
 
 [Click here for the current procedures document.](https://docs.google.com/document/d/1hBYRPsgAWblQkQFa4p4UEfWrtI0dr_kYohRqAgIy1DQ/edit)
 
-Habitat codes can be found [here](#habitat). 
+Habitat codes can be found [here](#habitat).
 
 ## After the survey
 
