@@ -25,5 +25,5 @@ gee_model <- function(data){
 }
 
 mix_model <- function(data){
-  try_model(lme4::glmer(count ~ time + (1|route), family = poisson(), data = data))
+  try_model(lme4::glmer(count ~ time + (1|route_num), family = poisson(), data = data))
 }

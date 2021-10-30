@@ -10,8 +10,16 @@ library(sparkline)
 library(DT)
 library(ggiraph)
 
-pre_dt <- mbbs %>% 
-  filter(!is.na(spec_code)) 
+pre_dt <- mbbs_orange %>% 
+  ungroup() %>%
+  filter(!is.na(spec_code)) %>%
+  group_by(
+    year, common_name, sci_name, spec_code, tax_order, date, route_num
+  ) %>%
+  summarise(
+    count = sum(count)
+  ) %>%
+  ungroup()
 
 analysis_species <- pre_dt %>%
   group_by(common_name, year) %>%
