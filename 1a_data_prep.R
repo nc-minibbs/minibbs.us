@@ -10,14 +10,30 @@ library(sparkline)
 library(DT)
 library(ggiraph)
 
-pre_dt <- mbbs_orange %>% 
+pre_dt <- 
+  bind_rows(
+    mbbs_orange,
+    mbbs_chatham,
+    mbbs_durham
+  ) %>%
+  # mbbs_orange %>% 
   ungroup() %>%
-  filter(!is.na(spec_code)) %>%
+  filter(!is.na(spec_code) & !is.na(sci_name)) %>% # TODO clean up MBBS data so this filter is not necessary
+  # filter(!is.na(spec_code)) %>%
   group_by(
-    year, common_name, sci_name, spec_code, tax_order, date, route_num
+    mbbs_county, year, common_name, sci_name, spec_code, tax_order, date, route_num
   ) %>%
   summarise(
     count = sum(count)
+  ) %>%
+  mutate(
+    # silly way to create 
+    county_factor = case_when(
+      mbbs_county == "orange" ~ 1,
+      mbbs_county == "durham" ~ 20,
+      mbbs_county == "chatham" ~ 40,
+    ),
+    route = route_num + county_factor
   ) %>%
   ungroup()
 
@@ -32,7 +48,8 @@ analysis_species <- pre_dt %>%
 analysis_dt <- pre_dt %>%
   right_join(analysis_species, by = "common_name") 
 
-analysis_dt_grouped <- analysis_dt %>%
+analysis_dt_grouped <- 
+  analysis_dt %>%
   group_by(year, common_name) %>%
   summarise(count = mean(count)) %>%
   ungroup() %>%
@@ -42,7 +59,8 @@ analysis_dt_grouped <- analysis_dt %>%
     fill = list(count = 0)
   ) 
 
-model_dt <- analysis_dt %>%
+model_dt <- 
+  analysis_dt %>%
   mutate(time = year - min(year)) %>%
   group_by(common_name, sci_name, spec_code) %>%
   tidyr::nest() %>%
@@ -62,7 +80,8 @@ model_dt <- analysis_dt %>%
     significant  = !(rate_lo < 0 & rate_hi > 0)
   )
 
-mbbs_results <- analysis_dt_grouped %>%
+mbbs_results <- 
+  analysis_dt_grouped %>%
   # filter(
   #   common_name %in% c("Northern Cardinal", "Tufted Titmouse", "Wood Thrush")
   # ) %>%

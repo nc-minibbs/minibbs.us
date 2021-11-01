@@ -14,7 +14,7 @@ try_model <- function(expr){
 gee_model <- function(data){
   m <- try_model(geepack::geeglm(
     formula = count ~ time, 
-    id      = route_num,
+    id      = route,
     corstr  = "independence",
     family  = poisson(), 
     data    = data))
@@ -25,5 +25,5 @@ gee_model <- function(data){
 }
 
 mix_model <- function(data){
-  try_model(lme4::glmer(count ~ time + (1|route_num), family = poisson(), data = data))
+  try_model(lme4::glmer(count ~ time + (1|route), family = poisson(), data = data))
 }

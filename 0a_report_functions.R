@@ -10,7 +10,7 @@ plot_trend <- function(dt, dt_grouped){
   ) + 
     geom_line(
       data = dt,
-      aes(group = route_num),
+      aes(group = route),
       # aes(group = route, tooltip = route, data_id = route), 
       color = "grey80",
       size  = 0.25
