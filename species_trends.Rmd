@@ -23,7 +23,7 @@ From 1999-2018, `r tot_sp_cnt` different species were observed. For these analys
 
 ```{r results_data}
 table_dt <- mbbs_results %>%
-  select(common_name, sparkline, rate, details, local_concern, significant)
+  select(common_name, sparkline, rate, details, significant)
 ```
 
 ```{r}
@@ -40,8 +40,8 @@ species_table <- function(table_data, details_column,
     bInfo      = FALSE,
     columnDefs = list(
       list(targets = c(3,4,5), className = "text-center"),
-      list(targets = c(2, details_column, 6, 7), searchable = TRUE),
-      list(targets = c(0, details_column, 6, 7), visible = FALSE),
+      list(targets = c(2, details_column, 6), searchable = TRUE),
+      list(targets = c(0, details_column, 6), visible = FALSE),
       list(orderable = FALSE, className = 'details-control', targets = c(1, details_column))
     )
   ),
@@ -63,16 +63,18 @@ species_table <- function(table_data, details_column,
     }
   });
   
+  /*
   $('ul').on( 'click', 'a.localConcern', function () {
   table
       .columns( 6 )
       .search(  true )
       .draw();
   });
+  */
   
   $('ul').on( 'click', 'a.sigTrends', function () {
   table
-      .columns( 7 )
+      .columns( 6 )
       .search(  true )
       .draw();
   });
@@ -98,10 +100,10 @@ tags$ul(
     class = "btn",
     tags$a(href = "#", class = "all", "All Species")
   ),
-  tags$li(
-    class = "btn",
-    tags$a(href = "#", class = "localConcern", "Species of Local Concern")
-  ),
+  # tags$li(
+  #   class = "btn",
+  #   tags$a(href = "#", class = "localConcern", "Species of Local Concern")
+  # ),
   tags$li(
     class = "btn",
     tags$a(href = "#", class = "sigTrends", "Significant Trends")

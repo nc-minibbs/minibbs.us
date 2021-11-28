@@ -16,12 +16,9 @@ pre_dt <-
     mbbs_chatham,
     mbbs_durham
   ) %>%
-  # mbbs_orange %>% 
   ungroup() %>%
-  filter(!is.na(spec_code) & !is.na(sci_name)) %>% # TODO clean up MBBS data so this filter is not necessary
-  # filter(!is.na(spec_code)) %>%
   group_by(
-    mbbs_county, year, common_name, sci_name, spec_code, tax_order, date, route_num
+    mbbs_county, year, common_name, sci_name,  tax_order, date, route_num
   ) %>%
   summarise(
     count = sum(count)
@@ -62,7 +59,7 @@ analysis_dt_grouped <-
 model_dt <- 
   analysis_dt %>%
   mutate(time = year - min(year)) %>%
-  group_by(common_name, sci_name, spec_code) %>%
+  group_by(common_name, sci_name) %>%
   tidyr::nest() %>%
   mutate(
     gee_model = purrr::map(data, ~ gee_model(.x)),
@@ -90,9 +87,6 @@ mbbs_results <-
   left_join(
     model_dt, by = c("common_name")
   ) %>% 
-  left_join(
-    select(mbbs_species, -sci_name, -spec_code), by = "common_name"
-  ) %>%
   mutate(
     # lm             = purrr::map(data_grouped, ~ lm(count ~ year, data = .x)),
     # rate_of_change = purrr::map_dbl(lm, ~ coef(.x)[2]),
