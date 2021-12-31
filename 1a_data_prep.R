@@ -18,7 +18,7 @@ pre_dt <-
   ) %>%
   ungroup() %>%
   group_by(
-    mbbs_county, year, common_name, sci_name,  tax_order, date, route_num
+    mbbs_county, year, common_name, sci_name, tax_order, date, route_num
   ) %>%
   summarise(
     count = sum(count)
@@ -42,19 +42,20 @@ analysis_species <- pre_dt %>%
   # include species only observed in at least 3 years
   filter(nyears > 2)
 
-analysis_dt <- pre_dt %>%
-  right_join(analysis_species, by = "common_name") 
+analysis_dt <- 
+  pre_dt %>%
+  right_join(analysis_species, by = "common_name") %>%
+  complete(
+    nesting(sci_name, common_name, route),
+    year = full_seq(year, 1), 
+    fill = list(count = 0)
+  ) 
 
 analysis_dt_grouped <- 
   analysis_dt %>%
   group_by(year, common_name) %>%
   summarise(count = mean(count)) %>%
-  ungroup() %>%
-  complete(
-    nesting(common_name),
-    year = full_seq(year, 1), 
-    fill = list(count = 0)
-  ) 
+  ungroup()
 
 model_dt <- 
   analysis_dt %>%
