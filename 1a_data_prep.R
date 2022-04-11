@@ -10,13 +10,17 @@ library(sparkline)
 library(DT)
 library(ggiraph)
 
-pre_dt <- 
+
+pre_dt <-
+  # Combine data from all 3 counties
   bind_rows(
     mbbs_orange,
     mbbs_chatham,
     mbbs_durham
   ) %>%
   ungroup() %>%
+  # Summarize species counts by:
+  # county year species route
   group_by(
     mbbs_county, year, common_name, sci_name, tax_order, date, route_num
   ) %>%
@@ -24,7 +28,10 @@ pre_dt <-
     count = sum(count)
   ) %>%
   mutate(
-    # silly way to create 
+    # The route number is not unique within the study
+    # (only within a county).
+    # Here's a silly way to create distinct ID for routes
+    # across county
     county_factor = case_when(
       mbbs_county == "orange" ~ 1,
       mbbs_county == "durham" ~ 20,
@@ -34,30 +41,86 @@ pre_dt <-
   ) %>%
   ungroup()
 
-analysis_species <- pre_dt %>%
+# Identify those species that were observed in:
+# * at least 1 routes
+# * at least 3 years
+analysis_species <-
+  pre_dt %>%
   group_by(common_name, year) %>%
-  summarise(dummy = sum(count) > 1) %>%
+  summarise(dummy = (sum(count) > 0) * 1L) %>%
   group_by(common_name) %>%
   summarise(nyears = sum(dummy)) %>%
-  # include species only observed in at least 3 years
-  filter(nyears > 2)
+  filter(nyears > 2) %>%
+  select(common_name) %>%
+  ungroup()
 
-analysis_dt <- 
+# Create a dataset with the years
+# that each survey route was observed.
+# This is used to create the correct denominator in
+# summmarizing counts.
+survey <-
+ pre_dt %>%
+ select(mbbs_county, year, route_num) %>%
+ distinct()
+
+analysis_dt <-
   pre_dt %>%
-  right_join(analysis_species, by = "common_name") %>%
+  # filter down to just the analysis species
+  right_join(
+    analysis_species,
+     by = "common_name"
+  )  %>%
+  # For each year that a route was run,
+  # we need 0 count for those species that were *not* observed
+  # in that route / year.
   complete(
-    nesting(sci_name, common_name, route),
-    year = full_seq(year, 1), 
+    nesting(year, date, mbbs_county, route, route_num),
+    nesting(common_name, sci_name, tax_order),
     fill = list(count = 0)
-  ) 
+  )
+  
+# Checks ####
+# 1) There is no variation in the number of times that a species
+#    is in the analysis_dt for each year.
+#    E.g. adding in the zero counts didn't add spurious surveys.
+invisible(assertthat::assert_that(
+  analysis_dt %>%
+    group_by(year, mbbs_county, common_name) %>%
+    tally() %>%
+    group_by(year, mbbs_county) %>%
+    summarise(check = var(n) == 0) %>%
+    pull(check) %>%
+    all(),
+  msg = "All routes should be the same number of records for all species."
+))
 
-analysis_dt_grouped <- 
+invisible(assertthat::assert_that(
+  identical(
+    analysis_dt %>%
+      distinct(year, mbbs_county, route_num) %>%
+      group_by(year, mbbs_county) %>%
+      tally() %>%
+      arrange(year, mbbs_county, n),
+    survey %>%
+      group_by(year, mbbs_county) %>%
+      tally() %>%
+      arrange(year, mbbs_county, n)
+  ),
+  msg = c("The number of route-surveys for each year in the analysis_dt frame",
+         "should equal the number of route-surveys-year counts in pre_dt")
+))
+
+
+# Summarize by year and species,
+# taking the average across all routes surveyed that year.
+analysis_dt_grouped <-
   analysis_dt %>%
   group_by(year, common_name) %>%
   summarise(count = mean(count)) %>%
   ungroup()
 
-model_dt <- 
+# Estimate rates
+model_dt <-
   analysis_dt %>%
   mutate(time = year - min(year)) %>%
   group_by(common_name, sci_name) %>%
@@ -116,5 +179,4 @@ mbbs_results <-
       .l = list(x = common_name, y = sci_name, z = trend_plot),
       .f = function(x, y, z) {as.character(create_details(x, y, z)) }
     )
-  ) 
-
+  )
