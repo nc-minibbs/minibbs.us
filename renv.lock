@@ -518,15 +518,15 @@
     },
     "mbbs": {
       "Package": "mbbs",
-      "Version": "0.2.0.0",
+      "Version": "0.3.0.0",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "nc-minibbs",
       "RemoteRepo": "mbbs",
       "RemoteRef": "master",
-      "RemoteSha": "3178a0bba6726401c9471ec2a255bacc47ab0b99",
-      "Hash": "e7380c6220ed3e4d91a77b49741ac9e0",
+      "RemoteSha": "c5ba595632789712093547f9467b0f78dd7e515d",
+      "Hash": "c4dfacd029bfe3db23a562c2ddfca606",
       "Requirements": [
         "assertthat",
         "dplyr",
