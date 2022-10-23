@@ -1,7 +1,7 @@
 {
   description = "A flake for the minibbs.us site ";
   nixConfig = {
-    bash-prompt = "mbbs> ";
+    bash-prompt = "minibbs.us> ";
   };
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
@@ -15,7 +15,12 @@
       devShells.default =  pkgs.mkShell {
         nativeBuildInputs = [ pkgs.bashInteractive ];
         buildInputs = [
+          # pkgs.openssl
+          # pkgs.openssl.dev
+          pkgs.rPackages.devtools
           pkgs.R
+          pkgs.libpng
+          pkgs.pandoc
         ];
       }; 
 
