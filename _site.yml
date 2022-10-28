@@ -1,5 +1,5 @@
 name: "MBBS"
-exclude: ["README", "TODO"]
+exclude: ["README", "TODO", "*.nix", "*.lock", "R/*"]
 navbar:
   title: "Mini-Bird Breeding Survey"
   left:
