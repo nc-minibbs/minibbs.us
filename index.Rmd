@@ -4,9 +4,9 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-source("0a_report_functions.R")
-source("0b_model_functions.R")
-source("1a_data_prep.R")
+source("R/0a_report_functions.R")
+source("R/0b_model_functions.R")
+source("R/1a_data_prep.R")
 ```
 
 # What is the MBBS?
@@ -57,4 +57,4 @@ If you have questions,
 please contact
 <a href="mailto:hurlbert@bio.unc.edu">Allen Hurlbert</a>
 or
-<a href="mailto:bradleysaul@gmail.com">Bradley Saul</a>.
+<a href="mailto:bradleysaul@fastmail.com">Bradley Saul</a>.
