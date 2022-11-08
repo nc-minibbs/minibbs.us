@@ -1,0 +1,410 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+"http://www.w3.org/TR/html4/frameset.dtd">
+
+<html>
+
+<head>
+
+<title>NC Mini Breeding Bird Surveys</title>
+
+<style type="text/css" media="screen,print">
+
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<!-- open all-inclusive table -->
+<table width=900 align=left>
+
+<col width=300 />
+<col width=600 />
+
+<!-- header -->
+<tr><td colspan=2>
+
+
+<!-- open table for line for latest update -->
+<table width=600 border=0 cellpadding=0 align=right>
+
+<tr><td align=right>
+
+<font style="font-size: 9px">
+
+<i>Latest update:
+
+5 January 2010</i>
+
+</font>
+
+</td></tr>
+
+</table>
+
+
+<img src="blackpixel.gif" height=2 width=100%>
+
+
+<!-- open table for main header -->
+<table width=600 border=0 cellpadding=0 align=center>
+
+<tr><td>
+
+<center>
+
+<font style="font-size: 16px; font-style:italic">
+
+TRENDS IN NUMBERS OF BREEDING BIRDS
+
+<br>IN ORANGE, CHATHAM, AND DURHAM COUNTIES, NC
+
+<br>1999 -- 2009
+
+</font>
+
+<p>
+
+<font style="font-size:12px; font-style:italic">
+
+Click on the links below to see graphs (charts) of the changes in the 
+numbers of birds on the <br><i>Mini Breeding Bird Surveys</i> in Orange, 
+Chatham, and Durham Counties in the past decade.
+
+</font>
+
+<p>
+
+R. Haven Wiley and all  
+
+<a href=../2009participants.html>NCMBBS participants</a> (2010).
+   
+<br>
+
+trends/
+
+</font>
+
+<p>
+
+
+</center>
+   
+</td></tr>
+
+</table>
+
+</td></tr>
+
+
+<!-- main content -- left cell for info -- right for graphs -->
+<tr><td alighn=left valign=top>
+
+<p><img src="blackpixel.gif" height=2 width=275<p>
+
+
+
+
+<!-- ----------------------------------------------------- -->
+<!-- open overall info table -->
+
+<table width=275 border=0 cellpadding=1 align=left>
+
+<tr><td>
+
+<font style="font-size:12px; font-style:normal">
+
+These graphs show the total number of individuals of
+
+each species recorded on <i>all routes in one county</i>
+
+in each year.
+
+<p>
+
+Each species has a
+
+<a target="_blank"
+href="mbbsbirds.html">
+
+<font color=red><i>four-letter code</i></font></a> 
+
+(usually the
+
+first two letters of its first name and the first
+
+two letters of the its second name (for instance,
+
+EABL for Eastern Bluebird).
+
+<p>
+
+Some species show <i>trends</i> (either upward or
+
+downward) in their numbers over the period of the
+
+surveys. &nbsp; A <i>straight line</i> on a graph
+
+indicates a trend that is <i>statistically significant</i>
+
+(not likely to be an erroneous conclusion) <i>or
+
+almost</i> statistically significant.
+
+<p>
+
+<b>**</b>
+
+A <font color=red><i>double asterisk</i></font> in the upper right corner
+
+of a graph indicates a <i>highly significant trend</i> (with a
+
+probability of error less than 1%).
+
+<p>
+
+<b>*</b>
+   
+A <font color=red><i>single asterisk</i></font> in the upper right corner
+
+indicates a significant trend (with a probability
+
+of error less than 5% but greater than 1%).
+
+<p>
+
+A <font color=red>line but <i>no asterisk</i></font> indicates a
+
+possible trend (with a probability of error less
+
+than 10% but greater than 5%).
+
+<p>
+
+For more information about the N. C. MBBS, see the
+
+<br>
+
+<img src=tp.gif height=1 width=100>
+
+<a target="_blank" href="http://www.unc.edu/~rhwiley/mbbs">MBBS homepage</a>
+
+<p>
+   
+For a list of the species (with four-letter codes), see
+
+<br>
+ 
+<img src=tp.gif height=1 width=110>
+
+<a target="_blank"
+href="mbbsbirds.html">MBBS birds</a>
+
+<p>
+
+Please send suggestions to
+
+<a href="mailto:rhwiley@email.unc.edu"><i>Haven Wiley</></a>!
+
+</font>
+
+
+<p><img src=blackpixel.gif height=1 width=275><p>
+
+
+<font style="font-size:8px; font-style:normal"> 
+
+Some details . . .
+
+<p>
+
+The lines for trends were calculated with procedure lm{stats}
+
+and the graphs were prepared with plot{graphics} in R 2.9.2
+
+for Mac (GUI 1.29) (The R Foundation for Statistical Computing 2009).
+
+<p>
+
+The data are available in a text (ASCII) file as a tab-delimited table which
+can be read into a data frame in R at
+
+<a style="font-size:8px" target="_blank"
+href="http://www.unc.edu/~rhwiley/forMBBS/MBBS_ALLCOUNTIES_100105.txt">MBBS
+data</a>
+
+<p>
+
+and the R script is available in a text (ASCII) file at
+   
+<a style="font-size:8px" target="_blank"
+href="http://www.unc.edu/~rhwiley/forMBBS/MBBS_R_100105.txt">MBBS
+analysis</a>
+
+<p>
+
+Although the volunteers who conducted these surveys did a great job of 
+covering nearly each route every year, there were a few gaps, when a route 
+was not surveyed one year. &nbsp; Because the numbers of routes in each 
+county were not high (8-14 routes per county), these missed routes could 
+have a noticeable effect on the numbers of each species recorded that year. 
+&nbsp; To reduce this effect, the missing values were filled with the 
+average number of each species recorded on that route during years when it 
+was not missed. &nbsp; This procedure would slightly reduce any trend in the 
+numbers of each species. &nbsp; The numbers of routes missed during the 
+survey were small (1 in Orange County, 2 in Chatham County, and 1 in Durham 
+County, each in one year only).
+
+<p><img src="blackpixel.gif" height=1 width=100%><p>
+
+<!--
+<font style="font-size:12px">
+
+R. Haven Wiley and all  
+
+<a href=../2009participants.html>NCMBBS volunteers</a> (2010).
+   
+<br>
+
+trends/index.html
+
+</font>
+-->
+
+</td></tr>
+
+</table>
+   
+</center>
+
+</td>
+<!-- close overall info table -->
+
+
+
+
+<td valign=top>
+
+
+<!-- ----------------------------------------------------- -->
+<!-- open overall graphs table -->
+<center><table width=600 border=0 cellpadding=0 align=left><tr><td>
+
+<font style="font-size:14px">
+
+<p><img src="blackpixel.gif" height=2 width=600><p>
+
+There is a graph for every species except the rare ones (those species 
+encountered on the surveys fewer than 5 times on average each year in each 
+county). &nbsp; These birds were too scarce to analyze.
+
+<p>
+
+For information about reading these graphs, see the sidebar to the left.
+
+<p>
+
+Notice the <font style="color:red; font-size:14px"><i>downward 
+trends</i></font> in Chimney Swifts, 
+Red-eyed Vireos, Barn Swallows, and Wood Thrushes.
+
+<p>
+
+There are <i>upward trends</i> in Fish Crows in Chatham and Durham Counties.
+
+<p>
+
+Among the species <i>holding their own</i>, despite nationwide concerns 
+about their populations, are Eastern Meadowlark and many (but not all) 
+warblers and tanagers.
+
+<p>
+
+Check the graphs for some surprises!
+
+<p><img src="blackpixel.gif" height=2 width=600><p>
+
+
+
+<center>
+
+<img src=tp.gif height=10 width=100%>
+
+<font style="font-size:32px">
+
+<a href=Orange2009><font style="font-size:20px">Orange County 1999-2009</a>
+
+<p>
+
+<a href=Chatham2009><font style="font-size:20px">Chatham County 
+2000-2009</a>
+
+<p>
+
+<a href=Durham2009><font style="font-size:20px">Durham County 2002-2009</a>
+
+</font>
+
+<img src=tp.gif height=10 width=100%>
+
+<p><img src="blackpixel.gif" height=2 width=600><p>
+
+
+
+<font style="font-size:14px">
+
+For information about how these surveys are conducted, see the 
+
+<a href=".."><i>Mini Breeding Bird Survey</i></a> home page.
+
+</font>
+
+</center>
+
+<blockquote>
+
+<font style="font-size:10px">
+
+In summary, the surveys consist of randomly located routes in each county 
+(12 in Orange, 14 in Chatham, 8 in Durham, the smallest of the three 
+counties). &nbsp; Observers stop to count birds every half mile along 
+randomly located 10-mile routes on secondary roads. &nbsp; Although these 
+surveys do not detect <i>all</i> the birds in a county, they do provide a 
+reasonaby dense random sampling of the birds.  &nbsp; They thus are a basis 
+for evaluating trends in numbers of birds. &nbsp; Because the surveys take 
+place on mornings in May and June, they focus on breeding birds. &nbsp; 
+Because they are made from roads in the first couple of hours after sunrise, 
+they detect some species more reliably than others. &nbsp; For instance, 
+nocturnal birds (owls and whip-poor-wills), soaring birds (most hawks and 
+vultures), and birds of deep forest are no doubt underestimated. &nbsp; 
+Nevertheless, even these birds are sampled consistently from year to year.
+
+</font>
+
+</blockquote>
+
+<p><img src="blackpixel.gif" height=2 width=600><p>
+
+
+</td></tr></table>
+<!-- close overall graphs table -->
+
+
+
+</td></tr>
+
+<!-- close all-inclusive table -->
+</td></tr></table></center>
+
+</body>
+
+</html>
+
+
+
+

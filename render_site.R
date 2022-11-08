@@ -5,4 +5,4 @@
 #    DESC: Render the minibbs.us website from .Rmd files
 #------------------------------------------------------------------------------#
 
-rmarkdown::render_site()
+rmarkdown::render_site(input = "site")
