@@ -41,57 +41,49 @@ speciesChart : (List County) -> Data -> Spec
 speciesChart c x = 
     let 
 
-        ps = params
-             << param "county" 
-                [ paSelect sePoint [seFields ["mbbs_county"]] 
-                , paBindLegend "click"
-                ]
-
         enc = 
             encoding
-                << position X [ pName "year", pTemporal ]
+                << position X 
+                    [ pName "year"
+                    , pTemporal
+                    -- , pAxis [] 
+                    ]
 
         encCounts =
             enc
                 << position Y [ pName "count", pQuant ]
-                << color [ mName "route"
-                         , mNominal
-                         , mScale [ scRange (raStrs ["black"]) ]
-                         , mLegend []
-                         ]
-                << strokeWidth 
-                        [ mName "route"                        
-                        , mScale [ scRange (raNums [0.5, 0.5])]
-                        ]
-                << opacity 
-                        [ mName "route"
-                        , mScale [ scRange (raNums [0.25, 0.25])]
-                        ]
+                << detail [dName "route"]
+
         encMean = 
             enc 
                 << position Y [ pName "count", pAggregate opMean]
-                -- << color [ mAggregate opMean
-                --          , mScale [ scRange (raStrs ["black"]) ]]
-
         
         trans = transform 
-                --  << filter (fiExpr "datum.mbbs_county == county")
                   << filter 
                     (fiOneOf "mbbs_county" (strs (List.map toStr c )))
         in 
         toVegaLite 
             [ width 400
             , x
-            -- , ps []
             , layer [
-                asSpec [encCounts [], line [] ]
-              , asSpec [encMean [], line [] ]
+                asSpec 
+                    [ encCounts []
+                    , line 
+                        [ maColor "black"
+                        , maOpacity 0.2
+                        , maStrokeWidth 0.5
+                        ]
+                    ]
+              , asSpec 
+                    [ encMean []
+                    , line [ maColor "gray" ] 
+                    ]
             ]
             , trans [] 
             ] 
 ```
 
-```elm {v}
+```elm { v j  }
 chart : Spec
 chart = 
     speciesChart 

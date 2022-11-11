@@ -5,18 +5,11 @@ source("R/0b_model_functions.R")
 source("R/1a_data_prep.R")
 
 cardinal <-
-  analysis_dt %>%
-  filter(common_name == "Northern Cardinal") %>%
-  select(year, mbbs_county, route, count)
-
-write.csv(
-  cardinal,
-  file = "dev/cardinal.csv",
-  row.names = FALSE
-)
-
-cardinal <-
   mbbs_results %>%
   filter(common_name == "Northern Cardinal")
 
-cardinal$gee_model
+write.csv(
+  cardinal$data,
+  file = "dev/cardinal.csv",
+  row.names = FALSE
+)
