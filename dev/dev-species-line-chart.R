@@ -14,3 +14,9 @@ write.csv(
   file = "dev/cardinal.csv",
   row.names = FALSE
 )
+
+cardinal <-
+  mbbs_results %>%
+  filter(common_name == "Northern Cardinal")
+
+cardinal$gee_model

@@ -14,34 +14,6 @@ In VSCode, press `Ctrl-k v` to open preview.
 
 * [`elm-vegalite` docs](https://package.elm-lang.org/packages/gicentre/elm-vegalite/latest/VegaLite)
 
-```elm {l r}
-message : String
-message =
-    "Hello, world"
-```
-
-Top 5 programming languages according to the [TIOBE index](https://www.tiobe.com/tiobe-index).
-
-```elm {v}
-helloLitvis : Spec
-helloLitvis =
-    let
-        data =
-            dataFromColumns []
-                << dataColumn "language" (strs [ "Java", "C", "C++", "Python", "C#" ])
-                << dataColumn "rating" (nums [ 15.8, 13.6, 7.2, 5.8, 5.3 ])
-
-        enc =
-            encoding
-                << position X
-                    [ pName "language"
-                    , pSort [ soByField "rating" opMean, soDescending ]
-                    ]
-                << position Y [ pName "rating", pQuant ]
-    in
-    toVegaLite [ data [], enc [], bar [] ]
-```
-
 ```elm {r l}
 cardinal : Data
 cardinal = 
@@ -54,31 +26,75 @@ cardinal =
       ]
 ```
 
+```elm {r l}
+type County = Chatham | Durham | Orange
+
+toStr : County -> String
+toStr x = case x of 
+   Chatham -> "chatham"
+   Durham -> "durham"
+   Orange -> "orange"
+```
+
 ```elm {l}
-speciesChart : Data -> Spec
-speciesChart x = 
+speciesChart : (List County) -> Data -> Spec
+speciesChart c x = 
     let 
+
+        ps = params
+             << param "county" 
+                [ paSelect sePoint [seFields ["mbbs_county"]] 
+                , paBindLegend "click"
+                ]
+
         enc = 
             encoding
                 << position X [ pName "year", pTemporal ]
+
+        encCounts =
+            enc
                 << position Y [ pName "count", pQuant ]
                 << color [ mName "route"
                          , mNominal
-                         , mScale [ scRange (raStrs ["gray"]) ]
+                         , mScale [ scRange (raStrs ["black"]) ]
                          , mLegend []
                          ]
                 << strokeWidth 
-                        [ mName "route"                        , mScale [ scRange (raNums [0.2])]
+                        [ mName "route"                        
+                        , mScale [ scRange (raNums [0.5, 0.5])]
                         ]
                 << opacity 
                         [ mName "route"
-                        , mScale [ scRange (raNums [0.1])]
+                        , mScale [ scRange (raNums [0.25, 0.25])]
                         ]
+        encMean = 
+            enc 
+                << position Y [ pName "count", pAggregate opMean]
+                -- << color [ mAggregate opMean
+                --          , mScale [ scRange (raStrs ["black"]) ]]
+
+        
+        trans = transform 
+                --  << filter (fiExpr "datum.mbbs_county == county")
+                  << filter 
+                    (fiOneOf "mbbs_county" (strs (List.map toStr c )))
         in 
-        toVegaLite [ x , enc [], line [] ] 
+        toVegaLite 
+            [ width 400
+            , x
+            -- , ps []
+            , layer [
+                asSpec [encCounts [], line [] ]
+              , asSpec [encMean [], line [] ]
+            ]
+            , trans [] 
+            ] 
 ```
 
 ```elm {v}
 chart : Spec
-chart = speciesChart cardinal
+chart = 
+    speciesChart 
+        [Orange, Chatham, Durham]
+        cardinal
 ```
