@@ -46,12 +46,16 @@ speciesChart c x =
                 << position X 
                     [ pName "year"
                     , pTemporal
-                    -- , pAxis [] 
+                    , pAxis [ axTitle ""] 
                     ]
 
         encCounts =
             enc
-                << position Y [ pName "count", pQuant ]
+                << position Y 
+                    [ pName "count"
+                    , pQuant 
+                    , pAxis [ axTitle "Count" ]
+                    ]
                 << detail [dName "route"]
 
         encMean = 

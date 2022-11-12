@@ -141,7 +141,7 @@ model_dt <-
     significant  = !(rate_lo < 0 & rate_hi > 0)
   )
 
-mbbs_results <- 
+mbbs_results <-
   analysis_dt_grouped %>%
   # filter(
   #   common_name %in% c("Northern Cardinal", "Tufted Titmouse", "Wood Thrush")
@@ -169,14 +169,25 @@ mbbs_results <-
         style = sprintf("color:%s", .y),
         round(.x, 3)))),
     sparkline      = purrr::map_chr(data_grouped, ~ plot_sparkline(.x$count)),
-    trend_plot     = purrr::map2(
-      .x = data,
-      .y = data_grouped,
-      .f = ~ plot_trend(.x, .y) %>%
-        convert_img(width = 6.5, height = 5) %>%
-        htmltools::img(src = .)),
     details        = purrr::pmap(
-      .l = list(x = common_name, y = sci_name, z = trend_plot),
-      .f = function(x, y, z) {as.character(create_details(x, y, z)) }
+      .l = list(x = common_name, y = sci_name),
+      .f = function(x, y) { as.character(create_details(x, y)) }
     )
   )
+
+
+# Write data for site
+
+purrr::walk2(
+  .x = mbbs_results$common_name,
+  .y = mbbs_results$data,
+  .f = ~
+    write.csv(
+      .y,
+      file =
+        paste0("data/",
+              stringr::str_replace_all(.x, " ", "_"),
+              ".csv"),
+      row.names = FALSE
+    )
+)
