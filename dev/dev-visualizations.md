@@ -36,11 +36,12 @@ toStr x = case x of
    Orange -> "orange"
 ```
 
+## Species line chart
+
 ```elm {l}
 speciesChart : (List County) -> Data -> Spec
 speciesChart c x = 
     let 
-
         enc = 
             encoding
                 << position X 
@@ -91,6 +92,61 @@ speciesChart c x =
 chart : Spec
 chart = 
     speciesChart 
+        [Orange, Chatham, Durham]
+        cardinal
+```
+
+## Sparkline
+
+```elm { l }
+sparkline :  (List County) -> Data -> Spec
+sparkline c x =
+    let
+        cfg =
+            configure
+                << configuration
+                    (coView
+                        [ vicoStroke Nothing
+                        , vicoContinuousHeight 15
+                        , vicoContinuousWidth 80
+                        ]
+                    )
+
+        enc = 
+            encoding
+                << position X 
+                    [ pName "year"
+                    , pTemporal
+                    , pAxis 
+                        [ axTitle ""
+                        , axTicks False
+                        , axLabels False
+                         ]
+                    ]
+                << position Y
+                     [ pName "count"
+                     , pAggregate opMean
+                     , pAxis[]
+                     ]
+        
+        trans = transform 
+                  << filter 
+                    (fiOneOf "mbbs_county" (strs (List.map toStr c )))
+
+    in
+    toVegaLite
+        [ cfg []
+        , x
+        , trans []
+        , enc []
+        , line [ maColor "blue" ]
+        ]
+```
+
+```elm { v j  }
+sline : Spec
+sline = 
+    sparkline 
         [Orange, Chatham, Durham]
         cardinal
 ```

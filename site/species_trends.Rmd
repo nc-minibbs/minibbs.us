@@ -12,6 +12,7 @@ editor_options:
 
 ```{=html}
 <script src="./js/speciesTrendSpec.js"></script>
+<script src="./js/sparklineSpec.js"></script>
 ```
 
 ```{r trend_setup, echo = FALSE}
@@ -38,10 +39,10 @@ table_dt <- mbbs_results %>%
 ```
 
 ```{r}
-species_table <- function(table_data, 
+species_table <- function(table_data,
                           details_column,
                           width,
-                          colnames){
+                          colnames) {
   tab <-
   DT::datatable(
     cbind(" " = "&oplus;", table_data),
@@ -53,7 +54,7 @@ species_table <- function(table_data,
       bInfo      = FALSE,
       columnDefs = list(
         list(
-            targets = c(3,4,5)
+            targets = c(3, 4, 5)
           , className = "text-center"),
         list(
             targets = c(2, details_column, 6)
@@ -113,9 +114,6 @@ species_table <- function(table_data,
     )
   )
 
-  # Add sparkline JS dependency
-  tab$dependencies <-
-    append(tab$dependencies, htmlwidgets:::getDependency("sparkline"))
   tab
 }
 ```

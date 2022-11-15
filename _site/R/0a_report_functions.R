@@ -2,24 +2,26 @@
 # Plotting and HTML functions used in the MBBS site
 #------------------------------------------------------------------------------#
 
-plot_sparkline <- function(x){
-  as.character(htmltools::as.tags(
-    sparkline::sparkline(
-      x,
-      fillColor = FALSE,
-      normalRangeMin = -diff(range(x)) * 0.09,
-      normalRangeMax =  diff(range(x)) * 0.09,
-      spotColor      = FALSE,
-      minSpotColor   = FALSE,
-      maxSpotColor   = FALSE
-    )))
+normalize_name <- function(x) {
+  stringr::str_replace_all(x, " ", "_") |>
+  stringr::str_replace_all("[\\(\\)\\.\\']", "")
+}
+
+plot_sparkline <- function(common_name) {
+  cn <- normalize_name(common_name)
+  htmltools::as.tags(
+    htmltools::div(
+      htmltools::div(id = glue::glue("{cn}_sparkline")),
+      htmltools::tags$script(glue::glue(
+      "vegaEmbed('#{cn}_sparkline', sparklineSpec('{cn}'), {{actions: false}});"))
+    )
+  )
 }
 
 create_details <- function(common_name, sci_name) {
-
-  cn <- stringr::str_replace_all(common_name, " ", "_")
+  cn <- normalize_name(common_name)
   more_link <-
-    sprintf("https://www.allaboutbirds.org/guide/%s",cn)
+    sprintf("https://www.allaboutbirds.org/guide/%s", cn)
 
   htmltools::div(
     htmltools::p(

@@ -1,7 +1,7 @@
 name: "MBBS"
 output_dir: ../_site
 exclude: 
-  ["README", "TODO", "*.nix", "*.lock", "R/*", 
+  ["README", "*.nix", "*.lock", "*.R", 
   "vega-imports.html"]
 navbar:
   title: "Mini-Bird Breeding Survey"

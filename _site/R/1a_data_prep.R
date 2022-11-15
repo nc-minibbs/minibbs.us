@@ -5,14 +5,10 @@
 library(mbbs)
 library(dplyr)
 library(tidyr)
-library(ggplot2)
-library(sparkline)
-library(DT)
-library(ggiraph)
-
 
 pre_dt <-
-  # Combine data from all 3 counties
+  # Combine data from all 3 counties.
+  # Data is exported from mbbs package.
   bind_rows(
     mbbs_orange,
     mbbs_chatham,
@@ -22,46 +18,38 @@ pre_dt <-
   # Summarize species counts by:
   # county year species route
   group_by(
-    mbbs_county, year, common_name, sci_name, tax_order, date, route_num
+    mbbs_county, year, common_name, sci_name,
+    tax_order, date, route_num
   ) %>%
   summarise(
-    count = sum(count)
+    count = sum(count),
+    .groups = "drop"
   ) %>%
   mutate(
     # The route number is not unique within the study
     # (only within a county).
     # Here's a silly way to create distinct ID for routes
-    # across county
+    # across counties.
     county_factor = case_when(
       mbbs_county == "orange" ~ 1,
       mbbs_county == "durham" ~ 20,
       mbbs_county == "chatham" ~ 40,
     ),
     route = route_num + county_factor
-  ) %>%
-  ungroup()
+  )
 
 # Identify those species that were observed in:
-# * at least 1 routes
+# * at least 1 route
 # * at least 3 years
 analysis_species <-
   pre_dt %>%
   group_by(common_name, year) %>%
-  summarise(dummy = (sum(count) > 0) * 1L) %>%
+  summarise(dummy = (sum(count) > 0) * 1L, .groups = "drop") %>%
   group_by(common_name) %>%
-  summarise(nyears = sum(dummy)) %>%
+  summarise(nyears = sum(dummy), .groups = "drop") %>%
   filter(nyears > 2) %>%
   select(common_name) %>%
   ungroup()
-
-# Create a dataset with the years
-# that each survey route was observed.
-# This is used to create the correct denominator in
-# summmarizing counts.
-survey <-
- pre_dt %>%
- select(mbbs_county, year, route_num) %>%
- distinct()
 
 analysis_dt <-
   pre_dt %>%
@@ -78,7 +66,7 @@ analysis_dt <-
     nesting(common_name, sci_name, tax_order),
     fill = list(count = 0)
   )
-  
+
 # Checks ####
 # 1) There is no variation in the number of times that a species
 #    is in the analysis_dt for each year.
@@ -88,7 +76,7 @@ invisible(assertthat::assert_that(
     group_by(year, mbbs_county, common_name) %>%
     tally() %>%
     group_by(year, mbbs_county) %>%
-    summarise(check = var(n) == 0) %>%
+    summarise(check = var(n) == 0, .groups = "drop") %>%
     pull(check) %>%
     all(),
   msg = "All routes should be the same number of records for all species."
@@ -101,7 +89,9 @@ invisible(assertthat::assert_that(
       group_by(year, mbbs_county) %>%
       tally() %>%
       arrange(year, mbbs_county, n),
-    survey %>%
+     pre_dt %>%
+      select(mbbs_county, year, route_num) %>%
+      distinct() %>%
       group_by(year, mbbs_county) %>%
       tally() %>%
       arrange(year, mbbs_county, n)
@@ -110,14 +100,6 @@ invisible(assertthat::assert_that(
          "should equal the number of route-surveys-year counts in pre_dt")
 ))
 
-
-# Summarize by year and species,
-# taking the average across all routes surveyed that year.
-analysis_dt_grouped <-
-  analysis_dt %>%
-  group_by(year, common_name) %>%
-  summarise(count = mean(count)) %>%
-  ungroup()
 
 # Estimate rates
 model_dt <-
@@ -141,20 +123,19 @@ model_dt <-
     significant  = !(rate_lo < 0 & rate_hi > 0)
   )
 
+# Final step
 mbbs_results <-
-  analysis_dt_grouped %>%
-  # filter(
-  #   common_name %in% c("Northern Cardinal", "Tufted Titmouse", "Wood Thrush")
-  # ) %>%
+  # Summarize by year and species,
+  # taking the average across all routes surveyed that year.
+  analysis_dt %>%
+  group_by(year, common_name) %>%
+  summarise(count = mean(count), .groups = "drop") %>%
   group_by(common_name) %>%
-  tidyr::nest(.key = "data_grouped") %>% 
+  tidyr::nest(data_grouped = c(year, count)) %>%
   left_join(
     model_dt, by = c("common_name")
-  ) %>% 
+  ) %>%
   mutate(
-    # lm             = purrr::map(data_grouped, ~ lm(count ~ year, data = .x)),
-    # rate_of_change = purrr::map_dbl(lm, ~ coef(.x)[2]),
-    # rate_of_change = round(rate_of_change, 3), 
     rate_color     = case_when(
       rate < 0 & significant  ~ "#d7191c",
       rate < 0 & !significant ~ "#fdae61",
@@ -163,31 +144,26 @@ mbbs_results <-
     ),
     rate  = purrr::map2_chr(
       .x = rate,
-      .y = rate_color, 
+      .y = rate_color,
       .f = ~ as.character(htmltools::span(
         class = "text-center",
         style = sprintf("color:%s", .y),
         round(.x, 3)))),
-    sparkline      = purrr::map_chr(data_grouped, ~ plot_sparkline(.x$count)),
-    details        = purrr::pmap(
-      .l = list(x = common_name, y = sci_name),
-      .f = function(x, y) { as.character(create_details(x, y)) }
-    )
+    sparkline = purrr::map(common_name, ~ as.character(plot_sparkline(.x))),
+    details   = purrr::map2(
+      .x = common_name,
+      .y = sci_name,
+      .f = ~ as.character(create_details(.x, .y)))
   )
 
-
 # Write data for site
-
 purrr::walk2(
   .x = mbbs_results$common_name,
   .y = mbbs_results$data,
   .f = ~
     write.csv(
       .y,
-      file =
-        paste0("data/",
-              stringr::str_replace_all(.x, " ", "_"),
-              ".csv"),
+      file = paste0("data/", normalize_name(.x), ".csv"),
       row.names = FALSE
     )
 )
