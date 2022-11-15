@@ -1,5 +1,5 @@
 // The spec was copied from
-// dev/dev-line-chart.md
+//dev/dev-visualizations.md
 
 speciesTrendSpec = function(common_name) {
   var spec = 
