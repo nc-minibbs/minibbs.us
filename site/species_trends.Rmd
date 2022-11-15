@@ -1,12 +1,18 @@
 ---
-subtitle: "DRAFT: for discussion only"
 output:
   html_document:
     toc: true
     toc_depth: 2
+    includes:
+      in_header: vega-imports.html
 editor_options: 
   chunk_output_type: console
 ---
+
+```{=html}
+<script src="./js/speciesTrendSpec.js"></script>
+<script src="./js/sparklineSpec.js"></script>
+```
 
 ```{r trend_setup, echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
@@ -32,13 +38,13 @@ table_dt <- mbbs_results %>%
 ```
 
 ```{r}
-species_table <- function(table_data, 
+species_table <- function(table_data,
                           details_column,
                           width,
-                          colnames){
-  tab <- 
-  datatable(
-    cbind(' ' = '&oplus;', table_data), 
+                          colnames) {
+  tab <-
+  DT::datatable(
+    cbind(" " = "&oplus;", table_data),
     colnames  = colnames,
     width  = width,
     escape = FALSE,
@@ -47,7 +53,7 @@ species_table <- function(table_data,
       bInfo      = FALSE,
       columnDefs = list(
         list(
-            targets = c(3,4,5)
+            targets = c(3, 4, 5)
           , className = "text-center"),
         list(
             targets = c(2, details_column, 6)
@@ -57,12 +63,12 @@ species_table <- function(table_data,
           , visible = FALSE),
         list(
             orderable = FALSE
-          , className = 'details-control'
+          , className = "details-control"
           , targets = c(1, details_column)
         )
       )
     ),
-    callback = JS(sprintf("
+    callback = DT::JS(sprintf("
     table.column(1).nodes().to$().css({cursor: 'pointer'});
     
     var format = function(d) {
@@ -107,9 +113,6 @@ species_table <- function(table_data,
     )
   )
 
-  # Add sparkline JS dependency
-  tab$dependencies <- 
-    append(tab$dependencies, htmlwidgets:::getDependency("sparkline"))
   tab
 }
 ```
@@ -121,10 +124,6 @@ tags$ul(
     class = "btn",
     tags$a(href = "#", class = "all", "All Species")
   ),
-  # tags$li(
-  #   class = "btn",
-  #   tags$a(href = "#", class = "localConcern", "Species of Local Concern")
-  # ),
   tags$li(
     class = "btn",
     tags$a(href = "#", class = "sigTrends", "Significant Trends")
@@ -136,26 +135,13 @@ tags$ul(
 
 ```{r show_table, echo=FALSE}
 species_table(
-  table_data = table_dt, 
-  details_column = 5, 
+  table_data = table_dt,
+  details_column = 5,
   width    = NULL,
   colnames = c("", "", "Common name", "Trend", "Rate of Change", "", "")
 )
 ```
 
-
-```{js}
-
-//var table = $('#DataTables_Table_0').DataTable();
-
-/*$('ul').on( 'click', 'a', function () {
-  table
-      .columns( 1 )
-      .search(  $(this).text() )
-      .draw();
-});
-*/
-```
 
 ```{r child = "_methods.Rmd"}
 ```

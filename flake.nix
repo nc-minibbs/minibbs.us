@@ -21,6 +21,10 @@
           pkgs.R
           pkgs.libpng
           pkgs.pandoc
+
+          pkgs.elmPackages.elm
+          pkgs.nodejs
+          
         ];
       }; 
 
