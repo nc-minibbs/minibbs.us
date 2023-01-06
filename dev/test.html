@@ -1,0 +1,72 @@
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+</head>
+
+<body>
+
+<div id="vis"></div>
+  <script>
+    vegaEmbed('#vis'
+    ,
+    {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "./cardinal.csv",
+    "format": {
+      "parse": {
+        "year": "date:'%Y'",
+        "count": "number"
+      }
+    }
+  },
+  "width": 400,
+  "params": [
+    {
+      "name": "countySelection",
+      "select": {
+        "type": "point",
+        "fields": [
+          "mbbs_county"
+        ]
+      },
+      "bind": "legend"
+    }
+  ],
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "temporal",
+      "axis": {
+        "title": ""
+      }
+    },
+    "y": {
+      "field": "count",
+      "aggregate": "mean"
+    },
+    "color": {
+      "condition": {
+        "param": "countySelection",
+        "field": "mbbs_county",
+        "type": "nominal"
+      },
+      "value": "grey"
+    },
+    "opacity": {
+      "condition": {
+        "param": "countySelection",
+        "value": 1
+      },
+      "value": 0.2
+    }
+  }
+}
+
+    , {actions: true}
+    )
+  </script>
+
+</body>
