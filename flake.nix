@@ -25,6 +25,7 @@
           pkgs.updog # simple HTTP server for running HTTP server locally (for testing)
           pkgs.elmPackages.elm
           pkgs.nodejs
+          pkgs.nodePackages.prettier
           
         ];
       }; 

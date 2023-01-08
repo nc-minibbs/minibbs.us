@@ -15,9 +15,9 @@ In VSCode, press `Ctrl-k v` to open preview.
 * [`elm-vegalite` docs](https://package.elm-lang.org/packages/gicentre/elm-vegalite/latest/VegaLite)
 
 ```elm {l}
-cardinal : Data
-cardinal = 
-    dataFromUrl "./cardinal.csv"
+counts : Data
+counts = 
+    dataFromUrl "./trends.csv"
       [ parse 
            [ ("year", foDate "%Y") 
            , ("count", foNum)
@@ -32,13 +32,18 @@ cardinal =
 trendChart : Data -> Spec
 trendChart x = 
     let 
+    {-
+        Define parameters for interactivity
+    -}
         ps = 
             params 
                 << param "countySelection" 
-                    [ paSelect  sePoint [ seFields ["mbbs_county"] ] 
+                    [ paSelect  sePoint [ seFields ["group"] ] 
                     , paBindLegend ""
                     -- , paBind (ipSelect [ inOptions [  "",  "orange" ]] )
                     ]
+    {-
+    -}
         enc = 
             encoding
                 << position X 
@@ -46,20 +51,30 @@ trendChart x =
                     , pTemporal
                     , pAxis [ axTitle "" ] 
                     ]
-                << position Y [ pName "count"
-                , pAggregate opMean]
+                << position Y 
+                    [ pName "bar", pQuant    
+                    , pAggregate opMean]
                 
                 << color 
                     [ 
                      mCondition (prParam "countySelection")
-                        [ mName "mbbs_county"
+                        [ mName "group"
                         , mNominal] 
                         [mStr "grey"]
+                    -- , [ mName "mbbs_county", mNominal ]
                     ]
                 << opacity [ mCondition (prParam "countySelection") 
                                 [ mNum 1.0 ] 
                                 [ mNum 0.2 ] ]
-
+        trans = transform
+                -- Tally counts of each species by year
+                << joinAggregate
+                    [ opAs opSum "count" "speciesCount"]
+                    [ wiGroupBy ["year", "common_name", "mbbs_county"] ]
+                    -- [ wiGroupBy ["common_name", "year"]]
+                << joinAggregate
+                    [ opAs opMean "speciesCount" "bar" ]
+                    [ wiGroupBy ["year", "mbbs_county", "group"] ]
         in 
         toVegaLite 
             [ x
@@ -67,6 +82,7 @@ trendChart x =
             , ps []
             , line []
             , enc []
+            , trans []
             ] 
 ```
 
@@ -74,12 +90,12 @@ trendChart x =
 chart : Spec
 chart = 
     trendChart 
-        cardinal
+        counts
 ```
 
 ```elm { v interactive j }
 chart2 : Spec
 chart2 = 
     trendChart 
-        cardinal
+        counts
 ```
