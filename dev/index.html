@@ -13,7 +13,7 @@
     {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "./cardinal.csv",
+    "url": "./trends.csv",
     "format": {
       "parse": {
         "year": "date:'%Y'",
@@ -28,7 +28,7 @@
       "select": {
         "type": "point",
         "fields": [
-          "mbbs_county"
+          "group"
         ]
       },
       "bind": "legend"
@@ -44,13 +44,14 @@
       }
     },
     "y": {
-      "field": "count",
+      "field": "bar",
+      "type": "quantitative",
       "aggregate": "mean"
     },
     "color": {
       "condition": {
         "param": "countySelection",
-        "field": "mbbs_county",
+        "field": "group",
         "type": "nominal"
       },
       "value": "grey"
@@ -61,8 +62,48 @@
         "value": 1
       },
       "value": 0.2
+    },
+    "tooltip": [
+      {
+        "field": "group"
+      },
+      {
+        "field": "year"
+      },
+      {
+        "field": "bar"
+      }
+    ]
+  },
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "count",
+          "as": "speciesCount"
+        }
+      ],
+      "groupby": [
+        "year",
+        "common_name"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "mean",
+          "field": "speciesCount",
+          "as": "bar"
+        }
+      ],
+      "groupby": [
+        "year",
+        "mbbs_county",
+        "group"
+      ]
     }
-  }
+  ]
 }
     , {actions: false}
     )

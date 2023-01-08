@@ -66,12 +66,15 @@ trendChart x =
                 << opacity [ mCondition (prParam "countySelection") 
                                 [ mNum 1.0 ] 
                                 [ mNum 0.2 ] ]
+                << tooltips 
+                    [ [ tName "group"]
+                    , [ tName "year" ]
+                    ]
         trans = transform
-                -- Tally counts of each species by year
+                -- Tally counts of each species with each year/county
                 << joinAggregate
                     [ opAs opSum "count" "speciesCount"]
-                    [ wiGroupBy ["year", "common_name", "mbbs_county"] ]
-                    -- [ wiGroupBy ["common_name", "year"]]
+                    [ wiGroupBy ["year", "common_name"] ]
                 << joinAggregate
                     [ opAs opMean "speciesCount" "bar" ]
                     [ wiGroupBy ["year", "mbbs_county", "group"] ]
