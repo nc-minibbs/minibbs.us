@@ -128,8 +128,8 @@ trendChart x =
         in 
         toVegaLite 
             [ x
-            , width 400
-            , height 300
+            , width 500
+            , height 400
             , ps []
             , line []
             , enc []
