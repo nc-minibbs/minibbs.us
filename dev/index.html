@@ -22,16 +22,25 @@
     }
   },
   "width": 400,
+  "height": 300,
   "params": [
     {
       "name": "countySelection",
       "select": {
         "type": "point",
         "fields": [
-          "group"
+          "mbbs_county"
         ]
       },
-      "bind": "legend"
+      "bind": {
+        "input": "select",
+        "options": [
+          "",
+          "orange",
+          "chatham",
+          "durham"
+        ]
+      }
     }
   ],
   "mark": "line",
@@ -44,40 +53,33 @@
       }
     },
     "y": {
-      "field": "bar",
+      "field": "yHat",
       "type": "quantitative",
-      "aggregate": "mean"
+      "aggregate": "sum"
     },
     "color": {
-      "condition": {
-        "param": "countySelection",
-        "field": "group",
-        "type": "nominal"
-      },
-      "value": "grey"
-    },
-    "opacity": {
-      "condition": {
-        "param": "countySelection",
-        "value": 1
-      },
-      "value": 0.2
+      "field": "group",
+      "type": "nominal"
     },
     "tooltip": [
       {
         "field": "group"
       },
       {
-        "field": "year"
+        "field": "year",
+        "type": "temporal",
+        "format": "%Y"
       },
       {
-        "field": "bar"
+        "field": "yHat",
+        "type": "quantitative",
+        "aggregate": "sum"
       }
     ]
   },
   "transform": [
     {
-      "joinaggregate": [
+      "aggregate": [
         {
           "op": "sum",
           "field": "count",
@@ -86,22 +88,54 @@
       ],
       "groupby": [
         "year",
+        "group",
+        "mbbs_county",
+        "route",
         "common_name"
       ]
     },
     {
-      "joinaggregate": [
+      "aggregate": [
         {
-          "op": "mean",
+          "op": "sum",
           "field": "speciesCount",
-          "as": "bar"
+          "as": "routeCount"
         }
       ],
       "groupby": [
         "year",
+        "group",
         "mbbs_county",
-        "group"
+        "route"
       ]
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "routeCount",
+          "as": "countyCount"
+        },
+        {
+          "op": "distinct",
+          "field": "route",
+          "as": "nRoutesRun"
+        }
+      ],
+      "groupby": [
+        "year",
+        "group",
+        "mbbs_county"
+      ]
+    },
+    {
+      "calculate": "\n                    if ( datum.mbbs_county == \"orange\",\n                        datum.countyCount * 12 / datum.nRoutesRun,\n                        if ( datum.mbbs_county == \"chatham\",\n                             datum.countyCount * 14 / datum.nRoutesRun,\n                             datum.countyCount * 8 / datum.nRoutesRun\n                            )\n                    )\n                    ",
+      "as": "yHat"
+    },
+    {
+      "filter": {
+        "param": "countySelection"
+      }
     }
   ]
 }

@@ -38,9 +38,16 @@ trendChart x =
         ps = 
             params 
                 << param "countySelection" 
-                    [ paSelect  sePoint [ seFields ["group"] ] 
-                    , paBindLegend ""
-                    -- , paBind (ipSelect [ inOptions [  "",  "orange" ]] )
+                    [ paSelect  sePoint [ seFields ["mbbs_county"] ] 
+                    -- , paBindLegend ""
+                    , paBind 
+                        (ipSelect 
+                            [ inOptions 
+                                [ ""
+                                , "orange"
+                                , "chatham"
+                                , "durham"
+                                ]] )
                     ]
     {-
     -}
@@ -52,36 +59,77 @@ trendChart x =
                     , pAxis [ axTitle "" ] 
                     ]
                 << position Y 
-                    [ pName "bar", pQuant    
-                    , pAggregate opMean]
-                
-                << color 
-                    [ 
-                     mCondition (prParam "countySelection")
-                        [ mName "group"
-                        , mNominal] 
-                        [mStr "grey"]
-                    -- , [ mName "mbbs_county", mNominal ]
+                    [ pName "yHat"
+                    , pQuant    
+                    , pAggregate opSum
+                    , pAxis [ axTitle "Total Counts" ]
                     ]
-                << opacity [ mCondition (prParam "countySelection") 
-                                [ mNum 1.0 ] 
-                                [ mNum 0.2 ] ]
+                
+                -- << color 
+                --     [ mCondition (prParam "countySelection")
+                --         [ mName "mbbs_county"
+                --         , mNominal] 
+                --         [mStr "grey"]
+                --     ]
+                << color 
+                    [ mName "group"
+                    , mNominal 
+                    ]
                 << tooltips 
                     [ [ tName "group"]
-                    , [ tName "year" ]
+                    , [ tName "year", tTemporal, tFormat "%Y" ]
+                    , [ tName "yHat", tQuant, tAggregate opSum ]
                     ]
         trans = transform
-                -- Tally counts of each species with each year/county
-                << joinAggregate
+                -- Compute counts per species within each route/year
+                -- This and the next sum could combined,
+                -- but kept for clarity of the data summarizing steps.
+                << aggregate
                     [ opAs opSum "count" "speciesCount"]
-                    [ wiGroupBy ["year", "common_name"] ]
-                << joinAggregate
-                    [ opAs opMean "speciesCount" "bar" ]
-                    [ wiGroupBy ["year", "mbbs_county", "group"] ]
+                    [ "year"
+                    , "group"
+                    , "mbbs_county"
+                    , "route"
+                    , "common_name"
+                    ]
+                -- Compute counts of all species within each route/year.
+                << aggregate
+                    [ opAs opSum "speciesCount" "routeCount" ]
+                    [ "year"
+                    , "group"
+                    , "mbbs_county"
+                    , "route"
+                    ]
+                -- Per year, compute both:
+                -- * counts with a county
+                -- * number of routes run within a county
+                << aggregate
+                    [ opAs opSum "routeCount" "countyCount"
+                    , opAs opDistinct "route" "nRoutesRun" 
+                    ]
+                    [ "year"
+                    , "group"
+                    , "mbbs_county"
+                    ]
+                -- Finally, compute yHat by
+                -- weighting county counts by the proportion of routes run
+                << calculateAs 
+                    """
+                    if ( datum.mbbs_county == "orange",
+                        datum.countyCount * 12 / datum.nRoutesRun,
+                        if ( datum.mbbs_county == "chatham",
+                             datum.countyCount * 14 / datum.nRoutesRun,
+                             datum.countyCount * 8 / datum.nRoutesRun
+                            )
+                    )
+                    """
+                    "yHat"
+                << filter (fiSelection  "countySelection" )
         in 
         toVegaLite 
             [ x
             , width 400
+            , height 300
             , ps []
             , line []
             , enc []
