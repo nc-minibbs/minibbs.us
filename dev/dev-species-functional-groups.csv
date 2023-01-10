@@ -1,130 +1,130 @@
-common_name,order,family,family_common_name,shape,habitat,diet
-Canada Goose,Anseriformes,Anatidae,"Ducks, Geese, and Waterfowl",Geese,,
-Wood Duck,Anseriformes,Anatidae,"Ducks, Geese, and Waterfowl",Ducks,,
-Mallard,Anseriformes,Anatidae,"Ducks, Geese, and Waterfowl",Ducks,,
-Northern Bobwhite,Galliformes,Odontophoridae,New World Quail,Game Birds,,
-Wild Turkey,Galliformes,Phasianidae,"Pheasants, Grouse, and Allies",Game Birds,,
-Rock Pigeon,Columbiformes,Columbidae,Pigeons and Doves,Doves,,
-Mourning Dove,Columbiformes,Columbidae,Pigeons and Doves,Doves,,
-Yellow-billed Cuckoo,Cuculiformes,Cuculidae,Cuckoos,Cuckoos,,
-Common Nighthawk,Caprimulgiformes,Caprimulgidae,Nightjars and Allies,Nightjars,,
-Chuck-will's-widow,Caprimulgiformes,Caprimulgidae,Nightjars and Allies,Nightjars,,
-Eastern Whip-poor-will,Caprimulgiformes,Caprimulgidae,Nightjars and Allies,Nightjars,,
-Chimney Swift,Caprimulgiformes,Apodidae,Swifts,Swifts,,
-Ruby-throated Hummingbird,Caprimulgiformes,Trochilidae,Hummingbirds,Hummingbirds,,
-Killdeer,Charadriiformes,Charadriidae,Plovers and Lapwings,Plovers,,
-Double-crested Cormorant,Suliformes,Phalacrocoracidae,Cormorants and Shags,Cormorants,,
-Great Blue Heron,Pelecaniformes,Ardeidae,"Herons, Egrets, and Bitterns",Herons,,
-Green Heron,Pelecaniformes,Ardeidae,"Herons, Egrets, and Bitterns",Herons,,
-Glossy Ibis,Pelecaniformes,Threskiornithidae,Ibises and Spoonbills,Ibis,,
-Black Vulture,Cathartiformes,Cathartidae,New World Vultures,Vultures,,
-Turkey Vulture,Cathartiformes,Cathartidae,New World Vultures,Vultures,,
-Osprey,Accipitriformes,Pandionidae,Osprey,Osprey,,
-Sharp-shinned Hawk,Accipitriformes,Accipitridae,"Hawks, Eagles, and Kites",Accipiters,,
-Cooper's Hawk,Accipitriformes,Accipitridae,"Hawks, Eagles, and Kites",Accipiters,,
-Accipiter sp.,Accipitriformes,Accipitridae,"Hawks, Eagles, and Kites",Accipiters,,
-Bald Eagle,Accipitriformes,Accipitridae,"Hawks, Eagles, and Kites",Eagles,,
-Red-shouldered Hawk,Accipitriformes,Accipitridae,"Hawks, Eagles, and Kites",Hawks,,
-Broad-winged Hawk,Accipitriformes,Accipitridae,"Hawks, Eagles, and Kites",Hawks,,
-Red-tailed Hawk,Accipitriformes,Accipitridae,"Hawks, Eagles, and Kites",Hawks,,
-hawk sp.,Accipitriformes,Accipitridae,"Hawks, Eagles, and Kites",Hawks,,
-Eastern Screech-Owl,Strigiformes,Strigidae,Owls,Owls,,
-Great Horned Owl,Strigiformes,Strigidae,Owls,Owls,,
-Barred Owl,Strigiformes,Strigidae,Owls,Owls,,
-Belted Kingfisher,Coraciiformes,Alcedinidae,Kingfishers,Kingfishers,,
-Red-headed Woodpecker,Piciformes,Picidae,Woodpeckers,Woodpeckers,,
-Red-bellied Woodpecker,Piciformes,Picidae,Woodpeckers,Woodpeckers,,
-Downy Woodpecker,Piciformes,Picidae,Woodpeckers,Woodpeckers,,
-Hairy Woodpecker,Piciformes,Picidae,Woodpeckers,Woodpeckers,,
-Pileated Woodpecker,Piciformes,Picidae,Woodpeckers,Woodpeckers,,
-Northern Flicker,Piciformes,Picidae,Woodpeckers,Woodpeckers,,
-woodpecker sp.,Piciformes,Picidae,Woodpeckers,Woodpeckers,,
-Eastern Wood-Pewee,Passeriformes,Tyrannidae,Tyrant Flycatchers,Flycatchers,,
-Acadian Flycatcher,Passeriformes,Tyrannidae,Tyrant Flycatchers,Flycatchers,,
-Eastern Phoebe,Passeriformes,Tyrannidae,Tyrant Flycatchers,Flycatchers,,
-Great Crested Flycatcher,Passeriformes,Tyrannidae,Tyrant Flycatchers,Flycatchers,,
-Eastern Kingbird,Passeriformes,Tyrannidae,Tyrant Flycatchers,Flycatchers,,
-White-eyed Vireo,Passeriformes,Vireonidae,Vireos,Vireos,,
-Yellow-throated Vireo,Passeriformes,Vireonidae,Vireos,Vireos,,
-Blue-headed Vireo,Passeriformes,Vireonidae,Vireos,Vireos,,
-Warbling Vireo,Passeriformes,Vireonidae,Vireos,Vireos,,
-Red-eyed Vireo,Passeriformes,Vireonidae,Vireos,Vireos,,
-Loggerhead Shrike,Passeriformes,Laniidae,Shrikes,Shrikes,,
-Blue Jay,Passeriformes,Corvidae,"Crows, Jays, and Magpies",Corvids,,
-American Crow,Passeriformes,Corvidae,"Crows, Jays, and Magpies",Corvids,,
-Fish Crow,Passeriformes,Corvidae,"Crows, Jays, and Magpies",Corvids,,
-crow sp.,Passeriformes,Corvidae,"Crows, Jays, and Magpies",Corvids,,
-Carolina Chickadee,Passeriformes,Paridae,"Tits, Chickadees, and Titmice",Chickadees,,
-Tufted Titmouse,Passeriformes,Paridae,"Tits, Chickadees, and Titmice",Titmice,,
-Horned Lark,Passeriformes,Alaudidae,Larks,Larks,,
-Northern Rough-winged Swallow,Passeriformes,Hirundinidae,Swallows,Swallows,,
-Purple Martin,Passeriformes,Hirundinidae,Swallows,Swallows,,
-Tree Swallow,Passeriformes,Hirundinidae,Swallows,Swallows,,
-Barn Swallow,Passeriformes,Hirundinidae,Swallows,Swallows,,
-Cliff Swallow,Passeriformes,Hirundinidae,Swallows,Swallows,,
-swallow sp.,Passeriformes,Hirundinidae,Swallows,Swallows,,
-White-breasted Nuthatch,Passeriformes,Sittidae,Nuthatches,Nuthatches,,
-Brown-headed Nuthatch,Passeriformes,Sittidae,Nuthatches,Nuthatches,,
-Blue-gray Gnatcatcher,Passeriformes,Polioptilidae,Gnatcatches,Gnatchatchers,,
-House Wren,Passeriformes,Troglodytidae,Wrens,Wrens,,
-Carolina Wren,Passeriformes,Troglodytidae,Wrens,Wrens,,
-European Starling,Passeriformes,Sturnidae,Starlings,Starlings,,
-Gray Catbird,Passeriformes,Mimidae,Mockingbirds and Thrashers,Catbirds,,
-Brown Thrasher,Passeriformes,Mimidae,Mockingbirds and Thrashers,Thrashers,,
-Northern Mockingbird,Passeriformes,Mimidae,Mockingbirds and Thrashers,Mockingbirds,,
-Eastern Bluebird,Passeriformes,Turdidae,Thrushes and Allies,Thrushes,,
-Wood Thrush,Passeriformes,Turdidae,Thrushes and Allies,Thrushes,,
-American Robin,Passeriformes,Turdidae,Thrushes and Allies,Thrushes,,
-Cedar Waxwing,Passeriformes,Bombycillidae,Waxwings,Waxwings,,
-House Sparrow,Passeriformes,Passeridae,Old World Sparrows,Old World Sparrows,,
-House Finch,Passeriformes,Fringillidae,"Finches, Euphonias, and Allies",Finches,,
-American Goldfinch,Passeriformes,Fringillidae,"Finches, Euphonias, and Allies",Finches,,
-Grasshopper Sparrow,Passeriformes,Passerellidae,New World Sparrows,Sparrows,,
-Chipping Sparrow,Passeriformes,Passerellidae,New World Sparrows,Sparrows,,
-Field Sparrow,Passeriformes,Passerellidae,New World Sparrows,Sparrows,,
-Song Sparrow,Passeriformes,Passerellidae,New World Sparrows,Sparrows,,
-Eastern Towhee,Passeriformes,Passerellidae,New World Sparrows,Towhees,,
-Yellow-breasted Chat,Passeriformes,Icteriidae,Yellow-breasted Chat,Chats,,
-Eastern Meadowlark,Passeriformes,Icteridae,Troupials and Allies,Meadowlarks,,
-Orchard Oriole,Passeriformes,Icteridae,Troupials and Allies,Orioles,,
-Red-winged Blackbird,Passeriformes,Icteridae,Troupials and Allies,Blackbirds,,
-Brown-headed Cowbird,Passeriformes,Icteridae,Troupials and Allies,Blackbirds,,
-Common Grackle,Passeriformes,Icteridae,Troupials and Allies,Blackbirds,,
-Ovenbird,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Louisiana Waterthrush,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Black-and-white Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Prothonotary Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Kentucky Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Common Yellowthroat,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Hooded Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
-American Redstart,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Northern Parula,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Yellow Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Blackpoll Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Pine Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Yellow-throated Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Prairie Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Summer Tanager,Passeriformes,Cardinalidae,Cardinals and Allies,Cardinals,,
-Scarlet Tanager,Passeriformes,Cardinalidae,Cardinals and Allies,Cardinals,,
-Summer/Scarlet Tanager,Passeriformes,Cardinalidae,Cardinals and Allies,Cardinals,,
-Northern Cardinal,Passeriformes,Cardinalidae,Cardinals and Allies,Cardinals,,
-Blue Grosbeak,Passeriformes,Cardinalidae,Cardinals and Allies,Grosbeaks,,
-Indigo Bunting,Passeriformes,Cardinalidae,Cardinals and Allies,Buntings,,
-Dickcissel,Passeriformes,Cardinalidae,Cardinals and Allies,Dickcissel,,
-Baltimore Oriole,Passeriformes,Icteridae,Cardinals and Allies,Orioles,,
-"House Wren",Passeriformes,Troglodytidae,Wrens,Wrens,,
-Willow Flycatcher,Passeriformes,Tyrannidae,Tyrant Flycatchers,Flycatchers,,
-"Great Horned  Owl",Strigiformes,Strigidae,Owls,Owls,,
-Northern Waterthrush,Passeriformes,Parulidae,New World Warblers,Warblers,,
-American Woodcock,Charadriiformes,Scolopacidae,Shorebirds,Shorebirds,,
-Mute Swan,Anseriformes,Anatidae,Swans,Swans,,
-Muscovy Duck,Anseriformes,Anatidae,Ducks,Ducks,,
-duck sp.,Anseriformes,Anatidae,Ducks,Ducks,,
-Great Egret,Pelecaniformes,Ardeidae,"Herons, Egrets, and Bitterns",Herons,,
-Yellow-crowned Night-Heron,Pelecaniformes,Ardeidae,"Herons, Egrets, and Bitterns",Herons,,
-Swainson's Thrush,Passeriformes,Turdidae,Thrushes and Allies,Thrushes,,
-Magnolia Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Black-throated Blue Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
-Ring-billed Gull,Charadriiformes,Laridae,"Gulls, Terns, and Skimmers",Gulls,,
-Mississippi Kite,Accipitriformes,Accipitridae,"Hawks, Eagles, and Kites",Kites,,
-Worm-eating Warbler,Passeriformes,Parulidae,New World Warblers,Warblers,,
+"","common_name","order","family","family_common_name","shape","habitat","diet","sci_name","Breeding.Biome","Migrate","native"
+"1","Canada Goose","Anseriformes","Anatidae","Ducks, Geese, and Waterfowl","Geese",NA,NA,"Branta canadensis","Wetland","M","native"
+"2","Wood Duck","Anseriformes","Anatidae","Ducks, Geese, and Waterfowl","Ducks",NA,NA,"Aix sponsa","Wetland","M","native"
+"3","Mallard","Anseriformes","Anatidae","Ducks, Geese, and Waterfowl","Ducks",NA,NA,"Anas platyrhynchos","Wetland","M","native"
+"4","Northern Bobwhite","Galliformes","Odontophoridae","New World Quail","Game Birds",NA,NA,"Colinus virginianus","Eastern Forest","R","native"
+"5","Wild Turkey","Galliformes","Phasianidae","Pheasants, Grouse, and Allies","Game Birds",NA,NA,"Meleagris gallopavo","Forest Generalist","R","native"
+"6","Rock Pigeon","Columbiformes","Columbidae","Pigeons and Doves","Doves",NA,NA,"Columba livia","Introduced","Introduced","Introduced"
+"7","Mourning Dove","Columbiformes","Columbidae","Pigeons and Doves","Doves",NA,NA,"Zenaida macroura","Habitat Generalist","M","native"
+"8","Yellow-billed Cuckoo","Cuculiformes","Cuculidae","Cuckoos","Cuckoos",NA,NA,"Coccyzus americanus","Eastern Forest","M","native"
+"9","Common Nighthawk","Caprimulgiformes","Caprimulgidae","Nightjars and Allies","Nightjars",NA,NA,"Chordeiles minor","Habitat Generalist","M","native"
+"10","Chuck-will's-widow","Caprimulgiformes","Caprimulgidae","Nightjars and Allies","Nightjars",NA,NA,"Antrostomus carolinensis","Eastern Forest","M","native"
+"11","Eastern Whip-poor-will","Caprimulgiformes","Caprimulgidae","Nightjars and Allies","Nightjars",NA,NA,"Antrostomus vociferus","Eastern Forest","M","native"
+"12","Chimney Swift","Caprimulgiformes","Apodidae","Swifts","Swifts",NA,NA,"Chaetura pelagica","Eastern Forest","M","native"
+"13","Ruby-throated Hummingbird","Caprimulgiformes","Trochilidae","Hummingbirds","Hummingbirds",NA,NA,"Archilochus colubris","Eastern Forest","M","native"
+"14","Killdeer","Charadriiformes","Charadriidae","Plovers and Lapwings","Plovers",NA,NA,"Charadrius vociferus","Habitat Generalist","M","native"
+"15","Double-crested Cormorant","Suliformes","Phalacrocoracidae","Cormorants and Shags","Cormorants",NA,NA,"Phalacrocorax auritus","Wetland","M","native"
+"16","Great Blue Heron","Pelecaniformes","Ardeidae","Herons, Egrets, and Bitterns","Herons",NA,NA,"Ardea herodias","Wetland","M","native"
+"17","Green Heron","Pelecaniformes","Ardeidae","Herons, Egrets, and Bitterns","Herons",NA,NA,"Butorides virescens","Wetland","M","native"
+"18","Glossy Ibis","Pelecaniformes","Threskiornithidae","Ibises and Spoonbills","Ibis",NA,NA,"Plegadis falcinellus","Wetland","M","native"
+"19","Black Vulture","Cathartiformes","Cathartidae","New World Vultures","Vultures",NA,NA,"Coragyps atratus","Habitat Generalist","R","native"
+"20","Turkey Vulture","Cathartiformes","Cathartidae","New World Vultures","Vultures",NA,NA,"Cathartes aura","Habitat Generalist","M","native"
+"21","Osprey","Accipitriformes","Pandionidae","Osprey","Osprey",NA,NA,"Pandion haliaetus","Wetland","M","native"
+"22","Sharp-shinned Hawk","Accipitriformes","Accipitridae","Hawks, Eagles, and Kites","Accipiters",NA,NA,"Accipiter striatus","Forest Generalist","M","native"
+"23","Cooper's Hawk","Accipitriformes","Accipitridae","Hawks, Eagles, and Kites","Accipiters",NA,NA,"Accipiter cooperii","Forest Generalist","M","native"
+"24","Accipiter sp.","Accipitriformes","Accipitridae","Hawks, Eagles, and Kites","Accipiters",NA,NA,NA,NA,NA,NA
+"25","Bald Eagle","Accipitriformes","Accipitridae","Hawks, Eagles, and Kites","Eagles",NA,NA,"Haliaeetus leucocephalus","Wetland","M","native"
+"26","Red-shouldered Hawk","Accipitriformes","Accipitridae","Hawks, Eagles, and Kites","Hawks",NA,NA,"Buteo lineatus","Forest Generalist","M","native"
+"27","Broad-winged Hawk","Accipitriformes","Accipitridae","Hawks, Eagles, and Kites","Hawks",NA,NA,"Buteo platypterus","Forest Generalist","M","native"
+"28","Red-tailed Hawk","Accipitriformes","Accipitridae","Hawks, Eagles, and Kites","Hawks",NA,NA,"Buteo jamaicensis","Habitat Generalist","M","native"
+"29","hawk sp.","Accipitriformes","Accipitridae","Hawks, Eagles, and Kites","Hawks",NA,NA,NA,NA,NA,NA
+"30","Eastern Screech-Owl","Strigiformes","Strigidae","Owls","Owls",NA,NA,"Megascops asio","Eastern Forest","R","native"
+"31","Great Horned Owl","Strigiformes","Strigidae","Owls","Owls",NA,NA,"Bubo virginianus","Habitat Generalist","R","native"
+"32","Barred Owl","Strigiformes","Strigidae","Owls","Owls",NA,NA,"Strix varia","Forest Generalist","R","native"
+"33","Belted Kingfisher","Coraciiformes","Alcedinidae","Kingfishers","Kingfishers",NA,NA,"Megaceryle alcyon","Wetland","M","native"
+"34","Red-headed Woodpecker","Piciformes","Picidae","Woodpeckers","Woodpeckers",NA,NA,"Melanerpes erythrocephalus","Eastern Forest","M","native"
+"35","Red-bellied Woodpecker","Piciformes","Picidae","Woodpeckers","Woodpeckers",NA,NA,"Melanerpes carolinus","Eastern Forest","R","native"
+"36","Downy Woodpecker","Piciformes","Picidae","Woodpeckers","Woodpeckers",NA,NA,"Dryobates pubescens","Forest Generalist","R","native"
+"37","Hairy Woodpecker","Piciformes","Picidae","Woodpeckers","Woodpeckers",NA,NA,"Dryobates villosus","Forest Generalist","R","native"
+"38","Pileated Woodpecker","Piciformes","Picidae","Woodpeckers","Woodpeckers",NA,NA,"Dryocopus pileatus","Eastern Forest","R","native"
+"39","Northern Flicker","Piciformes","Picidae","Woodpeckers","Woodpeckers",NA,NA,"Colaptes auratus","Forest Generalist","M","native"
+"40","woodpecker sp.","Piciformes","Picidae","Woodpeckers","Woodpeckers",NA,NA,NA,NA,NA,NA
+"41","Eastern Wood-Pewee","Passeriformes","Tyrannidae","Tyrant Flycatchers","Flycatchers",NA,NA,"Contopus virens","Eastern Forest","M","native"
+"42","Acadian Flycatcher","Passeriformes","Tyrannidae","Tyrant Flycatchers","Flycatchers",NA,NA,"Empidonax virescens","Eastern Forest","M","native"
+"43","Eastern Phoebe","Passeriformes","Tyrannidae","Tyrant Flycatchers","Flycatchers",NA,NA,"Sayornis phoebe","Eastern Forest","M","native"
+"44","Great Crested Flycatcher","Passeriformes","Tyrannidae","Tyrant Flycatchers","Flycatchers",NA,NA,"Myiarchus crinitus","Eastern Forest","M","native"
+"45","Eastern Kingbird","Passeriformes","Tyrannidae","Tyrant Flycatchers","Flycatchers",NA,NA,"Tyrannus tyrannus","Grassland","M","native"
+"46","White-eyed Vireo","Passeriformes","Vireonidae","Vireos","Vireos",NA,NA,"Vireo griseus","Eastern Forest","M","native"
+"47","Yellow-throated Vireo","Passeriformes","Vireonidae","Vireos","Vireos",NA,NA,"Vireo flavifrons","Eastern Forest","M","native"
+"48","Blue-headed Vireo","Passeriformes","Vireonidae","Vireos","Vireos",NA,NA,"Vireo solitarius","Boreal Forest","M","native"
+"49","Warbling Vireo","Passeriformes","Vireonidae","Vireos","Vireos",NA,NA,"Vireo gilvus","Forest Generalist","M","native"
+"50","Red-eyed Vireo","Passeriformes","Vireonidae","Vireos","Vireos",NA,NA,"Vireo olivaceus","Forest Generalist","M","native"
+"51","Loggerhead Shrike","Passeriformes","Laniidae","Shrikes","Shrikes",NA,NA,"Lanius ludovicianus","Grassland","M","native"
+"52","Blue Jay","Passeriformes","Corvidae","Crows, Jays, and Magpies","Corvids",NA,NA,"Cyanocitta cristata","Eastern Forest","M","native"
+"53","American Crow","Passeriformes","Corvidae","Crows, Jays, and Magpies","Corvids",NA,NA,"Corvus brachyrhynchos","Habitat Generalist","M","native"
+"54","Fish Crow","Passeriformes","Corvidae","Crows, Jays, and Magpies","Corvids",NA,NA,"Corvus ossifragus","Habitat Generalist","R","native"
+"55","crow sp.","Passeriformes","Corvidae","Crows, Jays, and Magpies","Corvids",NA,NA,NA,NA,NA,NA
+"56","Carolina Chickadee","Passeriformes","Paridae","Tits, Chickadees, and Titmice","Chickadees",NA,NA,"Poecile carolinensis","Eastern Forest","R","native"
+"57","Tufted Titmouse","Passeriformes","Paridae","Tits, Chickadees, and Titmice","Titmice",NA,NA,"Baeolophus bicolor","Eastern Forest","R","native"
+"58","Horned Lark","Passeriformes","Alaudidae","Larks","Larks",NA,NA,"Eremophila alpestris","Grassland","M","native"
+"59","Northern Rough-winged Swallow","Passeriformes","Hirundinidae","Swallows","Swallows",NA,NA,"Stelgidopteryx serripennis","Habitat Generalist","M","native"
+"60","Purple Martin","Passeriformes","Hirundinidae","Swallows","Swallows",NA,NA,"Progne subis","Habitat Generalist","M","native"
+"61","Tree Swallow","Passeriformes","Hirundinidae","Swallows","Swallows",NA,NA,"Tachycineta bicolor","Habitat Generalist","M","native"
+"62","Barn Swallow","Passeriformes","Hirundinidae","Swallows","Swallows",NA,NA,"Hirundo rustica","Habitat Generalist","M","native"
+"63","Cliff Swallow","Passeriformes","Hirundinidae","Swallows","Swallows",NA,NA,"Petrochelidon pyrrhonota","Habitat Generalist","M","native"
+"64","swallow sp.","Passeriformes","Hirundinidae","Swallows","Swallows",NA,NA,NA,NA,NA,NA
+"65","White-breasted Nuthatch","Passeriformes","Sittidae","Nuthatches","Nuthatches",NA,NA,"Sitta carolinensis","Forest Generalist","R","native"
+"66","Brown-headed Nuthatch","Passeriformes","Sittidae","Nuthatches","Nuthatches",NA,NA,"Sitta pusilla","Eastern Forest","R","native"
+"67","Blue-gray Gnatcatcher","Passeriformes","Polioptilidae","Gnatcatches","Gnatchatchers",NA,NA,"Polioptila caerulea","Habitat Generalist","M","native"
+"68","House Wren","Passeriformes","Troglodytidae","Wrens","Wrens",NA,NA,"Troglodytes aedon","Forest Generalist","M","native"
+"69","Carolina Wren","Passeriformes","Troglodytidae","Wrens","Wrens",NA,NA,"Thryothorus ludovicianus","Eastern Forest","R","native"
+"70","European Starling","Passeriformes","Sturnidae","Starlings","Starlings",NA,NA,"Sturnus vulgaris","Introduced","Introduced","Introduced"
+"71","Gray Catbird","Passeriformes","Mimidae","Mockingbirds and Thrashers","Catbirds",NA,NA,"Dumetella carolinensis","Eastern Forest","M","native"
+"72","Brown Thrasher","Passeriformes","Mimidae","Mockingbirds and Thrashers","Thrashers",NA,NA,"Toxostoma rufum","Eastern Forest","M","native"
+"73","Northern Mockingbird","Passeriformes","Mimidae","Mockingbirds and Thrashers","Mockingbirds",NA,NA,"Mimus polyglottos","Habitat Generalist","M","native"
+"74","Eastern Bluebird","Passeriformes","Turdidae","Thrushes and Allies","Thrushes",NA,NA,"Sialia sialis","Eastern Forest","M","native"
+"75","Wood Thrush","Passeriformes","Turdidae","Thrushes and Allies","Thrushes",NA,NA,"Hylocichla mustelina","Eastern Forest","M","native"
+"76","American Robin","Passeriformes","Turdidae","Thrushes and Allies","Thrushes",NA,NA,"Turdus migratorius","Forest Generalist","M","native"
+"77","Cedar Waxwing","Passeriformes","Bombycillidae","Waxwings","Waxwings",NA,NA,"Bombycilla cedrorum","Forest Generalist","M","native"
+"78","House Sparrow","Passeriformes","Passeridae","Old World Sparrows","Old World Sparrows",NA,NA,"Passer domesticus","Introduced","Introduced","Introduced"
+"79","House Finch","Passeriformes","Fringillidae","Finches, Euphonias, and Allies","Finches",NA,NA,"Haemorhous mexicanus","Habitat Generalist","R","native"
+"80","American Goldfinch","Passeriformes","Fringillidae","Finches, Euphonias, and Allies","Finches",NA,NA,"Spinus tristis","Forest Generalist","M","native"
+"81","Grasshopper Sparrow","Passeriformes","Passerellidae","New World Sparrows","Sparrows",NA,NA,"Ammodramus savannarum","Grassland","M","native"
+"82","Chipping Sparrow","Passeriformes","Passerellidae","New World Sparrows","Sparrows",NA,NA,"Spizella passerina","Forest Generalist","M","native"
+"83","Field Sparrow","Passeriformes","Passerellidae","New World Sparrows","Sparrows",NA,NA,"Spizella pusilla","Eastern Forest","M","native"
+"84","Song Sparrow","Passeriformes","Passerellidae","New World Sparrows","Sparrows",NA,NA,"Melospiza melodia","Habitat Generalist","M","native"
+"85","Eastern Towhee","Passeriformes","Passerellidae","New World Sparrows","Towhees",NA,NA,"Pipilo erythrophthalmus","Eastern Forest","M","native"
+"86","Yellow-breasted Chat","Passeriformes","Icteriidae","Yellow-breasted Chat","Chats",NA,NA,"Icteria virens","Eastern Forest","M","native"
+"87","Eastern Meadowlark","Passeriformes","Icteridae","Troupials and Allies","Meadowlarks",NA,NA,"Sturnella magna","Grassland","M","native"
+"88","Orchard Oriole","Passeriformes","Icteridae","Troupials and Allies","Orioles",NA,NA,"Icterus spurius","Eastern Forest","M","native"
+"89","Red-winged Blackbird","Passeriformes","Icteridae","Troupials and Allies","Blackbirds",NA,NA,"Agelaius phoeniceus","Habitat Generalist","M","native"
+"90","Brown-headed Cowbird","Passeriformes","Icteridae","Troupials and Allies","Blackbirds",NA,NA,"Molothrus ater","Habitat Generalist","M","native"
+"91","Common Grackle","Passeriformes","Icteridae","Troupials and Allies","Blackbirds",NA,NA,"Quiscalus quiscula","Habitat Generalist","M","native"
+"92","Ovenbird","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Seiurus aurocapilla","Eastern Forest","M","native"
+"93","Louisiana Waterthrush","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Parkesia motacilla","Eastern Forest","M","native"
+"94","Black-and-white Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Mniotilta varia","Eastern Forest","M","native"
+"95","Prothonotary Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Protonotaria citrea","Eastern Forest","M","native"
+"96","Kentucky Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Geothlypis formosa","Eastern Forest","M","native"
+"97","Common Yellowthroat","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Geothlypis trichas","Habitat Generalist","M","native"
+"98","Hooded Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Setophaga citrina","Eastern Forest","M","native"
+"99","American Redstart","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Setophaga ruticilla","Eastern Forest","M","native"
+"100","Northern Parula","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Setophaga americana","Forest Generalist","M","native"
+"101","Yellow Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Setophaga petechia","Forest Generalist","M","native"
+"102","Blackpoll Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Setophaga striata","Boreal Forest","M","native"
+"103","Pine Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Setophaga pinus","Eastern Forest","M","native"
+"104","Yellow-throated Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Setophaga dominica","Eastern Forest","M","native"
+"105","Prairie Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Setophaga discolor","Eastern Forest","M","native"
+"106","Summer Tanager","Passeriformes","Cardinalidae","Cardinals and Allies","Cardinals",NA,NA,"Piranga rubra","Eastern Forest","M","native"
+"107","Scarlet Tanager","Passeriformes","Cardinalidae","Cardinals and Allies","Cardinals",NA,NA,"Piranga olivacea","Eastern Forest","M","native"
+"108","Summer/Scarlet Tanager","Passeriformes","Cardinalidae","Cardinals and Allies","Cardinals",NA,NA,NA,NA,NA,NA
+"109","Northern Cardinal","Passeriformes","Cardinalidae","Cardinals and Allies","Cardinals",NA,NA,"Cardinalis cardinalis","Eastern Forest","R","native"
+"110","Blue Grosbeak","Passeriformes","Cardinalidae","Cardinals and Allies","Grosbeaks",NA,NA,"Passerina caerulea","Forest Generalist","M","native"
+"111","Indigo Bunting","Passeriformes","Cardinalidae","Cardinals and Allies","Buntings",NA,NA,"Passerina cyanea","Eastern Forest","M","native"
+"112","Dickcissel","Passeriformes","Cardinalidae","Cardinals and Allies","Dickcissel",NA,NA,"Spiza americana","Grassland","M","native"
+"113","Baltimore Oriole","Passeriformes","Icteridae","Cardinals and Allies","Orioles",NA,NA,"Icterus galbula","Eastern Forest","M","native"
+"114","House Wren","Passeriformes","Troglodytidae","Wrens","Wrens",NA,NA,"Troglodytes aedon","Forest Generalist","M","native"
+"115","Willow Flycatcher","Passeriformes","Tyrannidae","Tyrant Flycatchers","Flycatchers",NA,NA,"Empidonax traillii","Eastern Forest","M","native"
+"116","Great Horned Owl","Strigiformes","Strigidae","Owls","Owls",NA,NA,"Bubo virginianus","Habitat Generalist","R","native"
+"117","Northern Waterthrush","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Parkesia noveboracensis","Boreal Forest","M","native"
+"118","American Woodcock","Charadriiformes","Scolopacidae","Shorebirds","Shorebirds",NA,NA,"Scolopax minor","Eastern Forest","M","native"
+"119","Mute Swan","Anseriformes","Anatidae","Swans","Swans",NA,NA,"Cygnus olor","Introduced","Introduced","Introduced"
+"120","Muscovy Duck","Anseriformes","Anatidae","Ducks","Ducks",NA,NA,NA,NA,NA,NA
+"121","duck sp.","Anseriformes","Anatidae","Ducks","Ducks",NA,NA,NA,NA,NA,NA
+"122","Great Egret","Pelecaniformes","Ardeidae","Herons, Egrets, and Bitterns","Herons",NA,NA,"Ardea alba","Wetland","M","native"
+"123","Yellow-crowned Night-Heron","Pelecaniformes","Ardeidae","Herons, Egrets, and Bitterns","Herons",NA,NA,"Nyctanassa violacea","Coasts","M","native"
+"124","Swainson's Thrush","Passeriformes","Turdidae","Thrushes and Allies","Thrushes",NA,NA,"Catharus ustulatus","Forest Generalist","M","native"
+"125","Magnolia Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Setophaga magnolia","Boreal Forest","M","native"
+"126","Black-throated Blue Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Setophaga caerulescens","Boreal Forest","M","native"
+"127","Ring-billed Gull","Charadriiformes","Laridae","Gulls, Terns, and Skimmers","Gulls",NA,NA,"Larus delawarensis","Wetland","M","native"
+"128","Mississippi Kite","Accipitriformes","Accipitridae","Hawks, Eagles, and Kites","Kites",NA,NA,"Ictinia mississippiensis","Eastern Forest","M","native"
+"129","Worm-eating Warbler","Passeriformes","Parulidae","New World Warblers","Warblers",NA,NA,"Helmitheros vermivorum","Eastern Forest","M","native"
