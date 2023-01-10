@@ -1,3 +1,7 @@
+#Need to create a reproducible workflow for generating the functional groups csv
+
+#start by pulling the unique common names + scientific names (you are going to have to rerun the mbbs data pull with the common name + sci name fixes in order to do this smoothly.)
+
 #read in functional groups database as it stands
 functgroups <- read.csv("dev/dev-species-functional-groups.csv", header = TRUE)
 
