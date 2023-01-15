@@ -30,7 +30,7 @@ counts =
 
 ```elm {l}
 trendChart : Data -> Spec
-trendChart x = 
+trendChart data = 
     let 
     {-
         Define parameters for interactivity
@@ -38,8 +38,7 @@ trendChart x =
         ps = 
             params 
                 << param "countySelection" 
-                    [ paSelect  sePoint [ seFields ["mbbs_county"] ] 
-                    -- , paBindLegend ""
+                    [ paSelect sePoint [ seFields ["mbbs_county"] ] 
                     , paBind 
                         (ipSelect 
                             [ inOptions 
@@ -49,7 +48,16 @@ trendChart x =
                                 , "durham"
                                 ]] )
                     ]
+                << param "aggregateMeasuure" 
+                    [ paSelect sePoint [ ] 
+                    , paBind 
+                        (ipSelect 
+                            [ inOptions 
+                                [ "totalCount"
+                                ]] )
+                    ]
     {-
+        Define the primary layer's encoding
     -}
         enc = 
             encoding
@@ -58,18 +66,11 @@ trendChart x =
                     , pTemporal
                     , pAxis [ axTitle "" ] 
                     ]
-                << position Y 
-                    [ pName "yHat"
-                    , pQuant    
-                    , pAggregate opSum
-                    , pAxis [ axTitle "Total Counts" ]
-                    ]
-                
-                -- << color 
-                --     [ mCondition (prParam "countySelection")
-                --         [ mName "mbbs_county"
-                --         , mNominal] 
-                --         [mStr "grey"]
+                -- << position Y 
+                --     [ pName "yBar"
+                --     , pQuant    
+                --     , pAggregate opSum
+                --     , pAxis [ axTitle "Total Counts" ]
                 --     ]
                 << color 
                     [ mName "group"
@@ -80,7 +81,10 @@ trendChart x =
                     , [ tName "year", tTemporal, tFormat "%Y" ]
                     , [ tName "yHat", tQuant, tAggregate opSum ]
                     ]
-        trans = transform
+    {-
+        Define data transform and summaries 
+    -}
+        trans0 = transform
                 -- Compute counts per species within each route/year
                 -- This and the next sum could combined,
                 -- but kept for clarity of the data summarizing steps.
@@ -111,7 +115,9 @@ trendChart x =
                     , "group"
                     , "mbbs_county"
                     ]
-                -- Finally, compute yHat by
+
+        trans1 = trans0
+                -- Compute yHat by
                 -- weighting county counts by the proportion of routes run
                 << calculateAs 
                     """
@@ -124,16 +130,62 @@ trendChart x =
                     )
                     """
                     "yHat"
-                << filter (fiSelection  "countySelection" )
+        trans2 = trans0
+                -- Compute tallies per year (across counties)
+                << aggregate
+                    [ opAs opSum "countyCount" "yearCount"
+                    , opAs opSum "nRoutesRun" "yearRoutes"
+                    ]
+                    [ "year"
+                    , "group"
+                    ]
+                -- Compute yBar as 
+                --   total count in year
+                -- / total routes run in year
+                << calculateAs 
+                    """
+                    datum.yearCount / datum.yearRoutes
+                    """
+                    "yBar"
+                << filter (fiSelection "countySelection" )
+
+        totalCountSpec = 
+            asSpec [
+              width 500
+            , height 400
+            , (enc << position Y 
+                    [ pName "yHat"
+                    , pQuant    
+                    , pAggregate opSum
+                    , pAxis [ axTitle "Total Counts" ]
+                    ]) []
+                    , line []
+                    , ps []
+                    , trans1 []
+                 ]
+        avgCountSpec = 
+            asSpec [
+              width 500
+            , height 400
+            , (enc << position Y 
+                    [ pName "yBar"
+                    , pQuant    
+                    , pAggregate opSum
+                    , pAxis [ axTitle "Average Count per Route" ]
+                    ]) []
+                    , line []
+                    , ps []
+                    , trans2 []
+                 ]
         in 
         toVegaLite 
-            [ x
+            [ data
             , width 500
             , height 400
-            , ps []
-            , line []
-            , enc []
-            , trans []
+            , vConcat [ 
+                totalCountSpec 
+              , avgCountSpec
+              ]
             ] 
 ```
 
