@@ -48,14 +48,7 @@ trendChart data =
                                 , "durham"
                                 ]] )
                     ]
-                << param "aggregateMeasuure" 
-                    [ paSelect sePoint [ ] 
-                    , paBind 
-                        (ipSelect 
-                            [ inOptions 
-                                [ "totalCount"
-                                ]] )
-                    ]
+
     {-
         Define the primary layer's encoding
     -}
@@ -115,7 +108,7 @@ trendChart data =
                     , "group"
                     , "mbbs_county"
                     ]
-
+                << filter (fiSelection "countySelection" )
         trans1 = trans0
                 -- Compute yHat by
                 -- weighting county counts by the proportion of routes run
@@ -130,6 +123,7 @@ trendChart data =
                     )
                     """
                     "yHat"
+                -- << filter (fiSelection "countySelection" )
         trans2 = trans0
                 -- Compute tallies per year (across counties)
                 << aggregate
@@ -147,7 +141,7 @@ trendChart data =
                     datum.yearCount / datum.yearRoutes
                     """
                     "yBar"
-                << filter (fiSelection "countySelection" )
+                -- << filter (fiSelection "countySelection" )
 
         totalCountSpec = 
             asSpec [

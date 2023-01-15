@@ -23,122 +23,268 @@
   },
   "width": 500,
   "height": 400,
-  "params": [
+  "vconcat": [
     {
-      "name": "countySelection",
-      "select": {
-        "type": "point",
-        "fields": [
-          "mbbs_county"
-        ]
+      "width": 500,
+      "height": 400,
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "temporal",
+          "axis": {
+            "title": ""
+          }
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "group"
+          },
+          {
+            "field": "year",
+            "type": "temporal",
+            "format": "%Y"
+          },
+          {
+            "field": "yHat",
+            "type": "quantitative",
+            "aggregate": "sum"
+          }
+        ],
+        "y": {
+          "field": "yHat",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "axis": {
+            "title": "Total Counts"
+          }
+        }
       },
-      "bind": {
-        "input": "select",
-        "options": [
-          "",
-          "orange",
-          "chatham",
-          "durham"
-        ]
-      }
-    }
-  ],
-  "mark": "line",
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "temporal",
-      "axis": {
-        "title": ""
-      }
-    },
-    "y": {
-      "field": "yHat",
-      "type": "quantitative",
-      "aggregate": "sum",
-      "axis": {
-        "title": "Total Counts"
-      }
-    },
-    "color": {
-      "field": "group",
-      "type": "nominal"
-    },
-    "tooltip": [
-      {
-        "field": "group"
-      },
-      {
-        "field": "year",
-        "type": "temporal",
-        "format": "%Y"
-      },
-      {
-        "field": "yHat",
-        "type": "quantitative",
-        "aggregate": "sum"
-      }
-    ]
-  },
-  "transform": [
-    {
-      "aggregate": [
+      "mark": "line",
+      "params": [
         {
-          "op": "sum",
-          "field": "count",
-          "as": "speciesCount"
+          "name": "countySelection",
+          "select": {
+            "type": "point",
+            "fields": [
+              "mbbs_county"
+            ]
+          },
+          "bind": {
+            "input": "select",
+            "options": [
+              "",
+              "orange",
+              "chatham",
+              "durham"
+            ]
+          }
         }
       ],
-      "groupby": [
-        "year",
-        "group",
-        "mbbs_county",
-        "route",
-        "common_name"
-      ]
-    },
-    {
-      "aggregate": [
+      "transform": [
         {
-          "op": "sum",
-          "field": "speciesCount",
-          "as": "routeCount"
-        }
-      ],
-      "groupby": [
-        "year",
-        "group",
-        "mbbs_county",
-        "route"
-      ]
-    },
-    {
-      "aggregate": [
-        {
-          "op": "sum",
-          "field": "routeCount",
-          "as": "countyCount"
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "count",
+              "as": "speciesCount"
+            }
+          ],
+          "groupby": [
+            "year",
+            "group",
+            "mbbs_county",
+            "route",
+            "common_name"
+          ]
         },
         {
-          "op": "distinct",
-          "field": "route",
-          "as": "nRoutesRun"
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "speciesCount",
+              "as": "routeCount"
+            }
+          ],
+          "groupby": [
+            "year",
+            "group",
+            "mbbs_county",
+            "route"
+          ]
+        },
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "routeCount",
+              "as": "countyCount"
+            },
+            {
+              "op": "distinct",
+              "field": "route",
+              "as": "nRoutesRun"
+            }
+          ],
+          "groupby": [
+            "year",
+            "group",
+            "mbbs_county"
+          ]
+        },
+        {
+          "filter": {
+            "param": "countySelection"
+          }
+        },
+        {
+          "calculate": "\n                    if ( datum.mbbs_county == \"orange\",\n                        datum.countyCount * 12 / datum.nRoutesRun,\n                        if ( datum.mbbs_county == \"chatham\",\n                             datum.countyCount * 14 / datum.nRoutesRun,\n                             datum.countyCount * 8 / datum.nRoutesRun\n                            )\n                    )\n                    ",
+          "as": "yHat"
         }
-      ],
-      "groupby": [
-        "year",
-        "group",
-        "mbbs_county"
       ]
     },
     {
-      "calculate": "\n                    if ( datum.mbbs_county == \"orange\",\n                        datum.countyCount * 12 / datum.nRoutesRun,\n                        if ( datum.mbbs_county == \"chatham\",\n                             datum.countyCount * 14 / datum.nRoutesRun,\n                             datum.countyCount * 8 / datum.nRoutesRun\n                            )\n                    )\n                    ",
-      "as": "yHat"
-    },
-    {
-      "filter": {
-        "param": "countySelection"
-      }
+      "width": 500,
+      "height": 400,
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "temporal",
+          "axis": {
+            "title": ""
+          }
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "group"
+          },
+          {
+            "field": "year",
+            "type": "temporal",
+            "format": "%Y"
+          },
+          {
+            "field": "yHat",
+            "type": "quantitative",
+            "aggregate": "sum"
+          }
+        ],
+        "y": {
+          "field": "yBar",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "axis": {
+            "title": "Average Count per Route"
+          }
+        }
+      },
+      "mark": "line",
+      "params": [
+        {
+          "name": "countySelection",
+          "select": {
+            "type": "point",
+            "fields": [
+              "mbbs_county"
+            ]
+          },
+          "bind": {
+            "input": "select",
+            "options": [
+              "",
+              "orange",
+              "chatham",
+              "durham"
+            ]
+          }
+        }
+      ],
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "count",
+              "as": "speciesCount"
+            }
+          ],
+          "groupby": [
+            "year",
+            "group",
+            "mbbs_county",
+            "route",
+            "common_name"
+          ]
+        },
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "speciesCount",
+              "as": "routeCount"
+            }
+          ],
+          "groupby": [
+            "year",
+            "group",
+            "mbbs_county",
+            "route"
+          ]
+        },
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "routeCount",
+              "as": "countyCount"
+            },
+            {
+              "op": "distinct",
+              "field": "route",
+              "as": "nRoutesRun"
+            }
+          ],
+          "groupby": [
+            "year",
+            "group",
+            "mbbs_county"
+          ]
+        },
+        {
+          "filter": {
+            "param": "countySelection"
+          }
+        },
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "countyCount",
+              "as": "yearCount"
+            },
+            {
+              "op": "sum",
+              "field": "nRoutesRun",
+              "as": "yearRoutes"
+            }
+          ],
+          "groupby": [
+            "year",
+            "group"
+          ]
+        },
+        {
+          "calculate": "\n                    datum.yearCount / datum.yearRoutes\n                    ",
+          "as": "yBar"
+        }
+      ]
     }
   ]
 }
