@@ -59,12 +59,6 @@ trendChart data =
                     , pTemporal
                     , pAxis [ axTitle "" ] 
                     ]
-                -- << position Y 
-                --     [ pName "yBar"
-                --     , pQuant    
-                --     , pAggregate opSum
-                --     , pAxis [ axTitle "Total Counts" ]
-                --     ]
                 << color 
                     [ mName "group"
                     , mNominal 
@@ -141,7 +135,6 @@ trendChart data =
                     datum.yearCount / datum.yearRoutes
                     """
                     "yBar"
-                -- << filter (fiSelection "countySelection" )
 
         totalCountSpec = 
             asSpec [
