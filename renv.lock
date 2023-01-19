@@ -387,8 +387,8 @@
       "RemoteUsername": "nc-minibbs",
       "RemoteRepo": "mbbs",
       "RemoteRef": "master",
-      "RemoteSha": "2419404b524fbc118cf2978b78a36824ff427e6f",
-      "Hash": "860f2bdcacc1af847f215e24d2e79237",
+      "RemoteSha": "1d658675b4827bf4eb2eaf0fda9032fbdb65e023",
+      "Hash": "3c34136f4af18ff5a6baabdbc6db2b73",
       "Requirements": [
         "assertthat",
         "dplyr",
