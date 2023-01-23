@@ -1,16 +1,17 @@
-port module Species exposing (
-       vegaLiteSpec
-     , main)
+port module Species exposing
+    ( main
+    , vegaLiteSpec
+    )
 
 import Browser
-import Select exposing (..)
-import Html exposing (Html)
-import Html.Styled as Styled  exposing (Html, div, text)
 import Css
-import Html.Styled.Attributes as StyledAttribs
 import Debug exposing (toString)
-import VegaLite exposing (Spec)
+import Html exposing (Html)
+import Html.Styled as Styled exposing (Html, div, text)
+import Html.Styled.Attributes as StyledAttribs
+import Select exposing (..)
 import SpeciesTrend exposing (mbbsSpecs)
+import VegaLite exposing (Spec)
 
 
 type Species
@@ -18,47 +19,65 @@ type Species
     | AmericanCrow
     | CarolinaWren
 
+
 allSpecies : List Species
-allSpecies = [
-      NorthernCardinal
+allSpecies =
+    [ NorthernCardinal
     , AmericanCrow
     , CarolinaWren
     ]
 
+
 speciesToString : Species -> String
-speciesToString species = case species of
-    NorthernCardinal -> "Northern Cardinal"
-    AmericanCrow     -> "American Crow"
-    CarolinaWren     -> "Carolina Wren"
+speciesToString species =
+    case species of
+        NorthernCardinal ->
+            "Northern Cardinal"
+
+        AmericanCrow ->
+            "American Crow"
+
+        CarolinaWren ->
+            "Carolina Wren"
+
 
 speciesToMenuItem : Species -> Select.MenuItem Species
-speciesToMenuItem species = 
+speciesToMenuItem species =
     basicMenuItem { item = species, label = speciesToString species }
 
 
+speciesMenuItems : List (Select.MenuItem Species)
+speciesMenuItems =
+    List.map speciesToMenuItem allSpecies
 
-speciesMenuItems : List ( Select.MenuItem Species )
-speciesMenuItems = List.map speciesToMenuItem allSpecies
 
 type alias Model =
-    {  selectState : Select.State
-    ,  items : List (Select.MenuItem Species)
-    ,  selectedSpecies : Maybe Species
+    { selectState : Select.State
+    , items : List (Select.MenuItem Species)
+    , selectedSpecies : Maybe Species
+
     -- ,  currentSpec : (Spec, Cmd Msg)
     }
 
+
 init : Model
-init = 
-    {  selectState =
-            Select.initState (Select.selectIdentifier "SpeciesSelector")
-    ,  items = speciesMenuItems
-    ,  selectedSpecies = Nothing
+init =
+    { selectState =
+        Select.initState (Select.selectIdentifier "SpeciesSelector")
+    , items = speciesMenuItems
+    , selectedSpecies = Nothing
+
     -- , currentSpec = vegaLiteSpec (mbbsSpecs "Northern Cardinal")
     }
 
-type Msg 
+
+type Msg
     = SelectMsg (Select.Msg Species)
-    -- your other Msg's
+
+
+
+-- your other Msg's
+
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -71,41 +90,43 @@ update msg model =
                 updatedSelectedItem =
                     case maybeAction of
                         Just (Select.Select i) ->
-                            Just i 
-                            |> Debug.log "Selected"
+                            Just i
+                                |> Debug.log "Selected"
 
                         Just Select.Clear ->
                             Nothing
 
                         _ ->
                             model.selectedSpecies
-                specMsg = 
-                    case maybeAction of 
+
+                specMsg =
+                    case maybeAction of
                         Just (Select.Select i) ->
                             vegaLiteSpec (mbbsSpecs (speciesToString i))
-                        _ -> Cmd.none
+
+                        _ ->
+                            Cmd.none
             in
-            ( { model | 
-                  selectState = selectState
+            ( { model
+                | selectState = selectState
                 , selectedSpecies = updatedSelectedItem
+
                 -- , currentSpec = updatedSpec
-                }
-                , Cmd.map SelectMsg specMsg)
-
-
+              }
+            , Cmd.map SelectMsg specMsg
+            )
 
 
 view : Model -> Html Msg
 view m =
     let
-        selectedItem = 
+        selectedItem =
             case m.selectedSpecies of
                 Just i ->
                     Just (speciesToMenuItem i)
 
                 _ ->
                     Nothing
-        
     in
     div
         [ StyledAttribs.css
@@ -124,13 +145,14 @@ view m =
                     |> Select.searchable True
                     |> Select.clearable True
                 )
-        , div 
-            [] 
+        , div
+            []
             [ text (toString m.selectedSpecies) ]
-        , div 
-            [ StyledAttribs.id "speciesTrend" ] 
-            [] 
+        , div
+            [ StyledAttribs.id "speciesTrend" ]
+            []
         ]
+
 
 main : Program () Model Msg
 main =

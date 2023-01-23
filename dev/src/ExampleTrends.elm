@@ -1,23 +1,27 @@
-port module ExampleTrends exposing (vegaLite, main)
+port module ExampleTrends exposing (main, vegaLite)
 
 import Data.Mbbs exposing (mbbsData)
-import Specs.ExampleTrends exposing (viz)
 import Platform
+import Specs.ExampleTrends exposing (viz)
 import VegaLite exposing (..)
 
 
-
 specs : Spec
-specs = viz mbbsData 
-  [ --"Northern Cardinal"
-    "Wood Thrush"
-  , "Chimney Swift"
-  , "Carolina Wren"
-  , "Northern Bobwhite"
-  -- , "Red-tailed Hawk"
-  , "Carolina Chickadee"
-  -- , "Ruby-throated Hummingbird"
-  ]
+specs =
+    viz mbbsData
+        [ --"Northern Cardinal"
+          "Wood Thrush"
+        , "Chimney Swift"
+        , "Carolina Wren"
+        , "Northern Bobwhite"
+
+        -- , "Red-tailed Hawk"
+        , "Carolina Chickadee"
+
+        -- , "Ruby-throated Hummingbird"
+        ]
+
+
 
 {- The code below is boilerplate for creating a headless Elm module that opens
    an outgoing port to JavaScript and sends the Vega-Lite spec (myVis) to it.

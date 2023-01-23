@@ -1,10 +1,11 @@
 module Specs.ExampleTrends exposing (..)
 
 -- import Data.Mbbs exposing ( mbbsData )
+
 import VegaLite exposing (..)
 
-{-|
--}
+
+{-| -}
 viz : Data -> List String -> Spec
 viz data species =
     let
@@ -19,9 +20,9 @@ viz data species =
                     , mLegend []
                     ]
 
-        
-        lineEnc = encoding <<
-                position X
+        lineEnc =
+            encoding
+                << position X
                     [ pName "year"
                     , pTemporal
                     , pAxis [ axTitle "" ]
@@ -36,20 +37,23 @@ viz data species =
                     , [ tName "year", tTemporal, tFormat "%Y" ]
                     , [ tName "avgCount", tQuant ]
                     ]
-        labelEnc = encoding 
-              << position X 
-                  [ pName "year"
-                  , pAggregate opMax
-                  , pTemporal
-                 ]
-              << position Y
-                  [ pName "avgCount"
-                  , pQuant
-                  , pAggregate (opArgMax (Just "year"))
-                  ]
-              << text 
-                  [ tName "common_name"
-                  , tAggregate (opArgMax (Just "year")) ]
+
+        labelEnc =
+            encoding
+                << position X
+                    [ pName "year"
+                    , pAggregate opMax
+                    , pTemporal
+                    ]
+                << position Y
+                    [ pName "avgCount"
+                    , pQuant
+                    , pAggregate (opArgMax (Just "year"))
+                    ]
+                << text
+                    [ tName "common_name"
+                    , tAggregate (opArgMax (Just "year"))
+                    ]
 
         {-
            Define data transform and summaries
@@ -104,31 +108,34 @@ viz data species =
                     datum.yearCount / datum.yearRoutes
                     """
                     "avgCount"
-
     in
     toVegaLite
         [ data
         , width 500
         , height 400
         , enc []
-        , layer [
-            -- The main line chart 
-             asSpec [
-               lineEnc []
-             , line [] ]
+        , layer
+            [ -- The main line chart
+              asSpec
+                [ lineEnc []
+                , line []
+                ]
+
             -- Transparent layer to make it easier to select tooltip
-            , asSpec [ 
-                lineEnc []
-              , line [ maStrokeWidth 12 , maOpacity 0 ]
-            ]
+            , asSpec
+                [ lineEnc []
+                , line [ maStrokeWidth 12, maOpacity 0 ]
+                ]
+
             -- Textual Labels for each line
-            , asSpec [ 
-                  labelEnc []
+            , asSpec
+                [ labelEnc []
                 , circle []
-                , textMark [ 
-                  maAlign haLeft
-                  , maDx 1.5] 
+                , textMark
+                    [ maAlign haLeft
+                    , maDx 1.5
+                    ]
+                ]
             ]
-          ]
         , trans0 []
         ]

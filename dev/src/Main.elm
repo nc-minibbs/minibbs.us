@@ -3,6 +3,7 @@ port module Main exposing (elmToJS, main)
 import Platform
 import VegaLite exposing (..)
 
+
 counts : Data
 counts =
     dataFromUrl "./trends.csv"
@@ -11,6 +12,7 @@ counts =
             , ( "count", foNum )
             ]
         ]
+
 
 trendChart : Data -> Spec
 trendChart data =
@@ -93,7 +95,6 @@ trendChart data =
                     , "mbbs_county"
                     ]
 
-
         trans1 =
             trans0
                 -- Compute yHat by
@@ -129,16 +130,17 @@ trendChart data =
                     """
                     "yBar"
 
-        trans3 = transform
-                    -- Filter based on the selected county
-                    << filter (fiSelection "countySelection")
-                    -- Remove 0 counts
-                    << filter (fiExpr "datum.count > 0")
-                    << aggregate
-                        [ opAs opDistinct "common_name" "nSpecies" ]
-                        [ "year"
-                        , "group"
-                        ] 
+        trans3 =
+            transform
+                -- Filter based on the selected county
+                << filter (fiSelection "countySelection")
+                -- Remove 0 counts
+                << filter (fiExpr "datum.count > 0")
+                << aggregate
+                    [ opAs opDistinct "common_name" "nSpecies" ]
+                    [ "year"
+                    , "group"
+                    ]
 
         totalCountSpec =
             asSpec
@@ -175,15 +177,16 @@ trendChart data =
                 , ps []
                 , trans2 []
                 ]
-         
+
         uniqueSpeciesSpec =
-            asSpec 
+            asSpec
                 [ width 500
                 , height 400
                 , (enc
                     << position Y
                         [ pName "nSpecies"
                         , pQuant
+
                         -- , pAggregate opSum
                         , pAxis [ axTitle "Number of species observed" ]
                         ]
@@ -193,7 +196,6 @@ trendChart data =
                 , ps []
                 , trans3 []
                 ]
-           
     in
     toVegaLite
         [ data
@@ -208,16 +210,20 @@ trendChart data =
 
 
 mainTrends : Spec
-mainTrends = trendChart counts
+mainTrends =
+    trendChart counts
+
 
 
 {- This list comprises the specifications to be provided to the Vega runtime.
    In this example, only a single spec 'helloWord' is provided.
 -}
 
+
 mbbsSpecs : Spec
 mbbsSpecs =
     combineSpecs [ ( "mainTrends", mainTrends ) ]
+
 
 
 {- ---------------------------------------------------------------------------
@@ -225,10 +231,7 @@ mbbsSpecs =
    an outgoing port to JavaScript and sends the Vega specs (mySpecs) to it.
    There should be no need to change this.
 -}
-
 -- https://package.elm-lang.org/packages/sporto/elm-select/latest/Select
-
-
 
 
 main : Program () Spec msg
@@ -238,5 +241,6 @@ main =
         , update = \_ model -> ( model, Cmd.none )
         , subscriptions = always Sub.none
         }
+
 
 port elmToJS : Spec -> Cmd msg

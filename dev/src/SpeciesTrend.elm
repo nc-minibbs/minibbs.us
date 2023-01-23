@@ -1,9 +1,10 @@
 module SpeciesTrend exposing (..)
 
 -- port module Main2 exposing (elmToJS, main)
-
 -- import Platform
+
 import VegaLite exposing (..)
+
 
 counts : Data
 counts =
@@ -14,10 +15,10 @@ counts =
             ]
         ]
 
-speciesChart : Data -> String -> Spec
-speciesChart x species = 
-    let 
 
+speciesChart : Data -> String -> Spec
+speciesChart x species =
+    let
         {-
            Define parameters for interactivity
         -}
@@ -36,60 +37,61 @@ speciesChart x species =
                             ]
                         )
                     ]
-                
 
-        enc = 
+        enc =
             encoding
-                << position X 
+                << position X
                     [ pName "year"
                     , pTemporal
-                    , pAxis [ axTitle ""] 
+                    , pAxis [ axTitle "" ]
                     ]
 
         -- encCounts =
         --     enc
-        --         << position Y 
+        --         << position Y
         --             [ pName "count"
-        --             , pQuant 
+        --             , pQuant
         --             , pAxis [ axTitle "Count" ]
         --             ]
         --         << detail [dName "route"]
+        encMean =
+            enc
+                << position Y [ pName "count", pAggregate opMean ]
 
-        encMean = 
-            enc 
-                << position Y [ pName "count", pAggregate opMean]
-        
-        trans = transform 
+        trans =
+            transform
                 -- Filter based on the selected county
                 << filter (fiSelection "countySelection")
                 -- Filter to selected species
                 << filter (fiEqual "common_name" (str species))
-
-    in 
-    toVegaLite 
+    in
+    toVegaLite
         [ width 400
         , height 300
         , x
         , ps []
         , trans []
-        , layer [
-            -- asSpec 
-            --     [ encCounts []
-            --     , line 
-            --         [ maColor "black"
-            --         , maOpacity 0.2
-            --         , maStrokeWidth 0.5
-            --         ]
-            --     , trans []
-            --     , ps []
-            --     ]
-             asSpec 
+        , layer
+            [ -- asSpec
+              --     [ encCounts []
+              --     , line
+              --         [ maColor "black"
+              --         , maOpacity 0.2
+              --         , maStrokeWidth 0.5
+              --         ]
+              --     , trans []
+              --     , ps []
+              --     ]
+              asSpec
                 [ encMean []
-                , line [ maColor "gray" ] 
+                , line [ maColor "gray" ]
                 ]
+            ]
+
+        -- , trans []
         ]
-        -- , trans [] 
-        ] 
+
+
 
 -- speciesChart2 : Data -> String -> Spec
 -- speciesChart2 data species  =
@@ -112,7 +114,6 @@ speciesChart x species =
 --                             ]
 --                         )
 --                     ]
-
 --         {-
 --            Define the primary layer's encoding
 --         -}
@@ -123,12 +124,10 @@ speciesChart x species =
 --                     , pTemporal
 --                     , pAxis [ axTitle "" ]
 --                     ]
-
 --                 << tooltips
 --                     [ [ tName "year", tTemporal, tFormat "%Y" ]
 --                     , [ tName "yBar", tQuant, tAggregate opSum ]
 --                     ]
-
 --         {-
 --            Define data transform and summaries
 --         -}
@@ -180,7 +179,6 @@ speciesChart x species =
 --                     datum.yearCount / datum.yearRoutes
 --                     """
 --                     "yBar"
-
 --         -- trans1 =
 --         --     trans0
 --         --         -- Compute yHat by
@@ -196,7 +194,6 @@ speciesChart x species =
 --         --             )
 --         --             """
 --         --             "yHat"
-
 --         totalCountSpec =
 --             asSpec
 --                 [ width 500
@@ -214,7 +211,6 @@ speciesChart x species =
 --                 , ps []
 --                 , trans []
 --                 ]
-           
 --     in
 --     toVegaLite
 --         [ data
@@ -225,13 +221,17 @@ speciesChart x species =
 --             ]
 --         ]
 
+
 speciesTrend : String -> Spec
-speciesTrend = speciesChart counts
+speciesTrend =
+    speciesChart counts
+
 
 
 {- This list comprises the specifications to be provided to the Vega runtime.
    In this example, only a single spec 'helloWord' is provided.
 -}
+
 
 mbbsSpecs : String -> Spec
 mbbsSpecs x =
