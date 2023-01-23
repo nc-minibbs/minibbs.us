@@ -4,7 +4,7 @@
     bash-prompt = "minibbs.us> ";
   };
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -22,8 +22,13 @@
           pkgs.libpng
           pkgs.pandoc
 
+          pkgs.updog # simple HTTP server for running HTTP server locally (for testing)
           pkgs.elmPackages.elm
+          pkgs.elmPackages.elm-format
+          pkgs.elmPackages.elm-analyse
+          # pkgs.elmPackages.elm-live
           pkgs.nodejs
+          pkgs.nodePackages.prettier
           
         ];
       }; 

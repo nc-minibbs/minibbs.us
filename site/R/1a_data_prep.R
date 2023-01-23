@@ -15,11 +15,16 @@ pre_dt <-
     mbbs_durham
   ) %>%
   ungroup() %>%
+  # Remove any observations for unclassified species,
+  # such as (Hawk sp. or duck sp.)
+  filter(
+    !grepl("sp\\.", common_name)
+  ) %>%
   # Summarize species counts by:
   # county year species route
   group_by(
     mbbs_county, year, common_name, sci_name,
-    tax_order, date, route_num
+    date, route_num
   ) %>%
   summarise(
     count = sum(count),
@@ -63,7 +68,7 @@ analysis_dt <-
   # in that route / year.
   complete(
     nesting(year, date, mbbs_county, route, route_num),
-    nesting(common_name, sci_name, tax_order),
+    nesting(common_name, sci_name),
     fill = list(count = 0)
   )
 
