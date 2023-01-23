@@ -22,7 +22,8 @@ allSpecies : List Species
 allSpecies = [
       NorthernCardinal
     , AmericanCrow
-    , CarolinaWren]
+    , CarolinaWren
+    ]
 
 speciesToString : Species -> String
 speciesToString species = case species of
@@ -32,11 +33,11 @@ speciesToString species = case species of
 
 speciesToMenuItem : Species -> Select.MenuItem Species
 speciesToMenuItem species = 
-    basicMenuItem { item = species, label = speciesToString species}
+    basicMenuItem { item = species, label = speciesToString species }
 
 
 
-speciesMenuItems : List (Select.MenuItem Species )
+speciesMenuItems : List ( Select.MenuItem Species )
 speciesMenuItems = List.map speciesToMenuItem allSpecies
 
 type alias Model =
