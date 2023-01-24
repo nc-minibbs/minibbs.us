@@ -1,8 +1,17 @@
+## R
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 *.Rproj
+
+## Elm
+elm-stuff
+
+## IDE stuff/system
 *.DS_Store
 *sublime-project
 
+
+## scratch files
+scratch**
