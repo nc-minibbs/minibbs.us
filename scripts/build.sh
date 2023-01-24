@@ -9,4 +9,6 @@ pandoc site/index.md \
   --from=markdown \
   --to=html \
   --output=$SITEDIR/index.html \
-  --standalone 
+  --standalone
+
+cp -r data/ $SITEDIR/data
