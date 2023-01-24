@@ -5,14 +5,14 @@ header-includes :
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  - <script src="js/exampleTrends.js"></script>
+  - <script src="js/main.js"></script>
 include-after:
   - |
     <script>
     // This function grabs the specification from Elm (here called specs).
-    Elm.ExampleTrends.init().ports.vegaLite.subscribe(function (specs) {
+    Elm.Main.init().ports.vegaLite.subscribe(function (specs) {
       // Change actions to true to display links to source, editor and image.
-      vegaEmbed("#vis", specs, { actions: false }).catch(console.warn);
+      vegaEmbed("#exampleTrends", specs["exampleTrends"], { actions: false }).catch(console.warn);
 
     });
     </script>
@@ -40,7 +40,7 @@ As you can see,
 * species such as Eastern Bluebird have no obvious trend;
 * species such as Summer Tanager appearing to be increasing in abundance.
 
-<div id="vis" margin=auto></div>
+<div id="exampleTrends" margin=auto></div>
 
 [View more details results and analysis here](results.html).
 

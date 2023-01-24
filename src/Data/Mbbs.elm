@@ -1,11 +1,10 @@
-module Data.Mbbs exposing (mbbsData)
+module Data.Mbbs exposing (..)
 
-{-| Exposes the MBBS data as a
+{-| Exposes the MBBS traits data as a
 [VegaLite Data object](https://package.elm-lang.org/packages/gicentre/elm-vegalite/latest/VegaLite#2-specifying-the-data-to-visualize).
 -}
 
 import VegaLite exposing (..)
-
 
 mbbsData : Data
 mbbsData =
@@ -15,3 +14,4 @@ mbbsData =
             , ( "count", foNum )
             ]
         ]
+

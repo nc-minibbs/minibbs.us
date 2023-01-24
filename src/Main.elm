@@ -1,4 +1,4 @@
-port module ExampleTrends exposing (main, vegaLite)
+port module Main exposing (main, vegaLite)
 
 import Data.Mbbs exposing (mbbsData)
 import Data.Species exposing ( Species(..) )
@@ -6,8 +6,8 @@ import Platform
 import Specs.ExampleTrends exposing (mkExampleTrendsSpec)
 import VegaLite exposing (..)
 
-specs : Spec
-specs =
+exampleTrendsSpec : Spec
+exampleTrendsSpec =
     mkExampleTrendsSpec 
         mbbsData
         [ WoodThrush
@@ -16,6 +16,11 @@ specs =
         , SummerTanager
         ]
 
+
+specs : Spec
+specs =
+    combineSpecs 
+    [ ( "exampleTrends", exampleTrendsSpec ) ]
 
 {- The code below is boilerplate for creating a headless Elm module that opens
    an outgoing port to JavaScript and sends the Vega-Lite spec to it.

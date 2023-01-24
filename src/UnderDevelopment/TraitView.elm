@@ -1,4 +1,4 @@
-port module Main exposing (elmToJS, main)
+port module UnderDevelopment.TraitView exposing (elmToJS, main)
 
 import Platform
 import VegaLite exposing (..)
