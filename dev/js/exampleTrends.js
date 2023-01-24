@@ -3186,6 +3186,8 @@ var $gicentre$elm_vegalite$VegaLite$aggregate = F2(
 							A2($elm$json$Json$Encode$list, $elm$json$Json$Encode$string, groups))
 						]))));
 	});
+var $gicentre$elm_vegalite$VegaLite$AnEnd = {$: 'AnEnd'};
+var $gicentre$elm_vegalite$VegaLite$anEnd = $gicentre$elm_vegalite$VegaLite$AnEnd;
 var $gicentre$elm_vegalite$VegaLite$vlPropertyLabel = function (spec) {
 	switch (spec.$) {
 		case 'VLName':
@@ -3273,6 +3275,16 @@ var $gicentre$elm_vegalite$VegaLite$asSpec = function (specs) {
 			},
 			specs));
 };
+var $gicentre$elm_vegalite$VegaLite$AxGrid = function (a) {
+	return {$: 'AxGrid', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$Boo = function (a) {
+	return {$: 'Boo', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$axGrid = function (b) {
+	return $gicentre$elm_vegalite$VegaLite$AxGrid(
+		$gicentre$elm_vegalite$VegaLite$Boo(b));
+};
 var $gicentre$elm_vegalite$VegaLite$AxTitle = function (a) {
 	return {$: 'AxTitle', a: a};
 };
@@ -3282,6 +3294,24 @@ var $gicentre$elm_vegalite$VegaLite$Str = function (a) {
 var $gicentre$elm_vegalite$VegaLite$axTitle = function (s) {
 	return $gicentre$elm_vegalite$VegaLite$AxTitle(
 		$gicentre$elm_vegalite$VegaLite$Str(s));
+};
+var $gicentre$elm_vegalite$VegaLite$AxTitleAnchor = function (a) {
+	return {$: 'AxTitleAnchor', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$axTitleAnchor = $gicentre$elm_vegalite$VegaLite$AxTitleAnchor;
+var $gicentre$elm_vegalite$VegaLite$AxTitleAngle = function (a) {
+	return {$: 'AxTitleAngle', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$Num = function (a) {
+	return {$: 'Num', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$positiveAngle = function (a) {
+	return (a < 0) ? (a + 360) : a;
+};
+var $gicentre$elm_vegalite$VegaLite$axTitleAngle = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$AxTitleAngle(
+		$gicentre$elm_vegalite$VegaLite$Num(
+			$gicentre$elm_vegalite$VegaLite$positiveAngle(n)));
 };
 var $gicentre$elm_vegalite$VegaLite$calculateAs = F2(
 	function (ex, label) {
@@ -3341,9 +3371,6 @@ var $gicentre$elm_vegalite$VegaLite$markLabel = function (m) {
 };
 var $gicentre$elm_vegalite$VegaLite$ArAria = function (a) {
 	return {$: 'ArAria', a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$Boo = function (a) {
-	return {$: 'Boo', a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$TTNone = {$: 'TTNone'};
 var $elm$json$Json$Encode$bool = _Json_wrap;
@@ -6804,9 +6831,6 @@ var $gicentre$elm_vegalite$VegaLite$maAlign = $gicentre$elm_vegalite$VegaLite$MA
 var $gicentre$elm_vegalite$VegaLite$MdX = function (a) {
 	return {$: 'MdX', a: a};
 };
-var $gicentre$elm_vegalite$VegaLite$Num = function (a) {
-	return {$: 'Num', a: a};
-};
 var $gicentre$elm_vegalite$VegaLite$maDx = function (n) {
 	return $gicentre$elm_vegalite$VegaLite$MdX(
 		$gicentre$elm_vegalite$VegaLite$Num(n));
@@ -8089,6 +8113,13 @@ var $gicentre$elm_vegalite$VegaLite$TmType = function (a) {
 };
 var $gicentre$elm_vegalite$VegaLite$tQuant = $gicentre$elm_vegalite$VegaLite$TmType($gicentre$elm_vegalite$VegaLite$Quantitative);
 var $gicentre$elm_vegalite$VegaLite$tTemporal = $gicentre$elm_vegalite$VegaLite$TmType($gicentre$elm_vegalite$VegaLite$Temporal);
+var $gicentre$elm_vegalite$VegaLite$TTitle = function (a) {
+	return {$: 'TTitle', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$tTitle = function (s) {
+	return $gicentre$elm_vegalite$VegaLite$TTitle(
+		$gicentre$elm_vegalite$VegaLite$Str(s));
+};
 var $gicentre$elm_vegalite$VegaLite$textChannelProperties = function (tDef) {
 	switch (tDef.$) {
 		case 'TName':
@@ -8286,9 +8317,9 @@ var $gicentre$elm_vegalite$VegaLite$width = function (w) {
 		$gicentre$elm_vegalite$VegaLite$VLWidth,
 		$elm$json$Json$Encode$float(w));
 };
-var $author$project$Specs$ExampleTrends$viz = F2(
+var $author$project$Specs$ExampleTrends$mkExampleTrendsSpec = F2(
 	function (data, species) {
-		var trans0 = A2(
+		var trans = A2(
 			$elm$core$Basics$composeL,
 			A2(
 				$elm$core$Basics$composeL,
@@ -8313,7 +8344,7 @@ var $author$project$Specs$ExampleTrends$viz = F2(
 										A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'count', 'speciesCount')
 									]),
 								_List_fromArray(
-									['year', 'mbbs_county', 'route', 'common_name']))),
+									['year', 'mbbs_county', 'route', 'common_name', 'sci_name']))),
 						A2(
 							$gicentre$elm_vegalite$VegaLite$aggregate,
 							_List_fromArray(
@@ -8321,7 +8352,7 @@ var $author$project$Specs$ExampleTrends$viz = F2(
 									A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'speciesCount', 'routeCount')
 								]),
 							_List_fromArray(
-								['year', 'mbbs_county', 'route', 'common_name']))),
+								['year', 'mbbs_county', 'route', 'common_name', 'sci_name']))),
 					A2(
 						$gicentre$elm_vegalite$VegaLite$aggregate,
 						_List_fromArray(
@@ -8330,7 +8361,7 @@ var $author$project$Specs$ExampleTrends$viz = F2(
 								A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opDistinct, 'route', 'nRoutesRun')
 							]),
 						_List_fromArray(
-							['year', 'mbbs_county', 'common_name']))),
+							['year', 'mbbs_county', 'common_name', 'sci_name']))),
 				A2(
 					$gicentre$elm_vegalite$VegaLite$aggregate,
 					_List_fromArray(
@@ -8339,7 +8370,7 @@ var $author$project$Specs$ExampleTrends$viz = F2(
 							A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'nRoutesRun', 'yearRoutes')
 						]),
 					_List_fromArray(
-						['year', 'common_name']))),
+						['year', 'common_name', 'sci_name']))),
 			A2($gicentre$elm_vegalite$VegaLite$calculateAs, '\n                    datum.yearCount / datum.yearRoutes\n                    ', 'avgCount'));
 		var lineEnc = A2(
 			$elm$core$Basics$composeL,
@@ -8358,7 +8389,8 @@ var $author$project$Specs$ExampleTrends$viz = F2(
 								$gicentre$elm_vegalite$VegaLite$pAxis(
 								_List_fromArray(
 									[
-										$gicentre$elm_vegalite$VegaLite$axTitle('')
+										$gicentre$elm_vegalite$VegaLite$axTitle(''),
+										$gicentre$elm_vegalite$VegaLite$axGrid(false)
 									]))
 							]))),
 				A2(
@@ -8371,7 +8403,10 @@ var $author$project$Specs$ExampleTrends$viz = F2(
 							$gicentre$elm_vegalite$VegaLite$pAxis(
 							_List_fromArray(
 								[
-									$gicentre$elm_vegalite$VegaLite$axTitle('Average Count per Route')
+									$gicentre$elm_vegalite$VegaLite$axTitle('Average Count\nper Route'),
+									$gicentre$elm_vegalite$VegaLite$axGrid(false),
+									$gicentre$elm_vegalite$VegaLite$axTitleAngle(0),
+									$gicentre$elm_vegalite$VegaLite$axTitleAnchor($gicentre$elm_vegalite$VegaLite$anEnd)
 								]))
 						]))),
 			$gicentre$elm_vegalite$VegaLite$tooltips(
@@ -8379,18 +8414,27 @@ var $author$project$Specs$ExampleTrends$viz = F2(
 					[
 						_List_fromArray(
 						[
-							$gicentre$elm_vegalite$VegaLite$tName('common_name')
+							$gicentre$elm_vegalite$VegaLite$tName('common_name'),
+							$gicentre$elm_vegalite$VegaLite$tTitle('Common name')
+						]),
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('sci_name'),
+							$gicentre$elm_vegalite$VegaLite$tTitle('Scientific name')
 						]),
 						_List_fromArray(
 						[
 							$gicentre$elm_vegalite$VegaLite$tName('year'),
+							$gicentre$elm_vegalite$VegaLite$tTitle('Year'),
 							$gicentre$elm_vegalite$VegaLite$tTemporal,
 							$gicentre$elm_vegalite$VegaLite$tFormat('%Y')
 						]),
 						_List_fromArray(
 						[
 							$gicentre$elm_vegalite$VegaLite$tName('avgCount'),
-							$gicentre$elm_vegalite$VegaLite$tQuant
+							$gicentre$elm_vegalite$VegaLite$tTitle('Average Count'),
+							$gicentre$elm_vegalite$VegaLite$tQuant,
+							$gicentre$elm_vegalite$VegaLite$tFormat('.2f')
 						])
 					])));
 		var labelEnc = A2(
@@ -8478,14 +8522,14 @@ var $author$project$Specs$ExampleTrends$viz = F2(
 										]))
 								]))
 						])),
-					trans0(_List_Nil)
+					trans(_List_Nil)
 				]));
 	});
 var $author$project$ExampleTrends$specs = A2(
-	$author$project$Specs$ExampleTrends$viz,
+	$author$project$Specs$ExampleTrends$mkExampleTrendsSpec,
 	$author$project$Data$Mbbs$mbbsData,
 	_List_fromArray(
-		['Wood Thrush', 'Chimney Swift', 'Carolina Wren', 'Northern Bobwhite', 'Carolina Chickadee']));
+		['Wood Thrush', 'Northern Bobwhite', 'Eastern Bluebird', 'Summer Tanager']));
 var $elm$json$Json$Decode$succeed = _Json_succeed;
 var $author$project$ExampleTrends$vegaLite = _Platform_outgoingPort('vegaLite', $elm$core$Basics$identity);
 var $elm$core$Platform$worker = _Platform_worker;

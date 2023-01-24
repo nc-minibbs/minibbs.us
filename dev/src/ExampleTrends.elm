@@ -2,21 +2,23 @@ port module ExampleTrends exposing (main, vegaLite)
 
 import Data.Mbbs exposing (mbbsData)
 import Platform
-import Specs.ExampleTrends exposing (viz)
+import Specs.ExampleTrends exposing (mkExampleTrendsSpec)
 import VegaLite exposing (..)
 
 
 specs : Spec
 specs =
-    viz mbbsData
+    mkExampleTrendsSpec 
+        mbbsData
         [ --"Northern Cardinal"
           "Wood Thrush"
-        , "Chimney Swift"
-        , "Carolina Wren"
+        -- , "Chimney Swift"
+        -- , "Carolina Wren"
         , "Northern Bobwhite"
-
+        , "Eastern Bluebird"
+        , "Summer Tanager"
         -- , "Red-tailed Hawk"
-        , "Carolina Chickadee"
+        -- , "Carolina Chickadee"
 
         -- , "Ruby-throated Hummingbird"
         ]

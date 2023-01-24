@@ -1,13 +1,16 @@
 module Specs.ExampleTrends exposing (..)
 
--- import Data.Mbbs exposing ( mbbsData )
-
 import VegaLite exposing (..)
 
+{-|
+Defines the Vega-Lite specs
+for the site's landing page.
 
-{-| -}
-viz : Data -> List String -> Spec
-viz data species =
+First argument is the data to use for the visualization.
+Second arguments is a list of species to include on the plot.
+-}
+mkExampleTrendsSpec : Data -> List String -> Spec
+mkExampleTrendsSpec data species =
     let
         {-
            Define the vizulation's encoding
@@ -25,17 +28,29 @@ viz data species =
                 << position X
                     [ pName "year"
                     , pTemporal
-                    , pAxis [ axTitle "" ]
+                    , pAxis [ axTitle "", axGrid False]
                     ]
                 << position Y
                     [ pName "avgCount"
                     , pQuant
-                    , pAxis [ axTitle "Average Count per Route" ]
+                    , pAxis [ axTitle "Average Count\nper Route"
+                            , axGrid False
+                            , axTitleAngle 0
+                            , axTitleAnchor anEnd]
                     ]
                 << tooltips
-                    [ [ tName "common_name" ]
-                    , [ tName "year", tTemporal, tFormat "%Y" ]
-                    , [ tName "avgCount", tQuant ]
+                    [ [ tName "common_name"
+                      , tTitle "Common name" ]
+                    , [ tName "sci_name"
+                      , tTitle "Scientific name" ]
+                    , [ tName "year"
+                      , tTitle "Year"
+                      , tTemporal
+                      , tFormat "%Y" ]
+                    , [ tName "avgCount"
+                      , tTitle "Average Count"
+                      , tQuant
+                      , tFormat ".2f" ]
                     ]
 
         labelEnc =
@@ -58,7 +73,7 @@ viz data species =
         {-
            Define data transform and summaries
         -}
-        trans0 =
+        trans =
             transform
                 -- Filter to the selected species
                 << filter (fiOneOf "common_name" (strs species))
@@ -71,6 +86,7 @@ viz data species =
                     , "mbbs_county"
                     , "route"
                     , "common_name"
+                    , "sci_name"
                     ]
                 -- Compute counts of all species within each route/year.
                 << aggregate
@@ -80,6 +96,7 @@ viz data species =
                     , "mbbs_county"
                     , "route"
                     , "common_name"
+                    , "sci_name"
                     ]
                 -- Per year, compute both:
                 -- * counts with a county
@@ -91,6 +108,7 @@ viz data species =
                     [ "year"
                     , "mbbs_county"
                     , "common_name"
+                    , "sci_name"
                     ]
                 -- Compute tallies per year (across counties)
                 << aggregate
@@ -99,6 +117,7 @@ viz data species =
                     ]
                     [ "year"
                     , "common_name"
+                    , "sci_name"
                     ]
                 -- Compute yBar as
                 --   total count in year
@@ -137,5 +156,5 @@ viz data species =
                     ]
                 ]
             ]
-        , trans0 []
+        , trans []
         ]
