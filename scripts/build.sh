@@ -3,7 +3,7 @@
 SITEDIR=_site
 
 elm make src/Main.elm \
-  --output=$SITEDIR/js/exampleTrends.js
+  --output=$SITEDIR/js/main.js
 
 pandoc site/index.md \
   --from=markdown \
