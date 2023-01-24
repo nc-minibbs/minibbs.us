@@ -2,6 +2,7 @@ module Specs.ExampleTrends exposing (..)
 
 import VegaLite exposing (..)
 
+import Data.Species exposing (Species, speciesToString)
 {-|
 Defines the Vega-Lite specs
 for the site's landing page.
@@ -9,7 +10,7 @@ for the site's landing page.
 First argument is the data to use for the visualization.
 Second arguments is a list of species to include on the plot.
 -}
-mkExampleTrendsSpec : Data -> List String -> Spec
+mkExampleTrendsSpec : Data -> List Species -> Spec
 mkExampleTrendsSpec data species =
     let
         {-
@@ -33,10 +34,11 @@ mkExampleTrendsSpec data species =
                 << position Y
                     [ pName "avgCount"
                     , pQuant
-                    , pAxis [ axTitle "Average Count\nper Route"
+                    , pAxis [ axTitle "Average Count per Route"
                             , axGrid False
-                            , axTitleAngle 0
-                            , axTitleAnchor anEnd]
+                            -- , axTitleAngle 270
+                            -- , axTitleAnchor anEnd
+                            ]
                     ]
                 << tooltips
                     [ [ tName "common_name"
@@ -76,7 +78,7 @@ mkExampleTrendsSpec data species =
         trans =
             transform
                 -- Filter to the selected species
-                << filter (fiOneOf "common_name" (strs species))
+                << filter (fiOneOf "common_name" (strs (List.map speciesToString species)))
                 -- Compute counts per species within each route/year
                 -- This and the next sum could combined,
                 -- but kept for clarity of the data summarizing steps.
@@ -130,8 +132,10 @@ mkExampleTrendsSpec data species =
     in
     toVegaLite
         [ data
-        , width 500
-        , height 400
+        , width 450
+        -- , widthOfContainer
+        , height 300
+        , autosize [ asFit, asPadding, asResize ]
         , enc []
         , layer
             [ -- The main line chart

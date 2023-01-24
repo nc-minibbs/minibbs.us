@@ -9,7 +9,7 @@ import VegaLite exposing (..)
 
 mbbsData : Data
 mbbsData =
-    dataFromUrl "./trends.csv"
+    dataFromUrl "./data/mbbs.csv"
         [ parse
             [ ( "year", foDate "%Y" )
             , ( "count", foNum )

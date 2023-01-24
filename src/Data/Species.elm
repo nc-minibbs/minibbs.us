@@ -1,32 +1,47 @@
 module Data.Species exposing (..)
 
-
 type Species
-    = NorthernCardinal
-    | AmericanCrow
+    = AmericanCrow
     | CarolinaWren
+    | EasternBluebird
     | NorthernBobwhite
+    | NorthernCardinal
+    | SummerTanager
+    | WoodThrush
 
 
 allSpecies : List Species
 allSpecies =
-    [ NorthernCardinal
-    , AmericanCrow
+    [ AmericanCrow
     , CarolinaWren
+    , EasternBluebird
+    , NorthernBobwhite
+    , NorthernCardinal
+    , SummerTanager
+    , WoodThrush
     ]
 
 
 speciesToString : Species -> String
-speciesToString species =
+speciesToString species = 
     case species of
-        NorthernCardinal ->
-            "Northern Cardinal"
-
         AmericanCrow ->
             "American Crow"
 
         CarolinaWren ->
             "Carolina Wren"
+        
+        EasternBluebird -> 
+            "Eastern Bluebird"
 
         NorthernBobwhite ->
             "Northern Bobwhite"
+        
+        NorthernCardinal ->
+            "Northern Cardinal"
+        
+        SummerTanager ->
+            "Summer Tanager"
+
+        WoodThrush ->
+            "Wood Thrush"
