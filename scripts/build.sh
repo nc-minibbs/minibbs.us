@@ -1,14 +1,27 @@
 #! /usr/bin/env bash
 
-SITEDIR=_site
+OUTDIR=_site
 
 elm make src/Main.elm \
-  --output=$SITEDIR/js/main.js
+  --output=$OUTDIR/js/main.js
 
 pandoc site/index.md \
   --from=markdown \
   --to=html \
-  --output=$SITEDIR/index.html \
+  --output=$OUTDIR/index.html \
+  --include-in-header=site/import-vega.html \
+  --include-in-header=site/import-elm.html \
+  --include-after-body=site/index.js.html \
   --standalone
 
-cp -r data/ $SITEDIR/data
+pandoc site/results/index.md \
+  --from=markdown \
+  --to=html \
+  --output=$OUTDIR/results/index.html \
+  --include-in-header=site/import-vega.html \
+  --include-in-header=site/import-elm.html \
+  --include-after-body=site/results/index.js.html \
+  --standalone
+
+
+cp -r data/ $OUTDIR/data

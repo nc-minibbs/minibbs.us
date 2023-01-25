@@ -1,21 +1,5 @@
 ---
-title:  What is the MBBS?
-header-includes : 
-  - |
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  - <script src="js/main.js"></script>
-include-after:
-  - |
-    <script>
-    // This function grabs the specification from Elm (here called specs).
-    Elm.Main.init().ports.vegaLite.subscribe(function (specs) {
-      // Change actions to true to display links to source, editor and image.
-      vegaEmbed("#exampleTrends", specs["exampleTrends"], { actions: false }).catch(console.warn);
-
-    });
-    </script>
+title:  The Mini-Bird Breeding Survey
 ---
 
 A *Mini Breeding Bird Survey* (MBBS) is a small-scale version of the full
@@ -42,7 +26,7 @@ As you can see,
 
 <div id="exampleTrends" margin=auto></div>
 
-[View more details results and analysis here](results.html).
+[View more details results and analysis here](results).
 
 ## Qualifications
 

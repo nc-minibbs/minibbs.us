@@ -1,0 +1,8 @@
+<script>
+  // This function grabs the specification from Elm (here called specs).
+  Elm.Main.init().ports.vegaLite.subscribe(function (specs) {
+    // Change actions to true to display links to source, editor and image.
+    vegaEmbed("#exampleTrends", specs["exampleTrends"], { actions: false }).catch(console.warn);
+
+  });
+</script>
