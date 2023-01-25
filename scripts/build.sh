@@ -19,9 +19,9 @@ pandoc site/results/index.md \
   --to=html \
   --output=$OUTDIR/results/index.html \
   --include-in-header=site/import-vega.html \
-  --include-in-header=site/import-elm.html \
+  --include-in-header=site/results/import-elm.html \
   --include-after-body=site/results/index.js.html \
   --standalone
 
 
-cp -r data/ $OUTDIR/data
+cp -r data/ $OUTDIR

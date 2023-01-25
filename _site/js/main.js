@@ -3150,7 +3150,7 @@ var $gicentre$elm_vegalite$VegaLite$Parse = function (a) {
 var $gicentre$elm_vegalite$VegaLite$parse = $gicentre$elm_vegalite$VegaLite$Parse;
 var $author$project$Data$Mbbs$mbbsData = A2(
 	$gicentre$elm_vegalite$VegaLite$dataFromUrl,
-	'./data/mbbs.csv',
+	'../data/mbbs.csv',
 	_List_fromArray(
 		[
 			$gicentre$elm_vegalite$VegaLite$parse(
@@ -8589,10 +8589,998 @@ var $author$project$Main$exampleTrendsSpec = A2(
 	$author$project$Data$Mbbs$mbbsData,
 	_List_fromArray(
 		[$author$project$Data$Species$WoodThrush, $author$project$Data$Species$NorthernBobwhite, $author$project$Data$Species$EasternBluebird, $author$project$Data$Species$SummerTanager]));
+var $author$project$Data$Traits$BreedingBiome = {$: 'BreedingBiome'};
+var $gicentre$elm_vegalite$VegaLite$FExpr = function (a) {
+	return {$: 'FExpr', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$fiExpr = $gicentre$elm_vegalite$VegaLite$FExpr;
+var $gicentre$elm_vegalite$VegaLite$FSelection = function (a) {
+	return {$: 'FSelection', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$fiSelection = $gicentre$elm_vegalite$VegaLite$FSelection;
+var $gicentre$elm_vegalite$VegaLite$InOptions = function (a) {
+	return {$: 'InOptions', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$Strs = function (a) {
+	return {$: 'Strs', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$inOptions = function (ss) {
+	return $gicentre$elm_vegalite$VegaLite$InOptions(
+		$gicentre$elm_vegalite$VegaLite$Strs(ss));
+};
+var $gicentre$elm_vegalite$VegaLite$IPSelect = function (a) {
+	return {$: 'IPSelect', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$ipSelect = $gicentre$elm_vegalite$VegaLite$IPSelect;
+var $gicentre$elm_vegalite$VegaLite$lookup = F4(
+	function (key1, _v0, key2, lufs) {
+		var spec = _v0.b;
+		return $elm$core$List$cons(
+			_Utils_Tuple2(
+				'multiSpecs',
+				function () {
+					switch (lufs.$) {
+						case 'LUFields':
+							var fs = lufs.a;
+							return $elm$json$Json$Encode$object(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										'lookup',
+										$elm$json$Json$Encode$string(key1)),
+										_Utils_Tuple2(
+										'from',
+										$elm$json$Json$Encode$object(
+											_List_fromArray(
+												[
+													_Utils_Tuple2('data', spec),
+													_Utils_Tuple2(
+													'key',
+													$elm$json$Json$Encode$string(key2)),
+													_Utils_Tuple2(
+													'fields',
+													A2($elm$json$Json$Encode$list, $elm$json$Json$Encode$string, fs))
+												])))
+									]));
+						case 'LUFieldsAs':
+							var fas = lufs.a;
+							return $elm$json$Json$Encode$object(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										'lookup',
+										$elm$json$Json$Encode$string(key1)),
+										_Utils_Tuple2(
+										'from',
+										$elm$json$Json$Encode$object(
+											_List_fromArray(
+												[
+													_Utils_Tuple2('data', spec),
+													_Utils_Tuple2(
+													'key',
+													$elm$json$Json$Encode$string(key2)),
+													_Utils_Tuple2(
+													'fields',
+													A2(
+														$elm$json$Json$Encode$list,
+														function (_v2) {
+															var f = _v2.a;
+															return $elm$json$Json$Encode$string(f);
+														},
+														fas))
+												]))),
+										_Utils_Tuple2(
+										'as',
+										A2(
+											$elm$json$Json$Encode$list,
+											function (_v3) {
+												var a = _v3.b;
+												return $elm$json$Json$Encode$string(a);
+											},
+											fas))
+									]));
+						case 'LUAs':
+							var s = lufs.a;
+							return $elm$json$Json$Encode$object(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										'lookup',
+										$elm$json$Json$Encode$string(key1)),
+										_Utils_Tuple2(
+										'from',
+										$elm$json$Json$Encode$object(
+											_List_fromArray(
+												[
+													_Utils_Tuple2('data', spec),
+													_Utils_Tuple2(
+													'key',
+													$elm$json$Json$Encode$string(key2))
+												]))),
+										_Utils_Tuple2(
+										'as',
+										$elm$json$Json$Encode$string(s))
+									]));
+						case 'LUFieldsWithDefault':
+							var fs = lufs.a;
+							var def = lufs.b;
+							return $elm$json$Json$Encode$object(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										'lookup',
+										$elm$json$Json$Encode$string(key1)),
+										_Utils_Tuple2(
+										'from',
+										$elm$json$Json$Encode$object(
+											_List_fromArray(
+												[
+													_Utils_Tuple2('data', spec),
+													_Utils_Tuple2(
+													'key',
+													$elm$json$Json$Encode$string(key2)),
+													_Utils_Tuple2(
+													'fields',
+													A2($elm$json$Json$Encode$list, $elm$json$Json$Encode$string, fs))
+												]))),
+										_Utils_Tuple2(
+										'default',
+										$elm$json$Json$Encode$string(def))
+									]));
+						case 'LUFieldsAsWithDefault':
+							var fas = lufs.a;
+							var def = lufs.b;
+							return $elm$json$Json$Encode$object(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										'lookup',
+										$elm$json$Json$Encode$string(key1)),
+										_Utils_Tuple2(
+										'from',
+										$elm$json$Json$Encode$object(
+											_List_fromArray(
+												[
+													_Utils_Tuple2('data', spec),
+													_Utils_Tuple2(
+													'key',
+													$elm$json$Json$Encode$string(key2)),
+													_Utils_Tuple2(
+													'fields',
+													A2(
+														$elm$json$Json$Encode$list,
+														function (_v4) {
+															var f = _v4.a;
+															return $elm$json$Json$Encode$string(f);
+														},
+														fas))
+												]))),
+										_Utils_Tuple2(
+										'as',
+										A2(
+											$elm$json$Json$Encode$list,
+											function (_v5) {
+												var a = _v5.b;
+												return $elm$json$Json$Encode$string(a);
+											},
+											fas)),
+										_Utils_Tuple2(
+										'default',
+										$elm$json$Json$Encode$string(def))
+									]));
+						default:
+							var s = lufs.a;
+							var def = lufs.b;
+							return $elm$json$Json$Encode$object(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										'lookup',
+										$elm$json$Json$Encode$string(key1)),
+										_Utils_Tuple2(
+										'from',
+										$elm$json$Json$Encode$object(
+											_List_fromArray(
+												[
+													_Utils_Tuple2('data', spec),
+													_Utils_Tuple2(
+													'key',
+													$elm$json$Json$Encode$string(key2))
+												]))),
+										_Utils_Tuple2(
+										'as',
+										$elm$json$Json$Encode$string(s)),
+										_Utils_Tuple2(
+										'default',
+										$elm$json$Json$Encode$string(def))
+									]));
+					}
+				}()));
+	});
+var $gicentre$elm_vegalite$VegaLite$LUFieldsAs = function (a) {
+	return {$: 'LUFieldsAs', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$luFieldsAs = $gicentre$elm_vegalite$VegaLite$LUFieldsAs;
+var $gicentre$elm_vegalite$VegaLite$PBind = function (a) {
+	return {$: 'PBind', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$paBind = $gicentre$elm_vegalite$VegaLite$PBind;
+var $gicentre$elm_vegalite$VegaLite$PSelect = F2(
+	function (a, b) {
+		return {$: 'PSelect', a: a, b: b};
+	});
+var $gicentre$elm_vegalite$VegaLite$paSelect = $gicentre$elm_vegalite$VegaLite$PSelect;
+var $gicentre$elm_vegalite$VegaLite$inputProperty = function (prop) {
+	switch (prop.$) {
+		case 'InMin':
+			var x = prop.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'min', x);
+		case 'InMax':
+			var x = prop.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'max', x);
+		case 'InStep':
+			var x = prop.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'step', x);
+		case 'Debounce':
+			var x = prop.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'debounce', x);
+		case 'InName':
+			var s = prop.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'name', s);
+		case 'InOptions':
+			var ss = prop.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strsExpr, 'options', ss);
+		case 'InDatumOptions':
+			var opts = prop.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'options',
+					A2($elm$json$Json$Encode$list, $gicentre$elm_vegalite$VegaLite$dataValueSpec, opts))
+				]);
+		case 'InDataOptions':
+			var opts = prop.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'options',
+					A2($elm$json$Json$Encode$list, $gicentre$elm_vegalite$VegaLite$dataValuesSpecs, opts))
+				]);
+		case 'InPlaceholder':
+			var s = prop.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'placeholder', s);
+		default:
+			var s = prop.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'element', s);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$pBindingProperties = function (bnd) {
+	switch (bnd.$) {
+		case 'IPRange':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('range')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		case 'IPCheckbox':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('checkbox')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		case 'IPRadio':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('radio')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		case 'IPSelect':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('select')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		case 'IPText':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('text')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		case 'IPNumber':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('number')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		case 'IPDate':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('date')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		case 'IPTime':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('time')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		case 'IPMonth':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('month')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		case 'IPWeek':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('week')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		case 'IPDateTimeLocal':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('datetimelocal')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		case 'IPTel':
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('tel')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+		default:
+			var props = bnd.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'input',
+					$elm$json$Json$Encode$string('color')),
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$inputProperty, props));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$selectionLabel = function (seType) {
+	if (seType.$ === 'SePoint') {
+		return 'point';
+	} else {
+		return 'interval';
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$selectionMarkProperty = function (markProp) {
+	switch (markProp.$) {
+		case 'SMFill':
+			var ss = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fill', ss);
+		case 'SMFillOpacity':
+			var x = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'fillOpacity', x);
+		case 'SMStroke':
+			var s = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'stroke', s);
+		case 'SMStrokeOpacity':
+			var x = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeOpacity', x);
+		case 'SMStrokeWidth':
+			var x = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeWidth', x);
+		case 'SMStrokeDash':
+			var xs = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numsExpr, 'strokeDash', xs);
+		case 'SMStrokeDashOffset':
+			var x = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeDashOffset', x);
+		default:
+			var cur = markProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'cursor',
+					$gicentre$elm_vegalite$VegaLite$cursorSpec(cur))
+				]);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$selectionResolutionLabel = function (res) {
+	switch (res.$) {
+		case 'SeGlobal':
+			return 'global';
+		case 'SeUnion':
+			return 'union';
+		default:
+			return 'intersect';
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$togglePredicateSpec = function (tp) {
+	switch (tp.$) {
+		case 'TpFalse':
+			return $elm$json$Json$Encode$bool(false);
+		case 'TpExpr':
+			var ex = tp.a;
+			return $elm$json$Json$Encode$string(ex);
+		case 'TpShiftKey':
+			return $elm$json$Json$Encode$string('event.shiftKey');
+		case 'TpCtrlKey':
+			return $elm$json$Json$Encode$string('event.ctrlKey');
+		default:
+			return $elm$json$Json$Encode$string('event.altKey');
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$selectionProperties = function (selProp) {
+	switch (selProp.$) {
+		case 'Fields':
+			var fNames = selProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'fields',
+					A2($elm$json$Json$Encode$list, $elm$json$Json$Encode$string, fNames))
+				]);
+		case 'Encodings':
+			var channels = selProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'encodings',
+					A2(
+						$elm$json$Json$Encode$list,
+						A2($elm$core$Basics$composeL, $elm$json$Json$Encode$string, $gicentre$elm_vegalite$VegaLite$channelLabel),
+						channels))
+				]);
+		case 'On':
+			var s = selProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'on', s);
+		case 'Clear':
+			var es = selProp.a;
+			switch (es.$) {
+				case 'Str':
+					var s = es.a;
+					return ($elm$core$String$trim(s) === '') ? _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'clear',
+							$elm$json$Json$Encode$bool(false))
+						]) : _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'clear',
+							$elm$json$Json$Encode$string(
+								$elm$core$String$trim(s)))
+						]);
+				case 'NoStr':
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'clear',
+							$elm$json$Json$Encode$bool(false))
+						]);
+				default:
+					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'clear', es);
+			}
+		case 'ResolveSelections':
+			var res = selProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'resolve',
+					$elm$json$Json$Encode$string(
+						$gicentre$elm_vegalite$VegaLite$selectionResolutionLabel(res)))
+				]);
+		case 'SelectionMark':
+			var markProps = selProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'mark',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$selectionMarkProperty, markProps)))
+				]);
+		case 'Nearest':
+			var b = selProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'nearest', b);
+		case 'Toggle':
+			var tp = selProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'toggle',
+					$gicentre$elm_vegalite$VegaLite$togglePredicateSpec(tp))
+				]);
+		case 'Translate':
+			var es = selProp.a;
+			switch (es.$) {
+				case 'Str':
+					var s = es.a;
+					return ($elm$core$String$trim(s) === '') ? _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'translate',
+							$elm$json$Json$Encode$bool(false))
+						]) : _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'translate',
+							$elm$json$Json$Encode$string(
+								$elm$core$String$trim(s)))
+						]);
+				case 'NoStr':
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'translate',
+							$elm$json$Json$Encode$bool(false))
+						]);
+				default:
+					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'translate', es);
+			}
+		default:
+			var es = selProp.a;
+			switch (es.$) {
+				case 'Str':
+					var s = es.a;
+					return ($elm$core$String$trim(s) === '') ? _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'zoom',
+							$elm$json$Json$Encode$bool(false))
+						]) : _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'zoom',
+							$elm$json$Json$Encode$string(
+								$elm$core$String$trim(s)))
+						]);
+				case 'NoStr':
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'zoom',
+							$elm$json$Json$Encode$bool(false))
+						]);
+				default:
+					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'zoom', es);
+			}
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$paramProperty = function (pp) {
+	switch (pp.$) {
+		case 'PBind':
+			var bps = pp.a;
+			return _Utils_Tuple2(
+				'bind',
+				$elm$json$Json$Encode$object(
+					$gicentre$elm_vegalite$VegaLite$pBindingProperties(bps)));
+		case 'PBindings':
+			var binds = pp.a;
+			return _Utils_Tuple2(
+				'bind',
+				$elm$json$Json$Encode$object(
+					A2(
+						$elm$core$List$map,
+						function (_v1) {
+							var bName = _v1.a;
+							var bps = _v1.b;
+							return _Utils_Tuple2(
+								bName,
+								$elm$json$Json$Encode$object(
+									$gicentre$elm_vegalite$VegaLite$pBindingProperties(bps)));
+						},
+						binds)));
+		case 'PBindScales':
+			return _Utils_Tuple2(
+				'bind',
+				$elm$json$Json$Encode$string('scales'));
+		case 'PBindLegend':
+			var s = pp.a;
+			return (!$elm$core$String$length(
+				$elm$core$String$trim(s))) ? _Utils_Tuple2(
+				'bind',
+				$elm$json$Json$Encode$string('legend')) : _Utils_Tuple2(
+				'bind',
+				$elm$json$Json$Encode$object(
+					_List_fromArray(
+						[
+							_Utils_Tuple2(
+							'legend',
+							$elm$json$Json$Encode$string(s))
+						])));
+		case 'PExpr':
+			var s = pp.a;
+			return _Utils_Tuple2(
+				'expr',
+				$elm$json$Json$Encode$string(s));
+		case 'PValue':
+			var d = pp.a;
+			return _Utils_Tuple2(
+				'value',
+				$gicentre$elm_vegalite$VegaLite$dataValueSpec(d));
+		case 'PValues':
+			var ds = pp.a;
+			return _Utils_Tuple2(
+				'value',
+				$gicentre$elm_vegalite$VegaLite$dataValuesSpecs(ds));
+		default:
+			var s = pp.a;
+			var sps = pp.b;
+			if (!sps.b) {
+				return _Utils_Tuple2(
+					'select',
+					$elm$json$Json$Encode$string(
+						$gicentre$elm_vegalite$VegaLite$selectionLabel(s)));
+			} else {
+				return _Utils_Tuple2(
+					'select',
+					$elm$json$Json$Encode$object(
+						A2(
+							$elm$core$List$cons,
+							_Utils_Tuple2(
+								'type',
+								$elm$json$Json$Encode$string(
+									$gicentre$elm_vegalite$VegaLite$selectionLabel(s))),
+							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$selectionProperties, sps))));
+			}
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$param = F2(
+	function (nme, pps) {
+		return $elm$core$List$cons(
+			_Utils_Tuple2(
+				nme,
+				$elm$json$Json$Encode$object(
+					A2($elm$core$List$map, $gicentre$elm_vegalite$VegaLite$paramProperty, pps))));
+	});
+var $gicentre$elm_vegalite$VegaLite$VLParams = {$: 'VLParams'};
+var $elm$json$Json$Decode$decodeValue = _Json_run;
+var $elm$json$Json$Decode$keyValuePairs = _Json_decodeKeyValuePairs;
+var $elm$json$Json$Decode$value = _Json_decodeValue;
+var $elm$core$Result$withDefault = F2(
+	function (def, result) {
+		if (result.$ === 'Ok') {
+			var a = result.a;
+			return a;
+		} else {
+			return def;
+		}
+	});
+var $gicentre$elm_vegalite$VegaLite$params = function (prms) {
+	var toLabelledSpecs = function (obj) {
+		return A2(
+			$elm$core$Result$withDefault,
+			_List_Nil,
+			A2(
+				$elm$json$Json$Decode$decodeValue,
+				$elm$json$Json$Decode$keyValuePairs($elm$json$Json$Decode$value),
+				obj));
+	};
+	var extract = function (_v0) {
+		var nme = _v0.a;
+		var obj = _v0.b;
+		return $elm$json$Json$Encode$object(
+			A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'name',
+					$elm$json$Json$Encode$string(nme)),
+				toLabelledSpecs(obj)));
+	};
+	return _Utils_Tuple2(
+		$gicentre$elm_vegalite$VegaLite$VLParams,
+		A2($elm$json$Json$Encode$list, extract, prms));
+};
+var $gicentre$elm_vegalite$VegaLite$Fields = function (a) {
+	return {$: 'Fields', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$seFields = $gicentre$elm_vegalite$VegaLite$Fields;
+var $gicentre$elm_vegalite$VegaLite$SePoint = {$: 'SePoint'};
+var $gicentre$elm_vegalite$VegaLite$sePoint = $gicentre$elm_vegalite$VegaLite$SePoint;
+var $author$project$Data$Traits$traitToString = function (x) {
+	switch (x.$) {
+		case 'BreedingBiome':
+			return 'Breeding_Biome';
+		case 'WinterBiome':
+			return 'Winter_Biome';
+		default:
+			return 'Diet_5Cat';
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$VLVConcat = {$: 'VLVConcat'};
+var $gicentre$elm_vegalite$VegaLite$vConcat = function (specs) {
+	return _Utils_Tuple2(
+		$gicentre$elm_vegalite$VegaLite$VLVConcat,
+		$gicentre$elm_vegalite$VegaLite$toList(specs));
+};
+var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F3(
+	function (countData, traitData, trait) {
+		var trans3 = A2(
+			$elm$core$Basics$composeL,
+			A2(
+				$elm$core$Basics$composeL,
+				A2(
+					$elm$core$Basics$composeL,
+					A2(
+						$elm$core$Basics$composeL,
+						$gicentre$elm_vegalite$VegaLite$transform,
+						A4(
+							$gicentre$elm_vegalite$VegaLite$lookup,
+							'common_name',
+							traitData,
+							'english_common_name',
+							$gicentre$elm_vegalite$VegaLite$luFieldsAs(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										$author$project$Data$Traits$traitToString(trait),
+										'group')
+									])))),
+					$gicentre$elm_vegalite$VegaLite$filter(
+						$gicentre$elm_vegalite$VegaLite$fiSelection('countySelection'))),
+				$gicentre$elm_vegalite$VegaLite$filter(
+					$gicentre$elm_vegalite$VegaLite$fiExpr('datum.count > 0'))),
+			A2(
+				$gicentre$elm_vegalite$VegaLite$aggregate,
+				_List_fromArray(
+					[
+						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opDistinct, 'common_name', 'nSpecies')
+					]),
+				_List_fromArray(
+					['year', 'group'])));
+		var trans0 = A2(
+			$elm$core$Basics$composeL,
+			A2(
+				$elm$core$Basics$composeL,
+				A2(
+					$elm$core$Basics$composeL,
+					A2(
+						$elm$core$Basics$composeL,
+						A2(
+							$elm$core$Basics$composeL,
+							$gicentre$elm_vegalite$VegaLite$transform,
+							A4(
+								$gicentre$elm_vegalite$VegaLite$lookup,
+								'common_name',
+								traitData,
+								'english_common_name',
+								$gicentre$elm_vegalite$VegaLite$luFieldsAs(
+									_List_fromArray(
+										[
+											_Utils_Tuple2(
+											$author$project$Data$Traits$traitToString(trait),
+											'group')
+										])))),
+						$gicentre$elm_vegalite$VegaLite$filter(
+							$gicentre$elm_vegalite$VegaLite$fiSelection('countySelection'))),
+					A2(
+						$gicentre$elm_vegalite$VegaLite$aggregate,
+						_List_fromArray(
+							[
+								A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'count', 'speciesCount')
+							]),
+						_List_fromArray(
+							['year', 'group', 'mbbs_county', 'route', 'common_name']))),
+				A2(
+					$gicentre$elm_vegalite$VegaLite$aggregate,
+					_List_fromArray(
+						[
+							A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'speciesCount', 'routeCount')
+						]),
+					_List_fromArray(
+						['year', 'group', 'mbbs_county', 'route']))),
+			A2(
+				$gicentre$elm_vegalite$VegaLite$aggregate,
+				_List_fromArray(
+					[
+						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'routeCount', 'countyCount'),
+						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opDistinct, 'route', 'nRoutesRun')
+					]),
+				_List_fromArray(
+					['year', 'group', 'mbbs_county'])));
+		var trans1 = A2(
+			$elm$core$Basics$composeL,
+			trans0,
+			A2($gicentre$elm_vegalite$VegaLite$calculateAs, '\n                    if ( datum.mbbs_county == "orange",\n                        datum.countyCount * 12 / datum.nRoutesRun,\n                        if ( datum.mbbs_county == "chatham",\n                             datum.countyCount * 14 / datum.nRoutesRun,\n                             datum.countyCount * 8 / datum.nRoutesRun\n                            )\n                    )\n                    ', 'yHat'));
+		var trans2 = A2(
+			$elm$core$Basics$composeL,
+			A2(
+				$elm$core$Basics$composeL,
+				trans0,
+				A2(
+					$gicentre$elm_vegalite$VegaLite$aggregate,
+					_List_fromArray(
+						[
+							A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'countyCount', 'yearCount'),
+							A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'nRoutesRun', 'yearRoutes')
+						]),
+					_List_fromArray(
+						['year', 'group']))),
+			A2($gicentre$elm_vegalite$VegaLite$calculateAs, '\n                    datum.yearCount / datum.yearRoutes\n                    ', 'yBar'));
+		var ps = A2(
+			$elm$core$Basics$composeL,
+			$gicentre$elm_vegalite$VegaLite$params,
+			A2(
+				$gicentre$elm_vegalite$VegaLite$param,
+				'countySelection',
+				_List_fromArray(
+					[
+						A2(
+						$gicentre$elm_vegalite$VegaLite$paSelect,
+						$gicentre$elm_vegalite$VegaLite$sePoint,
+						_List_fromArray(
+							[
+								$gicentre$elm_vegalite$VegaLite$seFields(
+								_List_fromArray(
+									['mbbs_county']))
+							])),
+						$gicentre$elm_vegalite$VegaLite$paBind(
+						$gicentre$elm_vegalite$VegaLite$ipSelect(
+							_List_fromArray(
+								[
+									$gicentre$elm_vegalite$VegaLite$inOptions(
+									_List_fromArray(
+										['', 'orange', 'chatham', 'durham']))
+								])))
+					])));
+		var enc = A2(
+			$elm$core$Basics$composeL,
+			A2(
+				$elm$core$Basics$composeL,
+				A2(
+					$elm$core$Basics$composeL,
+					$gicentre$elm_vegalite$VegaLite$encoding,
+					A2(
+						$gicentre$elm_vegalite$VegaLite$position,
+						$gicentre$elm_vegalite$VegaLite$X,
+						_List_fromArray(
+							[
+								$gicentre$elm_vegalite$VegaLite$pName('year'),
+								$gicentre$elm_vegalite$VegaLite$pTemporal,
+								$gicentre$elm_vegalite$VegaLite$pAxis(
+								_List_fromArray(
+									[
+										$gicentre$elm_vegalite$VegaLite$axTitle('')
+									]))
+							]))),
+				$gicentre$elm_vegalite$VegaLite$color(
+					_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$mName('group'),
+							$gicentre$elm_vegalite$VegaLite$mNominal
+						]))),
+			$gicentre$elm_vegalite$VegaLite$tooltips(
+				_List_fromArray(
+					[
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('group')
+						]),
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('year'),
+							$gicentre$elm_vegalite$VegaLite$tTemporal,
+							$gicentre$elm_vegalite$VegaLite$tFormat('%Y')
+						]),
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('yHat'),
+							$gicentre$elm_vegalite$VegaLite$tQuant,
+							$gicentre$elm_vegalite$VegaLite$tAggregate($gicentre$elm_vegalite$VegaLite$opSum)
+						])
+					])));
+		var totalCountSpec = $gicentre$elm_vegalite$VegaLite$asSpec(
+			_List_fromArray(
+				[
+					$gicentre$elm_vegalite$VegaLite$width(500),
+					$gicentre$elm_vegalite$VegaLite$height(400),
+					A2(
+					$elm$core$Basics$composeL,
+					enc,
+					A2(
+						$gicentre$elm_vegalite$VegaLite$position,
+						$gicentre$elm_vegalite$VegaLite$Y,
+						_List_fromArray(
+							[
+								$gicentre$elm_vegalite$VegaLite$pName('yHat'),
+								$gicentre$elm_vegalite$VegaLite$pQuant,
+								$gicentre$elm_vegalite$VegaLite$pAggregate($gicentre$elm_vegalite$VegaLite$opSum),
+								$gicentre$elm_vegalite$VegaLite$pAxis(
+								_List_fromArray(
+									[
+										$gicentre$elm_vegalite$VegaLite$axTitle('Total Counts')
+									]))
+							])))(_List_Nil),
+					$gicentre$elm_vegalite$VegaLite$line(_List_Nil),
+					ps(_List_Nil),
+					trans1(_List_Nil)
+				]));
+		var uniqueSpeciesSpec = $gicentre$elm_vegalite$VegaLite$asSpec(
+			_List_fromArray(
+				[
+					$gicentre$elm_vegalite$VegaLite$width(500),
+					$gicentre$elm_vegalite$VegaLite$height(400),
+					A2(
+					$elm$core$Basics$composeL,
+					enc,
+					A2(
+						$gicentre$elm_vegalite$VegaLite$position,
+						$gicentre$elm_vegalite$VegaLite$Y,
+						_List_fromArray(
+							[
+								$gicentre$elm_vegalite$VegaLite$pName('nSpecies'),
+								$gicentre$elm_vegalite$VegaLite$pQuant,
+								$gicentre$elm_vegalite$VegaLite$pAxis(
+								_List_fromArray(
+									[
+										$gicentre$elm_vegalite$VegaLite$axTitle('Number of species observed')
+									]))
+							])))(_List_Nil),
+					$gicentre$elm_vegalite$VegaLite$line(_List_Nil),
+					ps(_List_Nil),
+					trans3(_List_Nil)
+				]));
+		var avgCountSpec = $gicentre$elm_vegalite$VegaLite$asSpec(
+			_List_fromArray(
+				[
+					$gicentre$elm_vegalite$VegaLite$width(500),
+					$gicentre$elm_vegalite$VegaLite$height(400),
+					A2(
+					$elm$core$Basics$composeL,
+					enc,
+					A2(
+						$gicentre$elm_vegalite$VegaLite$position,
+						$gicentre$elm_vegalite$VegaLite$Y,
+						_List_fromArray(
+							[
+								$gicentre$elm_vegalite$VegaLite$pName('yBar'),
+								$gicentre$elm_vegalite$VegaLite$pQuant,
+								$gicentre$elm_vegalite$VegaLite$pAggregate($gicentre$elm_vegalite$VegaLite$opSum),
+								$gicentre$elm_vegalite$VegaLite$pAxis(
+								_List_fromArray(
+									[
+										$gicentre$elm_vegalite$VegaLite$axTitle('Average Count per Route')
+									]))
+							])))(_List_Nil),
+					$gicentre$elm_vegalite$VegaLite$line(_List_Nil),
+					ps(_List_Nil),
+					trans2(_List_Nil)
+				]));
+		return $gicentre$elm_vegalite$VegaLite$toVegaLite(
+			_List_fromArray(
+				[
+					countData,
+					$gicentre$elm_vegalite$VegaLite$width(500),
+					$gicentre$elm_vegalite$VegaLite$height(400),
+					$gicentre$elm_vegalite$VegaLite$vConcat(
+					_List_fromArray(
+						[totalCountSpec, avgCountSpec, uniqueSpeciesSpec]))
+				]));
+	});
+var $author$project$Data$Traits$traitsData = A2($gicentre$elm_vegalite$VegaLite$dataFromUrl, '../data/NC_species_traits.csv', _List_Nil);
+var $author$project$Main$trendByTraitSpec = A3($author$project$Specs$TrendByTrait$mkTrendByTraitSpec, $author$project$Data$Mbbs$mbbsData, $author$project$Data$Traits$traitsData, $author$project$Data$Traits$BreedingBiome);
 var $author$project$Main$specs = $gicentre$elm_vegalite$VegaLite$combineSpecs(
 	_List_fromArray(
 		[
-			_Utils_Tuple2('exampleTrends', $author$project$Main$exampleTrendsSpec)
+			_Utils_Tuple2('exampleTrends', $author$project$Main$exampleTrendsSpec),
+			_Utils_Tuple2('trendByTrait', $author$project$Main$trendByTraitSpec)
 		]));
 var $elm$json$Json$Decode$succeed = _Json_succeed;
 var $author$project$Main$vegaLite = _Platform_outgoingPort('vegaLite', $elm$core$Basics$identity);

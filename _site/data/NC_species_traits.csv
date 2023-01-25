@@ -1,4 +1,4 @@
-english_common_name,binomial,aou,IOCOrder,BLFamilyLatin,BLFamilyEnglish,Diet.5Cat,BodyMass.Value,Breeding.Biome,Winter.Biome,bird.group,Migrate
+english_common_name,binomial,aou,IOCOrder,BLFamilyLatin,BLFamilyEnglish,Diet_5Cat,BodyMass.Value,Breeding_Biome,Winter_Biome,bird_group,Migrate
 Canada Goose,Branta canadensis,1720,Anseriformes,Anatidae,"Ducks, geese and swans",PlantSeed,2811.68,Wetland,Temperate North America,waterfowl,M
 Muscovy Duck,Cairina moschata,10210,Anseriformes,Anatidae,"Ducks, geese and swans",Omnivore,2415.78,Introduced,Introduced,waterfowl,Introduced
 Wood Duck,Aix sponsa,1440,Anseriformes,Anatidae,"Ducks, geese and swans",PlantSeed,657.59,Wetland,Temperate North America,waterfowl,M

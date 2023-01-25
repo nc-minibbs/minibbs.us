@@ -8,4 +8,19 @@ import VegaLite exposing (dataFromUrl, Data)
 
 traitsData : Data
 traitsData =
-    dataFromUrl "./data/NC_species_traits.csv" []
+    dataFromUrl "../data/NC_species_traits.csv" []
+
+type Trait =
+      BreedingBiome
+    | WinterBiome
+    | Diet5Cat
+
+{-|
+Convert a Trait to the string corresponding to the field name in traitsData
+-}
+traitToString : Trait -> String
+traitToString x = 
+    case x of 
+        BreedingBiome -> "Breeding_Biome"
+        WinterBiome   -> "Winter_Biome"
+        Diet5Cat      -> "Diet_5Cat"

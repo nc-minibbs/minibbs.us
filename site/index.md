@@ -1,5 +1,5 @@
 ---
-title:  The Mini-Bird Breeding Survey
+title: Mini-Bird Breeding Survey
 ---
 
 A *Mini Breeding Bird Survey* (MBBS) is a small-scale version of the full
