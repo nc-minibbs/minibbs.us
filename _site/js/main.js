@@ -11343,15 +11343,25 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F2(
 			$elm$core$Basics$composeL,
 			A2(
 				$elm$core$Basics$composeL,
-				$gicentre$elm_vegalite$VegaLite$transform,
-				$gicentre$elm_vegalite$VegaLite$filter(
-					$gicentre$elm_vegalite$VegaLite$fiSelection('countySelection'))),
-			$gicentre$elm_vegalite$VegaLite$filter(
 				A2(
-					$gicentre$elm_vegalite$VegaLite$fiEqual,
-					'common_name',
-					$gicentre$elm_vegalite$VegaLite$str(
-						$author$project$Data$Species$speciesToString(species)))));
+					$elm$core$Basics$composeL,
+					$gicentre$elm_vegalite$VegaLite$transform,
+					$gicentre$elm_vegalite$VegaLite$filter(
+						$gicentre$elm_vegalite$VegaLite$fiSelection('countySelection'))),
+				$gicentre$elm_vegalite$VegaLite$filter(
+					A2(
+						$gicentre$elm_vegalite$VegaLite$fiEqual,
+						'common_name',
+						$gicentre$elm_vegalite$VegaLite$str(
+							$author$project$Data$Species$speciesToString(species))))),
+			A2(
+				$gicentre$elm_vegalite$VegaLite$aggregate,
+				_List_fromArray(
+					[
+						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'count', 'speciesCount')
+					]),
+				_List_fromArray(
+					['year', 'common_name', 'sci_name', 'mbbs_county', 'route', 'route_num'])));
 		var ps = A2(
 			$elm$core$Basics$composeL,
 			$gicentre$elm_vegalite$VegaLite$params,
@@ -11405,7 +11415,7 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F2(
 					$gicentre$elm_vegalite$VegaLite$Y,
 					_List_fromArray(
 						[
-							$gicentre$elm_vegalite$VegaLite$pName('count'),
+							$gicentre$elm_vegalite$VegaLite$pName('speciesCount'),
 							$gicentre$elm_vegalite$VegaLite$pAggregate($gicentre$elm_vegalite$VegaLite$opMean),
 							$gicentre$elm_vegalite$VegaLite$pAxis(
 							_List_fromArray(
@@ -11430,7 +11440,7 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F2(
 						]),
 						_List_fromArray(
 						[
-							$gicentre$elm_vegalite$VegaLite$tName('count'),
+							$gicentre$elm_vegalite$VegaLite$tName('speciesCount'),
 							$gicentre$elm_vegalite$VegaLite$tTitle('Avg. count'),
 							$gicentre$elm_vegalite$VegaLite$tQuant,
 							$gicentre$elm_vegalite$VegaLite$tFormat('.2f'),
@@ -11441,26 +11451,55 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F2(
 			$elm$core$Basics$composeL,
 			A2(
 				$elm$core$Basics$composeL,
-				enc,
 				A2(
-					$gicentre$elm_vegalite$VegaLite$position,
-					$gicentre$elm_vegalite$VegaLite$Y,
+					$elm$core$Basics$composeL,
+					enc,
+					A2(
+						$gicentre$elm_vegalite$VegaLite$position,
+						$gicentre$elm_vegalite$VegaLite$Y,
+						_List_fromArray(
+							[
+								$gicentre$elm_vegalite$VegaLite$pName('speciesCount'),
+								$gicentre$elm_vegalite$VegaLite$pQuant,
+								$gicentre$elm_vegalite$VegaLite$pAggregate($gicentre$elm_vegalite$VegaLite$opSum),
+								$gicentre$elm_vegalite$VegaLite$pAxis(
+								_List_fromArray(
+									[
+										$gicentre$elm_vegalite$VegaLite$axTitle('Count'),
+										$gicentre$elm_vegalite$VegaLite$axGrid(false)
+									]))
+							]))),
+				$gicentre$elm_vegalite$VegaLite$detail(
 					_List_fromArray(
 						[
-							$gicentre$elm_vegalite$VegaLite$pName('count'),
-							$gicentre$elm_vegalite$VegaLite$pQuant,
-							$gicentre$elm_vegalite$VegaLite$pAggregate($gicentre$elm_vegalite$VegaLite$opSum),
-							$gicentre$elm_vegalite$VegaLite$pAxis(
-							_List_fromArray(
-								[
-									$gicentre$elm_vegalite$VegaLite$axTitle('Count'),
-									$gicentre$elm_vegalite$VegaLite$axGrid(false)
-								]))
+							$gicentre$elm_vegalite$VegaLite$dName('route')
 						]))),
-			$gicentre$elm_vegalite$VegaLite$detail(
+			$gicentre$elm_vegalite$VegaLite$tooltips(
 				_List_fromArray(
 					[
-						$gicentre$elm_vegalite$VegaLite$dName('route')
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('mbbs_county'),
+							$gicentre$elm_vegalite$VegaLite$tTitle('County')
+						]),
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('route_num'),
+							$gicentre$elm_vegalite$VegaLite$tTitle('Route')
+						]),
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('year'),
+							$gicentre$elm_vegalite$VegaLite$tTitle('Year'),
+							$gicentre$elm_vegalite$VegaLite$tTemporal,
+							$gicentre$elm_vegalite$VegaLite$tFormat('%Y')
+						]),
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('speciesCount'),
+							$gicentre$elm_vegalite$VegaLite$tTitle('Count'),
+							$gicentre$elm_vegalite$VegaLite$tQuant
+						])
 					])));
 		var cfg = A2(
 			$elm$core$Basics$composeL,
@@ -11502,6 +11541,17 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F2(
 											$gicentre$elm_vegalite$VegaLite$maStrokeWidth(0.5)
 										])),
 									ps(_List_Nil)
+								])),
+							$gicentre$elm_vegalite$VegaLite$asSpec(
+							_List_fromArray(
+								[
+									encRoutes(_List_Nil),
+									$gicentre$elm_vegalite$VegaLite$line(
+									_List_fromArray(
+										[
+											$gicentre$elm_vegalite$VegaLite$maOpacity(0.0),
+											$gicentre$elm_vegalite$VegaLite$maStrokeWidth(10)
+										]))
 								])),
 							$gicentre$elm_vegalite$VegaLite$asSpec(
 							_List_fromArray(
