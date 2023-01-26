@@ -1,14 +1,15 @@
 module Specs.ExampleTrends exposing (..)
 
+import Data.Species exposing (Species, speciesToString)
 import VegaLite exposing (..)
 
-import Data.Species exposing (Species, speciesToString)
-{-|
-Defines the Vega-Lite specs
+
+{-| Defines the Vega-Lite specs
 for the site's landing page.
 
 First argument is the data to use for the visualization.
 Second arguments is a list of species to include on the plot.
+
 -}
 mkExampleTrendsSpec : Data -> List Species -> Spec
 mkExampleTrendsSpec data species =
@@ -29,30 +30,36 @@ mkExampleTrendsSpec data species =
                 << position X
                     [ pName "year"
                     , pTemporal
-                    , pAxis [ axTitle "", axGrid False]
+                    , pAxis [ axTitle "", axGrid False ]
                     ]
                 << position Y
                     [ pName "avgCount"
                     , pQuant
-                    , pAxis [ axTitle "Average Count per Route"
-                            , axGrid False
-                            -- , axTitleAngle 270
-                            -- , axTitleAnchor anEnd
-                            ]
+                    , pAxis
+                        [ axTitle "Average Count per Route"
+                        , axGrid False
+
+                        -- , axTitleAngle 270
+                        -- , axTitleAnchor anEnd
+                        ]
                     ]
                 << tooltips
                     [ [ tName "common_name"
-                      , tTitle "Common name" ]
+                      , tTitle "Common name"
+                      ]
                     , [ tName "sci_name"
-                      , tTitle "Scientific name" ]
+                      , tTitle "Scientific name"
+                      ]
                     , [ tName "year"
                       , tTitle "Year"
                       , tTemporal
-                      , tFormat "%Y" ]
+                      , tFormat "%Y"
+                      ]
                     , [ tName "avgCount"
                       , tTitle "Average Count"
                       , tQuant
-                      , tFormat ".2f" ]
+                      , tFormat ".2f"
+                      ]
                     ]
 
         labelEnc =
@@ -133,6 +140,7 @@ mkExampleTrendsSpec data species =
     toVegaLite
         [ data
         , width 450
+
         -- , widthOfContainer
         , height 300
         , autosize [ asFit, asPadding, asResize ]

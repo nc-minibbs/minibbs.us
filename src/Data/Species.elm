@@ -1,5 +1,6 @@
 module Data.Species exposing (..)
 
+
 type Species
     = AmericanCrow
     | CarolinaWren
@@ -23,23 +24,23 @@ allSpecies =
 
 
 speciesToString : Species -> String
-speciesToString species = 
+speciesToString species =
     case species of
         AmericanCrow ->
             "American Crow"
 
         CarolinaWren ->
             "Carolina Wren"
-        
-        EasternBluebird -> 
+
+        EasternBluebird ->
             "Eastern Bluebird"
 
         NorthernBobwhite ->
             "Northern Bobwhite"
-        
+
         NorthernCardinal ->
             "Northern Cardinal"
-        
+
         SummerTanager ->
             "Summer Tanager"
 

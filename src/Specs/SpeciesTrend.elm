@@ -31,7 +31,7 @@ mkSpeciesTrendSpec countData species =
                 << position X
                     [ pName "year"
                     , pTemporal
-                    , pAxis 
+                    , pAxis
                         [ axTitle ""
                         , axGrid False
                         ]
@@ -43,43 +43,46 @@ mkSpeciesTrendSpec countData species =
                     [ pName "speciesCount"
                     , pQuant
                     , pAggregate opSum
-                    , pAxis 
+                    , pAxis
                         [ axTitle "Count"
                         , axGrid False
                         ]
                     ]
-                << detail [dName "route"]
+                << detail [ dName "route" ]
                 << tooltips
-                 [ [ tName "mbbs_county"
-                   , tTitle "County"
+                    [ [ tName "mbbs_county"
+                      , tTitle "County"
+                      ]
+                    , [ tName "route_num"
+                      , tTitle "Route"
+                      ]
+                    , [ tName "year"
+                      , tTitle "Year"
+                      , tTemporal
+                      , tFormat "%Y"
+                      ]
+                    , [ tName "speciesCount"
+                      , tTitle "Count"
+                      , tQuant
+                      ]
                     ]
-                , [ tName "route_num"
-                   , tTitle "Route"
-                    ]
-                , [ tName "year"
-                    , tTitle "Year"
-                    , tTemporal
-                    , tFormat "%Y"
-                    ]
-                , [ tName "speciesCount"
-                    , tTitle "Count"
-                    , tQuant
-                    ]
-                ]
+
         encMean =
             enc
-                << position Y 
+                << position Y
                     [ pName "speciesCount"
                     , pAggregate opMean
-                    , pAxis [
-                        axGrid False
-                    ] ]
-                << tooltips
-                 [ [ tName "common_name"
-                   , tTitle "Common name"
-                    --   , tTitle (speciesToString species)
+                    , pAxis
+                        [ axGrid False
+                        ]
                     ]
-                , [ tName "year"
+                << tooltips
+                    [ [ tName "common_name"
+                      , tTitle "Common name"
+
+                      --   , tTitle (speciesToString species)
+                      ]
+                    , [ tName "year"
                       , tTitle "Year"
                       , tTemporal
                       , tFormat "%Y"
@@ -111,8 +114,8 @@ mkSpeciesTrendSpec countData species =
 
         cfg =
             configure
-            << configuration 
-                (coView [vicoBackground [viewStroke Nothing ]])
+                << configuration
+                    (coView [ vicoBackground [ viewStroke Nothing ] ])
     in
     toVegaLite
         [ width 400
@@ -122,45 +125,29 @@ mkSpeciesTrendSpec countData species =
         , countData
         , trans []
         , layer
-            [ 
-            asSpec
-                  [ encRoutes []
-                  ,  line
-                      [ maColor "black"
-                      , maOpacity 0.2
-                      , maStrokeWidth 0.5
-                      ]
-                  , ps []
-                  ]
+            [ asSpec
+                [ encRoutes []
+                , line
+                    [ maColor "black"
+                    , maOpacity 0.2
+                    , maStrokeWidth 0.5
+                    ]
+                , ps []
+                ]
             , asSpec
-                  [ encRoutes []
-                  ,  line
-                      [ maOpacity 0.0
-                      , maStrokeWidth 10
-                      ]
-                  ]
-            ,  asSpec
+                [ encRoutes []
+                , line
+                    [ maOpacity 0.0
+                    , maStrokeWidth 10
+                    ]
+                ]
+            , asSpec
                 [ encMean []
                 , line [ maColor "gray" ]
                 ]
-            ,  asSpec
+            , asSpec
                 [ encMean []
                 , line [ maStrokeWidth 15, maOpacity 0 ]
                 ]
             ]
-
         ]
-
-
-
-
-
-
-{- This list comprises the specifications to be provided to the Vega runtime.
-   In this example, only a single spec 'helloWord' is provided.
--}
-
-
--- mbbsSpecs : String -> Spec
--- mbbsSpecs x =
---     combineSpecs [ ( "speciesTrend", speciesTrend x ) ]

@@ -1,17 +1,18 @@
 port module Main exposing (main, vegaLite)
 
 import Data.Mbbs exposing (mbbsData)
-import Data.Traits exposing (traitsData, Trait(..))
-import Data.Species exposing ( Species(..) )
+import Data.Species exposing (Species(..))
+import Data.Traits exposing (Trait(..), traitsData)
 import Platform
 import Specs.ExampleTrends exposing (mkExampleTrendsSpec)
-import Specs.TrendByTrait exposing (mkTrendByTraitSpec)
 import Specs.SpeciesTrend exposing (mkSpeciesTrendSpec)
+import Specs.TrendByTrait exposing (mkTrendByTraitSpec)
 import VegaLite exposing (..)
+
 
 exampleTrendsSpec : Spec
 exampleTrendsSpec =
-    mkExampleTrendsSpec 
+    mkExampleTrendsSpec
         mbbsData
         [ WoodThrush
         , NorthernBobwhite
@@ -19,30 +20,36 @@ exampleTrendsSpec =
         , SummerTanager
         ]
 
-trendByTraitSpec : Spec 
+
+trendByTraitSpec : Spec
 trendByTraitSpec =
     mkTrendByTraitSpec
         mbbsData
         traitsData
         WinterBiome
 
+
 speciesTrendSpec : Spec
 speciesTrendSpec =
-    mkSpeciesTrendSpec 
+    mkSpeciesTrendSpec
         mbbsData
         EasternBluebird
 
+
 specs : Spec
 specs =
-    combineSpecs 
-    [ ( "exampleTrends", exampleTrendsSpec )
-    , ( "trendByTrait", trendByTraitSpec)
-    , ( "speciesTrend", speciesTrendSpec)
-    ]
+    combineSpecs
+        [ ( "exampleTrends", exampleTrendsSpec )
+        , ( "trendByTrait", trendByTraitSpec )
+        , ( "speciesTrend", speciesTrendSpec )
+        ]
+
+
 
 {- The code below is boilerplate for creating a headless Elm module that opens
    an outgoing port to JavaScript and sends the Vega-Lite spec to it.
 -}
+
 
 main : Program () Spec msg
 main =

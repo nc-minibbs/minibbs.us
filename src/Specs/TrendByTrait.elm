@@ -1,8 +1,9 @@
-module Specs.TrendByTrait exposing ( mkTrendByTraitSpec )
+module Specs.TrendByTrait exposing (mkTrendByTraitSpec)
 
 import Data.Traits exposing (Trait, traitToString)
 import String exposing (replace)
 import VegaLite exposing (..)
+
 
 mkTrendByTraitSpec : Data -> Data -> Trait -> Spec
 mkTrendByTraitSpec countData traitData trait =
@@ -13,8 +14,10 @@ mkTrendByTraitSpec countData traitData trait =
         ps =
             params
                 << param "countySelection"
-                    [ paSelect sePoint [ seFields [ "mbbs_county" ],
-                        seResolve seGlobal ]
+                    [ paSelect sePoint
+                        [ seFields [ "mbbs_county" ]
+                        , seResolve seGlobal
+                        ]
                     , paBind
                         (ipSelect
                             [ inOptions
@@ -73,7 +76,7 @@ mkTrendByTraitSpec countData traitData trait =
                 << lookup "common_name"
                     traitData
                     "english_common_name"
-                    (luFieldsAs [(traitToString trait, "group")])
+                    (luFieldsAs [ ( traitToString trait, "group" ) ])
                 -- Filter based on the selected county
                 << filter (fiSelection "countySelection")
                 -- Compute counts per species within each route/year
@@ -123,28 +126,22 @@ mkTrendByTraitSpec countData traitData trait =
                     datum.yearCount / datum.yearRoutes
                     """
                     "yBar"
-
-
-
     in
     toVegaLite
         [ countData
         , width 500
         , height 400
         , enc []
-        , layer [
-             -- The main line chart
+        , layer
+            [ -- The main line chart
               asSpec
                 [ ps []
                 , line []
                 ]
-             ,
-            -- Transparent layer to make it easier to select tooltip
-             asSpec
-                [ 
-                 line [ maStrokeWidth 15, maOpacity 0 ]
+            , -- Transparent layer to make it easier to select tooltip
+              asSpec
+                [ line [ maStrokeWidth 15, maOpacity 0 ]
                 ]
-
-        ]
+            ]
         , trans []
         ]

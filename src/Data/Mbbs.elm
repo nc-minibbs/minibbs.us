@@ -6,6 +6,7 @@ module Data.Mbbs exposing (..)
 
 import VegaLite exposing (..)
 
+
 mbbsData : Data
 mbbsData =
     dataFromUrl "../data/mbbs.csv"
@@ -14,4 +15,3 @@ mbbsData =
             , ( "count", foNum )
             ]
         ]
-
