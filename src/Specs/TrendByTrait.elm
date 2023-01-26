@@ -1,6 +1,7 @@
 module Specs.TrendByTrait exposing ( mkTrendByTraitSpec )
 
 import Data.Traits exposing (Trait, traitToString)
+import String exposing (replace)
 import VegaLite exposing (..)
 
 mkTrendByTraitSpec : Data -> Data -> Trait -> Spec
@@ -12,7 +13,8 @@ mkTrendByTraitSpec countData traitData trait =
         ps =
             params
                 << param "countySelection"
-                    [ paSelect sePoint [ seFields [ "mbbs_county" ] ]
+                    [ paSelect sePoint [ seFields [ "mbbs_county" ],
+                        seResolve seGlobal ]
                     , paBind
                         (ipSelect
                             [ inOptions
@@ -35,25 +37,42 @@ mkTrendByTraitSpec countData traitData trait =
                     , pTemporal
                     , pAxis [ axTitle "" ]
                     ]
+                << position Y
+                    [ pName "yBar"
+                    , pQuant
+                    , pAggregate opMean
+                    , pAxis [ axTitle "Average Count per Route" ]
+                    ]
                 << color
                     [ mName "group"
+                    , mTitle (replace "_" " " (traitToString trait))
                     , mNominal
                     ]
                 << tooltips
-                    [ [ tName "group" ]
-                    , [ tName "year", tTemporal, tFormat "%Y" ]
-                    , [ tName "yHat", tQuant, tAggregate opSum ]
+                    [ [ tName "group"
+                      , tTitle (replace "_" " " (traitToString trait))
+                      ]
+                    , [ tName "year"
+                      , tTitle "Year"
+                      , tTemporal
+                      , tFormat "%Y"
+                      ]
+                    , [ tName "yBar"
+                      , tTitle "Avg. count"
+                      , tQuant
+                      , tFormat ".2f"
+                      , tAggregate opMean
+                      ]
                     ]
 
         {-
            Define data transform and summaries
         -}
-        trans0 =
+        trans =
             transform
                 << lookup "common_name"
                     traitData
                     "english_common_name"
-                    -- (luAs "traits")
                     (luFieldsAs [(traitToString trait, "group")])
                 -- Filter based on the selected county
                 << filter (fiSelection "countySelection")
@@ -88,25 +107,6 @@ mkTrendByTraitSpec countData traitData trait =
                     , "group"
                     , "mbbs_county"
                     ]
-
-        trans1 =
-            trans0
-                -- Compute yHat by
-                -- weighting county counts by the proportion of routes run
-                << calculateAs
-                    """
-                    if ( datum.mbbs_county == "orange",
-                        datum.countyCount * 12 / datum.nRoutesRun,
-                        if ( datum.mbbs_county == "chatham",
-                             datum.countyCount * 14 / datum.nRoutesRun,
-                             datum.countyCount * 8 / datum.nRoutesRun
-                            )
-                    )
-                    """
-                    "yHat"
-
-        trans2 =
-            trans0
                 -- Compute tallies per year (across counties)
                 << aggregate
                     [ opAs opSum "countyCount" "yearCount"
@@ -124,84 +124,27 @@ mkTrendByTraitSpec countData traitData trait =
                     """
                     "yBar"
 
-        trans3 =
-            transform
-               <<
-            lookup "common_name"
-                    traitData
-                    "english_common_name"
-                    (luFieldsAs [(traitToString trait, "group")])
-                -- Filter based on the selected county
-                << filter (fiSelection "countySelection")
-                -- Remove 0 counts
-                << filter (fiExpr "datum.count > 0")
-                << aggregate
-                    [ opAs opDistinct "common_name" "nSpecies" ]
-                    [ "year"
-                    , "group"
-                    ]
 
-        totalCountSpec =
-            asSpec
-                [ width 500
-                , height 400
-                , (enc
-                    << position Y
-                        [ pName "yHat"
-                        , pQuant
-                        , pAggregate opSum
-                        , pAxis [ axTitle "Total Counts" ]
-                        ]
-                  )
-                    []
-                , line []
-                , ps []
-                , trans1 []
-                ]
 
-        avgCountSpec =
-            asSpec
-                [ width 500
-                , height 400
-                , (enc
-                    << position Y
-                        [ pName "yBar"
-                        , pQuant
-                        , pAggregate opSum
-                        , pAxis [ axTitle "Average Count per Route" ]
-                        ]
-                  )
-                    []
-                , line []
-                , ps []
-                , trans2 []
-                ]
-
-        uniqueSpeciesSpec =
-            asSpec
-                [ width 500
-                , height 400
-                , (enc
-                    << position Y
-                        [ pName "nSpecies"
-                        , pQuant
-                        -- , pAggregate opSum
-                        , pAxis [ axTitle "Number of species observed" ]
-                        ]
-                  )
-                    []
-                , line []
-                , ps []
-                , trans3 []
-                ]
     in
     toVegaLite
         [ countData
         , width 500
         , height 400
-        , vConcat
-            [ totalCountSpec
-            , avgCountSpec
-            , uniqueSpeciesSpec
-            ]
+        , enc []
+        , layer [
+             -- The main line chart
+              asSpec
+                [ ps []
+                ,  line []
+                ]
+             ,
+            -- Transparent layer to make it easier to select tooltip
+             asSpec
+                [ 
+                 line [ maStrokeWidth 15, maOpacity 0 ]
+                ]
+
+        ]
+        , trans []
         ]

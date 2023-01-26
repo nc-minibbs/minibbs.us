@@ -10,6 +10,10 @@ traitsData : Data
 traitsData =
     dataFromUrl "../data/NC_species_traits.csv" []
 
+{-|
+Available traits by which to categorize species.
+These correspond to fields in traitsData.
+-}
 type Trait =
       BreedingBiome
     | WinterBiome

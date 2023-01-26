@@ -8589,11 +8589,7 @@ var $author$project$Main$exampleTrendsSpec = A2(
 	$author$project$Data$Mbbs$mbbsData,
 	_List_fromArray(
 		[$author$project$Data$Species$WoodThrush, $author$project$Data$Species$NorthernBobwhite, $author$project$Data$Species$EasternBluebird, $author$project$Data$Species$SummerTanager]));
-var $author$project$Data$Traits$BreedingBiome = {$: 'BreedingBiome'};
-var $gicentre$elm_vegalite$VegaLite$FExpr = function (a) {
-	return {$: 'FExpr', a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$fiExpr = $gicentre$elm_vegalite$VegaLite$FExpr;
+var $author$project$Data$Traits$WinterBiome = {$: 'WinterBiome'};
 var $gicentre$elm_vegalite$VegaLite$FSelection = function (a) {
 	return {$: 'FSelection', a: a};
 };
@@ -8801,6 +8797,15 @@ var $gicentre$elm_vegalite$VegaLite$LUFieldsAs = function (a) {
 	return {$: 'LUFieldsAs', a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$luFieldsAs = $gicentre$elm_vegalite$VegaLite$LUFieldsAs;
+var $gicentre$elm_vegalite$VegaLite$MTitle = function (a) {
+	return {$: 'MTitle', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$mTitle = function (s) {
+	return $gicentre$elm_vegalite$VegaLite$MTitle(
+		$gicentre$elm_vegalite$VegaLite$Str(s));
+};
+var $gicentre$elm_vegalite$VegaLite$Mean = {$: 'Mean'};
+var $gicentre$elm_vegalite$VegaLite$opMean = $gicentre$elm_vegalite$VegaLite$Mean;
 var $gicentre$elm_vegalite$VegaLite$PBind = function (a) {
 	return {$: 'PBind', a: a};
 };
@@ -9288,12 +9293,25 @@ var $gicentre$elm_vegalite$VegaLite$params = function (prms) {
 		$gicentre$elm_vegalite$VegaLite$VLParams,
 		A2($elm$json$Json$Encode$list, extract, prms));
 };
+var $elm$core$String$replace = F3(
+	function (before, after, string) {
+		return A2(
+			$elm$core$String$join,
+			after,
+			A2($elm$core$String$split, before, string));
+	});
 var $gicentre$elm_vegalite$VegaLite$Fields = function (a) {
 	return {$: 'Fields', a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$seFields = $gicentre$elm_vegalite$VegaLite$Fields;
+var $gicentre$elm_vegalite$VegaLite$SeGlobal = {$: 'SeGlobal'};
+var $gicentre$elm_vegalite$VegaLite$seGlobal = $gicentre$elm_vegalite$VegaLite$SeGlobal;
 var $gicentre$elm_vegalite$VegaLite$SePoint = {$: 'SePoint'};
 var $gicentre$elm_vegalite$VegaLite$sePoint = $gicentre$elm_vegalite$VegaLite$SePoint;
+var $gicentre$elm_vegalite$VegaLite$ResolveSelections = function (a) {
+	return {$: 'ResolveSelections', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$seResolve = $gicentre$elm_vegalite$VegaLite$ResolveSelections;
 var $author$project$Data$Traits$traitToString = function (x) {
 	switch (x.$) {
 		case 'BreedingBiome':
@@ -9304,48 +9322,9 @@ var $author$project$Data$Traits$traitToString = function (x) {
 			return 'Diet_5Cat';
 	}
 };
-var $gicentre$elm_vegalite$VegaLite$VLVConcat = {$: 'VLVConcat'};
-var $gicentre$elm_vegalite$VegaLite$vConcat = function (specs) {
-	return _Utils_Tuple2(
-		$gicentre$elm_vegalite$VegaLite$VLVConcat,
-		$gicentre$elm_vegalite$VegaLite$toList(specs));
-};
 var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F3(
 	function (countData, traitData, trait) {
-		var trans3 = A2(
-			$elm$core$Basics$composeL,
-			A2(
-				$elm$core$Basics$composeL,
-				A2(
-					$elm$core$Basics$composeL,
-					A2(
-						$elm$core$Basics$composeL,
-						$gicentre$elm_vegalite$VegaLite$transform,
-						A4(
-							$gicentre$elm_vegalite$VegaLite$lookup,
-							'common_name',
-							traitData,
-							'english_common_name',
-							$gicentre$elm_vegalite$VegaLite$luFieldsAs(
-								_List_fromArray(
-									[
-										_Utils_Tuple2(
-										$author$project$Data$Traits$traitToString(trait),
-										'group')
-									])))),
-					$gicentre$elm_vegalite$VegaLite$filter(
-						$gicentre$elm_vegalite$VegaLite$fiSelection('countySelection'))),
-				$gicentre$elm_vegalite$VegaLite$filter(
-					$gicentre$elm_vegalite$VegaLite$fiExpr('datum.count > 0'))),
-			A2(
-				$gicentre$elm_vegalite$VegaLite$aggregate,
-				_List_fromArray(
-					[
-						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opDistinct, 'common_name', 'nSpecies')
-					]),
-				_List_fromArray(
-					['year', 'group'])));
-		var trans0 = A2(
+		var trans = A2(
 			$elm$core$Basics$composeL,
 			A2(
 				$elm$core$Basics$composeL,
@@ -9355,55 +9334,50 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F3(
 						$elm$core$Basics$composeL,
 						A2(
 							$elm$core$Basics$composeL,
-							$gicentre$elm_vegalite$VegaLite$transform,
-							A4(
-								$gicentre$elm_vegalite$VegaLite$lookup,
-								'common_name',
-								traitData,
-								'english_common_name',
-								$gicentre$elm_vegalite$VegaLite$luFieldsAs(
-									_List_fromArray(
-										[
-											_Utils_Tuple2(
-											$author$project$Data$Traits$traitToString(trait),
-											'group')
-										])))),
-						$gicentre$elm_vegalite$VegaLite$filter(
-							$gicentre$elm_vegalite$VegaLite$fiSelection('countySelection'))),
+							A2(
+								$elm$core$Basics$composeL,
+								A2(
+									$elm$core$Basics$composeL,
+									$gicentre$elm_vegalite$VegaLite$transform,
+									A4(
+										$gicentre$elm_vegalite$VegaLite$lookup,
+										'common_name',
+										traitData,
+										'english_common_name',
+										$gicentre$elm_vegalite$VegaLite$luFieldsAs(
+											_List_fromArray(
+												[
+													_Utils_Tuple2(
+													$author$project$Data$Traits$traitToString(trait),
+													'group')
+												])))),
+								$gicentre$elm_vegalite$VegaLite$filter(
+									$gicentre$elm_vegalite$VegaLite$fiSelection('countySelection'))),
+							A2(
+								$gicentre$elm_vegalite$VegaLite$aggregate,
+								_List_fromArray(
+									[
+										A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'count', 'speciesCount')
+									]),
+								_List_fromArray(
+									['year', 'group', 'mbbs_county', 'route', 'common_name']))),
+						A2(
+							$gicentre$elm_vegalite$VegaLite$aggregate,
+							_List_fromArray(
+								[
+									A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'speciesCount', 'routeCount')
+								]),
+							_List_fromArray(
+								['year', 'group', 'mbbs_county', 'route']))),
 					A2(
 						$gicentre$elm_vegalite$VegaLite$aggregate,
 						_List_fromArray(
 							[
-								A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'count', 'speciesCount')
+								A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'routeCount', 'countyCount'),
+								A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opDistinct, 'route', 'nRoutesRun')
 							]),
 						_List_fromArray(
-							['year', 'group', 'mbbs_county', 'route', 'common_name']))),
-				A2(
-					$gicentre$elm_vegalite$VegaLite$aggregate,
-					_List_fromArray(
-						[
-							A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'speciesCount', 'routeCount')
-						]),
-					_List_fromArray(
-						['year', 'group', 'mbbs_county', 'route']))),
-			A2(
-				$gicentre$elm_vegalite$VegaLite$aggregate,
-				_List_fromArray(
-					[
-						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'routeCount', 'countyCount'),
-						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opDistinct, 'route', 'nRoutesRun')
-					]),
-				_List_fromArray(
-					['year', 'group', 'mbbs_county'])));
-		var trans1 = A2(
-			$elm$core$Basics$composeL,
-			trans0,
-			A2($gicentre$elm_vegalite$VegaLite$calculateAs, '\n                    if ( datum.mbbs_county == "orange",\n                        datum.countyCount * 12 / datum.nRoutesRun,\n                        if ( datum.mbbs_county == "chatham",\n                             datum.countyCount * 14 / datum.nRoutesRun,\n                             datum.countyCount * 8 / datum.nRoutesRun\n                            )\n                    )\n                    ', 'yHat'));
-		var trans2 = A2(
-			$elm$core$Basics$composeL,
-			A2(
-				$elm$core$Basics$composeL,
-				trans0,
+							['year', 'group', 'mbbs_county']))),
 				A2(
 					$gicentre$elm_vegalite$VegaLite$aggregate,
 					_List_fromArray(
@@ -9429,7 +9403,8 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F3(
 							[
 								$gicentre$elm_vegalite$VegaLite$seFields(
 								_List_fromArray(
-									['mbbs_county']))
+									['mbbs_county'])),
+								$gicentre$elm_vegalite$VegaLite$seResolve($gicentre$elm_vegalite$VegaLite$seGlobal)
 							])),
 						$gicentre$elm_vegalite$VegaLite$paBind(
 						$gicentre$elm_vegalite$VegaLite$ipSelect(
@@ -9446,105 +9421,22 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F3(
 				$elm$core$Basics$composeL,
 				A2(
 					$elm$core$Basics$composeL,
-					$gicentre$elm_vegalite$VegaLite$encoding,
 					A2(
-						$gicentre$elm_vegalite$VegaLite$position,
-						$gicentre$elm_vegalite$VegaLite$X,
-						_List_fromArray(
-							[
-								$gicentre$elm_vegalite$VegaLite$pName('year'),
-								$gicentre$elm_vegalite$VegaLite$pTemporal,
-								$gicentre$elm_vegalite$VegaLite$pAxis(
-								_List_fromArray(
-									[
-										$gicentre$elm_vegalite$VegaLite$axTitle('')
-									]))
-							]))),
-				$gicentre$elm_vegalite$VegaLite$color(
-					_List_fromArray(
-						[
-							$gicentre$elm_vegalite$VegaLite$mName('group'),
-							$gicentre$elm_vegalite$VegaLite$mNominal
-						]))),
-			$gicentre$elm_vegalite$VegaLite$tooltips(
-				_List_fromArray(
-					[
-						_List_fromArray(
-						[
-							$gicentre$elm_vegalite$VegaLite$tName('group')
-						]),
-						_List_fromArray(
-						[
-							$gicentre$elm_vegalite$VegaLite$tName('year'),
-							$gicentre$elm_vegalite$VegaLite$tTemporal,
-							$gicentre$elm_vegalite$VegaLite$tFormat('%Y')
-						]),
-						_List_fromArray(
-						[
-							$gicentre$elm_vegalite$VegaLite$tName('yHat'),
-							$gicentre$elm_vegalite$VegaLite$tQuant,
-							$gicentre$elm_vegalite$VegaLite$tAggregate($gicentre$elm_vegalite$VegaLite$opSum)
-						])
-					])));
-		var totalCountSpec = $gicentre$elm_vegalite$VegaLite$asSpec(
-			_List_fromArray(
-				[
-					$gicentre$elm_vegalite$VegaLite$width(500),
-					$gicentre$elm_vegalite$VegaLite$height(400),
-					A2(
-					$elm$core$Basics$composeL,
-					enc,
-					A2(
-						$gicentre$elm_vegalite$VegaLite$position,
-						$gicentre$elm_vegalite$VegaLite$Y,
-						_List_fromArray(
-							[
-								$gicentre$elm_vegalite$VegaLite$pName('yHat'),
-								$gicentre$elm_vegalite$VegaLite$pQuant,
-								$gicentre$elm_vegalite$VegaLite$pAggregate($gicentre$elm_vegalite$VegaLite$opSum),
-								$gicentre$elm_vegalite$VegaLite$pAxis(
-								_List_fromArray(
-									[
-										$gicentre$elm_vegalite$VegaLite$axTitle('Total Counts')
-									]))
-							])))(_List_Nil),
-					$gicentre$elm_vegalite$VegaLite$line(_List_Nil),
-					ps(_List_Nil),
-					trans1(_List_Nil)
-				]));
-		var uniqueSpeciesSpec = $gicentre$elm_vegalite$VegaLite$asSpec(
-			_List_fromArray(
-				[
-					$gicentre$elm_vegalite$VegaLite$width(500),
-					$gicentre$elm_vegalite$VegaLite$height(400),
-					A2(
-					$elm$core$Basics$composeL,
-					enc,
-					A2(
-						$gicentre$elm_vegalite$VegaLite$position,
-						$gicentre$elm_vegalite$VegaLite$Y,
-						_List_fromArray(
-							[
-								$gicentre$elm_vegalite$VegaLite$pName('nSpecies'),
-								$gicentre$elm_vegalite$VegaLite$pQuant,
-								$gicentre$elm_vegalite$VegaLite$pAxis(
-								_List_fromArray(
-									[
-										$gicentre$elm_vegalite$VegaLite$axTitle('Number of species observed')
-									]))
-							])))(_List_Nil),
-					$gicentre$elm_vegalite$VegaLite$line(_List_Nil),
-					ps(_List_Nil),
-					trans3(_List_Nil)
-				]));
-		var avgCountSpec = $gicentre$elm_vegalite$VegaLite$asSpec(
-			_List_fromArray(
-				[
-					$gicentre$elm_vegalite$VegaLite$width(500),
-					$gicentre$elm_vegalite$VegaLite$height(400),
-					A2(
-					$elm$core$Basics$composeL,
-					enc,
+						$elm$core$Basics$composeL,
+						$gicentre$elm_vegalite$VegaLite$encoding,
+						A2(
+							$gicentre$elm_vegalite$VegaLite$position,
+							$gicentre$elm_vegalite$VegaLite$X,
+							_List_fromArray(
+								[
+									$gicentre$elm_vegalite$VegaLite$pName('year'),
+									$gicentre$elm_vegalite$VegaLite$pTemporal,
+									$gicentre$elm_vegalite$VegaLite$pAxis(
+									_List_fromArray(
+										[
+											$gicentre$elm_vegalite$VegaLite$axTitle('')
+										]))
+								]))),
 					A2(
 						$gicentre$elm_vegalite$VegaLite$position,
 						$gicentre$elm_vegalite$VegaLite$Y,
@@ -9552,30 +9444,86 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F3(
 							[
 								$gicentre$elm_vegalite$VegaLite$pName('yBar'),
 								$gicentre$elm_vegalite$VegaLite$pQuant,
-								$gicentre$elm_vegalite$VegaLite$pAggregate($gicentre$elm_vegalite$VegaLite$opSum),
+								$gicentre$elm_vegalite$VegaLite$pAggregate($gicentre$elm_vegalite$VegaLite$opMean),
 								$gicentre$elm_vegalite$VegaLite$pAxis(
 								_List_fromArray(
 									[
 										$gicentre$elm_vegalite$VegaLite$axTitle('Average Count per Route')
 									]))
-							])))(_List_Nil),
-					$gicentre$elm_vegalite$VegaLite$line(_List_Nil),
-					ps(_List_Nil),
-					trans2(_List_Nil)
-				]));
+							]))),
+				$gicentre$elm_vegalite$VegaLite$color(
+					_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$mName('group'),
+							$gicentre$elm_vegalite$VegaLite$mTitle(
+							A3(
+								$elm$core$String$replace,
+								'_',
+								' ',
+								$author$project$Data$Traits$traitToString(trait))),
+							$gicentre$elm_vegalite$VegaLite$mNominal
+						]))),
+			$gicentre$elm_vegalite$VegaLite$tooltips(
+				_List_fromArray(
+					[
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('group'),
+							$gicentre$elm_vegalite$VegaLite$tTitle(
+							A3(
+								$elm$core$String$replace,
+								'_',
+								' ',
+								$author$project$Data$Traits$traitToString(trait)))
+						]),
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('year'),
+							$gicentre$elm_vegalite$VegaLite$tTitle('Year'),
+							$gicentre$elm_vegalite$VegaLite$tTemporal,
+							$gicentre$elm_vegalite$VegaLite$tFormat('%Y')
+						]),
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('yBar'),
+							$gicentre$elm_vegalite$VegaLite$tTitle('Avg. count'),
+							$gicentre$elm_vegalite$VegaLite$tQuant,
+							$gicentre$elm_vegalite$VegaLite$tFormat('.2f'),
+							$gicentre$elm_vegalite$VegaLite$tAggregate($gicentre$elm_vegalite$VegaLite$opMean)
+						])
+					])));
 		return $gicentre$elm_vegalite$VegaLite$toVegaLite(
 			_List_fromArray(
 				[
 					countData,
 					$gicentre$elm_vegalite$VegaLite$width(500),
 					$gicentre$elm_vegalite$VegaLite$height(400),
-					$gicentre$elm_vegalite$VegaLite$vConcat(
+					enc(_List_Nil),
+					$gicentre$elm_vegalite$VegaLite$layer(
 					_List_fromArray(
-						[totalCountSpec, avgCountSpec, uniqueSpeciesSpec]))
+						[
+							$gicentre$elm_vegalite$VegaLite$asSpec(
+							_List_fromArray(
+								[
+									ps(_List_Nil),
+									$gicentre$elm_vegalite$VegaLite$line(_List_Nil)
+								])),
+							$gicentre$elm_vegalite$VegaLite$asSpec(
+							_List_fromArray(
+								[
+									$gicentre$elm_vegalite$VegaLite$line(
+									_List_fromArray(
+										[
+											$gicentre$elm_vegalite$VegaLite$maStrokeWidth(15),
+											$gicentre$elm_vegalite$VegaLite$maOpacity(0)
+										]))
+								]))
+						])),
+					trans(_List_Nil)
 				]));
 	});
 var $author$project$Data$Traits$traitsData = A2($gicentre$elm_vegalite$VegaLite$dataFromUrl, '../data/NC_species_traits.csv', _List_Nil);
-var $author$project$Main$trendByTraitSpec = A3($author$project$Specs$TrendByTrait$mkTrendByTraitSpec, $author$project$Data$Mbbs$mbbsData, $author$project$Data$Traits$traitsData, $author$project$Data$Traits$BreedingBiome);
+var $author$project$Main$trendByTraitSpec = A3($author$project$Specs$TrendByTrait$mkTrendByTraitSpec, $author$project$Data$Mbbs$mbbsData, $author$project$Data$Traits$traitsData, $author$project$Data$Traits$WinterBiome);
 var $author$project$Main$specs = $gicentre$elm_vegalite$VegaLite$combineSpecs(
 	_List_fromArray(
 		[

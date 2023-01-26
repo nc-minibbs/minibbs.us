@@ -23,7 +23,7 @@ trendByTraitSpec =
     mkTrendByTraitSpec
         mbbsData
         traitsData
-        BreedingBiome
+        WinterBiome
 
 
 specs : Spec
