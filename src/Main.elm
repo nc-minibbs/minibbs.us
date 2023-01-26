@@ -6,6 +6,7 @@ import Data.Species exposing ( Species(..) )
 import Platform
 import Specs.ExampleTrends exposing (mkExampleTrendsSpec)
 import Specs.TrendByTrait exposing (mkTrendByTraitSpec)
+import Specs.SpeciesTrend exposing (mkSpeciesTrendSpec)
 import VegaLite exposing (..)
 
 exampleTrendsSpec : Spec
@@ -25,12 +26,18 @@ trendByTraitSpec =
         traitsData
         WinterBiome
 
+speciesTrendSpec : Spec
+speciesTrendSpec =
+    mkSpeciesTrendSpec 
+        mbbsData
+        EasternBluebird
 
 specs : Spec
 specs =
     combineSpecs 
     [ ( "exampleTrends", exampleTrendsSpec )
     , ( "trendByTrait", trendByTraitSpec)
+    , ( "speciesTrend", speciesTrendSpec)
     ]
 
 {- The code below is boilerplate for creating a headless Elm module that opens

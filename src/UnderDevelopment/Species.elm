@@ -10,7 +10,7 @@ import Html exposing (Html)
 import Html.Styled as Styled exposing (Html, div, text)
 import Html.Styled.Attributes as StyledAttribs
 import Select exposing (..)
-import SpeciesTrend exposing (mbbsSpecs)
+import Specs.SpeciesTrend exposing (mbbsSpecs)
 import VegaLite exposing (Spec)
 
 
@@ -55,8 +55,6 @@ type alias Model =
     { selectState : Select.State
     , items : List (Select.MenuItem Species)
     , selectedSpecies : Maybe Species
-
-    -- ,  currentSpec : (Spec, Cmd Msg)
     }
 
 
@@ -66,8 +64,6 @@ init =
         Select.initState (Select.selectIdentifier "SpeciesSelector")
     , items = speciesMenuItems
     , selectedSpecies = Nothing
-
-    -- , currentSpec = vegaLiteSpec (mbbsSpecs "Northern Cardinal")
     }
 
 

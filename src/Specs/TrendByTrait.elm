@@ -136,7 +136,7 @@ mkTrendByTraitSpec countData traitData trait =
              -- The main line chart
               asSpec
                 [ ps []
-                ,  line []
+                , line []
                 ]
              ,
             -- Transparent layer to make it easier to select tooltip
