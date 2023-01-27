@@ -21,8 +21,8 @@ import VegaLite exposing (..)
 
 import Element exposing (Element, el)
 import Element.Input as Input
-import Element.Font
-import Element.Border
+-- import Element.Font
+-- import Element.Border
 
 -- import Widget.Material as Material
 -- import W.Styles
@@ -66,7 +66,11 @@ specs x species =
 
 speciesToMenuItem : Species -> Select.MenuItem Species
 speciesToMenuItem species =
-    basicMenuItem { item = species, label = speciesToString species }
+    customMenuItem 
+        { item = species
+        , label = speciesToString species
+        , view = Styled.text (speciesToString species)
+        }
 
 
 
@@ -85,6 +89,7 @@ type alias Model =
     { selectState : Select.State
     , items : List (Select.MenuItem Species)
     , selectedSpecies : Maybe Species
+    , selectedItem : Maybe String
     , countyAggregation : CountyAggregation
     }
 
@@ -112,6 +117,7 @@ init =
         Select.initState (Select.selectIdentifier "SpeciesSelector")
     , items = speciesMenuItems
     , selectedSpecies = Nothing
+    , selectedItem = Nothing
     , countyAggregation = Combined
     }
 
@@ -148,24 +154,40 @@ update msg model =
                     case maybeAction of
                         Just (Select.Select i) ->
                             Just i
-                                -- |> Debug.log "Selected"
+
+                        Just (Select.InputChange _) ->
+                            model.selectedSpecies
 
                         Just Select.Clear ->
                             Nothing
 
                         _ ->
                             model.selectedSpecies
+                -- updateSelectedSpecies =
+                --     case maybeAction of
+                --         Just (Select.Select i) ->
+                --             Just i
+
+                --         Just (Select.InputChange _) ->
+                --             model.selectedItem
+
+                --         Just Select.Clear ->
+                --             Nothing
+
+                --         _ ->
+                --             model.selectedItem
 
                 specMsg =
                     case maybeAction of
-                        Just (Select.Select species) ->
-                            vegaLite (specs model.countyAggregation species)
+                        Just (Select.Select s) ->
+                            vegaLite (specs model.countyAggregation s)
 
                         _ ->
                             Cmd.none
             in
             ( { model
                 | selectState = selectState
+                -- , selectedItem = updatedSelectedItem
                 , selectedSpecies = updatedSelectedItem
               }
             , Cmd.map SelectMsg specMsg
@@ -233,13 +255,12 @@ view : Model -> Styled.Html Msg
 view m = 
     let
         selectedItem =
-            case m.selectedSpecies of
+            case m.selectedItem of
                 Just i ->
-                    Just (speciesToMenuItem i)
+                    Just (Select.basicMenuItem { item = NorthernBobwhite, label = i })
 
                 _ ->
                     Nothing
-
 
     in Styled.div
         [ StyledAttribs.css
@@ -276,6 +297,9 @@ main =
         , update = update
         , subscriptions = \_ -> Sub.none
         }
+
+
+
 
 
 

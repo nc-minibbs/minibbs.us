@@ -9,14 +9,18 @@ import VegaLite exposing (..)
 mkSpeciesTrendSpec : Data -> CountyAggregation-> Species -> Spec
 mkSpeciesTrendSpec countData counties species =
     let
-        handleCounties combined split =
+        handleCounties combined split x =
             case counties of 
-                Combined -> combined 
+                Combined -> combined x
+                Split    -> split x
+
+        handleCountiesVal combined split =
+            case counties of 
+                Combined -> combined
                 Split    -> split
-        -- handleCounties combined split =
         colorCounties = 
             handleCounties 
-            (color [])
+            (\x -> x)
             (color
                 [ mName "mbbs_county"
                 , mTitle "County"
@@ -80,14 +84,15 @@ mkSpeciesTrendSpec countData counties species =
                     ]
                 << colorCounties
                 << (handleCounties
-                        (detail [])
+                        (\x -> x)
                         (detail [ dName "mbbs_county" ])
                     )
-                << tooltips
-                    [ handleCounties []
-                       ([ tName "mbbs_county"
-                            , tTitle "County"] )    
-                    , [ tName "common_name"
+                << tooltips 
+                    [(handleCountiesVal []
+                        ([ tName "mbbs_county"
+                        , tTitle "County"] ) )
+                        ++
+                         [ tName "common_name"
                       , tTitle "Common name"
                       ]
                     , [ tName "year"
@@ -101,7 +106,9 @@ mkSpeciesTrendSpec countData counties species =
                       , tFormat ".2f"
                       , tAggregate opMean
                       ]
+                        
                     ]
+
         trans =
             transform
                 -- Filter to selected species
