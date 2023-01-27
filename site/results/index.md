@@ -9,7 +9,9 @@ title: Results
 
 ## Species Trends
 
-<div id="speciesTrend"></div>
+<app></app>
+
+<!-- <div id="speciesTrend"></div> -->
 
 ## Trends by Trait
 

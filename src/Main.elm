@@ -1,14 +1,32 @@
 port module Main exposing (main, vegaLite)
 
+import Data.County exposing (County(..), CountyAggregation(..))
 import Data.Mbbs exposing (mbbsData)
-import Data.Species exposing (Species(..))
+import Data.Species exposing (Species(..), allSpecies, speciesToString)
 import Data.Traits exposing (Trait(..), traitsData)
-import Platform
+-- import Platform
+
+import Browser
+import Css
+-- import Debug exposing (toString)
+import Html exposing (Html, div)
+-- import Html.Attributes exposing (id)
+import Html.Styled as Styled exposing (Html, div)
+import Html.Styled.Attributes as StyledAttribs
+import Select exposing (..)
 import Specs.ExampleTrends exposing (mkExampleTrendsSpec)
 import Specs.SpeciesTrend exposing (mkSpeciesTrendSpec)
 import Specs.TrendByTrait exposing (mkTrendByTraitSpec)
 import VegaLite exposing (..)
 
+import Element exposing (Element, el)
+import Element.Input as Input
+import Element.Font
+import Element.Border
+
+-- import Widget.Material as Material
+-- import W.Styles
+-- import W.InputRadio
 
 exampleTrendsSpec : Spec
 exampleTrendsSpec =
@@ -29,35 +47,237 @@ trendByTraitSpec =
         WinterBiome
 
 
-speciesTrendSpec : Spec
-speciesTrendSpec =
-    mkSpeciesTrendSpec
-        mbbsData
-        EasternBluebird
+speciesTrendSpec : CountyAggregation -> Species -> Spec
+speciesTrendSpec = 
+    mkSpeciesTrendSpec 
+        mbbsData    
 
-
-specs : Spec
-specs =
+specs : CountyAggregation -> Species -> Spec
+specs x species =
     combineSpecs
         [ ( "exampleTrends", exampleTrendsSpec )
         , ( "trendByTrait", trendByTraitSpec )
-        , ( "speciesTrend", speciesTrendSpec )
+        , ( "speciesTrend", speciesTrendSpec x species)
         ]
 
 
-
-{- The code below is boilerplate for creating a headless Elm module that opens
-   an outgoing port to JavaScript and sends the Vega-Lite spec to it.
+{-
 -}
 
+speciesToMenuItem : Species -> Select.MenuItem Species
+speciesToMenuItem species =
+    basicMenuItem { item = species, label = speciesToString species }
 
-main : Program () Spec msg
+
+
+speciesMenuItems : List (Select.MenuItem Species)
+speciesMenuItems =
+    List.map 
+        speciesToMenuItem
+        allSpecies
+
+
+
+{-
+-}
+
+type alias Model =
+    { selectState : Select.State
+    , items : List (Select.MenuItem Species)
+    , selectedSpecies : Maybe Species
+    , countyAggregation : CountyAggregation
+    }
+
+-- type alias Model =
+--     { selectedSpecies : Select Species 
+--     -- , availableSpecies : List Species
+--     , countyAggregation : CountyAggregation
+--     }
+
+-- init : Model
+-- init =
+--     { selectedSpecies = 
+--         Select.init "country-select"
+--                 |> Select.setItems allSpecies
+--     , countyAggregation = Split
+--     --     Select.initState (Select.selectIdentifier "SpeciesSelector")
+--     -- , items = speciesMenuItems
+--     -- , selectedSpecies = Nothing
+--     -- , countyAggregation = Combined
+--     }
+
+init : Model
+init =
+    { selectState =
+        Select.initState (Select.selectIdentifier "SpeciesSelector")
+    , items = speciesMenuItems
+    , selectedSpecies = Nothing
+    , countyAggregation = Combined
+    }
+
+
+type Msg
+    = SelectMsg (Select.Msg Species)
+    | CountySwitch (CountyAggregation)
+
+-- update : Msg -> Model -> ( Model, Cmd Msg )
+-- update msg model =
+--     case msg of
+--         SelectMsg subMsg ->
+--             Select.update SelectMsg subMsg model.selectedSpecies
+--             |> (\(select, _) -> 
+--                 let specMsg = case toValue select of 
+--                                     Just s -> vegaLite (specs model.countyAggregation s)
+--                                     Nothing -> Cmd.none
+--                 in
+--                 ({ model | selectedSpecies = select }, specMsg) )
+--         CountySwitch _ -> 
+--             ( model
+--             , Cmd.none
+--             )
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        SelectMsg sm ->
+            let
+                ( maybeAction, selectState, _ ) =
+                    Select.update sm model.selectState
+
+                updatedSelectedItem =
+                    case maybeAction of
+                        Just (Select.Select i) ->
+                            Just i
+                                -- |> Debug.log "Selected"
+
+                        Just Select.Clear ->
+                            Nothing
+
+                        _ ->
+                            model.selectedSpecies
+
+                specMsg =
+                    case maybeAction of
+                        Just (Select.Select species) ->
+                            vegaLite (specs model.countyAggregation species)
+
+                        _ ->
+                            Cmd.none
+            in
+            ( { model
+                | selectState = selectState
+                , selectedSpecies = updatedSelectedItem
+              }
+            , Cmd.map SelectMsg specMsg
+            )
+        CountySwitch opt -> 
+            ( { model | countyAggregation = opt }
+            ,  case model.selectedSpecies of 
+                Nothing -> Cmd.none
+                Just s  -> vegaLite (specs opt s)
+            )
+
+
+            -- let
+            --     ( maybeAction, selectState, _ ) =
+            --         Select.update sm model.selectState
+
+            --     updatedSelectedItem =
+            --         case maybeAction of
+            --             Just (Select.Select i) ->
+            --                 Just i
+            --                     -- |> Debug.log "Selected"
+
+            --             Just Select.Clear ->
+            --                 Nothing
+
+            --             _ ->
+            --                 model.selectedSpecies
+
+            --     specMsg =
+            --         case maybeAction of
+            --             Just (Select.Select species) ->
+            --                 vegaLite (specs species)
+
+            --             _ ->
+            --                 Cmd.none
+            -- in
+            -- ( { model
+            --     | selectState = selectState
+            --     , selectedSpecies = updatedSelectedItem
+
+            --     -- , currentSpec = updatedSpec
+            --   }
+            -- , Cmd.map SelectMsg specMsg
+            -- )
+
+
+
+countyRadio : Model -> Html.Html Msg
+countyRadio model =
+    Element.layout [] <|
+        Element.column []
+            [ Input.radioRow
+                [ ]
+                { onChange = CountySwitch
+                , selected = Just model.countyAggregation
+                , label = Input.labelAbove [] <| Element.text "Counties:"
+                , options =
+                    [ Input.option Combined <| Element.text "Combined"
+                    , Input.option Split <| Element.text "Split"
+                    ]
+                }
+            ]
+
+view : Model -> Styled.Html Msg 
+view m = 
+    let
+        selectedItem =
+            case m.selectedSpecies of
+                Just i ->
+                    Just (speciesToMenuItem i)
+
+                _ ->
+                    Nothing
+
+
+    in Styled.div
+        [ StyledAttribs.css
+            [ Css.marginTop (Css.px 20)
+            , Css.width (Css.pct 50)
+            , Css.marginLeft Css.auto
+            , Css.marginRight Css.auto
+            ]
+        ]
+        [   
+        
+         Styled.map SelectMsg <|
+            Select.view
+                (Select.single selectedItem
+                    |> Select.state m.selectState
+                    |> Select.menuItems m.items
+                    |> Select.placeholder "Select a species"
+                    |> Select.searchable True
+                    |> Select.clearable True
+                )
+        , Styled.div 
+            []
+            [Styled.fromUnstyled (countyRadio m)]
+        , Styled.div
+            [ StyledAttribs.id "speciesTrend" ]
+            []
+        ]
+
+main : Program () Model Msg
 main =
-    Platform.worker
-        { init = always ( specs, vegaLite specs )
-        , update = \_ model -> ( model, Cmd.none )
-        , subscriptions = always Sub.none
+    Browser.element
+        { init = always ( init, Cmd.none )
+        , view = view >> Styled.toUnstyled
+        , update = update
+        , subscriptions = \_ -> Sub.none
         }
+
+
 
 
 port vegaLite : Spec -> Cmd msg

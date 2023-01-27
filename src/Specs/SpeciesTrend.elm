@@ -1,30 +1,30 @@
 module Specs.SpeciesTrend exposing (..)
 
+import Data.County exposing (..)
 import Data.Species exposing (..)
 import VegaLite exposing (..)
 
 
-mkSpeciesTrendSpec : Data -> Species -> Spec
-mkSpeciesTrendSpec countData species =
+
+mkSpeciesTrendSpec : Data -> CountyAggregation-> Species -> Spec
+mkSpeciesTrendSpec countData counties species =
     let
+        handleCounties combined split =
+            case counties of 
+                Combined -> combined 
+                Split    -> split
+        -- handleCounties combined split =
+        colorCounties = 
+            handleCounties 
+            (color [])
+            (color
+                [ mName "mbbs_county"
+                , mTitle "County"
+                , mNominal
+                ])
         {-
            Define parameters for interactivity
         -}
-        ps =
-            params
-                << param "countySelection"
-                    [ paSelect sePoint [ seFields [ "mbbs_county" ] ]
-                    , paBind
-                        (ipSelect
-                            [ inOptions
-                                [ ""
-                                , "orange"
-                                , "chatham"
-                                , "durham"
-                                ]
-                            ]
-                        )
-                    ]
 
         enc =
             encoding
@@ -48,6 +48,8 @@ mkSpeciesTrendSpec countData species =
                         , axGrid False
                         ]
                     ]
+                << (colorCounties)
+
                 << detail [ dName "route" ]
                 << tooltips
                     [ [ tName "mbbs_county"
@@ -76,11 +78,17 @@ mkSpeciesTrendSpec countData species =
                         [ axGrid False
                         ]
                     ]
+                << colorCounties
+                << (handleCounties
+                        (detail [])
+                        (detail [ dName "mbbs_county" ])
+                    )
                 << tooltips
-                    [ [ tName "common_name"
+                    [ handleCounties []
+                       ([ tName "mbbs_county"
+                            , tTitle "County"] )    
+                    , [ tName "common_name"
                       , tTitle "Common name"
-
-                      --   , tTitle (speciesToString species)
                       ]
                     , [ tName "year"
                       , tTitle "Year"
@@ -94,11 +102,8 @@ mkSpeciesTrendSpec countData species =
                       , tAggregate opMean
                       ]
                     ]
-
         trans =
             transform
-                -- Filter based on the selected county
-                << filter (fiSelection "countySelection")
                 -- Filter to selected species
                 << filter (fiEqual "common_name" (str (speciesToString species)))
                 -- Aggregrate by route
@@ -132,7 +137,6 @@ mkSpeciesTrendSpec countData species =
                     , maOpacity 0.2
                     , maStrokeWidth 0.5
                     ]
-                , ps []
                 ]
             , asSpec
                 [ encRoutes []
