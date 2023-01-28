@@ -106,14 +106,14 @@ init =
 
 
 type Msg
-    = SelectMsg (Select.Msg Species)
+    = SelectSpecies (Select.Msg Species)
     | CountySwitch (CountyAggregation)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        SelectMsg sm ->
+        SelectSpecies sm ->
             let
                 ( maybeAction, selectState, _ ) =
                     Select.update sm model.selectState
@@ -197,7 +197,7 @@ view m =
         ]
         [   
         
-         Styled.map SelectMsg <|
+         Styled.map SelectSpecies <|
             Select.view
                 (Select.single selectedItem
                     |> Select.state m.selectState
