@@ -9,26 +9,10 @@ import VegaLite exposing (..)
 mkSpeciesTrendSpec : Data -> CountyAggregation-> Species -> Spec
 mkSpeciesTrendSpec countData counties species =
     let
-        handleCounties combined split x =
+        withCountyAggregation combined split x =
             case counties of 
                 Combined -> combined x
                 Split    -> split x
-
-        handleCountiesVal combined split =
-            case counties of 
-                Combined -> combined
-                Split    -> split
-        colorCounties = 
-            handleCounties 
-            (\x -> x)
-            (color
-                [ mName "mbbs_county"
-                , mTitle "County"
-                , mNominal
-                ])
-        {-
-           Define parameters for interactivity
-        -}
 
         enc =
             encoding
@@ -52,8 +36,13 @@ mkSpeciesTrendSpec countData counties species =
                         , axGrid False
                         ]
                     ]
-                << (colorCounties)
-
+                << withCountyAggregation 
+                    (\x -> x)
+                    (color
+                        [ mName "mbbs_county"
+                        , mTitle "County"
+                        , mNominal
+                        ])
                 << detail [ dName "route" ]
                 << tooltips
                     [ [ tName "mbbs_county"
@@ -82,30 +71,37 @@ mkSpeciesTrendSpec countData counties species =
                         [ axGrid False
                         ]
                     ]
-                << colorCounties
-                << (handleCounties
+                <<  withCountyAggregation 
+                    (\x -> x)
+                    (color
+                        [ mName "mbbs_county"
+                        , mTitle "County"
+                        , mNominal
+                        ])
+                << (withCountyAggregation
                         (\x -> x)
                         (detail [ dName "mbbs_county" ])
                     )
                 << tooltips 
-                    [(handleCountiesVal []
-                        ([ tName "mbbs_county"
-                        , tTitle "County"] ) )
-                        ++
-                         [ tName "common_name"
-                      , tTitle "Common name"
-                      ]
-                    , [ tName "year"
-                      , tTitle "Year"
-                      , tTemporal
-                      , tFormat "%Y"
-                      ]
-                    , [ tName "speciesCount"
-                      , tTitle "Avg. count"
-                      , tQuant
-                      , tFormat ".2f"
-                      , tAggregate opMean
-                      ]
+                    [  withCountyAggregation 
+                        ((++) [])
+                        ((++) [ tName "mbbs_county"
+                        , tTitle "County"] )
+                        
+                        [ tName "common_name"
+                        , tTitle "Common name"
+                        ]
+                        , [ tName "year"
+                        , tTitle "Year"
+                        , tTemporal
+                        , tFormat "%Y"
+                        ]
+                        , [ tName "speciesCount"
+                        , tTitle "Avg. count"
+                        , tQuant
+                        , tFormat ".2f"
+                        , tAggregate opMean
+                        ]
                         
                     ]
 
