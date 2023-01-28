@@ -2,7 +2,7 @@ port module Main exposing (main, vegaLite)
 
 import Data.County exposing (County(..), CountyAggregation(..))
 import Data.Mbbs exposing (mbbsData)
-import Data.Species exposing (Species(..), allSpecies, speciesToString)
+import Data.Species exposing (..)
 import Data.Traits exposing (Trait(..), traitsData)
 -- import Platform
 
@@ -64,17 +64,15 @@ specs x species =
 {-
 -}
 
-speciesToMenuItem : Species -> Select.MenuItem Species
+speciesToMenuItem : Species -> Select.MenuItem String
 speciesToMenuItem species =
-    customMenuItem 
-        { item = species
+    basicMenuItem 
+        { item = speciesToString species
         , label = speciesToString species
-        , view = Styled.text (speciesToString species)
+        -- , view = Styled.text (speciesToString species)
         }
 
-
-
-speciesMenuItems : List (Select.MenuItem Species)
+speciesMenuItems : List (Select.MenuItem String)
 speciesMenuItems =
     List.map 
         speciesToMenuItem
@@ -87,7 +85,7 @@ speciesMenuItems =
 
 type alias Model =
     { selectState : Select.State
-    , items : List (Select.MenuItem Species)
+    , items : List (Select.MenuItem String)
     , selectedSpecies : Maybe Species
     , selectedItem : Maybe String
     , countyAggregation : CountyAggregation
@@ -106,7 +104,7 @@ init =
 
 
 type Msg
-    = SelectSpecies (Select.Msg Species)
+    = SelectSpecies (Select.Msg String)
     | CountySwitch (CountyAggregation)
 
 
@@ -115,32 +113,37 @@ update msg model =
     case msg of
         SelectSpecies sm ->
             let
-                ( maybeAction, selectState, _ ) =
+                ( maybeAction, selectState, cmds ) =
                     Select.update sm model.selectState
 
                 updateSelectedItem =
                     case maybeAction of
                         Just (Select.Select i) ->
-                            Just (speciesToString i)
+                            Just i
                         Just (Select.InputChange s) ->
-                                 Just s
+                            Just s
+                        Just Select.Clear ->
+                            Nothing
                         _ -> model.selectedItem
 
                 updateSelectedSpecies =
                     case maybeAction of
                         Just (Select.Select i) ->
-                            Just i
+                            stringToSpecies i
 
                         Just Select.Clear ->
                             Nothing
 
                         _ ->
+                             
                             model.selectedSpecies
 
                 specMsg =
                     case maybeAction of
-                        Just (Select.Select s) ->
-                            vegaLite (specs model.countyAggregation s)
+                        Just (Select.Select i) ->
+                            case stringToSpecies i of
+                                Nothing -> Cmd.none
+                                Just s  -> vegaLite (specs model.countyAggregation s)
 
                         _ ->
                             Cmd.none
@@ -150,7 +153,7 @@ update msg model =
                 , selectedItem = updateSelectedItem
                 , selectedSpecies = updateSelectedSpecies
               }
-            , specMsg
+            , Cmd.map SelectSpecies (Cmd.batch [specMsg, cmds])
             )
         CountySwitch opt -> 
             ( { model | countyAggregation = opt }
@@ -182,7 +185,7 @@ view m =
         selectedItem =
             case m.selectedItem of
                 Just i ->
-                    Just (Select.basicMenuItem { item = NorthernBobwhite, label = i })
+                    Just (Select.basicMenuItem { item = i, label = i })
 
                 _ ->
                     Nothing
@@ -203,8 +206,8 @@ view m =
                     |> Select.state m.selectState
                     |> Select.menuItems m.items
                     |> Select.placeholder "Select a species"
-                    -- |> Select.searchable True
-                    -- |> Select.clearable True
+                    |> Select.searchable True
+                    |> Select.clearable True
                 )
         , Styled.div 
             []

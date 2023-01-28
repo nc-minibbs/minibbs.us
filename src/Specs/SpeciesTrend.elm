@@ -82,12 +82,8 @@ mkSpeciesTrendSpec countData counties species =
                         (\x -> x)
                         (detail [ dName "mbbs_county" ])
                     )
-                << tooltips 
-                    [  withCountyAggregation 
-                        ((++) [])
-                        ((++) [ tName "mbbs_county"
-                        , tTitle "County"] )
-                        
+                <<  withCountyAggregation 
+                        (tooltips [  
                         [ tName "common_name"
                         , tTitle "Common name"
                         ]
@@ -103,7 +99,28 @@ mkSpeciesTrendSpec countData counties species =
                         , tAggregate opMean
                         ]
                         
-                    ]
+                    ])
+                        (tooltips 
+                            [[ tName "mbbs_county"
+                            , tTitle "County"
+                            ],
+                        [ tName "common_name"
+                        , tTitle "Common name"
+                        ]
+                        , [ tName "year"
+                        , tTitle "Year"
+                        , tTemporal
+                        , tFormat "%Y"
+                        ]
+                        , [ tName "speciesCount"
+                        , tTitle "Avg. count"
+                        , tQuant
+                        , tFormat ".2f"
+                        , tAggregate opMean
+                        ]
+                            ]
+                        )
+                 
 
         trans =
             transform
