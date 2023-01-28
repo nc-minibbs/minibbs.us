@@ -93,23 +93,6 @@ type alias Model =
     , countyAggregation : CountyAggregation
     }
 
--- type alias Model =
---     { selectedSpecies : Select Species 
---     -- , availableSpecies : List Species
---     , countyAggregation : CountyAggregation
---     }
-
--- init : Model
--- init =
---     { selectedSpecies = 
---         Select.init "country-select"
---                 |> Select.setItems allSpecies
---     , countyAggregation = Split
---     --     Select.initState (Select.selectIdentifier "SpeciesSelector")
---     -- , items = speciesMenuItems
---     -- , selectedSpecies = Nothing
---     -- , countyAggregation = Combined
---     }
 
 init : Model
 init =
@@ -126,21 +109,6 @@ type Msg
     = SelectMsg (Select.Msg Species)
     | CountySwitch (CountyAggregation)
 
--- update : Msg -> Model -> ( Model, Cmd Msg )
--- update msg model =
---     case msg of
---         SelectMsg subMsg ->
---             Select.update SelectMsg subMsg model.selectedSpecies
---             |> (\(select, _) -> 
---                 let specMsg = case toValue select of 
---                                     Just s -> vegaLite (specs model.countyAggregation s)
---                                     Nothing -> Cmd.none
---                 in
---                 ({ model | selectedSpecies = select }, specMsg) )
---         CountySwitch _ -> 
---             ( model
---             , Cmd.none
---             )
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -150,32 +118,24 @@ update msg model =
                 ( maybeAction, selectState, _ ) =
                     Select.update sm model.selectState
 
-                updatedSelectedItem =
+                updateSelectedItem =
+                    case maybeAction of
+                        Just (Select.Select i) ->
+                            Just (speciesToString i)
+                        Just (Select.InputChange s) ->
+                                 Just s
+                        _ -> model.selectedItem
+
+                updateSelectedSpecies =
                     case maybeAction of
                         Just (Select.Select i) ->
                             Just i
-
-                        Just (Select.InputChange _) ->
-                            model.selectedSpecies
 
                         Just Select.Clear ->
                             Nothing
 
                         _ ->
                             model.selectedSpecies
-                -- updateSelectedSpecies =
-                --     case maybeAction of
-                --         Just (Select.Select i) ->
-                --             Just i
-
-                --         Just (Select.InputChange _) ->
-                --             model.selectedItem
-
-                --         Just Select.Clear ->
-                --             Nothing
-
-                --         _ ->
-                --             model.selectedItem
 
                 specMsg =
                     case maybeAction of
@@ -187,10 +147,10 @@ update msg model =
             in
             ( { model
                 | selectState = selectState
-                -- , selectedItem = updatedSelectedItem
-                , selectedSpecies = updatedSelectedItem
+                , selectedItem = updateSelectedItem
+                , selectedSpecies = updateSelectedSpecies
               }
-            , Cmd.map SelectMsg specMsg
+            , specMsg
             )
         CountySwitch opt -> 
             ( { model | countyAggregation = opt }
@@ -198,41 +158,6 @@ update msg model =
                 Nothing -> Cmd.none
                 Just s  -> vegaLite (specs opt s)
             )
-
-
-            -- let
-            --     ( maybeAction, selectState, _ ) =
-            --         Select.update sm model.selectState
-
-            --     updatedSelectedItem =
-            --         case maybeAction of
-            --             Just (Select.Select i) ->
-            --                 Just i
-            --                     -- |> Debug.log "Selected"
-
-            --             Just Select.Clear ->
-            --                 Nothing
-
-            --             _ ->
-            --                 model.selectedSpecies
-
-            --     specMsg =
-            --         case maybeAction of
-            --             Just (Select.Select species) ->
-            --                 vegaLite (specs species)
-
-            --             _ ->
-            --                 Cmd.none
-            -- in
-            -- ( { model
-            --     | selectState = selectState
-            --     , selectedSpecies = updatedSelectedItem
-
-            --     -- , currentSpec = updatedSpec
-            --   }
-            -- , Cmd.map SelectMsg specMsg
-            -- )
-
 
 
 countyRadio : Model -> Html.Html Msg
@@ -243,7 +168,7 @@ countyRadio model =
                 [ ]
                 { onChange = CountySwitch
                 , selected = Just model.countyAggregation
-                , label = Input.labelAbove [] <| Element.text "Counties:"
+                , label = Input.labelLeft [] <| Element.text "Counties:"
                 , options =
                     [ Input.option Combined <| Element.text "Combined"
                     , Input.option Split <| Element.text "Split"
@@ -278,8 +203,8 @@ view m =
                     |> Select.state m.selectState
                     |> Select.menuItems m.items
                     |> Select.placeholder "Select a species"
-                    |> Select.searchable True
-                    |> Select.clearable True
+                    -- |> Select.searchable True
+                    -- |> Select.clearable True
                 )
         , Styled.div 
             []

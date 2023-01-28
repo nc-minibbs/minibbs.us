@@ -13,5 +13,5 @@ countyToString county =
       Orange  -> "orange"
 
 type CountyAggregation = 
-     Combined 
+      Combined 
     | Split

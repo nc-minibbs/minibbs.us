@@ -5279,7 +5279,7 @@ var $author$project$Main$init = {
 	items: $author$project$Main$speciesMenuItems,
 	selectState: $Confidenceman02$elm_select$Select$initState(
 		$Confidenceman02$elm_select$Select$selectIdentifier('SpeciesSelector')),
-	selectedItem: $elm$core$Maybe$Nothing,
+	selectedItem: $elm$core$Maybe$Just('foo'),
 	selectedSpecies: $elm$core$Maybe$Nothing
 };
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
@@ -6171,10 +6171,6 @@ var $rtfeldman$elm_css$VirtualDom$Styled$toUnstyled = function (vdom) {
 	}
 };
 var $rtfeldman$elm_css$Html$Styled$toUnstyled = $rtfeldman$elm_css$VirtualDom$Styled$toUnstyled;
-var $author$project$Main$SelectMsg = function (a) {
-	return {$: 'SelectMsg', a: a};
-};
-var $elm$core$Platform$Cmd$map = _Platform_map;
 var $elm$json$Json$Encode$object = function (pairs) {
 	return _Json_wrap(
 		A3(
@@ -14270,6 +14266,14 @@ var $gicentre$elm_vegalite$VegaLite$viewStroke = function (ms) {
 };
 var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 	function (countData, counties, species) {
+		var withCountyAggregation = F3(
+			function (combined, split, x) {
+				if (counties.$ === 'Combined') {
+					return combined(x);
+				} else {
+					return split(x);
+				}
+			});
 		var trans = A2(
 			$elm$core$Basics$composeL,
 			A2(
@@ -14289,22 +14293,6 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 					]),
 				_List_fromArray(
 					['year', 'common_name', 'sci_name', 'mbbs_county', 'route', 'route_num'])));
-		var handleCountiesVal = F2(
-			function (combined, split) {
-				if (counties.$ === 'Combined') {
-					return combined;
-				} else {
-					return split;
-				}
-			});
-		var handleCounties = F3(
-			function (combined, split, x) {
-				if (counties.$ === 'Combined') {
-					return combined(x);
-				} else {
-					return split(x);
-				}
-			});
 		var enc = A2(
 			$elm$core$Basics$composeL,
 			$gicentre$elm_vegalite$VegaLite$encoding,
@@ -14321,18 +14309,6 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 								$gicentre$elm_vegalite$VegaLite$axTitle(''),
 								$gicentre$elm_vegalite$VegaLite$axGrid(false)
 							]))
-					])));
-		var colorCounties = A2(
-			handleCounties,
-			function (x) {
-				return x;
-			},
-			$gicentre$elm_vegalite$VegaLite$color(
-				_List_fromArray(
-					[
-						$gicentre$elm_vegalite$VegaLite$mName('mbbs_county'),
-						$gicentre$elm_vegalite$VegaLite$mTitle('County'),
-						$gicentre$elm_vegalite$VegaLite$mNominal
 					])));
 		var encMean = A2(
 			$elm$core$Basics$composeL,
@@ -14356,9 +14332,20 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 											$gicentre$elm_vegalite$VegaLite$axGrid(false)
 										]))
 								]))),
-					colorCounties),
+					A2(
+						withCountyAggregation,
+						function (x) {
+							return x;
+						},
+						$gicentre$elm_vegalite$VegaLite$color(
+							_List_fromArray(
+								[
+									$gicentre$elm_vegalite$VegaLite$mName('mbbs_county'),
+									$gicentre$elm_vegalite$VegaLite$mTitle('County'),
+									$gicentre$elm_vegalite$VegaLite$mNominal
+								])))),
 				A2(
-					handleCounties,
+					withCountyAggregation,
 					function (x) {
 						return x;
 					},
@@ -14370,10 +14357,10 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 			$gicentre$elm_vegalite$VegaLite$tooltips(
 				_List_fromArray(
 					[
-						_Utils_ap(
-						A2(
-							handleCountiesVal,
-							_List_Nil,
+						A3(
+						withCountyAggregation,
+						$elm$core$Basics$append(_List_Nil),
+						$elm$core$Basics$append(
 							_List_fromArray(
 								[
 									$gicentre$elm_vegalite$VegaLite$tName('mbbs_county'),
@@ -14424,7 +14411,18 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 											$gicentre$elm_vegalite$VegaLite$axGrid(false)
 										]))
 								]))),
-					colorCounties),
+					A2(
+						withCountyAggregation,
+						function (x) {
+							return x;
+						},
+						$gicentre$elm_vegalite$VegaLite$color(
+							_List_fromArray(
+								[
+									$gicentre$elm_vegalite$VegaLite$mName('mbbs_county'),
+									$gicentre$elm_vegalite$VegaLite$mTitle('County'),
+									$gicentre$elm_vegalite$VegaLite$mNominal
+								])))),
 				$gicentre$elm_vegalite$VegaLite$detail(
 					_List_fromArray(
 						[
@@ -16386,24 +16384,43 @@ var $author$project$Main$update = F2(
 					return $elm$core$Platform$Cmd$none;
 				}
 			}();
-			var updatedSelectedItem = function () {
-				_v2$3:
+			var updateSelectedItem = function () {
+				_v4$2:
+				while (true) {
+					if (maybeAction.$ === 'Just') {
+						switch (maybeAction.a.$) {
+							case 'Select':
+								var i = maybeAction.a.a;
+								return $elm$core$Maybe$Just(
+									$author$project$Data$Species$speciesToString(i));
+							case 'InputChange':
+								var s = maybeAction.a.a;
+								return $elm$core$Maybe$Just(s);
+							default:
+								break _v4$2;
+						}
+					} else {
+						break _v4$2;
+					}
+				}
+				return model.selectedItem;
+			}();
+			var updateSelectedSpecies = function () {
+				_v2$2:
 				while (true) {
 					if (maybeAction.$ === 'Just') {
 						switch (maybeAction.a.$) {
 							case 'Select':
 								var i = maybeAction.a.a;
 								return $elm$core$Maybe$Just(i);
-							case 'InputChange':
-								return model.selectedSpecies;
 							case 'Clear':
 								var _v3 = maybeAction.a;
 								return $elm$core$Maybe$Nothing;
 							default:
-								break _v2$3;
+								break _v2$2;
 						}
 					} else {
-						break _v2$3;
+						break _v2$2;
 					}
 				}
 				return model.selectedSpecies;
@@ -16411,8 +16428,8 @@ var $author$project$Main$update = F2(
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{selectState: selectState, selectedSpecies: updatedSelectedItem}),
-				A2($elm$core$Platform$Cmd$map, $author$project$Main$SelectMsg, specMsg));
+					{selectState: selectState, selectedItem: updateSelectedItem, selectedSpecies: updateSelectedSpecies}),
+				specMsg);
 		} else {
 			var opt = msg.a;
 			return _Utils_Tuple2(
@@ -16420,17 +16437,20 @@ var $author$project$Main$update = F2(
 					model,
 					{countyAggregation: opt}),
 				function () {
-					var _v5 = model.selectedSpecies;
-					if (_v5.$ === 'Nothing') {
+					var _v6 = model.selectedSpecies;
+					if (_v6.$ === 'Nothing') {
 						return $elm$core$Platform$Cmd$none;
 					} else {
-						var s = _v5.a;
+						var s = _v6.a;
 						return $author$project$Main$vegaLite(
 							A2($author$project$Main$specs, opt, s));
 					}
 				}());
 		}
 	});
+var $author$project$Main$SelectMsg = function (a) {
+	return {$: 'SelectMsg', a: a};
+};
 var $rtfeldman$elm_css$Css$Structure$Compatible = {$: 'Compatible'};
 var $rtfeldman$elm_css$Css$auto = {alignItemsOrAuto: $rtfeldman$elm_css$Css$Structure$Compatible, cursor: $rtfeldman$elm_css$Css$Structure$Compatible, flexBasis: $rtfeldman$elm_css$Css$Structure$Compatible, intOrAuto: $rtfeldman$elm_css$Css$Structure$Compatible, justifyContentOrAuto: $rtfeldman$elm_css$Css$Structure$Compatible, lengthOrAuto: $rtfeldman$elm_css$Css$Structure$Compatible, lengthOrAutoOrCoverOrContain: $rtfeldman$elm_css$Css$Structure$Compatible, lengthOrNumberOrAutoOrNoneOrContent: $rtfeldman$elm_css$Css$Structure$Compatible, overflow: $rtfeldman$elm_css$Css$Structure$Compatible, pointerEvents: $rtfeldman$elm_css$Css$Structure$Compatible, tableLayout: $rtfeldman$elm_css$Css$Structure$Compatible, textRendering: $rtfeldman$elm_css$Css$Structure$Compatible, touchAction: $rtfeldman$elm_css$Css$Structure$Compatible, value: 'auto'};
 var $Confidenceman02$elm_select$Select$Basic = function (a) {
@@ -16440,17 +16460,6 @@ var $Confidenceman02$elm_select$Select$basicMenuItem = function (bscItem) {
 	return $Confidenceman02$elm_select$Select$Basic(
 		{filterable: true, group: $elm$core$Maybe$Nothing, item: bscItem.item, label: bscItem.label, styles: $elm$core$Maybe$Nothing});
 };
-var $Confidenceman02$elm_select$Select$Config = function (a) {
-	return {$: 'Config', a: a};
-};
-var $Confidenceman02$elm_select$Select$clearable = F2(
-	function (clear, _v0) {
-		var config = _v0.a;
-		return $Confidenceman02$elm_select$Select$Config(
-			_Utils_update(
-				config,
-				{clearable: clear}));
-	});
 var $author$project$Main$CountySwitch = function (a) {
 	return {$: 'CountySwitch', a: a};
 };
@@ -21852,12 +21861,12 @@ var $mdgriffith$elm_ui$Element$column = F2(
 						attrs))),
 			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
 	});
-var $mdgriffith$elm_ui$Element$Input$Above = {$: 'Above'};
 var $mdgriffith$elm_ui$Element$Input$Label = F3(
 	function (a, b, c) {
 		return {$: 'Label', a: a, b: b, c: c};
 	});
-var $mdgriffith$elm_ui$Element$Input$labelAbove = $mdgriffith$elm_ui$Element$Input$Label($mdgriffith$elm_ui$Element$Input$Above);
+var $mdgriffith$elm_ui$Element$Input$OnLeft = {$: 'OnLeft'};
+var $mdgriffith$elm_ui$Element$Input$labelLeft = $mdgriffith$elm_ui$Element$Input$Label($mdgriffith$elm_ui$Element$Input$OnLeft);
 var $mdgriffith$elm_ui$Internal$Model$OnlyDynamic = F2(
 	function (a, b) {
 		return {$: 'OnlyDynamic', a: a, b: b};
@@ -22826,7 +22835,7 @@ var $author$project$Main$countyRadio = function (model) {
 					_List_Nil,
 					{
 						label: A2(
-							$mdgriffith$elm_ui$Element$Input$labelAbove,
+							$mdgriffith$elm_ui$Element$Input$labelLeft,
 							_List_Nil,
 							$mdgriffith$elm_ui$Element$text('Counties:')),
 						onChange: $author$project$Main$CountySwitch,
@@ -24445,6 +24454,9 @@ var $rtfeldman$elm_css$Css$prop1 = F2(
 var $rtfeldman$elm_css$Css$marginLeft = $rtfeldman$elm_css$Css$prop1('margin-left');
 var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
 var $rtfeldman$elm_css$Css$marginTop = $rtfeldman$elm_css$Css$prop1('margin-top');
+var $Confidenceman02$elm_select$Select$Config = function (a) {
+	return {$: 'Config', a: a};
+};
 var $Confidenceman02$elm_select$Select$menuItems = F2(
 	function (items, _v0) {
 		var config = _v0.a;
@@ -24489,14 +24501,6 @@ var $Confidenceman02$elm_select$Select$placeholder = F2(
 	});
 var $rtfeldman$elm_css$Css$PxUnits = {$: 'PxUnits'};
 var $rtfeldman$elm_css$Css$px = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, $rtfeldman$elm_css$Css$PxUnits, 'px');
-var $Confidenceman02$elm_select$Select$searchable = F2(
-	function (pred, _v0) {
-		var config = _v0.a;
-		return $Confidenceman02$elm_select$Select$Config(
-			_Utils_update(
-				config,
-				{searchable: pred}));
-	});
 var $Confidenceman02$elm_select$Select$CustomVariant = function (a) {
 	return {$: 'CustomVariant', a: a};
 };
@@ -30173,21 +30177,15 @@ var $author$project$Main$view = function (m) {
 				$author$project$Main$SelectMsg,
 				$Confidenceman02$elm_select$Select$view(
 					A2(
-						$Confidenceman02$elm_select$Select$clearable,
-						true,
+						$Confidenceman02$elm_select$Select$placeholder,
+						'Select a species',
 						A2(
-							$Confidenceman02$elm_select$Select$searchable,
-							true,
+							$Confidenceman02$elm_select$Select$menuItems,
+							m.items,
 							A2(
-								$Confidenceman02$elm_select$Select$placeholder,
-								'Select a species',
-								A2(
-									$Confidenceman02$elm_select$Select$menuItems,
-									m.items,
-									A2(
-										$Confidenceman02$elm_select$Select$state,
-										m.selectState,
-										$Confidenceman02$elm_select$Select$single(selectedItem)))))))),
+								$Confidenceman02$elm_select$Select$state,
+								m.selectState,
+								$Confidenceman02$elm_select$Select$single(selectedItem)))))),
 				A2(
 				$rtfeldman$elm_css$Html$Styled$div,
 				_List_Nil,
