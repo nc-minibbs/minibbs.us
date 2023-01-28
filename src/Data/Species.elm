@@ -47,8 +47,16 @@ speciesToString species =
         WoodThrush ->
             "Wood Thrush"
 
+
 stringToSpecies : String -> Maybe Species
-stringToSpecies s = 
-    List.map (\x -> (x, speciesToString x)) allSpecies
-    |> List.filterMap (\(x, y) -> if y == s then Just x else Nothing)
-    |> List.head
+stringToSpecies s =
+    List.map (\x -> ( x, speciesToString x )) allSpecies
+        |> List.filterMap
+            (\( x, y ) ->
+                if y == s then
+                    Just x
+
+                else
+                    Nothing
+            )
+        |> List.head

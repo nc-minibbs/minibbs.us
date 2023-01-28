@@ -5,14 +5,16 @@ import Data.Species exposing (..)
 import VegaLite exposing (..)
 
 
-
-mkSpeciesTrendSpec : Data -> CountyAggregation-> Species -> Spec
+mkSpeciesTrendSpec : Data -> CountyAggregation -> Species -> Spec
 mkSpeciesTrendSpec countData counties species =
     let
         withCountyAggregation combined split x =
-            case counties of 
-                Combined -> combined x
-                Split    -> split x
+            case counties of
+                Combined ->
+                    combined x
+
+                Split ->
+                    split x
 
         enc =
             encoding
@@ -36,13 +38,14 @@ mkSpeciesTrendSpec countData counties species =
                         , axGrid False
                         ]
                     ]
-                << withCountyAggregation 
+                << withCountyAggregation
                     (\x -> x)
                     (color
                         [ mName "mbbs_county"
                         , mTitle "County"
                         , mNominal
-                        ])
+                        ]
+                    )
                 << detail [ dName "route" ]
                 << tooltips
                     [ [ tName "mbbs_county"
@@ -71,56 +74,55 @@ mkSpeciesTrendSpec countData counties species =
                         [ axGrid False
                         ]
                     ]
-                <<  withCountyAggregation 
+                << withCountyAggregation
                     (\x -> x)
                     (color
                         [ mName "mbbs_county"
                         , mTitle "County"
                         , mNominal
-                        ])
-                << (withCountyAggregation
-                        (\x -> x)
-                        (detail [ dName "mbbs_county" ])
+                        ]
                     )
-                <<  withCountyAggregation 
-                        (tooltips [  
-                        [ tName "common_name"
-                        , tTitle "Common name"
-                        ]
+                << withCountyAggregation
+                    (\x -> x)
+                    (detail [ dName "mbbs_county" ])
+                << withCountyAggregation
+                    (tooltips
+                        [ [ tName "common_name"
+                          , tTitle "Common name"
+                          ]
                         , [ tName "year"
-                        , tTitle "Year"
-                        , tTemporal
-                        , tFormat "%Y"
-                        ]
+                          , tTitle "Year"
+                          , tTemporal
+                          , tFormat "%Y"
+                          ]
                         , [ tName "speciesCount"
-                        , tTitle "Avg. count"
-                        , tQuant
-                        , tFormat ".2f"
-                        , tAggregate opMean
+                          , tTitle "Avg. count"
+                          , tQuant
+                          , tFormat ".2f"
+                          , tAggregate opMean
+                          ]
                         ]
-                        
-                    ])
-                        (tooltips 
-                            [[ tName "mbbs_county"
-                            , tTitle "County"
-                            ],
-                        [ tName "common_name"
-                        , tTitle "Common name"
-                        ]
+                    )
+                    (tooltips
+                        [ [ tName "mbbs_county"
+                          , tTitle "County"
+                          ]
+                        , [ tName "common_name"
+                          , tTitle "Common name"
+                          ]
                         , [ tName "year"
-                        , tTitle "Year"
-                        , tTemporal
-                        , tFormat "%Y"
-                        ]
+                          , tTitle "Year"
+                          , tTemporal
+                          , tFormat "%Y"
+                          ]
                         , [ tName "speciesCount"
-                        , tTitle "Avg. count"
-                        , tQuant
-                        , tFormat ".2f"
-                        , tAggregate opMean
+                          , tTitle "Avg. count"
+                          , tQuant
+                          , tFormat ".2f"
+                          , tAggregate opMean
+                          ]
                         ]
-                            ]
-                        )
-                 
+                    )
 
         trans =
             transform

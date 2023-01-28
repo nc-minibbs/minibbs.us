@@ -1,16 +1,18 @@
 port module Main exposing (main, vegaLite)
 
+-- import Platform
+-- import Debug exposing (toString)
+-- import Html.Attributes exposing (id)
+
+import Browser
+import Css
 import Data.County exposing (County(..), CountyAggregation(..))
 import Data.Mbbs exposing (mbbsData)
 import Data.Species exposing (..)
 import Data.Traits exposing (Trait(..), traitsData)
--- import Platform
-
-import Browser
-import Css
--- import Debug exposing (toString)
+import Element exposing (Element, el)
+import Element.Input as Input
 import Html exposing (Html, div)
--- import Html.Attributes exposing (id)
 import Html.Styled as Styled exposing (Html, div)
 import Html.Styled.Attributes as StyledAttribs
 import Select exposing (..)
@@ -19,14 +21,14 @@ import Specs.SpeciesTrend exposing (mkSpeciesTrendSpec)
 import Specs.TrendByTrait exposing (mkTrendByTraitSpec)
 import VegaLite exposing (..)
 
-import Element exposing (Element, el)
-import Element.Input as Input
+
+
 -- import Element.Font
 -- import Element.Border
-
 -- import Widget.Material as Material
 -- import W.Styles
 -- import W.InputRadio
+
 
 exampleTrendsSpec : Spec
 exampleTrendsSpec =
@@ -48,40 +50,44 @@ trendByTraitSpec =
 
 
 speciesTrendSpec : CountyAggregation -> Species -> Spec
-speciesTrendSpec = 
-    mkSpeciesTrendSpec 
-        mbbsData    
+speciesTrendSpec =
+    mkSpeciesTrendSpec
+        mbbsData
+
 
 specs : CountyAggregation -> Species -> Spec
 specs x species =
     combineSpecs
         [ ( "exampleTrends", exampleTrendsSpec )
         , ( "trendByTrait", trendByTraitSpec )
-        , ( "speciesTrend", speciesTrendSpec x species)
+        , ( "speciesTrend", speciesTrendSpec x species )
         ]
 
 
-{-
--}
+
+{-  -}
+
 
 speciesToMenuItem : Species -> Select.MenuItem String
 speciesToMenuItem species =
-    basicMenuItem 
+    basicMenuItem
         { item = speciesToString species
         , label = speciesToString species
+
         -- , view = Styled.text (speciesToString species)
         }
 
+
 speciesMenuItems : List (Select.MenuItem String)
 speciesMenuItems =
-    List.map 
+    List.map
         speciesToMenuItem
         allSpecies
 
 
 
-{-
--}
+{-  -}
+
 
 type alias Model =
     { selectState : Select.State
@@ -105,7 +111,7 @@ init =
 
 type Msg
     = SelectSpecies (Select.Msg String)
-    | CountySwitch (CountyAggregation)
+    | CountySwitch CountyAggregation
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -120,11 +126,15 @@ update msg model =
                     case maybeAction of
                         Just (Select.Select i) ->
                             Just i
+
                         Just (Select.InputChange s) ->
                             Just s
+
                         Just Select.Clear ->
                             Nothing
-                        _ -> model.selectedItem
+
+                        _ ->
+                            model.selectedItem
 
                 updateSelectedSpecies =
                     case maybeAction of
@@ -135,15 +145,17 @@ update msg model =
                             Nothing
 
                         _ ->
-                             
                             model.selectedSpecies
 
                 specMsg =
                     case maybeAction of
                         Just (Select.Select i) ->
                             case stringToSpecies i of
-                                Nothing -> Cmd.none
-                                Just s  -> vegaLite (specs model.countyAggregation s)
+                                Nothing ->
+                                    Cmd.none
+
+                                Just s ->
+                                    vegaLite (specs model.countyAggregation s)
 
                         _ ->
                             Cmd.none
@@ -153,13 +165,17 @@ update msg model =
                 , selectedItem = updateSelectedItem
                 , selectedSpecies = updateSelectedSpecies
               }
-            , Cmd.map SelectSpecies (Cmd.batch [specMsg, cmds])
+            , Cmd.map SelectSpecies (Cmd.batch [ specMsg, cmds ])
             )
-        CountySwitch opt -> 
+
+        CountySwitch opt ->
             ( { model | countyAggregation = opt }
-            ,  case model.selectedSpecies of 
-                Nothing -> Cmd.none
-                Just s  -> vegaLite (specs opt s)
+            , case model.selectedSpecies of
+                Nothing ->
+                    Cmd.none
+
+                Just s ->
+                    vegaLite (specs opt s)
             )
 
 
@@ -168,7 +184,7 @@ countyRadio model =
     Element.layout [] <|
         Element.column []
             [ Input.radioRow
-                [ ]
+                []
                 { onChange = CountySwitch
                 , selected = Just model.countyAggregation
                 , label = Input.labelLeft [] <| Element.text "Counties:"
@@ -179,8 +195,9 @@ countyRadio model =
                 }
             ]
 
-view : Model -> Styled.Html Msg 
-view m = 
+
+view : Model -> Styled.Html Msg
+view m =
     let
         selectedItem =
             case m.selectedItem of
@@ -189,8 +206,8 @@ view m =
 
                 _ ->
                     Nothing
-
-    in Styled.div
+    in
+    Styled.div
         [ StyledAttribs.css
             [ Css.marginTop (Css.px 20)
             , Css.width (Css.pct 50)
@@ -198,9 +215,7 @@ view m =
             , Css.marginRight Css.auto
             ]
         ]
-        [   
-        
-         Styled.map SelectSpecies <|
+        [ Styled.map SelectSpecies <|
             Select.view
                 (Select.single selectedItem
                     |> Select.state m.selectState
@@ -209,13 +224,14 @@ view m =
                     |> Select.searchable True
                     |> Select.clearable True
                 )
-        , Styled.div 
+        , Styled.div
             []
-            [Styled.fromUnstyled (countyRadio m)]
+            [ Styled.fromUnstyled (countyRadio m) ]
         , Styled.div
             [ StyledAttribs.id "speciesTrend" ]
             []
         ]
+
 
 main : Program () Model Msg
 main =
@@ -225,11 +241,6 @@ main =
         , update = update
         , subscriptions = \_ -> Sub.none
         }
-
-
-
-
-
 
 
 port vegaLite : Spec -> Cmd msg

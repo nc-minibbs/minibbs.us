@@ -1,17 +1,25 @@
 module Data.County exposing (..)
 
-type County =
-    Chatham
-  | Durham
-  | Orange 
 
-countyToString : County -> String 
-countyToString county = 
-    case county of 
-      Chatham -> "chatham"
-      Durham  -> "durham"
-      Orange  -> "orange"
+type County
+    = Chatham
+    | Durham
+    | Orange
 
-type CountyAggregation = 
-      Combined 
+
+countyToString : County -> String
+countyToString county =
+    case county of
+        Chatham ->
+            "chatham"
+
+        Durham ->
+            "durham"
+
+        Orange ->
+            "orange"
+
+
+type CountyAggregation
+    = Combined
     | Split
