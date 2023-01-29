@@ -7,12 +7,4 @@ title: Results
 <img width="128" alt="Under construction animated" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Under_construction_animated.gif">
 </a>
 
-## Species Trends
-
 <app></app>
-
-<!-- <div id="speciesTrend"></div> -->
-
-## Trends by Trait
-
-<div id="trendByTrait"></div>
