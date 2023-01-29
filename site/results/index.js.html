@@ -2,11 +2,20 @@
   // This function grabs the specification from Elm (here called specs).
   var app = 
         Elm.Main.init({ node: document.querySelector('app') });
-  app.ports.vegaLite.subscribe(function (specs) {
-    // Change actions to true to display links to source, editor and image.
-    vegaEmbed("#speciesTrend", specs["speciesTrend"], { actions: false }).catch(console.warn);
+  // app.ports.vegaLite.subscribe(function (specs) {
+  //   // Change actions to true to display links to source, editor and image.
+  //   vegaEmbed("#speciesTrend", specs["speciesTrend"], { actions: false }).catch(console.warn);
 
-    vegaEmbed("#trendByTrait", specs["trendByTrait"], { actions: false }).catch(console.warn);
+  //   vegaEmbed("#trendByTrait", specs["trendByTrait"], { actions: false }).catch(console.warn);
+  // });
+  // app.ports.individualSpeciesVega.subscribe(function (specs) {
+  //   // Change actions to true to display links to source, editor and image.
+  //   vegaEmbed("#speciesTrend", specs["speciesTrend"], { actions: false }).catch(console.warn);
+
+  // });
+  app.ports.vegaPort.subscribe(function (specs) {
+    vegaEmbed("#vegaViz", specs, { actions: false })
+    .catch(console.warn);
   });
   // Elm.Main.init().ports.vegaLite.subscribe(function (namedSpecs) {
   //   for (let name of Object.keys(namedSpecs)) {
