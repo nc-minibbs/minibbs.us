@@ -5210,15 +5210,111 @@ var $Confidenceman02$elm_select$Select$SelectId = $elm$core$Basics$identity;
 var $Confidenceman02$elm_select$Select$selectIdentifier = function (id_) {
 	return id_ + '__elm-select';
 };
-var $author$project$Data$Species$AmericanCrow = 0;
-var $author$project$Data$Species$CarolinaWren = 1;
-var $author$project$Data$Species$EasternBluebird = 2;
-var $author$project$Data$Species$NorthernBobwhite = 3;
-var $author$project$Data$Species$NorthernCardinal = 4;
-var $author$project$Data$Species$SummerTanager = 5;
-var $author$project$Data$Species$WoodThrush = 6;
+var $author$project$Data$Species$AcadianFlycatcher = 0;
+var $author$project$Data$Species$AmericanCrow = 1;
+var $author$project$Data$Species$AmericanGoldfinch = 2;
+var $author$project$Data$Species$AmericanRedstart = 3;
+var $author$project$Data$Species$AmericanRobin = 4;
+var $author$project$Data$Species$BaldEagle = 5;
+var $author$project$Data$Species$BaltimoreOriole = 6;
+var $author$project$Data$Species$BarnSwallow = 7;
+var $author$project$Data$Species$BarredOwl = 8;
+var $author$project$Data$Species$BeltedKingfisher = 9;
+var $author$project$Data$Species$BlackVulture = 10;
+var $author$project$Data$Species$BlackandwhiteWarbler = 11;
+var $author$project$Data$Species$BlueGrosbeak = 12;
+var $author$project$Data$Species$BlueJay = 13;
+var $author$project$Data$Species$BluegrayGnatcatcher = 14;
+var $author$project$Data$Species$BlueheadedVireo = 15;
+var $author$project$Data$Species$BroadwingedHawk = 16;
+var $author$project$Data$Species$BrownThrasher = 17;
+var $author$project$Data$Species$BrownheadedCowbird = 18;
+var $author$project$Data$Species$BrownheadedNuthatch = 19;
+var $author$project$Data$Species$CanadaGoose = 20;
+var $author$project$Data$Species$CarolinaChickadee = 21;
+var $author$project$Data$Species$CarolinaWren = 22;
+var $author$project$Data$Species$CedarWaxwing = 23;
+var $author$project$Data$Species$ChimneySwift = 24;
+var $author$project$Data$Species$Chuckwillswidow = 25;
+var $author$project$Data$Species$CliffSwallow = 26;
+var $author$project$Data$Species$CommonGrackle = 27;
+var $author$project$Data$Species$CommonYellowthroat = 28;
+var $author$project$Data$Species$CoopersHawk = 29;
+var $author$project$Data$Species$Dickcissel = 30;
+var $author$project$Data$Species$DoublecrestedCormorant = 31;
+var $author$project$Data$Species$DownyWoodpecker = 32;
+var $author$project$Data$Species$EasternBluebird = 33;
+var $author$project$Data$Species$EasternKingbird = 34;
+var $author$project$Data$Species$EasternMeadowlark = 35;
+var $author$project$Data$Species$EasternPhoebe = 36;
+var $author$project$Data$Species$EasternScreechOwl = 37;
+var $author$project$Data$Species$EasternTowhee = 38;
+var $author$project$Data$Species$EasternWhippoorwill = 39;
+var $author$project$Data$Species$EasternWoodPewee = 40;
+var $author$project$Data$Species$EuropeanStarling = 41;
+var $author$project$Data$Species$FieldSparrow = 42;
+var $author$project$Data$Species$FishCrow = 43;
+var $author$project$Data$Species$GrasshopperSparrow = 44;
+var $author$project$Data$Species$GrayCatbird = 45;
+var $author$project$Data$Species$GreatBlueHeron = 46;
+var $author$project$Data$Species$GreatCrestedFlycatcher = 47;
+var $author$project$Data$Species$GreatEgret = 48;
+var $author$project$Data$Species$GreatHornedOwl = 49;
+var $author$project$Data$Species$GreenHeron = 50;
+var $author$project$Data$Species$HairyWoodpecker = 51;
+var $author$project$Data$Species$HoodedWarbler = 52;
+var $author$project$Data$Species$HornedLark = 53;
+var $author$project$Data$Species$HouseFinch = 54;
+var $author$project$Data$Species$HouseSparrow = 55;
+var $author$project$Data$Species$HouseWren = 56;
+var $author$project$Data$Species$IndigoBunting = 57;
+var $author$project$Data$Species$KentuckyWarbler = 58;
+var $author$project$Data$Species$Killdeer = 59;
+var $author$project$Data$Species$LoggerheadShrike = 60;
+var $author$project$Data$Species$LouisianaWaterthrush = 61;
+var $author$project$Data$Species$Mallard = 62;
+var $author$project$Data$Species$MourningDove = 63;
+var $author$project$Data$Species$NorthernBobwhite = 64;
+var $author$project$Data$Species$NorthernCardinal = 65;
+var $author$project$Data$Species$NorthernFlicker = 66;
+var $author$project$Data$Species$NorthernMockingbird = 67;
+var $author$project$Data$Species$NorthernParula = 68;
+var $author$project$Data$Species$NorthernRoughwingedSwallow = 69;
+var $author$project$Data$Species$OrchardOriole = 70;
+var $author$project$Data$Species$Osprey = 71;
+var $author$project$Data$Species$Ovenbird = 72;
+var $author$project$Data$Species$PileatedWoodpecker = 73;
+var $author$project$Data$Species$PrairieWarbler = 74;
+var $author$project$Data$Species$ProthonotaryWarbler = 75;
+var $author$project$Data$Species$PurpleMartin = 76;
+var $author$project$Data$Species$RedbelliedWoodpecker = 77;
+var $author$project$Data$Species$RedeyedVireo = 78;
+var $author$project$Data$Species$RedheadedWoodpecker = 79;
+var $author$project$Data$Species$RedshoulderedHawk = 80;
+var $author$project$Data$Species$RedtailedHawk = 81;
+var $author$project$Data$Species$RedwingedBlackbird = 82;
+var $author$project$Data$Species$RockPigeon = 83;
+var $author$project$Data$Species$RubythroatedHummingbird = 84;
+var $author$project$Data$Species$ScarletTanager = 85;
+var $author$project$Data$Species$SharpshinnedHawk = 86;
+var $author$project$Data$Species$SongSparrow = 87;
+var $author$project$Data$Species$SummerTanager = 88;
+var $author$project$Data$Species$TreeSwallow = 89;
+var $author$project$Data$Species$TuftedTitmouse = 90;
+var $author$project$Data$Species$TurkeyVulture = 91;
+var $author$project$Data$Species$WarblingVireo = 92;
+var $author$project$Data$Species$WhitebreastedNuthatch = 93;
+var $author$project$Data$Species$WhiteeyedVireo = 94;
+var $author$project$Data$Species$WildTurkey = 95;
+var $author$project$Data$Species$WoodDuck = 96;
+var $author$project$Data$Species$WoodThrush = 97;
+var $author$project$Data$Species$YellowWarbler = 98;
+var $author$project$Data$Species$YellowbilledCuckoo = 99;
+var $author$project$Data$Species$YellowbreastedChat = 100;
+var $author$project$Data$Species$YellowthroatedVireo = 101;
+var $author$project$Data$Species$YellowthroatedWarbler = 102;
 var $author$project$Data$Species$allSpecies = _List_fromArray(
-	[0, 1, 2, 3, 4, 5, 6]);
+	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102]);
 var $Confidenceman02$elm_select$Select$Basic = function (a) {
 	return {$: 0, a: a};
 };
@@ -5229,19 +5325,211 @@ var $Confidenceman02$elm_select$Select$basicMenuItem = function (bscItem) {
 var $author$project$Data$Species$speciesToString = function (species) {
 	switch (species) {
 		case 0:
-			return 'American Crow';
+			return 'Acadian Flycatcher';
 		case 1:
-			return 'Carolina Wren';
+			return 'American Crow';
 		case 2:
-			return 'Eastern Bluebird';
+			return 'American Goldfinch';
 		case 3:
-			return 'Northern Bobwhite';
+			return 'American Redstart';
 		case 4:
-			return 'Northern Cardinal';
+			return 'American Robin';
 		case 5:
+			return 'Bald Eagle';
+		case 6:
+			return 'Baltimore Oriole';
+		case 7:
+			return 'Barn Swallow';
+		case 8:
+			return 'Barred Owl';
+		case 9:
+			return 'Belted Kingfisher';
+		case 10:
+			return 'Black Vulture';
+		case 11:
+			return 'Black-and-white Warbler';
+		case 12:
+			return 'Blue Grosbeak';
+		case 13:
+			return 'Blue Jay';
+		case 14:
+			return 'Blue-gray Gnatcatcher';
+		case 15:
+			return 'Blue-headed Vireo';
+		case 16:
+			return 'Broad-winged Hawk';
+		case 17:
+			return 'Brown Thrasher';
+		case 18:
+			return 'Brown-headed Cowbird';
+		case 19:
+			return 'Brown-headed Nuthatch';
+		case 20:
+			return 'Canada Goose';
+		case 21:
+			return 'Carolina Chickadee';
+		case 22:
+			return 'Carolina Wren';
+		case 23:
+			return 'Cedar Waxwing';
+		case 24:
+			return 'Chimney Swift';
+		case 25:
+			return 'Chuck-will\'s-widow';
+		case 26:
+			return 'Cliff Swallow';
+		case 27:
+			return 'Common Grackle';
+		case 28:
+			return 'Common Yellowthroat';
+		case 29:
+			return 'Cooper\'s Hawk';
+		case 30:
+			return 'Dickcissel';
+		case 31:
+			return 'Double-crested Cormorant';
+		case 32:
+			return 'Downy Woodpecker';
+		case 33:
+			return 'Eastern Bluebird';
+		case 34:
+			return 'Eastern Kingbird';
+		case 35:
+			return 'Eastern Meadowlark';
+		case 36:
+			return 'Eastern Phoebe';
+		case 37:
+			return 'Eastern Screech-Owl';
+		case 38:
+			return 'Eastern Towhee';
+		case 39:
+			return 'Eastern Whip-poor-will';
+		case 40:
+			return 'Eastern Wood-Pewee';
+		case 41:
+			return 'European Starling';
+		case 42:
+			return 'Field Sparrow';
+		case 43:
+			return 'Fish Crow';
+		case 44:
+			return 'Grasshopper Sparrow';
+		case 45:
+			return 'Gray Catbird';
+		case 46:
+			return 'Great Blue Heron';
+		case 47:
+			return 'Great Crested Flycatcher';
+		case 48:
+			return 'Great Egret';
+		case 49:
+			return 'Great Horned Owl';
+		case 50:
+			return 'Green Heron';
+		case 51:
+			return 'Hairy Woodpecker';
+		case 52:
+			return 'Hooded Warbler';
+		case 53:
+			return 'Horned Lark';
+		case 54:
+			return 'House Finch';
+		case 55:
+			return 'House Sparrow';
+		case 56:
+			return 'House Wren';
+		case 57:
+			return 'Indigo Bunting';
+		case 58:
+			return 'Kentucky Warbler';
+		case 59:
+			return 'Killdeer';
+		case 60:
+			return 'Loggerhead Shrike';
+		case 61:
+			return 'Louisiana Waterthrush';
+		case 62:
+			return 'Mallard';
+		case 63:
+			return 'Mourning Dove';
+		case 64:
+			return 'Northern Bobwhite';
+		case 65:
+			return 'Northern Cardinal';
+		case 66:
+			return 'Northern Flicker';
+		case 67:
+			return 'Northern Mockingbird';
+		case 68:
+			return 'Northern Parula';
+		case 69:
+			return 'Northern Rough-winged Swallow';
+		case 70:
+			return 'Orchard Oriole';
+		case 71:
+			return 'Osprey';
+		case 72:
+			return 'Ovenbird';
+		case 73:
+			return 'Pileated Woodpecker';
+		case 74:
+			return 'Prairie Warbler';
+		case 75:
+			return 'Prothonotary Warbler';
+		case 76:
+			return 'Purple Martin';
+		case 77:
+			return 'Red-bellied Woodpecker';
+		case 78:
+			return 'Red-eyed Vireo';
+		case 79:
+			return 'Red-headed Woodpecker';
+		case 80:
+			return 'Red-shouldered Hawk';
+		case 81:
+			return 'Red-tailed Hawk';
+		case 82:
+			return 'Red-winged Blackbird';
+		case 83:
+			return 'Rock Pigeon';
+		case 84:
+			return 'Ruby-throated Hummingbird';
+		case 85:
+			return 'Scarlet Tanager';
+		case 86:
+			return 'Sharp-shinned Hawk';
+		case 87:
+			return 'Song Sparrow';
+		case 88:
 			return 'Summer Tanager';
-		default:
+		case 89:
+			return 'Tree Swallow';
+		case 90:
+			return 'Tufted Titmouse';
+		case 91:
+			return 'Turkey Vulture';
+		case 92:
+			return 'Warbling Vireo';
+		case 93:
+			return 'White-breasted Nuthatch';
+		case 94:
+			return 'White-eyed Vireo';
+		case 95:
+			return 'Wild Turkey';
+		case 96:
+			return 'Wood Duck';
+		case 97:
 			return 'Wood Thrush';
+		case 98:
+			return 'Yellow Warbler';
+		case 99:
+			return 'Yellow-billed Cuckoo';
+		case 100:
+			return 'Yellow-breasted Chat';
+		case 101:
+			return 'Yellow-throated Vireo';
+		default:
+			return 'Yellow-throated Warbler';
 	}
 };
 var $author$project$DisplayIndividualSpecies$speciesToMenuItem = function (species) {
