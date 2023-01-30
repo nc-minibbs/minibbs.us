@@ -19,8 +19,11 @@ mkSpecs =
     mkSpeciesTrendSpec
         mbbsData
 
+
 initSpec : Spec
-initSpec = mkSpecs Combined NorthernCardinal
+initSpec =
+    mkSpecs Combined NorthernCardinal
+
 
 speciesToMenuItem : Species -> Select.MenuItem String
 speciesToMenuItem species =

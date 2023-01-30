@@ -24,4 +24,6 @@ main =
         , update = \_ model -> ( model, Cmd.none )
         , subscriptions = always Sub.none
         }
+
+
 port homeVegaPort : Spec -> Cmd msg

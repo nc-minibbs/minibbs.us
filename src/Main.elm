@@ -1,9 +1,10 @@
 port module Main exposing (main, vegaPort)
 
-import Browser
-import Css
-import Data.County exposing (County(..), CountyAggregation(..))
+-- import Html.Styled.Attributes as StyledAttribs
 
+import Browser
+import Css exposing (src_)
+import Data.County exposing (County(..), CountyAggregation(..))
 import Data.Traits exposing (Trait(..))
 import Displays.IndividualSpeciesDisplay as ISD
 import Displays.TraitLineDisplay as TraitDisplay
@@ -11,14 +12,9 @@ import Element
 import Element.Input as Input
 import Html
 import Html.Styled as Styled
--- import Html.Styled.Attributes as StyledAttribs
+import Json.Encode exposing (..)
 import Select exposing (..)
 import VegaLite exposing (..)
-import Css exposing (src_)
-import Json.Encode exposing (..)
-
-
-
 
 
 type Model
@@ -31,9 +27,11 @@ type Msg
     | GotTraitMsg TraitDisplay.Msg
     | GotISDMsg ISD.Msg
 
+
+
 -- changeDisplayTo : Display -> Model -> (Model, Cmd Msg)
--- changeDisplayTo d m = 
---     case d of 
+-- changeDisplayTo d m =
+--     case d of
 --         DT -> (DisplayTrait (TraitDisplay.init), vegaPort TraitDisplay.initSpec)
 --         -- TraitDisplay.update vegaPort submsg submodel
 --             -- |> updateWith DisplayTrait GotTraitMsg
@@ -41,9 +39,9 @@ type Msg
 --         -- ISD.update vegaPort (ISD.SelectCountyAggregation Combined) ISD.init
 --         --         |> updateWith DisplayIndividualSpecies GotISDMsg
 
+
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-
     case ( msg, model ) of
         ( GotTraitMsg submsg, DisplayTrait submodel ) ->
             TraitDisplay.update vegaPort submsg submodel
@@ -53,15 +51,18 @@ update msg model =
             ISD.update vegaPort submsg submodel
                 |> updateWith DisplayIndividualSpecies GotISDMsg
 
-        ( ChangeDisplay d , _ ) -> 
-            case d of 
-                DisplayTrait x -> --(DisplayTrait x, vegaPort TraitDisplay.initSpec)
+        ( ChangeDisplay d, _ ) ->
+            case d of
+                DisplayTrait x ->
+                    --(DisplayTrait x, vegaPort TraitDisplay.initSpec)
                     TraitDisplay.update vegaPort (TraitDisplay.SelectTrait WinterBiome) x
                         |> updateWith DisplayTrait GotTraitMsg
-                DisplayIndividualSpecies _ -> (DisplayIndividualSpecies (ISD.init), vegaPort (object []))
+
+                DisplayIndividualSpecies _ ->
+                    ( DisplayIndividualSpecies ISD.init, vegaPort (object []) )
 
         ( _, _ ) ->
-            ( model, vegaPort (object []))
+            ( model, vegaPort (object []) )
 
 
 updateWith :
@@ -84,35 +85,34 @@ displayRadio model =
                 { onChange = ChangeDisplay
                 , selected = Just model
                 , label = Input.labelLeft [] <| Element.text "Select a display:"
-                , options = 
+                , options =
                     [ Input.option (DisplayIndividualSpecies ISD.init) <| Element.text "Individual Species"
                     , Input.option (DisplayTrait TraitDisplay.init) <| Element.text "Traits"
                     ]
                 }
-                -- { onChange = ChangeDisplay
-                -- , selected = Just model --.selectedDisplay
-                -- , label = Input.labelLeft [] <| Element.text "Select a display:"
-                -- , options =
-                --     [ Input.option (DisplayIndividualSpecies ISD.init) <| Element.text "Individual Species"
-                --     , Input.option (DisplayTrait TraitDisplay.init) <| Element.text "Traits"
-                --     ]
-                -- }
+
+            -- { onChange = ChangeDisplay
+            -- , selected = Just model --.selectedDisplay
+            -- , label = Input.labelLeft [] <| Element.text "Select a display:"
+            -- , options =
+            --     [ Input.option (DisplayIndividualSpecies ISD.init) <| Element.text "Individual Species"
+            --     , Input.option (DisplayTrait TraitDisplay.init) <| Element.text "Traits"
+            --     ]
+            -- }
             ]
 
 
 view : Model -> Styled.Html Msg
 view m =
-    let 
+    let
         viewHtml x =
             Styled.div
-            []
-            [ Styled.div
                 []
-                [ Styled.fromUnstyled (displayRadio m) ]
-            
-            , x
-            ]
-    
+                [ Styled.div
+                    []
+                    [ Styled.fromUnstyled (displayRadio m) ]
+                , x
+                ]
     in
     case m of
         DisplayTrait submodel ->
@@ -122,21 +122,34 @@ view m =
             viewHtml (Styled.map GotISDMsg (ISD.view submodel))
 
 
+
 {- -}
 
 
 init : Model
+
+
+
 -- init = { selectedDisplay = IndividualDisplay (ISD.init) }
+
+
 init =
     DisplayTrait TraitDisplay.init
-    -- { selectedDisplay = DisplayTrait TraitDisplay.init }
+
+
+
+-- { selectedDisplay = DisplayTrait TraitDisplay.init }
+
 
 main : Program () Model Msg
 main =
     Browser.element
         { -- init = always (update (ChangeDisplay (ByTraitDisplay TraitDisplay.init)) init) -- Cmd.none )
-          init = always (init
-            , vegaPort TraitDisplay.initSpec)
+          init =
+            always
+                ( init
+                , vegaPort TraitDisplay.initSpec
+                )
         , view = view >> Styled.toUnstyled
         , update = update
         , subscriptions = \_ -> Sub.none
@@ -144,4 +157,3 @@ main =
 
 
 port vegaPort : Spec -> Cmd msg
-
