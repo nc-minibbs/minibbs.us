@@ -1,6 +1,6 @@
 module Data.Mbbs exposing (..)
 
-{-| Exposes the MBBS traits data as a
+{-| Exposes the MBBS data as a
 [VegaLite Data object](https://package.elm-lang.org/packages/gicentre/elm-vegalite/latest/VegaLite#2-specifying-the-data-to-visualize).
 -}
 

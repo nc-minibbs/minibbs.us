@@ -12423,23 +12423,23 @@ var $author$project$Data$Species$speciesToString = function (species) {
 			return 'Wood Thrush';
 	}
 };
-var $author$project$Displays$IndividualSpeciesDisplay$speciesToMenuItem = function (species) {
+var $author$project$DisplayIndividualSpecies$speciesToMenuItem = function (species) {
 	return $Confidenceman02$elm_select$Select$basicMenuItem(
 		{
 			item: $author$project$Data$Species$speciesToString(species),
 			label: $author$project$Data$Species$speciesToString(species)
 		});
 };
-var $author$project$Displays$IndividualSpeciesDisplay$speciesMenuItems = A2($elm$core$List$map, $author$project$Displays$IndividualSpeciesDisplay$speciesToMenuItem, $author$project$Data$Species$allSpecies);
-var $author$project$Displays$IndividualSpeciesDisplay$init = {
+var $author$project$DisplayIndividualSpecies$speciesMenuItems = A2($elm$core$List$map, $author$project$DisplayIndividualSpecies$speciesToMenuItem, $author$project$Data$Species$allSpecies);
+var $author$project$DisplayIndividualSpecies$init = {
 	countyAggregation: $author$project$Data$County$Combined,
-	items: $author$project$Displays$IndividualSpeciesDisplay$speciesMenuItems,
+	items: $author$project$DisplayIndividualSpecies$speciesMenuItems,
 	selectState: $Confidenceman02$elm_select$Select$initState(
 		$Confidenceman02$elm_select$Select$selectIdentifier('SpeciesSelector')),
 	selectedItem: $elm$core$Maybe$Nothing,
 	selectedSpecies: $elm$core$Maybe$Nothing
 };
-var $author$project$Displays$IndividualSpeciesDisplay$SelectSpecies = function (a) {
+var $author$project$DisplayIndividualSpecies$SelectSpecies = function (a) {
 	return {$: 'SelectSpecies', a: a};
 };
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
@@ -15010,7 +15010,7 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 						]))
 				]));
 	});
-var $author$project$Displays$IndividualSpeciesDisplay$mkSpecs = $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec($author$project$Data$Mbbs$mbbsData);
+var $author$project$DisplayIndividualSpecies$mkSpecs = $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec($author$project$Data$Mbbs$mbbsData);
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $elm$core$List$maybeCons = F3(
 	function (f, mx, xs) {
@@ -16136,7 +16136,7 @@ var $Confidenceman02$elm_select$Select$update = F2(
 			}
 		}
 	});
-var $author$project$Displays$IndividualSpeciesDisplay$update = F3(
+var $author$project$DisplayIndividualSpecies$update = F3(
 	function (toPort, msg, model) {
 		if (msg.$ === 'SelectSpecies') {
 			var sm = msg.a;
@@ -16153,7 +16153,7 @@ var $author$project$Displays$IndividualSpeciesDisplay$update = F3(
 					} else {
 						var s = _v7.a;
 						return toPort(
-							A2($author$project$Displays$IndividualSpeciesDisplay$mkSpecs, model.countyAggregation, s));
+							A2($author$project$DisplayIndividualSpecies$mkSpecs, model.countyAggregation, s));
 					}
 				} else {
 					return $elm$core$Platform$Cmd$none;
@@ -16210,7 +16210,7 @@ var $author$project$Displays$IndividualSpeciesDisplay$update = F3(
 					_List_fromArray(
 						[
 							specMsg,
-							A2($elm$core$Platform$Cmd$map, $author$project$Displays$IndividualSpeciesDisplay$SelectSpecies, cmds)
+							A2($elm$core$Platform$Cmd$map, $author$project$DisplayIndividualSpecies$SelectSpecies, cmds)
 						])));
 		} else {
 			var opt = msg.a;
@@ -16225,7 +16225,7 @@ var $author$project$Displays$IndividualSpeciesDisplay$update = F3(
 					} else {
 						var s = _v8.a;
 						return toPort(
-							A2($author$project$Displays$IndividualSpeciesDisplay$mkSpecs, opt, s));
+							A2($author$project$DisplayIndividualSpecies$mkSpecs, opt, s));
 					}
 				}());
 		}
@@ -16275,7 +16275,7 @@ var $author$project$Main$update = F2(
 							$author$project$Main$updateWith,
 							$author$project$Main$DisplayIndividualSpecies,
 							$author$project$Main$GotISDMsg,
-							A3($author$project$Displays$IndividualSpeciesDisplay$update, $author$project$Main$vegaPort, submsg, submodel));
+							A3($author$project$DisplayIndividualSpecies$update, $author$project$Main$vegaPort, submsg, submodel));
 					} else {
 						break _v0$3;
 					}
@@ -16294,7 +16294,7 @@ var $author$project$Main$update = F2(
 								x));
 					} else {
 						return _Utils_Tuple2(
-							$author$project$Main$DisplayIndividualSpecies($author$project$Displays$IndividualSpeciesDisplay$init),
+							$author$project$Main$DisplayIndividualSpecies($author$project$DisplayIndividualSpecies$init),
 							$author$project$Main$vegaPort(
 								$elm$json$Json$Encode$object(_List_Nil)));
 					}
@@ -22687,7 +22687,7 @@ var $author$project$Main$displayRadio = function (model) {
 							[
 								A2(
 								$mdgriffith$elm_ui$Element$Input$option,
-								$author$project$Main$DisplayIndividualSpecies($author$project$Displays$IndividualSpeciesDisplay$init),
+								$author$project$Main$DisplayIndividualSpecies($author$project$DisplayIndividualSpecies$init),
 								$mdgriffith$elm_ui$Element$text('Individual Species')),
 								A2(
 								$mdgriffith$elm_ui$Element$Input$option,
@@ -22838,11 +22838,11 @@ var $Confidenceman02$elm_select$Select$clearable = F2(
 				config,
 				{clearable: clear}));
 	});
-var $author$project$Displays$IndividualSpeciesDisplay$SelectCountyAggregation = function (a) {
+var $author$project$DisplayIndividualSpecies$SelectCountyAggregation = function (a) {
 	return {$: 'SelectCountyAggregation', a: a};
 };
 var $author$project$Data$County$Split = {$: 'Split'};
-var $author$project$Displays$IndividualSpeciesDisplay$countyRadio = function (model) {
+var $author$project$DisplayIndividualSpecies$countyRadio = function (model) {
 	return A2(
 		$mdgriffith$elm_ui$Element$layout,
 		_List_Nil,
@@ -22859,7 +22859,7 @@ var $author$project$Displays$IndividualSpeciesDisplay$countyRadio = function (mo
 							$mdgriffith$elm_ui$Element$Input$labelLeft,
 							_List_Nil,
 							$mdgriffith$elm_ui$Element$text('Counties:')),
-						onChange: $author$project$Displays$IndividualSpeciesDisplay$SelectCountyAggregation,
+						onChange: $author$project$DisplayIndividualSpecies$SelectCountyAggregation,
 						options: _List_fromArray(
 							[
 								A2(
@@ -30050,7 +30050,7 @@ var $Confidenceman02$elm_select$Select$view = function (_v0) {
 		}
 	}
 };
-var $author$project$Displays$IndividualSpeciesDisplay$view = function (m) {
+var $author$project$DisplayIndividualSpecies$view = function (m) {
 	var selectedItem = function () {
 		var _v0 = m.selectedItem;
 		if (_v0.$ === 'Just') {
@@ -30081,7 +30081,7 @@ var $author$project$Displays$IndividualSpeciesDisplay$view = function (m) {
 			[
 				A2(
 				$rtfeldman$elm_css$Html$Styled$map,
-				$author$project$Displays$IndividualSpeciesDisplay$SelectSpecies,
+				$author$project$DisplayIndividualSpecies$SelectSpecies,
 				$Confidenceman02$elm_select$Select$view(
 					A2(
 						$Confidenceman02$elm_select$Select$clearable,
@@ -30105,7 +30105,7 @@ var $author$project$Displays$IndividualSpeciesDisplay$view = function (m) {
 				_List_fromArray(
 					[
 						$rtfeldman$elm_css$Html$Styled$fromUnstyled(
-						$author$project$Displays$IndividualSpeciesDisplay$countyRadio(m))
+						$author$project$DisplayIndividualSpecies$countyRadio(m))
 					])),
 				A2(
 				$rtfeldman$elm_css$Html$Styled$div,
@@ -30216,7 +30216,7 @@ var $author$project$Main$view = function (m) {
 			A2(
 				$rtfeldman$elm_css$Html$Styled$map,
 				$author$project$Main$GotISDMsg,
-				$author$project$Displays$IndividualSpeciesDisplay$view(submodel)));
+				$author$project$DisplayIndividualSpecies$view(submodel)));
 	}
 };
 var $author$project$Main$main = $elm$browser$Browser$element(

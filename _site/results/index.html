@@ -154,14 +154,6 @@
     ul.task-list{list-style: none;}
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-  <!-- 
-  imports necessary to embed a vega visualiation
-  https://vega.github.io/vega-lite/usage/embed.html#get-vega-lite-and-other-dependencies
-  -->
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <script src="../js/main.js"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -173,33 +165,10 @@
 <p><a title="Alexis Jazz, CC0, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Under_construction_animated.gif">
 <img width="128" alt="Under construction animated" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Under_construction_animated.gif">
 </a></p>
-<p><app></app></p>
-<script>
-  // This function grabs the specification from Elm (here called specs).
-  var app = 
-        Elm.Main.init({ node: document.querySelector('app') });
-  // app.ports.vegaLite.subscribe(function (specs) {
-  //   // Change actions to true to display links to source, editor and image.
-  //   vegaEmbed("#speciesTrend", specs["speciesTrend"], { actions: false }).catch(console.warn);
-
-  //   vegaEmbed("#trendByTrait", specs["trendByTrait"], { actions: false }).catch(console.warn);
-  // });
-  // app.ports.individualSpeciesVega.subscribe(function (specs) {
-  //   // Change actions to true to display links to source, editor and image.
-  //   vegaEmbed("#speciesTrend", specs["speciesTrend"], { actions: false }).catch(console.warn);
-
-  // });
-  app.ports.vegaPort.subscribe(function (specs) {
-    vegaEmbed("#vegaViz", specs, { actions: false })
-    .catch(console.warn);
-  });
-  // Elm.Main.init().ports.vegaLite.subscribe(function (namedSpecs) {
-  //   for (let name of Object.keys(namedSpecs)) {
-  //     vegaEmbed(`#${name}`, namedSpecs[name], { actions: false }).catch(
-  //       console.warn
-  //     );
-  //   }
-  // });
-</script>
+<ul>
+<li><a href="individual-species.html">Explore Individual
+Species</a></li>
+<li><a href="traits.html">Explore Traits</a></li>
+</ul>
 </body>
 </html>

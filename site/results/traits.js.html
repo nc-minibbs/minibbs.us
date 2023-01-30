@@ -1,0 +1,11 @@
+<script>
+  // This function grabs the specification from Elm (here called specs).
+  var app = 
+        Elm.DisplayTraits.init({ node: document.querySelector('app') });
+
+  app.ports.vegaPort.subscribe(function (specs) {
+    vegaEmbed("#vegaViz", specs, { actions: false })
+    .catch(console.warn);
+  });
+
+</script>

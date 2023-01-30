@@ -7,4 +7,5 @@ title: Results
 <img width="128" alt="Under construction animated" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Under_construction_animated.gif">
 </a>
 
-<app></app>
+* [Explore Individual Species](individual-species.html)
+* [Explore Traits](traits.html)
