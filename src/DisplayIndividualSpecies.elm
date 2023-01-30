@@ -29,7 +29,6 @@ main =
         }
 
 
-
 mkSpecs : CountyAggregation -> Species -> Spec
 mkSpecs =
     mkSpeciesTrendSpec
@@ -198,7 +197,6 @@ view m =
             [ StyledAttribs.id "vegaViz" ]
             []
         ]
-
 
 
 port vegaPort : Spec -> Cmd msg

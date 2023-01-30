@@ -106,4 +106,5 @@ view m =
             []
         ]
 
+
 port vegaPort : Spec -> Cmd msg
