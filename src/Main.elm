@@ -1,12 +1,10 @@
 port module Main exposing (main, vegaPort)
 
-
 import Browser
 import Css
 import Data.County exposing (County(..), CountyAggregation(..))
--- import Data.Mbbs exposing (mbbsData)
-import Data.Species exposing (..)
--- import Data.Traits exposing (Trait(..), traitsData)
+
+import Data.Traits exposing (Trait(..))
 import Displays.IndividualSpeciesDisplay as ISD
 import Displays.TraitLineDisplay as TraitDisplay
 import Element
@@ -20,47 +18,28 @@ import Css exposing (src_)
 import Json.Encode exposing (..)
 
 
--- exampleTrendsSpec : Spec
--- exampleTrendsSpec =
---     mkExampleTrendsSpec
---         mbbsData
---         [ WoodThrush
---         , NorthernBobwhite
---         , EasternBluebird
---         , SummerTanager
---         ]
--- specs : Trait -> CountyAggregation -> Species -> Spec
--- specs trait x species =
---     combineSpecs
---         [ ( "exampleTrends", exampleTrendsSpec )
---         , ( "trendByTrait", trendByTraitSpec trait)
---         , ( "speciesTrend", speciesTrendSpec x species )
---         ]
-{- -}
+
 
 
 type Model
     = DisplayTrait TraitDisplay.Model
     | DisplayIndividualSpecies ISD.Model
 
-type Display =
-     DT
-    | DI
 
 type Msg
-    = ChangeDisplay Display
+    = ChangeDisplay Model
     | GotTraitMsg TraitDisplay.Msg
     | GotISDMsg ISD.Msg
 
-changeDisplayTo : Display -> Model -> (Model, Cmd Msg)
-changeDisplayTo d m = 
-    case d of 
-        DT -> (DisplayTrait (TraitDisplay.init), vegaPort TraitDisplay.initSpec)
-        -- TraitDisplay.update vegaPort submsg submodel
-            -- |> updateWith DisplayTrait GotTraitMsg
-        DI -> (DisplayIndividualSpecies (ISD.init), vegaPort (object []))
-        -- ISD.update vegaPort (ISD.SelectCountyAggregation Combined) ISD.init
-        --         |> updateWith DisplayIndividualSpecies GotISDMsg
+-- changeDisplayTo : Display -> Model -> (Model, Cmd Msg)
+-- changeDisplayTo d m = 
+--     case d of 
+--         DT -> (DisplayTrait (TraitDisplay.init), vegaPort TraitDisplay.initSpec)
+--         -- TraitDisplay.update vegaPort submsg submodel
+--             -- |> updateWith DisplayTrait GotTraitMsg
+--         DI -> (DisplayIndividualSpecies (ISD.init), vegaPort (object []))
+--         -- ISD.update vegaPort (ISD.SelectCountyAggregation Combined) ISD.init
+--         --         |> updateWith DisplayIndividualSpecies GotISDMsg
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -74,14 +53,15 @@ update msg model =
             ISD.update vegaPort submsg submodel
                 |> updateWith DisplayIndividualSpecies GotISDMsg
 
-        ( ChangeDisplay d, x ) -> changeDisplayTo d x
-            -- case d of 
-            --     DisplayIndividualSpecies _ -> update (GotISDMsg ISD.Noop) x
-            --     DisplayTrait _  -> update (GotISDMsg ISD.Noop) x
-            -- -- )
+        ( ChangeDisplay d , _ ) -> 
+            case d of 
+                DisplayTrait x -> --(DisplayTrait x, vegaPort TraitDisplay.initSpec)
+                    TraitDisplay.update vegaPort (TraitDisplay.SelectTrait WinterBiome) x
+                        |> updateWith DisplayTrait GotTraitMsg
+                DisplayIndividualSpecies _ -> (DisplayIndividualSpecies (ISD.init), vegaPort (object []))
 
         ( _, _ ) ->
-            ( model, Cmd.none )
+            ( model, vegaPort (object []))
 
 
 updateWith :
@@ -102,15 +82,12 @@ displayRadio model =
             [ Input.radioRow
                 []
                 { onChange = ChangeDisplay
-                , selected = Nothing
+                , selected = Just model
                 , label = Input.labelLeft [] <| Element.text "Select a display:"
                 , options = 
-                    [Input.option DI <| Element.text "Individual Species"
-                    , Input.option DT <| Element.text "Traits"
+                    [ Input.option (DisplayIndividualSpecies ISD.init) <| Element.text "Individual Species"
+                    , Input.option (DisplayTrait TraitDisplay.init) <| Element.text "Traits"
                     ]
-                    -- [ Input.option (DisplayIndividualSpecies ISD.init) <| Element.text "Individual Species"
-                    -- , Input.option (DisplayTrait TraitDisplay.init) <| Element.text "Traits"
-                    -- ]
                 }
                 -- { onChange = ChangeDisplay
                 -- , selected = Just model --.selectedDisplay
@@ -158,7 +135,8 @@ main : Program () Model Msg
 main =
     Browser.element
         { -- init = always (update (ChangeDisplay (ByTraitDisplay TraitDisplay.init)) init) -- Cmd.none )
-          init = always (init, vegaPort TraitDisplay.initSpec)
+          init = always (init
+            , vegaPort TraitDisplay.initSpec)
         , view = view >> Styled.toUnstyled
         , update = update
         , subscriptions = \_ -> Sub.none
@@ -166,3 +144,4 @@ main =
 
 
 port vegaPort : Spec -> Cmd msg
+

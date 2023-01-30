@@ -161,7 +161,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/home.js"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -207,11 +207,16 @@ you) a survey route</li>
 <p>If you have questions, please contact
 <a href="mailto:hurlbert@bio.unc.edu">Allen Hurlbert</a> or
 <a href="mailto:bradleysaul@fastmail.com">Bradley Saul</a>.</p>
+
 <script>
+
+  var app = 
+      Elm.Home.init({ node: document.querySelector('app') });
   // This function grabs the specification from Elm (here called specs).
-  Elm.Main.init().ports.vegaLite.subscribe(function (specs) {
+  app.ports.homeVegaPort.subscribe(function (specs) {
     // Change actions to true to display links to source, editor and image.
-    vegaEmbed("#exampleTrends", specs["exampleTrends"], { actions: false }).catch(console.warn);
+    vegaEmbed("#exampleTrends", specs, { actions: false })
+    .catch(console.warn);
 
   });
 </script>

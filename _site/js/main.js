@@ -12370,6 +12370,9 @@ var $author$project$Main$GotISDMsg = function (a) {
 var $author$project$Main$GotTraitMsg = function (a) {
 	return {$: 'GotTraitMsg', a: a};
 };
+var $author$project$Displays$TraitLineDisplay$SelectTrait = function (a) {
+	return {$: 'SelectTrait', a: a};
+};
 var $author$project$Data$County$Combined = {$: 'Combined'};
 var $Confidenceman02$elm_select$Select$Mouse = {$: 'Mouse'};
 var $Confidenceman02$elm_select$Select$Internal$NothingMousedown = {$: 'NothingMousedown'};
@@ -12436,25 +12439,10 @@ var $author$project$Displays$IndividualSpeciesDisplay$init = {
 	selectedItem: $elm$core$Maybe$Nothing,
 	selectedSpecies: $elm$core$Maybe$Nothing
 };
-var $author$project$Main$vegaPort = _Platform_outgoingPort('vegaPort', $elm$core$Basics$identity);
-var $author$project$Main$changeDisplayTo = F2(
-	function (d, m) {
-		if (d.$ === 'DT') {
-			return _Utils_Tuple2(
-				$author$project$Main$DisplayTrait($author$project$Displays$TraitLineDisplay$init),
-				$author$project$Main$vegaPort($author$project$Displays$TraitLineDisplay$initSpec));
-		} else {
-			return _Utils_Tuple2(
-				$author$project$Main$DisplayIndividualSpecies($author$project$Displays$IndividualSpeciesDisplay$init),
-				$author$project$Main$vegaPort(
-					$elm$json$Json$Encode$object(_List_Nil)));
-		}
-	});
-var $elm$core$Platform$Cmd$batch = _Platform_batch;
-var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Displays$IndividualSpeciesDisplay$SelectSpecies = function (a) {
 	return {$: 'SelectSpecies', a: a};
 };
+var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$map = _Platform_map;
 var $gicentre$elm_vegalite$VegaLite$AxGrid = function (a) {
 	return {$: 'AxGrid', a: a};
@@ -15023,6 +15011,7 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 				]));
 	});
 var $author$project$Displays$IndividualSpeciesDisplay$mkSpecs = $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec($author$project$Data$Mbbs$mbbsData);
+var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $elm$core$List$maybeCons = F3(
 	function (f, mx, xs) {
 		var _v0 = f(mx);
@@ -16259,6 +16248,7 @@ var $author$project$Main$updateWith = F3(
 			toModel(subModel),
 			A2($elm$core$Platform$Cmd$map, toMsg, subCmd));
 	});
+var $author$project$Main$vegaPort = _Platform_outgoingPort('vegaPort', $elm$core$Basics$identity);
 var $author$project$Main$update = F2(
 	function (msg, model) {
 		var _v0 = _Utils_Tuple2(msg, model);
@@ -16291,17 +16281,33 @@ var $author$project$Main$update = F2(
 					}
 				default:
 					var d = _v0.a.a;
-					var x = _v0.b;
-					return A2($author$project$Main$changeDisplayTo, d, x);
+					if (d.$ === 'DisplayTrait') {
+						var x = d.a;
+						return A3(
+							$author$project$Main$updateWith,
+							$author$project$Main$DisplayTrait,
+							$author$project$Main$GotTraitMsg,
+							A3(
+								$author$project$Displays$TraitLineDisplay$update,
+								$author$project$Main$vegaPort,
+								$author$project$Displays$TraitLineDisplay$SelectTrait($author$project$Data$Traits$WinterBiome),
+								x));
+					} else {
+						return _Utils_Tuple2(
+							$author$project$Main$DisplayIndividualSpecies($author$project$Displays$IndividualSpeciesDisplay$init),
+							$author$project$Main$vegaPort(
+								$elm$json$Json$Encode$object(_List_Nil)));
+					}
 			}
 		}
-		return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+		return _Utils_Tuple2(
+			model,
+			$author$project$Main$vegaPort(
+				$elm$json$Json$Encode$object(_List_Nil)));
 	});
 var $author$project$Main$ChangeDisplay = function (a) {
 	return {$: 'ChangeDisplay', a: a};
 };
-var $author$project$Main$DI = {$: 'DI'};
-var $author$project$Main$DT = {$: 'DT'};
 var $mdgriffith$elm_ui$Internal$Model$Unkeyed = function (a) {
 	return {$: 'Unkeyed', a: a};
 };
@@ -22681,14 +22687,14 @@ var $author$project$Main$displayRadio = function (model) {
 							[
 								A2(
 								$mdgriffith$elm_ui$Element$Input$option,
-								$author$project$Main$DI,
+								$author$project$Main$DisplayIndividualSpecies($author$project$Displays$IndividualSpeciesDisplay$init),
 								$mdgriffith$elm_ui$Element$text('Individual Species')),
 								A2(
 								$mdgriffith$elm_ui$Element$Input$option,
-								$author$project$Main$DT,
+								$author$project$Main$DisplayTrait($author$project$Displays$TraitLineDisplay$init),
 								$mdgriffith$elm_ui$Element$text('Traits'))
 							]),
-						selected: $elm$core$Maybe$Nothing
+						selected: $elm$core$Maybe$Just(model)
 					})
 				])));
 };
@@ -30111,9 +30117,6 @@ var $author$project$Displays$IndividualSpeciesDisplay$view = function (m) {
 			]));
 };
 var $author$project$Data$Traits$Diet5Cat = {$: 'Diet5Cat'};
-var $author$project$Displays$TraitLineDisplay$SelectTrait = function (a) {
-	return {$: 'SelectTrait', a: a};
-};
 var $author$project$Displays$TraitLineDisplay$view = function (m) {
 	var traitRadio = function (model) {
 		return A2(

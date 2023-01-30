@@ -5,6 +5,9 @@ OUTDIR=_site
 elm make src/Main.elm \
   --output=$OUTDIR/js/main.js
 
+elm make src/Home.elm \
+  --output=$OUTDIR/js/home.js
+
 pandoc site/index.md \
   --from=markdown \
   --to=html \

@@ -2440,6 +2440,10 @@ var $elm$core$Basics$always = F2(
 	function (a, _v0) {
 		return a;
 	});
+var $elm$core$Basics$identity = function (x) {
+	return x;
+};
+var $author$project$Home$homeVegaPort = _Platform_outgoingPort('homeVegaPort', $elm$core$Basics$identity);
 var $elm$core$Result$Err = function (a) {
 	return {$: 'Err', a: a};
 };
@@ -3147,7 +3151,7 @@ var $gicentre$elm_vegalite$VegaLite$Parse = function (a) {
 var $gicentre$elm_vegalite$VegaLite$parse = $gicentre$elm_vegalite$VegaLite$Parse;
 var $author$project$Data$Mbbs$mbbsData = A2(
 	$gicentre$elm_vegalite$VegaLite$dataFromUrl,
-	'./data/mbbs.csv',
+	'../data/mbbs.csv',
 	_List_fromArray(
 		[
 			$gicentre$elm_vegalite$VegaLite$parse(
@@ -3170,9 +3174,6 @@ var $elm$json$Json$Encode$list = F2(
 				_Json_emptyArray(_Utils_Tuple0),
 				entries));
 	});
-var $elm$core$Basics$identity = function (x) {
-	return x;
-};
 var $gicentre$elm_vegalite$VegaLite$toList = $elm$json$Json$Encode$list($elm$core$Basics$identity);
 var $gicentre$elm_vegalite$VegaLite$aggregate = F2(
 	function (ops, groups) {
@@ -3190,8 +3191,12 @@ var $gicentre$elm_vegalite$VegaLite$aggregate = F2(
 							A2($elm$json$Json$Encode$list, $elm$json$Json$Encode$string, groups))
 						]))));
 	});
-var $gicentre$elm_vegalite$VegaLite$AnEnd = {$: 'AnEnd'};
-var $gicentre$elm_vegalite$VegaLite$anEnd = $gicentre$elm_vegalite$VegaLite$AnEnd;
+var $gicentre$elm_vegalite$VegaLite$AFit = {$: 'AFit'};
+var $gicentre$elm_vegalite$VegaLite$asFit = $gicentre$elm_vegalite$VegaLite$AFit;
+var $gicentre$elm_vegalite$VegaLite$APadding = {$: 'APadding'};
+var $gicentre$elm_vegalite$VegaLite$asPadding = $gicentre$elm_vegalite$VegaLite$APadding;
+var $gicentre$elm_vegalite$VegaLite$AResize = {$: 'AResize'};
+var $gicentre$elm_vegalite$VegaLite$asResize = $gicentre$elm_vegalite$VegaLite$AResize;
 var $gicentre$elm_vegalite$VegaLite$vlPropertyLabel = function (spec) {
 	switch (spec.$) {
 		case 'VLName':
@@ -3279,6 +3284,50 @@ var $gicentre$elm_vegalite$VegaLite$asSpec = function (specs) {
 			},
 			specs));
 };
+var $gicentre$elm_vegalite$VegaLite$VLAutosize = {$: 'VLAutosize'};
+var $elm$json$Json$Encode$bool = _Json_wrap;
+var $gicentre$elm_vegalite$VegaLite$autosizeProperty = function (asCfg) {
+	switch (asCfg.$) {
+		case 'APad':
+			return _Utils_Tuple2(
+				'type',
+				$elm$json$Json$Encode$string('pad'));
+		case 'AFit':
+			return _Utils_Tuple2(
+				'type',
+				$elm$json$Json$Encode$string('fit'));
+		case 'AFitX':
+			return _Utils_Tuple2(
+				'type',
+				$elm$json$Json$Encode$string('fit-x'));
+		case 'AFitY':
+			return _Utils_Tuple2(
+				'type',
+				$elm$json$Json$Encode$string('fit-y'));
+		case 'ANone':
+			return _Utils_Tuple2(
+				'type',
+				$elm$json$Json$Encode$string('none'));
+		case 'AResize':
+			return _Utils_Tuple2(
+				'resize',
+				$elm$json$Json$Encode$bool(true));
+		case 'AContent':
+			return _Utils_Tuple2(
+				'contains',
+				$elm$json$Json$Encode$string('content'));
+		default:
+			return _Utils_Tuple2(
+				'contains',
+				$elm$json$Json$Encode$string('padding'));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$autosize = function (aus) {
+	return _Utils_Tuple2(
+		$gicentre$elm_vegalite$VegaLite$VLAutosize,
+		$elm$json$Json$Encode$object(
+			A2($elm$core$List$map, $gicentre$elm_vegalite$VegaLite$autosizeProperty, aus)));
+};
 var $gicentre$elm_vegalite$VegaLite$AxGrid = function (a) {
 	return {$: 'AxGrid', a: a};
 };
@@ -3298,24 +3347,6 @@ var $gicentre$elm_vegalite$VegaLite$Str = function (a) {
 var $gicentre$elm_vegalite$VegaLite$axTitle = function (s) {
 	return $gicentre$elm_vegalite$VegaLite$AxTitle(
 		$gicentre$elm_vegalite$VegaLite$Str(s));
-};
-var $gicentre$elm_vegalite$VegaLite$AxTitleAnchor = function (a) {
-	return {$: 'AxTitleAnchor', a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$axTitleAnchor = $gicentre$elm_vegalite$VegaLite$AxTitleAnchor;
-var $gicentre$elm_vegalite$VegaLite$AxTitleAngle = function (a) {
-	return {$: 'AxTitleAngle', a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$Num = function (a) {
-	return {$: 'Num', a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$positiveAngle = function (a) {
-	return (a < 0) ? (a + 360) : a;
-};
-var $gicentre$elm_vegalite$VegaLite$axTitleAngle = function (n) {
-	return $gicentre$elm_vegalite$VegaLite$AxTitleAngle(
-		$gicentre$elm_vegalite$VegaLite$Num(
-			$gicentre$elm_vegalite$VegaLite$positiveAngle(n)));
 };
 var $gicentre$elm_vegalite$VegaLite$calculateAs = F2(
 	function (ex, label) {
@@ -3377,7 +3408,6 @@ var $gicentre$elm_vegalite$VegaLite$ArAria = function (a) {
 	return {$: 'ArAria', a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$TTNone = {$: 'TTNone'};
-var $elm$json$Json$Encode$bool = _Json_wrap;
 var $gicentre$elm_vegalite$VegaLite$booExpr = F2(
 	function (objName, n) {
 		if (n.$ === 'Boo') {
@@ -6799,9 +6829,11 @@ var $gicentre$elm_vegalite$VegaLite$filter = function (f) {
 var $gicentre$elm_vegalite$VegaLite$HAlignLeft = {$: 'HAlignLeft'};
 var $gicentre$elm_vegalite$VegaLite$haLeft = $gicentre$elm_vegalite$VegaLite$HAlignLeft;
 var $gicentre$elm_vegalite$VegaLite$VLHeight = {$: 'VLHeight'};
-var $gicentre$elm_vegalite$VegaLite$heightOfContainer = _Utils_Tuple2(
-	$gicentre$elm_vegalite$VegaLite$VLHeight,
-	$elm$json$Json$Encode$string('container'));
+var $gicentre$elm_vegalite$VegaLite$height = function (h) {
+	return _Utils_Tuple2(
+		$gicentre$elm_vegalite$VegaLite$VLHeight,
+		$elm$json$Json$Encode$float(h));
+};
 var $gicentre$elm_vegalite$VegaLite$VLLayer = {$: 'VLLayer'};
 var $gicentre$elm_vegalite$VegaLite$layer = function (specs) {
 	return _Utils_Tuple2(
@@ -6832,6 +6864,9 @@ var $gicentre$elm_vegalite$VegaLite$MAlign = function (a) {
 var $gicentre$elm_vegalite$VegaLite$maAlign = $gicentre$elm_vegalite$VegaLite$MAlign;
 var $gicentre$elm_vegalite$VegaLite$MdX = function (a) {
 	return {$: 'MdX', a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$Num = function (a) {
+	return {$: 'Num', a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$maDx = function (n) {
 	return $gicentre$elm_vegalite$VegaLite$MdX(
@@ -8332,9 +8367,11 @@ var $gicentre$elm_vegalite$VegaLite$transform = function (transforms) {
 		A2($elm$json$Json$Encode$list, assemble, transforms));
 };
 var $gicentre$elm_vegalite$VegaLite$VLWidth = {$: 'VLWidth'};
-var $gicentre$elm_vegalite$VegaLite$widthOfContainer = _Utils_Tuple2(
-	$gicentre$elm_vegalite$VegaLite$VLWidth,
-	$elm$json$Json$Encode$string('container'));
+var $gicentre$elm_vegalite$VegaLite$width = function (w) {
+	return _Utils_Tuple2(
+		$gicentre$elm_vegalite$VegaLite$VLWidth,
+		$elm$json$Json$Encode$float(w));
+};
 var $author$project$Specs$ExampleTrends$mkExampleTrendsSpec = F2(
 	function (data, species) {
 		var trans = A2(
@@ -8422,10 +8459,8 @@ var $author$project$Specs$ExampleTrends$mkExampleTrendsSpec = F2(
 							$gicentre$elm_vegalite$VegaLite$pAxis(
 							_List_fromArray(
 								[
-									$gicentre$elm_vegalite$VegaLite$axTitle('Average Count\nper Route'),
-									$gicentre$elm_vegalite$VegaLite$axGrid(false),
-									$gicentre$elm_vegalite$VegaLite$axTitleAngle(0),
-									$gicentre$elm_vegalite$VegaLite$axTitleAnchor($gicentre$elm_vegalite$VegaLite$anEnd)
+									$gicentre$elm_vegalite$VegaLite$axTitle('Average Count per Route'),
+									$gicentre$elm_vegalite$VegaLite$axGrid(false)
 								]))
 						]))),
 			$gicentre$elm_vegalite$VegaLite$tooltips(
@@ -8505,8 +8540,11 @@ var $author$project$Specs$ExampleTrends$mkExampleTrendsSpec = F2(
 			_List_fromArray(
 				[
 					data,
-					$gicentre$elm_vegalite$VegaLite$widthOfContainer,
-					$gicentre$elm_vegalite$VegaLite$heightOfContainer,
+					$gicentre$elm_vegalite$VegaLite$width(450),
+					$gicentre$elm_vegalite$VegaLite$height(300),
+					$gicentre$elm_vegalite$VegaLite$autosize(
+					_List_fromArray(
+						[$gicentre$elm_vegalite$VegaLite$asFit, $gicentre$elm_vegalite$VegaLite$asPadding, $gicentre$elm_vegalite$VegaLite$asResize])),
 					enc(_List_Nil),
 					$gicentre$elm_vegalite$VegaLite$layer(
 					_List_fromArray(
@@ -8544,25 +8582,24 @@ var $author$project$Specs$ExampleTrends$mkExampleTrendsSpec = F2(
 					trans(_List_Nil)
 				]));
 	});
-var $author$project$ExampleTrends$specs = A2(
+var $author$project$Home$specs = A2(
 	$author$project$Specs$ExampleTrends$mkExampleTrendsSpec,
 	$author$project$Data$Mbbs$mbbsData,
 	_List_fromArray(
 		[$author$project$Data$Species$WoodThrush, $author$project$Data$Species$NorthernBobwhite, $author$project$Data$Species$EasternBluebird, $author$project$Data$Species$SummerTanager]));
 var $elm$json$Json$Decode$succeed = _Json_succeed;
-var $author$project$ExampleTrends$vegaLite = _Platform_outgoingPort('vegaLite', $elm$core$Basics$identity);
 var $elm$core$Platform$worker = _Platform_worker;
-var $author$project$ExampleTrends$main = $elm$core$Platform$worker(
+var $author$project$Home$main = $elm$core$Platform$worker(
 	{
 		init: $elm$core$Basics$always(
 			_Utils_Tuple2(
-				$author$project$ExampleTrends$specs,
-				$author$project$ExampleTrends$vegaLite($author$project$ExampleTrends$specs))),
+				$author$project$Home$specs,
+				$author$project$Home$homeVegaPort($author$project$Home$specs))),
 		subscriptions: $elm$core$Basics$always($elm$core$Platform$Sub$none),
 		update: F2(
 			function (_v0, model) {
 				return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 			})
 	});
-_Platform_export({'ExampleTrends':{'init':$author$project$ExampleTrends$main(
+_Platform_export({'Home':{'init':$author$project$Home$main(
 	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
