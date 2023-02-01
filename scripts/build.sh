@@ -23,7 +23,8 @@ pandoc site/index.md \
   --include-in-header=site/import-elm.html \
   --include-before-body=site/navbar.html \
   --include-after-body=site/index.js.html \
-  --css=bootstrap.min.css \
+  --css=/css/style.css \
+  --css=/css/bootstrap.min.css \
   --standalone
 
 pandoc site/results/index.md \
@@ -32,7 +33,8 @@ pandoc site/results/index.md \
   --output=$OUTDIR/results/index.html \
   --template=site/template.html \
   --include-before-body=site/navbar.html \
-  --css=bootstrap.min.css \
+  --css=/css/style.css \
+  --css=/css/bootstrap.min.css \
   --standalone
 
 
@@ -45,7 +47,8 @@ pandoc site/results/individual-species.md \
   --include-in-header=site/results/individual-species-elm.html \
   --include-before-body=site/navbar.html \
   --include-after-body=site/results/individual-species.js.html \
-  --css=bootstrap.min.css \
+  --css=/css/style.css \
+  --css=/css/bootstrap.min.css \
   --standalone
 
 pandoc site/results/traits.md \
@@ -57,9 +60,10 @@ pandoc site/results/traits.md \
   --include-in-header=site/results/traits-elm.html \
   --include-before-body=site/navbar.html \
   --include-after-body=site/results/traits.js.html \
-  --css=bootstrap.min.css \
+  --css=/css/style.css \
+  --css=/css/bootstrap.min.css \
   --standalone
 
 
 cp -r data/ $OUTDIR
-cp site/bootstrap.min.css $OUTDIR
+cp -r site/css/ $OUTDIR
