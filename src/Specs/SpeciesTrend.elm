@@ -44,6 +44,8 @@ mkSpeciesTrendSpec countData counties species =
                         [ mName "mbbs_county"
                         , mTitle "County"
                         , mNominal
+                        , mScale <|
+                            categoricalDomainMap countyColorMap
                         ]
                     )
                 << detail [ dName "route" ]
@@ -80,6 +82,8 @@ mkSpeciesTrendSpec countData counties species =
                         [ mName "mbbs_county"
                         , mTitle "County"
                         , mNominal
+                        , mScale <|
+                             categoricalDomainMap countyColorMap
                         ]
                     )
                 << withCountyAggregation

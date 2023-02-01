@@ -6822,6 +6822,52 @@ var $gicentre$elm_vegalite$VegaLite$axTitle = function (s) {
 	return $gicentre$elm_vegalite$VegaLite$AxTitle(
 		$gicentre$elm_vegalite$VegaLite$Str(s));
 };
+var $gicentre$elm_vegalite$VegaLite$DStrings = function (a) {
+	return {$: 6, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$RStrings = function (a) {
+	return {$: 1, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$ScDomain = function (a) {
+	return {$: 1, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$ScRange = function (a) {
+	return {$: 3, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$Strs = function (a) {
+	return {$: 0, a: a};
+};
+var $elm$core$List$unzip = function (pairs) {
+	var step = F2(
+		function (_v0, _v1) {
+			var x = _v0.a;
+			var y = _v0.b;
+			var xs = _v1.a;
+			var ys = _v1.b;
+			return _Utils_Tuple2(
+				A2($elm$core$List$cons, x, xs),
+				A2($elm$core$List$cons, y, ys));
+		});
+	return A3(
+		$elm$core$List$foldr,
+		step,
+		_Utils_Tuple2(_List_Nil, _List_Nil),
+		pairs);
+};
+var $gicentre$elm_vegalite$VegaLite$categoricalDomainMap = function (scaleDomainPairs) {
+	var _v0 = $elm$core$List$unzip(scaleDomainPairs);
+	var domain = _v0.a;
+	var range = _v0.b;
+	return _List_fromArray(
+		[
+			$gicentre$elm_vegalite$VegaLite$ScDomain(
+			$gicentre$elm_vegalite$VegaLite$DStrings(
+				$gicentre$elm_vegalite$VegaLite$Strs(domain))),
+			$gicentre$elm_vegalite$VegaLite$ScRange(
+			$gicentre$elm_vegalite$VegaLite$RStrings(
+				$gicentre$elm_vegalite$VegaLite$Strs(range)))
+		]);
+};
 var $gicentre$elm_vegalite$VegaLite$View = function (a) {
 	return {$: 49, a: a};
 };
@@ -13378,6 +13424,36 @@ var $gicentre$elm_vegalite$VegaLite$configure = function (configs) {
 		32,
 		$elm$json$Json$Encode$object(configs));
 };
+var $author$project$Data$County$Chatham = 0;
+var $author$project$Data$County$Durham = 1;
+var $author$project$Data$County$Orange = 2;
+var $author$project$Data$County$countyToString = function (county) {
+	switch (county) {
+		case 0:
+			return 'chatham';
+		case 1:
+			return 'durham';
+		default:
+			return 'orange';
+	}
+};
+var $elm$core$Tuple$mapFirst = F2(
+	function (func, _v0) {
+		var x = _v0.a;
+		var y = _v0.b;
+		return _Utils_Tuple2(
+			func(x),
+			y);
+	});
+var $author$project$Data$County$countyColorMap = A2(
+	$elm$core$List$map,
+	$elm$core$Tuple$mapFirst($author$project$Data$County$countyToString),
+	_List_fromArray(
+		[
+			_Utils_Tuple2(2, '#ec5900'),
+			_Utils_Tuple2(0, '#11c385'),
+			_Utils_Tuple2(1, '#7b0905')
+		]));
 var $gicentre$elm_vegalite$VegaLite$DName = function (a) {
 	return {$: 0, a: a};
 };
@@ -13532,6 +13608,10 @@ var $gicentre$elm_vegalite$VegaLite$MmType = function (a) {
 };
 var $gicentre$elm_vegalite$VegaLite$Nominal = 0;
 var $gicentre$elm_vegalite$VegaLite$mNominal = $gicentre$elm_vegalite$VegaLite$MmType(0);
+var $gicentre$elm_vegalite$VegaLite$MScale = function (a) {
+	return {$: 7, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$mScale = $gicentre$elm_vegalite$VegaLite$MScale;
 var $gicentre$elm_vegalite$VegaLite$MTitle = function (a) {
 	return {$: 13, a: a};
 };
@@ -14321,7 +14401,9 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 								[
 									$gicentre$elm_vegalite$VegaLite$mName('mbbs_county'),
 									$gicentre$elm_vegalite$VegaLite$mTitle('County'),
-									$gicentre$elm_vegalite$VegaLite$mNominal
+									$gicentre$elm_vegalite$VegaLite$mNominal,
+									$gicentre$elm_vegalite$VegaLite$mScale(
+									$gicentre$elm_vegalite$VegaLite$categoricalDomainMap($author$project$Data$County$countyColorMap))
 								])))),
 				A2(
 					withCountyAggregation,
@@ -14422,7 +14504,9 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 								[
 									$gicentre$elm_vegalite$VegaLite$mName('mbbs_county'),
 									$gicentre$elm_vegalite$VegaLite$mTitle('County'),
-									$gicentre$elm_vegalite$VegaLite$mNominal
+									$gicentre$elm_vegalite$VegaLite$mNominal,
+									$gicentre$elm_vegalite$VegaLite$mScale(
+									$gicentre$elm_vegalite$VegaLite$categoricalDomainMap($author$project$Data$County$countyColorMap))
 								])))),
 				$gicentre$elm_vegalite$VegaLite$detail(
 					_List_fromArray(
@@ -16022,14 +16106,6 @@ var $elm$core$Maybe$map = F2(
 		} else {
 			return $elm$core$Maybe$Nothing;
 		}
-	});
-var $elm$core$Tuple$mapFirst = F2(
-	function (func, _v0) {
-		var x = _v0.a;
-		var y = _v0.b;
-		return _Utils_Tuple2(
-			func(x),
-			y);
 	});
 var $elm$core$Tuple$mapSecond = F2(
 	function (func, _v0) {
