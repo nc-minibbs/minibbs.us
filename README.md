@@ -20,9 +20,7 @@ but calling the `rmarkdown::render()` function from the console will.
 
 ## Building the site
 
-To render the site, use the `render_site.R` script.
-See [here](https://bookdown.org/yihui/rmarkdown/websites.html)
-for more information about creating websites from Rmarkdown.
+To render the site, use the `./scripts/build.sh` script.
 
 ## Deploy the site
 
@@ -47,12 +45,3 @@ Then update the `renv` lockfile:
 ```r
 renv::snapshot()
 ```
-
-## Old MBBS site content
-
-The `old-mbbs` directory contains the original (unedited) site files
-provided by Haven Wiley.
-These files were copied to `_site/old-mbbs`
-so the site content is still accessible via the web,
-but the files may be edited or removed over time.
-
