@@ -33,7 +33,7 @@ mkSpecs : RouteDetail -> CountyAggregation -> Species -> Spec
 mkSpecs =
     mkSpeciesTrendSpec
         mbbsData
-        
+
 
 
 -- initSpec : Spec
@@ -147,8 +147,8 @@ update toPort msg model =
                 Just s ->
                     toPort (mkSpecs model.routeDetail opt s)
             )
-        
-        ToggleRouteDetail opt -> 
+
+        ToggleRouteDetail opt ->
             ( { model | routeDetail = opt }
             , case model.selectedSpecies of
                 Nothing ->
@@ -157,7 +157,7 @@ update toPort msg model =
                 Just s ->
                     toPort (mkSpecs opt model.countyAggregation s)
             )
-        
+
 
 countyRadio : Model -> Html.Html Msg
 countyRadio model =
@@ -175,20 +175,32 @@ countyRadio model =
                 }
             ]
 
+
 routeDetailCheckbox : Model -> Html.Html Msg
-routeDetailCheckbox model  =
+routeDetailCheckbox model =
     Element.layout [] <|
         Element.column []
             [ Input.checkbox
                 []
-                { onChange = (\x -> if x == True then ToggleRouteDetail ShowRouteDetail else ToggleRouteDetail HideRouteDetail)
+                { onChange =
+                    \x ->
+                        if x == True then
+                            ToggleRouteDetail ShowRouteDetail
+
+                        else
+                            ToggleRouteDetail HideRouteDetail
                 , icon = Input.defaultCheckbox
-                , checked = case model.routeDetail of
-                                ShowRouteDetail -> True 
-                                HideRouteDetail -> False
+                , checked =
+                    case model.routeDetail of
+                        ShowRouteDetail ->
+                            True
+
+                        HideRouteDetail ->
+                            False
                 , label = Input.labelLeft [] <| Element.text "Show route detail: "
                 }
             ]
+
 
 view : Model -> Styled.Html Msg
 view m =

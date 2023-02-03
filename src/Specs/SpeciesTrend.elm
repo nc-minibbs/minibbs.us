@@ -4,9 +4,11 @@ import Data.County exposing (..)
 import Data.Species exposing (..)
 import VegaLite exposing (..)
 
-type RouteDetail =
-      ShowRouteDetail
+
+type RouteDetail
+    = ShowRouteDetail
     | HideRouteDetail
+
 
 mkSpeciesTrendSpec : Data -> RouteDetail -> CountyAggregation -> Species -> Spec
 mkSpeciesTrendSpec countData routeDetail counties species =
@@ -18,11 +20,14 @@ mkSpeciesTrendSpec countData routeDetail counties species =
 
                 Split ->
                     split x
-        
-        withRouteDetail show hide x = 
-            case routeDetail of 
-                ShowRouteDetail -> show x
-                HideRouteDetail -> hide x 
+
+        withRouteDetail show hide x =
+            case routeDetail of
+                ShowRouteDetail ->
+                    show x
+
+                HideRouteDetail ->
+                    hide x
 
         enc =
             encoding
@@ -91,7 +96,7 @@ mkSpeciesTrendSpec countData routeDetail counties species =
                         , mTitle "County"
                         , mNominal
                         , mScale <|
-                             categoricalDomainMap countyColorMap
+                            categoricalDomainMap countyColorMap
                         ]
                     )
                 << withCountyAggregation
@@ -155,11 +160,9 @@ mkSpeciesTrendSpec countData routeDetail counties species =
             configure
                 << configuration
                     (coView [ vicoBackground [ viewStroke Nothing ] ])
-        
 
-        detailLayer = 
-            [ 
-            asSpec
+        detailLayer =
+            [ asSpec
                 [ encRoutes []
                 , line
                     [ maColor "black"
@@ -175,8 +178,9 @@ mkSpeciesTrendSpec countData routeDetail counties species =
                     ]
                 ]
             ]
-        summaryLayer = 
-             [ asSpec
+
+        summaryLayer =
+            [ asSpec
                 [ encMean []
                 , line [ maColor "gray" ]
                 ]
@@ -185,7 +189,6 @@ mkSpeciesTrendSpec countData routeDetail counties species =
                 , line [ maStrokeWidth 15, maOpacity 0 ]
                 ]
             ]
-
     in
     toVegaLite
         [ width 400
