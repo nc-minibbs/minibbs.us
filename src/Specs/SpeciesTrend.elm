@@ -4,9 +4,12 @@ import Data.County exposing (..)
 import Data.Species exposing (..)
 import VegaLite exposing (..)
 
+type RouteDetail =
+      ShowRouteDetail
+    | HideRouteDetail
 
-mkSpeciesTrendSpec : Data -> CountyAggregation -> Species -> Spec
-mkSpeciesTrendSpec countData counties species =
+mkSpeciesTrendSpec : Data -> RouteDetail -> CountyAggregation -> Species -> Spec
+mkSpeciesTrendSpec countData routeDetail counties species =
     let
         withCountyAggregation combined split x =
             case counties of
@@ -15,6 +18,11 @@ mkSpeciesTrendSpec countData counties species =
 
                 Split ->
                     split x
+        
+        withRouteDetail show hide x = 
+            case routeDetail of 
+                ShowRouteDetail -> show x
+                HideRouteDetail -> hide x 
 
         enc =
             encoding
@@ -147,16 +155,11 @@ mkSpeciesTrendSpec countData counties species =
             configure
                 << configuration
                     (coView [ vicoBackground [ viewStroke Nothing ] ])
-    in
-    toVegaLite
-        [ width 400
-        , height 300
-        , cfg []
-        , title (speciesToString species) []
-        , countData
-        , trans []
-        , layer
-            [ asSpec
+        
+
+        detailLayer = 
+            [ 
+            asSpec
                 [ encRoutes []
                 , line
                     [ maColor "black"
@@ -171,7 +174,9 @@ mkSpeciesTrendSpec countData counties species =
                     , maStrokeWidth 10
                     ]
                 ]
-            , asSpec
+            ]
+        summaryLayer = 
+             [ asSpec
                 [ encMean []
                 , line [ maColor "gray" ]
                 ]
@@ -180,4 +185,14 @@ mkSpeciesTrendSpec countData counties species =
                 , line [ maStrokeWidth 15, maOpacity 0 ]
                 ]
             ]
+
+    in
+    toVegaLite
+        [ width 400
+        , height 300
+        , cfg []
+        , title (speciesToString species) []
+        , countData
+        , trans []
+        , layer (withRouteDetail ((++) detailLayer) (\x -> x) summaryLayer)
         ]

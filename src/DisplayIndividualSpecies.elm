@@ -11,7 +11,7 @@ import Html
 import Html.Styled as Styled
 import Html.Styled.Attributes as StyledAttribs
 import Select exposing (..)
-import Specs.SpeciesTrend exposing (mkSpeciesTrendSpec)
+import Specs.SpeciesTrend exposing (..)
 import VegaLite exposing (..)
 
 
@@ -29,15 +29,16 @@ main =
         }
 
 
-mkSpecs : CountyAggregation -> Species -> Spec
+mkSpecs : RouteDetail -> CountyAggregation -> Species -> Spec
 mkSpecs =
     mkSpeciesTrendSpec
         mbbsData
+        
 
 
-initSpec : Spec
-initSpec =
-    mkSpecs Combined NorthernCardinal
+-- initSpec : Spec
+-- initSpec =
+--     mkSpecs (init.routeDetail) (init.countyAggregation) NorthernCardinal
 
 
 speciesToMenuItem : Species -> Select.MenuItem String
@@ -61,6 +62,7 @@ type alias Model =
     , selectedSpecies : Maybe Species
     , selectedItem : Maybe String
     , countyAggregation : CountyAggregation
+    , routeDetail : RouteDetail
     }
 
 
@@ -72,12 +74,14 @@ init =
     , selectedSpecies = Nothing
     , selectedItem = Nothing
     , countyAggregation = Combined
+    , routeDetail = ShowRouteDetail
     }
 
 
 type Msg
     = SelectSpecies (Select.Msg String)
     | SelectCountyAggregation CountyAggregation
+    | ToggleRouteDetail RouteDetail
 
 
 update : (Spec -> Cmd Msg) -> Msg -> Model -> ( Model, Cmd Msg )
@@ -121,7 +125,7 @@ update toPort msg model =
                                     Cmd.none
 
                                 Just s ->
-                                    toPort (mkSpecs model.countyAggregation s)
+                                    toPort (mkSpecs model.routeDetail model.countyAggregation s)
 
                         _ ->
                             Cmd.none
@@ -141,9 +145,19 @@ update toPort msg model =
                     Cmd.none
 
                 Just s ->
-                    toPort (mkSpecs opt s)
+                    toPort (mkSpecs model.routeDetail opt s)
             )
+        
+        ToggleRouteDetail opt -> 
+            ( { model | routeDetail = opt }
+            , case model.selectedSpecies of
+                Nothing ->
+                    Cmd.none
 
+                Just s ->
+                    toPort (mkSpecs opt model.countyAggregation s)
+            )
+        
 
 countyRadio : Model -> Html.Html Msg
 countyRadio model =
@@ -161,6 +175,20 @@ countyRadio model =
                 }
             ]
 
+routeDetailCheckbox : Model -> Html.Html Msg
+routeDetailCheckbox model  =
+    Element.layout [] <|
+        Element.column []
+            [ Input.checkbox
+                []
+                { onChange = (\x -> if x == True then ToggleRouteDetail ShowRouteDetail else ToggleRouteDetail HideRouteDetail)
+                , icon = Input.defaultCheckbox
+                , checked = case model.routeDetail of
+                                ShowRouteDetail -> True 
+                                HideRouteDetail -> False
+                , label = Input.labelLeft [] <| Element.text "Show route detail: "
+                }
+            ]
 
 view : Model -> Styled.Html Msg
 view m =
@@ -193,6 +221,9 @@ view m =
         , Styled.div
             []
             [ Styled.fromUnstyled (countyRadio m) ]
+        , Styled.div
+            []
+            [ Styled.fromUnstyled (routeDetailCheckbox m) ]
         , Styled.div
             [ StyledAttribs.id "vegaViz" ]
             []
