@@ -6,6 +6,7 @@
 library(mbbs)
 library(dplyr)
 library(tidyr)
+library(jsonlite)
 
 #------------------------------------------------------------------------------#
 #  Utility/model functions
