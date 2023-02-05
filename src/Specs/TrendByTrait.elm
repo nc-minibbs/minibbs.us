@@ -1,34 +1,21 @@
-module Specs.TrendByTrait exposing (mkTrendByTraitSpec)
+module Specs.TrendByTrait exposing (mkTrendByTraitSpec, CountyFilter(..))
 
+import Data.County exposing ( County )
 import Data.Traits exposing (Trait, traitToString)
 import String exposing (replace)
 import VegaLite exposing (..)
+import Data.County exposing (countyToString)
 
+type CountyFilter =
+      NoCountyFilter
+    | FilterCounty County
 
-mkTrendByTraitSpec : Data -> Data -> Trait -> Spec
-mkTrendByTraitSpec countData traitData trait =
-    let
-        {-
-           Define parameters for interactivity
-        -}
-        ps =
-            params
-                << param "countySelection"
-                    [ paSelect sePoint
-                        [ seFields [ "mbbs_county" ]
-                        , seResolve seGlobal
-                        ]
-                    , paBind
-                        (ipSelect
-                            [ inOptions
-                                [ ""
-                                , "orange"
-                                , "chatham"
-                                , "durham"
-                                ]
-                            ]
-                        )
-                    ]
+mkTrendByTraitSpec : Data -> Data -> Trait -> CountyFilter -> Spec
+mkTrendByTraitSpec countData traitData trait countyFilter =
+    let 
+        withCountyFilter noFilter yesFilter x = case countyFilter of 
+            NoCountyFilter -> noFilter x 
+            FilterCounty c -> yesFilter c x
 
         {-
            Define the primary layer's encoding
@@ -78,7 +65,10 @@ mkTrendByTraitSpec countData traitData trait =
                     "english_common_name"
                     (luFieldsAs [ ( traitToString trait, "group" ) ])
                 -- Filter based on the selected county
-                << filter (fiSelection "countySelection")
+                << withCountyFilter 
+                    (\x -> x)
+                    (\county x -> 
+                        filter (fiEqual "mbbs_county" (str (countyToString county)) ) x)
                 -- Compute counts per species within each route/year
                 -- This and the next sum could combined,
                 -- but kept for clarity of the data summarizing steps.
@@ -135,8 +125,7 @@ mkTrendByTraitSpec countData traitData trait =
         , layer
             [ -- The main line chart
               asSpec
-                [ ps []
-                , line []
+                [ line []
                 ]
             , -- Transparent layer to make it easier to select tooltip
               asSpec
