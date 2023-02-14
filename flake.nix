@@ -40,33 +40,47 @@
             ];
             pages = 
             [ "index"
+              "procedures"
+              "results/index"
+              "results/individual-species"
+              "results/traits"
             ];
           in 
           ''
-          mkdir -p $out/_site/js
+          SRC=src
+          mkdir -p $out/{js,data,css,results}
+
+          cp -R $SRC/css/ $out/
+
+          cp -R data/ $out/
 
           ${pkgs.lib.concatStrings (map (module : 
            '' 
             echo "compiling elm modules"
             ${pkgs.elmPackages.elm}/bin/elm make src/${module}.elm \
-                --output=$out/_site/js/${module}.js \
+                --output=$out/js/${module}.js \
                 --optimize
            '') elmModules ) 
           
            }
 
-          ${pkgs.pandoc}/bin/pandoc site/index.md \
+          ${pkgs.lib.concatStrings (map (page : 
+           '' 
+
+          ${pkgs.pandoc}/bin/pandoc content/${page}.md \
               --from=markdown \
               --to=html \
-              --output=$out/index.html \
-              --template=site/template.html \
-              --include-in-header=site/import-vega.html \
-              --include-in-header=site/import-elm.html \
-              --include-before-body=site/navbar.html \
-              --include-after-body=site/index.js.html \
+              --output=$out/${page}.html \
+              --template=$SRC/template.html \
+              --include-before-body=$SRC/navbar.html \
               --css=/css/style.css \
               --css=/css/bootstrap.min.css \
               --standalone
+           '') pages ) 
+          
+           }
+
+
           '';
         };
       };

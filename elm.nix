@@ -24,11 +24,11 @@ let
       buildInputs = [ elmPackages.elm ]
         ++ lib.optional outputJavaScript nodePackages.uglify-js;
 
-      buildPhase = pkgs.elmPackages.fetchElmDeps {
-        elmPackages = import srcs;
-        elmVersion = "0.19.1";
-        inherit registryDat;
-      };
+        buildPhase = pkgs.elmPackages.fetchElmDeps {
+          elmPackages = import srcs;
+          elmVersion = "0.19.1";
+          inherit registryDat;
+        };
 
       installPhase = let
         elmfile = module: "${srcdir}/${builtins.replaceStrings ["."] ["/"] module}.elm";

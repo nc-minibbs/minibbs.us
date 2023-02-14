@@ -20,10 +20,10 @@ specs =
 main : Program () Spec msg
 main =
     Platform.worker
-        { init = always ( specs, homeVegaPort specs )
+        { init = always ( specs, vegaPort specs )
         , update = \_ model -> ( model, Cmd.none )
         , subscriptions = always Sub.none
         }
 
 
-port homeVegaPort : Spec -> Cmd msg
+port vegaPort : Spec -> Cmd msg
