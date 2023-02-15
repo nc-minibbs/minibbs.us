@@ -12,6 +12,8 @@ elm-stuff
 *.DS_Store
 *sublime-project
 
+## Nix
+result**
 
 ## scratch files
 scratch**
