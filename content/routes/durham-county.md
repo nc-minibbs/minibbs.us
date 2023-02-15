@@ -6,7 +6,7 @@ output:
     toc_float: true
 ---
 
-![MBBS Durham County Routes](images/durhamnos750.GIF)
+![MBBS Durham County Routes](img/durhamnos750.GIF)
 
 ## (1) South Lowell Road NE (northwestern Durham County)
 

@@ -54,8 +54,8 @@
           SRC=src
           mkdir -p $out/{js,data,css,results,routes}
 
+          cp -R $SRC/img/ $out/
           cp -R $SRC/css/ $out/
-
           cp -R data/ $out/
 
           ${pkgs.lib.concatStrings (map (module : 

@@ -6,8 +6,8 @@ output:
     toc_float: true
 ---
 
-![MBBS Chatham County Routes](images/chathameastnos.GIF)
-![MBBS Chatham County Routes](images/chathamwestnos.GIF)
+![MBBS Chatham County Routes](img/chathameastnos.GIF)
+![MBBS Chatham County Routes](img/chathamwestnos.GIF)
 
 ## (1) Russell Chapel Road (north-central Chatham County)
 
