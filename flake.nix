@@ -45,11 +45,14 @@
               "results/index"
               "results/individual-species"
               "results/traits"
+              "routes/orange-county"
+              "routes/chatham-county"
+              "routes/durham-county"
             ];
           in 
           ''
           SRC=src
-          mkdir -p $out/{js,data,css,results}
+          mkdir -p $out/{js,data,css,results,routes}
 
           cp -R $SRC/css/ $out/
 
