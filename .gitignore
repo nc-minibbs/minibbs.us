@@ -11,6 +11,7 @@ elm-stuff
 ## IDE stuff/system
 *.DS_Store
 *sublime-project
+**.direnv
 
 ## Nix
 **result

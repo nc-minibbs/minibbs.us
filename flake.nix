@@ -6,11 +6,19 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     flake-utils.url = "github:numtide/flake-utils";
+    gitignore = {
+      url = "github:hercules-ci/gitignore.nix";
+      # Use the same nixpkgs
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system: let
+  outputs = { self, nixpkgs, flake-utils, gitignore }:
+    flake-utils.lib.eachDefaultSystem (system: 
+    let
       pkgs = nixpkgs.legacyPackages.${system};
+      inherit (gitignore.lib) gitignoreSource;
+    
     in {
 
 
@@ -19,7 +27,7 @@
         #  elm2nix init produces
         site = pkgs.stdenv.mkDerivation {
           name = "site";
-          src = ./.;
+          src = gitignoreSource ./.;
 
           buildInputs = [
             pkgs.elmPackages.elm
