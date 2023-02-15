@@ -1,12 +1,8 @@
 ---
 title: Durham County MBBS routes
-output:
-  html_document:
-    toc: true
-    toc_float: true
 ---
 
-![MBBS Durham County Routes](img/durhamnos750.GIF)
+![MBBS Durham County Routes](/img/durhamnos750.GIF)
 
 ## (1) South Lowell Road NE (northwestern Durham County)
 

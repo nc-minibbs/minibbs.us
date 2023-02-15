@@ -1,9 +1,5 @@
 ---
 title: Procedures
-output:
-  html_document:
-    toc: true
-    toc_float: true
 ---
 
 ## Basics

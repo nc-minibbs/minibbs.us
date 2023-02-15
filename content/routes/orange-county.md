@@ -1,12 +1,8 @@
 ---
 title: Orange County MBBS routes
-output:
-  html_document:
-    toc: true
-    toc_float: true
 ---
 
-![MBBS Orange County Routes](img/orangenos.GIF)
+![MBBS Orange County Routes](/img/orangenos.GIF)
 
 ## (1) Wade Loop (northwestern Orange County)
 
