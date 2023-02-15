@@ -56,15 +56,6 @@ The objective in counting vehicles at each stop is to produce information about 
 
 ## Routes
 
-* [Orange County routes](orange-county.html)
-* [Durham County routes](durham-county.html)
-* [Chatham County routes](chatham-county.html)
-
-## Procedure Archives
-
-More information about
-[our procedures](old-mbbs/introtombbs.html)
-including
-[descriptions and maps of our routes](old-mbbs/introtombbs.html),
-[a list of birds breeding in our area](old-mbbs/mbbsbirds.html),
-and [printable forms for MBBS data](old-mbbs/dataforms/index.html)
+* [Orange County routes](routes/orange-county.html)
+* [Durham County routes](routes/durham-county.html)
+* [Chatham County routes](routes/chatham-county.html)
