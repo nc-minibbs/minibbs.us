@@ -2,4 +2,4 @@
 
 nix build .#site 
 
-cp -R result/ _site/
+cp -r result/ _site/

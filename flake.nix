@@ -24,6 +24,7 @@
           buildInputs = [
             pkgs.elmPackages.elm
             pkgs.pandoc
+            pkgs.nodePackages.uglify-js
           ];
 
           buildPhase = pkgs.elmPackages.fetchElmDeps {
@@ -60,6 +61,9 @@
             ${pkgs.elmPackages.elm}/bin/elm make src/${module}.elm \
                 --output=$out/js/${module}.js \
                 --optimize
+
+            ${pkgs.nodePackages.uglify-js}/bin/uglifyjs $out/js/${module}.js --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters,keep_fargs=false,unsafe_comps,unsafe' \
+                | ${pkgs.nodePackages.uglify-js}/bin/uglifyjs  --mangle --output $out/js/${module}.min.js
            '') elmModules ) 
           
            }
