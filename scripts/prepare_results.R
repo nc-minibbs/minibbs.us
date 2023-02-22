@@ -41,8 +41,8 @@ gee_model <- function(data, .formula) {
     data    = data))
 }
 
-extract_results <- function(fitted_model){
-  if (fitted_model$result == "failed"){
+extract_results <- function(fitted_model) {
+  if (fitted_model$result == "failed") {
     fitted_model
   } else {
     m <- fitted_model$fit
@@ -214,7 +214,7 @@ model_dt <-
     results_county = purrr::map(
       .x = fit_county,
       .f = ~ {
-        if(.x$result == "failed") {
+        if (.x$result == "failed") {
           .x
         } else {
           m <- .x$fit
@@ -259,23 +259,3 @@ mbbs_results %>%
     file = "data/mbbs.csv",
     row.names = FALSE
   )
-
-
-# Write data for site
-# purrr::walk2(
-#   .x = mbbs_results$common_name,
-#   .y = mbbs_results$data,
-#   .f = ~
-#     write.csv(
-#       .y,
-#       file = paste0("data/", normalize_name(.x), ".csv"),
-#       row.names = FALSE
-#     )
-# )
-
-
-# dt <-
-#   mbbs_results %>%
-#   select(common_name, sci_name, data)
-
-
