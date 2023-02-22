@@ -3,6 +3,7 @@ module Specs.SpeciesTrend exposing (..)
 import Data.County exposing (..)
 import Data.Species exposing (..)
 import VegaLite exposing (..)
+import Specs.SpecConfig exposing (..)
 
 
 type RouteDetail
@@ -37,6 +38,7 @@ mkSpeciesTrendSpec countData routeDetail counties species =
                     , pAxis
                         [ axTitle ""
                         , axGrid False
+                        , axTickCount (niTickCount 5)
                         ]
                     ]
 
@@ -85,9 +87,12 @@ mkSpeciesTrendSpec countData routeDetail counties species =
                 << position Y
                     [ pName "speciesCount"
                     , pAggregate opMean
-                    , pAxis
-                        [ axGrid False
-                        ]
+                    , pAxis 
+                        -- Update y-axis title if route detail is hidden
+                        (withRouteDetail 
+                        (\x -> x)
+                        ( (++) [ axTitle "Average Count" ])
+                              ([ axGrid False] ))
                     ]
                 << withCountyAggregation
                     (\x -> x)
@@ -156,11 +161,6 @@ mkSpeciesTrendSpec countData routeDetail counties species =
                     , "route_num"
                     ]
 
-        cfg =
-            configure
-                << configuration
-                    (coView [ vicoBackground [ viewStroke Nothing ] ])
-
         detailLayer =
             [ asSpec
                 [ encRoutes []
@@ -191,11 +191,9 @@ mkSpeciesTrendSpec countData routeDetail counties species =
             ]
     in
     toVegaLite
-        [ width 400
-        , height 300
-        , cfg []
+        [ countData 
+        , mbbsVizConfig []
         , title (speciesToString species) []
-        , countData
         , trans []
         , layer (withRouteDetail ((++) detailLayer) (\x -> x) summaryLayer)
         ]

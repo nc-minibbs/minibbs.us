@@ -2,7 +2,7 @@ module Specs.ExampleTrends exposing (..)
 
 import Data.Species exposing (Species, speciesToString)
 import VegaLite exposing (..)
-
+import Specs.SpecConfig exposing (..)
 
 {-| Defines the Vega-Lite specs
 for the site's landing page.
@@ -30,7 +30,10 @@ mkExampleTrendsSpec data species =
                 << position X
                     [ pName "year"
                     , pTemporal
-                    , pAxis [ axTitle "", axGrid False ]
+                    , pAxis [ axTitle ""
+                            , axGrid False 
+                            , axTickCount (niTickCount 5)
+                            ]
                     ]
                 << position Y
                     [ pName "avgCount"
@@ -139,11 +142,7 @@ mkExampleTrendsSpec data species =
     in
     toVegaLite
         [ data
-        , width 450
-
-        -- , widthOfContainer
-        , height 300
-        , autosize [ asFit, asPadding, asResize ]
+        , mbbsVizConfig []
         , enc []
         , layer
             [ -- The main line chart

@@ -214,12 +214,7 @@ view m =
                     Nothing
     in
     Styled.div
-        [ StyledAttribs.css
-            [ Css.marginTop (Css.px 20)
-            , Css.width (Css.pct 50)
-            , Css.marginLeft Css.auto
-            , Css.marginRight Css.auto
-            ]
+        [
         ]
         [ Styled.map SelectSpecies <|
             Select.view
@@ -237,7 +232,8 @@ view m =
             []
             [ Styled.fromUnstyled (routeDetailCheckbox m) ]
         , Styled.div
-            [ StyledAttribs.id "vegaViz" ]
+            [ StyledAttribs.id "vegaViz"
+            ]
             []
         ]
 

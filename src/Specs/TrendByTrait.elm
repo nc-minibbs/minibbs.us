@@ -5,6 +5,7 @@ import Data.Traits exposing (Trait, traitToString)
 import String exposing (replace)
 import VegaLite exposing (..)
 import Data.County exposing (countyToString)
+import Specs.SpecConfig exposing (..)
 
 type CountyFilter =
       NoCountyFilter
@@ -25,13 +26,18 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                 << position X
                     [ pName "year"
                     , pTemporal
-                    , pAxis [ axTitle "" ]
+                    , pAxis [ axTitle "" 
+                            , axGrid False
+                            , axTickCount (niTickCount 5)
+                            ]
                     ]
                 << position Y
                     [ pName "yBar"
                     , pQuant
                     , pAggregate opMean
-                    , pAxis [ axTitle "Average Count per Route" ]
+                    , pAxis [ axTitle "Average Count per Route"
+                            , axGrid False
+                            ]
                     ]
                 << color
                     [ mName "group"
@@ -119,8 +125,7 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
     in
     toVegaLite
         [ countData
-        , width 500
-        , height 400
+        , mbbsVizConfig []
         , enc []
         , layer
             [ -- The main line chart
