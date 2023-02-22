@@ -6814,6 +6814,10 @@ var $gicentre$elm_vegalite$VegaLite$axGrid = function (b) {
 	return $gicentre$elm_vegalite$VegaLite$AxGrid(
 		$gicentre$elm_vegalite$VegaLite$Boo(b));
 };
+var $gicentre$elm_vegalite$VegaLite$AxTickCount = function (a) {
+	return {$: 45, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$axTickCount = $gicentre$elm_vegalite$VegaLite$AxTickCount;
 var $gicentre$elm_vegalite$VegaLite$AxTitle = function (a) {
 	return {$: 56, a: a};
 };
@@ -6870,10 +6874,6 @@ var $gicentre$elm_vegalite$VegaLite$categoricalDomainMap = function (scaleDomain
 				$gicentre$elm_vegalite$VegaLite$Strs(range)))
 		]);
 };
-var $gicentre$elm_vegalite$VegaLite$View = function (a) {
-	return {$: 49, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$coView = $gicentre$elm_vegalite$VegaLite$View;
 var $gicentre$elm_vegalite$VegaLite$arrangementLabel = function (arrng) {
 	switch (arrng) {
 		case 1:
@@ -9369,6 +9369,1139 @@ var $elm$core$Basics$composeL = F3(
 		return g(
 			f(x));
 	});
+var $author$project$Data$County$Chatham = 0;
+var $author$project$Data$County$Durham = 1;
+var $author$project$Data$County$Orange = 2;
+var $author$project$Data$County$countyToString = function (county) {
+	switch (county) {
+		case 0:
+			return 'chatham';
+		case 1:
+			return 'durham';
+		default:
+			return 'orange';
+	}
+};
+var $elm$core$Tuple$mapFirst = F2(
+	function (func, _v0) {
+		var x = _v0.a;
+		var y = _v0.b;
+		return _Utils_Tuple2(
+			func(x),
+			y);
+	});
+var $author$project$Data$County$countyColorMap = A2(
+	$elm$core$List$map,
+	$elm$core$Tuple$mapFirst($author$project$Data$County$countyToString),
+	_List_fromArray(
+		[
+			_Utils_Tuple2(2, '#ec5900'),
+			_Utils_Tuple2(0, '#11c385'),
+			_Utils_Tuple2(1, '#7b0905')
+		]));
+var $gicentre$elm_vegalite$VegaLite$DName = function (a) {
+	return {$: 0, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$dName = function (s) {
+	return $gicentre$elm_vegalite$VegaLite$DName(
+		$gicentre$elm_vegalite$VegaLite$Str(s));
+};
+var $gicentre$elm_vegalite$VegaLite$detailChannelProperty = function (field) {
+	switch (field.$) {
+		case 0:
+			var s = field.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'field', s);
+		case 1:
+			var t = field.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'type',
+					$elm$json$Json$Encode$string(
+						$gicentre$elm_vegalite$VegaLite$measurementLabel(t)))
+				]);
+		case 2:
+			var bps = field.a;
+			return _List_fromArray(
+				[
+					$gicentre$elm_vegalite$VegaLite$bin(bps)
+				]);
+		case 3:
+			var tu = field.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'timeUnit',
+					$gicentre$elm_vegalite$VegaLite$timeUnitSpec(tu))
+				]);
+		default:
+			var op = field.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'aggregate',
+					$gicentre$elm_vegalite$VegaLite$operationSpec(op))
+				]);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$detail = function (detailProps) {
+	return $elm$core$List$cons(
+		_Utils_Tuple2(
+			'detail',
+			$elm$json$Json$Encode$object(
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$detailChannelProperty, detailProps))));
+};
+var $gicentre$elm_vegalite$VegaLite$VLEncoding = 18;
+var $gicentre$elm_vegalite$VegaLite$encoding = function (channels) {
+	return _Utils_Tuple2(
+		18,
+		$elm$json$Json$Encode$object(channels));
+};
+var $gicentre$elm_vegalite$VegaLite$FEqual = F2(
+	function (a, b) {
+		return {$: 0, a: a, b: b};
+	});
+var $gicentre$elm_vegalite$VegaLite$fiEqual = $gicentre$elm_vegalite$VegaLite$FEqual;
+var $gicentre$elm_vegalite$VegaLite$filter = function (f) {
+	return $elm$core$List$cons(
+		_Utils_Tuple2(
+			'filter',
+			$gicentre$elm_vegalite$VegaLite$filterSpec(f)));
+};
+var $gicentre$elm_vegalite$VegaLite$VLLayer = 19;
+var $gicentre$elm_vegalite$VegaLite$layer = function (specs) {
+	return _Utils_Tuple2(
+		19,
+		$gicentre$elm_vegalite$VegaLite$toList(specs));
+};
+var $gicentre$elm_vegalite$VegaLite$Line = 9;
+var $gicentre$elm_vegalite$VegaLite$VLMark = 15;
+var $gicentre$elm_vegalite$VegaLite$markLabel = function (m) {
+	switch (m) {
+		case 0:
+			return 'arc';
+		case 1:
+			return 'area';
+		case 2:
+			return 'bar';
+		case 3:
+			return 'boxplot';
+		case 6:
+			return 'circle';
+		case 4:
+			return 'errorband';
+		case 5:
+			return 'errorbar';
+		case 8:
+			return 'image';
+		case 9:
+			return 'line';
+		case 7:
+			return 'geoshape';
+		case 10:
+			return 'point';
+		case 11:
+			return 'rect';
+		case 12:
+			return 'rule';
+		case 13:
+			return 'square';
+		case 14:
+			return 'text';
+		case 15:
+			return 'tick';
+		default:
+			return 'trail';
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$TTNone = 2;
+var $gicentre$elm_vegalite$VegaLite$blendModeSpec = function (bm) {
+	switch (bm.$) {
+		case 0:
+			return $elm$json$Json$Encode$null;
+		case 1:
+			return $elm$json$Json$Encode$string('multiply');
+		case 2:
+			return $elm$json$Json$Encode$string('screen');
+		case 3:
+			return $elm$json$Json$Encode$string('overlay');
+		case 4:
+			return $elm$json$Json$Encode$string('darken');
+		case 5:
+			return $elm$json$Json$Encode$string('lighten');
+		case 6:
+			return $elm$json$Json$Encode$string('color-dodge');
+		case 7:
+			return $elm$json$Json$Encode$string('color-burn');
+		case 8:
+			return $elm$json$Json$Encode$string('hard-light');
+		case 9:
+			return $elm$json$Json$Encode$string('soft-light');
+		case 10:
+			return $elm$json$Json$Encode$string('difference');
+		case 11:
+			return $elm$json$Json$Encode$string('exclusion');
+		case 12:
+			return $elm$json$Json$Encode$string('hue');
+		case 13:
+			return $elm$json$Json$Encode$string('saturation');
+		case 14:
+			return $elm$json$Json$Encode$string('color');
+		case 15:
+			return $elm$json$Json$Encode$string('luminosity');
+		default:
+			var s = bm.a;
+			return $elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'expr',
+						$elm$json$Json$Encode$string(s))
+					]));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$colorGradientLabel = function (gr) {
+	if (!gr) {
+		return 'linear';
+	} else {
+		return 'radial';
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$cursorSpec = function (cur) {
+	switch (cur.$) {
+		case 0:
+			return $elm$json$Json$Encode$string('auto');
+		case 1:
+			return $elm$json$Json$Encode$string('default');
+		case 2:
+			return $elm$json$Json$Encode$string('none');
+		case 3:
+			return $elm$json$Json$Encode$string('context-menu');
+		case 4:
+			return $elm$json$Json$Encode$string('help');
+		case 5:
+			return $elm$json$Json$Encode$string('pointer');
+		case 6:
+			return $elm$json$Json$Encode$string('progress');
+		case 7:
+			return $elm$json$Json$Encode$string('wait');
+		case 8:
+			return $elm$json$Json$Encode$string('cell');
+		case 9:
+			return $elm$json$Json$Encode$string('crosshair');
+		case 10:
+			return $elm$json$Json$Encode$string('text');
+		case 11:
+			return $elm$json$Json$Encode$string('vertical-text');
+		case 12:
+			return $elm$json$Json$Encode$string('alias');
+		case 13:
+			return $elm$json$Json$Encode$string('copy');
+		case 14:
+			return $elm$json$Json$Encode$string('move');
+		case 15:
+			return $elm$json$Json$Encode$string('no-drop');
+		case 16:
+			return $elm$json$Json$Encode$string('not-allowed');
+		case 17:
+			return $elm$json$Json$Encode$string('all-scroll');
+		case 18:
+			return $elm$json$Json$Encode$string('col-resize');
+		case 19:
+			return $elm$json$Json$Encode$string('row-resize');
+		case 20:
+			return $elm$json$Json$Encode$string('n-resize');
+		case 21:
+			return $elm$json$Json$Encode$string('e-resize');
+		case 22:
+			return $elm$json$Json$Encode$string('s-resize');
+		case 23:
+			return $elm$json$Json$Encode$string('w-resize');
+		case 24:
+			return $elm$json$Json$Encode$string('ne-resize');
+		case 25:
+			return $elm$json$Json$Encode$string('nw-resize');
+		case 26:
+			return $elm$json$Json$Encode$string('se-resize');
+		case 27:
+			return $elm$json$Json$Encode$string('sw-resize');
+		case 28:
+			return $elm$json$Json$Encode$string('ew-resize');
+		case 29:
+			return $elm$json$Json$Encode$string('ns-resize');
+		case 30:
+			return $elm$json$Json$Encode$string('nesw-resize');
+		case 31:
+			return $elm$json$Json$Encode$string('nwse-resize');
+		case 32:
+			return $elm$json$Json$Encode$string('zoom-in');
+		case 33:
+			return $elm$json$Json$Encode$string('zoom-out');
+		case 34:
+			return $elm$json$Json$Encode$string('grab');
+		case 35:
+			return $elm$json$Json$Encode$string('grabbing');
+		default:
+			var s = cur.a;
+			return $elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'expr',
+						$elm$json$Json$Encode$string(s))
+					]));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$extentSpec = function (ext) {
+	switch (ext.$) {
+		case 0:
+			return $elm$json$Json$Encode$string('ci');
+		case 1:
+			return $elm$json$Json$Encode$string('stderr');
+		case 2:
+			return $elm$json$Json$Encode$string('stdev');
+		case 3:
+			return $elm$json$Json$Encode$string('iqr');
+		case 4:
+			return $elm$json$Json$Encode$string('min-max');
+		default:
+			var sc = ext.a;
+			switch (sc.$) {
+				case 0:
+					var x = sc.a;
+					return $elm$json$Json$Encode$float(x);
+				case 1:
+					return $elm$json$Json$Encode$float(0);
+				default:
+					var s = sc.a;
+					return $elm$json$Json$Encode$object(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(
+								'expr',
+								$elm$json$Json$Encode$string(s))
+							]));
+			}
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$stopSpec = function (_v0) {
+	var x = _v0.a;
+	var c = _v0.b;
+	return $elm$json$Json$Encode$object(
+		_List_fromArray(
+			[
+				_Utils_Tuple2(
+				'offset',
+				$elm$json$Json$Encode$float(x)),
+				_Utils_Tuple2(
+				'color',
+				$elm$json$Json$Encode$string(c))
+			]));
+};
+var $gicentre$elm_vegalite$VegaLite$gradientProperty = function (gp) {
+	switch (gp.$) {
+		case 0:
+			var x = gp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'x1', x);
+		case 1:
+			var x = gp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'y1', x);
+		case 2:
+			var x = gp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'x2', x);
+		case 3:
+			var x = gp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'y2', x);
+		case 4:
+			var x = gp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'r1', x);
+		case 5:
+			var x = gp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'r2', x);
+		default:
+			var grs = gp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'stops',
+					A2($elm$json$Json$Encode$list, $gicentre$elm_vegalite$VegaLite$stopSpec, grs))
+				]);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$markInterpolationSpec = function (interp) {
+	switch (interp.$) {
+		case 7:
+			return $elm$json$Json$Encode$string('linear');
+		case 8:
+			return $elm$json$Json$Encode$string('linear-closed');
+		case 12:
+			return $elm$json$Json$Encode$string('step');
+		case 11:
+			return $elm$json$Json$Encode$string('step-before');
+		case 10:
+			return $elm$json$Json$Encode$string('step-after');
+		case 0:
+			return $elm$json$Json$Encode$string('basis');
+		case 2:
+			return $elm$json$Json$Encode$string('basis-open');
+		case 1:
+			return $elm$json$Json$Encode$string('basis-closed');
+		case 4:
+			return $elm$json$Json$Encode$string('cardinal');
+		case 6:
+			return $elm$json$Json$Encode$string('cardinal-open');
+		case 5:
+			return $elm$json$Json$Encode$string('cardinal-closed');
+		case 3:
+			return $elm$json$Json$Encode$string('bundle');
+		case 9:
+			return $elm$json$Json$Encode$string('monotone');
+		default:
+			var s = interp.a;
+			return $elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'expr',
+						$elm$json$Json$Encode$string(s))
+					]));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$strokeCapSpec = function (cap) {
+	switch (cap.$) {
+		case 0:
+			return $elm$json$Json$Encode$string('butt');
+		case 1:
+			return $elm$json$Json$Encode$string('round');
+		case 2:
+			return $elm$json$Json$Encode$string('square');
+		default:
+			var s = cap.a;
+			return $elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'expr',
+						$elm$json$Json$Encode$string(s))
+					]));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$strokeJoinSpec = function (jn) {
+	switch (jn.$) {
+		case 0:
+			return $elm$json$Json$Encode$string('miter');
+		case 1:
+			return $elm$json$Json$Encode$string('round');
+		case 2:
+			return $elm$json$Json$Encode$string('bevel');
+		default:
+			var s = jn.a;
+			return $elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'expr',
+						$elm$json$Json$Encode$string(s))
+					]));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$textDirectionSpec = function (td) {
+	switch (td.$) {
+		case 0:
+			return $elm$json$Json$Encode$string('ltr');
+		case 1:
+			return $elm$json$Json$Encode$string('rtl');
+		default:
+			var s = td.a;
+			return $elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'expr',
+						$elm$json$Json$Encode$string(s))
+					]));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$ttContentSpec = function (ttContent) {
+	switch (ttContent) {
+		case 0:
+			return $elm$json$Json$Encode$string('encoding');
+		case 1:
+			return $elm$json$Json$Encode$string('data');
+		default:
+			return $elm$json$Json$Encode$string('null');
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$lineMarkerSpec = function (pm) {
+	if (!pm.$) {
+		return $elm$json$Json$Encode$bool(false);
+	} else {
+		var mps = pm.a;
+		return $elm$json$Json$Encode$object(
+			A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$markProperty = function (mProp) {
+	switch (mProp.$) {
+		case 2:
+			var aps = mProp.a;
+			if (!aps.b) {
+				return $gicentre$elm_vegalite$VegaLite$ariaProperty(
+					$gicentre$elm_vegalite$VegaLite$ArAria(
+						$gicentre$elm_vegalite$VegaLite$Boo(false)));
+			} else {
+				return A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$ariaProperty, aps);
+			}
+		case 30:
+			var b = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'filled', b);
+		case 6:
+			var bm = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'blend',
+					$gicentre$elm_vegalite$VegaLite$blendModeSpec(bm))
+				]);
+		case 9:
+			var b = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'clip', b);
+		case 10:
+			var s = mProp.a;
+			switch (s.$) {
+				case 1:
+					return _List_fromArray(
+						[
+							_Utils_Tuple2('color', $elm$json$Json$Encode$null)
+						]);
+				case 0:
+					var clr = s.a;
+					return ($elm$core$String$trim(clr) === '') ? _List_fromArray(
+						[
+							_Utils_Tuple2('color', $elm$json$Json$Encode$null)
+						]) : A2($gicentre$elm_vegalite$VegaLite$strExpr, 'color', s);
+				default:
+					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'color', s);
+			}
+		case 12:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadius', n);
+		case 13:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadiusEnd', n);
+		case 16:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadiusBottomLeft', n);
+		case 17:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadiusBottomRight', n);
+		case 14:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadiusTopLeft', n);
+		case 15:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadiusTopRight', n);
+		case 18:
+			var cur = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'cursor',
+					$gicentre$elm_vegalite$VegaLite$cursorSpec(cur))
+				]);
+		case 27:
+			var ext = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'extent',
+					$gicentre$elm_vegalite$VegaLite$extentSpec(ext))
+				]);
+		case 19:
+			var s = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'href', s);
+		case 49:
+			var bl = mProp.a;
+			if (!bl.$) {
+				var b = bl.a;
+				return b ? _List_fromArray(
+					[
+						_Utils_Tuple2(
+						'invalid',
+						$elm$json$Json$Encode$string('filter'))
+					]) : _List_fromArray(
+					[
+						_Utils_Tuple2('invalid', $elm$json$Json$Encode$null)
+					]);
+			} else {
+				return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'invalid', bl);
+			}
+		case 28:
+			var s = mProp.a;
+			switch (s.$) {
+				case 1:
+					return _List_fromArray(
+						[
+							_Utils_Tuple2('fill', $elm$json$Json$Encode$null)
+						]);
+				case 0:
+					var clr = s.a;
+					return ($elm$core$String$trim(clr) === '') ? _List_fromArray(
+						[
+							_Utils_Tuple2('fill', $elm$json$Json$Encode$null)
+						]) : A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fill', s);
+				default:
+					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fill', s);
+			}
+		case 29:
+			var cGrad = mProp.a;
+			var props = mProp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'fill',
+					$elm$json$Json$Encode$object(
+						A2(
+							$elm$core$List$cons,
+							_Utils_Tuple2(
+								'gradient',
+								$elm$json$Json$Encode$string(
+									$gicentre$elm_vegalite$VegaLite$colorGradientLabel(cGrad))),
+							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$gradientProperty, props))))
+				]);
+		case 11:
+			var cGrad = mProp.a;
+			var props = mProp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'color',
+					$elm$json$Json$Encode$object(
+						A2(
+							$elm$core$List$cons,
+							_Utils_Tuple2(
+								'gradient',
+								$elm$json$Json$Encode$string(
+									$gicentre$elm_vegalite$VegaLite$colorGradientLabel(cGrad))),
+							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$gradientProperty, props))))
+				]);
+		case 55:
+			var cGrad = mProp.a;
+			var props = mProp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'stroke',
+					$elm$json$Json$Encode$object(
+						A2(
+							$elm$core$List$cons,
+							_Utils_Tuple2(
+								'gradient',
+								$elm$json$Json$Encode$string(
+									$gicentre$elm_vegalite$VegaLite$colorGradientLabel(cGrad))),
+							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$gradientProperty, props))))
+				]);
+		case 54:
+			var s = mProp.a;
+			switch (s.$) {
+				case 1:
+					return _List_fromArray(
+						[
+							_Utils_Tuple2('stroke', $elm$json$Json$Encode$null)
+						]);
+				case 0:
+					var clr = s.a;
+					return ($elm$core$String$trim(clr) === '') ? _List_fromArray(
+						[
+							_Utils_Tuple2('stroke', $elm$json$Json$Encode$null)
+						]) : A2($gicentre$elm_vegalite$VegaLite$strExpr, 'stroke', s);
+				default:
+					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'stroke', s);
+			}
+		case 56:
+			var sc = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'strokeCap',
+					$gicentre$elm_vegalite$VegaLite$strokeCapSpec(sc))
+				]);
+		case 59:
+			var sj = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'strokeJoin',
+					$gicentre$elm_vegalite$VegaLite$strokeJoinSpec(sj))
+				]);
+		case 60:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeMiterLimit', n);
+		case 41:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'opacity', n);
+		case 31:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'fillOpacity', n);
+		case 61:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeOpacity', n);
+		case 62:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeWidth', n);
+		case 57:
+			var ns = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numsExpr, 'strokeDash', ns);
+		case 58:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeDashOffset', n);
+		case 63:
+			var styles = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'style',
+					A2($elm$json$Json$Encode$list, $elm$json$Json$Encode$string, styles))
+				]);
+		case 37:
+			var interp = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'interpolate',
+					$gicentre$elm_vegalite$VegaLite$markInterpolationSpec(interp))
+				]);
+		case 64:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'tension', n);
+		case 45:
+			var orient = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'orient',
+					$elm$json$Json$Encode$string(
+						$gicentre$elm_vegalite$VegaLite$markOrientationLabel(orient)))
+				]);
+		case 51:
+			var sym = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'shape',
+					$gicentre$elm_vegalite$VegaLite$symbolSpec(sym))
+				]);
+		case 53:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'size', n);
+		case 1:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'angle', n);
+		case 0:
+			var al = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'align',
+					$gicentre$elm_vegalite$VegaLite$hAlignSpec(al))
+				]);
+		case 4:
+			var va = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'baseline',
+					$gicentre$elm_vegalite$VegaLite$vAlignSpec(va))
+				]);
+		case 25:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'dx', n);
+		case 26:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'dy', n);
+		case 32:
+			var s = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'font', s);
+		case 33:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'fontSize', n);
+		case 34:
+			var s = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fontStyle', s);
+		case 35:
+			var w = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'fontWeight',
+					$gicentre$elm_vegalite$VegaLite$fontWeightSpec(w))
+				]);
+		case 48:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'radius', n);
+		case 36:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'innerRadius', n);
+		case 42:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'outerRadius', n);
+		case 46:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'padAngle', n);
+		case 65:
+			var s = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExprMultiline, 'text', s);
+		case 39:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'lineHeight', n);
+		case 21:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'limit', n);
+		case 22:
+			var s = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'ellipsis', s);
+		case 23:
+			var td = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'dir',
+					$gicentre$elm_vegalite$VegaLite$textDirectionSpec(td))
+				]);
+		case 66:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'theta', n);
+		case 67:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'theta2', n);
+		case 84:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'thetaOffset', n);
+		case 85:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'theta2Offset', n);
+		case 5:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'binSpacing', n);
+		case 20:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'continuousBandSize', n);
+		case 24:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'discreteBandSize', n);
+		case 52:
+			var b = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'shortTimeLabels', b);
+		case 3:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'bandSize', n);
+		case 68:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'thickness', n);
+		case 50:
+			var props = mProp.a;
+			if (!props.b) {
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						'rule',
+						$elm$json$Json$Encode$bool(false))
+					]);
+			} else {
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						'rule',
+						$elm$json$Json$Encode$object(
+							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
+					]);
+			}
+		case 7:
+			var props = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'borders',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
+				]);
+		case 40:
+			var props = mProp.a;
+			if (!props.b) {
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						'median',
+						$elm$json$Json$Encode$bool(false))
+					]);
+			} else {
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						'median',
+						$elm$json$Json$Encode$object(
+							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
+					]);
+			}
+		case 8:
+			var props = mProp.a;
+			if (!props.b) {
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						'box',
+						$elm$json$Json$Encode$bool(false))
+					]);
+			} else {
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						'box',
+						$elm$json$Json$Encode$object(
+							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
+					]);
+			}
+		case 43:
+			var props = mProp.a;
+			if (!props.b) {
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						'outliers',
+						$elm$json$Json$Encode$bool(false))
+					]);
+			} else {
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						'outliers',
+						$elm$json$Json$Encode$object(
+							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
+					]);
+			}
+		case 69:
+			var props = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'ticks',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
+				]);
+		case 70:
+			var ttContent = mProp.a;
+			return (ttContent === 2) ? _List_fromArray(
+				[
+					_Utils_Tuple2('tooltip', $elm$json$Json$Encode$null)
+				]) : _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'tooltip',
+					$elm$json$Json$Encode$object(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(
+								'content',
+								$gicentre$elm_vegalite$VegaLite$ttContentSpec(ttContent))
+							])))
+				]);
+		case 47:
+			var pm = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'point',
+					$gicentre$elm_vegalite$VegaLite$pointMarkerSpec(pm))
+				]);
+		case 38:
+			var lm = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'line',
+					$gicentre$elm_vegalite$VegaLite$lineMarkerSpec(lm))
+				]);
+		case 72:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'width', n);
+		case 73:
+			var n = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'width',
+					$elm$json$Json$Encode$object(
+						A2($gicentre$elm_vegalite$VegaLite$numExpr, 'band', n)))
+				]);
+		case 74:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'height', n);
+		case 75:
+			var n = mProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'height',
+					$elm$json$Json$Encode$object(
+						A2($gicentre$elm_vegalite$VegaLite$numExpr, 'band', n)))
+				]);
+		case 76:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'x', n);
+		case 77:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'y', n);
+		case 78:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'x2', n);
+		case 79:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'y2', n);
+		case 44:
+			var b = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'order', b);
+		case 80:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'xOffset', n);
+		case 82:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'x2Offset', n);
+		case 81:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'yOffset', n);
+		case 83:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'y2Offset', n);
+		case 86:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'radiusOffset', n);
+		case 87:
+			var n = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'radius2Offset', n);
+		case 88:
+			var b = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'aspect', b);
+		default:
+			var s = mProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'url', s);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$pointMarkerSpec = function (pm) {
+	switch (pm.$) {
+		case 0:
+			return $elm$json$Json$Encode$string('transparent');
+		case 1:
+			return $elm$json$Json$Encode$bool(false);
+		default:
+			var mps = pm.a;
+			return _Utils_eq(mps, _List_Nil) ? $elm$json$Json$Encode$bool(true) : $elm$json$Json$Encode$object(
+				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$mark = F2(
+	function (m, mProps) {
+		if (!mProps.b) {
+			return _Utils_Tuple2(
+				15,
+				$elm$json$Json$Encode$string(
+					$gicentre$elm_vegalite$VegaLite$markLabel(m)));
+		} else {
+			return _Utils_Tuple2(
+				15,
+				$elm$json$Json$Encode$object(
+					A2(
+						$elm$core$List$cons,
+						_Utils_Tuple2(
+							'type',
+							$elm$json$Json$Encode$string(
+								$gicentre$elm_vegalite$VegaLite$markLabel(m))),
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mProps))));
+		}
+	});
+var $gicentre$elm_vegalite$VegaLite$line = $gicentre$elm_vegalite$VegaLite$mark(9);
+var $gicentre$elm_vegalite$VegaLite$MName = function (a) {
+	return {$: 0, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$mName = function (s) {
+	return $gicentre$elm_vegalite$VegaLite$MName(
+		$gicentre$elm_vegalite$VegaLite$Str(s));
+};
+var $gicentre$elm_vegalite$VegaLite$MmType = function (a) {
+	return {$: 6, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$Nominal = 0;
+var $gicentre$elm_vegalite$VegaLite$mNominal = $gicentre$elm_vegalite$VegaLite$MmType(0);
+var $gicentre$elm_vegalite$VegaLite$MScale = function (a) {
+	return {$: 7, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$mScale = $gicentre$elm_vegalite$VegaLite$MScale;
+var $gicentre$elm_vegalite$VegaLite$MTitle = function (a) {
+	return {$: 13, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$mTitle = function (s) {
+	return $gicentre$elm_vegalite$VegaLite$MTitle(
+		$gicentre$elm_vegalite$VegaLite$Str(s));
+};
+var $gicentre$elm_vegalite$VegaLite$MColor = function (a) {
+	return {$: 10, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$maColor = function (s) {
+	return $gicentre$elm_vegalite$VegaLite$MColor(
+		$gicentre$elm_vegalite$VegaLite$Str(s));
+};
+var $gicentre$elm_vegalite$VegaLite$MOpacity = function (a) {
+	return {$: 41, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$Num = function (a) {
+	return {$: 0, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$maOpacity = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$MOpacity(
+		$gicentre$elm_vegalite$VegaLite$Num(n));
+};
+var $gicentre$elm_vegalite$VegaLite$MStrokeWidth = function (a) {
+	return {$: 62, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$maStrokeWidth = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$MStrokeWidth(
+		$gicentre$elm_vegalite$VegaLite$Num(n));
+};
+var $gicentre$elm_vegalite$VegaLite$AFit = 1;
+var $gicentre$elm_vegalite$VegaLite$asFit = 1;
+var $gicentre$elm_vegalite$VegaLite$APadding = 6;
+var $gicentre$elm_vegalite$VegaLite$asPadding = 6;
+var $gicentre$elm_vegalite$VegaLite$AResize = 7;
+var $gicentre$elm_vegalite$VegaLite$asResize = 7;
+var $gicentre$elm_vegalite$VegaLite$AxcoLabelFontSize = function (a) {
+	return {$: 27, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$axcoLabelFontSize = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$AxcoLabelFontSize(
+		$gicentre$elm_vegalite$VegaLite$Num(n));
+};
+var $gicentre$elm_vegalite$VegaLite$AxcoTitleFontSize = function (a) {
+	return {$: 61, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$axcoTitleFontSize = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$AxcoTitleFontSize(
+		$gicentre$elm_vegalite$VegaLite$Num(n));
+};
+var $gicentre$elm_vegalite$VegaLite$Autosize = function (a) {
+	return {$: 2, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$coAutosize = $gicentre$elm_vegalite$VegaLite$Autosize;
+var $gicentre$elm_vegalite$VegaLite$AxisBottom = function (a) {
+	return {$: 8, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$coAxisBottom = $gicentre$elm_vegalite$VegaLite$AxisBottom;
+var $gicentre$elm_vegalite$VegaLite$AxisLeft = function (a) {
+	return {$: 5, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$coAxisLeft = $gicentre$elm_vegalite$VegaLite$AxisLeft;
+var $gicentre$elm_vegalite$VegaLite$View = function (a) {
+	return {$: 49, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$coView = $gicentre$elm_vegalite$VegaLite$View;
 var $gicentre$elm_vegalite$VegaLite$autosizeProperty = function (asCfg) {
 	switch (asCfg) {
 		case 5:
@@ -9446,25 +10579,6 @@ var $gicentre$elm_vegalite$VegaLite$maybeNumExpr = F2(
 				]);
 		}
 	});
-var $gicentre$elm_vegalite$VegaLite$strokeCapSpec = function (cap) {
-	switch (cap.$) {
-		case 0:
-			return $elm$json$Json$Encode$string('butt');
-		case 1:
-			return $elm$json$Json$Encode$string('round');
-		case 2:
-			return $elm$json$Json$Encode$string('square');
-		default:
-			var s = cap.a;
-			return $elm$json$Json$Encode$object(
-				_List_fromArray(
-					[
-						_Utils_Tuple2(
-						'expr',
-						$elm$json$Json$Encode$string(s))
-					]));
-	}
-};
 var $gicentre$elm_vegalite$VegaLite$tickBandSpec = function (tb) {
 	switch (tb.$) {
 		case 0:
@@ -11156,871 +12270,6 @@ var $gicentre$elm_vegalite$VegaLite$localeProperties = function (lps) {
 		$elm$core$List$concatMap($gicentre$elm_vegalite$VegaLite$localeProperty),
 		A2($elm$core$List$partition, splitNumDate, lps));
 };
-var $gicentre$elm_vegalite$VegaLite$TTNone = 2;
-var $gicentre$elm_vegalite$VegaLite$blendModeSpec = function (bm) {
-	switch (bm.$) {
-		case 0:
-			return $elm$json$Json$Encode$null;
-		case 1:
-			return $elm$json$Json$Encode$string('multiply');
-		case 2:
-			return $elm$json$Json$Encode$string('screen');
-		case 3:
-			return $elm$json$Json$Encode$string('overlay');
-		case 4:
-			return $elm$json$Json$Encode$string('darken');
-		case 5:
-			return $elm$json$Json$Encode$string('lighten');
-		case 6:
-			return $elm$json$Json$Encode$string('color-dodge');
-		case 7:
-			return $elm$json$Json$Encode$string('color-burn');
-		case 8:
-			return $elm$json$Json$Encode$string('hard-light');
-		case 9:
-			return $elm$json$Json$Encode$string('soft-light');
-		case 10:
-			return $elm$json$Json$Encode$string('difference');
-		case 11:
-			return $elm$json$Json$Encode$string('exclusion');
-		case 12:
-			return $elm$json$Json$Encode$string('hue');
-		case 13:
-			return $elm$json$Json$Encode$string('saturation');
-		case 14:
-			return $elm$json$Json$Encode$string('color');
-		case 15:
-			return $elm$json$Json$Encode$string('luminosity');
-		default:
-			var s = bm.a;
-			return $elm$json$Json$Encode$object(
-				_List_fromArray(
-					[
-						_Utils_Tuple2(
-						'expr',
-						$elm$json$Json$Encode$string(s))
-					]));
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$colorGradientLabel = function (gr) {
-	if (!gr) {
-		return 'linear';
-	} else {
-		return 'radial';
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$cursorSpec = function (cur) {
-	switch (cur.$) {
-		case 0:
-			return $elm$json$Json$Encode$string('auto');
-		case 1:
-			return $elm$json$Json$Encode$string('default');
-		case 2:
-			return $elm$json$Json$Encode$string('none');
-		case 3:
-			return $elm$json$Json$Encode$string('context-menu');
-		case 4:
-			return $elm$json$Json$Encode$string('help');
-		case 5:
-			return $elm$json$Json$Encode$string('pointer');
-		case 6:
-			return $elm$json$Json$Encode$string('progress');
-		case 7:
-			return $elm$json$Json$Encode$string('wait');
-		case 8:
-			return $elm$json$Json$Encode$string('cell');
-		case 9:
-			return $elm$json$Json$Encode$string('crosshair');
-		case 10:
-			return $elm$json$Json$Encode$string('text');
-		case 11:
-			return $elm$json$Json$Encode$string('vertical-text');
-		case 12:
-			return $elm$json$Json$Encode$string('alias');
-		case 13:
-			return $elm$json$Json$Encode$string('copy');
-		case 14:
-			return $elm$json$Json$Encode$string('move');
-		case 15:
-			return $elm$json$Json$Encode$string('no-drop');
-		case 16:
-			return $elm$json$Json$Encode$string('not-allowed');
-		case 17:
-			return $elm$json$Json$Encode$string('all-scroll');
-		case 18:
-			return $elm$json$Json$Encode$string('col-resize');
-		case 19:
-			return $elm$json$Json$Encode$string('row-resize');
-		case 20:
-			return $elm$json$Json$Encode$string('n-resize');
-		case 21:
-			return $elm$json$Json$Encode$string('e-resize');
-		case 22:
-			return $elm$json$Json$Encode$string('s-resize');
-		case 23:
-			return $elm$json$Json$Encode$string('w-resize');
-		case 24:
-			return $elm$json$Json$Encode$string('ne-resize');
-		case 25:
-			return $elm$json$Json$Encode$string('nw-resize');
-		case 26:
-			return $elm$json$Json$Encode$string('se-resize');
-		case 27:
-			return $elm$json$Json$Encode$string('sw-resize');
-		case 28:
-			return $elm$json$Json$Encode$string('ew-resize');
-		case 29:
-			return $elm$json$Json$Encode$string('ns-resize');
-		case 30:
-			return $elm$json$Json$Encode$string('nesw-resize');
-		case 31:
-			return $elm$json$Json$Encode$string('nwse-resize');
-		case 32:
-			return $elm$json$Json$Encode$string('zoom-in');
-		case 33:
-			return $elm$json$Json$Encode$string('zoom-out');
-		case 34:
-			return $elm$json$Json$Encode$string('grab');
-		case 35:
-			return $elm$json$Json$Encode$string('grabbing');
-		default:
-			var s = cur.a;
-			return $elm$json$Json$Encode$object(
-				_List_fromArray(
-					[
-						_Utils_Tuple2(
-						'expr',
-						$elm$json$Json$Encode$string(s))
-					]));
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$extentSpec = function (ext) {
-	switch (ext.$) {
-		case 0:
-			return $elm$json$Json$Encode$string('ci');
-		case 1:
-			return $elm$json$Json$Encode$string('stderr');
-		case 2:
-			return $elm$json$Json$Encode$string('stdev');
-		case 3:
-			return $elm$json$Json$Encode$string('iqr');
-		case 4:
-			return $elm$json$Json$Encode$string('min-max');
-		default:
-			var sc = ext.a;
-			switch (sc.$) {
-				case 0:
-					var x = sc.a;
-					return $elm$json$Json$Encode$float(x);
-				case 1:
-					return $elm$json$Json$Encode$float(0);
-				default:
-					var s = sc.a;
-					return $elm$json$Json$Encode$object(
-						_List_fromArray(
-							[
-								_Utils_Tuple2(
-								'expr',
-								$elm$json$Json$Encode$string(s))
-							]));
-			}
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$stopSpec = function (_v0) {
-	var x = _v0.a;
-	var c = _v0.b;
-	return $elm$json$Json$Encode$object(
-		_List_fromArray(
-			[
-				_Utils_Tuple2(
-				'offset',
-				$elm$json$Json$Encode$float(x)),
-				_Utils_Tuple2(
-				'color',
-				$elm$json$Json$Encode$string(c))
-			]));
-};
-var $gicentre$elm_vegalite$VegaLite$gradientProperty = function (gp) {
-	switch (gp.$) {
-		case 0:
-			var x = gp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'x1', x);
-		case 1:
-			var x = gp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'y1', x);
-		case 2:
-			var x = gp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'x2', x);
-		case 3:
-			var x = gp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'y2', x);
-		case 4:
-			var x = gp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'r1', x);
-		case 5:
-			var x = gp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'r2', x);
-		default:
-			var grs = gp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'stops',
-					A2($elm$json$Json$Encode$list, $gicentre$elm_vegalite$VegaLite$stopSpec, grs))
-				]);
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$markInterpolationSpec = function (interp) {
-	switch (interp.$) {
-		case 7:
-			return $elm$json$Json$Encode$string('linear');
-		case 8:
-			return $elm$json$Json$Encode$string('linear-closed');
-		case 12:
-			return $elm$json$Json$Encode$string('step');
-		case 11:
-			return $elm$json$Json$Encode$string('step-before');
-		case 10:
-			return $elm$json$Json$Encode$string('step-after');
-		case 0:
-			return $elm$json$Json$Encode$string('basis');
-		case 2:
-			return $elm$json$Json$Encode$string('basis-open');
-		case 1:
-			return $elm$json$Json$Encode$string('basis-closed');
-		case 4:
-			return $elm$json$Json$Encode$string('cardinal');
-		case 6:
-			return $elm$json$Json$Encode$string('cardinal-open');
-		case 5:
-			return $elm$json$Json$Encode$string('cardinal-closed');
-		case 3:
-			return $elm$json$Json$Encode$string('bundle');
-		case 9:
-			return $elm$json$Json$Encode$string('monotone');
-		default:
-			var s = interp.a;
-			return $elm$json$Json$Encode$object(
-				_List_fromArray(
-					[
-						_Utils_Tuple2(
-						'expr',
-						$elm$json$Json$Encode$string(s))
-					]));
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$strokeJoinSpec = function (jn) {
-	switch (jn.$) {
-		case 0:
-			return $elm$json$Json$Encode$string('miter');
-		case 1:
-			return $elm$json$Json$Encode$string('round');
-		case 2:
-			return $elm$json$Json$Encode$string('bevel');
-		default:
-			var s = jn.a;
-			return $elm$json$Json$Encode$object(
-				_List_fromArray(
-					[
-						_Utils_Tuple2(
-						'expr',
-						$elm$json$Json$Encode$string(s))
-					]));
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$textDirectionSpec = function (td) {
-	switch (td.$) {
-		case 0:
-			return $elm$json$Json$Encode$string('ltr');
-		case 1:
-			return $elm$json$Json$Encode$string('rtl');
-		default:
-			var s = td.a;
-			return $elm$json$Json$Encode$object(
-				_List_fromArray(
-					[
-						_Utils_Tuple2(
-						'expr',
-						$elm$json$Json$Encode$string(s))
-					]));
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$ttContentSpec = function (ttContent) {
-	switch (ttContent) {
-		case 0:
-			return $elm$json$Json$Encode$string('encoding');
-		case 1:
-			return $elm$json$Json$Encode$string('data');
-		default:
-			return $elm$json$Json$Encode$string('null');
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$lineMarkerSpec = function (pm) {
-	if (!pm.$) {
-		return $elm$json$Json$Encode$bool(false);
-	} else {
-		var mps = pm.a;
-		return $elm$json$Json$Encode$object(
-			A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps));
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$markProperty = function (mProp) {
-	switch (mProp.$) {
-		case 2:
-			var aps = mProp.a;
-			if (!aps.b) {
-				return $gicentre$elm_vegalite$VegaLite$ariaProperty(
-					$gicentre$elm_vegalite$VegaLite$ArAria(
-						$gicentre$elm_vegalite$VegaLite$Boo(false)));
-			} else {
-				return A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$ariaProperty, aps);
-			}
-		case 30:
-			var b = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'filled', b);
-		case 6:
-			var bm = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'blend',
-					$gicentre$elm_vegalite$VegaLite$blendModeSpec(bm))
-				]);
-		case 9:
-			var b = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'clip', b);
-		case 10:
-			var s = mProp.a;
-			switch (s.$) {
-				case 1:
-					return _List_fromArray(
-						[
-							_Utils_Tuple2('color', $elm$json$Json$Encode$null)
-						]);
-				case 0:
-					var clr = s.a;
-					return ($elm$core$String$trim(clr) === '') ? _List_fromArray(
-						[
-							_Utils_Tuple2('color', $elm$json$Json$Encode$null)
-						]) : A2($gicentre$elm_vegalite$VegaLite$strExpr, 'color', s);
-				default:
-					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'color', s);
-			}
-		case 12:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadius', n);
-		case 13:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadiusEnd', n);
-		case 16:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadiusBottomLeft', n);
-		case 17:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadiusBottomRight', n);
-		case 14:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadiusTopLeft', n);
-		case 15:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadiusTopRight', n);
-		case 18:
-			var cur = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'cursor',
-					$gicentre$elm_vegalite$VegaLite$cursorSpec(cur))
-				]);
-		case 27:
-			var ext = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'extent',
-					$gicentre$elm_vegalite$VegaLite$extentSpec(ext))
-				]);
-		case 19:
-			var s = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'href', s);
-		case 49:
-			var bl = mProp.a;
-			if (!bl.$) {
-				var b = bl.a;
-				return b ? _List_fromArray(
-					[
-						_Utils_Tuple2(
-						'invalid',
-						$elm$json$Json$Encode$string('filter'))
-					]) : _List_fromArray(
-					[
-						_Utils_Tuple2('invalid', $elm$json$Json$Encode$null)
-					]);
-			} else {
-				return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'invalid', bl);
-			}
-		case 28:
-			var s = mProp.a;
-			switch (s.$) {
-				case 1:
-					return _List_fromArray(
-						[
-							_Utils_Tuple2('fill', $elm$json$Json$Encode$null)
-						]);
-				case 0:
-					var clr = s.a;
-					return ($elm$core$String$trim(clr) === '') ? _List_fromArray(
-						[
-							_Utils_Tuple2('fill', $elm$json$Json$Encode$null)
-						]) : A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fill', s);
-				default:
-					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fill', s);
-			}
-		case 29:
-			var cGrad = mProp.a;
-			var props = mProp.b;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'fill',
-					$elm$json$Json$Encode$object(
-						A2(
-							$elm$core$List$cons,
-							_Utils_Tuple2(
-								'gradient',
-								$elm$json$Json$Encode$string(
-									$gicentre$elm_vegalite$VegaLite$colorGradientLabel(cGrad))),
-							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$gradientProperty, props))))
-				]);
-		case 11:
-			var cGrad = mProp.a;
-			var props = mProp.b;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'color',
-					$elm$json$Json$Encode$object(
-						A2(
-							$elm$core$List$cons,
-							_Utils_Tuple2(
-								'gradient',
-								$elm$json$Json$Encode$string(
-									$gicentre$elm_vegalite$VegaLite$colorGradientLabel(cGrad))),
-							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$gradientProperty, props))))
-				]);
-		case 55:
-			var cGrad = mProp.a;
-			var props = mProp.b;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'stroke',
-					$elm$json$Json$Encode$object(
-						A2(
-							$elm$core$List$cons,
-							_Utils_Tuple2(
-								'gradient',
-								$elm$json$Json$Encode$string(
-									$gicentre$elm_vegalite$VegaLite$colorGradientLabel(cGrad))),
-							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$gradientProperty, props))))
-				]);
-		case 54:
-			var s = mProp.a;
-			switch (s.$) {
-				case 1:
-					return _List_fromArray(
-						[
-							_Utils_Tuple2('stroke', $elm$json$Json$Encode$null)
-						]);
-				case 0:
-					var clr = s.a;
-					return ($elm$core$String$trim(clr) === '') ? _List_fromArray(
-						[
-							_Utils_Tuple2('stroke', $elm$json$Json$Encode$null)
-						]) : A2($gicentre$elm_vegalite$VegaLite$strExpr, 'stroke', s);
-				default:
-					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'stroke', s);
-			}
-		case 56:
-			var sc = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'strokeCap',
-					$gicentre$elm_vegalite$VegaLite$strokeCapSpec(sc))
-				]);
-		case 59:
-			var sj = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'strokeJoin',
-					$gicentre$elm_vegalite$VegaLite$strokeJoinSpec(sj))
-				]);
-		case 60:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeMiterLimit', n);
-		case 41:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'opacity', n);
-		case 31:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'fillOpacity', n);
-		case 61:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeOpacity', n);
-		case 62:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeWidth', n);
-		case 57:
-			var ns = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numsExpr, 'strokeDash', ns);
-		case 58:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeDashOffset', n);
-		case 63:
-			var styles = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'style',
-					A2($elm$json$Json$Encode$list, $elm$json$Json$Encode$string, styles))
-				]);
-		case 37:
-			var interp = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'interpolate',
-					$gicentre$elm_vegalite$VegaLite$markInterpolationSpec(interp))
-				]);
-		case 64:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'tension', n);
-		case 45:
-			var orient = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'orient',
-					$elm$json$Json$Encode$string(
-						$gicentre$elm_vegalite$VegaLite$markOrientationLabel(orient)))
-				]);
-		case 51:
-			var sym = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'shape',
-					$gicentre$elm_vegalite$VegaLite$symbolSpec(sym))
-				]);
-		case 53:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'size', n);
-		case 1:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'angle', n);
-		case 0:
-			var al = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'align',
-					$gicentre$elm_vegalite$VegaLite$hAlignSpec(al))
-				]);
-		case 4:
-			var va = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'baseline',
-					$gicentre$elm_vegalite$VegaLite$vAlignSpec(va))
-				]);
-		case 25:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'dx', n);
-		case 26:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'dy', n);
-		case 32:
-			var s = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'font', s);
-		case 33:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'fontSize', n);
-		case 34:
-			var s = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fontStyle', s);
-		case 35:
-			var w = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'fontWeight',
-					$gicentre$elm_vegalite$VegaLite$fontWeightSpec(w))
-				]);
-		case 48:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'radius', n);
-		case 36:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'innerRadius', n);
-		case 42:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'outerRadius', n);
-		case 46:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'padAngle', n);
-		case 65:
-			var s = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$strExprMultiline, 'text', s);
-		case 39:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'lineHeight', n);
-		case 21:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'limit', n);
-		case 22:
-			var s = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'ellipsis', s);
-		case 23:
-			var td = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'dir',
-					$gicentre$elm_vegalite$VegaLite$textDirectionSpec(td))
-				]);
-		case 66:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'theta', n);
-		case 67:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'theta2', n);
-		case 84:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'thetaOffset', n);
-		case 85:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'theta2Offset', n);
-		case 5:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'binSpacing', n);
-		case 20:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'continuousBandSize', n);
-		case 24:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'discreteBandSize', n);
-		case 52:
-			var b = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'shortTimeLabels', b);
-		case 3:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'bandSize', n);
-		case 68:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'thickness', n);
-		case 50:
-			var props = mProp.a;
-			if (!props.b) {
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(
-						'rule',
-						$elm$json$Json$Encode$bool(false))
-					]);
-			} else {
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(
-						'rule',
-						$elm$json$Json$Encode$object(
-							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
-					]);
-			}
-		case 7:
-			var props = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'borders',
-					$elm$json$Json$Encode$object(
-						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
-				]);
-		case 40:
-			var props = mProp.a;
-			if (!props.b) {
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(
-						'median',
-						$elm$json$Json$Encode$bool(false))
-					]);
-			} else {
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(
-						'median',
-						$elm$json$Json$Encode$object(
-							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
-					]);
-			}
-		case 8:
-			var props = mProp.a;
-			if (!props.b) {
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(
-						'box',
-						$elm$json$Json$Encode$bool(false))
-					]);
-			} else {
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(
-						'box',
-						$elm$json$Json$Encode$object(
-							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
-					]);
-			}
-		case 43:
-			var props = mProp.a;
-			if (!props.b) {
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(
-						'outliers',
-						$elm$json$Json$Encode$bool(false))
-					]);
-			} else {
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(
-						'outliers',
-						$elm$json$Json$Encode$object(
-							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
-					]);
-			}
-		case 69:
-			var props = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'ticks',
-					$elm$json$Json$Encode$object(
-						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, props)))
-				]);
-		case 70:
-			var ttContent = mProp.a;
-			return (ttContent === 2) ? _List_fromArray(
-				[
-					_Utils_Tuple2('tooltip', $elm$json$Json$Encode$null)
-				]) : _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'tooltip',
-					$elm$json$Json$Encode$object(
-						_List_fromArray(
-							[
-								_Utils_Tuple2(
-								'content',
-								$gicentre$elm_vegalite$VegaLite$ttContentSpec(ttContent))
-							])))
-				]);
-		case 47:
-			var pm = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'point',
-					$gicentre$elm_vegalite$VegaLite$pointMarkerSpec(pm))
-				]);
-		case 38:
-			var lm = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'line',
-					$gicentre$elm_vegalite$VegaLite$lineMarkerSpec(lm))
-				]);
-		case 72:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'width', n);
-		case 73:
-			var n = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'width',
-					$elm$json$Json$Encode$object(
-						A2($gicentre$elm_vegalite$VegaLite$numExpr, 'band', n)))
-				]);
-		case 74:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'height', n);
-		case 75:
-			var n = mProp.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'height',
-					$elm$json$Json$Encode$object(
-						A2($gicentre$elm_vegalite$VegaLite$numExpr, 'band', n)))
-				]);
-		case 76:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'x', n);
-		case 77:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'y', n);
-		case 78:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'x2', n);
-		case 79:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'y2', n);
-		case 44:
-			var b = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'order', b);
-		case 80:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'xOffset', n);
-		case 82:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'x2Offset', n);
-		case 81:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'yOffset', n);
-		case 83:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'y2Offset', n);
-		case 86:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'radiusOffset', n);
-		case 87:
-			var n = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'radius2Offset', n);
-		case 88:
-			var b = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'aspect', b);
-		default:
-			var s = mProp.a;
-			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'url', s);
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$pointMarkerSpec = function (pm) {
-	switch (pm.$) {
-		case 0:
-			return $elm$json$Json$Encode$string('transparent');
-		case 1:
-			return $elm$json$Json$Encode$bool(false);
-		default:
-			var mps = pm.a;
-			return _Utils_eq(mps, _List_Nil) ? $elm$json$Json$Encode$bool(true) : $elm$json$Json$Encode$object(
-				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps));
-	}
-};
 var $gicentre$elm_vegalite$VegaLite$paddingSpec = function (pad) {
 	switch (pad.$) {
 		case 0:
@@ -13426,225 +13675,79 @@ var $gicentre$elm_vegalite$VegaLite$configure = function (configs) {
 		32,
 		$elm$json$Json$Encode$object(configs));
 };
-var $author$project$Data$County$Chatham = 0;
-var $author$project$Data$County$Durham = 1;
-var $author$project$Data$County$Orange = 2;
-var $author$project$Data$County$countyToString = function (county) {
-	switch (county) {
-		case 0:
-			return 'chatham';
-		case 1:
-			return 'durham';
-		default:
-			return 'orange';
-	}
-};
-var $elm$core$Tuple$mapFirst = F2(
-	function (func, _v0) {
-		var x = _v0.a;
-		var y = _v0.b;
-		return _Utils_Tuple2(
-			func(x),
-			y);
-	});
-var $author$project$Data$County$countyColorMap = A2(
-	$elm$core$List$map,
-	$elm$core$Tuple$mapFirst($author$project$Data$County$countyToString),
-	_List_fromArray(
-		[
-			_Utils_Tuple2(2, '#ec5900'),
-			_Utils_Tuple2(0, '#11c385'),
-			_Utils_Tuple2(1, '#7b0905')
-		]));
-var $gicentre$elm_vegalite$VegaLite$DName = function (a) {
+var $gicentre$elm_vegalite$VegaLite$VBackground = function (a) {
 	return {$: 0, a: a};
 };
-var $gicentre$elm_vegalite$VegaLite$dName = function (s) {
-	return $gicentre$elm_vegalite$VegaLite$DName(
-		$gicentre$elm_vegalite$VegaLite$Str(s));
+var $gicentre$elm_vegalite$VegaLite$vicoBackground = $gicentre$elm_vegalite$VegaLite$VBackground;
+var $gicentre$elm_vegalite$VegaLite$VContinuousHeight = function (a) {
+	return {$: 3, a: a};
 };
-var $gicentre$elm_vegalite$VegaLite$detailChannelProperty = function (field) {
-	switch (field.$) {
-		case 0:
-			var s = field.a;
-			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'field', s);
-		case 1:
-			var t = field.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'type',
-					$elm$json$Json$Encode$string(
-						$gicentre$elm_vegalite$VegaLite$measurementLabel(t)))
-				]);
-		case 2:
-			var bps = field.a;
-			return _List_fromArray(
-				[
-					$gicentre$elm_vegalite$VegaLite$bin(bps)
-				]);
-		case 3:
-			var tu = field.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'timeUnit',
-					$gicentre$elm_vegalite$VegaLite$timeUnitSpec(tu))
-				]);
-		default:
-			var op = field.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'aggregate',
-					$gicentre$elm_vegalite$VegaLite$operationSpec(op))
-				]);
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$detail = function (detailProps) {
-	return $elm$core$List$cons(
-		_Utils_Tuple2(
-			'detail',
-			$elm$json$Json$Encode$object(
-				A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$detailChannelProperty, detailProps))));
-};
-var $gicentre$elm_vegalite$VegaLite$VLEncoding = 18;
-var $gicentre$elm_vegalite$VegaLite$encoding = function (channels) {
-	return _Utils_Tuple2(
-		18,
-		$elm$json$Json$Encode$object(channels));
-};
-var $gicentre$elm_vegalite$VegaLite$FEqual = F2(
-	function (a, b) {
-		return {$: 0, a: a, b: b};
-	});
-var $gicentre$elm_vegalite$VegaLite$fiEqual = $gicentre$elm_vegalite$VegaLite$FEqual;
-var $gicentre$elm_vegalite$VegaLite$filter = function (f) {
-	return $elm$core$List$cons(
-		_Utils_Tuple2(
-			'filter',
-			$gicentre$elm_vegalite$VegaLite$filterSpec(f)));
-};
-var $gicentre$elm_vegalite$VegaLite$VLHeight = 5;
-var $gicentre$elm_vegalite$VegaLite$height = function (h) {
-	return _Utils_Tuple2(
-		5,
-		$elm$json$Json$Encode$float(h));
-};
-var $gicentre$elm_vegalite$VegaLite$VLLayer = 19;
-var $gicentre$elm_vegalite$VegaLite$layer = function (specs) {
-	return _Utils_Tuple2(
-		19,
-		$gicentre$elm_vegalite$VegaLite$toList(specs));
-};
-var $gicentre$elm_vegalite$VegaLite$Line = 9;
-var $gicentre$elm_vegalite$VegaLite$VLMark = 15;
-var $gicentre$elm_vegalite$VegaLite$markLabel = function (m) {
-	switch (m) {
-		case 0:
-			return 'arc';
-		case 1:
-			return 'area';
-		case 2:
-			return 'bar';
-		case 3:
-			return 'boxplot';
-		case 6:
-			return 'circle';
-		case 4:
-			return 'errorband';
-		case 5:
-			return 'errorbar';
-		case 8:
-			return 'image';
-		case 9:
-			return 'line';
-		case 7:
-			return 'geoshape';
-		case 10:
-			return 'point';
-		case 11:
-			return 'rect';
-		case 12:
-			return 'rule';
-		case 13:
-			return 'square';
-		case 14:
-			return 'text';
-		case 15:
-			return 'tick';
-		default:
-			return 'trail';
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$mark = F2(
-	function (m, mProps) {
-		if (!mProps.b) {
-			return _Utils_Tuple2(
-				15,
-				$elm$json$Json$Encode$string(
-					$gicentre$elm_vegalite$VegaLite$markLabel(m)));
-		} else {
-			return _Utils_Tuple2(
-				15,
-				$elm$json$Json$Encode$object(
-					A2(
-						$elm$core$List$cons,
-						_Utils_Tuple2(
-							'type',
-							$elm$json$Json$Encode$string(
-								$gicentre$elm_vegalite$VegaLite$markLabel(m))),
-						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mProps))));
-		}
-	});
-var $gicentre$elm_vegalite$VegaLite$line = $gicentre$elm_vegalite$VegaLite$mark(9);
-var $gicentre$elm_vegalite$VegaLite$MName = function (a) {
-	return {$: 0, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$mName = function (s) {
-	return $gicentre$elm_vegalite$VegaLite$MName(
-		$gicentre$elm_vegalite$VegaLite$Str(s));
-};
-var $gicentre$elm_vegalite$VegaLite$MmType = function (a) {
-	return {$: 6, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$Nominal = 0;
-var $gicentre$elm_vegalite$VegaLite$mNominal = $gicentre$elm_vegalite$VegaLite$MmType(0);
-var $gicentre$elm_vegalite$VegaLite$MScale = function (a) {
-	return {$: 7, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$mScale = $gicentre$elm_vegalite$VegaLite$MScale;
-var $gicentre$elm_vegalite$VegaLite$MTitle = function (a) {
-	return {$: 13, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$mTitle = function (s) {
-	return $gicentre$elm_vegalite$VegaLite$MTitle(
-		$gicentre$elm_vegalite$VegaLite$Str(s));
-};
-var $gicentre$elm_vegalite$VegaLite$MColor = function (a) {
-	return {$: 10, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$maColor = function (s) {
-	return $gicentre$elm_vegalite$VegaLite$MColor(
-		$gicentre$elm_vegalite$VegaLite$Str(s));
-};
-var $gicentre$elm_vegalite$VegaLite$MOpacity = function (a) {
-	return {$: 41, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$Num = function (a) {
-	return {$: 0, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$maOpacity = function (n) {
-	return $gicentre$elm_vegalite$VegaLite$MOpacity(
+var $gicentre$elm_vegalite$VegaLite$vicoContinuousHeight = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$VContinuousHeight(
 		$gicentre$elm_vegalite$VegaLite$Num(n));
 };
-var $gicentre$elm_vegalite$VegaLite$MStrokeWidth = function (a) {
-	return {$: 62, a: a};
+var $gicentre$elm_vegalite$VegaLite$VContinuousWidth = function (a) {
+	return {$: 2, a: a};
 };
-var $gicentre$elm_vegalite$VegaLite$maStrokeWidth = function (n) {
-	return $gicentre$elm_vegalite$VegaLite$MStrokeWidth(
+var $gicentre$elm_vegalite$VegaLite$vicoContinuousWidth = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$VContinuousWidth(
 		$gicentre$elm_vegalite$VegaLite$Num(n));
 };
+var $gicentre$elm_vegalite$VegaLite$VBStroke = function (a) {
+	return {$: 5, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$viewStroke = function (ms) {
+	if (!ms.$) {
+		var s = ms.a;
+		return $gicentre$elm_vegalite$VegaLite$VBStroke(
+			$gicentre$elm_vegalite$VegaLite$Str(s));
+	} else {
+		return $gicentre$elm_vegalite$VegaLite$VBStroke($gicentre$elm_vegalite$VegaLite$NoStr);
+	}
+};
+var $author$project$Specs$SpecConfig$mbbsVizConfig = A2(
+	$elm$core$Basics$composeL,
+	A2(
+		$elm$core$Basics$composeL,
+		A2(
+			$elm$core$Basics$composeL,
+			A2(
+				$elm$core$Basics$composeL,
+				$gicentre$elm_vegalite$VegaLite$configure,
+				$gicentre$elm_vegalite$VegaLite$configuration(
+					$gicentre$elm_vegalite$VegaLite$coView(
+						_List_fromArray(
+							[
+								$gicentre$elm_vegalite$VegaLite$vicoBackground(
+								_List_fromArray(
+									[
+										$gicentre$elm_vegalite$VegaLite$viewStroke($elm$core$Maybe$Nothing)
+									])),
+								$gicentre$elm_vegalite$VegaLite$vicoContinuousHeight(450),
+								$gicentre$elm_vegalite$VegaLite$vicoContinuousWidth(600)
+							])))),
+			$gicentre$elm_vegalite$VegaLite$configuration(
+				$gicentre$elm_vegalite$VegaLite$coAutosize(
+					_List_fromArray(
+						[$gicentre$elm_vegalite$VegaLite$asFit, $gicentre$elm_vegalite$VegaLite$asPadding, $gicentre$elm_vegalite$VegaLite$asResize])))),
+		$gicentre$elm_vegalite$VegaLite$configuration(
+			$gicentre$elm_vegalite$VegaLite$coAxisLeft(
+				_List_fromArray(
+					[
+						$gicentre$elm_vegalite$VegaLite$axcoLabelFontSize(12),
+						$gicentre$elm_vegalite$VegaLite$axcoTitleFontSize(18)
+					])))),
+	$gicentre$elm_vegalite$VegaLite$configuration(
+		$gicentre$elm_vegalite$VegaLite$coAxisBottom(
+			_List_fromArray(
+				[
+					$gicentre$elm_vegalite$VegaLite$axcoLabelFontSize(12),
+					$gicentre$elm_vegalite$VegaLite$axcoTitleFontSize(18)
+				]))));
+var $gicentre$elm_vegalite$VegaLite$NTickCount = function (a) {
+	return {$: 11, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$niTickCount = $gicentre$elm_vegalite$VegaLite$NTickCount;
 var $gicentre$elm_vegalite$VegaLite$opAs = F3(
 	function (op, field, label) {
 		return $elm$json$Json$Encode$object(
@@ -14303,28 +14406,6 @@ var $gicentre$elm_vegalite$VegaLite$transform = function (transforms) {
 		16,
 		A2($elm$json$Json$Encode$list, assemble, transforms));
 };
-var $gicentre$elm_vegalite$VegaLite$VBackground = function (a) {
-	return {$: 0, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$vicoBackground = $gicentre$elm_vegalite$VegaLite$VBackground;
-var $gicentre$elm_vegalite$VegaLite$VBStroke = function (a) {
-	return {$: 5, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$viewStroke = function (ms) {
-	if (!ms.$) {
-		var s = ms.a;
-		return $gicentre$elm_vegalite$VegaLite$VBStroke(
-			$gicentre$elm_vegalite$VegaLite$Str(s));
-	} else {
-		return $gicentre$elm_vegalite$VegaLite$VBStroke($gicentre$elm_vegalite$VegaLite$NoStr);
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$VLWidth = 4;
-var $gicentre$elm_vegalite$VegaLite$width = function (w) {
-	return _Utils_Tuple2(
-		4,
-		$elm$json$Json$Encode$float(w));
-};
 var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F4(
 	function (countData, routeDetail, counties, species) {
 		var withRouteDetail = F3(
@@ -14376,7 +14457,9 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F4(
 						_List_fromArray(
 							[
 								$gicentre$elm_vegalite$VegaLite$axTitle(''),
-								$gicentre$elm_vegalite$VegaLite$axGrid(false)
+								$gicentre$elm_vegalite$VegaLite$axGrid(false),
+								$gicentre$elm_vegalite$VegaLite$axTickCount(
+								$gicentre$elm_vegalite$VegaLite$niTickCount(5))
 							]))
 					])));
 		var encMean = A2(
@@ -14396,10 +14479,20 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F4(
 									$gicentre$elm_vegalite$VegaLite$pName('speciesCount'),
 									$gicentre$elm_vegalite$VegaLite$pAggregate($gicentre$elm_vegalite$VegaLite$opMean),
 									$gicentre$elm_vegalite$VegaLite$pAxis(
-									_List_fromArray(
-										[
-											$gicentre$elm_vegalite$VegaLite$axGrid(false)
-										]))
+									A3(
+										withRouteDetail,
+										function (x) {
+											return x;
+										},
+										$elm$core$Basics$append(
+											_List_fromArray(
+												[
+													$gicentre$elm_vegalite$VegaLite$axTitle('Average Count')
+												])),
+										_List_fromArray(
+											[
+												$gicentre$elm_vegalite$VegaLite$axGrid(false)
+											])))
 								]))),
 					A2(
 						withCountyAggregation,
@@ -14600,30 +14693,15 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F4(
 							]))
 					]))
 			]);
-		var cfg = A2(
-			$elm$core$Basics$composeL,
-			$gicentre$elm_vegalite$VegaLite$configure,
-			$gicentre$elm_vegalite$VegaLite$configuration(
-				$gicentre$elm_vegalite$VegaLite$coView(
-					_List_fromArray(
-						[
-							$gicentre$elm_vegalite$VegaLite$vicoBackground(
-							_List_fromArray(
-								[
-									$gicentre$elm_vegalite$VegaLite$viewStroke($elm$core$Maybe$Nothing)
-								]))
-						]))));
 		return $gicentre$elm_vegalite$VegaLite$toVegaLite(
 			_List_fromArray(
 				[
-					$gicentre$elm_vegalite$VegaLite$width(400),
-					$gicentre$elm_vegalite$VegaLite$height(300),
-					cfg(_List_Nil),
+					countData,
+					$author$project$Specs$SpecConfig$mbbsVizConfig(_List_Nil),
 					A2(
 					$gicentre$elm_vegalite$VegaLite$title,
 					$author$project$Data$Species$speciesToString(species),
 					_List_Nil),
-					countData,
 					trans(_List_Nil),
 					$gicentre$elm_vegalite$VegaLite$layer(
 					A3(
@@ -15771,8 +15849,6 @@ var $author$project$DisplayIndividualSpecies$update = F3(
 		}
 	});
 var $author$project$DisplayIndividualSpecies$vegaPort = _Platform_outgoingPort('vegaPort', $elm$core$Basics$identity);
-var $rtfeldman$elm_css$Css$Structure$Compatible = 0;
-var $rtfeldman$elm_css$Css$auto = {hn: 0, h: 0, bQ: 0, dF: 0, iw: 0, bX: 0, a1: 0, aQ: 0, b2: 0, aB: 0, eb: 0, cf: 0, ai: 0, g4: 'auto'};
 var $Confidenceman02$elm_select$Select$Config = $elm$core$Basics$identity;
 var $Confidenceman02$elm_select$Select$clearable = F2(
 	function (clear, _v0) {
@@ -22150,10 +22226,1207 @@ var $author$project$DisplayIndividualSpecies$countyRadio = function (model) {
 					})
 				])));
 };
+var $rtfeldman$elm_css$VirtualDom$Styled$Node = F3(
+	function (a, b, c) {
+		return {$: 0, a: a, b: b, c: c};
+	});
+var $rtfeldman$elm_css$VirtualDom$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$Node;
+var $rtfeldman$elm_css$Html$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$node;
+var $rtfeldman$elm_css$Html$Styled$div = $rtfeldman$elm_css$Html$Styled$node('div');
+var $rtfeldman$elm_css$VirtualDom$Styled$Unstyled = function (a) {
+	return {$: 4, a: a};
+};
+var $rtfeldman$elm_css$VirtualDom$Styled$unstyledNode = $rtfeldman$elm_css$VirtualDom$Styled$Unstyled;
+var $rtfeldman$elm_css$Html$Styled$fromUnstyled = $rtfeldman$elm_css$VirtualDom$Styled$unstyledNode;
 var $rtfeldman$elm_css$VirtualDom$Styled$Attribute = F3(
 	function (a, b, c) {
 		return {$: 0, a: a, b: b, c: c};
 	});
+var $rtfeldman$elm_css$VirtualDom$Styled$property = F2(
+	function (key, value) {
+		return A3(
+			$rtfeldman$elm_css$VirtualDom$Styled$Attribute,
+			A2($elm$virtual_dom$VirtualDom$property, key, value),
+			false,
+			'');
+	});
+var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			$rtfeldman$elm_css$VirtualDom$Styled$property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $rtfeldman$elm_css$Html$Styled$Attributes$id = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('id');
+var $rtfeldman$elm_css$VirtualDom$Styled$KeyedNode = F3(
+	function (a, b, c) {
+		return {$: 2, a: a, b: b, c: c};
+	});
+var $rtfeldman$elm_css$VirtualDom$Styled$KeyedNodeNS = F4(
+	function (a, b, c, d) {
+		return {$: 3, a: a, b: b, c: c, d: d};
+	});
+var $rtfeldman$elm_css$VirtualDom$Styled$NodeNS = F4(
+	function (a, b, c, d) {
+		return {$: 1, a: a, b: b, c: c, d: d};
+	});
+var $elm$virtual_dom$VirtualDom$map = _VirtualDom_map;
+var $elm$virtual_dom$VirtualDom$mapAttribute = _VirtualDom_mapAttribute;
+var $rtfeldman$elm_css$VirtualDom$Styled$mapAttribute = F2(
+	function (transform, _v0) {
+		var prop = _v0.a;
+		var isCssStyle = _v0.b;
+		var cssTemplate = _v0.c;
+		return A3(
+			$rtfeldman$elm_css$VirtualDom$Styled$Attribute,
+			A2($elm$virtual_dom$VirtualDom$mapAttribute, transform, prop),
+			isCssStyle,
+			cssTemplate);
+	});
+var $rtfeldman$elm_css$VirtualDom$Styled$map = F2(
+	function (transform, vdomNode) {
+		switch (vdomNode.$) {
+			case 0:
+				var elemType = vdomNode.a;
+				var properties = vdomNode.b;
+				var children = vdomNode.c;
+				return A3(
+					$rtfeldman$elm_css$VirtualDom$Styled$Node,
+					elemType,
+					A2(
+						$elm$core$List$map,
+						$rtfeldman$elm_css$VirtualDom$Styled$mapAttribute(transform),
+						properties),
+					A2(
+						$elm$core$List$map,
+						$rtfeldman$elm_css$VirtualDom$Styled$map(transform),
+						children));
+			case 1:
+				var ns = vdomNode.a;
+				var elemType = vdomNode.b;
+				var properties = vdomNode.c;
+				var children = vdomNode.d;
+				return A4(
+					$rtfeldman$elm_css$VirtualDom$Styled$NodeNS,
+					ns,
+					elemType,
+					A2(
+						$elm$core$List$map,
+						$rtfeldman$elm_css$VirtualDom$Styled$mapAttribute(transform),
+						properties),
+					A2(
+						$elm$core$List$map,
+						$rtfeldman$elm_css$VirtualDom$Styled$map(transform),
+						children));
+			case 2:
+				var elemType = vdomNode.a;
+				var properties = vdomNode.b;
+				var children = vdomNode.c;
+				return A3(
+					$rtfeldman$elm_css$VirtualDom$Styled$KeyedNode,
+					elemType,
+					A2(
+						$elm$core$List$map,
+						$rtfeldman$elm_css$VirtualDom$Styled$mapAttribute(transform),
+						properties),
+					A2(
+						$elm$core$List$map,
+						function (_v1) {
+							var key = _v1.a;
+							var child = _v1.b;
+							return _Utils_Tuple2(
+								key,
+								A2($rtfeldman$elm_css$VirtualDom$Styled$map, transform, child));
+						},
+						children));
+			case 3:
+				var ns = vdomNode.a;
+				var elemType = vdomNode.b;
+				var properties = vdomNode.c;
+				var children = vdomNode.d;
+				return A4(
+					$rtfeldman$elm_css$VirtualDom$Styled$KeyedNodeNS,
+					ns,
+					elemType,
+					A2(
+						$elm$core$List$map,
+						$rtfeldman$elm_css$VirtualDom$Styled$mapAttribute(transform),
+						properties),
+					A2(
+						$elm$core$List$map,
+						function (_v2) {
+							var key = _v2.a;
+							var child = _v2.b;
+							return _Utils_Tuple2(
+								key,
+								A2($rtfeldman$elm_css$VirtualDom$Styled$map, transform, child));
+						},
+						children));
+			default:
+				var vdom = vdomNode.a;
+				return $rtfeldman$elm_css$VirtualDom$Styled$Unstyled(
+					A2($elm$virtual_dom$VirtualDom$map, transform, vdom));
+		}
+	});
+var $rtfeldman$elm_css$Html$Styled$map = $rtfeldman$elm_css$VirtualDom$Styled$map;
+var $Confidenceman02$elm_select$Select$menuItems = F2(
+	function (items, _v0) {
+		var config = _v0;
+		return _Utils_update(
+			config,
+			{an: items});
+	});
+var $Confidenceman02$elm_select$Select$placeholder = F2(
+	function (plc, _v0) {
+		var config = _v0;
+		return _Utils_update(
+			config,
+			{N: plc});
+	});
+var $author$project$Specs$SpeciesTrend$HideRouteDetail = 1;
+var $author$project$DisplayIndividualSpecies$ToggleRouteDetail = function (a) {
+	return {$: 2, a: a};
+};
+var $mdgriffith$elm_ui$Internal$Model$AlignY = function (a) {
+	return {$: 5, a: a};
+};
+var $mdgriffith$elm_ui$Internal$Model$CenterY = 1;
+var $mdgriffith$elm_ui$Element$centerY = $mdgriffith$elm_ui$Internal$Model$AlignY(1);
+var $mdgriffith$elm_ui$Element$Input$enter = 'Enter';
+var $mdgriffith$elm_ui$Element$Input$isHiddenLabel = function (label) {
+	if (label.$ === 1) {
+		return true;
+	} else {
+		return false;
+	}
+};
+var $mdgriffith$elm_ui$Element$Input$checkbox = F2(
+	function (attrs, _v0) {
+		var label = _v0.dI;
+		var icon = _v0.ih;
+		var checked = _v0.hH;
+		var onChange = _v0.gu;
+		var attributes = _Utils_ap(
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$Input$isHiddenLabel(label) ? $mdgriffith$elm_ui$Internal$Model$NoAttribute : $mdgriffith$elm_ui$Element$spacing(6),
+					$mdgriffith$elm_ui$Internal$Model$Attr(
+					$elm$html$Html$Events$onClick(
+						onChange(!checked))),
+					$mdgriffith$elm_ui$Element$Region$announce,
+					$mdgriffith$elm_ui$Element$Input$onKeyLookup(
+					function (code) {
+						return _Utils_eq(code, $mdgriffith$elm_ui$Element$Input$enter) ? $elm$core$Maybe$Just(
+							onChange(!checked)) : (_Utils_eq(code, $mdgriffith$elm_ui$Element$Input$space) ? $elm$core$Maybe$Just(
+							onChange(!checked)) : $elm$core$Maybe$Nothing);
+					}),
+					$mdgriffith$elm_ui$Element$Input$tabindex(0),
+					$mdgriffith$elm_ui$Element$pointer,
+					$mdgriffith$elm_ui$Element$alignLeft,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			attrs);
+		return A3(
+			$mdgriffith$elm_ui$Element$Input$applyLabel,
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Internal$Model$Attr(
+					A2($elm$html$Html$Attributes$attribute, 'role', 'checkbox')),
+				A2(
+					$elm$core$List$cons,
+					$mdgriffith$elm_ui$Internal$Model$Attr(
+						A2(
+							$elm$html$Html$Attributes$attribute,
+							'aria-checked',
+							checked ? 'true' : 'false')),
+					A2(
+						$elm$core$List$cons,
+						$mdgriffith$elm_ui$Element$Input$hiddenLabelAttribute(label),
+						attributes))),
+			label,
+			A4(
+				$mdgriffith$elm_ui$Internal$Model$element,
+				$mdgriffith$elm_ui$Internal$Model$asEl,
+				$mdgriffith$elm_ui$Internal$Model$div,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$centerY,
+						$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
+						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$shrink)
+					]),
+				$mdgriffith$elm_ui$Internal$Model$Unkeyed(
+					_List_fromArray(
+						[
+							icon(checked)
+						]))));
+	});
+var $mdgriffith$elm_ui$Internal$Flag$fontAlignment = $mdgriffith$elm_ui$Internal$Flag$flag(12);
+var $mdgriffith$elm_ui$Element$Font$center = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontAlignment, $mdgriffith$elm_ui$Internal$Style$classes.jp);
+var $mdgriffith$elm_ui$Internal$Model$CenterX = 1;
+var $mdgriffith$elm_ui$Element$centerX = $mdgriffith$elm_ui$Internal$Model$AlignX(1);
+var $mdgriffith$elm_ui$Element$Font$color = function (fontColor) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$fontColor,
+		A3(
+			$mdgriffith$elm_ui$Internal$Model$Colored,
+			'fc-' + $mdgriffith$elm_ui$Internal$Model$formatColorClass(fontColor),
+			'color',
+			fontColor));
+};
+var $elm$core$Basics$pi = _Basics_pi;
+var $elm$core$Basics$degrees = function (angleInDegrees) {
+	return (angleInDegrees * $elm$core$Basics$pi) / 180;
+};
+var $mdgriffith$elm_ui$Internal$Model$InFront = 4;
+var $mdgriffith$elm_ui$Internal$Model$Nearby = F2(
+	function (a, b) {
+		return {$: 9, a: a, b: b};
+	});
+var $mdgriffith$elm_ui$Element$createNearby = F2(
+	function (loc, element) {
+		if (element.$ === 3) {
+			return $mdgriffith$elm_ui$Internal$Model$NoAttribute;
+		} else {
+			return A2($mdgriffith$elm_ui$Internal$Model$Nearby, loc, element);
+		}
+	});
+var $mdgriffith$elm_ui$Element$inFront = function (element) {
+	return A2($mdgriffith$elm_ui$Element$createNearby, 4, element);
+};
+var $mdgriffith$elm_ui$Internal$Model$MoveY = function (a) {
+	return {$: 1, a: a};
+};
+var $mdgriffith$elm_ui$Internal$Model$TransformComponent = F2(
+	function (a, b) {
+		return {$: 10, a: a, b: b};
+	});
+var $mdgriffith$elm_ui$Internal$Flag$moveY = $mdgriffith$elm_ui$Internal$Flag$flag(26);
+var $mdgriffith$elm_ui$Element$moveUp = function (y) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$TransformComponent,
+		$mdgriffith$elm_ui$Internal$Flag$moveY,
+		$mdgriffith$elm_ui$Internal$Model$MoveY(-y));
+};
+var $mdgriffith$elm_ui$Element$rgba = $mdgriffith$elm_ui$Internal$Model$Rgba;
+var $mdgriffith$elm_ui$Internal$Model$Rotate = F2(
+	function (a, b) {
+		return {$: 4, a: a, b: b};
+	});
+var $mdgriffith$elm_ui$Internal$Flag$rotate = $mdgriffith$elm_ui$Internal$Flag$flag(24);
+var $mdgriffith$elm_ui$Element$rotate = function (angle) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$TransformComponent,
+		$mdgriffith$elm_ui$Internal$Flag$rotate,
+		A2(
+			$mdgriffith$elm_ui$Internal$Model$Rotate,
+			_Utils_Tuple3(0, 0, 1),
+			angle));
+};
+var $mdgriffith$elm_ui$Internal$Model$boxShadowClass = function (shadow) {
+	return $elm$core$String$concat(
+		_List_fromArray(
+			[
+				shadow.gb ? 'box-inset' : 'box-',
+				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.iL.a) + 'px',
+				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.iL.b) + 'px',
+				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.hx) + 'px',
+				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.by) + 'px',
+				$mdgriffith$elm_ui$Internal$Model$formatColorClass(shadow.Q)
+			]));
+};
+var $mdgriffith$elm_ui$Internal$Flag$shadows = $mdgriffith$elm_ui$Internal$Flag$flag(19);
+var $mdgriffith$elm_ui$Element$Border$shadow = function (almostShade) {
+	var shade = {hx: almostShade.hx, Q: almostShade.Q, gb: false, iL: almostShade.iL, by: almostShade.by};
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$shadows,
+		A3(
+			$mdgriffith$elm_ui$Internal$Model$Single,
+			$mdgriffith$elm_ui$Internal$Model$boxShadowClass(shade),
+			'box-shadow',
+			$mdgriffith$elm_ui$Internal$Model$formatBoxShadow(shade)));
+};
+var $mdgriffith$elm_ui$Element$Font$size = function (i) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$fontSize,
+		$mdgriffith$elm_ui$Internal$Model$FontSize(i));
+};
+var $mdgriffith$elm_ui$Internal$Model$Transparency = F2(
+	function (a, b) {
+		return {$: 12, a: a, b: b};
+	});
+var $mdgriffith$elm_ui$Internal$Flag$transparency = $mdgriffith$elm_ui$Internal$Flag$flag(0);
+var $mdgriffith$elm_ui$Element$transparent = function (on) {
+	return on ? A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$transparency,
+		A2($mdgriffith$elm_ui$Internal$Model$Transparency, 'transparent', 1.0)) : A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$transparency,
+		A2($mdgriffith$elm_ui$Internal$Model$Transparency, 'visible', 0.0));
+};
+var $mdgriffith$elm_ui$Element$Border$widthXY = F2(
+	function (x, y) {
+		return A2(
+			$mdgriffith$elm_ui$Internal$Model$StyleClass,
+			$mdgriffith$elm_ui$Internal$Flag$borderWidth,
+			A5(
+				$mdgriffith$elm_ui$Internal$Model$BorderWidth,
+				'b-' + ($elm$core$String$fromInt(x) + ('-' + $elm$core$String$fromInt(y))),
+				y,
+				x,
+				y,
+				x));
+	});
+var $mdgriffith$elm_ui$Element$Border$widthEach = function (_v0) {
+	var bottom = _v0.hD;
+	var top = _v0.jG;
+	var left = _v0.ix;
+	var right = _v0.i1;
+	return (_Utils_eq(top, bottom) && _Utils_eq(left, right)) ? (_Utils_eq(top, right) ? $mdgriffith$elm_ui$Element$Border$width(top) : A2($mdgriffith$elm_ui$Element$Border$widthXY, left, top)) : A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$borderWidth,
+		A5(
+			$mdgriffith$elm_ui$Internal$Model$BorderWidth,
+			'b-' + ($elm$core$String$fromInt(top) + ('-' + ($elm$core$String$fromInt(right) + ('-' + ($elm$core$String$fromInt(bottom) + ('-' + $elm$core$String$fromInt(left))))))),
+			top,
+			right,
+			bottom,
+			left));
+};
+var $mdgriffith$elm_ui$Element$Input$defaultCheckbox = function (checked) {
+	return A2(
+		$mdgriffith$elm_ui$Element$el,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Internal$Model$htmlClass('focusable'),
+				$mdgriffith$elm_ui$Element$width(
+				$mdgriffith$elm_ui$Element$px(14)),
+				$mdgriffith$elm_ui$Element$height(
+				$mdgriffith$elm_ui$Element$px(14)),
+				$mdgriffith$elm_ui$Element$Font$color($mdgriffith$elm_ui$Element$Input$white),
+				$mdgriffith$elm_ui$Element$centerY,
+				$mdgriffith$elm_ui$Element$Font$size(9),
+				$mdgriffith$elm_ui$Element$Font$center,
+				$mdgriffith$elm_ui$Element$Border$rounded(3),
+				$mdgriffith$elm_ui$Element$Border$color(
+				checked ? A3($mdgriffith$elm_ui$Element$rgb, 59 / 255, 153 / 255, 252 / 255) : A3($mdgriffith$elm_ui$Element$rgb, 211 / 255, 211 / 255, 211 / 255)),
+				$mdgriffith$elm_ui$Element$Border$shadow(
+				{
+					hx: 1,
+					Q: checked ? A4($mdgriffith$elm_ui$Element$rgba, 238 / 255, 238 / 255, 238 / 255, 0) : A3($mdgriffith$elm_ui$Element$rgb, 238 / 255, 238 / 255, 238 / 255),
+					iL: _Utils_Tuple2(0, 0),
+					by: 1
+				}),
+				$mdgriffith$elm_ui$Element$Background$color(
+				checked ? A3($mdgriffith$elm_ui$Element$rgb, 59 / 255, 153 / 255, 252 / 255) : $mdgriffith$elm_ui$Element$Input$white),
+				$mdgriffith$elm_ui$Element$Border$width(
+				checked ? 0 : 1),
+				$mdgriffith$elm_ui$Element$inFront(
+				A2(
+					$mdgriffith$elm_ui$Element$el,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$Border$color($mdgriffith$elm_ui$Element$Input$white),
+							$mdgriffith$elm_ui$Element$height(
+							$mdgriffith$elm_ui$Element$px(6)),
+							$mdgriffith$elm_ui$Element$width(
+							$mdgriffith$elm_ui$Element$px(9)),
+							$mdgriffith$elm_ui$Element$rotate(
+							$elm$core$Basics$degrees(-45)),
+							$mdgriffith$elm_ui$Element$centerX,
+							$mdgriffith$elm_ui$Element$centerY,
+							$mdgriffith$elm_ui$Element$moveUp(1),
+							$mdgriffith$elm_ui$Element$transparent(!checked),
+							$mdgriffith$elm_ui$Element$Border$widthEach(
+							{hD: 2, ix: 2, i1: 0, jG: 0})
+						]),
+					$mdgriffith$elm_ui$Element$none))
+			]),
+		$mdgriffith$elm_ui$Element$none);
+};
+var $author$project$DisplayIndividualSpecies$routeDetailCheckbox = function (model) {
+	return A2(
+		$mdgriffith$elm_ui$Element$layout,
+		_List_Nil,
+		A2(
+			$mdgriffith$elm_ui$Element$column,
+			_List_Nil,
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$Input$checkbox,
+					_List_Nil,
+					{
+						hH: function () {
+							var _v0 = model.b6;
+							if (!_v0) {
+								return true;
+							} else {
+								return false;
+							}
+						}(),
+						ih: $mdgriffith$elm_ui$Element$Input$defaultCheckbox,
+						dI: A2(
+							$mdgriffith$elm_ui$Element$Input$labelLeft,
+							_List_Nil,
+							$mdgriffith$elm_ui$Element$text('Show route detail: ')),
+						gu: function (x) {
+							return x ? $author$project$DisplayIndividualSpecies$ToggleRouteDetail(0) : $author$project$DisplayIndividualSpecies$ToggleRouteDetail(1);
+						}
+					})
+				])));
+};
+var $Confidenceman02$elm_select$Select$searchable = F2(
+	function (pred, _v0) {
+		var config = _v0;
+		return _Utils_update(
+			config,
+			{C: pred});
+	});
+var $Confidenceman02$elm_select$Select$CustomVariant = function (a) {
+	return {$: 0, a: a};
+};
+var $Confidenceman02$elm_select$Select$Single = function (a) {
+	return {$: 0, a: a};
+};
+var $Confidenceman02$elm_select$Select$Styles$Config = $elm$core$Basics$identity;
+var $Confidenceman02$elm_select$Select$Styles$ControlConfig = $elm$core$Basics$identity;
+var $rtfeldman$elm_css$Css$Structure$Compatible = 0;
+var $rtfeldman$elm_css$Css$withPrecedingHash = function (str) {
+	return A2($elm$core$String$startsWith, '#', str) ? str : A2($elm$core$String$cons, '#', str);
+};
+var $rtfeldman$elm_css$Css$erroneousHex = function (str) {
+	return {
+		bb: 1,
+		eq: 0,
+		Q: 0,
+		eG: 0,
+		e5: 0,
+		g4: $rtfeldman$elm_css$Css$withPrecedingHash(str)
+	};
+};
+var $elm$core$String$foldr = _String_foldr;
+var $elm$core$String$toList = function (string) {
+	return A3($elm$core$String$foldr, $elm$core$List$cons, _List_Nil, string);
+};
+var $elm$core$Basics$pow = _Basics_pow;
+var $rtfeldman$elm_hex$Hex$fromStringHelp = F3(
+	function (position, chars, accumulated) {
+		fromStringHelp:
+		while (true) {
+			if (!chars.b) {
+				return $elm$core$Result$Ok(accumulated);
+			} else {
+				var _char = chars.a;
+				var rest = chars.b;
+				switch (_char) {
+					case '0':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated;
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case '1':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + A2($elm$core$Basics$pow, 16, position);
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case '2':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (2 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case '3':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (3 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case '4':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (4 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case '5':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (5 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case '6':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (6 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case '7':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (7 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case '8':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (8 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case '9':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (9 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case 'a':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (10 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case 'b':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (11 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case 'c':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (12 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case 'd':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (13 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case 'e':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (14 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					case 'f':
+						var $temp$position = position - 1,
+							$temp$chars = rest,
+							$temp$accumulated = accumulated + (15 * A2($elm$core$Basics$pow, 16, position));
+						position = $temp$position;
+						chars = $temp$chars;
+						accumulated = $temp$accumulated;
+						continue fromStringHelp;
+					default:
+						var nonHex = _char;
+						return $elm$core$Result$Err(
+							$elm$core$String$fromChar(nonHex) + ' is not a valid hexadecimal character.');
+				}
+			}
+		}
+	});
+var $elm$core$Result$map = F2(
+	function (func, ra) {
+		if (!ra.$) {
+			var a = ra.a;
+			return $elm$core$Result$Ok(
+				func(a));
+		} else {
+			var e = ra.a;
+			return $elm$core$Result$Err(e);
+		}
+	});
+var $elm$core$Result$mapError = F2(
+	function (f, result) {
+		if (!result.$) {
+			var v = result.a;
+			return $elm$core$Result$Ok(v);
+		} else {
+			var e = result.a;
+			return $elm$core$Result$Err(
+				f(e));
+		}
+	});
+var $elm$core$List$tail = function (list) {
+	if (list.b) {
+		var x = list.a;
+		var xs = list.b;
+		return $elm$core$Maybe$Just(xs);
+	} else {
+		return $elm$core$Maybe$Nothing;
+	}
+};
+var $rtfeldman$elm_hex$Hex$fromString = function (str) {
+	if ($elm$core$String$isEmpty(str)) {
+		return $elm$core$Result$Err('Empty strings are not valid hexadecimal strings.');
+	} else {
+		var result = function () {
+			if (A2($elm$core$String$startsWith, '-', str)) {
+				var list = A2(
+					$elm$core$Maybe$withDefault,
+					_List_Nil,
+					$elm$core$List$tail(
+						$elm$core$String$toList(str)));
+				return A2(
+					$elm$core$Result$map,
+					$elm$core$Basics$negate,
+					A3(
+						$rtfeldman$elm_hex$Hex$fromStringHelp,
+						$elm$core$List$length(list) - 1,
+						list,
+						0));
+			} else {
+				return A3(
+					$rtfeldman$elm_hex$Hex$fromStringHelp,
+					$elm$core$String$length(str) - 1,
+					$elm$core$String$toList(str),
+					0);
+			}
+		}();
+		var formatError = function (err) {
+			return A2(
+				$elm$core$String$join,
+				' ',
+				_List_fromArray(
+					['\"' + (str + '\"'), 'is not a valid hexadecimal string because', err]));
+		};
+		return A2($elm$core$Result$mapError, formatError, result);
+	}
+};
+var $rtfeldman$elm_css$Css$validHex = F5(
+	function (str, _v0, _v1, _v2, _v3) {
+		var r1 = _v0.a;
+		var r2 = _v0.b;
+		var g1 = _v1.a;
+		var g2 = _v1.b;
+		var b1 = _v2.a;
+		var b2 = _v2.b;
+		var a1 = _v3.a;
+		var a2 = _v3.b;
+		var toResult = A2(
+			$elm$core$Basics$composeR,
+			$elm$core$String$fromList,
+			A2($elm$core$Basics$composeR, $elm$core$String$toLower, $rtfeldman$elm_hex$Hex$fromString));
+		var results = _Utils_Tuple2(
+			_Utils_Tuple2(
+				toResult(
+					_List_fromArray(
+						[r1, r2])),
+				toResult(
+					_List_fromArray(
+						[g1, g2]))),
+			_Utils_Tuple2(
+				toResult(
+					_List_fromArray(
+						[b1, b2])),
+				toResult(
+					_List_fromArray(
+						[a1, a2]))));
+		if ((((!results.a.a.$) && (!results.a.b.$)) && (!results.b.a.$)) && (!results.b.b.$)) {
+			var _v5 = results.a;
+			var red = _v5.a.a;
+			var green = _v5.b.a;
+			var _v6 = results.b;
+			var blue = _v6.a.a;
+			var alpha = _v6.b.a;
+			return {
+				bb: alpha / 255,
+				eq: blue,
+				Q: 0,
+				eG: green,
+				e5: red,
+				g4: $rtfeldman$elm_css$Css$withPrecedingHash(str)
+			};
+		} else {
+			return $rtfeldman$elm_css$Css$erroneousHex(str);
+		}
+	});
+var $rtfeldman$elm_css$Css$hex = function (str) {
+	var withoutHash = A2($elm$core$String$startsWith, '#', str) ? A2($elm$core$String$dropLeft, 1, str) : str;
+	var _v0 = $elm$core$String$toList(withoutHash);
+	_v0$4:
+	while (true) {
+		if ((_v0.b && _v0.b.b) && _v0.b.b.b) {
+			if (!_v0.b.b.b.b) {
+				var r = _v0.a;
+				var _v1 = _v0.b;
+				var g = _v1.a;
+				var _v2 = _v1.b;
+				var b = _v2.a;
+				return A5(
+					$rtfeldman$elm_css$Css$validHex,
+					str,
+					_Utils_Tuple2(r, r),
+					_Utils_Tuple2(g, g),
+					_Utils_Tuple2(b, b),
+					_Utils_Tuple2('f', 'f'));
+			} else {
+				if (!_v0.b.b.b.b.b) {
+					var r = _v0.a;
+					var _v3 = _v0.b;
+					var g = _v3.a;
+					var _v4 = _v3.b;
+					var b = _v4.a;
+					var _v5 = _v4.b;
+					var a = _v5.a;
+					return A5(
+						$rtfeldman$elm_css$Css$validHex,
+						str,
+						_Utils_Tuple2(r, r),
+						_Utils_Tuple2(g, g),
+						_Utils_Tuple2(b, b),
+						_Utils_Tuple2(a, a));
+				} else {
+					if (_v0.b.b.b.b.b.b) {
+						if (!_v0.b.b.b.b.b.b.b) {
+							var r1 = _v0.a;
+							var _v6 = _v0.b;
+							var r2 = _v6.a;
+							var _v7 = _v6.b;
+							var g1 = _v7.a;
+							var _v8 = _v7.b;
+							var g2 = _v8.a;
+							var _v9 = _v8.b;
+							var b1 = _v9.a;
+							var _v10 = _v9.b;
+							var b2 = _v10.a;
+							return A5(
+								$rtfeldman$elm_css$Css$validHex,
+								str,
+								_Utils_Tuple2(r1, r2),
+								_Utils_Tuple2(g1, g2),
+								_Utils_Tuple2(b1, b2),
+								_Utils_Tuple2('f', 'f'));
+						} else {
+							if (_v0.b.b.b.b.b.b.b.b && (!_v0.b.b.b.b.b.b.b.b.b)) {
+								var r1 = _v0.a;
+								var _v11 = _v0.b;
+								var r2 = _v11.a;
+								var _v12 = _v11.b;
+								var g1 = _v12.a;
+								var _v13 = _v12.b;
+								var g2 = _v13.a;
+								var _v14 = _v13.b;
+								var b1 = _v14.a;
+								var _v15 = _v14.b;
+								var b2 = _v15.a;
+								var _v16 = _v15.b;
+								var a1 = _v16.a;
+								var _v17 = _v16.b;
+								var a2 = _v17.a;
+								return A5(
+									$rtfeldman$elm_css$Css$validHex,
+									str,
+									_Utils_Tuple2(r1, r2),
+									_Utils_Tuple2(g1, g2),
+									_Utils_Tuple2(b1, b2),
+									_Utils_Tuple2(a1, a2));
+							} else {
+								break _v0$4;
+							}
+						}
+					} else {
+						break _v0$4;
+					}
+				}
+			}
+		} else {
+			break _v0$4;
+		}
+	}
+	return $rtfeldman$elm_css$Css$erroneousHex(str);
+};
+var $rtfeldman$elm_css$Css$cssFunction = F2(
+	function (funcName, args) {
+		return funcName + ('(' + (A2($elm$core$String$join, ',', args) + ')'));
+	});
+var $rtfeldman$elm_css$Css$rgb = F3(
+	function (r, g, b) {
+		return {
+			bb: 1,
+			eq: b,
+			Q: 0,
+			eG: g,
+			e5: r,
+			g4: A2(
+				$rtfeldman$elm_css$Css$cssFunction,
+				'rgb',
+				A2(
+					$elm$core$List$map,
+					$elm$core$String$fromInt,
+					_List_fromArray(
+						[r, g, b])))
+		};
+	});
+var $Confidenceman02$elm_select$Select$Styles$defaultsControl = {
+	aj: $rtfeldman$elm_css$Css$hex('#FFFFFF'),
+	fz: $rtfeldman$elm_css$Css$hex('#F0F1F4'),
+	fF: $rtfeldman$elm_css$Css$hex('#898BA9'),
+	bd: $rtfeldman$elm_css$Css$hex('#0168b3'),
+	be: $rtfeldman$elm_css$Css$hex('#4B4D68'),
+	P: 7,
+	bg: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102),
+	bh: A3($rtfeldman$elm_css$Css$rgb, 51, 51, 51),
+	Q: $rtfeldman$elm_css$Css$hex('#000000'),
+	bi: 0.3,
+	ew: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102),
+	ex: A3($rtfeldman$elm_css$Css$rgb, 51, 51, 51),
+	gk: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102),
+	br: 48,
+	eX: $rtfeldman$elm_css$Css$hex('#E1E2EA'),
+	eY: 16,
+	eZ: $rtfeldman$elm_css$Css$hex('#35374A'),
+	e_: $rtfeldman$elm_css$Css$hex('#6B6E94'),
+	e$: $rtfeldman$elm_css$Css$hex('#4B4D68'),
+	e0: $elm$core$Maybe$Nothing,
+	bv: 0.5,
+	e9: $rtfeldman$elm_css$Css$hex('#35374A'),
+	fa: A3($rtfeldman$elm_css$Css$rgb, 204, 204, 204)
+};
+var $Confidenceman02$elm_select$Select$Styles$controlDefault = $Confidenceman02$elm_select$Select$Styles$defaultsControl;
+var $Confidenceman02$elm_select$Select$Styles$MenuConfig = $elm$core$Basics$identity;
+var $Confidenceman02$elm_select$Select$Styles$MenuControlConfig = $elm$core$Basics$identity;
+var $Confidenceman02$elm_select$Select$Styles$Px = function (a) {
+	return {$: 0, a: a};
+};
+var $rtfeldman$elm_css$Css$absolute = {d2: 0, g4: 'absolute'};
+var $rtfeldman$elm_css$Css$PxUnits = 0;
+var $rtfeldman$elm_css$Css$Internal$lengthConverter = F3(
+	function (units, unitLabel, numericValue) {
+		return {
+			fp: 0,
+			fG: 0,
+			bQ: 0,
+			W: 0,
+			cC: 0,
+			bX: 0,
+			a1: 0,
+			bY: 0,
+			bZ: 0,
+			bo: 0,
+			bp: 0,
+			aQ: 0,
+			a2: numericValue,
+			ce: 0,
+			cg: unitLabel,
+			cW: units,
+			g4: _Utils_ap(
+				$elm$core$String$fromFloat(numericValue),
+				unitLabel)
+		};
+	});
+var $rtfeldman$elm_css$Css$px = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, 0, 'px');
+var $rtfeldman$elm_css$Css$rgba = F4(
+	function (r, g, b, alpha) {
+		return {
+			bb: alpha,
+			eq: b,
+			Q: 0,
+			eG: g,
+			e5: r,
+			g4: A2(
+				$rtfeldman$elm_css$Css$cssFunction,
+				'rgba',
+				_Utils_ap(
+					A2(
+						$elm$core$List$map,
+						$elm$core$String$fromInt,
+						_List_fromArray(
+							[r, g, b])),
+					_List_fromArray(
+						[
+							$elm$core$String$fromFloat(alpha)
+						])))
+		};
+	});
+var $Confidenceman02$elm_select$Select$Styles$defaultsMenu = {
+	aj: $rtfeldman$elm_css$Css$hex('#FFFFFF'),
+	P: 7,
+	c8: 6,
+	db: 12,
+	dc: A4($rtfeldman$elm_css$Css$rgba, 0, 0, 0, 0.19),
+	dd: 0,
+	de: 0,
+	d: {
+		aj: $rtfeldman$elm_css$Css$hex('#FFFFFF'),
+		fz: $rtfeldman$elm_css$Css$hex('#F0F1F4'),
+		fF: $rtfeldman$elm_css$Css$hex('#898BA9'),
+		bd: $rtfeldman$elm_css$Css$hex('#0168b3'),
+		be: $rtfeldman$elm_css$Css$hex('#4B4D68'),
+		P: 7,
+		bg: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102),
+		bh: A3($rtfeldman$elm_css$Css$rgb, 51, 51, 51),
+		Q: $rtfeldman$elm_css$Css$hex('#000000'),
+		bi: 0.3,
+		gk: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102),
+		br: 35,
+		bv: 0.5,
+		e7: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102)
+	},
+	ev: A4($rtfeldman$elm_css$Css$rgba, 0, 0, 0, 0.1),
+	cF: $Confidenceman02$elm_select$Select$Styles$Px(
+		$rtfeldman$elm_css$Css$px(215)),
+	d2: $rtfeldman$elm_css$Css$absolute
+};
+var $Confidenceman02$elm_select$Select$Styles$menuDefault = $Confidenceman02$elm_select$Select$Styles$defaultsMenu;
+var $Confidenceman02$elm_select$Select$Styles$MenuItemConfig = $elm$core$Basics$identity;
+var $Confidenceman02$elm_select$Select$Styles$defaultsMenuItem = {
+	c3: $rtfeldman$elm_css$Css$hex('#E6F0F7'),
+	c4: $rtfeldman$elm_css$Css$hex('#E6F0F7'),
+	c5: $rtfeldman$elm_css$Css$hex('#E6F0F7'),
+	c6: 8,
+	P: 4,
+	Q: $rtfeldman$elm_css$Css$hex('#000000'),
+	dj: $rtfeldman$elm_css$Css$hex('#0168B3'),
+	dk: $rtfeldman$elm_css$Css$hex('#0168B3'),
+	dC: 8
+};
+var $Confidenceman02$elm_select$Select$Styles$menuItemDefault = $Confidenceman02$elm_select$Select$Styles$defaultsMenuItem;
+var $Confidenceman02$elm_select$Select$Styles$GroupConfig = $elm$core$Basics$identity;
+var $rtfeldman$elm_css$Css$UnitlessInteger = 0;
+var $rtfeldman$elm_css$Css$int = function (val) {
+	return {
+		a0: 0,
+		dF: 0,
+		bp: 0,
+		aQ: 0,
+		iK: 0,
+		dQ: 0,
+		a2: val,
+		cg: '',
+		cW: 0,
+		g4: $elm$core$String$fromInt(val)
+	};
+};
+var $rtfeldman$elm_css$Css$uppercase = {bC: 0, g4: 'uppercase'};
+var $Confidenceman02$elm_select$Select$Styles$defaultsGroup = {
+	Q: $rtfeldman$elm_css$Css$hex('#9e9e9e'),
+	dt: $rtfeldman$elm_css$Css$px(14).g4,
+	du: $rtfeldman$elm_css$Css$int(500).g4,
+	ed: $rtfeldman$elm_css$Css$uppercase.g4
+};
+var $Confidenceman02$elm_select$Select$Styles$menuItemGroupDefault = $Confidenceman02$elm_select$Select$Styles$defaultsGroup;
+var $Confidenceman02$elm_select$Select$Styles$defaults = {dq: $Confidenceman02$elm_select$Select$Styles$controlDefault, dL: $Confidenceman02$elm_select$Select$Styles$menuDefault, dM: $Confidenceman02$elm_select$Select$Styles$menuItemDefault, dN: $Confidenceman02$elm_select$Select$Styles$menuItemGroupDefault};
+var $Confidenceman02$elm_select$Select$Styles$default = $Confidenceman02$elm_select$Select$Styles$defaults;
+var $Confidenceman02$elm_select$Select$defaults = {
+	O: $elm$core$Maybe$Nothing,
+	D: false,
+	b: false,
+	aw: false,
+	I: $elm$core$Maybe$Nothing,
+	cE: 'Loading...',
+	an: _List_Nil,
+	ah: $elm$core$Maybe$Nothing,
+	N: 'Select...',
+	C: true,
+	e: $Confidenceman02$elm_select$Select$initState(
+		$Confidenceman02$elm_select$Select$selectIdentifier('elm-select')),
+	k: $Confidenceman02$elm_select$Select$Styles$default,
+	a: $Confidenceman02$elm_select$Select$CustomVariant(
+		$Confidenceman02$elm_select$Select$Single($elm$core$Maybe$Nothing))
+};
+var $Confidenceman02$elm_select$Select$single = function (maybeSelectedItem) {
+	return _Utils_update(
+		$Confidenceman02$elm_select$Select$defaults,
+		{
+			a: $Confidenceman02$elm_select$Select$CustomVariant(
+				$Confidenceman02$elm_select$Select$Single(maybeSelectedItem))
+		});
+};
+var $Confidenceman02$elm_select$Select$state = F2(
+	function (state_, _v0) {
+		var config = _v0;
+		return _Utils_update(
+			config,
+			{e: state_});
+	});
+var $Confidenceman02$elm_select$Select$BuildPlaceholderData = F4(
+	function (variant, state, controlStyles, placeholder) {
+		return {t: controlStyles, N: placeholder, e: state, a: variant};
+	});
+var $Confidenceman02$elm_select$Select$BuildViewableMenuItemsData = F4(
+	function (searchable, inputValue, menuItems, variant) {
+		return {z: inputValue, an: menuItems, C: searchable, a: variant};
+	});
+var $Confidenceman02$elm_select$Select$ViewClearIndicatorData = F5(
+	function (disabled, clearable, variant, state, styles) {
+		return {D: clearable, b: disabled, e: state, k: styles, a: variant};
+	});
+var $Confidenceman02$elm_select$Select$ViewControlWrapperData = F6(
+	function (disabled, state, controlStyles, menuStyles, variant, searchable) {
+		return {t: controlStyles, b: disabled, ao: menuStyles, C: searchable, e: state, a: variant};
+	});
+var $Confidenceman02$elm_select$Select$ViewCustomControlData = function (state) {
+	return function (controlStyles) {
+		return function (styles) {
+			return function (enterSelectTargetItem) {
+				return function (totalMenuItems) {
+					return function (variant) {
+						return function (placeholder) {
+							return function (disabled) {
+								return function (searchable) {
+									return function (labelledBy) {
+										return function (ariaDescribedBy) {
+											return function (clearable) {
+												return function (loading) {
+													return {O: ariaDescribedBy, D: clearable, t: controlStyles, b: disabled, eA: enterSelectTargetItem, I: labelledBy, gj: loading, N: placeholder, C: searchable, e: state, k: styles, fh: totalMenuItems, a: variant};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var $Confidenceman02$elm_select$Select$ViewDropdownIndicatorData = F2(
+	function (disabled, controlStyles) {
+		return {t: controlStyles, b: disabled};
+	});
+var $Confidenceman02$elm_select$Select$ViewDummyInputData = function (id) {
+	return function (variant) {
+		return function (maybeTargetItem) {
+			return function (totalViewableMenuItems) {
+				return function (menuOpen) {
+					return function (labelledBy) {
+						return function (ariaDescribedBy) {
+							return function (disabled) {
+								return function (clearable) {
+									return function (state) {
+										return {O: ariaDescribedBy, D: clearable, b: disabled, f3: id, I: labelledBy, gn: maybeTargetItem, v: menuOpen, e: state, a8: totalViewableMenuItems, a: variant};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var $Confidenceman02$elm_select$Select$ViewLoadingMenuData = F3(
+	function (variant, loadingText, menuStyles) {
+		return {gl: loadingText, ao: menuStyles, a: variant};
+	});
+var $Confidenceman02$elm_select$Select$ViewLoadingSpinnerData = F2(
+	function (isLoading, loadingIndicatorColor) {
+		return {aw: isLoading, gk: loadingIndicatorColor};
+	});
+var $Confidenceman02$elm_select$Select$ViewMenuData = function (variant) {
+	return function (selectId) {
+		return function (viewableMenuItems) {
+			return function (initialAction) {
+				return function (activeTargetIndex) {
+					return function (menuNavigation) {
+						return function (menuStyles) {
+							return function (menuItemStyles) {
+								return function (menuItemGroupStyles) {
+									return function (disabled) {
+										return function (controlUiFocused) {
+											return {w: activeTargetIndex, l: controlUiFocused, b: disabled, f: initialAction, dO: menuItemGroupStyles, F: menuItemStyles, B: menuNavigation, ao: menuStyles, r: selectId, a: variant, ek: viewableMenuItems};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var $Confidenceman02$elm_select$Select$ViewMenuItemsData = function (menuItemStyles) {
+	return function (menuItemGroupStyles) {
+		return function (selectId) {
+			return function (variant) {
+				return function (initialAction) {
+					return function (activeTargetIndex) {
+						return function (menuNavigation) {
+							return function (viewableMenuItems) {
+								return function (disabled) {
+									return function (controlUiFocused) {
+										return {w: activeTargetIndex, l: controlUiFocused, b: disabled, f: initialAction, dO: menuItemGroupStyles, F: menuItemStyles, B: menuNavigation, r: selectId, a: variant, ek: viewableMenuItems};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var $Confidenceman02$elm_select$Select$ViewMenuItemsWrapperData = F4(
+	function (variant, menuStyles, menuNavigation, selectId) {
+		return {B: menuNavigation, ao: menuStyles, r: selectId, a: variant};
+	});
+var $Confidenceman02$elm_select$Select$ViewNativeData = F9(
+	function (controlStyles, variant, menuItems, selectId, labelledBy, ariaDescribedBy, placeholder, disabled, name) {
+		return {O: ariaDescribedBy, t: controlStyles, b: disabled, I: labelledBy, an: menuItems, ah: name, N: placeholder, r: selectId, a: variant};
+	});
+var $Confidenceman02$elm_select$Select$ViewSelectInputData = F8(
+	function (maybeActiveTarget, totalViewableMenuItems, variant, labelledBy, ariaDescribedBy, disabled, clearable, state) {
+		return {O: ariaDescribedBy, D: clearable, b: disabled, I: labelledBy, eP: maybeActiveTarget, e: state, a8: totalViewableMenuItems, a: variant};
+	});
+var $Confidenceman02$elm_select$Select$ViewWrapperData = F4(
+	function (state, searchable, variant, disabled) {
+		return {b: disabled, C: searchable, e: state, a: variant};
+	});
+var $Confidenceman02$elm_select$Select$ViewPlaceholderData = F2(
+	function (placeholderOpac, placeholder) {
+		return {N: placeholder, gC: placeholderOpac};
+	});
+var $Confidenceman02$elm_select$Select$Styles$getControlPlaceholderOpacity = function (_v0) {
+	var config = _v0;
+	return config.bv;
+};
+var $Confidenceman02$elm_select$Select$isEmptyInputValue = function (inputValue) {
+	return $elm$core$String$isEmpty(
+		A2($elm$core$Maybe$withDefault, '', inputValue));
+};
+var $rtfeldman$elm_css$VirtualDom$Styled$text = function (str) {
+	return $rtfeldman$elm_css$VirtualDom$Styled$Unstyled(
+		$elm$virtual_dom$VirtualDom$text(str));
+};
+var $rtfeldman$elm_css$Html$Styled$text = $rtfeldman$elm_css$VirtualDom$Styled$text;
 var $elm$core$List$all = F2(
 	function (isOkay, list) {
 		return !A2(
@@ -22983,15 +24256,6 @@ var $rtfeldman$elm_css$Css$Structure$styleBlockToMediaRule = F2(
 			return declaration;
 		}
 	});
-var $elm$core$List$tail = function (list) {
-	if (list.b) {
-		var x = list.a;
-		var xs = list.b;
-		return $elm$core$Maybe$Just(xs);
-	} else {
-		return $elm$core$Maybe$Nothing;
-	}
-};
 var $elm$core$List$takeReverse = F3(
 	function (n, list, kept) {
 		takeReverse:
@@ -23594,145 +24858,7 @@ var $rtfeldman$elm_css$Html$Styled$Internal$css = function (styles) {
 	return A3($rtfeldman$elm_css$VirtualDom$Styled$Attribute, classProperty, true, cssTemplate);
 };
 var $rtfeldman$elm_css$Html$Styled$Attributes$css = $rtfeldman$elm_css$Html$Styled$Internal$css;
-var $rtfeldman$elm_css$VirtualDom$Styled$Node = F3(
-	function (a, b, c) {
-		return {$: 0, a: a, b: b, c: c};
-	});
-var $rtfeldman$elm_css$VirtualDom$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$Node;
-var $rtfeldman$elm_css$Html$Styled$node = $rtfeldman$elm_css$VirtualDom$Styled$node;
-var $rtfeldman$elm_css$Html$Styled$div = $rtfeldman$elm_css$Html$Styled$node('div');
-var $rtfeldman$elm_css$VirtualDom$Styled$Unstyled = function (a) {
-	return {$: 4, a: a};
-};
-var $rtfeldman$elm_css$VirtualDom$Styled$unstyledNode = $rtfeldman$elm_css$VirtualDom$Styled$Unstyled;
-var $rtfeldman$elm_css$Html$Styled$fromUnstyled = $rtfeldman$elm_css$VirtualDom$Styled$unstyledNode;
-var $rtfeldman$elm_css$VirtualDom$Styled$property = F2(
-	function (key, value) {
-		return A3(
-			$rtfeldman$elm_css$VirtualDom$Styled$Attribute,
-			A2($elm$virtual_dom$VirtualDom$property, key, value),
-			false,
-			'');
-	});
-var $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty = F2(
-	function (key, string) {
-		return A2(
-			$rtfeldman$elm_css$VirtualDom$Styled$property,
-			key,
-			$elm$json$Json$Encode$string(string));
-	});
-var $rtfeldman$elm_css$Html$Styled$Attributes$id = $rtfeldman$elm_css$Html$Styled$Attributes$stringProperty('id');
-var $rtfeldman$elm_css$VirtualDom$Styled$KeyedNode = F3(
-	function (a, b, c) {
-		return {$: 2, a: a, b: b, c: c};
-	});
-var $rtfeldman$elm_css$VirtualDom$Styled$KeyedNodeNS = F4(
-	function (a, b, c, d) {
-		return {$: 3, a: a, b: b, c: c, d: d};
-	});
-var $rtfeldman$elm_css$VirtualDom$Styled$NodeNS = F4(
-	function (a, b, c, d) {
-		return {$: 1, a: a, b: b, c: c, d: d};
-	});
-var $elm$virtual_dom$VirtualDom$map = _VirtualDom_map;
-var $elm$virtual_dom$VirtualDom$mapAttribute = _VirtualDom_mapAttribute;
-var $rtfeldman$elm_css$VirtualDom$Styled$mapAttribute = F2(
-	function (transform, _v0) {
-		var prop = _v0.a;
-		var isCssStyle = _v0.b;
-		var cssTemplate = _v0.c;
-		return A3(
-			$rtfeldman$elm_css$VirtualDom$Styled$Attribute,
-			A2($elm$virtual_dom$VirtualDom$mapAttribute, transform, prop),
-			isCssStyle,
-			cssTemplate);
-	});
-var $rtfeldman$elm_css$VirtualDom$Styled$map = F2(
-	function (transform, vdomNode) {
-		switch (vdomNode.$) {
-			case 0:
-				var elemType = vdomNode.a;
-				var properties = vdomNode.b;
-				var children = vdomNode.c;
-				return A3(
-					$rtfeldman$elm_css$VirtualDom$Styled$Node,
-					elemType,
-					A2(
-						$elm$core$List$map,
-						$rtfeldman$elm_css$VirtualDom$Styled$mapAttribute(transform),
-						properties),
-					A2(
-						$elm$core$List$map,
-						$rtfeldman$elm_css$VirtualDom$Styled$map(transform),
-						children));
-			case 1:
-				var ns = vdomNode.a;
-				var elemType = vdomNode.b;
-				var properties = vdomNode.c;
-				var children = vdomNode.d;
-				return A4(
-					$rtfeldman$elm_css$VirtualDom$Styled$NodeNS,
-					ns,
-					elemType,
-					A2(
-						$elm$core$List$map,
-						$rtfeldman$elm_css$VirtualDom$Styled$mapAttribute(transform),
-						properties),
-					A2(
-						$elm$core$List$map,
-						$rtfeldman$elm_css$VirtualDom$Styled$map(transform),
-						children));
-			case 2:
-				var elemType = vdomNode.a;
-				var properties = vdomNode.b;
-				var children = vdomNode.c;
-				return A3(
-					$rtfeldman$elm_css$VirtualDom$Styled$KeyedNode,
-					elemType,
-					A2(
-						$elm$core$List$map,
-						$rtfeldman$elm_css$VirtualDom$Styled$mapAttribute(transform),
-						properties),
-					A2(
-						$elm$core$List$map,
-						function (_v1) {
-							var key = _v1.a;
-							var child = _v1.b;
-							return _Utils_Tuple2(
-								key,
-								A2($rtfeldman$elm_css$VirtualDom$Styled$map, transform, child));
-						},
-						children));
-			case 3:
-				var ns = vdomNode.a;
-				var elemType = vdomNode.b;
-				var properties = vdomNode.c;
-				var children = vdomNode.d;
-				return A4(
-					$rtfeldman$elm_css$VirtualDom$Styled$KeyedNodeNS,
-					ns,
-					elemType,
-					A2(
-						$elm$core$List$map,
-						$rtfeldman$elm_css$VirtualDom$Styled$mapAttribute(transform),
-						properties),
-					A2(
-						$elm$core$List$map,
-						function (_v2) {
-							var key = _v2.a;
-							var child = _v2.b;
-							return _Utils_Tuple2(
-								key,
-								A2($rtfeldman$elm_css$VirtualDom$Styled$map, transform, child));
-						},
-						children));
-			default:
-				var vdom = vdomNode.a;
-				return $rtfeldman$elm_css$VirtualDom$Styled$Unstyled(
-					A2($elm$virtual_dom$VirtualDom$map, transform, vdom));
-		}
-	});
-var $rtfeldman$elm_css$Html$Styled$map = $rtfeldman$elm_css$VirtualDom$Styled$map;
+var $rtfeldman$elm_css$Css$borderBox = {ep: 0, df: 0, g4: 'border-box'};
 var $rtfeldman$elm_css$Css$Preprocess$AppendProperty = function (a) {
 	return {$: 0, a: a};
 };
@@ -23744,1061 +24870,10 @@ var $rtfeldman$elm_css$Css$prop1 = F2(
 	function (key, arg) {
 		return A2($rtfeldman$elm_css$Css$property, key, arg.g4);
 	});
-var $rtfeldman$elm_css$Css$marginLeft = $rtfeldman$elm_css$Css$prop1('margin-left');
-var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
-var $rtfeldman$elm_css$Css$marginTop = $rtfeldman$elm_css$Css$prop1('margin-top');
-var $Confidenceman02$elm_select$Select$menuItems = F2(
-	function (items, _v0) {
-		var config = _v0;
-		return _Utils_update(
-			config,
-			{an: items});
-	});
-var $rtfeldman$elm_css$Css$PercentageUnits = 0;
-var $rtfeldman$elm_css$Css$Internal$lengthConverter = F3(
-	function (units, unitLabel, numericValue) {
-		return {
-			fp: 0,
-			fG: 0,
-			bQ: 0,
-			W: 0,
-			cC: 0,
-			bX: 0,
-			a1: 0,
-			bY: 0,
-			bZ: 0,
-			bo: 0,
-			bp: 0,
-			aQ: 0,
-			a2: numericValue,
-			ce: 0,
-			cg: unitLabel,
-			cW: units,
-			g4: _Utils_ap(
-				$elm$core$String$fromFloat(numericValue),
-				unitLabel)
-		};
-	});
-var $rtfeldman$elm_css$Css$pct = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, 0, '%');
-var $Confidenceman02$elm_select$Select$placeholder = F2(
-	function (plc, _v0) {
-		var config = _v0;
-		return _Utils_update(
-			config,
-			{N: plc});
-	});
-var $rtfeldman$elm_css$Css$PxUnits = 0;
-var $rtfeldman$elm_css$Css$px = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, 0, 'px');
-var $author$project$Specs$SpeciesTrend$HideRouteDetail = 1;
-var $author$project$DisplayIndividualSpecies$ToggleRouteDetail = function (a) {
-	return {$: 2, a: a};
-};
-var $mdgriffith$elm_ui$Internal$Model$AlignY = function (a) {
-	return {$: 5, a: a};
-};
-var $mdgriffith$elm_ui$Internal$Model$CenterY = 1;
-var $mdgriffith$elm_ui$Element$centerY = $mdgriffith$elm_ui$Internal$Model$AlignY(1);
-var $mdgriffith$elm_ui$Element$Input$enter = 'Enter';
-var $mdgriffith$elm_ui$Element$Input$isHiddenLabel = function (label) {
-	if (label.$ === 1) {
-		return true;
-	} else {
-		return false;
-	}
-};
-var $mdgriffith$elm_ui$Element$Input$checkbox = F2(
-	function (attrs, _v0) {
-		var label = _v0.dI;
-		var icon = _v0.ih;
-		var checked = _v0.hH;
-		var onChange = _v0.gu;
-		var attributes = _Utils_ap(
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$Input$isHiddenLabel(label) ? $mdgriffith$elm_ui$Internal$Model$NoAttribute : $mdgriffith$elm_ui$Element$spacing(6),
-					$mdgriffith$elm_ui$Internal$Model$Attr(
-					$elm$html$Html$Events$onClick(
-						onChange(!checked))),
-					$mdgriffith$elm_ui$Element$Region$announce,
-					$mdgriffith$elm_ui$Element$Input$onKeyLookup(
-					function (code) {
-						return _Utils_eq(code, $mdgriffith$elm_ui$Element$Input$enter) ? $elm$core$Maybe$Just(
-							onChange(!checked)) : (_Utils_eq(code, $mdgriffith$elm_ui$Element$Input$space) ? $elm$core$Maybe$Just(
-							onChange(!checked)) : $elm$core$Maybe$Nothing);
-					}),
-					$mdgriffith$elm_ui$Element$Input$tabindex(0),
-					$mdgriffith$elm_ui$Element$pointer,
-					$mdgriffith$elm_ui$Element$alignLeft,
-					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
-				]),
-			attrs);
-		return A3(
-			$mdgriffith$elm_ui$Element$Input$applyLabel,
-			A2(
-				$elm$core$List$cons,
-				$mdgriffith$elm_ui$Internal$Model$Attr(
-					A2($elm$html$Html$Attributes$attribute, 'role', 'checkbox')),
-				A2(
-					$elm$core$List$cons,
-					$mdgriffith$elm_ui$Internal$Model$Attr(
-						A2(
-							$elm$html$Html$Attributes$attribute,
-							'aria-checked',
-							checked ? 'true' : 'false')),
-					A2(
-						$elm$core$List$cons,
-						$mdgriffith$elm_ui$Element$Input$hiddenLabelAttribute(label),
-						attributes))),
-			label,
-			A4(
-				$mdgriffith$elm_ui$Internal$Model$element,
-				$mdgriffith$elm_ui$Internal$Model$asEl,
-				$mdgriffith$elm_ui$Internal$Model$div,
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$centerY,
-						$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
-						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$shrink)
-					]),
-				$mdgriffith$elm_ui$Internal$Model$Unkeyed(
-					_List_fromArray(
-						[
-							icon(checked)
-						]))));
-	});
-var $mdgriffith$elm_ui$Internal$Flag$fontAlignment = $mdgriffith$elm_ui$Internal$Flag$flag(12);
-var $mdgriffith$elm_ui$Element$Font$center = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontAlignment, $mdgriffith$elm_ui$Internal$Style$classes.jp);
-var $mdgriffith$elm_ui$Internal$Model$CenterX = 1;
-var $mdgriffith$elm_ui$Element$centerX = $mdgriffith$elm_ui$Internal$Model$AlignX(1);
-var $mdgriffith$elm_ui$Element$Font$color = function (fontColor) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$fontColor,
-		A3(
-			$mdgriffith$elm_ui$Internal$Model$Colored,
-			'fc-' + $mdgriffith$elm_ui$Internal$Model$formatColorClass(fontColor),
-			'color',
-			fontColor));
-};
-var $elm$core$Basics$pi = _Basics_pi;
-var $elm$core$Basics$degrees = function (angleInDegrees) {
-	return (angleInDegrees * $elm$core$Basics$pi) / 180;
-};
-var $mdgriffith$elm_ui$Internal$Model$InFront = 4;
-var $mdgriffith$elm_ui$Internal$Model$Nearby = F2(
-	function (a, b) {
-		return {$: 9, a: a, b: b};
-	});
-var $mdgriffith$elm_ui$Element$createNearby = F2(
-	function (loc, element) {
-		if (element.$ === 3) {
-			return $mdgriffith$elm_ui$Internal$Model$NoAttribute;
-		} else {
-			return A2($mdgriffith$elm_ui$Internal$Model$Nearby, loc, element);
-		}
-	});
-var $mdgriffith$elm_ui$Element$inFront = function (element) {
-	return A2($mdgriffith$elm_ui$Element$createNearby, 4, element);
-};
-var $mdgriffith$elm_ui$Internal$Model$MoveY = function (a) {
-	return {$: 1, a: a};
-};
-var $mdgriffith$elm_ui$Internal$Model$TransformComponent = F2(
-	function (a, b) {
-		return {$: 10, a: a, b: b};
-	});
-var $mdgriffith$elm_ui$Internal$Flag$moveY = $mdgriffith$elm_ui$Internal$Flag$flag(26);
-var $mdgriffith$elm_ui$Element$moveUp = function (y) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$TransformComponent,
-		$mdgriffith$elm_ui$Internal$Flag$moveY,
-		$mdgriffith$elm_ui$Internal$Model$MoveY(-y));
-};
-var $mdgriffith$elm_ui$Element$rgba = $mdgriffith$elm_ui$Internal$Model$Rgba;
-var $mdgriffith$elm_ui$Internal$Model$Rotate = F2(
-	function (a, b) {
-		return {$: 4, a: a, b: b};
-	});
-var $mdgriffith$elm_ui$Internal$Flag$rotate = $mdgriffith$elm_ui$Internal$Flag$flag(24);
-var $mdgriffith$elm_ui$Element$rotate = function (angle) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$TransformComponent,
-		$mdgriffith$elm_ui$Internal$Flag$rotate,
-		A2(
-			$mdgriffith$elm_ui$Internal$Model$Rotate,
-			_Utils_Tuple3(0, 0, 1),
-			angle));
-};
-var $mdgriffith$elm_ui$Internal$Model$boxShadowClass = function (shadow) {
-	return $elm$core$String$concat(
-		_List_fromArray(
-			[
-				shadow.gb ? 'box-inset' : 'box-',
-				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.iL.a) + 'px',
-				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.iL.b) + 'px',
-				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.hx) + 'px',
-				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.by) + 'px',
-				$mdgriffith$elm_ui$Internal$Model$formatColorClass(shadow.Q)
-			]));
-};
-var $mdgriffith$elm_ui$Internal$Flag$shadows = $mdgriffith$elm_ui$Internal$Flag$flag(19);
-var $mdgriffith$elm_ui$Element$Border$shadow = function (almostShade) {
-	var shade = {hx: almostShade.hx, Q: almostShade.Q, gb: false, iL: almostShade.iL, by: almostShade.by};
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$shadows,
-		A3(
-			$mdgriffith$elm_ui$Internal$Model$Single,
-			$mdgriffith$elm_ui$Internal$Model$boxShadowClass(shade),
-			'box-shadow',
-			$mdgriffith$elm_ui$Internal$Model$formatBoxShadow(shade)));
-};
-var $mdgriffith$elm_ui$Element$Font$size = function (i) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$fontSize,
-		$mdgriffith$elm_ui$Internal$Model$FontSize(i));
-};
-var $mdgriffith$elm_ui$Internal$Model$Transparency = F2(
-	function (a, b) {
-		return {$: 12, a: a, b: b};
-	});
-var $mdgriffith$elm_ui$Internal$Flag$transparency = $mdgriffith$elm_ui$Internal$Flag$flag(0);
-var $mdgriffith$elm_ui$Element$transparent = function (on) {
-	return on ? A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$transparency,
-		A2($mdgriffith$elm_ui$Internal$Model$Transparency, 'transparent', 1.0)) : A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$transparency,
-		A2($mdgriffith$elm_ui$Internal$Model$Transparency, 'visible', 0.0));
-};
-var $mdgriffith$elm_ui$Element$Border$widthXY = F2(
-	function (x, y) {
-		return A2(
-			$mdgriffith$elm_ui$Internal$Model$StyleClass,
-			$mdgriffith$elm_ui$Internal$Flag$borderWidth,
-			A5(
-				$mdgriffith$elm_ui$Internal$Model$BorderWidth,
-				'b-' + ($elm$core$String$fromInt(x) + ('-' + $elm$core$String$fromInt(y))),
-				y,
-				x,
-				y,
-				x));
-	});
-var $mdgriffith$elm_ui$Element$Border$widthEach = function (_v0) {
-	var bottom = _v0.hD;
-	var top = _v0.jG;
-	var left = _v0.ix;
-	var right = _v0.i1;
-	return (_Utils_eq(top, bottom) && _Utils_eq(left, right)) ? (_Utils_eq(top, right) ? $mdgriffith$elm_ui$Element$Border$width(top) : A2($mdgriffith$elm_ui$Element$Border$widthXY, left, top)) : A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$borderWidth,
-		A5(
-			$mdgriffith$elm_ui$Internal$Model$BorderWidth,
-			'b-' + ($elm$core$String$fromInt(top) + ('-' + ($elm$core$String$fromInt(right) + ('-' + ($elm$core$String$fromInt(bottom) + ('-' + $elm$core$String$fromInt(left))))))),
-			top,
-			right,
-			bottom,
-			left));
-};
-var $mdgriffith$elm_ui$Element$Input$defaultCheckbox = function (checked) {
-	return A2(
-		$mdgriffith$elm_ui$Element$el,
-		_List_fromArray(
-			[
-				$mdgriffith$elm_ui$Internal$Model$htmlClass('focusable'),
-				$mdgriffith$elm_ui$Element$width(
-				$mdgriffith$elm_ui$Element$px(14)),
-				$mdgriffith$elm_ui$Element$height(
-				$mdgriffith$elm_ui$Element$px(14)),
-				$mdgriffith$elm_ui$Element$Font$color($mdgriffith$elm_ui$Element$Input$white),
-				$mdgriffith$elm_ui$Element$centerY,
-				$mdgriffith$elm_ui$Element$Font$size(9),
-				$mdgriffith$elm_ui$Element$Font$center,
-				$mdgriffith$elm_ui$Element$Border$rounded(3),
-				$mdgriffith$elm_ui$Element$Border$color(
-				checked ? A3($mdgriffith$elm_ui$Element$rgb, 59 / 255, 153 / 255, 252 / 255) : A3($mdgriffith$elm_ui$Element$rgb, 211 / 255, 211 / 255, 211 / 255)),
-				$mdgriffith$elm_ui$Element$Border$shadow(
-				{
-					hx: 1,
-					Q: checked ? A4($mdgriffith$elm_ui$Element$rgba, 238 / 255, 238 / 255, 238 / 255, 0) : A3($mdgriffith$elm_ui$Element$rgb, 238 / 255, 238 / 255, 238 / 255),
-					iL: _Utils_Tuple2(0, 0),
-					by: 1
-				}),
-				$mdgriffith$elm_ui$Element$Background$color(
-				checked ? A3($mdgriffith$elm_ui$Element$rgb, 59 / 255, 153 / 255, 252 / 255) : $mdgriffith$elm_ui$Element$Input$white),
-				$mdgriffith$elm_ui$Element$Border$width(
-				checked ? 0 : 1),
-				$mdgriffith$elm_ui$Element$inFront(
-				A2(
-					$mdgriffith$elm_ui$Element$el,
-					_List_fromArray(
-						[
-							$mdgriffith$elm_ui$Element$Border$color($mdgriffith$elm_ui$Element$Input$white),
-							$mdgriffith$elm_ui$Element$height(
-							$mdgriffith$elm_ui$Element$px(6)),
-							$mdgriffith$elm_ui$Element$width(
-							$mdgriffith$elm_ui$Element$px(9)),
-							$mdgriffith$elm_ui$Element$rotate(
-							$elm$core$Basics$degrees(-45)),
-							$mdgriffith$elm_ui$Element$centerX,
-							$mdgriffith$elm_ui$Element$centerY,
-							$mdgriffith$elm_ui$Element$moveUp(1),
-							$mdgriffith$elm_ui$Element$transparent(!checked),
-							$mdgriffith$elm_ui$Element$Border$widthEach(
-							{hD: 2, ix: 2, i1: 0, jG: 0})
-						]),
-					$mdgriffith$elm_ui$Element$none))
-			]),
-		$mdgriffith$elm_ui$Element$none);
-};
-var $author$project$DisplayIndividualSpecies$routeDetailCheckbox = function (model) {
-	return A2(
-		$mdgriffith$elm_ui$Element$layout,
-		_List_Nil,
-		A2(
-			$mdgriffith$elm_ui$Element$column,
-			_List_Nil,
-			_List_fromArray(
-				[
-					A2(
-					$mdgriffith$elm_ui$Element$Input$checkbox,
-					_List_Nil,
-					{
-						hH: function () {
-							var _v0 = model.b6;
-							if (!_v0) {
-								return true;
-							} else {
-								return false;
-							}
-						}(),
-						ih: $mdgriffith$elm_ui$Element$Input$defaultCheckbox,
-						dI: A2(
-							$mdgriffith$elm_ui$Element$Input$labelLeft,
-							_List_Nil,
-							$mdgriffith$elm_ui$Element$text('Show route detail: ')),
-						gu: function (x) {
-							return x ? $author$project$DisplayIndividualSpecies$ToggleRouteDetail(0) : $author$project$DisplayIndividualSpecies$ToggleRouteDetail(1);
-						}
-					})
-				])));
-};
-var $Confidenceman02$elm_select$Select$searchable = F2(
-	function (pred, _v0) {
-		var config = _v0;
-		return _Utils_update(
-			config,
-			{C: pred});
-	});
-var $Confidenceman02$elm_select$Select$CustomVariant = function (a) {
-	return {$: 0, a: a};
-};
-var $Confidenceman02$elm_select$Select$Single = function (a) {
-	return {$: 0, a: a};
-};
-var $Confidenceman02$elm_select$Select$Styles$Config = $elm$core$Basics$identity;
-var $Confidenceman02$elm_select$Select$Styles$ControlConfig = $elm$core$Basics$identity;
-var $rtfeldman$elm_css$Css$withPrecedingHash = function (str) {
-	return A2($elm$core$String$startsWith, '#', str) ? str : A2($elm$core$String$cons, '#', str);
-};
-var $rtfeldman$elm_css$Css$erroneousHex = function (str) {
-	return {
-		bb: 1,
-		eq: 0,
-		Q: 0,
-		eG: 0,
-		e5: 0,
-		g4: $rtfeldman$elm_css$Css$withPrecedingHash(str)
-	};
-};
-var $elm$core$String$foldr = _String_foldr;
-var $elm$core$String$toList = function (string) {
-	return A3($elm$core$String$foldr, $elm$core$List$cons, _List_Nil, string);
-};
-var $elm$core$Basics$pow = _Basics_pow;
-var $rtfeldman$elm_hex$Hex$fromStringHelp = F3(
-	function (position, chars, accumulated) {
-		fromStringHelp:
-		while (true) {
-			if (!chars.b) {
-				return $elm$core$Result$Ok(accumulated);
-			} else {
-				var _char = chars.a;
-				var rest = chars.b;
-				switch (_char) {
-					case '0':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated;
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case '1':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + A2($elm$core$Basics$pow, 16, position);
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case '2':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (2 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case '3':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (3 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case '4':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (4 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case '5':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (5 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case '6':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (6 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case '7':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (7 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case '8':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (8 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case '9':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (9 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case 'a':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (10 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case 'b':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (11 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case 'c':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (12 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case 'd':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (13 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case 'e':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (14 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					case 'f':
-						var $temp$position = position - 1,
-							$temp$chars = rest,
-							$temp$accumulated = accumulated + (15 * A2($elm$core$Basics$pow, 16, position));
-						position = $temp$position;
-						chars = $temp$chars;
-						accumulated = $temp$accumulated;
-						continue fromStringHelp;
-					default:
-						var nonHex = _char;
-						return $elm$core$Result$Err(
-							$elm$core$String$fromChar(nonHex) + ' is not a valid hexadecimal character.');
-				}
-			}
-		}
-	});
-var $elm$core$Result$map = F2(
-	function (func, ra) {
-		if (!ra.$) {
-			var a = ra.a;
-			return $elm$core$Result$Ok(
-				func(a));
-		} else {
-			var e = ra.a;
-			return $elm$core$Result$Err(e);
-		}
-	});
-var $elm$core$Result$mapError = F2(
-	function (f, result) {
-		if (!result.$) {
-			var v = result.a;
-			return $elm$core$Result$Ok(v);
-		} else {
-			var e = result.a;
-			return $elm$core$Result$Err(
-				f(e));
-		}
-	});
-var $rtfeldman$elm_hex$Hex$fromString = function (str) {
-	if ($elm$core$String$isEmpty(str)) {
-		return $elm$core$Result$Err('Empty strings are not valid hexadecimal strings.');
-	} else {
-		var result = function () {
-			if (A2($elm$core$String$startsWith, '-', str)) {
-				var list = A2(
-					$elm$core$Maybe$withDefault,
-					_List_Nil,
-					$elm$core$List$tail(
-						$elm$core$String$toList(str)));
-				return A2(
-					$elm$core$Result$map,
-					$elm$core$Basics$negate,
-					A3(
-						$rtfeldman$elm_hex$Hex$fromStringHelp,
-						$elm$core$List$length(list) - 1,
-						list,
-						0));
-			} else {
-				return A3(
-					$rtfeldman$elm_hex$Hex$fromStringHelp,
-					$elm$core$String$length(str) - 1,
-					$elm$core$String$toList(str),
-					0);
-			}
-		}();
-		var formatError = function (err) {
-			return A2(
-				$elm$core$String$join,
-				' ',
-				_List_fromArray(
-					['\"' + (str + '\"'), 'is not a valid hexadecimal string because', err]));
-		};
-		return A2($elm$core$Result$mapError, formatError, result);
-	}
-};
-var $rtfeldman$elm_css$Css$validHex = F5(
-	function (str, _v0, _v1, _v2, _v3) {
-		var r1 = _v0.a;
-		var r2 = _v0.b;
-		var g1 = _v1.a;
-		var g2 = _v1.b;
-		var b1 = _v2.a;
-		var b2 = _v2.b;
-		var a1 = _v3.a;
-		var a2 = _v3.b;
-		var toResult = A2(
-			$elm$core$Basics$composeR,
-			$elm$core$String$fromList,
-			A2($elm$core$Basics$composeR, $elm$core$String$toLower, $rtfeldman$elm_hex$Hex$fromString));
-		var results = _Utils_Tuple2(
-			_Utils_Tuple2(
-				toResult(
-					_List_fromArray(
-						[r1, r2])),
-				toResult(
-					_List_fromArray(
-						[g1, g2]))),
-			_Utils_Tuple2(
-				toResult(
-					_List_fromArray(
-						[b1, b2])),
-				toResult(
-					_List_fromArray(
-						[a1, a2]))));
-		if ((((!results.a.a.$) && (!results.a.b.$)) && (!results.b.a.$)) && (!results.b.b.$)) {
-			var _v5 = results.a;
-			var red = _v5.a.a;
-			var green = _v5.b.a;
-			var _v6 = results.b;
-			var blue = _v6.a.a;
-			var alpha = _v6.b.a;
-			return {
-				bb: alpha / 255,
-				eq: blue,
-				Q: 0,
-				eG: green,
-				e5: red,
-				g4: $rtfeldman$elm_css$Css$withPrecedingHash(str)
-			};
-		} else {
-			return $rtfeldman$elm_css$Css$erroneousHex(str);
-		}
-	});
-var $rtfeldman$elm_css$Css$hex = function (str) {
-	var withoutHash = A2($elm$core$String$startsWith, '#', str) ? A2($elm$core$String$dropLeft, 1, str) : str;
-	var _v0 = $elm$core$String$toList(withoutHash);
-	_v0$4:
-	while (true) {
-		if ((_v0.b && _v0.b.b) && _v0.b.b.b) {
-			if (!_v0.b.b.b.b) {
-				var r = _v0.a;
-				var _v1 = _v0.b;
-				var g = _v1.a;
-				var _v2 = _v1.b;
-				var b = _v2.a;
-				return A5(
-					$rtfeldman$elm_css$Css$validHex,
-					str,
-					_Utils_Tuple2(r, r),
-					_Utils_Tuple2(g, g),
-					_Utils_Tuple2(b, b),
-					_Utils_Tuple2('f', 'f'));
-			} else {
-				if (!_v0.b.b.b.b.b) {
-					var r = _v0.a;
-					var _v3 = _v0.b;
-					var g = _v3.a;
-					var _v4 = _v3.b;
-					var b = _v4.a;
-					var _v5 = _v4.b;
-					var a = _v5.a;
-					return A5(
-						$rtfeldman$elm_css$Css$validHex,
-						str,
-						_Utils_Tuple2(r, r),
-						_Utils_Tuple2(g, g),
-						_Utils_Tuple2(b, b),
-						_Utils_Tuple2(a, a));
-				} else {
-					if (_v0.b.b.b.b.b.b) {
-						if (!_v0.b.b.b.b.b.b.b) {
-							var r1 = _v0.a;
-							var _v6 = _v0.b;
-							var r2 = _v6.a;
-							var _v7 = _v6.b;
-							var g1 = _v7.a;
-							var _v8 = _v7.b;
-							var g2 = _v8.a;
-							var _v9 = _v8.b;
-							var b1 = _v9.a;
-							var _v10 = _v9.b;
-							var b2 = _v10.a;
-							return A5(
-								$rtfeldman$elm_css$Css$validHex,
-								str,
-								_Utils_Tuple2(r1, r2),
-								_Utils_Tuple2(g1, g2),
-								_Utils_Tuple2(b1, b2),
-								_Utils_Tuple2('f', 'f'));
-						} else {
-							if (_v0.b.b.b.b.b.b.b.b && (!_v0.b.b.b.b.b.b.b.b.b)) {
-								var r1 = _v0.a;
-								var _v11 = _v0.b;
-								var r2 = _v11.a;
-								var _v12 = _v11.b;
-								var g1 = _v12.a;
-								var _v13 = _v12.b;
-								var g2 = _v13.a;
-								var _v14 = _v13.b;
-								var b1 = _v14.a;
-								var _v15 = _v14.b;
-								var b2 = _v15.a;
-								var _v16 = _v15.b;
-								var a1 = _v16.a;
-								var _v17 = _v16.b;
-								var a2 = _v17.a;
-								return A5(
-									$rtfeldman$elm_css$Css$validHex,
-									str,
-									_Utils_Tuple2(r1, r2),
-									_Utils_Tuple2(g1, g2),
-									_Utils_Tuple2(b1, b2),
-									_Utils_Tuple2(a1, a2));
-							} else {
-								break _v0$4;
-							}
-						}
-					} else {
-						break _v0$4;
-					}
-				}
-			}
-		} else {
-			break _v0$4;
-		}
-	}
-	return $rtfeldman$elm_css$Css$erroneousHex(str);
-};
-var $rtfeldman$elm_css$Css$cssFunction = F2(
-	function (funcName, args) {
-		return funcName + ('(' + (A2($elm$core$String$join, ',', args) + ')'));
-	});
-var $rtfeldman$elm_css$Css$rgb = F3(
-	function (r, g, b) {
-		return {
-			bb: 1,
-			eq: b,
-			Q: 0,
-			eG: g,
-			e5: r,
-			g4: A2(
-				$rtfeldman$elm_css$Css$cssFunction,
-				'rgb',
-				A2(
-					$elm$core$List$map,
-					$elm$core$String$fromInt,
-					_List_fromArray(
-						[r, g, b])))
-		};
-	});
-var $Confidenceman02$elm_select$Select$Styles$defaultsControl = {
-	aj: $rtfeldman$elm_css$Css$hex('#FFFFFF'),
-	fz: $rtfeldman$elm_css$Css$hex('#F0F1F4'),
-	fF: $rtfeldman$elm_css$Css$hex('#898BA9'),
-	bd: $rtfeldman$elm_css$Css$hex('#0168b3'),
-	be: $rtfeldman$elm_css$Css$hex('#4B4D68'),
-	P: 7,
-	bg: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102),
-	bh: A3($rtfeldman$elm_css$Css$rgb, 51, 51, 51),
-	Q: $rtfeldman$elm_css$Css$hex('#000000'),
-	bi: 0.3,
-	ew: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102),
-	ex: A3($rtfeldman$elm_css$Css$rgb, 51, 51, 51),
-	gk: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102),
-	br: 48,
-	eX: $rtfeldman$elm_css$Css$hex('#E1E2EA'),
-	eY: 16,
-	eZ: $rtfeldman$elm_css$Css$hex('#35374A'),
-	e_: $rtfeldman$elm_css$Css$hex('#6B6E94'),
-	e$: $rtfeldman$elm_css$Css$hex('#4B4D68'),
-	e0: $elm$core$Maybe$Nothing,
-	bv: 0.5,
-	e9: $rtfeldman$elm_css$Css$hex('#35374A'),
-	fa: A3($rtfeldman$elm_css$Css$rgb, 204, 204, 204)
-};
-var $Confidenceman02$elm_select$Select$Styles$controlDefault = $Confidenceman02$elm_select$Select$Styles$defaultsControl;
-var $Confidenceman02$elm_select$Select$Styles$MenuConfig = $elm$core$Basics$identity;
-var $Confidenceman02$elm_select$Select$Styles$MenuControlConfig = $elm$core$Basics$identity;
-var $Confidenceman02$elm_select$Select$Styles$Px = function (a) {
-	return {$: 0, a: a};
-};
-var $rtfeldman$elm_css$Css$absolute = {d2: 0, g4: 'absolute'};
-var $rtfeldman$elm_css$Css$rgba = F4(
-	function (r, g, b, alpha) {
-		return {
-			bb: alpha,
-			eq: b,
-			Q: 0,
-			eG: g,
-			e5: r,
-			g4: A2(
-				$rtfeldman$elm_css$Css$cssFunction,
-				'rgba',
-				_Utils_ap(
-					A2(
-						$elm$core$List$map,
-						$elm$core$String$fromInt,
-						_List_fromArray(
-							[r, g, b])),
-					_List_fromArray(
-						[
-							$elm$core$String$fromFloat(alpha)
-						])))
-		};
-	});
-var $Confidenceman02$elm_select$Select$Styles$defaultsMenu = {
-	aj: $rtfeldman$elm_css$Css$hex('#FFFFFF'),
-	P: 7,
-	c8: 6,
-	db: 12,
-	dc: A4($rtfeldman$elm_css$Css$rgba, 0, 0, 0, 0.19),
-	dd: 0,
-	de: 0,
-	d: {
-		aj: $rtfeldman$elm_css$Css$hex('#FFFFFF'),
-		fz: $rtfeldman$elm_css$Css$hex('#F0F1F4'),
-		fF: $rtfeldman$elm_css$Css$hex('#898BA9'),
-		bd: $rtfeldman$elm_css$Css$hex('#0168b3'),
-		be: $rtfeldman$elm_css$Css$hex('#4B4D68'),
-		P: 7,
-		bg: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102),
-		bh: A3($rtfeldman$elm_css$Css$rgb, 51, 51, 51),
-		Q: $rtfeldman$elm_css$Css$hex('#000000'),
-		bi: 0.3,
-		gk: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102),
-		br: 35,
-		bv: 0.5,
-		e7: A3($rtfeldman$elm_css$Css$rgb, 102, 102, 102)
-	},
-	ev: A4($rtfeldman$elm_css$Css$rgba, 0, 0, 0, 0.1),
-	cF: $Confidenceman02$elm_select$Select$Styles$Px(
-		$rtfeldman$elm_css$Css$px(215)),
-	d2: $rtfeldman$elm_css$Css$absolute
-};
-var $Confidenceman02$elm_select$Select$Styles$menuDefault = $Confidenceman02$elm_select$Select$Styles$defaultsMenu;
-var $Confidenceman02$elm_select$Select$Styles$MenuItemConfig = $elm$core$Basics$identity;
-var $Confidenceman02$elm_select$Select$Styles$defaultsMenuItem = {
-	c3: $rtfeldman$elm_css$Css$hex('#E6F0F7'),
-	c4: $rtfeldman$elm_css$Css$hex('#E6F0F7'),
-	c5: $rtfeldman$elm_css$Css$hex('#E6F0F7'),
-	c6: 8,
-	P: 4,
-	Q: $rtfeldman$elm_css$Css$hex('#000000'),
-	dj: $rtfeldman$elm_css$Css$hex('#0168B3'),
-	dk: $rtfeldman$elm_css$Css$hex('#0168B3'),
-	dC: 8
-};
-var $Confidenceman02$elm_select$Select$Styles$menuItemDefault = $Confidenceman02$elm_select$Select$Styles$defaultsMenuItem;
-var $Confidenceman02$elm_select$Select$Styles$GroupConfig = $elm$core$Basics$identity;
-var $rtfeldman$elm_css$Css$UnitlessInteger = 0;
-var $rtfeldman$elm_css$Css$int = function (val) {
-	return {
-		a0: 0,
-		dF: 0,
-		bp: 0,
-		aQ: 0,
-		iK: 0,
-		dQ: 0,
-		a2: val,
-		cg: '',
-		cW: 0,
-		g4: $elm$core$String$fromInt(val)
-	};
-};
-var $rtfeldman$elm_css$Css$uppercase = {bC: 0, g4: 'uppercase'};
-var $Confidenceman02$elm_select$Select$Styles$defaultsGroup = {
-	Q: $rtfeldman$elm_css$Css$hex('#9e9e9e'),
-	dt: $rtfeldman$elm_css$Css$px(14).g4,
-	du: $rtfeldman$elm_css$Css$int(500).g4,
-	ed: $rtfeldman$elm_css$Css$uppercase.g4
-};
-var $Confidenceman02$elm_select$Select$Styles$menuItemGroupDefault = $Confidenceman02$elm_select$Select$Styles$defaultsGroup;
-var $Confidenceman02$elm_select$Select$Styles$defaults = {dq: $Confidenceman02$elm_select$Select$Styles$controlDefault, dL: $Confidenceman02$elm_select$Select$Styles$menuDefault, dM: $Confidenceman02$elm_select$Select$Styles$menuItemDefault, dN: $Confidenceman02$elm_select$Select$Styles$menuItemGroupDefault};
-var $Confidenceman02$elm_select$Select$Styles$default = $Confidenceman02$elm_select$Select$Styles$defaults;
-var $Confidenceman02$elm_select$Select$defaults = {
-	O: $elm$core$Maybe$Nothing,
-	D: false,
-	b: false,
-	aw: false,
-	I: $elm$core$Maybe$Nothing,
-	cE: 'Loading...',
-	an: _List_Nil,
-	ah: $elm$core$Maybe$Nothing,
-	N: 'Select...',
-	C: true,
-	e: $Confidenceman02$elm_select$Select$initState(
-		$Confidenceman02$elm_select$Select$selectIdentifier('elm-select')),
-	k: $Confidenceman02$elm_select$Select$Styles$default,
-	a: $Confidenceman02$elm_select$Select$CustomVariant(
-		$Confidenceman02$elm_select$Select$Single($elm$core$Maybe$Nothing))
-};
-var $Confidenceman02$elm_select$Select$single = function (maybeSelectedItem) {
-	return _Utils_update(
-		$Confidenceman02$elm_select$Select$defaults,
-		{
-			a: $Confidenceman02$elm_select$Select$CustomVariant(
-				$Confidenceman02$elm_select$Select$Single(maybeSelectedItem))
-		});
-};
-var $Confidenceman02$elm_select$Select$state = F2(
-	function (state_, _v0) {
-		var config = _v0;
-		return _Utils_update(
-			config,
-			{e: state_});
-	});
-var $Confidenceman02$elm_select$Select$BuildPlaceholderData = F4(
-	function (variant, state, controlStyles, placeholder) {
-		return {t: controlStyles, N: placeholder, e: state, a: variant};
-	});
-var $Confidenceman02$elm_select$Select$BuildViewableMenuItemsData = F4(
-	function (searchable, inputValue, menuItems, variant) {
-		return {z: inputValue, an: menuItems, C: searchable, a: variant};
-	});
-var $Confidenceman02$elm_select$Select$ViewClearIndicatorData = F5(
-	function (disabled, clearable, variant, state, styles) {
-		return {D: clearable, b: disabled, e: state, k: styles, a: variant};
-	});
-var $Confidenceman02$elm_select$Select$ViewControlWrapperData = F6(
-	function (disabled, state, controlStyles, menuStyles, variant, searchable) {
-		return {t: controlStyles, b: disabled, ao: menuStyles, C: searchable, e: state, a: variant};
-	});
-var $Confidenceman02$elm_select$Select$ViewCustomControlData = function (state) {
-	return function (controlStyles) {
-		return function (styles) {
-			return function (enterSelectTargetItem) {
-				return function (totalMenuItems) {
-					return function (variant) {
-						return function (placeholder) {
-							return function (disabled) {
-								return function (searchable) {
-									return function (labelledBy) {
-										return function (ariaDescribedBy) {
-											return function (clearable) {
-												return function (loading) {
-													return {O: ariaDescribedBy, D: clearable, t: controlStyles, b: disabled, eA: enterSelectTargetItem, I: labelledBy, gj: loading, N: placeholder, C: searchable, e: state, k: styles, fh: totalMenuItems, a: variant};
-												};
-											};
-										};
-									};
-								};
-							};
-						};
-					};
-				};
-			};
-		};
-	};
-};
-var $Confidenceman02$elm_select$Select$ViewDropdownIndicatorData = F2(
-	function (disabled, controlStyles) {
-		return {t: controlStyles, b: disabled};
-	});
-var $Confidenceman02$elm_select$Select$ViewDummyInputData = function (id) {
-	return function (variant) {
-		return function (maybeTargetItem) {
-			return function (totalViewableMenuItems) {
-				return function (menuOpen) {
-					return function (labelledBy) {
-						return function (ariaDescribedBy) {
-							return function (disabled) {
-								return function (clearable) {
-									return function (state) {
-										return {O: ariaDescribedBy, D: clearable, b: disabled, f3: id, I: labelledBy, gn: maybeTargetItem, v: menuOpen, e: state, a8: totalViewableMenuItems, a: variant};
-									};
-								};
-							};
-						};
-					};
-				};
-			};
-		};
-	};
-};
-var $Confidenceman02$elm_select$Select$ViewLoadingMenuData = F3(
-	function (variant, loadingText, menuStyles) {
-		return {gl: loadingText, ao: menuStyles, a: variant};
-	});
-var $Confidenceman02$elm_select$Select$ViewLoadingSpinnerData = F2(
-	function (isLoading, loadingIndicatorColor) {
-		return {aw: isLoading, gk: loadingIndicatorColor};
-	});
-var $Confidenceman02$elm_select$Select$ViewMenuData = function (variant) {
-	return function (selectId) {
-		return function (viewableMenuItems) {
-			return function (initialAction) {
-				return function (activeTargetIndex) {
-					return function (menuNavigation) {
-						return function (menuStyles) {
-							return function (menuItemStyles) {
-								return function (menuItemGroupStyles) {
-									return function (disabled) {
-										return function (controlUiFocused) {
-											return {w: activeTargetIndex, l: controlUiFocused, b: disabled, f: initialAction, dO: menuItemGroupStyles, F: menuItemStyles, B: menuNavigation, ao: menuStyles, r: selectId, a: variant, ek: viewableMenuItems};
-										};
-									};
-								};
-							};
-						};
-					};
-				};
-			};
-		};
-	};
-};
-var $Confidenceman02$elm_select$Select$ViewMenuItemsData = function (menuItemStyles) {
-	return function (menuItemGroupStyles) {
-		return function (selectId) {
-			return function (variant) {
-				return function (initialAction) {
-					return function (activeTargetIndex) {
-						return function (menuNavigation) {
-							return function (viewableMenuItems) {
-								return function (disabled) {
-									return function (controlUiFocused) {
-										return {w: activeTargetIndex, l: controlUiFocused, b: disabled, f: initialAction, dO: menuItemGroupStyles, F: menuItemStyles, B: menuNavigation, r: selectId, a: variant, ek: viewableMenuItems};
-									};
-								};
-							};
-						};
-					};
-				};
-			};
-		};
-	};
-};
-var $Confidenceman02$elm_select$Select$ViewMenuItemsWrapperData = F4(
-	function (variant, menuStyles, menuNavigation, selectId) {
-		return {B: menuNavigation, ao: menuStyles, r: selectId, a: variant};
-	});
-var $Confidenceman02$elm_select$Select$ViewNativeData = F9(
-	function (controlStyles, variant, menuItems, selectId, labelledBy, ariaDescribedBy, placeholder, disabled, name) {
-		return {O: ariaDescribedBy, t: controlStyles, b: disabled, I: labelledBy, an: menuItems, ah: name, N: placeholder, r: selectId, a: variant};
-	});
-var $Confidenceman02$elm_select$Select$ViewSelectInputData = F8(
-	function (maybeActiveTarget, totalViewableMenuItems, variant, labelledBy, ariaDescribedBy, disabled, clearable, state) {
-		return {O: ariaDescribedBy, D: clearable, b: disabled, I: labelledBy, eP: maybeActiveTarget, e: state, a8: totalViewableMenuItems, a: variant};
-	});
-var $Confidenceman02$elm_select$Select$ViewWrapperData = F4(
-	function (state, searchable, variant, disabled) {
-		return {b: disabled, C: searchable, e: state, a: variant};
-	});
-var $Confidenceman02$elm_select$Select$ViewPlaceholderData = F2(
-	function (placeholderOpac, placeholder) {
-		return {N: placeholder, gC: placeholderOpac};
-	});
-var $Confidenceman02$elm_select$Select$Styles$getControlPlaceholderOpacity = function (_v0) {
-	var config = _v0;
-	return config.bv;
-};
-var $Confidenceman02$elm_select$Select$isEmptyInputValue = function (inputValue) {
-	return $elm$core$String$isEmpty(
-		A2($elm$core$Maybe$withDefault, '', inputValue));
-};
-var $rtfeldman$elm_css$VirtualDom$Styled$text = function (str) {
-	return $rtfeldman$elm_css$VirtualDom$Styled$Unstyled(
-		$elm$virtual_dom$VirtualDom$text(str));
-};
-var $rtfeldman$elm_css$Html$Styled$text = $rtfeldman$elm_css$VirtualDom$Styled$text;
-var $rtfeldman$elm_css$Css$borderBox = {ep: 0, df: 0, g4: 'border-box'};
 var $rtfeldman$elm_css$Css$boxSizing = $rtfeldman$elm_css$Css$prop1('box-sizing');
+var $rtfeldman$elm_css$Css$marginRight = $rtfeldman$elm_css$Css$prop1('margin-right');
+var $rtfeldman$elm_css$Css$PercentageUnits = 0;
+var $rtfeldman$elm_css$Css$pct = A2($rtfeldman$elm_css$Css$Internal$lengthConverter, 0, '%');
 var $rtfeldman$elm_css$Css$position = $rtfeldman$elm_css$Css$prop1('position');
 var $rtfeldman$elm_css$Css$top = $rtfeldman$elm_css$Css$prop1('top');
 var $rtfeldman$elm_css$Css$valuesOrNone = function (list) {
@@ -25192,6 +25267,7 @@ var $Confidenceman02$elm_select$Select$Styles$getControlSeparatorColor = functio
 	return config.fa;
 };
 var $rtfeldman$elm_css$Css$marginBottom = $rtfeldman$elm_css$Css$prop1('margin-bottom');
+var $rtfeldman$elm_css$Css$marginTop = $rtfeldman$elm_css$Css$prop1('margin-top');
 var $rtfeldman$elm_css$Html$Styled$span = $rtfeldman$elm_css$Html$Styled$node('span');
 var $rtfeldman$elm_css$Css$stretch = $rtfeldman$elm_css$Css$prop1('stretch');
 var $rtfeldman$elm_css$Css$width = $rtfeldman$elm_css$Css$prop1('width');
@@ -25317,6 +25393,7 @@ var $Confidenceman02$elm_select$Select$ShowClearButtonData = F4(
 	function (variant, disabled, clearable, state) {
 		return {D: clearable, b: disabled, e: state, a: variant};
 	});
+var $rtfeldman$elm_css$Css$auto = {hn: 0, h: 0, bQ: 0, dF: 0, iw: 0, bX: 0, a1: 0, aQ: 0, b2: 0, aB: 0, eb: 0, cf: 0, ai: 0, g4: 'auto'};
 var $Confidenceman02$elm_select$Select$ClearButtonKeyDowned = function (a) {
 	return {$: 32, a: a};
 };
@@ -26625,6 +26702,7 @@ var $Confidenceman02$elm_select$Select$Styles$getControlMultiTagDismissibleBackg
 	return config.e$;
 };
 var $rtfeldman$elm_css$Css$left = $rtfeldman$elm_css$Css$prop1('left');
+var $rtfeldman$elm_css$Css$marginLeft = $rtfeldman$elm_css$Css$prop1('margin-left');
 var $rtfeldman$elm_css$Html$Styled$Events$onClick = function (msg) {
 	return A2(
 		$rtfeldman$elm_css$Html$Styled$Events$on,
@@ -29705,19 +29783,7 @@ var $author$project$DisplayIndividualSpecies$view = function (m) {
 	}();
 	return A2(
 		$rtfeldman$elm_css$Html$Styled$div,
-		_List_fromArray(
-			[
-				$rtfeldman$elm_css$Html$Styled$Attributes$css(
-				_List_fromArray(
-					[
-						$rtfeldman$elm_css$Css$marginTop(
-						$rtfeldman$elm_css$Css$px(20)),
-						$rtfeldman$elm_css$Css$width(
-						$rtfeldman$elm_css$Css$pct(50)),
-						$rtfeldman$elm_css$Css$marginLeft($rtfeldman$elm_css$Css$auto),
-						$rtfeldman$elm_css$Css$marginRight($rtfeldman$elm_css$Css$auto)
-					]))
-			]),
+		_List_Nil,
 		_List_fromArray(
 			[
 				A2(

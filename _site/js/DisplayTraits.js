@@ -5564,6 +5564,20 @@ var $gicentre$elm_vegalite$VegaLite$asSpec = function (specs) {
 			},
 			specs));
 };
+var $gicentre$elm_vegalite$VegaLite$AxGrid = function (a) {
+	return {$: 72, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$Boo = function (a) {
+	return {$: 0, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$axGrid = function (b) {
+	return $gicentre$elm_vegalite$VegaLite$AxGrid(
+		$gicentre$elm_vegalite$VegaLite$Boo(b));
+};
+var $gicentre$elm_vegalite$VegaLite$AxTickCount = function (a) {
+	return {$: 45, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$axTickCount = $gicentre$elm_vegalite$VegaLite$AxTickCount;
 var $gicentre$elm_vegalite$VegaLite$AxTitle = function (a) {
 	return {$: 56, a: a};
 };
@@ -6184,9 +6198,6 @@ var $gicentre$elm_vegalite$VegaLite$filterProperties = function (f) {
 	}
 };
 var $gicentre$elm_vegalite$VegaLite$ArAria = function (a) {
-	return {$: 0, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$Boo = function (a) {
 	return {$: 0, a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$anchorSpec = function (an) {
@@ -8115,12 +8126,6 @@ var $gicentre$elm_vegalite$VegaLite$filter = function (f) {
 			'filter',
 			$gicentre$elm_vegalite$VegaLite$filterSpec(f)));
 };
-var $gicentre$elm_vegalite$VegaLite$VLHeight = 5;
-var $gicentre$elm_vegalite$VegaLite$height = function (h) {
-	return _Utils_Tuple2(
-		5,
-		$elm$json$Json$Encode$float(h));
-};
 var $gicentre$elm_vegalite$VegaLite$VLLayer = 19;
 var $gicentre$elm_vegalite$VegaLite$layer = function (specs) {
 	return _Utils_Tuple2(
@@ -9297,50 +9302,467 @@ var $gicentre$elm_vegalite$VegaLite$maStrokeWidth = function (n) {
 	return $gicentre$elm_vegalite$VegaLite$MStrokeWidth(
 		$gicentre$elm_vegalite$VegaLite$Num(n));
 };
-var $gicentre$elm_vegalite$VegaLite$opAs = F3(
-	function (op, field, label) {
-		return $elm$json$Json$Encode$object(
-			_List_fromArray(
+var $gicentre$elm_vegalite$VegaLite$AFit = 1;
+var $gicentre$elm_vegalite$VegaLite$asFit = 1;
+var $gicentre$elm_vegalite$VegaLite$APadding = 6;
+var $gicentre$elm_vegalite$VegaLite$asPadding = 6;
+var $gicentre$elm_vegalite$VegaLite$AResize = 7;
+var $gicentre$elm_vegalite$VegaLite$asResize = 7;
+var $gicentre$elm_vegalite$VegaLite$AxcoLabelFontSize = function (a) {
+	return {$: 27, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$axcoLabelFontSize = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$AxcoLabelFontSize(
+		$gicentre$elm_vegalite$VegaLite$Num(n));
+};
+var $gicentre$elm_vegalite$VegaLite$AxcoTitleFontSize = function (a) {
+	return {$: 61, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$axcoTitleFontSize = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$AxcoTitleFontSize(
+		$gicentre$elm_vegalite$VegaLite$Num(n));
+};
+var $gicentre$elm_vegalite$VegaLite$Autosize = function (a) {
+	return {$: 2, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$coAutosize = $gicentre$elm_vegalite$VegaLite$Autosize;
+var $gicentre$elm_vegalite$VegaLite$AxisBottom = function (a) {
+	return {$: 8, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$coAxisBottom = $gicentre$elm_vegalite$VegaLite$AxisBottom;
+var $gicentre$elm_vegalite$VegaLite$AxisLeft = function (a) {
+	return {$: 5, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$coAxisLeft = $gicentre$elm_vegalite$VegaLite$AxisLeft;
+var $gicentre$elm_vegalite$VegaLite$View = function (a) {
+	return {$: 49, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$coView = $gicentre$elm_vegalite$VegaLite$View;
+var $gicentre$elm_vegalite$VegaLite$autosizeProperty = function (asCfg) {
+	switch (asCfg) {
+		case 5:
+			return _Utils_Tuple2(
+				'type',
+				$elm$json$Json$Encode$string('pad'));
+		case 1:
+			return _Utils_Tuple2(
+				'type',
+				$elm$json$Json$Encode$string('fit'));
+		case 2:
+			return _Utils_Tuple2(
+				'type',
+				$elm$json$Json$Encode$string('fit-x'));
+		case 3:
+			return _Utils_Tuple2(
+				'type',
+				$elm$json$Json$Encode$string('fit-y'));
+		case 4:
+			return _Utils_Tuple2(
+				'type',
+				$elm$json$Json$Encode$string('none'));
+		case 7:
+			return _Utils_Tuple2(
+				'resize',
+				$elm$json$Json$Encode$bool(true));
+		case 0:
+			return _Utils_Tuple2(
+				'contains',
+				$elm$json$Json$Encode$string('content'));
+		default:
+			return _Utils_Tuple2(
+				'contains',
+				$elm$json$Json$Encode$string('padding'));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$maybeNumExpr = F2(
+	function (objName, n) {
+		if (!n.$) {
+			var maybeX = n.a;
+			if (!maybeX.$) {
+				var x = maybeX.a;
+				return (x === 1) ? _List_fromArray(
+					[
+						_Utils_Tuple2(
+						objName,
+						$elm$json$Json$Encode$bool(true))
+					]) : _List_fromArray(
+					[
+						_Utils_Tuple2(
+						objName,
+						$elm$json$Json$Encode$float(x))
+					]);
+			} else {
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						objName,
+						$elm$json$Json$Encode$bool(false))
+					]);
+			}
+		} else {
+			var s = n.a;
+			return _List_fromArray(
 				[
 					_Utils_Tuple2(
-					'op',
-					$gicentre$elm_vegalite$VegaLite$operationSpec(op)),
-					_Utils_Tuple2(
-					'field',
-					$elm$json$Json$Encode$string(field)),
-					_Utils_Tuple2(
-					'as',
-					$elm$json$Json$Encode$string(label))
-				]));
+					objName,
+					$elm$json$Json$Encode$object(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(
+								'expr',
+								$elm$json$Json$Encode$string(s))
+							])))
+				]);
+		}
 	});
-var $gicentre$elm_vegalite$VegaLite$Distinct = {$: 5};
-var $gicentre$elm_vegalite$VegaLite$opDistinct = $gicentre$elm_vegalite$VegaLite$Distinct;
-var $gicentre$elm_vegalite$VegaLite$Mean = {$: 7};
-var $gicentre$elm_vegalite$VegaLite$opMean = $gicentre$elm_vegalite$VegaLite$Mean;
-var $gicentre$elm_vegalite$VegaLite$Sum = {$: 17};
-var $gicentre$elm_vegalite$VegaLite$opSum = $gicentre$elm_vegalite$VegaLite$Sum;
-var $gicentre$elm_vegalite$VegaLite$PAggregate = function (a) {
-	return {$: 12, a: a};
+var $gicentre$elm_vegalite$VegaLite$tickBandSpec = function (tb) {
+	switch (tb.$) {
+		case 0:
+			return $elm$json$Json$Encode$string('center');
+		case 1:
+			return $elm$json$Json$Encode$string('extent');
+		default:
+			var s = tb.a;
+			return $elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'expr',
+						$elm$json$Json$Encode$string(s))
+					]));
+	}
 };
-var $gicentre$elm_vegalite$VegaLite$pAggregate = $gicentre$elm_vegalite$VegaLite$PAggregate;
-var $gicentre$elm_vegalite$VegaLite$PAxis = function (a) {
-	return {$: 14, a: a};
+var $gicentre$elm_vegalite$VegaLite$axisConfigProperty = function (axisCfg) {
+	switch (axisCfg.$) {
+		case 40:
+			var ss = axisCfg.a;
+			if (!ss.$) {
+				var xs = ss.a;
+				if (xs.b && (!xs.b.b)) {
+					var s = xs.a;
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'style',
+							$elm$json$Json$Encode$string(s))
+						]);
+				} else {
+					return A2($gicentre$elm_vegalite$VegaLite$strsExpr, 'style', ss);
+				}
+			} else {
+				return A2($gicentre$elm_vegalite$VegaLite$strsExpr, 'style', ss);
+			}
+		case 0:
+			var aps = axisCfg.a;
+			if (!aps.b) {
+				return $gicentre$elm_vegalite$VegaLite$ariaProperty(
+					$gicentre$elm_vegalite$VegaLite$ArAria(
+						$gicentre$elm_vegalite$VegaLite$Boo(false)));
+			} else {
+				return A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$ariaProperty, aps);
+			}
+		case 2:
+			var b = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'disable', b);
+		case 1:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'bandPosition', x);
+		case 3:
+			var b = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'domain', b);
+		case 4:
+			var c = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'domainCap',
+					$gicentre$elm_vegalite$VegaLite$strokeCapSpec(c))
+				]);
+		case 5:
+			var s = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'domainColor', s);
+		case 6:
+			var xs = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numsExpr, 'domainDash', xs);
+		case 7:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'domainDashOffset', x);
+		case 8:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'domainOpacity', x);
+		case 9:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'domainWidth', x);
+		case 37:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'maxExtent', x);
+		case 38:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'minExtent', x);
+		case 39:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'offset', x);
+		case 10:
+			var b = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'grid', b);
+		case 11:
+			var c = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'gridCap',
+					$gicentre$elm_vegalite$VegaLite$strokeCapSpec(c))
+				]);
+		case 12:
+			var s = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'gridColor', s);
+		case 13:
+			var xs = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numsExpr, 'gridDash', xs);
+		case 14:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gridDashOffset', x);
+		case 15:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gridOpacity', x);
+		case 16:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gridWidth', x);
+		case 17:
+			var b = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'labels', b);
+		case 18:
+			var ha = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelAlign',
+					$gicentre$elm_vegalite$VegaLite$hAlignSpec(ha))
+				]);
+		case 19:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelAngle', x);
+		case 20:
+			var va = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelBaseline',
+					$gicentre$elm_vegalite$VegaLite$vAlignSpec(va))
+				]);
+		case 21:
+			var mn = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$maybeNumExpr, 'labelBound', mn);
+		case 24:
+			var s = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'labelColor', s);
+		case 25:
+			var s = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'labelExpr', s);
+		case 22:
+			var n = axisCfg.a;
+			switch (n.$) {
+				case 0:
+					var x = n.a;
+					return (!x) ? _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'labelFlush',
+							$elm$json$Json$Encode$bool(true))
+						]) : A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelFlush', n);
+				case 1:
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'labelFlush',
+							$elm$json$Json$Encode$bool(false))
+						]);
+				default:
+					return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelFlush', n);
+			}
+		case 23:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelFlushOffset', x);
+		case 26:
+			var s = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'labelFont', s);
+		case 28:
+			var s = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'labelFontStyle', s);
+		case 27:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelFontSize', x);
+		case 29:
+			var fw = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelFontWeight',
+					$gicentre$elm_vegalite$VegaLite$fontWeightSpec(fw))
+				]);
+		case 30:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelLimit', x);
+		case 31:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelLineHeight', x);
+		case 32:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelOffset', x);
+		case 33:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelOpacity', x);
+		case 34:
+			var strat = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelOverlap',
+					$gicentre$elm_vegalite$VegaLite$overlapStrategySpec(strat))
+				]);
+		case 35:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelPadding', x);
+		case 36:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelSeparation', x);
+		case 41:
+			var b = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'ticks', b);
+		case 42:
+			var tb = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'tickBand',
+					$gicentre$elm_vegalite$VegaLite$tickBandSpec(tb))
+				]);
+		case 43:
+			var c = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'tickCap',
+					$gicentre$elm_vegalite$VegaLite$strokeCapSpec(c))
+				]);
+		case 44:
+			var s = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'tickColor', s);
+		case 45:
+			var tc = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'tickCount',
+					$gicentre$elm_vegalite$VegaLite$scaleNiceSpec(tc))
+				]);
+		case 46:
+			var xs = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numsExpr, 'tickDash', xs);
+		case 47:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'tickDashOffset', x);
+		case 48:
+			var b = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'tickExtra', b);
+		case 49:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'tickOffset', x);
+		case 50:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'tickOpacity', x);
+		case 53:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'tickMinStep', x);
+		case 51:
+			var b = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'tickRound', b);
+		case 52:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'tickSize', x);
+		case 54:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'tickWidth', x);
+		case 55:
+			var al = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleAlign',
+					$gicentre$elm_vegalite$VegaLite$hAlignSpec(al))
+				]);
+		case 57:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleAngle', x);
+		case 56:
+			var an = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleAnchor',
+					$gicentre$elm_vegalite$VegaLite$anchorSpec(an))
+				]);
+		case 58:
+			var va = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleBaseline',
+					$gicentre$elm_vegalite$VegaLite$vAlignSpec(va))
+				]);
+		case 59:
+			var s = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'titleColor', s);
+		case 60:
+			var s = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'titleFont', s);
+		case 62:
+			var s = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'titleFontStyle', s);
+		case 63:
+			var w = axisCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleFontWeight',
+					$gicentre$elm_vegalite$VegaLite$fontWeightSpec(w))
+				]);
+		case 61:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleFontSize', x);
+		case 64:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleLimit', x);
+		case 65:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleLineHeight', x);
+		case 66:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleOpacity', x);
+		case 67:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titlePadding', x);
+		case 68:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleX', x);
+		case 69:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleY', x);
+		default:
+			var x = axisCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'translate', x);
+	}
 };
-var $gicentre$elm_vegalite$VegaLite$pAxis = $gicentre$elm_vegalite$VegaLite$PAxis;
-var $gicentre$elm_vegalite$VegaLite$PName = function (a) {
-	return {$: 0, a: a};
+var $gicentre$elm_vegalite$VegaLite$axisLabel = function (axChoice) {
+	switch (axChoice) {
+		case 1:
+			return 'axisX';
+		case 2:
+			return 'axisY';
+		default:
+			return 'axis';
+	}
 };
-var $gicentre$elm_vegalite$VegaLite$pName = function (s) {
-	return $gicentre$elm_vegalite$VegaLite$PName(
-		$gicentre$elm_vegalite$VegaLite$Str(s));
-};
-var $gicentre$elm_vegalite$VegaLite$PmType = function (a) {
-	return {$: 7, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$Quantitative = 2;
-var $gicentre$elm_vegalite$VegaLite$pQuant = $gicentre$elm_vegalite$VegaLite$PmType(2);
-var $gicentre$elm_vegalite$VegaLite$Temporal = 3;
-var $gicentre$elm_vegalite$VegaLite$pTemporal = $gicentre$elm_vegalite$VegaLite$PmType(3);
 var $gicentre$elm_vegalite$VegaLite$AxGridColor = function (a) {
 	return {$: 74, a: a};
 };
@@ -9416,47 +9838,6 @@ var $elm$core$List$head = function (list) {
 		return $elm$core$Maybe$Nothing;
 	}
 };
-var $gicentre$elm_vegalite$VegaLite$maybeNumExpr = F2(
-	function (objName, n) {
-		if (!n.$) {
-			var maybeX = n.a;
-			if (!maybeX.$) {
-				var x = maybeX.a;
-				return (x === 1) ? _List_fromArray(
-					[
-						_Utils_Tuple2(
-						objName,
-						$elm$json$Json$Encode$bool(true))
-					]) : _List_fromArray(
-					[
-						_Utils_Tuple2(
-						objName,
-						$elm$json$Json$Encode$float(x))
-					]);
-			} else {
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(
-						objName,
-						$elm$json$Json$Encode$bool(false))
-					]);
-			}
-		} else {
-			var s = n.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					objName,
-					$elm$json$Json$Encode$object(
-						_List_fromArray(
-							[
-								_Utils_Tuple2(
-								'expr',
-								$elm$json$Json$Encode$string(s))
-							])))
-				]);
-		}
-	});
 var $elm$core$Tuple$second = function (_v0) {
 	var y = _v0.b;
 	return y;
@@ -9479,23 +9860,6 @@ var $gicentre$elm_vegalite$VegaLite$sideSpec = function (side) {
 						_Utils_Tuple2(
 						'expr',
 						$elm$json$Json$Encode$string(ex))
-					]));
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$tickBandSpec = function (tb) {
-	switch (tb.$) {
-		case 0:
-			return $elm$json$Json$Encode$string('center');
-		case 1:
-			return $elm$json$Json$Encode$string('extent');
-		default:
-			var s = tb.a;
-			return $elm$json$Json$Encode$object(
-				_List_fromArray(
-					[
-						_Utils_Tuple2(
-						'expr',
-						$elm$json$Json$Encode$string(s))
 					]));
 	}
 };
@@ -10143,6 +10507,2127 @@ var $gicentre$elm_vegalite$VegaLite$axisProperty = function (axisProp) {
 			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleY', n);
 	}
 };
+var $gicentre$elm_vegalite$VegaLite$concatConfigProperty = function (ccp) {
+	if (!ccp.$) {
+		var x = ccp.a;
+		return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'columns', x);
+	} else {
+		var x = ccp.a;
+		return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'spacing', x);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$facetConfigProperty = function (fcp) {
+	if (!fcp.$) {
+		var x = fcp.a;
+		return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'columns', x);
+	} else {
+		var x = fcp.a;
+		return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'spacing', x);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$fieldTitleLabel = function (ftp) {
+	switch (ftp) {
+		case 0:
+			return 'verbal';
+		case 1:
+			return 'functional';
+		default:
+			return 'plain';
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$NoStr = {$: 1};
+var $gicentre$elm_vegalite$VegaLite$headerProperty = function (hProp) {
+	switch (hProp.$) {
+		case 0:
+			var s = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'format', s);
+		case 1:
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'formatType',
+					$elm$json$Json$Encode$string('number'))
+				]);
+		case 2:
+			return A2(
+				$gicentre$elm_vegalite$VegaLite$strExpr,
+				'formatType',
+				$gicentre$elm_vegalite$VegaLite$Str('time'));
+		case 3:
+			var s = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'formatType', s);
+		case 5:
+			var ha = hProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelAlign',
+					$gicentre$elm_vegalite$VegaLite$hAlignSpec(ha))
+				]);
+		case 6:
+			var a = hProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelAnchor',
+					$gicentre$elm_vegalite$VegaLite$anchorSpec(a))
+				]);
+		case 7:
+			var x = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelAngle', x);
+		case 8:
+			var va = hProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelBaseline',
+					$gicentre$elm_vegalite$VegaLite$vAlignSpec(va))
+				]);
+		case 9:
+			var s = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'labelColor', s);
+		case 10:
+			var s = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'labelExpr', s);
+		case 11:
+			var s = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'labelFont', s);
+		case 12:
+			var x = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelFontSize', x);
+		case 13:
+			var s = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'labelFontStyle', s);
+		case 14:
+			var fw = hProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelFontWeight',
+					$gicentre$elm_vegalite$VegaLite$fontWeightSpec(fw))
+				]);
+		case 15:
+			var x = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelLimit', x);
+		case 16:
+			var x = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelLineHeight', x);
+		case 17:
+			var orient = hProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelOrient',
+					$gicentre$elm_vegalite$VegaLite$sideSpec(orient))
+				]);
+		case 18:
+			var x = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelPadding', x);
+		case 19:
+			var b = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'labels', b);
+		case 20:
+			var orient = hProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'orient',
+					$gicentre$elm_vegalite$VegaLite$sideSpec(orient))
+				]);
+		case 4:
+			var ttl = hProp.a;
+			if (!ttl.$) {
+				var s = ttl.a;
+				if (s === '') {
+					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'title', $gicentre$elm_vegalite$VegaLite$NoStr);
+				} else {
+					return A2($gicentre$elm_vegalite$VegaLite$strExprMultiline, 'title', ttl);
+				}
+			} else {
+				return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'title', ttl);
+			}
+		case 22:
+			var a = hProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleAnchor',
+					$gicentre$elm_vegalite$VegaLite$anchorSpec(a))
+				]);
+		case 21:
+			var ha = hProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleAlign',
+					$gicentre$elm_vegalite$VegaLite$hAlignSpec(ha))
+				]);
+		case 23:
+			var x = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleAngle', x);
+		case 24:
+			var va = hProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleBaseline',
+					$gicentre$elm_vegalite$VegaLite$vAlignSpec(va))
+				]);
+		case 25:
+			var s = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'titleColor', s);
+		case 26:
+			var s = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'titleFont', s);
+		case 29:
+			var fw = hProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleFontWeight',
+					$gicentre$elm_vegalite$VegaLite$fontWeightSpec(fw))
+				]);
+		case 27:
+			var x = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleFontSize', x);
+		case 28:
+			var s = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'titleFontStyle', s);
+		case 30:
+			var x = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleLimit', x);
+		case 31:
+			var x = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleLineHeight', x);
+		case 32:
+			var orient = hProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleOrient',
+					$gicentre$elm_vegalite$VegaLite$sideSpec(orient))
+				]);
+		default:
+			var x = hProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titlePadding', x);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$legendConfigProperty = function (legendConfig) {
+	switch (legendConfig.$) {
+		case 0:
+			var aps = legendConfig.a;
+			if (!aps.b) {
+				return $gicentre$elm_vegalite$VegaLite$ariaProperty(
+					$gicentre$elm_vegalite$VegaLite$ArAria(
+						$gicentre$elm_vegalite$VegaLite$Boo(false)));
+			} else {
+				return A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$ariaProperty, aps);
+			}
+		case 1:
+			var b = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'disable', b);
+		case 2:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'clipHeight', x);
+		case 3:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'columnPadding', x);
+		case 34:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'rowPadding', x);
+		case 4:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'columns', x);
+		case 6:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadius', x);
+		case 5:
+			var d = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'direction',
+					$elm$json$Json$Encode$string(
+						$gicentre$elm_vegalite$VegaLite$markOrientationLabel(d)))
+				]);
+		case 7:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fillColor', s);
+		case 32:
+			var orient = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'orient',
+					$gicentre$elm_vegalite$VegaLite$legendOrientSpec(orient))
+				]);
+		case 31:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'offset', x);
+		case 35:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'strokeColor', s);
+		case 36:
+			var xs = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numsExpr, 'strokeDash', xs);
+		case 37:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeWidth', x);
+		case 33:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'padding', x);
+		case 8:
+			var d = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'gradientDirection',
+					$elm$json$Json$Encode$string(
+						$gicentre$elm_vegalite$VegaLite$markOrientationLabel(d)))
+				]);
+		case 16:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gradientHorizontalMaxLength', x);
+		case 17:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gradientHorizontalMinLength', x);
+		case 18:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gradientVerticalMaxLength', x);
+		case 19:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gradientVerticalMinLength', x);
+		case 9:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gradientLabelLimit', x);
+		case 11:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gradientLength', x);
+		case 10:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gradientLabelOffset', x);
+		case 12:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gradientOpacity', x);
+		case 13:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'gradientStrokeColor', s);
+		case 14:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gradientStrokeWidth', x);
+		case 15:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'gradientThickness', x);
+		case 20:
+			var ga = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'gridAlign',
+					$elm$json$Json$Encode$string(
+						$gicentre$elm_vegalite$VegaLite$compositionAlignmentLabel(ga)))
+				]);
+		case 21:
+			var ha = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelAlign',
+					$gicentre$elm_vegalite$VegaLite$hAlignSpec(ha))
+				]);
+		case 22:
+			var va = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelBaseline',
+					$gicentre$elm_vegalite$VegaLite$vAlignSpec(va))
+				]);
+		case 23:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'labelColor', s);
+		case 24:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'labelFont', s);
+		case 25:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelFontSize', x);
+		case 26:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'labelFontStyle', s);
+		case 27:
+			var fw = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelFontWeight',
+					$gicentre$elm_vegalite$VegaLite$fontWeightSpec(fw))
+				]);
+		case 28:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelLimit', x);
+		case 29:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'labelOffset', x);
+		case 30:
+			var lo = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'labelOverlap',
+					$gicentre$elm_vegalite$VegaLite$overlapStrategySpec(lo))
+				]);
+		case 42:
+			var d = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'symbolDirection',
+					$elm$json$Json$Encode$string(
+						$gicentre$elm_vegalite$VegaLite$markOrientationLabel(d)))
+				]);
+		case 44:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'symbolLimit', x);
+		case 43:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'symbolFillColor', s);
+		case 38:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'symbolBaseFillColor', s);
+		case 50:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'symbolStrokeColor', s);
+		case 39:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'symbolBaseStrokeColor', s);
+		case 40:
+			var xs = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numsExpr, 'symbolDash', xs);
+		case 41:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'symbolDashOffset', x);
+		case 45:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'symbolOffset', x);
+		case 46:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'symbolOpacity', x);
+		case 47:
+			var s = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'symbolType',
+					$gicentre$elm_vegalite$VegaLite$symbolSpec(s))
+				]);
+		case 48:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'symbolSize', x);
+		case 49:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'symbolStrokeWidth', x);
+		case 51:
+			return _List_fromArray(
+				[
+					_Utils_Tuple2('title', $elm$json$Json$Encode$null)
+				]);
+		case 52:
+			var ha = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleAlign',
+					$gicentre$elm_vegalite$VegaLite$hAlignSpec(ha))
+				]);
+		case 54:
+			var va = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleBaseline',
+					$gicentre$elm_vegalite$VegaLite$vAlignSpec(va))
+				]);
+		case 53:
+			var an = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleAnchor',
+					$gicentre$elm_vegalite$VegaLite$anchorSpec(an))
+				]);
+		case 55:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'titleColor', s);
+		case 56:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'titleFont', s);
+		case 57:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleFontSize', x);
+		case 58:
+			var s = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'titleFontStyle', s);
+		case 59:
+			var fw = legendConfig.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'titleFontWeight',
+					$gicentre$elm_vegalite$VegaLite$fontWeightSpec(fw))
+				]);
+		case 60:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleLimit', x);
+		case 61:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleLineHeight', x);
+		case 62:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titleOpacity', x);
+		case 63:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'titlePadding', x);
+		case 64:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'unselectedOpacity', x);
+		case 65:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'legendX', x);
+		default:
+			var x = legendConfig.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'legendY', x);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$localeProperty = function (lp) {
+	switch (lp.$) {
+		case 0:
+			var s = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'decimal', s);
+		case 1:
+			var s = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'thousands', s);
+		case 2:
+			var grp = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'grouping', grp);
+		case 3:
+			var ss = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strsExpr, 'currency', ss);
+		case 4:
+			var ss = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strsExpr, 'numerals', ss);
+		case 5:
+			var s = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'percent', s);
+		case 6:
+			var s = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'minus', s);
+		case 7:
+			var s = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'nan', s);
+		case 8:
+			var s = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'dateTime', s);
+		case 9:
+			var s = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'date', s);
+		case 10:
+			var s = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'time', s);
+		case 11:
+			var ps = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strsExpr, 'periods', ps);
+		case 12:
+			var ss = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strsExpr, 'days', ss);
+		case 13:
+			var ss = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strsExpr, 'shortDays', ss);
+		case 14:
+			var ss = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strsExpr, 'months', ss);
+		default:
+			var ss = lp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strsExpr, 'shortMonths', ss);
+	}
+};
+var $elm$core$Tuple$mapBoth = F3(
+	function (funcA, funcB, _v0) {
+		var x = _v0.a;
+		var y = _v0.b;
+		return _Utils_Tuple2(
+			funcA(x),
+			funcB(y));
+	});
+var $elm$core$List$partition = F2(
+	function (pred, list) {
+		var step = F2(
+			function (x, _v0) {
+				var trues = _v0.a;
+				var falses = _v0.b;
+				return pred(x) ? _Utils_Tuple2(
+					A2($elm$core$List$cons, x, trues),
+					falses) : _Utils_Tuple2(
+					trues,
+					A2($elm$core$List$cons, x, falses));
+			});
+		return A3(
+			$elm$core$List$foldr,
+			step,
+			_Utils_Tuple2(_List_Nil, _List_Nil),
+			list);
+	});
+var $gicentre$elm_vegalite$VegaLite$localeProperties = function (lps) {
+	var splitNumDate = function (lp) {
+		switch (lp.$) {
+			case 0:
+				return true;
+			case 1:
+				return true;
+			case 2:
+				return true;
+			case 3:
+				return true;
+			case 4:
+				return true;
+			case 5:
+				return true;
+			case 6:
+				return true;
+			case 7:
+				return true;
+			default:
+				return false;
+		}
+	};
+	return A3(
+		$elm$core$Tuple$mapBoth,
+		$elm$core$List$concatMap($gicentre$elm_vegalite$VegaLite$localeProperty),
+		$elm$core$List$concatMap($gicentre$elm_vegalite$VegaLite$localeProperty),
+		A2($elm$core$List$partition, splitNumDate, lps));
+};
+var $gicentre$elm_vegalite$VegaLite$paddingSpec = function (pad) {
+	switch (pad.$) {
+		case 0:
+			var x = pad.a;
+			switch (x.$) {
+				case 0:
+					var n = x.a;
+					return $elm$json$Json$Encode$float(n);
+				case 1:
+					return $elm$json$Json$Encode$null;
+				default:
+					var s = x.a;
+					return $elm$json$Json$Encode$object(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(
+								'expr',
+								$elm$json$Json$Encode$string(s))
+							]));
+			}
+		case 1:
+			var s = pad.a;
+			if (!s.$) {
+				var ns = s.a;
+				if ((((ns.b && ns.b.b) && ns.b.b.b) && ns.b.b.b.b) && (!ns.b.b.b.b.b)) {
+					var l = ns.a;
+					var _v4 = ns.b;
+					var t = _v4.a;
+					var _v5 = _v4.b;
+					var r = _v5.a;
+					var _v6 = _v5.b;
+					var b = _v6.a;
+					return $elm$json$Json$Encode$object(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(
+								'left',
+								$elm$json$Json$Encode$float(l)),
+								_Utils_Tuple2(
+								'top',
+								$elm$json$Json$Encode$float(t)),
+								_Utils_Tuple2(
+								'right',
+								$elm$json$Json$Encode$float(r)),
+								_Utils_Tuple2(
+								'bottom',
+								$elm$json$Json$Encode$float(b))
+							]));
+				} else {
+					return $elm$json$Json$Encode$null;
+				}
+			} else {
+				var ee = s.a;
+				return $elm$json$Json$Encode$object(
+					_List_fromArray(
+						[
+							_Utils_Tuple2(
+							'expr',
+							$elm$json$Json$Encode$string(ee))
+						]));
+			}
+		default:
+			var s = pad.a;
+			return $elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'expr',
+						$elm$json$Json$Encode$string(s))
+					]));
+	}
+};
+var $elm$core$String$fromFloat = _String_fromNumber;
+var $gicentre$elm_vegalite$VegaLite$numStr = function (n) {
+	switch (n.$) {
+		case 0:
+			var x = n.a;
+			return $elm$core$String$fromFloat(x);
+		case 1:
+			return 'null';
+		default:
+			var s = n.a;
+			return s;
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$projectionSpec = function (proj) {
+	switch (proj.$) {
+		case 0:
+			return $elm$json$Json$Encode$string('albers');
+		case 1:
+			return $elm$json$Json$Encode$string('albersUsa');
+		case 2:
+			return $elm$json$Json$Encode$string('azimuthalEqualArea');
+		case 3:
+			return $elm$json$Json$Encode$string('azimuthalEquidistant');
+		case 4:
+			return $elm$json$Json$Encode$string('conicConformal');
+		case 5:
+			return $elm$json$Json$Encode$string('conicEqualarea');
+		case 6:
+			return $elm$json$Json$Encode$string('conicEquidistant');
+		case 7:
+			var projName = proj.a;
+			return $elm$json$Json$Encode$string(projName);
+		case 9:
+			return $elm$json$Json$Encode$string('equalEarth');
+		case 8:
+			return $elm$json$Json$Encode$string('equirectangular');
+		case 10:
+			return $elm$json$Json$Encode$string('gnomonic');
+		case 11:
+			return $elm$json$Json$Encode$string('identity');
+		case 12:
+			return $elm$json$Json$Encode$string('mercator');
+		case 13:
+			return $elm$json$Json$Encode$string('naturalEarth1');
+		case 14:
+			return $elm$json$Json$Encode$string('orthographic');
+		case 15:
+			return $elm$json$Json$Encode$string('stereographic');
+		case 16:
+			return $elm$json$Json$Encode$string('transverseMercator');
+		default:
+			var s = proj.a;
+			return $elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'expr',
+						$elm$json$Json$Encode$string(s))
+					]));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$projectionProperty = function (pp) {
+	switch (pp.$) {
+		case 0:
+			var proj = pp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'type',
+					$gicentre$elm_vegalite$VegaLite$projectionSpec(proj))
+				]);
+		case 6:
+			var spec = pp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2('fit', spec)
+				]);
+		case 1:
+			var n = pp.a;
+			switch (n.$) {
+				case 0:
+					var x = n.a;
+					return (x > 0) ? A2($gicentre$elm_vegalite$VegaLite$numExpr, 'clipAngle', n) : _List_fromArray(
+						[
+							_Utils_Tuple2('clipAngle', $elm$json$Json$Encode$null)
+						]);
+				case 1:
+					return _List_fromArray(
+						[
+							_Utils_Tuple2('clipAngle', $elm$json$Json$Encode$null)
+						]);
+				default:
+					return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'clipAngle', n);
+			}
+		case 2:
+			var rClip = pp.a;
+			switch (rClip.$) {
+				case 0:
+					return _List_fromArray(
+						[
+							_Utils_Tuple2('clipExtent', $elm$json$Json$Encode$null)
+						]);
+				case 1:
+					var l = rClip.a;
+					var t = rClip.b;
+					var r = rClip.c;
+					var b = rClip.d;
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'clipExtent',
+							A2(
+								$elm$json$Json$Encode$list,
+								$elm$json$Json$Encode$list($elm$json$Json$Encode$float),
+								_List_fromArray(
+									[
+										_List_fromArray(
+										[l, t]),
+										_List_fromArray(
+										[r, b])
+									])))
+						]);
+				default:
+					var l = rClip.a;
+					var t = rClip.b;
+					var r = rClip.c;
+					var b = rClip.d;
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'clipExtent',
+							$elm$json$Json$Encode$object(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										'expr',
+										$elm$json$Json$Encode$string('[[' + (l + (',' + (t + ('],[' + (r + (',' + (b + ']]')))))))))
+									])))
+						]);
+			}
+		case 11:
+			var b = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'reflectX', b);
+		case 12:
+			var b = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'reflectY', b);
+		case 3:
+			var lambda = pp.a;
+			var phi = pp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'center',
+					$elm$json$Json$Encode$object(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(
+								'expr',
+								$elm$json$Json$Encode$string(
+									'[' + ($gicentre$elm_vegalite$VegaLite$numStr(lambda) + (',' + ($gicentre$elm_vegalite$VegaLite$numStr(phi) + ']')))))
+							])))
+				]);
+		case 4:
+			var x = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'scale', x);
+		case 5:
+			var tx = pp.a;
+			var ty = pp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'translate',
+					$elm$json$Json$Encode$object(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(
+								'expr',
+								$elm$json$Json$Encode$string(
+									'[' + ($gicentre$elm_vegalite$VegaLite$numStr(tx) + (',' + ($gicentre$elm_vegalite$VegaLite$numStr(ty) + ']')))))
+							])))
+				]);
+		case 7:
+			var lambda = pp.a;
+			var phi = pp.b;
+			var gamma = pp.c;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'rotate',
+					$elm$json$Json$Encode$object(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(
+								'expr',
+								$elm$json$Json$Encode$string(
+									'[' + ($gicentre$elm_vegalite$VegaLite$numStr(lambda) + (',' + ($gicentre$elm_vegalite$VegaLite$numStr(phi) + (',' + ($gicentre$elm_vegalite$VegaLite$numStr(gamma) + ']')))))))
+							])))
+				]);
+		case 10:
+			var x = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'pointRadius', x);
+		case 8:
+			var x = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'precision', x);
+		case 13:
+			var x = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'coefficient', x);
+		case 14:
+			var x = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'distance', x);
+		case 15:
+			var x = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'fraction', x);
+		case 16:
+			var n = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'lobes', n);
+		case 17:
+			var lat = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'parallel', lat);
+		case 9:
+			var lat1 = pp.a;
+			var lat2 = pp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'parallels',
+					$elm$json$Json$Encode$object(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(
+								'expr',
+								$elm$json$Json$Encode$string(
+									'[' + ($gicentre$elm_vegalite$VegaLite$numStr(lat1) + (',' + ($gicentre$elm_vegalite$VegaLite$numStr(lat2) + ']')))))
+							])))
+				]);
+		case 18:
+			var x = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'radius', x);
+		case 19:
+			var x = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'ratio', x);
+		case 20:
+			var x = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'spacing', x);
+		default:
+			var x = pp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'tilt', x);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$rangeConfigProperty = function (rangeCfg) {
+	switch (rangeCfg.$) {
+		case 0:
+			var clrs = rangeCfg.a;
+			return _Utils_Tuple2(
+				'category',
+				$elm$json$Json$Encode$object(
+					_List_fromArray(
+						[
+							A2($gicentre$elm_vegalite$VegaLite$schemeProperty, clrs, _List_Nil)
+						])));
+		case 1:
+			var clrs = rangeCfg.a;
+			return _Utils_Tuple2(
+				'diverging',
+				$elm$json$Json$Encode$object(
+					_List_fromArray(
+						[
+							A2($gicentre$elm_vegalite$VegaLite$schemeProperty, clrs, _List_Nil)
+						])));
+		case 2:
+			var clrs = rangeCfg.a;
+			return _Utils_Tuple2(
+				'heatmap',
+				$elm$json$Json$Encode$object(
+					_List_fromArray(
+						[
+							A2($gicentre$elm_vegalite$VegaLite$schemeProperty, clrs, _List_Nil)
+						])));
+		case 3:
+			var clrs = rangeCfg.a;
+			return _Utils_Tuple2(
+				'ordinal',
+				$elm$json$Json$Encode$object(
+					_List_fromArray(
+						[
+							A2($gicentre$elm_vegalite$VegaLite$schemeProperty, clrs, _List_Nil)
+						])));
+		case 4:
+			var clrs = rangeCfg.a;
+			return _Utils_Tuple2(
+				'ramp',
+				$elm$json$Json$Encode$object(
+					_List_fromArray(
+						[
+							A2($gicentre$elm_vegalite$VegaLite$schemeProperty, clrs, _List_Nil)
+						])));
+		case 5:
+			var syms = rangeCfg.a;
+			return _Utils_Tuple2(
+				'symbol',
+				A2($elm$json$Json$Encode$list, $gicentre$elm_vegalite$VegaLite$symbolSpec, syms));
+		default:
+			var s = rangeCfg.a;
+			return _Utils_Tuple2(
+				'symbol',
+				$elm$json$Json$Encode$object(
+					_List_fromArray(
+						[
+							_Utils_Tuple2(
+							'signal',
+							$elm$json$Json$Encode$string(s))
+						])));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$scaleConfigProperty = function (scaleCfg) {
+	switch (scaleCfg.$) {
+		case 0:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'bandPaddingInner', x);
+		case 3:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'bandPaddingOuter', x);
+		case 1:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'barBandPaddingInner', x);
+		case 2:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'rectBandPaddingInner', x);
+		case 5:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'continuousPadding', x);
+		case 4:
+			var b = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'clamp', b);
+		case 6:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'maxBandSize', x);
+		case 7:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'minBandSize', x);
+		case 8:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'maxFontSize', x);
+		case 9:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'minFontSize', x);
+		case 10:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'maxOpacity', x);
+		case 11:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'minOpacity', x);
+		case 12:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'maxSize', x);
+		case 13:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'minSize', x);
+		case 14:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'maxStrokeWidth', x);
+		case 15:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'minStrokeWidth', x);
+		case 16:
+			var x = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'pointPadding', x);
+		case 17:
+			var b = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'round', b);
+		case 18:
+			var b = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'useUnaggregatedDomain', b);
+		default:
+			var b = scaleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'xReverse', b);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$selectionLabel = function (seType) {
+	if (!seType) {
+		return 'point';
+	} else {
+		return 'interval';
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$selectionMarkProperty = function (markProp) {
+	switch (markProp.$) {
+		case 0:
+			var ss = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fill', ss);
+		case 1:
+			var x = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'fillOpacity', x);
+		case 2:
+			var s = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'stroke', s);
+		case 3:
+			var x = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeOpacity', x);
+		case 4:
+			var x = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeWidth', x);
+		case 5:
+			var xs = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numsExpr, 'strokeDash', xs);
+		case 6:
+			var x = markProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeDashOffset', x);
+		default:
+			var cur = markProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'cursor',
+					$gicentre$elm_vegalite$VegaLite$cursorSpec(cur))
+				]);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$selectionResolutionLabel = function (res) {
+	switch (res) {
+		case 0:
+			return 'global';
+		case 1:
+			return 'union';
+		default:
+			return 'intersect';
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$togglePredicateSpec = function (tp) {
+	switch (tp.$) {
+		case 0:
+			return $elm$json$Json$Encode$bool(false);
+		case 1:
+			var ex = tp.a;
+			return $elm$json$Json$Encode$string(ex);
+		case 2:
+			return $elm$json$Json$Encode$string('event.shiftKey');
+		case 3:
+			return $elm$json$Json$Encode$string('event.ctrlKey');
+		default:
+			return $elm$json$Json$Encode$string('event.altKey');
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$selectionProperties = function (selProp) {
+	switch (selProp.$) {
+		case 4:
+			var fNames = selProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'fields',
+					A2($elm$json$Json$Encode$list, $elm$json$Json$Encode$string, fNames))
+				]);
+		case 5:
+			var channels = selProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'encodings',
+					A2(
+						$elm$json$Json$Encode$list,
+						A2($elm$core$Basics$composeL, $elm$json$Json$Encode$string, $gicentre$elm_vegalite$VegaLite$channelLabel),
+						channels))
+				]);
+		case 0:
+			var s = selProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'on', s);
+		case 1:
+			var es = selProp.a;
+			switch (es.$) {
+				case 0:
+					var s = es.a;
+					return ($elm$core$String$trim(s) === '') ? _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'clear',
+							$elm$json$Json$Encode$bool(false))
+						]) : _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'clear',
+							$elm$json$Json$Encode$string(
+								$elm$core$String$trim(s)))
+						]);
+				case 1:
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'clear',
+							$elm$json$Json$Encode$bool(false))
+						]);
+				default:
+					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'clear', es);
+			}
+		case 6:
+			var res = selProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'resolve',
+					$elm$json$Json$Encode$string(
+						$gicentre$elm_vegalite$VegaLite$selectionResolutionLabel(res)))
+				]);
+		case 7:
+			var markProps = selProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'mark',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$selectionMarkProperty, markProps)))
+				]);
+		case 8:
+			var b = selProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'nearest', b);
+		case 9:
+			var tp = selProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'toggle',
+					$gicentre$elm_vegalite$VegaLite$togglePredicateSpec(tp))
+				]);
+		case 2:
+			var es = selProp.a;
+			switch (es.$) {
+				case 0:
+					var s = es.a;
+					return ($elm$core$String$trim(s) === '') ? _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'translate',
+							$elm$json$Json$Encode$bool(false))
+						]) : _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'translate',
+							$elm$json$Json$Encode$string(
+								$elm$core$String$trim(s)))
+						]);
+				case 1:
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'translate',
+							$elm$json$Json$Encode$bool(false))
+						]);
+				default:
+					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'translate', es);
+			}
+		default:
+			var es = selProp.a;
+			switch (es.$) {
+				case 0:
+					var s = es.a;
+					return ($elm$core$String$trim(s) === '') ? _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'zoom',
+							$elm$json$Json$Encode$bool(false))
+						]) : _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'zoom',
+							$elm$json$Json$Encode$string(
+								$elm$core$String$trim(s)))
+						]);
+				case 1:
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'zoom',
+							$elm$json$Json$Encode$bool(false))
+						]);
+				default:
+					return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'zoom', es);
+			}
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$tfSpec = function (tf) {
+	switch (tf.$) {
+		case 1:
+			return $elm$json$Json$Encode$string('group');
+		case 0:
+			return $elm$json$Json$Encode$string('bounds');
+		default:
+			var s = tf.a;
+			return $elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'expr',
+						$elm$json$Json$Encode$string(s))
+					]));
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$titleConfigProperty = function (titleCfg) {
+	switch (titleCfg.$) {
+		case 0:
+			var an = titleCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'anchor',
+					$gicentre$elm_vegalite$VegaLite$anchorSpec(an))
+				]);
+		case 1:
+			var n = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'angle', n);
+		case 2:
+			var va = titleCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'baseline',
+					$gicentre$elm_vegalite$VegaLite$vAlignSpec(va))
+				]);
+		case 3:
+			var s = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'color', s);
+		case 4:
+			var n = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'dx', n);
+		case 5:
+			var n = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'dy', n);
+		case 6:
+			var s = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'font', s);
+		case 7:
+			var n = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'fontSize', n);
+		case 8:
+			var s = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fontStyle', s);
+		case 10:
+			var tf = titleCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'frame',
+					$gicentre$elm_vegalite$VegaLite$tfSpec(tf))
+				]);
+		case 9:
+			var w = titleCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'fontWeight',
+					$gicentre$elm_vegalite$VegaLite$fontWeightSpec(w))
+				]);
+		case 12:
+			var n = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'limit', n);
+		case 11:
+			var n = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'lineHeight', n);
+		case 13:
+			var n = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'offset', n);
+		case 14:
+			var sd = titleCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'orient',
+					$gicentre$elm_vegalite$VegaLite$sideSpec(sd))
+				]);
+		case 15:
+			var ss = titleCfg.a;
+			if (ss.b && (!ss.b.b)) {
+				var s = ss.a;
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						'style',
+						$elm$json$Json$Encode$string(s))
+					]);
+			} else {
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						'style',
+						A2($elm$json$Json$Encode$list, $elm$json$Json$Encode$string, ss))
+					]);
+			}
+		case 16:
+			var s = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExprMultiline, 'subtitle', s);
+		case 17:
+			var s = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'subtitleColor', s);
+		case 18:
+			var s = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'subtitleFont', s);
+		case 19:
+			var n = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'subtitleFontSize', n);
+		case 20:
+			var s = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'subtitleFontStyle', s);
+		case 21:
+			var w = titleCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'subtitleFontWeight',
+					$gicentre$elm_vegalite$VegaLite$fontWeightSpec(w))
+				]);
+		case 22:
+			var n = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'subtitleLineHeight', n);
+		case 23:
+			var n = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'subtitlePadding', n);
+		default:
+			var n = titleCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'zindex', n);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$viewBackgroundProperty = function (vb) {
+	switch (vb.$) {
+		case 0:
+			var ss = vb.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strsExpr, 'style', ss);
+		case 1:
+			var n = vb.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadius', n);
+		case 2:
+			var s = vb.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fill', s);
+		case 3:
+			var n = vb.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'fillOpacity', n);
+		case 4:
+			var n = vb.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'opacity', n);
+		case 5:
+			var s = vb.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'stroke', s);
+		case 6:
+			var n = vb.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeOpacity', n);
+		case 8:
+			var cap = vb.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'strokeCap',
+					$gicentre$elm_vegalite$VegaLite$strokeCapSpec(cap))
+				]);
+		case 11:
+			var jn = vb.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'strokeJoin',
+					$gicentre$elm_vegalite$VegaLite$strokeJoinSpec(jn))
+				]);
+		case 7:
+			var n = vb.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeWidth', n);
+		case 9:
+			var ns = vb.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numsExpr, 'strokeDash', ns);
+		case 10:
+			var n = vb.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeDashOffset', n);
+		default:
+			var n = vb.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeMiterLimit', n);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$viewConfigProperties = function (viewCfg) {
+	switch (viewCfg.$) {
+		case 2:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'continuousWidth', x);
+		case 3:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'continuousHeight', x);
+		case 6:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'discreteWidth', x);
+		case 7:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'discreteHeight', x);
+		case 1:
+			var b = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'clip', b);
+		case 4:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'cornerRadius', x);
+		case 5:
+			var cur = viewCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'cursor',
+					$gicentre$elm_vegalite$VegaLite$cursorSpec(cur))
+				]);
+		case 8:
+			var s = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'fill', s);
+		case 9:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'fillOpacity', x);
+		case 10:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'opacity', x);
+		case 11:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'step', x);
+		case 12:
+			var s = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'stroke', s);
+		case 13:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeOpacity', x);
+		case 15:
+			var cap = viewCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'strokeCap',
+					$gicentre$elm_vegalite$VegaLite$strokeCapSpec(cap))
+				]);
+		case 18:
+			var jn = viewCfg.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'strokeJoin',
+					$gicentre$elm_vegalite$VegaLite$strokeJoinSpec(jn))
+				]);
+		case 14:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeWidth', x);
+		case 16:
+			var xs = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numsExpr, 'strokeDash', xs);
+		case 17:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeDashOffset', x);
+		case 19:
+			var x = viewCfg.a;
+			return A2($gicentre$elm_vegalite$VegaLite$numExpr, 'strokeMiterLimit', x);
+		default:
+			var vbs = viewCfg.a;
+			return A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$viewBackgroundProperty, vbs);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$configProperty = function (configProp) {
+	switch (configProp.$) {
+		case 1:
+			var b = configProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'aria', b);
+		case 2:
+			var aus = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'autosize',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$map, $gicentre$elm_vegalite$VegaLite$autosizeProperty, aus)))
+				]);
+		case 14:
+			var s = configProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'background', s);
+		case 18:
+			var s = configProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'countTitle', s);
+		case 24:
+			var lps = configProp.a;
+			var _v1 = $gicentre$elm_vegalite$VegaLite$localeProperties(lps);
+			if (!_v1.a.b) {
+				if (!_v1.b.b) {
+					return _List_fromArray(
+						[
+							_Utils_Tuple2('locale', $elm$json$Json$Encode$null)
+						]);
+				} else {
+					var dtps = _v1.b;
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'locale',
+							$elm$json$Json$Encode$object(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										'time',
+										$elm$json$Json$Encode$object(dtps))
+									])))
+						]);
+				}
+			} else {
+				if (!_v1.b.b) {
+					var nps = _v1.a;
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'locale',
+							$elm$json$Json$Encode$object(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										'number',
+										$elm$json$Json$Encode$object(nps))
+									])))
+						]);
+				} else {
+					var nps = _v1.a;
+					var dtps = _v1.b;
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'locale',
+							$elm$json$Json$Encode$object(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										'number',
+										$elm$json$Json$Encode$object(nps)),
+										_Utils_Tuple2(
+										'time',
+										$elm$json$Json$Encode$object(dtps))
+									])))
+						]);
+				}
+			}
+		case 20:
+			var ftp = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'fieldTitle',
+					$elm$json$Json$Encode$string(
+						$gicentre$elm_vegalite$VegaLite$fieldTitleLabel(ftp)))
+				]);
+		case 30:
+			var s = configProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'normalizedNumberFormat', s);
+		case 31:
+			var s = configProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'normalizedNumberFormatType', s);
+		case 32:
+			var s = configProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'numberFormat', s);
+		case 33:
+			var s = configProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'numberFormatType', s);
+		case 34:
+			var pad = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'padding',
+					$gicentre$elm_vegalite$VegaLite$paddingSpec(pad))
+				]);
+		case 46:
+			var s = configProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'timeFormat', s);
+		case 47:
+			var s = configProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'timeFormatType', s);
+		case 3:
+			var axType = configProp.a;
+			var acs = configProp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					$gicentre$elm_vegalite$VegaLite$axisLabel(axType),
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$axisConfigProperty, acs)))
+				]);
+		case 5:
+			var acs = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'axisLeft',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$axisConfigProperty, acs)))
+				]);
+		case 6:
+			var acs = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'axisRight',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$axisConfigProperty, acs)))
+				]);
+		case 7:
+			var acs = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'axisTop',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$axisConfigProperty, acs)))
+				]);
+		case 8:
+			var acs = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'axisBottom',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$axisConfigProperty, acs)))
+				]);
+		case 9:
+			var axType = configProp.a;
+			var acs = configProp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					$gicentre$elm_vegalite$VegaLite$axisLabel(axType) + 'Band',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$axisConfigProperty, acs)))
+				]);
+		case 10:
+			var axType = configProp.a;
+			var acs = configProp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					$gicentre$elm_vegalite$VegaLite$axisLabel(axType) + 'Discrete',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$axisConfigProperty, acs)))
+				]);
+		case 11:
+			var axType = configProp.a;
+			var acs = configProp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					$gicentre$elm_vegalite$VegaLite$axisLabel(axType) + 'Point',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$axisConfigProperty, acs)))
+				]);
+		case 12:
+			var axType = configProp.a;
+			var acs = configProp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					$gicentre$elm_vegalite$VegaLite$axisLabel(axType) + 'Quantitative',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$axisConfigProperty, acs)))
+				]);
+		case 13:
+			var axType = configProp.a;
+			var acs = configProp.b;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					$gicentre$elm_vegalite$VegaLite$axisLabel(axType) + 'Temporal',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$axisConfigProperty, acs)))
+				]);
+		case 23:
+			var lcs = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'legend',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$legendConfigProperty, lcs)))
+				]);
+		case 21:
+			var s = configProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$strExpr, 'font', s);
+		case 28:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'mark',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 36:
+			var pps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'projection',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$projectionProperty, pps)))
+				]);
+		case 0:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'area',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 15:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'bar',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 16:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'circle',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 26:
+			var fps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'facet',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$facetConfigProperty, fps)))
+				]);
+		case 17:
+			var cps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'concat',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$concatConfigProperty, cps)))
+				]);
+		case 19:
+			var b = configProp.a;
+			return A2($gicentre$elm_vegalite$VegaLite$booExpr, 'customFormatTypes', b);
+		case 22:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'geoshape',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 27:
+			var hps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'header',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$headerProperty, hps)))
+				]);
+		case 25:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'line',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 35:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'point',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 38:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'rect',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 39:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'rule',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 42:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'square',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 43:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'text',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 44:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'tick',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+		case 45:
+			var tcs = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'title',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$titleConfigProperty, tcs)))
+				]);
+		case 29:
+			var styles = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'style',
+					$elm$json$Json$Encode$object(
+						A2(
+							$elm$core$List$map,
+							function (_v2) {
+								var sName = _v2.a;
+								var mps = _v2.b;
+								return _Utils_Tuple2(
+									sName,
+									$elm$json$Json$Encode$object(
+										A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)));
+							},
+							styles)))
+				]);
+		case 4:
+			var styles = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'style',
+					$elm$json$Json$Encode$object(
+						A2(
+							$elm$core$List$map,
+							function (_v3) {
+								var sName = _v3.a;
+								var mps = _v3.b;
+								return _Utils_Tuple2(
+									sName,
+									$elm$json$Json$Encode$object(
+										A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$axisProperty, mps)));
+							},
+							styles)))
+				]);
+		case 40:
+			var scs = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'scale',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$scaleConfigProperty, scs)))
+				]);
+		case 37:
+			var rcs = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'range',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$map, $gicentre$elm_vegalite$VegaLite$rangeConfigProperty, rcs)))
+				]);
+		case 41:
+			var selConfig = configProp.a;
+			var selProp = function (_v4) {
+				var sel = _v4.a;
+				var sps = _v4.b;
+				return _Utils_Tuple2(
+					$gicentre$elm_vegalite$VegaLite$selectionLabel(sel),
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$selectionProperties, sps)));
+			};
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'selection',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$map, selProp, selConfig)))
+				]);
+		case 49:
+			var vcs = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'view',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$viewConfigProperties, vcs)))
+				]);
+		default:
+			var mps = configProp.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'trail',
+					$elm$json$Json$Encode$object(
+						A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$markProperty, mps)))
+				]);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$configuration = function (cfg) {
+	return $elm$core$Basics$append(
+		$gicentre$elm_vegalite$VegaLite$configProperty(cfg));
+};
+var $gicentre$elm_vegalite$VegaLite$VLConfig = 32;
+var $gicentre$elm_vegalite$VegaLite$configure = function (configs) {
+	return _Utils_Tuple2(
+		32,
+		$elm$json$Json$Encode$object(configs));
+};
+var $gicentre$elm_vegalite$VegaLite$VBackground = function (a) {
+	return {$: 0, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$vicoBackground = $gicentre$elm_vegalite$VegaLite$VBackground;
+var $gicentre$elm_vegalite$VegaLite$VContinuousHeight = function (a) {
+	return {$: 3, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$vicoContinuousHeight = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$VContinuousHeight(
+		$gicentre$elm_vegalite$VegaLite$Num(n));
+};
+var $gicentre$elm_vegalite$VegaLite$VContinuousWidth = function (a) {
+	return {$: 2, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$vicoContinuousWidth = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$VContinuousWidth(
+		$gicentre$elm_vegalite$VegaLite$Num(n));
+};
+var $gicentre$elm_vegalite$VegaLite$VBStroke = function (a) {
+	return {$: 5, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$viewStroke = function (ms) {
+	if (!ms.$) {
+		var s = ms.a;
+		return $gicentre$elm_vegalite$VegaLite$VBStroke(
+			$gicentre$elm_vegalite$VegaLite$Str(s));
+	} else {
+		return $gicentre$elm_vegalite$VegaLite$VBStroke($gicentre$elm_vegalite$VegaLite$NoStr);
+	}
+};
+var $author$project$Specs$SpecConfig$mbbsVizConfig = A2(
+	$elm$core$Basics$composeL,
+	A2(
+		$elm$core$Basics$composeL,
+		A2(
+			$elm$core$Basics$composeL,
+			A2(
+				$elm$core$Basics$composeL,
+				$gicentre$elm_vegalite$VegaLite$configure,
+				$gicentre$elm_vegalite$VegaLite$configuration(
+					$gicentre$elm_vegalite$VegaLite$coView(
+						_List_fromArray(
+							[
+								$gicentre$elm_vegalite$VegaLite$vicoBackground(
+								_List_fromArray(
+									[
+										$gicentre$elm_vegalite$VegaLite$viewStroke($elm$core$Maybe$Nothing)
+									])),
+								$gicentre$elm_vegalite$VegaLite$vicoContinuousHeight(450),
+								$gicentre$elm_vegalite$VegaLite$vicoContinuousWidth(600)
+							])))),
+			$gicentre$elm_vegalite$VegaLite$configuration(
+				$gicentre$elm_vegalite$VegaLite$coAutosize(
+					_List_fromArray(
+						[$gicentre$elm_vegalite$VegaLite$asFit, $gicentre$elm_vegalite$VegaLite$asPadding, $gicentre$elm_vegalite$VegaLite$asResize])))),
+		$gicentre$elm_vegalite$VegaLite$configuration(
+			$gicentre$elm_vegalite$VegaLite$coAxisLeft(
+				_List_fromArray(
+					[
+						$gicentre$elm_vegalite$VegaLite$axcoLabelFontSize(12),
+						$gicentre$elm_vegalite$VegaLite$axcoTitleFontSize(18)
+					])))),
+	$gicentre$elm_vegalite$VegaLite$configuration(
+		$gicentre$elm_vegalite$VegaLite$coAxisBottom(
+			_List_fromArray(
+				[
+					$gicentre$elm_vegalite$VegaLite$axcoLabelFontSize(12),
+					$gicentre$elm_vegalite$VegaLite$axcoTitleFontSize(18)
+				]))));
+var $gicentre$elm_vegalite$VegaLite$NTickCount = function (a) {
+	return {$: 11, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$niTickCount = $gicentre$elm_vegalite$VegaLite$NTickCount;
+var $gicentre$elm_vegalite$VegaLite$opAs = F3(
+	function (op, field, label) {
+		return $elm$json$Json$Encode$object(
+			_List_fromArray(
+				[
+					_Utils_Tuple2(
+					'op',
+					$gicentre$elm_vegalite$VegaLite$operationSpec(op)),
+					_Utils_Tuple2(
+					'field',
+					$elm$json$Json$Encode$string(field)),
+					_Utils_Tuple2(
+					'as',
+					$elm$json$Json$Encode$string(label))
+				]));
+	});
+var $gicentre$elm_vegalite$VegaLite$Distinct = {$: 5};
+var $gicentre$elm_vegalite$VegaLite$opDistinct = $gicentre$elm_vegalite$VegaLite$Distinct;
+var $gicentre$elm_vegalite$VegaLite$Mean = {$: 7};
+var $gicentre$elm_vegalite$VegaLite$opMean = $gicentre$elm_vegalite$VegaLite$Mean;
+var $gicentre$elm_vegalite$VegaLite$Sum = {$: 17};
+var $gicentre$elm_vegalite$VegaLite$opSum = $gicentre$elm_vegalite$VegaLite$Sum;
+var $gicentre$elm_vegalite$VegaLite$PAggregate = function (a) {
+	return {$: 12, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$pAggregate = $gicentre$elm_vegalite$VegaLite$PAggregate;
+var $gicentre$elm_vegalite$VegaLite$PAxis = function (a) {
+	return {$: 14, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$pAxis = $gicentre$elm_vegalite$VegaLite$PAxis;
+var $gicentre$elm_vegalite$VegaLite$PName = function (a) {
+	return {$: 0, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$pName = function (s) {
+	return $gicentre$elm_vegalite$VegaLite$PName(
+		$gicentre$elm_vegalite$VegaLite$Str(s));
+};
+var $gicentre$elm_vegalite$VegaLite$PmType = function (a) {
+	return {$: 7, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$Quantitative = 2;
+var $gicentre$elm_vegalite$VegaLite$pQuant = $gicentre$elm_vegalite$VegaLite$PmType(2);
+var $gicentre$elm_vegalite$VegaLite$Temporal = 3;
+var $gicentre$elm_vegalite$VegaLite$pTemporal = $gicentre$elm_vegalite$VegaLite$PmType(3);
 var $gicentre$elm_vegalite$VegaLite$imMethodLabel = function (method) {
 	switch (method) {
 		case 0:
@@ -10763,12 +13248,6 @@ var $gicentre$elm_vegalite$VegaLite$transform = function (transforms) {
 		16,
 		A2($elm$json$Json$Encode$list, assemble, transforms));
 };
-var $gicentre$elm_vegalite$VegaLite$VLWidth = 4;
-var $gicentre$elm_vegalite$VegaLite$width = function (w) {
-	return _Utils_Tuple2(
-		4,
-		$elm$json$Json$Encode$float(w));
-};
 var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 	function (countData, traitData, trait, countyFilter) {
 		var withCountyFilter = F3(
@@ -10877,7 +13356,10 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 									$gicentre$elm_vegalite$VegaLite$pAxis(
 									_List_fromArray(
 										[
-											$gicentre$elm_vegalite$VegaLite$axTitle('')
+											$gicentre$elm_vegalite$VegaLite$axTitle(''),
+											$gicentre$elm_vegalite$VegaLite$axGrid(false),
+											$gicentre$elm_vegalite$VegaLite$axTickCount(
+											$gicentre$elm_vegalite$VegaLite$niTickCount(5))
 										]))
 								]))),
 					A2(
@@ -10891,7 +13373,8 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 								$gicentre$elm_vegalite$VegaLite$pAxis(
 								_List_fromArray(
 									[
-										$gicentre$elm_vegalite$VegaLite$axTitle('Average Count per Route')
+										$gicentre$elm_vegalite$VegaLite$axTitle('Average Count per Route'),
+										$gicentre$elm_vegalite$VegaLite$axGrid(false)
 									]))
 							]))),
 				$gicentre$elm_vegalite$VegaLite$color(
@@ -10939,8 +13422,7 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 			_List_fromArray(
 				[
 					countData,
-					$gicentre$elm_vegalite$VegaLite$width(500),
-					$gicentre$elm_vegalite$VegaLite$height(400),
+					$author$project$Specs$SpecConfig$mbbsVizConfig(_List_Nil),
 					enc(_List_Nil),
 					$gicentre$elm_vegalite$VegaLite$layer(
 					_List_fromArray(
@@ -12221,7 +14703,6 @@ var $elm$core$List$filterMap = F2(
 			_List_Nil,
 			xs);
 	});
-var $elm$core$String$fromFloat = _String_fromNumber;
 var $mdgriffith$elm_ui$Internal$Model$formatColor = function (_v0) {
 	var red = _v0.a;
 	var green = _v0.b;
