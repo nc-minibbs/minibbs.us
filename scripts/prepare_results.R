@@ -1,6 +1,6 @@
 #------------------------------------------------------------------------------#
 #  Prepare data for MBBS site
-# 
+#
 #------------------------------------------------------------------------------#
 
 library(mbbs)
@@ -90,6 +90,14 @@ pre_dt <-
     mbbs_orange,
     mbbs_chatham,
     mbbs_durham
+  ) %>%
+  # HARD CODED REMOVALS
+  filter(
+    # Remove Orange route 11 from 2012
+    # due to uncharacteristically high counts
+    # from a one-time observer
+    !(year == 2012 & mbbs_county == "orange" & route_num == 11)
+
   ) %>%
   ungroup() %>%
   # Remove any observations for unclassified species,
@@ -244,7 +252,13 @@ mbbs_results <-
 #------------------------------------------------------------------------------#
 # Write data ####
 
-mbbs_results
+mbbs_results %>%
+  select(common_name, sci_name, data) %>%
+  tidyr::unnest(cols = data) %>%
+  write.csv(
+    file = "data/mbbs.csv",
+    row.names = FALSE
+  )
 
 
 # Write data for site
@@ -264,8 +278,4 @@ mbbs_results
 #   mbbs_results %>%
 #   select(common_name, sci_name, data)
 
-# write.csv(
-#   dt,
-#   file = "data/mbbs.csv",
-#   row.names = FALSE
-# )
+
