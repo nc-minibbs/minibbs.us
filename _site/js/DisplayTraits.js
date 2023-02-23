@@ -19361,6 +19361,8 @@ var $mdgriffith$elm_ui$Element$layoutWith = F3(
 	});
 var $mdgriffith$elm_ui$Element$layout = $mdgriffith$elm_ui$Element$layoutWith(
 	{gu: _List_Nil});
+var $mdgriffith$elm_ui$Internal$Model$Empty = {$: 3};
+var $mdgriffith$elm_ui$Element$none = $mdgriffith$elm_ui$Internal$Model$Empty;
 var $mdgriffith$elm_ui$Element$Input$Option = F2(
 	function (a, b) {
 		return {$: 0, a: a, b: b};
@@ -19396,8 +19398,6 @@ var $mdgriffith$elm_ui$Internal$Model$Fill = function (a) {
 	return {$: 2, a: a};
 };
 var $mdgriffith$elm_ui$Element$fill = $mdgriffith$elm_ui$Internal$Model$Fill(1);
-var $mdgriffith$elm_ui$Internal$Model$Empty = {$: 3};
-var $mdgriffith$elm_ui$Element$none = $mdgriffith$elm_ui$Internal$Model$Empty;
 var $mdgriffith$elm_ui$Internal$Model$Px = function (a) {
 	return {$: 0, a: a};
 };
@@ -20025,7 +20025,10 @@ var $author$project$DisplayTraits$view = function (m) {
 	var traitRadio = function (model) {
 		return A2(
 			$mdgriffith$elm_ui$Element$Input$radioRow,
-			_List_Nil,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$spacing(10)
+				]),
 			{
 				ge: A2(
 					$mdgriffith$elm_ui$Element$Input$labelLeft,
@@ -20053,7 +20056,10 @@ var $author$project$DisplayTraits$view = function (m) {
 	var countyFilter = function (model) {
 		return A2(
 			$mdgriffith$elm_ui$Element$Input$radioRow,
-			_List_Nil,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$spacing(10)
+				]),
 			{
 				ge: A2(
 					$mdgriffith$elm_ui$Element$Input$labelLeft,
@@ -20087,7 +20093,10 @@ var $author$project$DisplayTraits$view = function (m) {
 		_List_Nil,
 		A2(
 			$mdgriffith$elm_ui$Element$column,
-			_List_Nil,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$spacing(10)
+				]),
 			_List_fromArray(
 				[
 					A2(
@@ -20105,7 +20114,7 @@ var $author$project$DisplayTraits$view = function (m) {
 							$mdgriffith$elm_ui$Element$htmlAttribute(
 							$elm$html$Html$Attributes$id('vegaViz'))
 						]),
-					$mdgriffith$elm_ui$Element$text(''))
+					$mdgriffith$elm_ui$Element$none)
 				])));
 };
 var $author$project$DisplayTraits$main = $elm$browser$Browser$element(

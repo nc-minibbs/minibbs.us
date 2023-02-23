@@ -14864,19 +14864,32 @@ var $author$project$DisplayIndividualSpecies$update = F3(
 				var selectState = _v1.b;
 				var cmds = _v1.c;
 				var specMsg = function () {
-					if ((!maybeAction.$) && (maybeAction.a.$ === 1)) {
-						var i = maybeAction.a.a;
-						var _v7 = $author$project$Data$Species$stringToSpecies(i);
-						if (_v7.$ === 1) {
-							return $elm$core$Platform$Cmd$none;
+					_v6$2:
+					while (true) {
+						if (!maybeAction.$) {
+							switch (maybeAction.a.$) {
+								case 1:
+									var i = maybeAction.a.a;
+									var _v7 = $author$project$Data$Species$stringToSpecies(i);
+									if (_v7.$ === 1) {
+										return $elm$core$Platform$Cmd$none;
+									} else {
+										var s = _v7.a;
+										return toPort(
+											A3($author$project$DisplayIndividualSpecies$mkSpecs, model.b6, model.bN, s));
+									}
+								case 4:
+									var _v8 = maybeAction.a;
+									return toPort(
+										$elm$json$Json$Encode$object(_List_Nil));
+								default:
+									break _v6$2;
+							}
 						} else {
-							var s = _v7.a;
-							return toPort(
-								A3($author$project$DisplayIndividualSpecies$mkSpecs, model.b6, model.bN, s));
+							break _v6$2;
 						}
-					} else {
-						return $elm$core$Platform$Cmd$none;
 					}
+					return $elm$core$Platform$Cmd$none;
 				}();
 				var updateSelectedItem = function () {
 					_v4$3:
@@ -14938,11 +14951,11 @@ var $author$project$DisplayIndividualSpecies$update = F3(
 						model,
 						{bN: opt}),
 					function () {
-						var _v8 = model.b8;
-						if (_v8.$ === 1) {
+						var _v9 = model.b8;
+						if (_v9.$ === 1) {
 							return $elm$core$Platform$Cmd$none;
 						} else {
-							var s = _v8.a;
+							var s = _v9.a;
 							return toPort(
 								A3($author$project$DisplayIndividualSpecies$mkSpecs, model.b6, opt, s));
 						}
@@ -14954,11 +14967,11 @@ var $author$project$DisplayIndividualSpecies$update = F3(
 						model,
 						{b6: opt}),
 					function () {
-						var _v9 = model.b8;
-						if (_v9.$ === 1) {
+						var _v10 = model.b8;
+						if (_v10.$ === 1) {
 							return $elm$core$Platform$Cmd$none;
 						} else {
-							var s = _v9.a;
+							var s = _v10.a;
 							return toPort(
 								A3($author$project$DisplayIndividualSpecies$mkSpecs, opt, model.bN, s));
 						}
@@ -20527,6 +20540,8 @@ var $mdgriffith$elm_ui$Element$Input$Label = F3(
 	});
 var $mdgriffith$elm_ui$Element$Input$OnLeft = 1;
 var $mdgriffith$elm_ui$Element$Input$labelLeft = $mdgriffith$elm_ui$Element$Input$Label(1);
+var $mdgriffith$elm_ui$Internal$Model$Empty = {$: 3};
+var $mdgriffith$elm_ui$Element$none = $mdgriffith$elm_ui$Internal$Model$Empty;
 var $mdgriffith$elm_ui$Element$Input$Option = F2(
 	function (a, b) {
 		return {$: 0, a: a, b: b};
@@ -20595,8 +20610,6 @@ var $mdgriffith$elm_ui$Internal$Model$Fill = function (a) {
 	return {$: 2, a: a};
 };
 var $mdgriffith$elm_ui$Element$fill = $mdgriffith$elm_ui$Internal$Model$Fill(1);
-var $mdgriffith$elm_ui$Internal$Model$Empty = {$: 3};
-var $mdgriffith$elm_ui$Element$none = $mdgriffith$elm_ui$Internal$Model$Empty;
 var $mdgriffith$elm_ui$Internal$Model$Px = function (a) {
 	return {$: 0, a: a};
 };
@@ -21227,23 +21240,23 @@ var $mdgriffith$elm_ui$Element$text = function (content) {
 var $author$project$DisplayIndividualSpecies$countyRadio = function (model) {
 	return A2(
 		$mdgriffith$elm_ui$Element$Input$radioRow,
-		_List_Nil,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$spacing(10)
+			]),
 		{
-			dI: A2(
-				$mdgriffith$elm_ui$Element$Input$labelLeft,
-				_List_Nil,
-				$mdgriffith$elm_ui$Element$text('Counties:')),
+			dI: A2($mdgriffith$elm_ui$Element$Input$labelLeft, _List_Nil, $mdgriffith$elm_ui$Element$none),
 			gu: $author$project$DisplayIndividualSpecies$SelectCountyAggregation,
 			iW: _List_fromArray(
 				[
 					A2(
 					$mdgriffith$elm_ui$Element$Input$option,
 					0,
-					$mdgriffith$elm_ui$Element$text('Combined')),
+					$mdgriffith$elm_ui$Element$text('All counties combined')),
 					A2(
 					$mdgriffith$elm_ui$Element$Input$option,
 					1,
-					$mdgriffith$elm_ui$Element$text('Split'))
+					$mdgriffith$elm_ui$Element$text('By county'))
 				]),
 			jc: $elm$core$Maybe$Just(model.bN)
 		});
@@ -21912,7 +21925,10 @@ var $mdgriffith$elm_ui$Element$Input$defaultCheckbox = function (checked) {
 var $author$project$DisplayIndividualSpecies$routeDetailCheckbox = function (model) {
 	return A2(
 		$mdgriffith$elm_ui$Element$Input$checkbox,
-		_List_Nil,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$spacing(10)
+			]),
 		{
 			hH: function () {
 				var _v0 = model.b6;
@@ -21926,7 +21942,7 @@ var $author$project$DisplayIndividualSpecies$routeDetailCheckbox = function (mod
 			dI: A2(
 				$mdgriffith$elm_ui$Element$Input$labelLeft,
 				_List_Nil,
-				$mdgriffith$elm_ui$Element$text('Show route detail: ')),
+				$mdgriffith$elm_ui$Element$text('Show individual routes')),
 			gu: function (x) {
 				return x ? $author$project$DisplayIndividualSpecies$ToggleRouteDetail(0) : $author$project$DisplayIndividualSpecies$ToggleRouteDetail(1);
 			}
@@ -29770,12 +29786,18 @@ var $author$project$DisplayIndividualSpecies$view = function (m) {
 		_List_Nil,
 		A2(
 			$mdgriffith$elm_ui$Element$column,
-			_List_Nil,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$spacing(10)
+				]),
 			_List_fromArray(
 				[
 					A2(
 					$mdgriffith$elm_ui$Element$el,
-					_List_Nil,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+						]),
 					$mdgriffith$elm_ui$Element$html(
 						$rtfeldman$elm_css$Html$Styled$toUnstyled(
 							A2(
@@ -29790,7 +29812,7 @@ var $author$project$DisplayIndividualSpecies$view = function (m) {
 											true,
 											A2(
 												$Confidenceman02$elm_select$Select$placeholder,
-												'Select a species',
+												'Select species',
 												A2(
 													$Confidenceman02$elm_select$Select$menuItems,
 													m.eN,
