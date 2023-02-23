@@ -1,22 +1,27 @@
-module Specs.TrendByTrait exposing (mkTrendByTraitSpec, CountyFilter(..))
+module Specs.TrendByTrait exposing (CountyFilter(..), mkTrendByTraitSpec)
 
-import Data.County exposing ( County )
+import Data.County exposing (County, countyToString)
 import Data.Traits exposing (Trait, traitToString)
+import Specs.SpecConfig exposing (..)
 import String exposing (replace)
 import VegaLite exposing (..)
-import Data.County exposing (countyToString)
-import Specs.SpecConfig exposing (..)
 
-type CountyFilter =
-      NoCountyFilter
+
+type CountyFilter
+    = NoCountyFilter
     | FilterCounty County
+
 
 mkTrendByTraitSpec : Data -> Data -> Trait -> CountyFilter -> Spec
 mkTrendByTraitSpec countData traitData trait countyFilter =
-    let 
-        withCountyFilter noFilter yesFilter x = case countyFilter of 
-            NoCountyFilter -> noFilter x 
-            FilterCounty c -> yesFilter c x
+    let
+        withCountyFilter noFilter yesFilter x =
+            case countyFilter of
+                NoCountyFilter ->
+                    noFilter x
+
+                FilterCounty c ->
+                    yesFilter c x
 
         {-
            Define the primary layer's encoding
@@ -26,18 +31,20 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                 << position X
                     [ pName "year"
                     , pTemporal
-                    , pAxis [ axTitle "" 
-                            , axGrid False
-                            , axTickCount (niTickCount 5)
-                            ]
+                    , pAxis
+                        [ axTitle ""
+                        , axGrid False
+                        , axTickCount (niTickCount 5)
+                        ]
                     ]
                 << position Y
                     [ pName "yBar"
                     , pQuant
                     , pAggregate opMean
-                    , pAxis [ axTitle "Average Count per Route"
-                            , axGrid False
-                            ]
+                    , pAxis
+                        [ axTitle "Average Count per Route"
+                        , axGrid False
+                        ]
                     ]
                 << color
                     [ mName "group"
@@ -71,10 +78,11 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                     "english_common_name"
                     (luFieldsAs [ ( traitToString trait, "group" ) ])
                 -- Filter based on the selected county
-                << withCountyFilter 
+                << withCountyFilter
                     (\x -> x)
-                    (\county x -> 
-                        filter (fiEqual "mbbs_county" (str (countyToString county)) ) x)
+                    (\county x ->
+                        filter (fiEqual "mbbs_county" (str (countyToString county))) x
+                    )
                 -- Compute counts per species within each route/year
                 -- This and the next sum could combined,
                 -- but kept for clarity of the data summarizing steps.

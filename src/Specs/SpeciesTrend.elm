@@ -2,8 +2,8 @@ module Specs.SpeciesTrend exposing (..)
 
 import Data.County exposing (..)
 import Data.Species exposing (..)
-import VegaLite exposing (..)
 import Specs.SpecConfig exposing (..)
+import VegaLite exposing (..)
 
 
 type RouteDetail
@@ -87,12 +87,13 @@ mkSpeciesTrendSpec countData routeDetail counties species =
                 << position Y
                     [ pName "speciesCount"
                     , pAggregate opMean
-                    , pAxis 
+                    , pAxis
                         -- Update y-axis title if route detail is hidden
-                        (withRouteDetail 
-                        (\x -> x)
-                        ( (++) [ axTitle "Average Count" ])
-                              ([ axGrid False] ))
+                        (withRouteDetail
+                            (\x -> x)
+                            ((++) [ axTitle "Average Count" ])
+                            [ axGrid False ]
+                        )
                     ]
                 << withCountyAggregation
                     (\x -> x)
@@ -191,7 +192,7 @@ mkSpeciesTrendSpec countData routeDetail counties species =
             ]
     in
     toVegaLite
-        [ countData 
+        [ countData
         , mbbsVizConfig []
         , title (speciesToString species) []
         , trans []

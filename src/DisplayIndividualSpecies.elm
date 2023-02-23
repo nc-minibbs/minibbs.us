@@ -1,7 +1,6 @@
 port module DisplayIndividualSpecies exposing (..)
 
 import Browser
-import Css
 import Data.County exposing (County(..), CountyAggregation(..))
 import Data.Mbbs exposing (mbbsData)
 import Data.Species exposing (..)
@@ -214,8 +213,7 @@ view m =
                     Nothing
     in
     Styled.div
-        [
-        ]
+        []
         [ Styled.map SelectSpecies <|
             Select.view
                 (Select.single selectedItem

@@ -8,7 +8,7 @@ import Element exposing (..)
 import Element.Input as Input
 import Html exposing (..)
 import Html.Attributes as Attr
-import Specs.TrendByTrait exposing (mkTrendByTraitSpec, CountyFilter(..))
+import Specs.TrendByTrait exposing (CountyFilter(..), mkTrendByTraitSpec)
 import VegaLite exposing (..)
 
 
@@ -33,7 +33,7 @@ trendByTraitSpec =
         traitsData
 
 
-specs : Trait -> CountyFilter ->  Spec
+specs : Trait -> CountyFilter -> Spec
 specs trait =
     trendByTraitSpec trait
 
@@ -62,7 +62,7 @@ initSpec =
 
 type Msg
     = SelectTrait Trait
-     | SelectCountyFilter CountyFilter
+    | SelectCountyFilter CountyFilter
 
 
 update : (Spec -> Cmd Msg) -> Msg -> Model -> ( Model, Cmd Msg )
@@ -72,11 +72,11 @@ update toPort msg model =
             ( { model | selectedTrait = opt }
             , toPort (specs opt model.selectedCountyFilter)
             )
+
         SelectCountyFilter opt ->
             ( { model | selectedCountyFilter = opt }
             , toPort (specs model.selectedTrait opt)
             )
-
 
 
 view : Model -> Html Msg
@@ -84,17 +84,18 @@ view m =
     let
         traitRadio model =
             Input.radioRow
-            []
-            { onChange = SelectTrait
-            , selected = Just model.selectedTrait
-            , label = Input.labelLeft [] <| Element.text "Trait: "
-            , options =
-                [ Input.option WinterBiome <| Element.text "Winter Biome"
-                , Input.option BreedingBiome <| Element.text "Breeding Biome"
-                , Input.option Diet5Cat <| Element.text "Diet"
-                ]
-            }
-        countyFilter model = 
+                []
+                { onChange = SelectTrait
+                , selected = Just model.selectedTrait
+                , label = Input.labelLeft [] <| Element.text "Trait: "
+                , options =
+                    [ Input.option WinterBiome <| Element.text "Winter Biome"
+                    , Input.option BreedingBiome <| Element.text "Breeding Biome"
+                    , Input.option Diet5Cat <| Element.text "Diet"
+                    ]
+                }
+
+        countyFilter model =
             Input.radioRow
                 []
                 { onChange = SelectCountyFilter
@@ -105,17 +106,15 @@ view m =
                     , Input.option (FilterCounty Chatham) <| Element.text "Chatham"
                     , Input.option (FilterCounty Durham) <| Element.text "Durham"
                     , Input.option (FilterCounty Orange) <| Element.text "Orange"
-
                     ]
                 }
-                    
     in
-    layout [] <| 
-        Element.column [] 
-            [ el [] ( traitRadio m )
-            , el [] ( countyFilter m )
-            , el [htmlAttribute (Attr.id "vegaViz")] (Element.text "") 
-            ] 
+    layout [] <|
+        Element.column []
+            [ el [] (traitRadio m)
+            , el [] (countyFilter m)
+            , el [ htmlAttribute (Attr.id "vegaViz") ] (Element.text "")
+            ]
 
 
 port vegaPort : Spec -> Cmd msg
