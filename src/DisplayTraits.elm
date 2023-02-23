@@ -1,14 +1,13 @@
 port module DisplayTraits exposing (..)
 
 import Browser
-import Css
 import Data.County exposing (County(..))
 import Data.Mbbs exposing (mbbsData)
 import Data.Traits exposing (Trait(..), traitsData)
-import Element
+import Element exposing (..)
 import Element.Input as Input
-import Html.Styled as Styled
-import Html.Styled.Attributes as StyledAttribs
+import Html exposing (..)
+import Html.Attributes as Attr
 import Specs.TrendByTrait exposing (mkTrendByTraitSpec, CountyFilter(..))
 import VegaLite exposing (..)
 
@@ -21,7 +20,7 @@ main =
                 ( init
                 , vegaPort initSpec
                 )
-        , view = view >> Styled.toUnstyled
+        , view = view -- >> Styled.toUnstyled
         , update = update vegaPort
         , subscriptions = \_ -> Sub.none
         }
@@ -79,60 +78,44 @@ update toPort msg model =
             )
 
 
-view : Model -> Styled.Html Msg
+
+view : Model -> Html Msg
 view m =
     let
         traitRadio model =
-            Element.layout [] <|
-                Element.column []
-                    [ Input.radioRow
-                        []
-                        { onChange = SelectTrait
-                        , selected = Just model.selectedTrait
-                        , label = Input.labelLeft [] <| Element.text "Trait: "
-                        , options =
-                            [ Input.option WinterBiome <| Element.text "Winter Biome"
-                            , Input.option BreedingBiome <| Element.text "Breeding Biome"
-                            , Input.option Diet5Cat <| Element.text "Diet"
-                            ]
-                        }
-                    ]
+            Input.radioRow
+            []
+            { onChange = SelectTrait
+            , selected = Just model.selectedTrait
+            , label = Input.labelLeft [] <| Element.text "Trait: "
+            , options =
+                [ Input.option WinterBiome <| Element.text "Winter Biome"
+                , Input.option BreedingBiome <| Element.text "Breeding Biome"
+                , Input.option Diet5Cat <| Element.text "Diet"
+                ]
+            }
         countyFilter model = 
-            Element.layout [] <|
-                Element.column []
-                    [ Input.radioRow
-                        []
-                        { onChange = SelectCountyFilter
-                        , selected = Just model.selectedCountyFilter
-                        , label = Input.labelLeft [] <| Element.text "Counties: "
-                        , options =
-                            [ Input.option NoCountyFilter <| Element.text "All"
-                            , Input.option (FilterCounty Chatham) <| Element.text "Chatham"
-                            , Input.option (FilterCounty Durham) <| Element.text "Durham"
-                            , Input.option (FilterCounty Orange) <| Element.text "Orange"
+            Input.radioRow
+                []
+                { onChange = SelectCountyFilter
+                , selected = Just model.selectedCountyFilter
+                , label = Input.labelLeft [] <| Element.text "Counties: "
+                , options =
+                    [ Input.option NoCountyFilter <| Element.text "All"
+                    , Input.option (FilterCounty Chatham) <| Element.text "Chatham"
+                    , Input.option (FilterCounty Durham) <| Element.text "Durham"
+                    , Input.option (FilterCounty Orange) <| Element.text "Orange"
 
-                            ]
-                        }
                     ]
+                }
+                    
     in
-    Styled.div
-        [ StyledAttribs.css
-            [ Css.marginTop (Css.px 20)
-            , Css.width (Css.pct 50)
-            , Css.marginLeft Css.auto
-            , Css.marginRight Css.auto
-            ]
-        ]
-        [ Styled.div
-            []
-            [ Styled.fromUnstyled (traitRadio m) ]
-        , Styled.div
-            []
-            [ Styled.fromUnstyled (countyFilter m) ]
-        , Styled.div
-            [ StyledAttribs.id "vegaViz" ]
-            []
-        ]
+    layout [] <| 
+        Element.column [] 
+            [ el [] ( traitRadio m )
+            , el [] ( countyFilter m )
+            , el [htmlAttribute (Attr.id "vegaViz")] (Element.text "") 
+            ] 
 
 
 port vegaPort : Spec -> Cmd msg
