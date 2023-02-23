@@ -105,7 +105,6 @@
                     --output=$out/${page}.html \
                     --template=${SRC}/template.html \
                     --include-before-body=${SRC}/navbar.html \
-                    --css=/css/style.css \
                     --css=/css/bootstrap.min.css \
                     --standalone
                  '') pages ) 
