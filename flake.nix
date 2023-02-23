@@ -31,7 +31,7 @@
           # The elm bits were hacked from the code that
           #  elm2nix init produces
 
-          # elm2nix snapshot
+          # See adding-an-elm-package in README
           site = pkgs.stdenv.mkDerivation {
             name = "site";
             src = gitignoreSource ./.;

@@ -7,6 +7,25 @@ is in the `content` directory.
 The published version of the site is in the `_site` directory;
 you should not need to edit files in this directory.
 
+### Adding an Elm package
+
+Install a new [Elm package](https://package.elm-lang.org/) as usual:
+
+```sh
+elm install some-package
+```
+
+Then, since this project uses `nix` to manage dependencies,
+run the following:
+
+```sh
+elm2nix convert > elm-srcs.nix # creates nix derivation from elm.json
+elm2nix snapshot # updates registry.dat
+```
+
+See [`elm2nix` documentation](https://github.com/cachix/elm2nix)
+for more info.
+
 ## Building the site
 
 To render the site, use the `./scripts/build.sh` script.
