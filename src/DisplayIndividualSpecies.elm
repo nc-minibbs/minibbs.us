@@ -4,11 +4,11 @@ import Browser
 import Data.County exposing (County(..), CountyAggregation(..))
 import Data.Mbbs exposing (mbbsData)
 import Data.Species exposing (..)
-import Element
+import Element exposing (..)
 import Element.Input as Input
-import Html
+import Html exposing (..)
+import Html.Attributes as Attr
 import Html.Styled as Styled
-import Html.Styled.Attributes as StyledAttribs
 import Select exposing (..)
 import Specs.SpeciesTrend exposing (..)
 import VegaLite exposing (..)
@@ -22,7 +22,7 @@ main =
                 ( init
                 , Cmd.none
                 )
-        , view = view >> Styled.toUnstyled
+        , view = view
         , update = update vegaPort
         , subscriptions = \_ -> Sub.none
         }
@@ -32,12 +32,6 @@ mkSpecs : RouteDetail -> CountyAggregation -> Species -> Spec
 mkSpecs =
     mkSpeciesTrendSpec
         mbbsData
-
-
-
--- initSpec : Spec
--- initSpec =
---     mkSpecs (init.routeDetail) (init.countyAggregation) NorthernCardinal
 
 
 speciesToMenuItem : Species -> Select.MenuItem String
@@ -158,50 +152,44 @@ update toPort msg model =
             )
 
 
-countyRadio : Model -> Html.Html Msg
+countyRadio : Model -> Element Msg
 countyRadio model =
-    Element.layout [] <|
-        Element.column []
-            [ Input.radioRow
-                []
-                { onChange = SelectCountyAggregation
-                , selected = Just model.countyAggregation
-                , label = Input.labelLeft [] <| Element.text "Counties:"
-                , options =
-                    [ Input.option Combined <| Element.text "Combined"
-                    , Input.option Split <| Element.text "Split"
-                    ]
-                }
+    Input.radioRow
+        []
+        { onChange = SelectCountyAggregation
+        , selected = Just model.countyAggregation
+        , label = Input.labelLeft [] <| Element.text "Counties:"
+        , options =
+            [ Input.option Combined <| Element.text "Combined"
+            , Input.option Split <| Element.text "Split"
             ]
+        }
 
 
-routeDetailCheckbox : Model -> Html.Html Msg
+routeDetailCheckbox : Model -> Element Msg
 routeDetailCheckbox model =
-    Element.layout [] <|
-        Element.column []
-            [ Input.checkbox
-                []
-                { onChange =
-                    \x ->
-                        if x == True then
-                            ToggleRouteDetail ShowRouteDetail
+    Input.checkbox
+        []
+        { onChange =
+            \x ->
+                if x == True then
+                    ToggleRouteDetail ShowRouteDetail
 
-                        else
-                            ToggleRouteDetail HideRouteDetail
-                , icon = Input.defaultCheckbox
-                , checked =
-                    case model.routeDetail of
-                        ShowRouteDetail ->
-                            True
+                else
+                    ToggleRouteDetail HideRouteDetail
+        , icon = Input.defaultCheckbox
+        , checked =
+            case model.routeDetail of
+                ShowRouteDetail ->
+                    True
 
-                        HideRouteDetail ->
-                            False
-                , label = Input.labelLeft [] <| Element.text "Show route detail: "
-                }
-            ]
+                HideRouteDetail ->
+                    False
+        , label = Input.labelLeft [] <| Element.text "Show route detail: "
+        }
 
 
-view : Model -> Styled.Html Msg
+view : Model -> Html Msg
 view m =
     let
         selectedItem =
@@ -212,28 +200,25 @@ view m =
                 _ ->
                     Nothing
     in
-    Styled.div
-        []
-        [ Styled.map SelectSpecies <|
-            Select.view
-                (Select.single selectedItem
-                    |> Select.state m.selectState
-                    |> Select.menuItems m.items
-                    |> Select.placeholder "Select a species"
-                    |> Select.searchable True
-                    |> Select.clearable True
+    layout [] <|
+        Element.column []
+            [ el []
+                (Element.html <|
+                    Styled.toUnstyled <|
+                        Styled.map SelectSpecies <|
+                            Select.view
+                                (Select.single selectedItem
+                                    |> Select.state m.selectState
+                                    |> Select.menuItems m.items
+                                    |> Select.placeholder "Select a species"
+                                    |> Select.searchable True
+                                    |> Select.clearable True
+                                )
                 )
-        , Styled.div
-            []
-            [ Styled.fromUnstyled (countyRadio m) ]
-        , Styled.div
-            []
-            [ Styled.fromUnstyled (routeDetailCheckbox m) ]
-        , Styled.div
-            [ StyledAttribs.id "vegaViz"
+            , el [] (countyRadio m)
+            , el [] (routeDetailCheckbox m)
+            , el [ htmlAttribute (Attr.id "vegaViz") ] none
             ]
-            []
-        ]
 
 
 port vegaPort : Spec -> Cmd msg
