@@ -85,11 +85,12 @@ $if(elm-vega.module)$
         Elm.$elm-vega.module$
         .init($if(elm-vega.app-id)$ { node: document.querySelector('$elm-vega.app-id$') }$endif$);
 
+  $if(elm-vega.viz-id)$
   app.ports.vegaPort.subscribe(function (specs) {
     vegaEmbed("#$elm-vega.viz-id$", specs, { actions: $if(elm-vega.vega-actions)$ true $else$ false $endif$ })
     .catch(console.warn);
   });
-
+  $endif$
 
 </script>
 $endif$
