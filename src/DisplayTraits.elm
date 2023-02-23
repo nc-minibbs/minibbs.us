@@ -84,7 +84,7 @@ view m =
     let
         traitRadio model =
             Input.radioRow
-                []
+                [ Element.spacing 10 ]
                 { onChange = SelectTrait
                 , selected = Just model.selectedTrait
                 , label = Input.labelLeft [] <| Element.text "Trait: "
@@ -97,7 +97,7 @@ view m =
 
         countyFilter model =
             Input.radioRow
-                []
+                [ Element.spacing 10 ]
                 { onChange = SelectCountyFilter
                 , selected = Just model.selectedCountyFilter
                 , label = Input.labelLeft [] <| Element.text "Counties: "
@@ -110,10 +110,12 @@ view m =
                 }
     in
     layout [] <|
-        Element.column []
+        Element.column
+            [ Element.spacing 10
+            ]
             [ el [] (traitRadio m)
             , el [] (countyFilter m)
-            , el [ htmlAttribute (Attr.id "vegaViz") ] (Element.text "")
+            , el [ htmlAttribute (Attr.id "vegaViz") ] none
             ]
 
 

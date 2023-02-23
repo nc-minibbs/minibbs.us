@@ -9,6 +9,7 @@ import Element.Input as Input
 import Html exposing (..)
 import Html.Attributes as Attr
 import Html.Styled as Styled
+import Json.Encode as E
 import Select exposing (..)
 import Specs.SpeciesTrend exposing (..)
 import VegaLite exposing (..)
@@ -120,6 +121,11 @@ update toPort msg model =
                                 Just s ->
                                     toPort (mkSpecs model.routeDetail model.countyAggregation s)
 
+                        -- Clear visualization by sending an empty Spec
+                        -- when selection is cleared
+                        Just Select.Clear ->
+                            toPort (E.object [])
+
                         _ ->
                             Cmd.none
             in
@@ -155,13 +161,13 @@ update toPort msg model =
 countyRadio : Model -> Element Msg
 countyRadio model =
     Input.radioRow
-        []
+        [ Element.spacing 10 ]
         { onChange = SelectCountyAggregation
         , selected = Just model.countyAggregation
-        , label = Input.labelLeft [] <| Element.text "Counties:"
+        , label = Input.labelLeft [] <| none
         , options =
-            [ Input.option Combined <| Element.text "Combined"
-            , Input.option Split <| Element.text "Split"
+            [ Input.option Combined <| Element.text "All counties combined"
+            , Input.option Split <| Element.text "By county"
             ]
         }
 
@@ -169,7 +175,7 @@ countyRadio model =
 routeDetailCheckbox : Model -> Element Msg
 routeDetailCheckbox model =
     Input.checkbox
-        []
+        [ Element.spacing 10 ]
         { onChange =
             \x ->
                 if x == True then
@@ -185,7 +191,7 @@ routeDetailCheckbox model =
 
                 HideRouteDetail ->
                     False
-        , label = Input.labelLeft [] <| Element.text "Show route detail: "
+        , label = Input.labelLeft [] <| Element.text "Show individual routes"
         }
 
 
@@ -201,22 +207,26 @@ view m =
                     Nothing
     in
     layout [] <|
-        Element.column []
-            [ el []
-                (Element.html <|
+        Element.column
+            [ Element.spacing 10
+            ]
+            [ el
+                [ Element.width Element.fill
+                ]
+              <|
+                Element.html <|
                     Styled.toUnstyled <|
                         Styled.map SelectSpecies <|
                             Select.view
                                 (Select.single selectedItem
                                     |> Select.state m.selectState
                                     |> Select.menuItems m.items
-                                    |> Select.placeholder "Select a species"
+                                    |> Select.placeholder "Select species"
                                     |> Select.searchable True
                                     |> Select.clearable True
                                 )
-                )
-            , el [] (countyRadio m)
-            , el [] (routeDetailCheckbox m)
+            , el [] <| countyRadio m
+            , el [] <| routeDetailCheckbox m
             , el [ htmlAttribute (Attr.id "vegaViz") ] none
             ]
 
