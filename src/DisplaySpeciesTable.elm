@@ -1,17 +1,22 @@
-module DisplaySpeciesTable exposing (..)
+port module DisplaySpeciesTable exposing (..)
 
 import Browser
 import Data.Species exposing (..)
 import Element exposing (..)
 import Html exposing (Html, input)
-import Html.Attributes exposing (placeholder)
+import Html.Attributes  as Attr
 import Html.Events exposing (onInput)
-import Table 
+import Table exposing (..)
+
+import VegaLite exposing (Spec)
+import Specs.SparklineSpec exposing (mkSparklineSpec)
+import VegaLite exposing (combineSpecs)
 
 main : Program () Model Msg
 main =
     Browser.element
-        { init = \() -> init speciesTable
+        { init = \() -> init speciesTable 
+
         , update = update
         , view = view
         , subscriptions = \_ -> Sub.none
@@ -34,8 +39,15 @@ init species =
             , query = ""
             }
     in
-    ( model, Cmd.none )
+    ( model , vegaPort sparklines )
 
+
+sparklines : Spec
+sparklines = 
+    combineSpecs <|
+    List.map 
+        (\x -> (sparklineVegaID x , mkSparklineSpec x ))
+        allSpecies
 
 -- UPDATE
 
@@ -72,7 +84,7 @@ view { species, tableState, query } =
     in
     layout [] <|
       column [] <| 
-        [  el [] <| html <| input [ placeholder "Search by Name", onInput SetQuery ] []
+        [  el [] <| html <| input [ Attr.placeholder "Search by Name", onInput SetQuery ] []
         ,  el [] <| html <| Table.view config tableState acceptableSpecies 
         ]
 
@@ -80,9 +92,23 @@ view { species, tableState, query } =
 
 type alias SpeciesEntry  =
     { species : String
-    , sparkLine : Int -- Element Msg
-    , rateOfChange : String -- Element Msg
+    , sparkLineID : String
+    , rateOfChange : Float -- Element Msg
     }
+
+mkSparklineElement : String -> Table.HtmlDetails msg
+mkSparklineElement x =
+    Table.HtmlDetails 
+        [ ]
+        [ layout [] <| Element.row [ htmlAttribute (Attr.id x)  ] [ el [] none] ]
+
+sparklineColumn : (data -> String) -> Table.Column data msg 
+sparklineColumn  f = 
+    Table.veryCustomColumn 
+        { name = "Trend"
+        , viewData = \data -> mkSparklineElement (f data)
+        , sorter = unsortable
+        }
 
 config : Table.Config SpeciesEntry Msg
 config =
@@ -91,13 +117,27 @@ config =
         , toMsg = SetTableState
         , columns =
             [ Table.stringColumn "Name" .species
-            , Table.intColumn "Trend" .sparkLine
-            , Table.stringColumn "Rate of Change" .rateOfChange
+            , sparklineColumn .sparkLineID
+            , Table.floatColumn "Rate of Change" .rateOfChange
             ]
         }
+
+sparklineVegaID : Species -> String 
+sparklineVegaID s = 
+   speciesToString s
+  |> String.replace " " "" 
+  |> String.replace "'" ""
+  |> \x ->  x ++ "-sparkline"
 
 speciesTable : List SpeciesEntry
 speciesTable =
     List.map 
-      (\x -> SpeciesEntry (speciesToString x)  0 "") 
+      (\x -> SpeciesEntry 
+        (speciesToString x) 
+        (sparklineVegaID x )
+        0.0
+        ) 
       allSpecies
+
+
+port vegaPort : Spec -> Cmd msg
