@@ -600,11 +600,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.fc.cD === region.fQ.cD)
+	if (region.fj.cI === region.f0.cI)
 	{
-		return 'on line ' + region.fc.cD;
+		return 'on line ' + region.fj.cI;
 	}
-	return 'on lines ' + region.fc.cD + ' through ' + region.fQ.cD;
+	return 'on lines ' + region.fj.cI + ' through ' + region.f0.cI;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.ij,
-		impl.jF,
-		impl.jj,
+		impl.ix,
+		impl.jT,
+		impl.jx,
 		function() { return function() {} }
 	);
 });
@@ -3145,20 +3145,23 @@ var $gicentre$elm_vegalite$VegaLite$Parse = function (a) {
 	return {$: 7, a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$parse = $gicentre$elm_vegalite$VegaLite$Parse;
-var $author$project$Data$Mbbs$mbbsData = A2(
-	$gicentre$elm_vegalite$VegaLite$dataFromUrl,
-	'../data/mbbs.csv',
-	_List_fromArray(
-		[
-			$gicentre$elm_vegalite$VegaLite$parse(
-			_List_fromArray(
-				[
-					_Utils_Tuple2(
-					'year',
-					$gicentre$elm_vegalite$VegaLite$foDate('%Y')),
-					_Utils_Tuple2('count', $gicentre$elm_vegalite$VegaLite$foNum)
-				]))
-		]));
+var $author$project$Data$Mbbs$mbbsParse = function (file) {
+	return A2(
+		$gicentre$elm_vegalite$VegaLite$dataFromUrl,
+		file,
+		_List_fromArray(
+			[
+				$gicentre$elm_vegalite$VegaLite$parse(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'year',
+						$gicentre$elm_vegalite$VegaLite$foDate('%Y')),
+						_Utils_Tuple2('count', $gicentre$elm_vegalite$VegaLite$foNum)
+					]))
+			]));
+};
+var $author$project$Data$Mbbs$mbbsData = $author$project$Data$Mbbs$mbbsParse('../data/mbbs.csv');
 var $gicentre$elm_vegalite$VegaLite$X = 0;
 var $gicentre$elm_vegalite$VegaLite$Y = 1;
 var $elm$json$Json$Encode$list = F2(
@@ -11204,12 +11207,12 @@ var $author$project$Home$vegaPort = _Platform_outgoingPort('vegaPort', $elm$core
 var $elm$core$Platform$worker = _Platform_worker;
 var $author$project$Home$main = $elm$core$Platform$worker(
 	{
-		ij: $elm$core$Basics$always(
+		ix: $elm$core$Basics$always(
 			_Utils_Tuple2(
 				$author$project$Home$specs,
 				$author$project$Home$vegaPort($author$project$Home$specs))),
-		jj: $elm$core$Basics$always($elm$core$Platform$Sub$none),
-		jF: F2(
+		jx: $elm$core$Basics$always($elm$core$Platform$Sub$none),
+		jT: F2(
 			function (_v0, model) {
 				return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 			})
