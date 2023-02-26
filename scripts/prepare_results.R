@@ -252,6 +252,8 @@ mbbs_results <-
 #------------------------------------------------------------------------------#
 # Write data ####
 
+
+## All counts
 mbbs_results %>%
   select(common_name, sci_name, data) %>%
   tidyr::unnest(cols = data) %>%
@@ -259,3 +261,27 @@ mbbs_results %>%
     file = "data/mbbs.csv",
     row.names = FALSE
   )
+
+to_species_id <- function(x) {
+ stringr::str_replace(x, "'", "") |>
+ stringr::str_replace(" ", "")
+}
+
+## Counts per species
+mbbs_results %>%
+  select(common_name, data) %>%
+  {
+    dt <- .
+    purrr::walk2(
+      .x = .$common_name,
+      .y = .$data,
+      .f = ~ {
+          write.csv(
+            .y,
+            file = paste0("data/", to_species_id(.x), "-counts.csv"),
+            row.names = FALSE
+          )
+        }
+    )
+
+  }

@@ -46,8 +46,8 @@ sparklines : Spec
 sparklines = 
     combineSpecs <|
     List.map 
-        (\x -> (sparklineVegaID x , mkSparklineSpec x ))
-        allSpecies
+        (\x -> (sparklineVegaID x.species , mkSparklineSpec x ))
+        allSpeciesRec
 
 -- UPDATE
 
@@ -123,11 +123,7 @@ config =
         }
 
 sparklineVegaID : Species -> String 
-sparklineVegaID s = 
-   speciesToString s
-  |> String.replace " " "" 
-  |> String.replace "'" ""
-  |> \x ->  x ++ "-sparkline"
+sparklineVegaID s = speciesToSpeciesID s ++  "-sparkline"
 
 speciesTable : List SpeciesEntry
 speciesTable =

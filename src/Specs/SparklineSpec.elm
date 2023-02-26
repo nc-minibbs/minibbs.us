@@ -2,9 +2,8 @@ module Specs.SparklineSpec exposing (..)
 
 import VegaLite exposing (..)
 import Data.Species exposing (..)
-import Data.Mbbs exposing (mbbsData)
 
-mkSparklineSpec : Species -> Spec
+mkSparklineSpec : SpeciesRec -> Spec
 mkSparklineSpec x =
     let
         cfg =
@@ -33,16 +32,11 @@ mkSparklineSpec x =
                      , pAggregate opMean
                      , pAxis[]
                      ]
-        
-        trans = transform 
-                  << filter 
-                     (fiEqual "common_name" (str (speciesToString x)))
 
     in
     toVegaLite
         [ cfg []
-        , mbbsData
-        , trans []
+        , x.mbbsCounts
         , enc []
         , line [ maColor "blue" ]
         ]
