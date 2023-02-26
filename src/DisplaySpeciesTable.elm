@@ -57,29 +57,30 @@ type Msg
     | SetTableState Table.State
 
 
-filterSpeciesByQuery : List SpeciesTableEntry -> Spec
-filterSpeciesByQuery x =
-    let
-        listedSpecies =
-            List.map .species x
-    in
-    sparklines <|
-        List.filter
-            (\z -> List.member z.commonName listedSpecies)
-            allSpeciesRec
-
-
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
+    let
+        filterSpeciesByQuery query =
+            sparklines <|
+                List.filter
+                    (\z -> String.contains (String.toLower query) z.commonName)
+                    allSpeciesRec
+
+        filterSpeciesByState m =
+            sparklines <|
+                List.filter
+                    (\z -> List.member z.commonName (List.map .species m.species))
+                    allSpeciesRec
+    in
     case msg of
         SetQuery newQuery ->
             ( { model | query = newQuery }
-            , vegaPort (filterSpeciesByQuery model.species)
+            , vegaPort (filterSpeciesByQuery newQuery)
             )
 
         SetTableState newState ->
             ( { model | tableState = newState }
-            , vegaPort (filterSpeciesByQuery model.species)
+            , vegaPort (filterSpeciesByState model)
             )
 
 
@@ -100,7 +101,11 @@ view { species, tableState, query } =
     in
     layout [] <|
         column [] <|
-            [ el [] <| html <| input [ Attr.placeholder "Search by Name", onInput SetQuery ] []
+            [ el [] <|
+                html <|
+                    input
+                        [ Attr.placeholder "Search by Name", onInput SetQuery ]
+                        []
             , el [] <| html <| Table.view config tableState acceptableSpecies
             ]
 
