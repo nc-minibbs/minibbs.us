@@ -1,7 +1,8 @@
 module Specs.SparklineSpec exposing (..)
 
-import VegaLite exposing (..)
 import Data.Species exposing (..)
+import VegaLite exposing (..)
+
 
 mkSparklineSpec : SpeciesRec -> Spec
 mkSparklineSpec x =
@@ -16,23 +17,22 @@ mkSparklineSpec x =
                         ]
                     )
 
-        enc = 
+        enc =
             encoding
-                << position X 
+                << position X
                     [ pName "year"
                     , pTemporal
-                    , pAxis 
+                    , pAxis
                         [ axTitle ""
                         , axTicks False
                         , axLabels False
-                         ]
+                        ]
                     ]
                 << position Y
-                     [ pName "count"
-                     , pAggregate opMean
-                     , pAxis[]
-                     ]
-
+                    [ pName "count"
+                    , pAggregate opMean
+                    , pAxis []
+                    ]
     in
     toVegaLite
         [ cfg []

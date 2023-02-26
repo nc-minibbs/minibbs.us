@@ -1,26 +1,30 @@
 module Data.Species exposing (..)
 
-import VegaLite exposing ( Data )
 import Data.Mbbs exposing (mbbsParse)
+import VegaLite exposing (Data)
 
-type alias SpeciesRec = 
-    { species    : Species
-    , commonName : String 
+
+type alias SpeciesRec =
+    { species : Species
+    , commonName : String
     , mbbsCounts : Data
     }
 
+
 mkSpeciesRec : Species -> SpeciesRec
-mkSpeciesRec s = 
+mkSpeciesRec s =
     { species = s
     , commonName = speciesToString s
-    , mbbsCounts = mbbsParse ("../data/" ++ speciesToSpeciesID s ++ "-counts.csv" ) 
+    , mbbsCounts = mbbsParse ("../data/" ++ speciesToSpeciesID s ++ "-counts.csv")
     }
 
+
 allSpeciesRec : List SpeciesRec
-allSpeciesRec = 
-    List.map 
+allSpeciesRec =
+    List.map
         mkSpeciesRec
         allSpecies
+
 
 type Species
     = AcadianFlycatcher
@@ -548,14 +552,19 @@ speciesToString species =
         YellowthroatedWarbler ->
             "Yellow-throated Warbler"
 
--- Create an "ID" for a Species 
+
+
+-- Create an "ID" for a Species
 -- by removing non-letter characters from the Species' string.
-speciesToSpeciesID : Species -> String 
-speciesToSpeciesID s = 
+
+
+speciesToSpeciesID : Species -> String
+speciesToSpeciesID s =
     speciesToString s
-    |> String.replace " " "" 
-    |> String.replace "'" ""
-    |> String.replace "-" ""
+        |> String.replace " " ""
+        |> String.replace "'" ""
+        |> String.replace "-" ""
+
 
 stringToSpecies : String -> Maybe Species
 stringToSpecies s =

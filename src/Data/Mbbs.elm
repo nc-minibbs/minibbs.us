@@ -7,9 +7,12 @@ module Data.Mbbs exposing (..)
 import VegaLite exposing (..)
 
 
--- Parse MBBS Count data 
-mbbsParse : String -> Data 
-mbbsParse file = 
+
+-- Parse MBBS Count data
+
+
+mbbsParse : String -> Data
+mbbsParse file =
     dataFromUrl file
         [ parse
             [ ( "year", foDate "%Y" )
@@ -17,6 +20,7 @@ mbbsParse file =
             ]
         ]
 
-mbbsData : Data
-mbbsData = mbbsParse  "../data/mbbs.csv"
 
+mbbsData : Data
+mbbsData =
+    mbbsParse "../data/mbbs.csv"
