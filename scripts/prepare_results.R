@@ -262,9 +262,11 @@ mbbs_results %>%
     row.names = FALSE
   )
 
+
 to_species_id <- function(x) {
- stringr::str_replace(x, "'", "") |>
- stringr::str_replace(" ", "")
+ stringr::str_replace_all(x, "'", "") |>
+ stringr::str_replace_all(" ", "") |>
+ stringr::str_replace_all("-", "")
 }
 
 ## Counts per species

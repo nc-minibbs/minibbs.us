@@ -555,6 +555,7 @@ speciesToSpeciesID s =
     speciesToString s
     |> String.replace " " "" 
     |> String.replace "'" ""
+    |> String.replace "-" ""
 
 stringToSpecies : String -> Maybe Species
 stringToSpecies s =

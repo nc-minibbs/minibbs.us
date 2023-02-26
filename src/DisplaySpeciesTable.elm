@@ -16,7 +16,6 @@ main : Program () Model Msg
 main =
     Browser.element
         { init = \() -> init speciesTable 
-
         , update = update
         , view = view
         , subscriptions = \_ -> Sub.none
@@ -24,13 +23,13 @@ main =
 
 
 type alias Model =
-    { species : List SpeciesEntry 
+    { species : List SpeciesTableEntry 
     , tableState : Table.State
     , query : String
     }
 
 
-init : List SpeciesEntry -> ( Model, Cmd Msg )
+init : List SpeciesTableEntry -> ( Model, Cmd Msg )
 init species =
     let
         model =
@@ -39,15 +38,16 @@ init species =
             , query = ""
             }
     in
-    ( model , vegaPort sparklines )
+    ( model , vegaPort (sparklines allSpeciesRec) )
 
 
-sparklines : Spec
-sparklines = 
+sparklines : List SpeciesRec -> Spec
+sparklines species = 
     combineSpecs <|
     List.map 
         (\x -> (sparklineVegaID x.species , mkSparklineSpec x ))
-        allSpeciesRec
+        species 
+
 
 -- UPDATE
 
@@ -56,18 +56,28 @@ type Msg
     = SetQuery String
     | SetTableState Table.State
 
+filterSpeciesByQuery : List SpeciesTableEntry -> Spec
+filterSpeciesByQuery x =
+    let listedSpecies =  List.map (.species) x
+    in 
+    sparklines <|
+        List.filter 
+            (\z -> List.member z.commonName listedSpecies)
+            allSpeciesRec
+
+
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         SetQuery newQuery ->
             ( { model | query = newQuery }
-            , Cmd.none
+            , vegaPort (filterSpeciesByQuery model.species)
             )
 
         SetTableState newState ->
             ( { model | tableState = newState }
-            , Cmd.none
+            , vegaPort (filterSpeciesByQuery model.species)
             )
 
 -- VIEW
@@ -80,7 +90,9 @@ view { species, tableState, query } =
             String.toLower query
 
         acceptableSpecies =
-            List.filter (String.contains lowerQuery << String.toLower << .species) species
+            List.filter 
+                (String.contains lowerQuery << String.toLower << .species) 
+                species
     in
     layout [] <|
       column [] <| 
@@ -90,10 +102,10 @@ view { species, tableState, query } =
 
 
 
-type alias SpeciesEntry  =
+type alias SpeciesTableEntry  =
     { species : String
     , sparkLineID : String
-    , rateOfChange : Float -- Element Msg
+    , rateOfChange : Float
     }
 
 mkSparklineElement : String -> Table.HtmlDetails msg
@@ -110,7 +122,7 @@ sparklineColumn  f =
         , sorter = unsortable
         }
 
-config : Table.Config SpeciesEntry Msg
+config : Table.Config SpeciesTableEntry Msg
 config =
     Table.config
         { toId = .species
@@ -125,10 +137,10 @@ config =
 sparklineVegaID : Species -> String 
 sparklineVegaID s = speciesToSpeciesID s ++  "-sparkline"
 
-speciesTable : List SpeciesEntry
+speciesTable : List SpeciesTableEntry
 speciesTable =
     List.map 
-      (\x -> SpeciesEntry 
+      (\x -> SpeciesTableEntry 
         (speciesToString x) 
         (sparklineVegaID x )
         0.0
