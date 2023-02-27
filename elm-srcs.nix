@@ -45,6 +45,11 @@
         version = "1.1.8";
       };
 
+      "myrho/elm-round" = {
+        sha256 = "0zv0a60wzkx4xib7h07ijcg72mcyb3vb914hk5pjp6rf4k2lv9kj";
+        version = "1.0.5";
+      };
+
       "rtfeldman/elm-css" = {
         sha256 = "0mffazjks3wmsn0f0xs8gs6zg39ahipz0hqif2y7qphzjdq6h6yh";
         version = "17.1.1";

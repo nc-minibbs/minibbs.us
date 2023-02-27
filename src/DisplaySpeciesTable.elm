@@ -2,10 +2,10 @@ port module DisplaySpeciesTable exposing (..)
 
 import Browser
 import Data.Species exposing (..)
-import Element exposing (..)
-import Html exposing (Html, input)
+import Html exposing (Html, div, input, text)
 import Html.Attributes as Attr
 import Html.Events exposing (onInput)
+import Round
 import Specs.SparklineSpec exposing (mkSparklineSpec)
 import Table exposing (..)
 import VegaLite exposing (Spec, combineSpecs)
@@ -99,21 +99,17 @@ view { species, tableState, query } =
                 (String.contains lowerQuery << String.toLower << .species)
                 species
     in
-    layout [] <|
-        column [] <|
-            [ el [] <|
-                html <|
-                    input
-                        [ Attr.placeholder "Search by Name", onInput SetQuery ]
-                        []
-            , el [] <| html <| Table.view config tableState acceptableSpecies
-            ]
+    div
+        []
+        [ input [ Attr.placeholder "Search by Name", onInput SetQuery ] []
+        , Table.view config tableState acceptableSpecies
+        ]
 
 
 type alias SpeciesTableEntry =
     { species : String
     , sparkLineID : String
-    , rateOfChange : Float
+    , rateOfChange : ( Float, Float )
     }
 
 
@@ -121,7 +117,7 @@ mkSparklineElement : String -> Table.HtmlDetails msg
 mkSparklineElement x =
     Table.HtmlDetails
         []
-        [ layout [] <| Element.row [ htmlAttribute (Attr.id x) ] [ el [] none ] ]
+        [ div [ Attr.id x ] [] ]
 
 
 sparklineColumn : (data -> String) -> Table.Column data msg
@@ -133,6 +129,41 @@ sparklineColumn f =
         }
 
 
+rateColumn : (data -> ( Float, Float )) -> Column data msg
+rateColumn f =
+    Table.veryCustomColumn
+        { name = " % Change per Year"
+        , viewData = \data -> viewRate (f data)
+        , sorter = Table.decreasingBy f
+        }
+
+
+viewRate : ( Float, Float ) -> Table.HtmlDetails msg
+viewRate ( rate, pvalue ) =
+    let
+        col =
+            if rate <= 0 && pvalue < 0.01 then
+                Attr.style "color" "red"
+
+            else if rate <= 0 && pvalue >= 0.01 && pvalue <= 0.05 then
+                Attr.style "color" "lightcoral"
+
+            else if rate > 0 && pvalue < 0.01 then
+                Attr.style "color" "blue"
+
+            else if rate > 0 && pvalue >= 0.01 && pvalue <= 0.05 then
+                Attr.style "color" "lightblue"
+
+            else
+                Attr.style "color" "gray"
+    in
+    Table.HtmlDetails
+        [ col
+        , Attr.style "text-align" "right"
+        ]
+        [ text (Round.round 2 (rate * 100)) ]
+
+
 config : Table.Config SpeciesTableEntry Msg
 config =
     Table.config
@@ -141,7 +172,7 @@ config =
         , columns =
             [ Table.stringColumn "Name" .species
             , sparklineColumn .sparkLineID
-            , Table.floatColumn "Rate of Change" .rateOfChange
+            , rateColumn .rateOfChange
             ]
         }
 
@@ -158,7 +189,7 @@ speciesTable =
             SpeciesTableEntry
                 x.commonName
                 (sparklineVegaID x)
-                x.rate
+                ( x.rate, x.pvalue )
         )
         allSpeciesRec
 
