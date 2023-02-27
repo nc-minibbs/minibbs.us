@@ -18,13 +18,12 @@ and to assess any year-to-year changes in their numbers.
 
 ## Importance
 
-The importance of this survey is ... TODO.
 
 The following visualizations shows trends
 for 4 of the 100+ species observed in over twenty years of our survey.
 As you can see,
 
-* species such as Wood Thrush have declined;
+* species such as Wood Thrush and Northern Bobwhite have declined;
 * species such as Eastern Bluebird have no obvious trend;
 * species such as Summer Tanager appearing to be increasing in abundance.
 
