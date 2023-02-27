@@ -1,7 +1,7 @@
 module Specs.SparklineSpec exposing (..)
 
-import Data.Species exposing (..)
 import Data.Mbbs exposing (mbbsParse)
+import Data.Species exposing (..)
 import VegaLite exposing (..)
 
 

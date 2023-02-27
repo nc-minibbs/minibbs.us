@@ -44,7 +44,7 @@ sparklines : List SpeciesRec -> Spec
 sparklines species =
     combineSpecs <|
         List.map
-            (\x -> (sparklineVegaID x, mkSparklineSpec x ))
+            (\x -> ( sparklineVegaID x, mkSparklineSpec x ))
             species
 
 
@@ -147,7 +147,8 @@ config =
 
 
 sparklineVegaID : SpeciesRec -> String
-sparklineVegaID s = s.id ++ "-sparkline"
+sparklineVegaID s =
+    s.id ++ "-sparkline"
 
 
 speciesTable : List SpeciesTableEntry
@@ -155,9 +156,9 @@ speciesTable =
     List.map
         (\x ->
             SpeciesTableEntry
-                (x.commonName)
+                x.commonName
                 (sparklineVegaID x)
-                (x.rate)
+                x.rate
         )
         allSpeciesRec
 
