@@ -9,8 +9,6 @@ import VegaLite exposing (..)
 
 
 -- Parse MBBS Count data
-
-
 mbbsParse : String -> Data
 mbbsParse file =
     dataFromUrl file

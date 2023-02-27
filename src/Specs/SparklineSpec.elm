@@ -1,6 +1,7 @@
 module Specs.SparklineSpec exposing (..)
 
 import Data.Species exposing (..)
+import Data.Mbbs exposing (mbbsParse)
 import VegaLite exposing (..)
 
 
@@ -36,7 +37,7 @@ mkSparklineSpec x =
     in
     toVegaLite
         [ cfg []
-        , x.mbbsCounts
+        , mbbsParse ("../data/" ++ x.id ++ "-counts.csv")
         , enc []
         , line [ maColor "blue" ]
         ]
