@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.fk.cI === region.f0.cI)
+	if (region.eh.cb === region.eQ.cb)
 	{
-		return 'on line ' + region.fk.cI;
+		return 'on line ' + region.eh.cb;
 	}
-	return 'on lines ' + region.fk.cI + ' through ' + region.f0.cI;
+	return 'on lines ' + region.eh.cb + ' through ' + region.eQ.cb;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.iz,
-		impl.jX,
-		impl.jz,
+		impl.g$,
+		impl.h3,
+		impl.hJ,
 		function() { return function() {} }
 	);
 });
@@ -2719,9 +2719,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		gx: func(record.gx),
-		g7: record.g7,
-		gO: record.gO
+		fh: func(record.fh),
+		fO: record.fO,
+		fv: record.fv
 	}
 });
 
@@ -2989,11 +2989,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.gx;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.g7;
+		var message = !tag ? value : tag < 3 ? value.a : value.fh;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.fO;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.gO) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.fv) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3943,11 +3943,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.iz,
-		impl.jX,
-		impl.jz,
+		impl.g$,
+		impl.h3,
+		impl.hJ,
 		function(sendToApp, initialModel) {
-			var view = impl.jZ;
+			var view = impl.h5;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3979,12 +3979,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.iz,
-		impl.jX,
-		impl.jz,
+		impl.g$,
+		impl.h3,
+		impl.hJ,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.fh && impl.fh(sendToApp)
-			var view = impl.jZ;
+			var divertHrefToApp = impl.ef && impl.ef(sendToApp)
+			var view = impl.h5;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3992,12 +3992,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.hM);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.gp);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.ek) && (_VirtualDom_doc.title = title = doc.ek);
+				(title !== doc.hY) && (_VirtualDom_doc.title = title = doc.hY);
 			});
 		}
 	);
@@ -4053,12 +4053,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.i2;
-	var onUrlRequest = impl.i3;
+	var onUrlChange = impl.hi;
+	var onUrlRequest = impl.hj;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		fh: function(sendToApp)
+		ef: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4074,9 +4074,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.gS === next.gS
-							&& curr.gc === next.gc
-							&& curr.gN.a === next.gN.a
+							&& curr.fz === next.fz
+							&& curr.e_ === next.e_
+							&& curr.fu.a === next.fu.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4084,13 +4084,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		iz: function(flags)
+		g$: function(flags)
 		{
-			return A3(impl.iz, flags, _Browser_getUrl(), key);
+			return A3(impl.g$, flags, _Browser_getUrl(), key);
 		},
-		jZ: impl.jZ,
-		jX: impl.jX,
-		jz: impl.jz
+		h5: impl.h5,
+		h3: impl.h3,
+		hJ: impl.hJ
 	});
 }
 
@@ -4156,17 +4156,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { iq: 'hidden', hU: 'visibilitychange' }
+		? { gU: 'hidden', gz: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { iq: 'mozHidden', hU: 'mozvisibilitychange' }
+		? { gU: 'mozHidden', gz: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { iq: 'msHidden', hU: 'msvisibilitychange' }
+		? { gU: 'msHidden', gz: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { iq: 'webkitHidden', hU: 'webkitvisibilitychange' }
-		: { iq: 'hidden', hU: 'visibilitychange' };
+		? { gU: 'webkitHidden', gz: 'webkitvisibilitychange' }
+		: { gU: 'hidden', gz: 'visibilitychange' };
 }
 
 
@@ -4247,12 +4247,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		g_: _Browser_getScene(),
-		hl: {
-			hq: _Browser_window.pageXOffset,
-			aM: _Browser_window.pageYOffset,
-			aL: _Browser_doc.documentElement.clientWidth,
-			dz: _Browser_doc.documentElement.clientHeight
+		fH: _Browser_getScene(),
+		f$: {
+			f5: _Browser_window.pageXOffset,
+			aH: _Browser_window.pageYOffset,
+			f2: _Browser_doc.documentElement.clientWidth,
+			cS: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4262,8 +4262,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		aL: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		dz: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		f2: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		cS: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4286,15 +4286,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			g_: {
-				aL: node.scrollWidth,
-				dz: node.scrollHeight
+			fH: {
+				f2: node.scrollWidth,
+				cS: node.scrollHeight
 			},
-			hl: {
-				hq: node.scrollLeft,
-				aM: node.scrollTop,
-				aL: node.clientWidth,
-				dz: node.clientHeight
+			f$: {
+				f5: node.scrollLeft,
+				aH: node.scrollTop,
+				f2: node.clientWidth,
+				cS: node.clientHeight
 			}
 		};
 	});
@@ -4324,18 +4324,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			g_: _Browser_getScene(),
-			hl: {
-				hq: x,
-				aM: y,
-				aL: _Browser_doc.documentElement.clientWidth,
-				dz: _Browser_doc.documentElement.clientHeight
+			fH: _Browser_getScene(),
+			f$: {
+				f5: x,
+				aH: y,
+				f2: _Browser_doc.documentElement.clientWidth,
+				cS: _Browser_doc.documentElement.clientHeight
 			},
-			Z: {
-				hq: x + rect.left,
-				aM: y + rect.top,
-				aL: rect.width,
-				dz: rect.height
+			_: {
+				f5: x + rect.left,
+				aH: y + rect.top,
+				f2: rect.width,
+				cS: rect.height
 			}
 		};
 	});
@@ -4813,25 +4813,25 @@ var $elm$core$Array$treeFromBuilder = F2(
 	});
 var $elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.M) {
+		if (!builder.O) {
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.N),
+				$elm$core$Elm$JsArray$length(builder.Q),
 				$elm$core$Array$shiftStep,
 				$elm$core$Elm$JsArray$empty,
-				builder.N);
+				builder.Q);
 		} else {
-			var treeLen = builder.M * $elm$core$Array$branchFactor;
+			var treeLen = builder.O * $elm$core$Array$branchFactor;
 			var depth = $elm$core$Basics$floor(
 				A2($elm$core$Basics$logBase, $elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.P) : builder.P;
-			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.M);
+			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.S) : builder.S;
+			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.O);
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.N) + treeLen,
+				$elm$core$Elm$JsArray$length(builder.Q) + treeLen,
 				A2($elm$core$Basics$max, 5, depth * $elm$core$Array$shiftStep),
 				tree,
-				builder.N);
+				builder.Q);
 		}
 	});
 var $elm$core$Basics$idiv = _Basics_idiv;
@@ -4844,7 +4844,7 @@ var $elm$core$Array$initializeHelp = F5(
 				return A2(
 					$elm$core$Array$builderToArray,
 					false,
-					{P: nodeList, M: (len / $elm$core$Array$branchFactor) | 0, N: tail});
+					{S: nodeList, O: (len / $elm$core$Array$branchFactor) | 0, Q: tail});
 			} else {
 				var leaf = $elm$core$Array$Leaf(
 					A3($elm$core$Elm$JsArray$initialize, $elm$core$Array$branchFactor, fromIndex, fn));
@@ -4911,7 +4911,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {f8: fragment, gc: host, gK: path, gN: port_, gS: protocol, d6: query};
+		return {eW: fragment, e_: host, fr: path, fu: port_, fz: protocol, dc: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -12929,9 +12929,9 @@ var $author$project$DisplaySpeciesTable$sparklines = function (species) {
 var $author$project$DisplaySpeciesTable$vegaPort = _Platform_outgoingPort('vegaPort', $elm$core$Basics$identity);
 var $author$project$DisplaySpeciesTable$init = function (species) {
 	var model = {
-		d6: '',
+		dc: '',
 		a: species,
-		eg: $billstclair$elm_sortable_table$Table$initialSort('Year')
+		dj: $billstclair$elm_sortable_table$Table$initialSort('Year')
 	};
 	return _Utils_Tuple2(
 		model,
@@ -12942,7 +12942,7 @@ var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $author$project$DisplaySpeciesTable$SpeciesTableEntry = F3(
 	function (species, sparkLineID, rateOfChange) {
-		return {gT: rateOfChange, g6: sparkLineID, a: species};
+		return {fA: rateOfChange, fN: sparkLineID, a: species};
 	});
 var $author$project$DisplaySpeciesTable$speciesTable = A2(
 	$elm$core$List$map,
@@ -13032,7 +13032,7 @@ var $author$project$DisplaySpeciesTable$update = F2(
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{d6: newQuery}),
+					{dc: newQuery}),
 				$author$project$DisplaySpeciesTable$vegaPort(
 					filterSpeciesByQuery(newQuery)));
 		} else {
@@ -13040,7 +13040,7 @@ var $author$project$DisplaySpeciesTable$update = F2(
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{eg: newState}),
+					{dj: newState}),
 				$author$project$DisplaySpeciesTable$vegaPort(
 					filterSpeciesByState(model)));
 		}
@@ -13057,7 +13057,7 @@ var $billstclair$elm_sortable_table$Table$simpleRowAttrs = function (_v0) {
 };
 var $billstclair$elm_sortable_table$Table$HtmlDetails = F2(
 	function (attributes, children) {
-		return {cp: attributes, cu: children};
+		return {b0: attributes, b2: children};
 	});
 var $elm$core$Char$fromCode = _Char_fromCode;
 var $elm$core$String$fromList = _String_fromList;
@@ -13147,22 +13147,22 @@ var $billstclair$elm_sortable_table$Table$simpleThead = function (headers) {
 		_List_Nil,
 		A2($elm$core$List$map, $billstclair$elm_sortable_table$Table$simpleTheadHelp, headers));
 };
-var $billstclair$elm_sortable_table$Table$defaultCustomizations = {ex: $elm$core$Maybe$Nothing, fc: $billstclair$elm_sortable_table$Table$simpleRowAttrs, fl: _List_Nil, fm: _List_Nil, fo: $elm$core$Maybe$Nothing, fp: $billstclair$elm_sortable_table$Table$simpleThead};
+var $billstclair$elm_sortable_table$Table$defaultCustomizations = {dx: $elm$core$Maybe$Nothing, d9: $billstclair$elm_sortable_table$Table$simpleRowAttrs, ei: _List_Nil, ej: _List_Nil, el: $elm$core$Maybe$Nothing, em: $billstclair$elm_sortable_table$Table$simpleThead};
 var $billstclair$elm_sortable_table$Table$config = function (_v0) {
-	var toId = _v0.jP;
-	var toMsg = _v0.jR;
-	var columns = _v0.h_;
+	var toId = _v0.hZ;
+	var toMsg = _v0.h_;
+	var columns = _v0.gD;
 	return {
-		h_: A2(
+		gD: A2(
 			$elm$core$List$map,
 			function (_v1) {
 				var cData = _v1;
 				return cData;
 			},
 			columns),
-		cy: $billstclair$elm_sortable_table$Table$defaultCustomizations,
-		jP: toId,
-		jR: toMsg
+		b6: $billstclair$elm_sortable_table$Table$defaultCustomizations,
+		hZ: toId,
+		h_: toMsg
 	};
 };
 var $billstclair$elm_sortable_table$Table$Decreasing = function (a) {
@@ -13426,9 +13426,9 @@ var $author$project$DisplaySpeciesTable$viewRate = function (_v0) {
 var $author$project$DisplaySpeciesTable$rateColumn = function (f) {
 	return $billstclair$elm_sortable_table$Table$veryCustomColumn(
 		{
-			gA: ' % Change per Year',
-			g4: $billstclair$elm_sortable_table$Table$decreasingBy(f),
-			hk: function (data) {
+			fj: ' % Change per Year',
+			fL: $billstclair$elm_sortable_table$Table$decreasingBy(f),
+			f_: function (data) {
 				return $author$project$DisplaySpeciesTable$viewRate(
 					f(data));
 			}
@@ -13463,9 +13463,9 @@ var $billstclair$elm_sortable_table$Table$unsortable = $billstclair$elm_sortable
 var $author$project$DisplaySpeciesTable$sparklineColumn = function (f) {
 	return $billstclair$elm_sortable_table$Table$veryCustomColumn(
 		{
-			gA: 'Trend',
-			g4: $billstclair$elm_sortable_table$Table$unsortable,
-			hk: function (data) {
+			fj: 'Trend',
+			fL: $billstclair$elm_sortable_table$Table$unsortable,
+			f_: function (data) {
 				return $author$project$DisplaySpeciesTable$mkSparklineElement(
 					f(data));
 			}
@@ -13490,14 +13490,14 @@ var $billstclair$elm_sortable_table$Table$textDetails = function (str) {
 var $billstclair$elm_sortable_table$Table$stringColumn = F2(
 	function (name, toStr) {
 		return {
-			gA: name,
-			g4: $billstclair$elm_sortable_table$Table$increasingOrDecreasingBy(toStr),
-			hk: A2($elm$core$Basics$composeL, $billstclair$elm_sortable_table$Table$textDetails, toStr)
+			fj: name,
+			fL: $billstclair$elm_sortable_table$Table$increasingOrDecreasingBy(toStr),
+			f_: A2($elm$core$Basics$composeL, $billstclair$elm_sortable_table$Table$textDetails, toStr)
 		};
 	});
 var $author$project$DisplaySpeciesTable$config = $billstclair$elm_sortable_table$Table$config(
 	{
-		h_: _List_fromArray(
+		gD: _List_fromArray(
 			[
 				A2(
 				$billstclair$elm_sortable_table$Table$stringColumn,
@@ -13507,17 +13507,17 @@ var $author$project$DisplaySpeciesTable$config = $billstclair$elm_sortable_table
 				}),
 				$author$project$DisplaySpeciesTable$sparklineColumn(
 				function ($) {
-					return $.g6;
+					return $.fN;
 				}),
 				$author$project$DisplaySpeciesTable$rateColumn(
 				function ($) {
-					return $.gT;
+					return $.fA;
 				})
 			]),
-		jP: function ($) {
+		hZ: function ($) {
 			return $.a;
 		},
-		jR: $author$project$DisplaySpeciesTable$SetTableState
+		h_: $author$project$DisplaySpeciesTable$SetTableState
 	});
 var $elm$html$Html$input = _VirtualDom_node('input');
 var $elm$html$Html$Events$alwaysStop = function (x) {
@@ -13585,8 +13585,8 @@ var $billstclair$elm_sortable_table$Table$findSorter = F2(
 			if (!columnData.b) {
 				return $elm$core$Maybe$Nothing;
 			} else {
-				var name = columnData.a.gA;
-				var sorter = columnData.a.g4;
+				var name = columnData.a.fj;
+				var sorter = columnData.a.fL;
 				var remainingColumnData = columnData.b;
 				if (_Utils_eq(name, selectedColumn)) {
 					return $elm$core$Maybe$Just(sorter);
@@ -13614,10 +13614,10 @@ var $billstclair$elm_sortable_table$Table$sort = F3(
 	});
 var $billstclair$elm_sortable_table$Table$getSortedData = F3(
 	function (_v0, state, data) {
-		var toId = _v0.jP;
-		var toMsg = _v0.jR;
-		var columns = _v0.h_;
-		var customizations = _v0.cy;
+		var toId = _v0.hZ;
+		var toMsg = _v0.h_;
+		var columns = _v0.gD;
+		var customizations = _v0.b6;
 		return A3($billstclair$elm_sortable_table$Table$sort, state, columns, data);
 	});
 var $elm$virtual_dom$VirtualDom$keyedNode = function (tag) {
@@ -13663,8 +13663,8 @@ var $billstclair$elm_sortable_table$Table$toHeaderInfo = F3(
 	function (_v0, toMsg, _v1) {
 		var sortName = _v0.a;
 		var isReversed = _v0.b;
-		var name = _v1.gA;
-		var sorter = _v1.g4;
+		var name = _v1.fj;
+		var sorter = _v1.fL;
 		switch (sorter.$) {
 			case 0:
 				return _Utils_Tuple3(
@@ -13709,9 +13709,9 @@ var $elm$html$Html$Lazy$lazy3 = $elm$virtual_dom$VirtualDom$lazy3;
 var $elm$html$Html$td = _VirtualDom_node('td');
 var $billstclair$elm_sortable_table$Table$viewCell = F2(
 	function (data, _v0) {
-		var viewData = _v0.hk;
+		var viewData = _v0.f_;
 		var details = viewData(data);
-		return A2($elm$html$Html$td, details.cp, details.cu);
+		return A2($elm$html$Html$td, details.b0, details.b2);
 	});
 var $billstclair$elm_sortable_table$Table$viewRowHelp = F3(
 	function (columns, toRowAttrs, data) {
@@ -13731,38 +13731,38 @@ var $billstclair$elm_sortable_table$Table$viewRow = F4(
 	});
 var $billstclair$elm_sortable_table$Table$view = F3(
 	function (conf, state, data) {
-		var toId = conf.jP;
-		var toMsg = conf.jR;
-		var columns = conf.h_;
-		var customizations = conf.cy;
-		var theadDetails = customizations.fp(
+		var toId = conf.hZ;
+		var toMsg = conf.h_;
+		var columns = conf.gD;
+		var customizations = conf.b6;
+		var theadDetails = customizations.em(
 			A2(
 				$elm$core$List$map,
 				A2($billstclair$elm_sortable_table$Table$toHeaderInfo, state, toMsg),
 				columns));
 		var thead = A2(
 			$elm$html$Html$thead,
-			theadDetails.cp,
+			theadDetails.b0,
 			_List_fromArray(
 				[
-					A2($elm$html$Html$tr, _List_Nil, theadDetails.cu)
+					A2($elm$html$Html$tr, _List_Nil, theadDetails.b2)
 				]));
 		var sortedData = A3($billstclair$elm_sortable_table$Table$getSortedData, conf, state, data);
 		var tbody = A3(
 			$elm$html$Html$Keyed$node,
 			'tbody',
-			customizations.fm,
+			customizations.ej,
 			A2(
 				$elm$core$List$map,
-				A3($billstclair$elm_sortable_table$Table$viewRow, toId, columns, customizations.fc),
+				A3($billstclair$elm_sortable_table$Table$viewRow, toId, columns, customizations.d9),
 				sortedData));
 		var withFoot = function () {
-			var _v1 = customizations.fo;
+			var _v1 = customizations.el;
 			if (_v1.$ === 1) {
 				return A2($elm$core$List$cons, tbody, _List_Nil);
 			} else {
-				var attributes = _v1.a.cp;
-				var children = _v1.a.cu;
+				var attributes = _v1.a.b0;
+				var children = _v1.a.b2;
 				return A2(
 					$elm$core$List$cons,
 					A2($elm$html$Html$tfoot, attributes, children),
@@ -13771,14 +13771,14 @@ var $billstclair$elm_sortable_table$Table$view = F3(
 		}();
 		return A2(
 			$elm$html$Html$table,
-			customizations.fl,
+			customizations.ei,
 			function () {
-				var _v0 = customizations.ex;
+				var _v0 = customizations.dx;
 				if (_v0.$ === 1) {
 					return A2($elm$core$List$cons, thead, withFoot);
 				} else {
-					var attributes = _v0.a.cp;
-					var children = _v0.a.cu;
+					var attributes = _v0.a.b0;
+					var children = _v0.a.b2;
 					return A2(
 						$elm$core$List$cons,
 						A2($elm$html$Html$caption, attributes, children),
@@ -13788,8 +13788,8 @@ var $billstclair$elm_sortable_table$Table$view = F3(
 	});
 var $author$project$DisplaySpeciesTable$view = function (_v0) {
 	var species = _v0.a;
-	var tableState = _v0.eg;
-	var query = _v0.d6;
+	var tableState = _v0.dj;
+	var query = _v0.dc;
 	var lowerQuery = $elm$core$String$toLower(query);
 	var acceptableSpecies = A2(
 		$elm$core$List$filter,
@@ -13821,14 +13821,14 @@ var $author$project$DisplaySpeciesTable$view = function (_v0) {
 };
 var $author$project$DisplaySpeciesTable$main = $elm$browser$Browser$element(
 	{
-		iz: function (_v0) {
+		g$: function (_v0) {
 			return $author$project$DisplaySpeciesTable$init($author$project$DisplaySpeciesTable$speciesTable);
 		},
-		jz: function (_v1) {
+		hJ: function (_v1) {
 			return $elm$core$Platform$Sub$none;
 		},
-		jX: $author$project$DisplaySpeciesTable$update,
-		jZ: $author$project$DisplaySpeciesTable$view
+		h3: $author$project$DisplaySpeciesTable$update,
+		h5: $author$project$DisplaySpeciesTable$view
 	});
 _Platform_export({'DisplaySpeciesTable':{'init':$author$project$DisplaySpeciesTable$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));

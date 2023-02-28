@@ -133,6 +133,7 @@
             pkgs.elmPackages.elm
             pkgs.elmPackages.elm-format
             pkgs.elmPackages.elm-analyse
+            pkgs.elmPackages.elm-review
             # pkgs.elmPackages.elm-live
             pkgs.nodejs
             pkgs.nodePackages.prettier

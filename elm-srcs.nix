@@ -5,11 +5,6 @@
         version = "8.2.0";
       };
 
-      "Orasund/elm-ui-widgets" = {
-        sha256 = "0w6bbvc11gc80w737rxpands8jsyad8lr8gwg49x6vkjf365wqpk";
-        version = "3.4.0";
-      };
-
       "billstclair/elm-sortable-table" = {
         sha256 = "0pjlijfdz6s6frgmxisf0ma2sxjmcmnk6zr7lg2jgxrs2fz8xqww";
         version = "1.2.1";
@@ -53,11 +48,6 @@
       "rtfeldman/elm-css" = {
         sha256 = "0mffazjks3wmsn0f0xs8gs6zg39ahipz0hqif2y7qphzjdq6h6yh";
         version = "17.1.1";
-      };
-
-      "uncover-co/elm-widgets" = {
-        sha256 = "0igwirnxjccrzj4378h998xvfwaxs6gxlz44pcj6a9dj10hg4wv3";
-        version = "2.0.0";
       };
 
       "avh4/elm-color" = {

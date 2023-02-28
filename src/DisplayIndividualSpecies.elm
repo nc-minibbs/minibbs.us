@@ -1,7 +1,7 @@
 port module DisplayIndividualSpecies exposing (..)
 
 import Browser
-import Data.County exposing (County(..), CountyAggregation(..))
+import Data.County exposing (CountyAggregation(..))
 import Data.Species exposing (..)
 import Element exposing (..)
 import Element.Input as Input
