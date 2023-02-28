@@ -122,10 +122,7 @@ mkSpeciesTrendSpec routeDetail counties species =
                     (detail [ dName "mbbs_county" ])
                 << withCountyAggregation
                     (tooltips
-                        [ [ tName "common_name"
-                          , tTitle "Common name"
-                          ]
-                        , [ tName "year"
+                        [ [ tName "year"
                           , tTitle "Year"
                           , tTemporal
                           , tFormat "%Y"
@@ -141,9 +138,6 @@ mkSpeciesTrendSpec routeDetail counties species =
                     (tooltips
                         [ [ tName "mbbs_county"
                           , tTitle "County"
-                          ]
-                        , [ tName "common_name"
-                          , tTitle "Common name"
                           ]
                         , [ tName "year"
                           , tTitle "Year"
@@ -161,14 +155,10 @@ mkSpeciesTrendSpec routeDetail counties species =
 
         trans =
             transform
-                -- Filter to selected species
-                << filter (fiEqual "common_name" (str commonName))
                 -- Aggregrate by route
                 << aggregate
                     [ opAs opSum "count" "speciesCount" ]
                     [ "year"
-                    , "common_name"
-                    , "sci_name"
                     , "mbbs_county"
                     , "route"
                     , "route_num"
@@ -204,7 +194,7 @@ mkSpeciesTrendSpec routeDetail counties species =
             ]
     in
     toVegaLite
-        [ mbbsParse ("../data/" ++ speciesID ++ "-counts.csv")
+        [ mbbsParse ("/data/" ++ speciesID ++ "-counts.csv")
         , mbbsVizConfig []
         , title (speciesToString species) []
         , trans []
