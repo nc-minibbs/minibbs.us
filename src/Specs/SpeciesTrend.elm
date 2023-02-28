@@ -34,11 +34,7 @@ mkSpeciesTrendSpec routeDetail counties species =
         -- FIXME: Better handle the lookup of a species;
         --        in principle we shouldn't need to handle the Maybe
         --        if the Species/SpeciesRec types were combined
-        speciesRec = lookupSpecies species
-        commonName = case speciesRec of    
-                Nothing -> ""
-                Just x -> x.commonName
-        speciesID  = case speciesRec of    
+        speciesID  = case lookupSpecies species of    
                 Nothing -> ""
                 Just x -> x.id
 
