@@ -2,7 +2,6 @@ port module DisplayIndividualSpecies exposing (..)
 
 import Browser
 import Data.County exposing (County(..), CountyAggregation(..))
-import Data.Mbbs exposing (mbbsData)
 import Data.Species exposing (..)
 import Element exposing (..)
 import Element.Input as Input
@@ -30,9 +29,7 @@ main =
 
 
 mkSpecs : RouteDetail -> CountyAggregation -> Species -> Spec
-mkSpecs =
-    mkSpeciesTrendSpec
-        mbbsData
+mkSpecs = mkSpeciesTrendSpec
 
 
 speciesToMenuItem : Species -> Select.MenuItem String

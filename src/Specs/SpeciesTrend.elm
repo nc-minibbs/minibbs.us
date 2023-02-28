@@ -2,6 +2,7 @@ module Specs.SpeciesTrend exposing (..)
 
 import Data.County exposing (..)
 import Data.Species exposing (..)
+import Data.Mbbs exposing (mbbsParse)
 import Specs.SpecConfig exposing (..)
 import VegaLite exposing (..)
 
@@ -11,8 +12,8 @@ type RouteDetail
     | HideRouteDetail
 
 
-mkSpeciesTrendSpec : Data -> RouteDetail -> CountyAggregation -> Species -> Spec
-mkSpeciesTrendSpec countData routeDetail counties species =
+mkSpeciesTrendSpec : RouteDetail -> CountyAggregation -> Species -> Spec
+mkSpeciesTrendSpec routeDetail counties species =
     let
         withCountyAggregation combined split x =
             case counties of
@@ -29,6 +30,17 @@ mkSpeciesTrendSpec countData routeDetail counties species =
 
                 HideRouteDetail ->
                     hide x
+        
+        -- FIXME: Better handle the lookup of a species;
+        --        in principle we shouldn't need to handle the Maybe
+        --        if the Species/SpeciesRec types were combined
+        speciesRec = lookupSpecies species
+        commonName = case speciesRec of    
+                Nothing -> ""
+                Just x -> x.commonName
+        speciesID  = case speciesRec of    
+                Nothing -> ""
+                Just x -> x.id
 
         enc =
             encoding
@@ -150,7 +162,7 @@ mkSpeciesTrendSpec countData routeDetail counties species =
         trans =
             transform
                 -- Filter to selected species
-                << filter (fiEqual "common_name" (str (speciesToString species)))
+                << filter (fiEqual "common_name" (str commonName))
                 -- Aggregrate by route
                 << aggregate
                     [ opAs opSum "count" "speciesCount" ]
@@ -192,7 +204,7 @@ mkSpeciesTrendSpec countData routeDetail counties species =
             ]
     in
     toVegaLite
-        [ countData
+        [ mbbsParse ("../data/" ++ speciesID ++ "-counts.csv")
         , mbbsVizConfig []
         , title (speciesToString species) []
         , trans []

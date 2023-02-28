@@ -5553,42 +5553,17 @@ var $author$project$DisplayIndividualSpecies$SelectSpecies = function (a) {
 	return {$: 0, a: a};
 };
 var $elm$core$Platform$Cmd$map = _Platform_map;
-var $gicentre$elm_vegalite$VegaLite$VLData = 13;
-var $elm$core$List$append = F2(
-	function (xs, ys) {
-		if (!ys.b) {
-			return xs;
-		} else {
-			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
-		}
+var $gicentre$elm_vegalite$VegaLite$X = 0;
+var $gicentre$elm_vegalite$VegaLite$Y = 1;
+var $elm$json$Json$Encode$list = F2(
+	function (func, entries) {
+		return _Json_wrap(
+			A3(
+				$elm$core$List$foldl,
+				_Json_addEntry(func),
+				_Json_emptyArray(0),
+				entries));
 	});
-var $elm$core$List$concat = function (lists) {
-	return A3($elm$core$List$foldr, $elm$core$List$append, _List_Nil, lists);
-};
-var $elm$core$List$concatMap = F2(
-	function (f, list) {
-		return $elm$core$List$concat(
-			A2($elm$core$List$map, f, list));
-	});
-var $gicentre$elm_vegalite$VegaLite$dataTypeLabel = function (dType) {
-	switch (dType.$) {
-		case 0:
-			return 'number';
-		case 1:
-			return 'boolean';
-		case 2:
-			var dateFmt = dType.a;
-			return (dateFmt === '') ? 'date' : ('date:\'' + (dateFmt + '\''));
-		default:
-			var dateFmt = dType.a;
-			return (dateFmt === '') ? 'utc' : ('utc:\'' + (dateFmt + '\''));
-	}
-};
-var $elm$core$String$cons = _String_cons;
-var $elm$core$String$fromChar = function (_char) {
-	return A2($elm$core$String$cons, _char, '');
-};
-var $elm$json$Json$Encode$null = _Json_encodeNull;
 var $elm$json$Json$Encode$object = function (pairs) {
 	return _Json_wrap(
 		A3(
@@ -5603,217 +5578,6 @@ var $elm$json$Json$Encode$object = function (pairs) {
 			pairs));
 };
 var $elm$json$Json$Encode$string = _Json_wrap;
-var $gicentre$elm_vegalite$VegaLite$strExpr = F2(
-	function (objName, s) {
-		switch (s.$) {
-			case 0:
-				var x = s.a;
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(
-						objName,
-						$elm$json$Json$Encode$string(x))
-					]);
-			case 1:
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(objName, $elm$json$Json$Encode$null)
-					]);
-			default:
-				var x = s.a;
-				return _List_fromArray(
-					[
-						_Utils_Tuple2(
-						objName,
-						$elm$json$Json$Encode$object(
-							_List_fromArray(
-								[
-									_Utils_Tuple2(
-									'expr',
-									$elm$json$Json$Encode$string(x))
-								])))
-					]);
-		}
-	});
-var $elm$core$String$trim = _String_trim;
-var $gicentre$elm_vegalite$VegaLite$formatProperties = function (fmt) {
-	switch (fmt.$) {
-		case 0:
-			var s = fmt.a;
-			switch (s.$) {
-				case 0:
-					var propertyName = s.a;
-					return ($elm$core$String$trim(propertyName) === '') ? _List_fromArray(
-						[
-							_Utils_Tuple2(
-							'type',
-							$elm$json$Json$Encode$string('json'))
-						]) : _List_fromArray(
-						[
-							_Utils_Tuple2(
-							'type',
-							$elm$json$Json$Encode$string('json')),
-							_Utils_Tuple2(
-							'property',
-							$elm$json$Json$Encode$string(propertyName))
-						]);
-				case 1:
-					return _List_fromArray(
-						[
-							_Utils_Tuple2(
-							'type',
-							$elm$json$Json$Encode$string('json'))
-						]);
-				default:
-					var st = s.a;
-					return _List_fromArray(
-						[
-							_Utils_Tuple2(
-							'type',
-							$elm$json$Json$Encode$object(
-								_List_fromArray(
-									[
-										_Utils_Tuple2(
-										'expr',
-										$elm$json$Json$Encode$string(st))
-									])))
-						]);
-			}
-		case 1:
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'type',
-					$elm$json$Json$Encode$string('csv'))
-				]);
-		case 2:
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'type',
-					$elm$json$Json$Encode$string('tsv'))
-				]);
-		case 3:
-			var delim = fmt.a;
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'type',
-					$elm$json$Json$Encode$string('dsv')),
-					_Utils_Tuple2(
-					'delimiter',
-					$elm$json$Json$Encode$string(
-						$elm$core$String$fromChar(delim)))
-				]);
-		case 4:
-			return _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'type',
-					$elm$json$Json$Encode$string('arrow'))
-				]);
-		case 5:
-			var s = fmt.a;
-			return A2(
-				$elm$core$List$cons,
-				_Utils_Tuple2(
-					'type',
-					$elm$json$Json$Encode$string('topojson')),
-				A2($gicentre$elm_vegalite$VegaLite$strExpr, 'feature', s));
-		case 6:
-			var s = fmt.a;
-			return A2(
-				$elm$core$List$cons,
-				_Utils_Tuple2(
-					'type',
-					$elm$json$Json$Encode$string('topojson')),
-				A2($gicentre$elm_vegalite$VegaLite$strExpr, 'mesh', s));
-		default:
-			var fmts = fmt.a;
-			return _Utils_eq(fmts, _List_Nil) ? _List_fromArray(
-				[
-					_Utils_Tuple2('parse', $elm$json$Json$Encode$null)
-				]) : _List_fromArray(
-				[
-					_Utils_Tuple2(
-					'parse',
-					$elm$json$Json$Encode$object(
-						A2(
-							$elm$core$List$map,
-							function (_v2) {
-								var field = _v2.a;
-								var fFormat = _v2.b;
-								return _Utils_Tuple2(
-									field,
-									$elm$json$Json$Encode$string(
-										$gicentre$elm_vegalite$VegaLite$dataTypeLabel(fFormat)));
-							},
-							fmts)))
-				]);
-	}
-};
-var $gicentre$elm_vegalite$VegaLite$dataFromUrl = F2(
-	function (u, fmts) {
-		return _Utils_eq(fmts, _List_Nil) ? _Utils_Tuple2(
-			13,
-			$elm$json$Json$Encode$object(
-				_List_fromArray(
-					[
-						_Utils_Tuple2(
-						'url',
-						$elm$json$Json$Encode$string(u))
-					]))) : _Utils_Tuple2(
-			13,
-			$elm$json$Json$Encode$object(
-				_List_fromArray(
-					[
-						_Utils_Tuple2(
-						'url',
-						$elm$json$Json$Encode$string(u)),
-						_Utils_Tuple2(
-						'format',
-						$elm$json$Json$Encode$object(
-							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$formatProperties, fmts)))
-					])));
-	});
-var $gicentre$elm_vegalite$VegaLite$FoDate = function (a) {
-	return {$: 2, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$foDate = $gicentre$elm_vegalite$VegaLite$FoDate;
-var $gicentre$elm_vegalite$VegaLite$FoNum = {$: 0};
-var $gicentre$elm_vegalite$VegaLite$foNum = $gicentre$elm_vegalite$VegaLite$FoNum;
-var $gicentre$elm_vegalite$VegaLite$Parse = function (a) {
-	return {$: 7, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$parse = $gicentre$elm_vegalite$VegaLite$Parse;
-var $author$project$Data$Mbbs$mbbsParse = function (file) {
-	return A2(
-		$gicentre$elm_vegalite$VegaLite$dataFromUrl,
-		file,
-		_List_fromArray(
-			[
-				$gicentre$elm_vegalite$VegaLite$parse(
-				_List_fromArray(
-					[
-						_Utils_Tuple2(
-						'year',
-						$gicentre$elm_vegalite$VegaLite$foDate('%Y')),
-						_Utils_Tuple2('count', $gicentre$elm_vegalite$VegaLite$foNum)
-					]))
-			]));
-};
-var $author$project$Data$Mbbs$mbbsData = $author$project$Data$Mbbs$mbbsParse('../data/mbbs.csv');
-var $gicentre$elm_vegalite$VegaLite$X = 0;
-var $gicentre$elm_vegalite$VegaLite$Y = 1;
-var $elm$json$Json$Encode$list = F2(
-	function (func, entries) {
-		return _Json_wrap(
-			A3(
-				$elm$core$List$foldl,
-				_Json_addEntry(func),
-				_Json_emptyArray(0),
-				entries));
-	});
 var $gicentre$elm_vegalite$VegaLite$toList = $elm$json$Json$Encode$list($elm$core$Basics$identity);
 var $gicentre$elm_vegalite$VegaLite$aggregate = F2(
 	function (ops, groups) {
@@ -5988,6 +5752,22 @@ var $gicentre$elm_vegalite$VegaLite$categoricalDomainMap = function (scaleDomain
 				$gicentre$elm_vegalite$VegaLite$Strs(range)))
 		]);
 };
+var $elm$core$List$append = F2(
+	function (xs, ys) {
+		if (!ys.b) {
+			return xs;
+		} else {
+			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
+		}
+	});
+var $elm$core$List$concat = function (lists) {
+	return A3($elm$core$List$foldr, $elm$core$List$append, _List_Nil, lists);
+};
+var $elm$core$List$concatMap = F2(
+	function (f, list) {
+		return $elm$core$List$concat(
+			A2($elm$core$List$map, f, list));
+	});
 var $gicentre$elm_vegalite$VegaLite$arrangementLabel = function (arrng) {
 	switch (arrng) {
 		case 1:
@@ -6027,6 +5807,7 @@ var $gicentre$elm_vegalite$VegaLite$booExpr = F2(
 				]);
 		}
 	});
+var $elm$json$Json$Encode$null = _Json_encodeNull;
 var $elm$json$Json$Encode$float = _Json_wrap;
 var $gicentre$elm_vegalite$VegaLite$numExpr = F2(
 	function (objName, n) {
@@ -6608,6 +6389,38 @@ var $gicentre$elm_vegalite$VegaLite$anchorSpec = function (an) {
 					]));
 	}
 };
+var $gicentre$elm_vegalite$VegaLite$strExpr = F2(
+	function (objName, s) {
+		switch (s.$) {
+			case 0:
+				var x = s.a;
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						objName,
+						$elm$json$Json$Encode$string(x))
+					]);
+			case 1:
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(objName, $elm$json$Json$Encode$null)
+					]);
+			default:
+				var x = s.a;
+				return _List_fromArray(
+					[
+						_Utils_Tuple2(
+						objName,
+						$elm$json$Json$Encode$object(
+							_List_fromArray(
+								[
+									_Utils_Tuple2(
+									'expr',
+									$elm$json$Json$Encode$string(x))
+								])))
+					]);
+		}
+	});
 var $gicentre$elm_vegalite$VegaLite$ariaProperty = function (arProp) {
 	switch (arProp.$) {
 		case 0:
@@ -7165,6 +6978,7 @@ var $gicentre$elm_vegalite$VegaLite$measurementLabel = function (mType) {
 			return 'geojson';
 	}
 };
+var $elm$core$String$trim = _String_trim;
 var $gicentre$elm_vegalite$VegaLite$operationSpec = function (op) {
 	switch (op.$) {
 		case 0:
@@ -9538,6 +9352,144 @@ var $gicentre$elm_vegalite$VegaLite$mark = F2(
 		}
 	});
 var $gicentre$elm_vegalite$VegaLite$line = $gicentre$elm_vegalite$VegaLite$mark(9);
+var $elm$core$Basics$negate = function (n) {
+	return -n;
+};
+var $author$project$Data$Species$allSpeciesRec = _List_fromArray(
+	[
+		{b: 'Acadian Flycatcher', c: 'AcadianFlycatcher', d: 0.000000039428, e: 0.058421030325, f: 'Empidonax virescens', a: 0},
+		{b: 'American Crow', c: 'AmericanCrow', d: 0.012016636945, e: -0.007050178818, f: 'Corvus brachyrhynchos', a: 1},
+		{b: 'American Goldfinch', c: 'AmericanGoldfinch', d: 0.000061614066, e: -0.030696905089, f: 'Spinus tristis', a: 2},
+		{b: 'American Redstart', c: 'AmericanRedstart', d: 0.217451068881, e: -0.048616181767, f: 'Setophaga ruticilla', a: 3},
+		{b: 'American Robin', c: 'AmericanRobin', d: 0.025386938404, e: -0.017329419688, f: 'Turdus migratorius', a: 4},
+		{b: 'Bald Eagle', c: 'BaldEagle', d: 0.25368041893, e: 0.080212552979, f: 'Haliaeetus leucocephalus', a: 5},
+		{b: 'Baltimore Oriole', c: 'BaltimoreOriole', d: 0.811456331425, e: 0.02806515625, f: 'Icterus galbula', a: 6},
+		{b: 'Barn Swallow', c: 'BarnSwallow', d: 0.102350834243, e: -0.021445273202, f: 'Hirundo rustica', a: 7},
+		{b: 'Barred Owl', c: 'BarredOwl', d: 0.075221358218, e: 0.026448048948, f: 'Strix varia', a: 8},
+		{b: 'Belted Kingfisher', c: 'BeltedKingfisher', d: 0.132626373091, e: -0.048811074598, f: 'Megaceryle alcyon', a: 9},
+		{b: 'Black Vulture', c: 'BlackVulture', d: 0.000904658579, e: 0.076097143449, f: 'Coragyps atratus', a: 10},
+		{b: 'Black-and-white Warbler', c: 'BlackandwhiteWarbler', d: 0.074691996039, e: 0.038411981686, f: 'Mniotilta varia', a: 11},
+		{b: 'Blue Grosbeak', c: 'BlueGrosbeak', d: 0.427920775064, e: 0.007638539511, f: 'Passerina caerulea', a: 12},
+		{b: 'Blue Jay', c: 'BlueJay', d: 0.012385431928, e: -0.015543883566, f: 'Cyanocitta cristata', a: 13},
+		{b: 'Blue-gray Gnatcatcher', c: 'BluegrayGnatcatcher', d: 0.255211097046, e: 0.007546473789, f: 'Polioptila caerulea', a: 14},
+		{b: 'Blue-headed Vireo', c: 'BlueheadedVireo', d: 0.016524216224, e: -0.039291508291, f: 'Vireo solitarius', a: 15},
+		{b: 'Broad-winged Hawk', c: 'BroadwingedHawk', d: 0.000000142044, e: -0.091599407413, f: 'Buteo platypterus', a: 16},
+		{b: 'Brown Thrasher', c: 'BrownThrasher', d: 0.44529740655, e: 0.005897077165, f: 'Toxostoma rufum', a: 17},
+		{b: 'Brown-headed Cowbird', c: 'BrownheadedCowbird', d: 0.147028784891, e: 0.011822443344, f: 'Molothrus ater', a: 18},
+		{b: 'Brown-headed Nuthatch', c: 'BrownheadedNuthatch', d: 0.456218351755, e: 0.011630492577, f: 'Sitta pusilla', a: 19},
+		{b: 'Canada Goose', c: 'CanadaGoose', d: 0.096631803642, e: -0.036877674167, f: 'Branta canadensis', a: 20},
+		{b: 'Carolina Chickadee', c: 'CarolinaChickadee', d: 0.736911575122, e: 0.002031731854, f: 'Poecile carolinensis', a: 21},
+		{b: 'Carolina Wren', c: 'CarolinaWren', d: 0.01479076674, e: 0.008703975698, f: 'Thryothorus ludovicianus', a: 22},
+		{b: 'Cedar Waxwing', c: 'CedarWaxwing', d: 0.256324702266, e: -0.022593290215, f: 'Bombycilla cedrorum', a: 23},
+		{b: 'Chimney Swift', c: 'ChimneySwift', d: 0.000397312223, e: -0.034503014457, f: 'Chaetura pelagica', a: 24},
+		{b: 'Chuck-will\'s-widow', c: 'Chuckwillswidow', d: 0.097458193376, e: 0.02389125939, f: 'Antrostomus carolinensis', a: 25},
+		{b: 'Cliff Swallow', c: 'CliffSwallow', d: 0.0, e: 0.119248145008, f: 'Petrochelidon pyrrhonota', a: 26},
+		{b: 'Common Grackle', c: 'CommonGrackle', d: 0.000000024633, e: -0.053569704268, f: 'Quiscalus quiscula', a: 27},
+		{b: 'Common Yellowthroat', c: 'CommonYellowthroat', d: 0.002162733022, e: -0.029952764147, f: 'Geothlypis trichas', a: 28},
+		{b: 'Cooper\'s Hawk', c: 'CoopersHawk', d: 0.886913391604, e: -0.003406367518, f: 'Accipiter cooperii', a: 29},
+		{b: 'Dickcissel', c: 'Dickcissel', d: 0.375352071642, e: 0.127154501907, f: 'Spiza americana', a: 30},
+		{b: 'Double-crested Cormorant', c: 'DoublecrestedCormorant', d: 0.0555239273, e: 0.057904590874, f: 'Nannopterum auritum', a: 31},
+		{b: 'Downy Woodpecker', c: 'DownyWoodpecker', d: 0.674457061178, e: -0.003474473528, f: 'Dryobates pubescens', a: 32},
+		{b: 'Eastern Bluebird', c: 'EasternBluebird', d: 0.913925509058, e: -0.000477009335, f: 'Sialia sialis', a: 33},
+		{b: 'Eastern Kingbird', c: 'EasternKingbird', d: 0.012838237925, e: -0.031928947856, f: 'Tyrannus tyrannus', a: 34},
+		{b: 'Eastern Meadowlark', c: 'EasternMeadowlark', d: 0.023767071051, e: -0.025045487749, f: 'Sturnella magna', a: 35},
+		{b: 'Eastern Phoebe', c: 'EasternPhoebe', d: 0.314270395657, e: 0.006963598622, f: 'Sayornis phoebe', a: 36},
+		{b: 'Eastern Screech-Owl', c: 'EasternScreechOwl', d: 0.766101003812, e: 0.017002644589, f: 'Megascops asio', a: 37},
+		{b: 'Eastern Towhee', c: 'EasternTowhee', d: 0.000000001367, e: -0.024178061969, f: 'Pipilo erythrophthalmus', a: 38},
+		{b: 'Eastern Whip-poor-will', c: 'EasternWhippoorwill', d: 0.031931234974, e: -0.044136400027, f: 'Antrostomus vociferus', a: 39},
+		{b: 'Eastern Wood-Pewee', c: 'EasternWoodPewee', d: 0.336774810478, e: -0.005886421231, f: 'Contopus virens', a: 40},
+		{b: 'European Starling', c: 'EuropeanStarling', d: 0.083975101054, e: -0.024063269563, f: 'Sturnus vulgaris', a: 41},
+		{b: 'Field Sparrow', c: 'FieldSparrow', d: 0.005646759551, e: -0.042085332993, f: 'Spizella pusilla', a: 42},
+		{b: 'Fish Crow', c: 'FishCrow', d: 0.000000000003, e: 0.07269737558, f: 'Corvus ossifragus', a: 43},
+		{b: 'Grasshopper Sparrow', c: 'GrasshopperSparrow', d: 0.657990604147, e: -0.011144172857, f: 'Ammodramus savannarum', a: 44},
+		{b: 'Gray Catbird', c: 'GrayCatbird', d: 0.56929839549, e: -0.005042490417, f: 'Dumetella carolinensis', a: 45},
+		{b: 'Great Blue Heron', c: 'GreatBlueHeron', d: 0.009371962549, e: 0.026436703823, f: 'Ardea herodias', a: 46},
+		{b: 'Great Crested Flycatcher', c: 'GreatCrestedFlycatcher', d: 0.000000052348, e: 0.043531164689, f: 'Myiarchus crinitus', a: 47},
+		{b: 'Great Egret', c: 'GreatEgret', d: 0.832899804952, e: -0.008258868007, f: 'Ardea alba', a: 48},
+		{b: 'Great Horned Owl', c: 'GreatHornedOwl', d: 0.848368652939, e: -0.006571468905, f: 'Bubo virginianus', a: 49},
+		{b: 'Green Heron', c: 'GreenHeron', d: 0.006671460678, e: -0.05393452343, f: 'Butorides virescens', a: 50},
+		{b: 'Hairy Woodpecker', c: 'HairyWoodpecker', d: 0.415200961406, e: -0.017943311596, f: 'Dryobates villosus', a: 51},
+		{b: 'Hooded Warbler', c: 'HoodedWarbler', d: 0.00020322805, e: 0.031931031707, f: 'Setophaga citrina', a: 52},
+		{b: 'Horned Lark', c: 'HornedLark', d: 0.043590790369, e: 0.039383189401, f: 'Eremophila alpestris', a: 53},
+		{b: 'House Finch', c: 'HouseFinch', d: 0.42915213157, e: -0.006569004141, f: 'Haemorhous mexicanus', a: 54},
+		{b: 'House Sparrow', c: 'HouseSparrow', d: 0.000024013845, e: -0.078090790529, f: 'Passer domesticus', a: 55},
+		{b: 'House Wren', c: 'HouseWren', d: 0.141615572689, e: -0.031677405421, f: 'Troglodytes aedon', a: 56},
+		{b: 'Indigo Bunting', c: 'IndigoBunting', d: 0.000000599018, e: -0.026546352085, f: 'Passerina cyanea', a: 57},
+		{b: 'Kentucky Warbler', c: 'KentuckyWarbler', d: 0.315563071541, e: 0.036525015791, f: 'Geothlypis formosa', a: 58},
+		{b: 'Killdeer', c: 'Killdeer', d: 0.130489702485, e: -0.023458462794, f: 'Charadrius vociferus', a: 59},
+		{b: 'Loggerhead Shrike', c: 'LoggerheadShrike', d: 0.974022421248, e: -0.002519655711, f: 'Lanius ludovicianus', a: 60},
+		{b: 'Louisiana Waterthrush', c: 'LouisianaWaterthrush', d: 0.447557726859, e: 0.014623547733, f: 'Parkesia motacilla', a: 61},
+		{b: 'Mallard', c: 'Mallard', d: 0.110694028957, e: -0.031708961275, f: 'Anas platyrhynchos', a: 62},
+		{b: 'Mourning Dove', c: 'MourningDove', d: 0.00536767389, e: -0.012088340742, f: 'Zenaida macroura', a: 63},
+		{b: 'Northern Bobwhite', c: 'NorthernBobwhite', d: 0.000000000267, e: -0.118477029725, f: 'Colinus virginianus', a: 64},
+		{b: 'Northern Cardinal', c: 'NorthernCardinal', d: 0.572430531653, e: -0.001618943599, f: 'Cardinalis cardinalis', a: 65},
+		{b: 'Northern Flicker', c: 'NorthernFlicker', d: 0.02888727773, e: -0.036293076271, f: 'Colaptes auratus', a: 66},
+		{b: 'Northern Mockingbird', c: 'NorthernMockingbird', d: 0.31594040911, e: -0.005462509976, f: 'Mimus polyglottos', a: 67},
+		{b: 'Northern Parula', c: 'NorthernParula', d: 0.008410531067, e: 0.041160534857, f: 'Setophaga americana', a: 68},
+		{b: 'Northern Rough-winged Swallow', c: 'NorthernRoughwingedSwallow', d: 0.619592833683, e: 0.016362536251, f: 'Stelgidopteryx serripennis', a: 69},
+		{b: 'Orchard Oriole', c: 'OrchardOriole', d: 0.103430294926, e: -0.021611824999, f: 'Icterus spurius', a: 70},
+		{b: 'Osprey', c: 'Osprey', d: 0.068765629962, e: 0.063156905216, f: 'Pandion haliaetus', a: 71},
+		{b: 'Ovenbird', c: 'Ovenbird', d: 0.864934872347, e: -0.001010843502, f: 'Seiurus aurocapilla', a: 72},
+		{b: 'Pileated Woodpecker', c: 'PileatedWoodpecker', d: 0.013586319799, e: 0.041211393861, f: 'Dryocopus pileatus', a: 73},
+		{b: 'Prairie Warbler', c: 'PrairieWarbler', d: 0.000007843051, e: -0.040117147922, f: 'Setophaga discolor', a: 74},
+		{b: 'Prothonotary Warbler', c: 'ProthonotaryWarbler', d: 0.020513744563, e: 0.057904590874, f: 'Protonotaria citrea', a: 75},
+		{b: 'Purple Martin', c: 'PurpleMartin', d: 0.000833917808, e: 0.031033905749, f: 'Progne subis', a: 76},
+		{b: 'Red-bellied Woodpecker', c: 'RedbelliedWoodpecker', d: 0.18843420806, e: 0.005539519614, f: 'Melanerpes carolinus', a: 77},
+		{b: 'Red-eyed Vireo', c: 'RedeyedVireo', d: 0.053233926322, e: -0.011419111691, f: 'Vireo olivaceus', a: 78},
+		{b: 'Red-headed Woodpecker', c: 'RedheadedWoodpecker', d: 0.138512321937, e: 0.026525997068, f: 'Melanerpes erythrocephalus', a: 79},
+		{b: 'Red-shouldered Hawk', c: 'RedshoulderedHawk', d: 0.000000122413, e: 0.054622724209, f: 'Buteo lineatus', a: 80},
+		{b: 'Red-tailed Hawk', c: 'RedtailedHawk', d: 0.441237730953, e: 0.014151525569, f: 'Buteo jamaicensis', a: 81},
+		{b: 'Red-winged Blackbird', c: 'RedwingedBlackbird', d: 0.002638320342, e: -0.041684305359, f: 'Agelaius phoeniceus', a: 82},
+		{b: 'Rock Pigeon', c: 'RockPigeon', d: 0.051811952519, e: -0.036342850371, f: 'Columba livia', a: 83},
+		{b: 'Ruby-throated Hummingbird', c: 'RubythroatedHummingbird', d: 0.004459181924, e: -0.030088585442, f: 'Archilochus colubris', a: 84},
+		{b: 'Scarlet Tanager', c: 'ScarletTanager', d: 0.000148271527, e: -0.031633734264, f: 'Piranga olivacea', a: 85},
+		{b: 'Sharp-shinned Hawk', c: 'SharpshinnedHawk', d: 0.295190730471, e: -0.042686708968, f: 'Accipiter striatus', a: 86},
+		{b: 'Song Sparrow', c: 'SongSparrow', d: 0.011213880079, e: 0.039564412038, f: 'Melospiza melodia', a: 87},
+		{b: 'Summer Tanager', c: 'SummerTanager', d: 0.000038815189, e: 0.029782415873, f: 'Piranga rubra', a: 88},
+		{b: 'Tree Swallow', c: 'TreeSwallow', d: 0.007212665424, e: 0.154468512258, f: 'Tachycineta bicolor', a: 89},
+		{b: 'Tufted Titmouse', c: 'TuftedTitmouse', d: 0.206059807941, e: 0.005128838161, f: 'Baeolophus bicolor', a: 90},
+		{b: 'Turkey Vulture', c: 'TurkeyVulture', d: 0.689507052639, e: 0.007713348765, f: 'Cathartes aura', a: 91},
+		{b: 'Warbling Vireo', c: 'WarblingVireo', d: 0.049665254115, e: -0.173549416385, f: 'Vireo gilvus', a: 92},
+		{b: 'White-breasted Nuthatch', c: 'WhitebreastedNuthatch', d: 0.306158604154, e: 0.010414288905, f: 'Sitta carolinensis', a: 93},
+		{b: 'White-eyed Vireo', c: 'WhiteeyedVireo', d: 0.000000228765, e: 0.064733303035, f: 'Vireo griseus', a: 94},
+		{b: 'Wild Turkey', c: 'WildTurkey', d: 0.000284198585, e: 0.084598272707, f: 'Meleagris gallopavo', a: 95},
+		{b: 'Wood Duck', c: 'WoodDuck', d: 0.415565838656, e: 0.028359355508, f: 'Aix sponsa', a: 96},
+		{b: 'Wood Thrush', c: 'WoodThrush', d: 0.0, e: -0.062945957227, f: 'Hylocichla mustelina', a: 97},
+		{b: 'Yellow Warbler', c: 'YellowWarbler', d: 0.132413101859, e: 0.06731343404, f: 'Setophaga petechia', a: 98},
+		{b: 'Yellow-billed Cuckoo', c: 'YellowbilledCuckoo', d: 0.007401593566, e: 0.018788719374, f: 'Coccyzus americanus', a: 99},
+		{b: 'Yellow-breasted Chat', c: 'YellowbreastedChat', d: 0.000009029872, e: -0.03329204807, f: 'Icteria virens', a: 100},
+		{b: 'Yellow-throated Vireo', c: 'YellowthroatedVireo', d: 0.497440237101, e: -0.01111408198, f: 'Vireo flavifrons', a: 101},
+		{b: 'Yellow-throated Warbler', c: 'YellowthroatedWarbler', d: 0.000000000585, e: 0.075058651967, f: 'Setophaga dominica', a: 102}
+	]);
+var $elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
+var $elm$core$List$head = function (list) {
+	if (list.b) {
+		var x = list.a;
+		var xs = list.b;
+		return $elm$core$Maybe$Just(x);
+	} else {
+		return $elm$core$Maybe$Nothing;
+	}
+};
+var $author$project$Data$Species$lookupSpecies = function (x) {
+	return $elm$core$List$head(
+		A2(
+			$elm$core$List$filter,
+			function (r) {
+				return _Utils_eq(x, r.a);
+			},
+			$author$project$Data$Species$allSpeciesRec));
+};
 var $gicentre$elm_vegalite$VegaLite$MName = function (a) {
 	return {$: 0, a: a};
 };
@@ -9584,6 +9536,191 @@ var $gicentre$elm_vegalite$VegaLite$MStrokeWidth = function (a) {
 var $gicentre$elm_vegalite$VegaLite$maStrokeWidth = function (n) {
 	return $gicentre$elm_vegalite$VegaLite$MStrokeWidth(
 		$gicentre$elm_vegalite$VegaLite$Num(n));
+};
+var $gicentre$elm_vegalite$VegaLite$VLData = 13;
+var $gicentre$elm_vegalite$VegaLite$dataTypeLabel = function (dType) {
+	switch (dType.$) {
+		case 0:
+			return 'number';
+		case 1:
+			return 'boolean';
+		case 2:
+			var dateFmt = dType.a;
+			return (dateFmt === '') ? 'date' : ('date:\'' + (dateFmt + '\''));
+		default:
+			var dateFmt = dType.a;
+			return (dateFmt === '') ? 'utc' : ('utc:\'' + (dateFmt + '\''));
+	}
+};
+var $elm$core$String$cons = _String_cons;
+var $elm$core$String$fromChar = function (_char) {
+	return A2($elm$core$String$cons, _char, '');
+};
+var $gicentre$elm_vegalite$VegaLite$formatProperties = function (fmt) {
+	switch (fmt.$) {
+		case 0:
+			var s = fmt.a;
+			switch (s.$) {
+				case 0:
+					var propertyName = s.a;
+					return ($elm$core$String$trim(propertyName) === '') ? _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'type',
+							$elm$json$Json$Encode$string('json'))
+						]) : _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'type',
+							$elm$json$Json$Encode$string('json')),
+							_Utils_Tuple2(
+							'property',
+							$elm$json$Json$Encode$string(propertyName))
+						]);
+				case 1:
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'type',
+							$elm$json$Json$Encode$string('json'))
+						]);
+				default:
+					var st = s.a;
+					return _List_fromArray(
+						[
+							_Utils_Tuple2(
+							'type',
+							$elm$json$Json$Encode$object(
+								_List_fromArray(
+									[
+										_Utils_Tuple2(
+										'expr',
+										$elm$json$Json$Encode$string(st))
+									])))
+						]);
+			}
+		case 1:
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'type',
+					$elm$json$Json$Encode$string('csv'))
+				]);
+		case 2:
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'type',
+					$elm$json$Json$Encode$string('tsv'))
+				]);
+		case 3:
+			var delim = fmt.a;
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'type',
+					$elm$json$Json$Encode$string('dsv')),
+					_Utils_Tuple2(
+					'delimiter',
+					$elm$json$Json$Encode$string(
+						$elm$core$String$fromChar(delim)))
+				]);
+		case 4:
+			return _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'type',
+					$elm$json$Json$Encode$string('arrow'))
+				]);
+		case 5:
+			var s = fmt.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'type',
+					$elm$json$Json$Encode$string('topojson')),
+				A2($gicentre$elm_vegalite$VegaLite$strExpr, 'feature', s));
+		case 6:
+			var s = fmt.a;
+			return A2(
+				$elm$core$List$cons,
+				_Utils_Tuple2(
+					'type',
+					$elm$json$Json$Encode$string('topojson')),
+				A2($gicentre$elm_vegalite$VegaLite$strExpr, 'mesh', s));
+		default:
+			var fmts = fmt.a;
+			return _Utils_eq(fmts, _List_Nil) ? _List_fromArray(
+				[
+					_Utils_Tuple2('parse', $elm$json$Json$Encode$null)
+				]) : _List_fromArray(
+				[
+					_Utils_Tuple2(
+					'parse',
+					$elm$json$Json$Encode$object(
+						A2(
+							$elm$core$List$map,
+							function (_v2) {
+								var field = _v2.a;
+								var fFormat = _v2.b;
+								return _Utils_Tuple2(
+									field,
+									$elm$json$Json$Encode$string(
+										$gicentre$elm_vegalite$VegaLite$dataTypeLabel(fFormat)));
+							},
+							fmts)))
+				]);
+	}
+};
+var $gicentre$elm_vegalite$VegaLite$dataFromUrl = F2(
+	function (u, fmts) {
+		return _Utils_eq(fmts, _List_Nil) ? _Utils_Tuple2(
+			13,
+			$elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'url',
+						$elm$json$Json$Encode$string(u))
+					]))) : _Utils_Tuple2(
+			13,
+			$elm$json$Json$Encode$object(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'url',
+						$elm$json$Json$Encode$string(u)),
+						_Utils_Tuple2(
+						'format',
+						$elm$json$Json$Encode$object(
+							A2($elm$core$List$concatMap, $gicentre$elm_vegalite$VegaLite$formatProperties, fmts)))
+					])));
+	});
+var $gicentre$elm_vegalite$VegaLite$FoDate = function (a) {
+	return {$: 2, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$foDate = $gicentre$elm_vegalite$VegaLite$FoDate;
+var $gicentre$elm_vegalite$VegaLite$FoNum = {$: 0};
+var $gicentre$elm_vegalite$VegaLite$foNum = $gicentre$elm_vegalite$VegaLite$FoNum;
+var $gicentre$elm_vegalite$VegaLite$Parse = function (a) {
+	return {$: 7, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$parse = $gicentre$elm_vegalite$VegaLite$Parse;
+var $author$project$Data$Mbbs$mbbsParse = function (file) {
+	return A2(
+		$gicentre$elm_vegalite$VegaLite$dataFromUrl,
+		file,
+		_List_fromArray(
+			[
+				$gicentre$elm_vegalite$VegaLite$parse(
+				_List_fromArray(
+					[
+						_Utils_Tuple2(
+						'year',
+						$gicentre$elm_vegalite$VegaLite$foDate('%Y')),
+						_Utils_Tuple2('count', $gicentre$elm_vegalite$VegaLite$foNum)
+					]))
+			]));
 };
 var $gicentre$elm_vegalite$VegaLite$AFit = 1;
 var $gicentre$elm_vegalite$VegaLite$asFit = 1;
@@ -10112,15 +10249,6 @@ var $gicentre$elm_vegalite$VegaLite$AxLabelFontWeight = function (a) {
 	return {$: 32, a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$axLabelFontWeight = $gicentre$elm_vegalite$VegaLite$AxLabelFontWeight;
-var $elm$core$List$head = function (list) {
-	if (list.b) {
-		var x = list.a;
-		var xs = list.b;
-		return $elm$core$Maybe$Just(x);
-	} else {
-		return $elm$core$Maybe$Nothing;
-	}
-};
 var $elm$core$Tuple$second = function (_v0) {
 	var y = _v0.b;
 	return y;
@@ -13525,8 +13653,8 @@ var $gicentre$elm_vegalite$VegaLite$transform = function (transforms) {
 		16,
 		A2($elm$json$Json$Encode$list, assemble, transforms));
 };
-var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F4(
-	function (countData, routeDetail, counties, species) {
+var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
+	function (routeDetail, counties, species) {
 		var withRouteDetail = F3(
 			function (show, hide, x) {
 				if (!routeDetail) {
@@ -13543,25 +13671,15 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F4(
 					return split(x);
 				}
 			});
-		var trans = A2(
-			$elm$core$Basics$composeL,
-			A2(
-				$elm$core$Basics$composeL,
-				$gicentre$elm_vegalite$VegaLite$transform,
-				$gicentre$elm_vegalite$VegaLite$filter(
-					A2(
-						$gicentre$elm_vegalite$VegaLite$fiEqual,
-						'common_name',
-						$gicentre$elm_vegalite$VegaLite$str(
-							$author$project$Data$Species$speciesToString(species))))),
-			A2(
-				$gicentre$elm_vegalite$VegaLite$aggregate,
-				_List_fromArray(
-					[
-						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'count', 'speciesCount')
-					]),
-				_List_fromArray(
-					['year', 'common_name', 'sci_name', 'mbbs_county', 'route', 'route_num'])));
+		var speciesRec = $author$project$Data$Species$lookupSpecies(species);
+		var speciesID = function () {
+			if (speciesRec.$ === 1) {
+				return '';
+			} else {
+				var x = speciesRec.a;
+				return x.c;
+			}
+		}();
 		var enc = A2(
 			$elm$core$Basics$composeL,
 			$gicentre$elm_vegalite$VegaLite$encoding,
@@ -13812,10 +13930,36 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F4(
 							]))
 					]))
 			]);
+		var commonName = function () {
+			if (speciesRec.$ === 1) {
+				return '';
+			} else {
+				var x = speciesRec.a;
+				return x.b;
+			}
+		}();
+		var trans = A2(
+			$elm$core$Basics$composeL,
+			A2(
+				$elm$core$Basics$composeL,
+				$gicentre$elm_vegalite$VegaLite$transform,
+				$gicentre$elm_vegalite$VegaLite$filter(
+					A2(
+						$gicentre$elm_vegalite$VegaLite$fiEqual,
+						'common_name',
+						$gicentre$elm_vegalite$VegaLite$str(commonName)))),
+			A2(
+				$gicentre$elm_vegalite$VegaLite$aggregate,
+				_List_fromArray(
+					[
+						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'count', 'speciesCount')
+					]),
+				_List_fromArray(
+					['year', 'common_name', 'sci_name', 'mbbs_county', 'route', 'route_num'])));
 		return $gicentre$elm_vegalite$VegaLite$toVegaLite(
 			_List_fromArray(
 				[
-					countData,
+					$author$project$Data$Mbbs$mbbsParse('../data/' + (speciesID + '-counts.csv')),
 					$author$project$Specs$SpecConfig$mbbsVizConfig(_List_Nil),
 					A2(
 					$gicentre$elm_vegalite$VegaLite$title,
@@ -13832,7 +13976,7 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F4(
 						summaryLayer))
 				]));
 	});
-var $author$project$DisplayIndividualSpecies$mkSpecs = $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec($author$project$Data$Mbbs$mbbsData);
+var $author$project$DisplayIndividualSpecies$mkSpecs = $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec;
 var $elm$core$List$maybeCons = F3(
 	function (f, mx, xs) {
 		var _v0 = f(mx);
@@ -17719,9 +17863,6 @@ var $elm$core$Basics$min = F2(
 	function (x, y) {
 		return (_Utils_cmp(x, y) < 0) ? x : y;
 	});
-var $elm$core$Basics$negate = function (n) {
-	return -n;
-};
 var $mdgriffith$elm_ui$Internal$Model$renderProps = F3(
 	function (force, _v0, existing) {
 		var key = _v0.a;
@@ -18405,17 +18546,6 @@ var $mdgriffith$elm_ui$Internal$Model$renderNullAdjustmentRule = F2(
 var $mdgriffith$elm_ui$Internal$Model$adjust = F3(
 	function (size, height, vertical) {
 		return {dI: height / size, bC: size, hm: vertical};
-	});
-var $elm$core$List$filter = F2(
-	function (isGood, list) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, xs) {
-					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
-				}),
-			_List_Nil,
-			list);
 	});
 var $elm$core$List$maximum = function (list) {
 	if (list.b) {
