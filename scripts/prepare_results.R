@@ -36,9 +36,9 @@ gee_model <- function(data, .formula) {
     # route is created in the data manipulaton step
     # It should be an integer vector.
     id      = route,
-    corstr  = "ar1",
     family  = poisson(),
-    data    = data))
+    data    = data
+    ))
 }
 
 extract_results <- function(fitted_model) {
