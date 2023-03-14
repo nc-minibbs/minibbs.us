@@ -8396,6 +8396,16 @@ var $gicentre$elm_vegalite$VegaLite$layer = function (specs) {
 		19,
 		$gicentre$elm_vegalite$VegaLite$toList(specs));
 };
+var $gicentre$elm_vegalite$VegaLite$LSymbolOpacity = function (a) {
+	return {$: 40, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$Num = function (a) {
+	return {$: 0, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$leSymbolOpacity = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$LSymbolOpacity(
+		$gicentre$elm_vegalite$VegaLite$Num(n));
+};
 var $gicentre$elm_vegalite$VegaLite$Line = 9;
 var $gicentre$elm_vegalite$VegaLite$VLMark = 15;
 var $gicentre$elm_vegalite$VegaLite$markLabel = function (m) {
@@ -9479,6 +9489,10 @@ var $author$project$Data$Species$lookupSpecies = function (x) {
 			},
 			$author$project$Data$Species$allSpeciesRec));
 };
+var $gicentre$elm_vegalite$VegaLite$MLegend = function (a) {
+	return {$: 15, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$mLegend = $gicentre$elm_vegalite$VegaLite$MLegend;
 var $gicentre$elm_vegalite$VegaLite$MName = function (a) {
 	return {$: 0, a: a};
 };
@@ -9511,9 +9525,6 @@ var $gicentre$elm_vegalite$VegaLite$maColor = function (s) {
 };
 var $gicentre$elm_vegalite$VegaLite$MOpacity = function (a) {
 	return {$: 41, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$Num = function (a) {
-	return {$: 0, a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$maOpacity = function (n) {
 	return $gicentre$elm_vegalite$VegaLite$MOpacity(
@@ -13856,7 +13867,12 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 									$gicentre$elm_vegalite$VegaLite$mTitle('County'),
 									$gicentre$elm_vegalite$VegaLite$mNominal,
 									$gicentre$elm_vegalite$VegaLite$mScale(
-									$gicentre$elm_vegalite$VegaLite$categoricalDomainMap($author$project$Data$County$countyColorMap))
+									$gicentre$elm_vegalite$VegaLite$categoricalDomainMap($author$project$Data$County$countyColorMap)),
+									$gicentre$elm_vegalite$VegaLite$mLegend(
+									_List_fromArray(
+										[
+											$gicentre$elm_vegalite$VegaLite$leSymbolOpacity(1.0)
+										]))
 								])))),
 				$gicentre$elm_vegalite$VegaLite$detail(
 					_List_fromArray(

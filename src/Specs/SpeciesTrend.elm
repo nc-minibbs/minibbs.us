@@ -73,6 +73,7 @@ mkSpeciesTrendSpec routeDetail counties species =
                         , mNominal
                         , mScale <|
                             categoricalDomainMap countyColorMap
+                        , mLegend [ leSymbolOpacity 1.0 ]
                         ]
                     )
                 << detail [ dName "route" ]
