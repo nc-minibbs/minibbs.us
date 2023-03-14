@@ -104,6 +104,8 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                         filter (fiEqual "mbbs_county" (str (countyToString county))) x
                     )
                 << withTrait
+                    -- relabel diet categories
+                    -- TODO: find a more robust way -- rename in source data (?)
                     (\x -> calculateAs "{'FruiNect': 'Fruit/Nectar', 'PlantSeed': 'Plant/Seed', 'VertFishScav' : 'Carnivore/Scavenger', 'Invertebrate' : 'Invertebrate', 'Omnivore' : 'Omnivore'  }[datum.group]" "group" x)
                     (\x -> x)
                     (\x -> x)
