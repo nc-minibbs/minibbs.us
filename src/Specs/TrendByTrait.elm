@@ -1,7 +1,7 @@
 module Specs.TrendByTrait exposing (CountyFilter(..), mkTrendByTraitSpec)
 
 import Data.County exposing (County, countyToString)
-import Data.Traits exposing (Trait, traitToString)
+import Data.Traits exposing (Trait(..), traitToString)
 import Specs.SpecConfig exposing (..)
 import String exposing (replace)
 import VegaLite exposing (..)
@@ -22,6 +22,21 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
 
                 FilterCounty c ->
                     yesFilter c x
+
+        -- The ability to modify the spec
+        -- based on chosen trait.
+        -- Used to address
+        -- https://github.com/nc-minibbs/minibbs.us/issues/31
+        withTrait diet winter breeding x =
+            case trait of
+                Diet5Cat ->
+                    diet x
+
+                WinterBiome ->
+                    winter x
+
+                BreedingBiome ->
+                    breeding x
 
         {-
            Define the primary layer's encoding
@@ -47,10 +62,15 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                         ]
                     ]
                 << color
-                    [ mName "group"
-                    , mTitle (replace "_" " " (traitToString trait))
-                    , mNominal
-                    ]
+                    ([ mName "group"
+                     , mTitle (replace "_" " " (traitToString trait))
+                     , mNominal
+                     ]
+                        |> withTrait
+                            (\x -> x ++ [ mLegend [ leTitle "Diet" ] ])
+                            (\x -> x)
+                            (\x -> x)
+                    )
                 << tooltips
                     [ [ tName "group"
                       , tTitle (replace "_" " " (traitToString trait))
@@ -83,6 +103,18 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                     (\county x ->
                         filter (fiEqual "mbbs_county" (str (countyToString county))) x
                     )
+                << withTrait
+                    -- relabel diet categories
+                    -- TODO: find a more robust way -- rename in source data (?)
+                    (\x -> calculateAs "{'FruiNect': 'Fruit/Nectar', 'PlantSeed': 'Plant/Seed', 'VertFishScav' : 'Carnivore/Scavenger', 'Invertebrate' : 'Invertebrate', 'Omnivore' : 'Omnivore'  }[datum.group]" "group" x)
+                    (\x -> x)
+                    (\x -> x)
+                << withTrait
+                    (\x -> x)
+                    (\x -> x)
+                    -- filter out Boreal Forest per for breeding biome
+                    -- https://github.com/nc-minibbs/minibbs.us/issues/31
+                    (filter (fiExpr "datum.group != 'Boreal Forest'"))
                 -- Compute counts per species within each route/year
                 -- This and the next sum could combined,
                 -- but kept for clarity of the data summarizing steps.

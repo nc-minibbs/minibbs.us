@@ -29,7 +29,8 @@ main =
 
 
 mkSpecs : RouteDetail -> CountyAggregation -> Species -> Spec
-mkSpecs = mkSpeciesTrendSpec
+mkSpecs =
+    mkSpeciesTrendSpec
 
 
 speciesToMenuItem : Species -> Select.MenuItem String
