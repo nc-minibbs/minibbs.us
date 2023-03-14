@@ -1,8 +1,8 @@
 module Specs.SpeciesTrend exposing (..)
 
 import Data.County exposing (..)
-import Data.Species exposing (..)
 import Data.Mbbs exposing (mbbsParse)
+import Data.Species exposing (..)
 import Specs.SpecConfig exposing (..)
 import VegaLite exposing (..)
 
@@ -30,13 +30,17 @@ mkSpeciesTrendSpec routeDetail counties species =
 
                 HideRouteDetail ->
                     hide x
-        
+
         -- FIXME: Better handle the lookup of a species;
         --        in principle we shouldn't need to handle the Maybe
         --        if the Species/SpeciesRec types were combined
-        speciesID  = case lookupSpecies species of    
-                Nothing -> ""
-                Just x -> x.id
+        speciesID =
+            case lookupSpecies species of
+                Nothing ->
+                    ""
+
+                Just x ->
+                    x.id
 
         enc =
             encoding

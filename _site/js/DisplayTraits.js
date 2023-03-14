@@ -8139,6 +8139,13 @@ var $gicentre$elm_vegalite$VegaLite$layer = function (specs) {
 		19,
 		$gicentre$elm_vegalite$VegaLite$toList(specs));
 };
+var $gicentre$elm_vegalite$VegaLite$LTitle = function (a) {
+	return {$: 46, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$leTitle = function (s) {
+	return $gicentre$elm_vegalite$VegaLite$LTitle(
+		$gicentre$elm_vegalite$VegaLite$Str(s));
+};
 var $gicentre$elm_vegalite$VegaLite$Line = 9;
 var $gicentre$elm_vegalite$VegaLite$VLMark = 15;
 var $gicentre$elm_vegalite$VegaLite$markLabel = function (m) {
@@ -9273,6 +9280,10 @@ var $gicentre$elm_vegalite$VegaLite$LUFieldsAs = function (a) {
 	return {$: 1, a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$luFieldsAs = $gicentre$elm_vegalite$VegaLite$LUFieldsAs;
+var $gicentre$elm_vegalite$VegaLite$MLegend = function (a) {
+	return {$: 15, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$mLegend = $gicentre$elm_vegalite$VegaLite$MLegend;
 var $gicentre$elm_vegalite$VegaLite$MName = function (a) {
 	return {$: 0, a: a};
 };
@@ -13293,35 +13304,48 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 									$elm$core$Basics$composeL,
 									A2(
 										$elm$core$Basics$composeL,
-										$gicentre$elm_vegalite$VegaLite$transform,
-										A4(
-											$gicentre$elm_vegalite$VegaLite$lookup,
-											'common_name',
-											traitData,
-											'english_common_name',
-											$gicentre$elm_vegalite$VegaLite$luFieldsAs(
-												_List_fromArray(
-													[
-														_Utils_Tuple2(
-														$author$project$Data$Traits$traitToString(trait),
-														'group')
-													])))),
-									A2(
-										withCountyFilter,
+										A2(
+											$elm$core$Basics$composeL,
+											$gicentre$elm_vegalite$VegaLite$transform,
+											A4(
+												$gicentre$elm_vegalite$VegaLite$lookup,
+												'common_name',
+												traitData,
+												'english_common_name',
+												$gicentre$elm_vegalite$VegaLite$luFieldsAs(
+													_List_fromArray(
+														[
+															_Utils_Tuple2(
+															$author$project$Data$Traits$traitToString(trait),
+															'group')
+														])))),
+										A2(
+											withCountyFilter,
+											function (x) {
+												return x;
+											},
+											F2(
+												function (county, x) {
+													return A2(
+														$gicentre$elm_vegalite$VegaLite$filter,
+														A2(
+															$gicentre$elm_vegalite$VegaLite$fiEqual,
+															'mbbs_county',
+															$gicentre$elm_vegalite$VegaLite$str(
+																$author$project$Data$County$countyToString(county))),
+														x);
+												}))),
+									A3(
+										withTrait,
+										function (x) {
+											return A3($gicentre$elm_vegalite$VegaLite$calculateAs, '{\'FruiNect\': \'Fruit/Nectar\', \'PlantSeed\': \'Plant/Seed\', \'VertFishScav\' : \'Carnivore/Scavenger\', \'Invertebrate\' : \'Invertebrate\', \'Omnivore\' : \'Omnivore\'  }[datum.group]', 'group', x);
+										},
 										function (x) {
 											return x;
 										},
-										F2(
-											function (county, x) {
-												return A2(
-													$gicentre$elm_vegalite$VegaLite$filter,
-													A2(
-														$gicentre$elm_vegalite$VegaLite$fiEqual,
-														'mbbs_county',
-														$gicentre$elm_vegalite$VegaLite$str(
-															$author$project$Data$County$countyToString(county))),
-													x);
-											}))),
+										function (x) {
+											return x;
+										})),
 								A3(
 									withTrait,
 									function (x) {
@@ -13408,17 +13432,37 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 									]))
 							]))),
 				$gicentre$elm_vegalite$VegaLite$color(
-					_List_fromArray(
-						[
-							$gicentre$elm_vegalite$VegaLite$mName('group'),
-							$gicentre$elm_vegalite$VegaLite$mTitle(
-							A3(
-								$elm$core$String$replace,
-								'_',
-								' ',
-								$author$project$Data$Traits$traitToString(trait))),
-							$gicentre$elm_vegalite$VegaLite$mNominal
-						]))),
+					A4(
+						withTrait,
+						function (x) {
+							return _Utils_ap(
+								x,
+								_List_fromArray(
+									[
+										$gicentre$elm_vegalite$VegaLite$mLegend(
+										_List_fromArray(
+											[
+												$gicentre$elm_vegalite$VegaLite$leTitle('Diet')
+											]))
+									]));
+						},
+						function (x) {
+							return x;
+						},
+						function (x) {
+							return x;
+						},
+						_List_fromArray(
+							[
+								$gicentre$elm_vegalite$VegaLite$mName('group'),
+								$gicentre$elm_vegalite$VegaLite$mTitle(
+								A3(
+									$elm$core$String$replace,
+									'_',
+									' ',
+									$author$project$Data$Traits$traitToString(trait))),
+								$gicentre$elm_vegalite$VegaLite$mNominal
+							])))),
 			$gicentre$elm_vegalite$VegaLite$tooltips(
 				_List_fromArray(
 					[

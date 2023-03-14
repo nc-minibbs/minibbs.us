@@ -1,11 +1,10 @@
 module Specs.TrendByTrait exposing (CountyFilter(..), mkTrendByTraitSpec)
 
 import Data.County exposing (County, countyToString)
-import Data.Traits exposing (Trait, traitToString)
+import Data.Traits exposing (Trait(..), traitToString)
 import Specs.SpecConfig exposing (..)
 import String exposing (replace)
 import VegaLite exposing (..)
-import Data.Traits exposing (Trait(..))
 
 
 type CountyFilter
@@ -33,10 +32,10 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                 Diet5Cat ->
                     diet x
 
-                WinterBiome  ->
+                WinterBiome ->
                     winter x
-                
-                BreedingBiome  ->
+
+                BreedingBiome ->
                     breeding x
 
         {-
@@ -63,10 +62,15 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                         ]
                     ]
                 << color
-                    [ mName "group"
-                    , mTitle (replace "_" " " (traitToString trait))
-                    , mNominal
-                    ]
+                    ([ mName "group"
+                     , mTitle (replace "_" " " (traitToString trait))
+                     , mNominal
+                     ]
+                        |> withTrait
+                            (\x -> x ++ [ mLegend [ leTitle "Diet" ] ])
+                            (\x -> x)
+                            (\x -> x)
+                    )
                 << tooltips
                     [ [ tName "group"
                       , tTitle (replace "_" " " (traitToString trait))
@@ -99,7 +103,11 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                     (\county x ->
                         filter (fiEqual "mbbs_county" (str (countyToString county))) x
                     )
-                << withTrait 
+                << withTrait
+                    (\x -> calculateAs "{'FruiNect': 'Fruit/Nectar', 'PlantSeed': 'Plant/Seed', 'VertFishScav' : 'Carnivore/Scavenger', 'Invertebrate' : 'Invertebrate', 'Omnivore' : 'Omnivore'  }[datum.group]" "group" x)
+                    (\x -> x)
+                    (\x -> x)
+                << withTrait
                     (\x -> x)
                     (\x -> x)
                     -- filter out Boreal Forest per for breeding biome
