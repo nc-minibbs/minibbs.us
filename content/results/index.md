@@ -6,7 +6,7 @@ elm-vega:
   multiple-viz: true
 ---
 
-* [Explore Individual Species](individual-species.html)
-* [Explore Traits](traits.html)
+* [Explore Trends by Species](individual-species.html)
+* [Explore Trends by Traits](traits.html)
 
 <app></app>
