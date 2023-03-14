@@ -8123,6 +8123,10 @@ var $gicentre$elm_vegalite$VegaLite$FEqual = F2(
 		return {$: 0, a: a, b: b};
 	});
 var $gicentre$elm_vegalite$VegaLite$fiEqual = $gicentre$elm_vegalite$VegaLite$FEqual;
+var $gicentre$elm_vegalite$VegaLite$FExpr = function (a) {
+	return {$: 5, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$fiExpr = $gicentre$elm_vegalite$VegaLite$FExpr;
 var $gicentre$elm_vegalite$VegaLite$filter = function (f) {
 	return $elm$core$List$cons(
 		_Utils_Tuple2(
@@ -13253,6 +13257,17 @@ var $gicentre$elm_vegalite$VegaLite$transform = function (transforms) {
 };
 var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 	function (countData, traitData, trait, countyFilter) {
+		var withTrait = F4(
+			function (diet, winter, breeding, x) {
+				switch (trait) {
+					case 2:
+						return diet(x);
+					case 1:
+						return winter(x);
+					default:
+						return breeding(x);
+				}
+			});
 		var withCountyFilter = F3(
 			function (noFilter, yesFilter, x) {
 				if (!countyFilter.$) {
@@ -13276,35 +13291,47 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 								$elm$core$Basics$composeL,
 								A2(
 									$elm$core$Basics$composeL,
-									$gicentre$elm_vegalite$VegaLite$transform,
-									A4(
-										$gicentre$elm_vegalite$VegaLite$lookup,
-										'common_name',
-										traitData,
-										'english_common_name',
-										$gicentre$elm_vegalite$VegaLite$luFieldsAs(
-											_List_fromArray(
-												[
-													_Utils_Tuple2(
-													$author$project$Data$Traits$traitToString(trait),
-													'group')
-												])))),
-								A2(
-									withCountyFilter,
+									A2(
+										$elm$core$Basics$composeL,
+										$gicentre$elm_vegalite$VegaLite$transform,
+										A4(
+											$gicentre$elm_vegalite$VegaLite$lookup,
+											'common_name',
+											traitData,
+											'english_common_name',
+											$gicentre$elm_vegalite$VegaLite$luFieldsAs(
+												_List_fromArray(
+													[
+														_Utils_Tuple2(
+														$author$project$Data$Traits$traitToString(trait),
+														'group')
+													])))),
+									A2(
+										withCountyFilter,
+										function (x) {
+											return x;
+										},
+										F2(
+											function (county, x) {
+												return A2(
+													$gicentre$elm_vegalite$VegaLite$filter,
+													A2(
+														$gicentre$elm_vegalite$VegaLite$fiEqual,
+														'mbbs_county',
+														$gicentre$elm_vegalite$VegaLite$str(
+															$author$project$Data$County$countyToString(county))),
+													x);
+											}))),
+								A3(
+									withTrait,
 									function (x) {
 										return x;
 									},
-									F2(
-										function (county, x) {
-											return A2(
-												$gicentre$elm_vegalite$VegaLite$filter,
-												A2(
-													$gicentre$elm_vegalite$VegaLite$fiEqual,
-													'mbbs_county',
-													$gicentre$elm_vegalite$VegaLite$str(
-														$author$project$Data$County$countyToString(county))),
-												x);
-										}))),
+									function (x) {
+										return x;
+									},
+									$gicentre$elm_vegalite$VegaLite$filter(
+										$gicentre$elm_vegalite$VegaLite$fiExpr('datum.group != \'Boreal Forest\'')))),
 							A2(
 								$gicentre$elm_vegalite$VegaLite$aggregate,
 								_List_fromArray(

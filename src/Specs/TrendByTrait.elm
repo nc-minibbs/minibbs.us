@@ -5,6 +5,7 @@ import Data.Traits exposing (Trait, traitToString)
 import Specs.SpecConfig exposing (..)
 import String exposing (replace)
 import VegaLite exposing (..)
+import Data.Traits exposing (Trait(..))
 
 
 type CountyFilter
@@ -22,6 +23,21 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
 
                 FilterCounty c ->
                     yesFilter c x
+
+        -- The ability to modify the spec
+        -- based on chosen trait.
+        -- Used to address
+        -- https://github.com/nc-minibbs/minibbs.us/issues/31
+        withTrait diet winter breeding x =
+            case trait of
+                Diet5Cat ->
+                    diet x
+
+                WinterBiome  ->
+                    winter x
+                
+                BreedingBiome  ->
+                    breeding x
 
         {-
            Define the primary layer's encoding
@@ -83,6 +99,12 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                     (\county x ->
                         filter (fiEqual "mbbs_county" (str (countyToString county))) x
                     )
+                << withTrait 
+                    (\x -> x)
+                    (\x -> x)
+                    -- filter out Boreal Forest per for breeding biome
+                    -- https://github.com/nc-minibbs/minibbs.us/issues/31
+                    (filter (fiExpr "datum.group != 'Boreal Forest'"))
                 -- Compute counts per species within each route/year
                 -- This and the next sum could combined,
                 -- but kept for clarity of the data summarizing steps.
