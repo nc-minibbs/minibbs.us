@@ -1,28 +1,34 @@
 # minibbs.us website
 
-## Editing the site
+## Editing the site content
 
 Site content to be rendering by building the site
-is in the `site` directory.
+is in the `content` directory.
 The published version of the site is in the `_site` directory;
-you should not need to edit file in this directory.
+you should not need to edit files in this directory.
 
-To render just one webpage (ie: when editing), 
-instead of hitting the 'knit' button do the following:
+### Adding an Elm package
 
-1. Run the 1a, 0a, 0b rscripts in the `R` directory
-to load datasets and functions into your global environment.
-2. Knit from the R console with `rmarkdown::render("your_doc.Rmd")`
-instead of using the knit button.
-The knit button won't reference files in your global environment
-(which you've loaded in step 1)
-but calling the `rmarkdown::render()` function from the console will.
+Install a new [Elm package](https://package.elm-lang.org/) as usual:
+
+```sh
+elm install some-package
+```
+
+Then, since this project uses `nix` to manage dependencies,
+run the following:
+
+```sh
+elm2nix convert > elm-srcs.nix # creates nix derivation from elm.json
+elm2nix snapshot # updates registry.dat
+```
+
+See [`elm2nix` documentation](https://github.com/cachix/elm2nix)
+for more info.
 
 ## Building the site
 
-To render the site, use the `render_site.R` script.
-See [here](https://bookdown.org/yihui/rmarkdown/websites.html)
-for more information about creating websites from Rmarkdown.
+To render the site, use the `./scripts/build.sh` script.
 
 ## Deploy the site
 
@@ -47,12 +53,3 @@ Then update the `renv` lockfile:
 ```r
 renv::snapshot()
 ```
-
-## Old MBBS site content
-
-The `old-mbbs` directory contains the original (unedited) site files
-provided by Haven Wiley.
-These files were copied to `_site/old-mbbs`
-so the site content is still accessible via the web,
-but the files may be edited or removed over time.
-
