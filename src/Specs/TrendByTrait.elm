@@ -65,11 +65,12 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                     ([ mName "group"
                      , mTitle (replace "_" " " (traitToString trait))
                      , mNominal
-                     ]
+                     , mLegend ([ leSymbolType symStroke , leSymbolStrokeWidth 5]
                         |> withTrait
-                            (\x -> x ++ [ mLegend [ leTitle "Diet" ] ])
+                            (\x -> x ++  [ leTitle "Diet"  ] )
                             (\x -> x)
-                            (\x -> x)
+                            (\x -> x))
+                     ]
                     )
                 << tooltips
                     [ [ tName "group"
@@ -162,6 +163,8 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                     datum.yearCount / datum.yearRoutes
                     """
                     "yBar"
+
+
     in
     toVegaLite
         [ countData
