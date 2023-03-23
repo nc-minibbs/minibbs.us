@@ -248,7 +248,19 @@ mbbs_results <-
   tidyr::nest(data_grouped = c(year, count)) %>%
   left_join(
     model_dt, by = c("common_name")
+  ) %>% 
+  # Calculate the number of years observed on any route 
+  mutate(
+    years_observed = purrr::map_int(
+      .x = data,
+      .f = ~ .x %>% 
+          group_by(year)  %>% 
+          summarise(count = sum(count)) %>%
+          summarise(years_observed = sum(count > 0)) %>% 
+          pull(years_observed)
+      )
   )
+
 
 #------------------------------------------------------------------------------#
 # Write data ####
@@ -277,10 +289,10 @@ mbbs_results %>%
     dt <- .
     purrr::walk2(
       .x = .$common_name,
-      .y = .$data %>% select(year, mbbs_county, route, route_num, count),
+      .y = .$data,
       .f = ~ {
           write.csv(
-            .y,
+            .y %>% dplyr::select(year, mbbs_county, route, route_num, count),
             file = paste0("data/", to_species_id(.x), "-counts.csv"),
             row.names = FALSE
           )
@@ -291,15 +303,28 @@ mbbs_results %>%
 
 ## Generate Species.elm
 
-
 to_elm_data <-
   mbbs_results %>%
-  select(common_name, sci_name, results = results_nocounty) %>%
+  select(common_name, sci_name, years_observed, results = results_nocounty) %>%
   mutate(
     species = to_species_id(common_name),
-    results = purrr::map(
+
+    ## FIXME ####
+    # When a species was observed in fewer than 6 years,
+    # trend estimates are fixed to 0.
+    # This is a hack to avoid a mixed data type 
+    # in the %Change per year field 
+    # in the all species table
+    results = purrr::map2(
       .x = results,
-      .f = ~ .x$values %>% select(rate, pvalue, rate_lo, rate_hi)
+      .y = years_observed,
+      .f = ~ 
+      if (years_observed < 6 ) {
+        tibble(rate = 0, pvalue = 1, rate_lo = 0, rate_hi = 0)
+
+      } else {
+        .x$values %>% select(rate, pvalue, rate_lo, rate_hi)
+      }
       )
   ) %>%
   tidyr::unnest(cols = results)

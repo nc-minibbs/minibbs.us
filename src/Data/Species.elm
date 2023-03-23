@@ -293,8 +293,8 @@ allSpeciesRec =
       , id = "BaltimoreOriole"
       , commonName = "Baltimore Oriole"
       , sciName = "Icterus galbula"
-      , rate = 0.02806515625
-      , pvalue = 0.811456331425
+      , rate = 0.0
+      , pvalue = 1.0
       }
     , { species = BarnSwallow
       , id = "BarnSwallow"
@@ -461,8 +461,8 @@ allSpeciesRec =
       , id = "Dickcissel"
       , commonName = "Dickcissel"
       , sciName = "Spiza americana"
-      , rate = 0.127154501907
-      , pvalue = 0.375352071642
+      , rate = 0.0
+      , pvalue = 1.0
       }
     , { species = DoublecrestedCormorant
       , id = "DoublecrestedCormorant"
@@ -587,8 +587,8 @@ allSpeciesRec =
       , id = "GreatEgret"
       , commonName = "Great Egret"
       , sciName = "Ardea alba"
-      , rate = -0.008258868007
-      , pvalue = 0.832899804952
+      , rate = 0.0
+      , pvalue = 1.0
       }
     , { species = GreatHornedOwl
       , id = "GreatHornedOwl"
@@ -622,8 +622,8 @@ allSpeciesRec =
       , id = "HornedLark"
       , commonName = "Horned Lark"
       , sciName = "Eremophila alpestris"
-      , rate = 0.039383189401
-      , pvalue = 0.043590790369
+      , rate = 0.0
+      , pvalue = 1.0
       }
     , { species = HouseFinch
       , id = "HouseFinch"
