@@ -8139,6 +8139,20 @@ var $gicentre$elm_vegalite$VegaLite$layer = function (specs) {
 		19,
 		$gicentre$elm_vegalite$VegaLite$toList(specs));
 };
+var $gicentre$elm_vegalite$VegaLite$LSymbolStrokeWidth = function (a) {
+	return {$: 42, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$Num = function (a) {
+	return {$: 0, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$leSymbolStrokeWidth = function (n) {
+	return $gicentre$elm_vegalite$VegaLite$LSymbolStrokeWidth(
+		$gicentre$elm_vegalite$VegaLite$Num(n));
+};
+var $gicentre$elm_vegalite$VegaLite$LSymbolType = function (a) {
+	return {$: 44, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$leSymbolType = $gicentre$elm_vegalite$VegaLite$LSymbolType;
 var $gicentre$elm_vegalite$VegaLite$LTitle = function (a) {
 	return {$: 46, a: a};
 };
@@ -9305,9 +9319,6 @@ var $gicentre$elm_vegalite$VegaLite$mTitle = function (s) {
 };
 var $gicentre$elm_vegalite$VegaLite$MOpacity = function (a) {
 	return {$: 41, a: a};
-};
-var $gicentre$elm_vegalite$VegaLite$Num = function (a) {
-	return {$: 0, a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$maOpacity = function (n) {
 	return $gicentre$elm_vegalite$VegaLite$MOpacity(
@@ -13044,6 +13055,8 @@ var $gicentre$elm_vegalite$VegaLite$DStr = function (a) {
 	return {$: 3, a: a};
 };
 var $gicentre$elm_vegalite$VegaLite$str = $gicentre$elm_vegalite$VegaLite$DStr;
+var $gicentre$elm_vegalite$VegaLite$SymStroke = {$: 9};
+var $gicentre$elm_vegalite$VegaLite$symStroke = $gicentre$elm_vegalite$VegaLite$SymStroke;
 var $gicentre$elm_vegalite$VegaLite$TAggregate = function (a) {
 	return {$: 5, a: a};
 };
@@ -13432,37 +13445,39 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 									]))
 							]))),
 				$gicentre$elm_vegalite$VegaLite$color(
-					A4(
-						withTrait,
-						function (x) {
-							return _Utils_ap(
-								x,
-								_List_fromArray(
-									[
-										$gicentre$elm_vegalite$VegaLite$mLegend(
+					_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$mName('group'),
+							$gicentre$elm_vegalite$VegaLite$mTitle(
+							A3(
+								$elm$core$String$replace,
+								'_',
+								' ',
+								$author$project$Data$Traits$traitToString(trait))),
+							$gicentre$elm_vegalite$VegaLite$mNominal,
+							$gicentre$elm_vegalite$VegaLite$mLegend(
+							A4(
+								withTrait,
+								function (x) {
+									return _Utils_ap(
+										x,
 										_List_fromArray(
 											[
 												$gicentre$elm_vegalite$VegaLite$leTitle('Diet')
-											]))
-									]));
-						},
-						function (x) {
-							return x;
-						},
-						function (x) {
-							return x;
-						},
-						_List_fromArray(
-							[
-								$gicentre$elm_vegalite$VegaLite$mName('group'),
-								$gicentre$elm_vegalite$VegaLite$mTitle(
-								A3(
-									$elm$core$String$replace,
-									'_',
-									' ',
-									$author$project$Data$Traits$traitToString(trait))),
-								$gicentre$elm_vegalite$VegaLite$mNominal
-							])))),
+											]));
+								},
+								function (x) {
+									return x;
+								},
+								function (x) {
+									return x;
+								},
+								_List_fromArray(
+									[
+										$gicentre$elm_vegalite$VegaLite$leSymbolType($gicentre$elm_vegalite$VegaLite$symStroke),
+										$gicentre$elm_vegalite$VegaLite$leSymbolStrokeWidth(5)
+									])))
+						]))),
 			$gicentre$elm_vegalite$VegaLite$tooltips(
 				_List_fromArray(
 					[
