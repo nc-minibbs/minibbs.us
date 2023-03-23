@@ -62,16 +62,17 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                         ]
                     ]
                 << color
-                    ([ mName "group"
-                     , mTitle (replace "_" " " (traitToString trait))
-                     , mNominal
-                     , mLegend ([ leSymbolType symStroke , leSymbolStrokeWidth 5]
-                        |> withTrait
-                            (\x -> x ++  [ leTitle "Diet"  ] )
-                            (\x -> x)
-                            (\x -> x))
-                     ]
-                    )
+                    [ mName "group"
+                    , mTitle (replace "_" " " (traitToString trait))
+                    , mNominal
+                    , mLegend
+                        ([ leSymbolType symStroke, leSymbolStrokeWidth 5 ]
+                            |> withTrait
+                                (\x -> x ++ [ leTitle "Diet" ])
+                                (\x -> x)
+                                (\x -> x)
+                        )
+                    ]
                 << tooltips
                     [ [ tName "group"
                       , tTitle (replace "_" " " (traitToString trait))
@@ -163,8 +164,6 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                     datum.yearCount / datum.yearRoutes
                     """
                     "yBar"
-
-
     in
     toVegaLite
         [ countData
