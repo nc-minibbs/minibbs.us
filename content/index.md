@@ -35,7 +35,7 @@ As you can see,
 You need not be an expert birder to participate in the MBBS!
 We just ask that you can:
 
-* identify our [common breeding birds](mbbsbirds.html)
+* identify [common breeding birds](results/index.html)
 by song or calls as well as by sight
 * get up early one morning in May/June
 to drive (or have someone drive you) a survey route
