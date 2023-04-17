@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Mini-Bird Breeding Survey</title>
+  <title>Explore Results by Route</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -18,7 +18,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-<script src="/js/Home.min.js"></script>
+<script src="/js/DisplayRouteDashboard.min.js"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -74,54 +74,18 @@
   </div>
 </nav>
 <header id="title-block-header">
-<h1 class="title">Mini-Bird Breeding Survey</h1>
+<h1 class="title">Explore Results by Route</h1>
 </header>
-<p>A <em>Mini Breeding Bird Survey</em> (MBBS) is a small-scale version
-of the full <a href="https://www.pwrc.usgs.gov/bbs/">Breeding Bird
-Survey</a> organized each year by the U.S. Fish and Wildlife Service
-throughout North America. An MBBS focuses on one county. Volunteers
-count birds seen or heard along randomly chosen routes on secondary
-roads. The objective is to determine the distribution of breeding birds
-in the county and to assess any year-to-year changes in their
-numbers.</p>
-<h2 id="importance">Importance</h2>
-<p>The following visualizations shows trends for 4 of the 100+ species
-observed in over twenty years of our survey. As you can see,</p>
-<ul>
-<li>species such as Wood Thrush and Northern Bobwhite have
-declined;</li>
-<li>species such as Eastern Bluebird have no obvious trend;</li>
-<li>species such as Summer Tanager appearing to be increasing in
-abundance.</li>
-</ul>
-<div id="exampleTrends" data-margin="auto">
-
-</div>
-<p><a href="results">View more details results and analysis
-here</a>.</p>
-<h2 id="qualifications">Qualifications</h2>
-<p>You need not be an expert birder to participate in the MBBS! We just
-ask that you can:</p>
-<ul>
-<li>identify <a href="results/index.html">common breeding birds</a> by
-song or calls as well as by sight</li>
-<li>get up early one morning in May/June to drive (or have someone drive
-you) a survey route</li>
-<li>participate (or plan to) for multiple years</li>
-<li>submit observations by <a href="https://ebird.org">eBird</a></li>
-</ul>
-<p>If you have questions, please contact
-<a href="mailto:hurlbert@bio.unc.edu">Allen Hurlbert</a> or
-<a href="mailto:bradleysaul@fastmail.com">Bradley Saul</a>.</p>
+<p><app></app></p>
 <script>
   // This function grabs the specification from Elm (here called specs).
   var app = 
-        Elm.Home
-        .init();
+        Elm.DisplayRouteDashboard
+        .init( { node: document.querySelector('app') });
 
     app.ports.vegaPort.subscribe(function (specs) {
-    vegaEmbed("#exampleTrends", specs, { 
-        actions:  false  
+    vegaEmbed("#vegaViz", specs, { 
+        actions:  true  
       })
     .catch(console.warn);
   });
