@@ -20,6 +20,13 @@ countyToString county =
             "orange"
 
 
+stringToCounty : String -> Maybe County
+stringToCounty x = case x of  
+   "chatham" -> Just Chatham
+   "durham" -> Just Durham
+   "orange" -> Just Orange
+   _        -> Nothing
+
 type CountyAggregation
     = Combined
     | Split
