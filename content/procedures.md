@@ -66,11 +66,11 @@ Watch a video demonstration to see a checklist in action:
 
 To share an eBird checklist, log in to the eBird website, go to Manage My Checklists, and click on the checklist you want to share. You will see a **Share** button next to your name as seen in the example below.
 
-![sharing eBird checklist part1](./images/sharing_ebird_checklist1.png)
+![sharing eBird checklist part1](../images/sharing_ebird_checklist1.png)
 
 Once you click the **Share** button, you can enter the appropriate MBBS eBird account name (mbbsorangenc in the example below), and click the green **Share Checklist** at the bottom left.
 
-![sharing eBird checklist part2](./images/sharing_ebird_checklist2.png)
+![sharing eBird checklist part2](../images/sharing_ebird_checklist2.png)
 
 Unfortunately, there’s no easy way at the moment to share all 20 checklists in one go. But you can quickly navigate between your checklists using the **Older** or **Newer** buttons at the top right, re-paste the MBBS eBird username, and click **Share Checklist**, and it should take only a few seconds per checklist to get them all shared with the MBBS account.
 
