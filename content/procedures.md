@@ -12,13 +12,68 @@ title: Procedures
 
 ### Performing a count
 
-[Click here for the current procedures document.](https://docs.google.com/document/d/1hBYRPsgAWblQkQFa4p4UEfWrtI0dr_kYohRqAgIy1DQ/edit)
+Watch a video demonstration to see a checklist in action:
+* For iPhone: [link](https://www.youtube.com/watch?v=KgemDVmoSYU)
+* For Android: [link}(https://www.youtube.com/watch?v=D92U3FuaVxg)
 
-Habitat codes can be found [here](#habitat).
+1) For each stop along your survey route, submit an eBird checklist of birds seen or heard during your 3 minute period using the eBird mobile app.
+
+2) **For Stop 1 only**, enter information about _**observers**_ and _**weather**_ (and optionally, overall survey _**notes**_) for the survey as a whole. Also enter information about _**vehicles**_ and _**habitat**_, as in the following example:
+
+    “observers=Allen Hurlbert, Sarah Pollack; weather=55 F, clear; notes=big thunderstorm last night, everything wet; used Merlin Sound ID for confirmation; vehicles=3; habitat=B,H”
+
+3) **These comments must be formatted in this very specific way** in order for us to easily extract this information later. Please make sure you use these conventions:
+
+    a) Separate the different types of information (_**observers; weather; vehicles;**_ etc.) with a **semi-colon**, and only use a semi-colon for this purpose. 
+    b) The key to allowable _**habitat**_ codes can be found [below](#habitat). The convention is to specify habitat on the left side of the road first, followed by a comma, and then habitat on the right side of the road.
+    c) Instructions for counting _**vehicles**_ can be found [here](#vehicle count procedure).
+   
+4) **For Stops 2-20**, enter information about only _**vehicles**_ and _**habitat**_ (in particular, if habitat has never been entered before, or if it has changed since the previous year) in the checklist comments field. Two examples, including an acceptable shorthand:
+
+  	“vehicles=3; habitat=B,H”
+	  “v=3; h=B,H”
+
+5) Some notes about using **Merlin Sound ID**, which some people find helpful as a means of alerting them to birds singing, or of confirming songs or calls they are on the fence on. If you use **Merlin Sound ID** to assist you during your point counts:
+    a) Do not add birds identified by Merlin to your point count list unless you can personally verify the presence of the bird by sight or sound. Merlin is not perfect and occasionally has false positives.
+    b) Add a note to the comments for Stop 1, e.g. “**notes=used Merlin**”. This is important because if the use of Merlin is increasing the average detectability of species in our survey records, we’d like to know when it was and was not used to better interpret apparent species trends.
+
+6) When submitting an eBird checklist from a particular stop **FOR THE FIRST TIME**, you must **name the survey stop location** in the specific way described below:
+    a) Tap ‘**Choose a location**’ at the top of the screen after you have hit the ‘Submit’ button in the mobile app.
+    b) Select the “New Location (auto selected)” that it suggests in orange font 0 ft away.
+    c) Tap the green “**Create Location**” button.
+    d) Your approximate address as determined by the GPS will be displayed. Click on the ‘X’ to the right of that address to clear it.
+    e) Name the location as follows, “**MBBS, <County>, Route <R>-<S>**”. Be sure to replace the text inside the <>’s as in these examples (**R** stands for the route number, **S** stands for the stop number):
+        i) MBBS, Orange, Route 4-2
+        ii) MBBS, Durham, Route 13-20
+        iii) MBBS, Chatham, Route 1-1
+        iv) **TIP**: If you know how to copy and paste text on your phone, you can select the text for everything but the stop number, e.g., “MBBS, Orange, Route 4-”, onto your phone’s clipboard. Then you should be able to paste it in the Location field and simply add the stop number, which may be faster than typing the whole thing.
+    f) **If you have previously submitted individual stop-based eBird checklists from your survey route**, then you may be able to rename these existing locations according to our new convention in advance using the Manage My Locations feature of the eBird website.
+        i) **NOTE**: If you previously specified “Orange Co” or “Orange County” in the stop location names on eBird, that’s fine and you may continue to use those names.
+    g) **Next year it will be even easier!** After you have entered these location names once for your survey route, in the future, you will simply be able to select the stop location from the list of locations that automatically pops up in the mobile app.
+
+7) **Connectivity issues**. If you have no connectivity at a survey stop, it may not let you choose the location or submit the checklist. That’s ok! 
+    a) Once you’ve finished recording birds from the 3-minute survey, simply ‘X’ out of the checklist in the top right. The checklist will now be listed in the “Not Submitted” section of the app. 
+    b) When you get home (or elsewhere with a signal), you can then tap the checklist which will open where you left off. Tap the green “Review” button in the lower right.
+    c) Tap “Choose a location…”.  Your phone’s GPS should have accurately recorded your location, and you should now be able to select the named location, or if this is your first time at the stop, follow the instructions above to name it.
+    d) You should now be able to tap “Submit”.
+
 
 ### After the survey
 
-Review the Comments fields of your checklists, and edit or update them as necessary. This may be easier to do on a computer back at home than on your phone. Share ALL 20 checklists from your survey route with the appropriate MBBS account (`mbbsorangenc`, `mbbsdurhamnc`, or `mbbschathamn`). This is an extremely important step, and without it, it is as if the surveys were never conducted as far as the project is concerned. We need the observations centralized in these accounts.
+1) Review the Comments fields of your checklists, and edit or update them as necessary. This may be easier to do on a computer back at home than on your phone.
+2) **Make sure that the Comments for Stop 1 has observer and weather info!**
+3) **Share ALL 20 checklists** from your survey route with the appropriate MBBS account (`mbbsorangenc`, `mbbsdurhamnc`, or `mbbschathamn`). This is an **extremely important step**, and without it, it is as if the surveys were never conducted as far as the project is concerned. We need the observations centralized in these accounts.
+
+To share an eBird checklist, log in to the eBird website, go to Manage My Checklists, and click on the checklist you want to share. You will see a **Share** button next to your name as seen in the example below.
+
+![sharing eBird checklist part1](./images/sharing_ebird_checklist1.png)
+
+Once you click the **Share** button, you can enter the appropriate MBBS eBird account name (mbbsorangenc in the example below), and click the green **Share Checklist** at the bottom left.
+
+![sharing eBird checklist part2](./images/sharing_ebird_checklist2.png)
+
+Unfortunately, there’s no easy way at the moment to share all 20 checklists in one go. But you can quickly navigate between your checklists using the **Older** or **Newer** buttons at the top right, re-paste the MBBS eBird username, and click **Share Checklist**, and it should take only a few seconds per checklist to get them all shared with the MBBS account.
+
 
 ## Habitat
 
@@ -51,7 +106,7 @@ The objective in counting vehicles at each stop is to produce information about 
 * If things are happening fast (lots of birds, lots of traffic), then the birds come first!   Count the birds the best you can -- and estimate (guess) the number of vehicles the best you can.
 
 ## Routes
-
+A temporary map of the stop locations for all routes can be found [here](https://www.google.com/maps/d/u/0/viewer?mid=1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0&ll=35.94506059913967%2C-79.22743228102328&z=10).
 * [Orange County routes](routes/orange-county.html)
 * [Durham County routes](routes/durham-county.html)
 * [Chatham County routes](routes/chatham-county.html)
