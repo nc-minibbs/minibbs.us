@@ -37,12 +37,12 @@ for the survey as a whole.
 Also enter information about **vehicles** and **habitat**,
 as in the following example:
 
-> “observers=Allen Hurlbert, Sarah Pollack;
-weather=55 F, clear;
-notes=big thunderstorm last night, everything wet;
-used Merlin Sound ID for confirmation;
-vehicles=3;
-habitat=B,H”
+   * “observers=Allen Hurlbert, Sarah Pollack;
+     weather=55 F, clear;
+     notes=big thunderstorm last night, everything wet;
+     used Merlin Sound ID for confirmation;
+     vehicles=3;
+     habitat=B,H”
 
 3) **These comments must be formatted in this very specific way**
 in order for us to easily extract this information later.
@@ -66,8 +66,8 @@ or if it has changed since the previous year)
 in the checklist comments field.
 Two examples, including an acceptable shorthand:
 
-> “vehicles=3; habitat=B,H”  
-> “v=3; h=B,H”
+    * “vehicles=3; habitat=B,H”  
+    * “v=3; h=B,H”
 
 5) Some notes about using **Merlin Sound ID**,
 which some people find helpful as a means of alerting them to birds singing,
@@ -86,7 +86,8 @@ If you use **Merlin Sound ID** to assist you during your point counts:
 
 6) When submitting an eBird checklist from a particular stop
 **FOR THE FIRST TIME**,
-you must **name the survey stop location** in the specific way described below:  
+you must **name the survey stop location** in the specific way described below:
+
     * Tap **Choose a location** at the top of the screen
     after you have hit the **Submit** button in the mobile app.  
     * Select the “New Location (auto selected)”
@@ -113,6 +114,7 @@ from your survey route**,
 then you may be able to rename these existing locations
 according to our new convention in advance
 using the Manage My Locations feature of the eBird website.
+
     * **NOTE**: If you previously specified “Orange Co” or “Orange County”
     in the stop location names on eBird,
     that’s fine and you may continue to use those names.  
@@ -237,7 +239,7 @@ Count the birds the best you can
 
 ## Routes
 
-A temporary map of the stop locations for all routes can be found 
+A temporary map of the stop locations for all routes can be found
 [here](https://www.google.com/maps/d/u/0/viewer?mid=1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0&ll=35.94506059913967%2C-79.22743228102328&z=10).
 
 * [Orange County routes](routes/orange-county.html)
