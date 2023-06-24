@@ -26,17 +26,16 @@ Watch a video demonstration to see a checklist in action:
 * For iPhone: [link](https://www.youtube.com/watch?v=KgemDVmoSYU)
 * For Android: [link](https://www.youtube.com/watch?v=D92U3FuaVxg)  
 
-1) For each stop along your survey route,
+1. For each stop along your survey route,
 submit an eBird checklist of birds seen or heard
 during your 3 minute period using the eBird mobile app.
 
-2) **For Stop 1 only**,
+2. **For Stop 1 only**,
 enter information about **observers** and **weather**
 (and optionally, overall survey **notes**)
 for the survey as a whole.
 Also enter information about **vehicles** and **habitat**,
 as in the following example:
-
    * “observers=Allen Hurlbert, Sarah Pollack;
      weather=55 F, clear;
      notes=big thunderstorm last night, everything wet;
@@ -44,10 +43,9 @@ as in the following example:
      vehicles=3;
      habitat=B,H”
 
-3) **These comments must be formatted in this very specific way**
+3. **These comments must be formatted in this very specific way**
 in order for us to easily extract this information later.
 Please make sure you use these conventions:
-
     * Separate the different types of information
     (**observers; weather; vehicles;** etc.) with a **semi-colon**,
     and only use a semi-colon for this purpose.  
@@ -59,21 +57,19 @@ Please make sure you use these conventions:
     * Instructions for counting **vehicles** can be found
     [here](#vehicle count procedure).
 
-4) **For Stops 2-20**,
+4. **For Stops 2-20**,
 enter information about only **vehicles** and **habitat**
 (in particular, if habitat has never been entered before,
 or if it has changed since the previous year)
 in the checklist comments field.
 Two examples, including an acceptable shorthand:
-
     * “vehicles=3; habitat=B,H”  
     * “v=3; h=B,H”
 
-5) Some notes about using **Merlin Sound ID**,
+5. Some notes about using **Merlin Sound ID**,
 which some people find helpful as a means of alerting them to birds singing,
 or of confirming songs or calls they are on the fence on.
 If you use **Merlin Sound ID** to assist you during your point counts:  
-
     * Do not add birds identified by Merlin to your point count list
     unless you can personally verify the presence of the bird by sight or sound.
     Merlin is not perfect and occasionally has false positives.  
@@ -84,10 +80,9 @@ If you use **Merlin Sound ID** to assist you during your point counts:
     we’d like to know when it was
     and was not used to better interpret apparent species trends.
 
-6) When submitting an eBird checklist from a particular stop
+6. When submitting an eBird checklist from a particular stop
 **FOR THE FIRST TIME**,
 you must **name the survey stop location** in the specific way described below:
-
     * Tap **Choose a location** at the top of the screen
     after you have hit the **Submit** button in the mobile app.  
     * Select the “New Location (auto selected)”
@@ -109,12 +104,11 @@ you must **name the survey stop location** in the specific way described below:
         and simply add the stop number,
         which may be faster than typing the whole thing.
 
-7) **If you have previously submitted individual stop-based eBird checklists
+7. **If you have previously submitted individual stop-based eBird checklists
 from your survey route**,
 then you may be able to rename these existing locations
 according to our new convention in advance
 using the Manage My Locations feature of the eBird website.
-
     * **NOTE**: If you previously specified “Orange Co” or “Orange County”
     in the stop location names on eBird,
     that’s fine and you may continue to use those names.  
@@ -124,7 +118,7 @@ using the Manage My Locations feature of the eBird website.
     you will simply be able to select the stop location
     from the list of locations that automatically pops up in the mobile app.
 
-8) **Connectivity issues**.
+8. **Connectivity issues**.
 If you have no connectivity at a survey stop,
 it may not let you choose the location or submit the checklist.
 That’s ok!
@@ -163,14 +157,14 @@ log in to the eBird website, go to Manage My Checklists,
 and click on the checklist you want to share.
 You will see a **Share** button next to your name as seen in the example below.
 
-![sharing eBird checklist part1](img/sharing_ebird_checklist1.png)
+![sharing eBird checklist part1](img/sharing_ebird_checklist1.png){ width=500 }
 
 Once you click the **Share** button,
 you can enter the appropriate MBBS eBird account name
 (mbbsorangenc in the example below),
 and click the green **Share Checklist** at the bottom left.
 
-![sharing eBird checklist part2](img/sharing_ebird_checklist2.png)
+![sharing eBird checklist part2](img/sharing_ebird_checklist2.png){ width=500 }
 
 Unfortunately,
 there’s no easy way at the moment to share all 20 checklists in one go.

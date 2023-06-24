@@ -101,13 +101,13 @@
                  '' 
 
                 ${pkgs.pandoc}/bin/pandoc content/${page}.md \
-                    --from=markdown \
+                    --from=markdown+link_attributes \
                     --to=html \
                     --output=$out/${page}.html \
                     --template=${SRC}/template.html \
                     --include-before-body=${SRC}/navbar.html \
                     --css=/css/bootstrap.min.css \
-                    --standalone
+                    --standalone 
                  '') pages ) 
           
                  }
