@@ -55,7 +55,7 @@ Please make sure you use these conventions:
     followed by a comma,
     and then habitat on the right side of the road.  
     * Instructions for counting **vehicles** can be found
-    [here](#vehicle count procedure).
+    [here](#vehicle-count-procedure).
 
 4. **For Stops 2-20**,
 enter information about only **vehicles** and **habitat**
