@@ -5685,6 +5685,10 @@ var $gicentre$elm_vegalite$VegaLite$FEqual = F2(
 		return {$: 0, a: a, b: b};
 	});
 var $gicentre$elm_vegalite$VegaLite$fiEqual = $gicentre$elm_vegalite$VegaLite$FEqual;
+var $gicentre$elm_vegalite$VegaLite$FExpr = function (a) {
+	return {$: 5, a: a};
+};
+var $gicentre$elm_vegalite$VegaLite$fiExpr = $gicentre$elm_vegalite$VegaLite$FExpr;
 var $gicentre$elm_vegalite$VegaLite$FilterOp = function (a) {
 	return {$: 1, a: a};
 };
@@ -12456,6 +12460,8 @@ var $gicentre$elm_vegalite$VegaLite$opAs = F3(
 					$elm$json$Json$Encode$string(label))
 				]));
 	});
+var $gicentre$elm_vegalite$VegaLite$Distinct = {$: 5};
+var $gicentre$elm_vegalite$VegaLite$opDistinct = $gicentre$elm_vegalite$VegaLite$Distinct;
 var $gicentre$elm_vegalite$VegaLite$Sum = {$: 17};
 var $gicentre$elm_vegalite$VegaLite$opSum = $gicentre$elm_vegalite$VegaLite$Sum;
 var $gicentre$elm_vegalite$VegaLite$PAggregate = function (a) {
@@ -12476,6 +12482,8 @@ var $gicentre$elm_vegalite$VegaLite$pName = function (s) {
 var $gicentre$elm_vegalite$VegaLite$PmType = function (a) {
 	return {$: 7, a: a};
 };
+var $gicentre$elm_vegalite$VegaLite$Quantitative = 2;
+var $gicentre$elm_vegalite$VegaLite$pQuant = $gicentre$elm_vegalite$VegaLite$PmType(2);
 var $gicentre$elm_vegalite$VegaLite$Temporal = 3;
 var $gicentre$elm_vegalite$VegaLite$pTemporal = $gicentre$elm_vegalite$VegaLite$PmType(3);
 var $gicentre$elm_vegalite$VegaLite$Point = 10;
@@ -12889,7 +12897,6 @@ var $gicentre$elm_vegalite$VegaLite$tName = function (s) {
 	return $gicentre$elm_vegalite$VegaLite$TName(
 		$gicentre$elm_vegalite$VegaLite$Str(s));
 };
-var $gicentre$elm_vegalite$VegaLite$Quantitative = 2;
 var $gicentre$elm_vegalite$VegaLite$TmType = function (a) {
 	return {$: 2, a: a};
 };
@@ -13097,60 +13104,148 @@ var $gicentre$elm_vegalite$VegaLite$transform = function (transforms) {
 		16,
 		A2($elm$json$Json$Encode$list, assemble, transforms));
 };
-var $author$project$Specs$RouteTrend$mkRouteTrendSpec = F2(
+var $gicentre$elm_vegalite$VegaLite$VLVConcat = 22;
+var $gicentre$elm_vegalite$VegaLite$vConcat = function (specs) {
+	return _Utils_Tuple2(
+		22,
+		$gicentre$elm_vegalite$VegaLite$toList(specs));
+};
+var $author$project$Specs$RouteDashboard$mkRouteDashboardSpec = F2(
 	function (countData, route) {
 		var trans = A2(
 			$elm$core$Basics$composeL,
 			A2(
 				$elm$core$Basics$composeL,
-				$gicentre$elm_vegalite$VegaLite$transform,
+				A2(
+					$elm$core$Basics$composeL,
+					$gicentre$elm_vegalite$VegaLite$transform,
+					$gicentre$elm_vegalite$VegaLite$filter(
+						$gicentre$elm_vegalite$VegaLite$fiCompose(
+							A2(
+								$gicentre$elm_vegalite$VegaLite$and,
+								$gicentre$elm_vegalite$VegaLite$fiOp(
+									A2(
+										$gicentre$elm_vegalite$VegaLite$fiEqual,
+										'mbbs_county',
+										$gicentre$elm_vegalite$VegaLite$str(
+											$author$project$Data$County$countyToString(route.bC)))),
+								$gicentre$elm_vegalite$VegaLite$fiOp(
+									A2(
+										$gicentre$elm_vegalite$VegaLite$fiEqual,
+										'route_num',
+										$gicentre$elm_vegalite$VegaLite$str(
+											$elm$core$String$fromInt(route.bR)))))))),
 				$gicentre$elm_vegalite$VegaLite$filter(
-					$gicentre$elm_vegalite$VegaLite$fiCompose(
-						A2(
-							$gicentre$elm_vegalite$VegaLite$and,
-							$gicentre$elm_vegalite$VegaLite$fiOp(
-								A2(
-									$gicentre$elm_vegalite$VegaLite$fiEqual,
-									'mbbs_county',
-									$gicentre$elm_vegalite$VegaLite$str(
-										$author$project$Data$County$countyToString(route.bC)))),
-							$gicentre$elm_vegalite$VegaLite$fiOp(
-								A2(
-									$gicentre$elm_vegalite$VegaLite$fiEqual,
-									'route_num',
-									$gicentre$elm_vegalite$VegaLite$str(
-										$elm$core$String$fromInt(route.bR)))))))),
+					$gicentre$elm_vegalite$VegaLite$fiExpr('datum.count > 0'))),
 			A2(
 				$gicentre$elm_vegalite$VegaLite$aggregate,
 				_List_fromArray(
 					[
-						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'count', 'totalCount')
+						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'count', 'totalCount'),
+						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opDistinct, 'common_name', 'speciesCount')
 					]),
 				_List_fromArray(
 					['year', 'mbbs_county', 'route', 'route_num'])));
 		var enc = A2(
 			$elm$core$Basics$composeL,
+			$gicentre$elm_vegalite$VegaLite$encoding,
 			A2(
-				$elm$core$Basics$composeL,
-				A2(
-					$elm$core$Basics$composeL,
-					$gicentre$elm_vegalite$VegaLite$encoding,
-					A2(
-						$gicentre$elm_vegalite$VegaLite$position,
-						0,
+				$gicentre$elm_vegalite$VegaLite$position,
+				0,
+				_List_fromArray(
+					[
+						$gicentre$elm_vegalite$VegaLite$pName('year'),
+						$gicentre$elm_vegalite$VegaLite$pTemporal,
+						$gicentre$elm_vegalite$VegaLite$pAxis(
 						_List_fromArray(
 							[
-								$gicentre$elm_vegalite$VegaLite$pName('year'),
-								$gicentre$elm_vegalite$VegaLite$pTemporal,
-								$gicentre$elm_vegalite$VegaLite$pAxis(
-								_List_fromArray(
-									[
-										$gicentre$elm_vegalite$VegaLite$axTitle(''),
-										$gicentre$elm_vegalite$VegaLite$axGrid(false),
-										$gicentre$elm_vegalite$VegaLite$axTickCount(
-										$gicentre$elm_vegalite$VegaLite$niTickCount(5))
-									]))
-							]))),
+								$gicentre$elm_vegalite$VegaLite$axTitle(''),
+								$gicentre$elm_vegalite$VegaLite$axGrid(false),
+								$gicentre$elm_vegalite$VegaLite$axTickCount(
+								$gicentre$elm_vegalite$VegaLite$niTickCount(5))
+							]))
+					])));
+		var encSpeciesCount = A2(
+			$elm$core$Basics$composeL,
+			A2(
+				$elm$core$Basics$composeL,
+				enc,
+				A2(
+					$gicentre$elm_vegalite$VegaLite$position,
+					1,
+					_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$pName('speciesCount'),
+							$gicentre$elm_vegalite$VegaLite$pQuant,
+							$gicentre$elm_vegalite$VegaLite$pAxis(
+							_List_fromArray(
+								[
+									$gicentre$elm_vegalite$VegaLite$axTitle('Number of Species'),
+									$gicentre$elm_vegalite$VegaLite$axGrid(false)
+								]))
+						]))),
+			$gicentre$elm_vegalite$VegaLite$tooltips(
+				_List_fromArray(
+					[
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('year'),
+							$gicentre$elm_vegalite$VegaLite$tTitle('Year'),
+							$gicentre$elm_vegalite$VegaLite$tTemporal,
+							$gicentre$elm_vegalite$VegaLite$tFormat('%Y')
+						]),
+						_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$tName('speciesCount'),
+							$gicentre$elm_vegalite$VegaLite$tTitle('Number of Species'),
+							$gicentre$elm_vegalite$VegaLite$tQuant,
+							$gicentre$elm_vegalite$VegaLite$tFormat('.0f')
+						])
+					])));
+		var speciesSpec = $gicentre$elm_vegalite$VegaLite$asSpec(
+			_List_fromArray(
+				[
+					$gicentre$elm_vegalite$VegaLite$layer(
+					_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$asSpec(
+							_List_fromArray(
+								[
+									encSpeciesCount(_List_Nil),
+									$gicentre$elm_vegalite$VegaLite$line(
+									_List_fromArray(
+										[
+											$gicentre$elm_vegalite$VegaLite$maColor('gray')
+										]))
+								])),
+							$gicentre$elm_vegalite$VegaLite$asSpec(
+							_List_fromArray(
+								[
+									encSpeciesCount(_List_Nil),
+									$gicentre$elm_vegalite$VegaLite$point(
+									_List_fromArray(
+										[
+											$gicentre$elm_vegalite$VegaLite$maColor('gray')
+										]))
+								])),
+							$gicentre$elm_vegalite$VegaLite$asSpec(
+							_List_fromArray(
+								[
+									encSpeciesCount(_List_Nil),
+									$gicentre$elm_vegalite$VegaLite$line(
+									_List_fromArray(
+										[
+											$gicentre$elm_vegalite$VegaLite$maStrokeWidth(15),
+											$gicentre$elm_vegalite$VegaLite$maOpacity(0)
+										]))
+								]))
+						]))
+				]));
+		var encTotalCount = A2(
+			$elm$core$Basics$composeL,
+			A2(
+				$elm$core$Basics$composeL,
+				enc,
 				A2(
 					$gicentre$elm_vegalite$VegaLite$position,
 					1,
@@ -13184,6 +13279,45 @@ var $author$project$Specs$RouteTrend$mkRouteTrendSpec = F2(
 							$gicentre$elm_vegalite$VegaLite$tAggregate($gicentre$elm_vegalite$VegaLite$opSum)
 						])
 					])));
+		var totalSpec = $gicentre$elm_vegalite$VegaLite$asSpec(
+			_List_fromArray(
+				[
+					$gicentre$elm_vegalite$VegaLite$layer(
+					_List_fromArray(
+						[
+							$gicentre$elm_vegalite$VegaLite$asSpec(
+							_List_fromArray(
+								[
+									encTotalCount(_List_Nil),
+									$gicentre$elm_vegalite$VegaLite$line(
+									_List_fromArray(
+										[
+											$gicentre$elm_vegalite$VegaLite$maColor('gray')
+										]))
+								])),
+							$gicentre$elm_vegalite$VegaLite$asSpec(
+							_List_fromArray(
+								[
+									encTotalCount(_List_Nil),
+									$gicentre$elm_vegalite$VegaLite$point(
+									_List_fromArray(
+										[
+											$gicentre$elm_vegalite$VegaLite$maColor('gray')
+										]))
+								])),
+							$gicentre$elm_vegalite$VegaLite$asSpec(
+							_List_fromArray(
+								[
+									encTotalCount(_List_Nil),
+									$gicentre$elm_vegalite$VegaLite$line(
+									_List_fromArray(
+										[
+											$gicentre$elm_vegalite$VegaLite$maStrokeWidth(15),
+											$gicentre$elm_vegalite$VegaLite$maOpacity(0)
+										]))
+								]))
+						]))
+				]));
 		return $gicentre$elm_vegalite$VegaLite$toVegaLite(
 			_List_fromArray(
 				[
@@ -13194,44 +13328,12 @@ var $author$project$Specs$RouteTrend$mkRouteTrendSpec = F2(
 					$author$project$Data$Route$routeToString(route),
 					_List_Nil),
 					trans(_List_Nil),
-					$gicentre$elm_vegalite$VegaLite$layer(
+					$gicentre$elm_vegalite$VegaLite$vConcat(
 					_List_fromArray(
-						[
-							$gicentre$elm_vegalite$VegaLite$asSpec(
-							_List_fromArray(
-								[
-									enc(_List_Nil),
-									$gicentre$elm_vegalite$VegaLite$line(
-									_List_fromArray(
-										[
-											$gicentre$elm_vegalite$VegaLite$maColor('gray')
-										]))
-								])),
-							$gicentre$elm_vegalite$VegaLite$asSpec(
-							_List_fromArray(
-								[
-									enc(_List_Nil),
-									$gicentre$elm_vegalite$VegaLite$point(
-									_List_fromArray(
-										[
-											$gicentre$elm_vegalite$VegaLite$maColor('gray')
-										]))
-								])),
-							$gicentre$elm_vegalite$VegaLite$asSpec(
-							_List_fromArray(
-								[
-									enc(_List_Nil),
-									$gicentre$elm_vegalite$VegaLite$line(
-									_List_fromArray(
-										[
-											$gicentre$elm_vegalite$VegaLite$maStrokeWidth(15),
-											$gicentre$elm_vegalite$VegaLite$maOpacity(0)
-										]))
-								]))
-						]))
+						[totalSpec, speciesSpec]))
 				]));
 	});
-var $author$project$DisplayRouteDashboard$mkSpecs = $author$project$Specs$RouteTrend$mkRouteTrendSpec($author$project$Data$Mbbs$mbbsData);
+var $author$project$DisplayRouteDashboard$mkSpecs = $author$project$Specs$RouteDashboard$mkRouteDashboardSpec($author$project$Data$Mbbs$mbbsData);
 var $elm$core$Maybe$andThen = F2(
 	function (callback, maybeValue) {
 		if (!maybeValue.$) {
