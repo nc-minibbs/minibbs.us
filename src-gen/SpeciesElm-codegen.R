@@ -1,6 +1,8 @@
 #------------------------------------------------------------------------------#
 #  Prepare data for MBBS site
-#
+# 
+#  * generate files from mbbs package to data/ directory
+#  * generate src/Data/Species.elm file
 #------------------------------------------------------------------------------#
 
 library(mbbs)
