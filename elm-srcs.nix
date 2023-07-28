@@ -1,5 +1,10 @@
 {
 
+      "BrianHicks/elm-csv" = {
+        sha256 = "05ljd13q45993h3x59k9m8hhspg0z6772zhy5yfih98y11267ia2";
+        version = "3.0.3";
+      };
+
       "Confidenceman02/elm-select" = {
         sha256 = "03lx3w4x47i51x7kdzik0c3565mi5jqdpgzqakx9rgsw02v7vs05";
         version = "8.2.0";
@@ -60,16 +65,6 @@
         version = "8.7.0";
       };
 
-      "elm/parser" = {
-        sha256 = "0a3cxrvbm7mwg9ykynhp7vjid58zsw03r63qxipxp3z09qks7512";
-        version = "1.1.0";
-      };
-
-      "elm/regex" = {
-        sha256 = "0lijsp50w7n1n57mjg6clpn9phly8vvs07h0qh2rqcs0f1jqvsa2";
-        version = "1.0.0";
-      };
-
       "elm/time" = {
         sha256 = "0vch7i86vn0x8b850w1p69vplll1bnbkp8s383z7pinyg94cm2z1";
         version = "1.0.0";
@@ -103,6 +98,16 @@
       "elm-community/intdict" = {
         sha256 = "09i1fk63gp6sr6kc6ccs8g0kxvqhw5czghi9cl8flizanrgcmva1";
         version = "3.0.0";
+      };
+
+      "elm/parser" = {
+        sha256 = "0a3cxrvbm7mwg9ykynhp7vjid58zsw03r63qxipxp3z09qks7512";
+        version = "1.1.0";
+      };
+
+      "elm/regex" = {
+        sha256 = "0lijsp50w7n1n57mjg6clpn9phly8vvs07h0qh2rqcs0f1jqvsa2";
+        version = "1.0.0";
       };
 
       "elm/svg" = {

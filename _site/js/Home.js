@@ -600,11 +600,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.em.ci === region.eV.ci)
+	if (region.eo.ck === region.eX.ck)
 	{
-		return 'on line ' + region.em.ci;
+		return 'on line ' + region.eo.ck;
 	}
-	return 'on lines ' + region.em.ci + ' through ' + region.eV.ci;
+	return 'on lines ' + region.eo.ck + ' through ' + region.eX.ck;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.g$,
-		impl.h1,
-		impl.hJ,
+		impl.g2,
+		impl.h7,
+		impl.hP,
 		function() { return function() {} }
 	);
 });
@@ -11207,12 +11207,12 @@ var $author$project$Home$vegaPort = _Platform_outgoingPort('vegaPort', $elm$core
 var $elm$core$Platform$worker = _Platform_worker;
 var $author$project$Home$main = $elm$core$Platform$worker(
 	{
-		g$: $elm$core$Basics$always(
+		g2: $elm$core$Basics$always(
 			_Utils_Tuple2(
 				$author$project$Home$specs,
 				$author$project$Home$vegaPort($author$project$Home$specs))),
-		hJ: $elm$core$Basics$always($elm$core$Platform$Sub$none),
-		h1: F2(
+		hP: $elm$core$Basics$always($elm$core$Platform$Sub$none),
+		h7: F2(
 			function (_v0, model) {
 				return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 			})

@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.eh.cb === region.eQ.cb)
+	if (region.ej.cd === region.eS.cd)
 	{
-		return 'on line ' + region.eh.cb;
+		return 'on line ' + region.ej.cd;
 	}
-	return 'on lines ' + region.eh.cb + ' through ' + region.eQ.cb;
+	return 'on lines ' + region.ej.cd + ' through ' + region.eS.cd;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.g$,
-		impl.h3,
-		impl.hJ,
+		impl.g2,
+		impl.h9,
+		impl.hP,
 		function() { return function() {} }
 	);
 });
@@ -2719,9 +2719,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		fh: func(record.fh),
+		fj: func(record.fj),
 		fO: record.fO,
-		fv: record.fv
+		fx: record.fx
 	}
 });
 
@@ -2989,11 +2989,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.fh;
+		var message = !tag ? value : tag < 3 ? value.a : value.fj;
 		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.fO;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.fv) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.fx) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3943,11 +3943,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.g$,
-		impl.h3,
-		impl.hJ,
+		impl.g2,
+		impl.h9,
+		impl.hP,
 		function(sendToApp, initialModel) {
-			var view = impl.h5;
+			var view = impl.ib;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3979,12 +3979,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.g$,
-		impl.h3,
-		impl.hJ,
+		impl.g2,
+		impl.h9,
+		impl.hP,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.ef && impl.ef(sendToApp)
-			var view = impl.h5;
+			var divertHrefToApp = impl.eh && impl.eh(sendToApp)
+			var view = impl.ib;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3992,12 +3992,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.gp);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.go);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.hY) && (_VirtualDom_doc.title = title = doc.hY);
+				(title !== doc.h2) && (_VirtualDom_doc.title = title = doc.h2);
 			});
 		}
 	);
@@ -4053,12 +4053,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.hi;
-	var onUrlRequest = impl.hj;
+	var onUrlChange = impl.hm;
+	var onUrlRequest = impl.hn;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		ef: function(sendToApp)
+		eh: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4074,9 +4074,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.fz === next.fz
-							&& curr.e_ === next.e_
-							&& curr.fu.a === next.fu.a
+							&& curr.fA === next.fA
+							&& curr.e0 === next.e0
+							&& curr.fw.a === next.fw.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4084,13 +4084,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		g$: function(flags)
+		g2: function(flags)
 		{
-			return A3(impl.g$, flags, _Browser_getUrl(), key);
+			return A3(impl.g2, flags, _Browser_getUrl(), key);
 		},
-		h5: impl.h5,
-		h3: impl.h3,
-		hJ: impl.hJ
+		ib: impl.ib,
+		h9: impl.h9,
+		hP: impl.hP
 	});
 }
 
@@ -4156,17 +4156,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { gU: 'hidden', gz: 'visibilitychange' }
+		? { gX: 'hidden', gy: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { gU: 'mozHidden', gz: 'mozvisibilitychange' }
+		? { gX: 'mozHidden', gy: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { gU: 'msHidden', gz: 'msvisibilitychange' }
+		? { gX: 'msHidden', gy: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { gU: 'webkitHidden', gz: 'webkitvisibilitychange' }
-		: { gU: 'hidden', gz: 'visibilitychange' };
+		? { gX: 'webkitHidden', gy: 'webkitvisibilitychange' }
+		: { gX: 'hidden', gy: 'visibilitychange' };
 }
 
 
@@ -4250,9 +4250,9 @@ function _Browser_getViewport()
 		fH: _Browser_getScene(),
 		f$: {
 			f5: _Browser_window.pageXOffset,
-			aH: _Browser_window.pageYOffset,
+			aK: _Browser_window.pageYOffset,
 			f2: _Browser_doc.documentElement.clientWidth,
-			cS: _Browser_doc.documentElement.clientHeight
+			cU: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4263,7 +4263,7 @@ function _Browser_getScene()
 	var elem = _Browser_doc.documentElement;
 	return {
 		f2: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		cS: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		cU: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4288,13 +4288,13 @@ function _Browser_getViewportOf(id)
 		return {
 			fH: {
 				f2: node.scrollWidth,
-				cS: node.scrollHeight
+				cU: node.scrollHeight
 			},
 			f$: {
 				f5: node.scrollLeft,
-				aH: node.scrollTop,
+				aK: node.scrollTop,
 				f2: node.clientWidth,
-				cS: node.clientHeight
+				cU: node.clientHeight
 			}
 		};
 	});
@@ -4327,15 +4327,15 @@ function _Browser_getElement(id)
 			fH: _Browser_getScene(),
 			f$: {
 				f5: x,
-				aH: y,
+				aK: y,
 				f2: _Browser_doc.documentElement.clientWidth,
-				cS: _Browser_doc.documentElement.clientHeight
+				cU: _Browser_doc.documentElement.clientHeight
 			},
 			_: {
 				f5: x + rect.left,
-				aH: y + rect.top,
+				aK: y + rect.top,
 				f2: rect.width,
-				cS: rect.height
+				cU: rect.height
 			}
 		};
 	});
@@ -4911,7 +4911,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {eW: fragment, e_: host, fr: path, fu: port_, fz: protocol, dc: query};
+		return {eY: fragment, e0: host, ft: path, fw: port_, fA: protocol, de: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -12929,9 +12929,9 @@ var $author$project$DisplaySpeciesTable$sparklines = function (species) {
 var $author$project$DisplaySpeciesTable$vegaPort = _Platform_outgoingPort('vegaPort', $elm$core$Basics$identity);
 var $author$project$DisplaySpeciesTable$init = function (species) {
 	var model = {
-		dc: '',
+		de: '',
 		a: species,
-		dj: $billstclair$elm_sortable_table$Table$initialSort('Year')
+		dl: $billstclair$elm_sortable_table$Table$initialSort('Year')
 	};
 	return _Utils_Tuple2(
 		model,
@@ -12942,7 +12942,7 @@ var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $author$project$DisplaySpeciesTable$SpeciesTableEntry = F3(
 	function (species, sparkLineID, rateOfChange) {
-		return {fA: rateOfChange, fN: sparkLineID, a: species};
+		return {fB: rateOfChange, fN: sparkLineID, a: species};
 	});
 var $author$project$DisplaySpeciesTable$speciesTable = A2(
 	$elm$core$List$map,
@@ -13032,7 +13032,7 @@ var $author$project$DisplaySpeciesTable$update = F2(
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{dc: newQuery}),
+					{de: newQuery}),
 				$author$project$DisplaySpeciesTable$vegaPort(
 					filterSpeciesByQuery(newQuery)));
 		} else {
@@ -13040,7 +13040,7 @@ var $author$project$DisplaySpeciesTable$update = F2(
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{dj: newState}),
+					{dl: newState}),
 				$author$project$DisplaySpeciesTable$vegaPort(
 					filterSpeciesByState(model)));
 		}
@@ -13057,7 +13057,7 @@ var $billstclair$elm_sortable_table$Table$simpleRowAttrs = function (_v0) {
 };
 var $billstclair$elm_sortable_table$Table$HtmlDetails = F2(
 	function (attributes, children) {
-		return {b0: attributes, b2: children};
+		return {b2: attributes, b4: children};
 	});
 var $elm$core$Char$fromCode = _Char_fromCode;
 var $elm$core$String$fromList = _String_fromList;
@@ -13147,22 +13147,22 @@ var $billstclair$elm_sortable_table$Table$simpleThead = function (headers) {
 		_List_Nil,
 		A2($elm$core$List$map, $billstclair$elm_sortable_table$Table$simpleTheadHelp, headers));
 };
-var $billstclair$elm_sortable_table$Table$defaultCustomizations = {dx: $elm$core$Maybe$Nothing, d9: $billstclair$elm_sortable_table$Table$simpleRowAttrs, ei: _List_Nil, ej: _List_Nil, el: $elm$core$Maybe$Nothing, em: $billstclair$elm_sortable_table$Table$simpleThead};
+var $billstclair$elm_sortable_table$Table$defaultCustomizations = {dz: $elm$core$Maybe$Nothing, eb: $billstclair$elm_sortable_table$Table$simpleRowAttrs, ek: _List_Nil, el: _List_Nil, en: $elm$core$Maybe$Nothing, eo: $billstclair$elm_sortable_table$Table$simpleThead};
 var $billstclair$elm_sortable_table$Table$config = function (_v0) {
-	var toId = _v0.hZ;
-	var toMsg = _v0.h_;
-	var columns = _v0.gD;
+	var toId = _v0.h3;
+	var toMsg = _v0.h4;
+	var columns = _v0.gC;
 	return {
-		gD: A2(
+		gC: A2(
 			$elm$core$List$map,
 			function (_v1) {
 				var cData = _v1;
 				return cData;
 			},
 			columns),
-		b6: $billstclair$elm_sortable_table$Table$defaultCustomizations,
-		hZ: toId,
-		h_: toMsg
+		b8: $billstclair$elm_sortable_table$Table$defaultCustomizations,
+		h3: toId,
+		h4: toMsg
 	};
 };
 var $billstclair$elm_sortable_table$Table$Decreasing = function (a) {
@@ -13426,7 +13426,7 @@ var $author$project$DisplaySpeciesTable$viewRate = function (_v0) {
 var $author$project$DisplaySpeciesTable$rateColumn = function (f) {
 	return $billstclair$elm_sortable_table$Table$veryCustomColumn(
 		{
-			fj: ' % Change per Year',
+			fl: ' % Change per Year',
 			fL: $billstclair$elm_sortable_table$Table$decreasingBy(f),
 			f_: function (data) {
 				return $author$project$DisplaySpeciesTable$viewRate(
@@ -13463,7 +13463,7 @@ var $billstclair$elm_sortable_table$Table$unsortable = $billstclair$elm_sortable
 var $author$project$DisplaySpeciesTable$sparklineColumn = function (f) {
 	return $billstclair$elm_sortable_table$Table$veryCustomColumn(
 		{
-			fj: 'Trend',
+			fl: 'Trend',
 			fL: $billstclair$elm_sortable_table$Table$unsortable,
 			f_: function (data) {
 				return $author$project$DisplaySpeciesTable$mkSparklineElement(
@@ -13490,14 +13490,14 @@ var $billstclair$elm_sortable_table$Table$textDetails = function (str) {
 var $billstclair$elm_sortable_table$Table$stringColumn = F2(
 	function (name, toStr) {
 		return {
-			fj: name,
+			fl: name,
 			fL: $billstclair$elm_sortable_table$Table$increasingOrDecreasingBy(toStr),
 			f_: A2($elm$core$Basics$composeL, $billstclair$elm_sortable_table$Table$textDetails, toStr)
 		};
 	});
 var $author$project$DisplaySpeciesTable$config = $billstclair$elm_sortable_table$Table$config(
 	{
-		gD: _List_fromArray(
+		gC: _List_fromArray(
 			[
 				A2(
 				$billstclair$elm_sortable_table$Table$stringColumn,
@@ -13511,13 +13511,13 @@ var $author$project$DisplaySpeciesTable$config = $billstclair$elm_sortable_table
 				}),
 				$author$project$DisplaySpeciesTable$rateColumn(
 				function ($) {
-					return $.fA;
+					return $.fB;
 				})
 			]),
-		hZ: function ($) {
+		h3: function ($) {
 			return $.a;
 		},
-		h_: $author$project$DisplaySpeciesTable$SetTableState
+		h4: $author$project$DisplaySpeciesTable$SetTableState
 	});
 var $elm$html$Html$input = _VirtualDom_node('input');
 var $elm$html$Html$Events$alwaysStop = function (x) {
@@ -13585,7 +13585,7 @@ var $billstclair$elm_sortable_table$Table$findSorter = F2(
 			if (!columnData.b) {
 				return $elm$core$Maybe$Nothing;
 			} else {
-				var name = columnData.a.fj;
+				var name = columnData.a.fl;
 				var sorter = columnData.a.fL;
 				var remainingColumnData = columnData.b;
 				if (_Utils_eq(name, selectedColumn)) {
@@ -13614,10 +13614,10 @@ var $billstclair$elm_sortable_table$Table$sort = F3(
 	});
 var $billstclair$elm_sortable_table$Table$getSortedData = F3(
 	function (_v0, state, data) {
-		var toId = _v0.hZ;
-		var toMsg = _v0.h_;
-		var columns = _v0.gD;
-		var customizations = _v0.b6;
+		var toId = _v0.h3;
+		var toMsg = _v0.h4;
+		var columns = _v0.gC;
+		var customizations = _v0.b8;
 		return A3($billstclair$elm_sortable_table$Table$sort, state, columns, data);
 	});
 var $elm$virtual_dom$VirtualDom$keyedNode = function (tag) {
@@ -13663,7 +13663,7 @@ var $billstclair$elm_sortable_table$Table$toHeaderInfo = F3(
 	function (_v0, toMsg, _v1) {
 		var sortName = _v0.a;
 		var isReversed = _v0.b;
-		var name = _v1.fj;
+		var name = _v1.fl;
 		var sorter = _v1.fL;
 		switch (sorter.$) {
 			case 0:
@@ -13711,7 +13711,7 @@ var $billstclair$elm_sortable_table$Table$viewCell = F2(
 	function (data, _v0) {
 		var viewData = _v0.f_;
 		var details = viewData(data);
-		return A2($elm$html$Html$td, details.b0, details.b2);
+		return A2($elm$html$Html$td, details.b2, details.b4);
 	});
 var $billstclair$elm_sortable_table$Table$viewRowHelp = F3(
 	function (columns, toRowAttrs, data) {
@@ -13731,38 +13731,38 @@ var $billstclair$elm_sortable_table$Table$viewRow = F4(
 	});
 var $billstclair$elm_sortable_table$Table$view = F3(
 	function (conf, state, data) {
-		var toId = conf.hZ;
-		var toMsg = conf.h_;
-		var columns = conf.gD;
-		var customizations = conf.b6;
-		var theadDetails = customizations.em(
+		var toId = conf.h3;
+		var toMsg = conf.h4;
+		var columns = conf.gC;
+		var customizations = conf.b8;
+		var theadDetails = customizations.eo(
 			A2(
 				$elm$core$List$map,
 				A2($billstclair$elm_sortable_table$Table$toHeaderInfo, state, toMsg),
 				columns));
 		var thead = A2(
 			$elm$html$Html$thead,
-			theadDetails.b0,
+			theadDetails.b2,
 			_List_fromArray(
 				[
-					A2($elm$html$Html$tr, _List_Nil, theadDetails.b2)
+					A2($elm$html$Html$tr, _List_Nil, theadDetails.b4)
 				]));
 		var sortedData = A3($billstclair$elm_sortable_table$Table$getSortedData, conf, state, data);
 		var tbody = A3(
 			$elm$html$Html$Keyed$node,
 			'tbody',
-			customizations.ej,
+			customizations.el,
 			A2(
 				$elm$core$List$map,
-				A3($billstclair$elm_sortable_table$Table$viewRow, toId, columns, customizations.d9),
+				A3($billstclair$elm_sortable_table$Table$viewRow, toId, columns, customizations.eb),
 				sortedData));
 		var withFoot = function () {
-			var _v1 = customizations.el;
+			var _v1 = customizations.en;
 			if (_v1.$ === 1) {
 				return A2($elm$core$List$cons, tbody, _List_Nil);
 			} else {
-				var attributes = _v1.a.b0;
-				var children = _v1.a.b2;
+				var attributes = _v1.a.b2;
+				var children = _v1.a.b4;
 				return A2(
 					$elm$core$List$cons,
 					A2($elm$html$Html$tfoot, attributes, children),
@@ -13771,14 +13771,14 @@ var $billstclair$elm_sortable_table$Table$view = F3(
 		}();
 		return A2(
 			$elm$html$Html$table,
-			customizations.ei,
+			customizations.ek,
 			function () {
-				var _v0 = customizations.dx;
+				var _v0 = customizations.dz;
 				if (_v0.$ === 1) {
 					return A2($elm$core$List$cons, thead, withFoot);
 				} else {
-					var attributes = _v0.a.b0;
-					var children = _v0.a.b2;
+					var attributes = _v0.a.b2;
+					var children = _v0.a.b4;
 					return A2(
 						$elm$core$List$cons,
 						A2($elm$html$Html$caption, attributes, children),
@@ -13788,8 +13788,8 @@ var $billstclair$elm_sortable_table$Table$view = F3(
 	});
 var $author$project$DisplaySpeciesTable$view = function (_v0) {
 	var species = _v0.a;
-	var tableState = _v0.dj;
-	var query = _v0.dc;
+	var tableState = _v0.dl;
+	var query = _v0.de;
 	var lowerQuery = $elm$core$String$toLower(query);
 	var acceptableSpecies = A2(
 		$elm$core$List$filter,
@@ -13821,14 +13821,14 @@ var $author$project$DisplaySpeciesTable$view = function (_v0) {
 };
 var $author$project$DisplaySpeciesTable$main = $elm$browser$Browser$element(
 	{
-		g$: function (_v0) {
+		g2: function (_v0) {
 			return $author$project$DisplaySpeciesTable$init($author$project$DisplaySpeciesTable$speciesTable);
 		},
-		hJ: function (_v1) {
+		hP: function (_v1) {
 			return $elm$core$Platform$Sub$none;
 		},
-		h3: $author$project$DisplaySpeciesTable$update,
-		h5: $author$project$DisplaySpeciesTable$view
+		h9: $author$project$DisplaySpeciesTable$update,
+		ib: $author$project$DisplaySpeciesTable$view
 	});
 _Platform_export({'DisplaySpeciesTable':{'init':$author$project$DisplaySpeciesTable$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));

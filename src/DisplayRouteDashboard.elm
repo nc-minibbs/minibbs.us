@@ -2,7 +2,7 @@ port module DisplayRouteDashboard exposing (..)
 
 import Browser
 import Data.County exposing (CountyAggregation(..), countyToString)
-import Data.Mbbs exposing (mbbsData)
+import Data.Mbbs exposing (mbbsData, testCounts)
 import Data.Route exposing (..)
 import Data.Species exposing (..)
 import Element exposing (..)
@@ -12,9 +12,8 @@ import Html.Styled as Styled
 import Json.Encode as E
 import Select exposing (..)
 import Specs.RouteDashboard exposing (..)
-import String exposing (fromInt)
+import String exposing (fromFloat, fromInt)
 import VegaLite exposing (..)
-import String exposing (fromFloat)
 
 
 main : Program () Model Msg
@@ -132,30 +131,45 @@ update toPort msg model =
             , Cmd.batch [ specMsg, Cmd.map SelectRoute cmds ]
             )
 
-routeToMapURL : Route -> String
-routeToMapURL r = 
-    "https://www.google.com/maps/d/embed?mid=" 
-    ++ r.mapid 
-    ++ "&ll="
-    ++ fromFloat r.maplat
-    ++ "%2C" 
-    ++ fromFloat r.maplon
-    ++ "&z=10" 
 
-displayRoute : Model -> Element Msg
-displayRoute m =
+routeToMapURL : Route -> String
+routeToMapURL r =
+    "https://www.google.com/maps/d/embed?mid="
+        ++ r.mapid
+        ++ "&ll="
+        ++ fromFloat r.maplat
+        ++ "%2C"
+        ++ fromFloat r.maplon
+        ++ "&z=10"
+
+
+displayRouteSpeciesTable : Element Msg
+displayRouteSpeciesTable =
+    Element.column
+        []
+        [ el [] <| Element.text testCounts
+
+        -- (withDefault "foo" (Maybe.map (\x -> x.common_name)
+        -- (List.head mbbsCounts)))
+        ]
+
+
+displayRouteInfo : Model -> Element Msg
+displayRouteInfo m =
     case m.selectedRoute of
         Just r ->
             Element.column []
                 [ el [] <| Element.text (countyToString r.county ++ "  " ++ fromInt r.number)
                 , el [] <| Element.text r.name
                 , el [] <| Element.text ("Total years surveyed: " ++ fromInt r.total_years_surveyed)
-                , el [] <| Element.html 
-                    <| Html.iframe
-                        [ Attr.src (routeToMapURL r)
-                        , Attr.width 500 
-                        , Attr.height 500 ] 
-                        []
+                , el [] <|
+                    Element.html <|
+                        Html.iframe
+                            [ Attr.src (routeToMapURL r)
+                            , Attr.width 500
+                            , Attr.height 500
+                            ]
+                            []
                 ]
 
         Nothing ->
@@ -192,8 +206,9 @@ view m =
                                     |> Select.searchable True
                                     |> Select.clearable True
                                 )
-            , displayRoute m
+            , displayRouteInfo m
             , el [ htmlAttribute (Attr.id "vegaViz") ] none
+            , displayRouteSpeciesTable
             ]
 
 

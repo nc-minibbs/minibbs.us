@@ -6,6 +6,7 @@
     "elm-version": "0.19.1",
     "dependencies": {
         "direct": {
+            "BrianHicks/elm-csv": "3.0.3",
             "Confidenceman02/elm-select": "8.2.0",
             "billstclair/elm-sortable-table": "1.2.1",
             "elm/browser": "1.0.2",
@@ -19,8 +20,6 @@
         },
         "indirect": {
             "dzuk-mutant/elm-html-styled-aria": "1.0.1",
-            "elm/parser": "1.1.0",
-            "elm/regex": "1.0.0",
             "elm/time": "1.0.0",
             "elm/url": "1.0.0",
             "elm/virtual-dom": "1.0.3",
@@ -33,6 +32,8 @@
         "direct": {},
         "indirect": {
             "avh4/elm-color": "1.0.0",
+            "elm/parser": "1.1.0",
+            "elm/regex": "1.0.0",
             "elm/svg": "1.0.1",
             "elm-community/intdict": "3.0.0",
             "fredcy/elm-parseint": "2.0.1",
