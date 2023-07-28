@@ -50,19 +50,9 @@
         version = "17.1.1";
       };
 
-      "avh4/elm-color" = {
-        sha256 = "0n16wnvp87x9az3m5qjrl6smsg7051m719xn5d244painx8xmpzq";
-        version = "1.0.0";
-      };
-
       "dzuk-mutant/elm-html-styled-aria" = {
         sha256 = "1gwk45zspfkdgxzj27sgnilirydj5kzbmdhrphfcpf1p1s1kighr";
         version = "1.0.1";
-      };
-
-      "elm-community/intdict" = {
-        sha256 = "09i1fk63gp6sr6kc6ccs8g0kxvqhw5czghi9cl8flizanrgcmva1";
-        version = "3.0.0";
       };
 
       "elm-community/list-extra" = {
@@ -80,11 +70,6 @@
         version = "1.0.0";
       };
 
-      "elm/svg" = {
-        sha256 = "1cwcj73p61q45wqwgqvrvz3aypjyy3fw732xyxdyj6s256hwkn0k";
-        version = "1.0.1";
-      };
-
       "elm/time" = {
         sha256 = "0vch7i86vn0x8b850w1p69vplll1bnbkp8s383z7pinyg94cm2z1";
         version = "1.0.0";
@@ -98,6 +83,31 @@
       "elm/virtual-dom" = {
         sha256 = "1yvb8px2z62xd578ag2q0r5hd1vkz9y7dfkx05355iiy1d7jwq4v";
         version = "1.0.3";
+      };
+
+      "robinheghan/murmur3" = {
+        sha256 = "15asmgr2zqh7rkywrg5647rpdqkpzxk02v5qc6ndj60jza3gsmjk";
+        version = "1.0.0";
+      };
+
+      "rtfeldman/elm-hex" = {
+        sha256 = "1y0aa16asvwdqmgbskh5iba6psp43lkcjjw9mgzj3gsrg33lp00d";
+        version = "1.0.0";
+      };
+
+      "avh4/elm-color" = {
+        sha256 = "0n16wnvp87x9az3m5qjrl6smsg7051m719xn5d244painx8xmpzq";
+        version = "1.0.0";
+      };
+
+      "elm-community/intdict" = {
+        sha256 = "09i1fk63gp6sr6kc6ccs8g0kxvqhw5czghi9cl8flizanrgcmva1";
+        version = "3.0.0";
+      };
+
+      "elm/svg" = {
+        sha256 = "1cwcj73p61q45wqwgqvrvz3aypjyy3fw732xyxdyj6s256hwkn0k";
+        version = "1.0.1";
       };
 
       "fredcy/elm-parseint" = {
@@ -118,16 +128,6 @@
       "noahzgordon/elm-color-extra" = {
         sha256 = "1km72jlmgg5iqxpnvzry9wavjlwcs0n3ks8wwdiy6rj2rmzm1z20";
         version = "1.0.2";
-      };
-
-      "robinheghan/murmur3" = {
-        sha256 = "15asmgr2zqh7rkywrg5647rpdqkpzxk02v5qc6ndj60jza3gsmjk";
-        version = "1.0.0";
-      };
-
-      "rtfeldman/elm-hex" = {
-        sha256 = "1y0aa16asvwdqmgbskh5iba6psp43lkcjjw9mgzj3gsrg33lp00d";
-        version = "1.0.0";
       };
 
       "tesk9/palette" = {
