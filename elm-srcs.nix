@@ -15,6 +15,11 @@
         version = "1.2.1";
       };
 
+      "elm-community/dict-extra" = {
+        sha256 = "05ll04wf03m8ic109dz2dbq6pah23m70c4wwyr35026dhmws35n0";
+        version = "2.4.0";
+      };
+
       "elm/browser" = {
         sha256 = "0nagb9ajacxbbg985r4k9h0jadqpp0gp84nm94kcgbr5sf8i9x13";
         version = "1.0.2";

@@ -1,16 +1,20 @@
 port module DisplayRouteDashboard exposing (..)
 
 import Browser
+import Csv.Decode exposing (errorToString)
 import Data.County exposing (CountyAggregation(..), countyToString)
-import Data.Mbbs exposing (mbbsData, testCounts)
+import Data.Mbbs exposing (..)
 import Data.Route exposing (..)
 import Data.Species exposing (..)
+import Dict exposing (Dict)
+import Dict.Extra exposing (..)
 import Element exposing (..)
 import Html exposing (..)
 import Html.Attributes as Attr
 import Html.Styled as Styled
 import Json.Encode as E
 import Select exposing (..)
+import Set
 import Specs.RouteDashboard exposing (..)
 import String exposing (fromFloat, fromInt)
 import VegaLite exposing (..)
@@ -143,15 +147,89 @@ routeToMapURL r =
         ++ "&z=10"
 
 
-displayRouteSpeciesTable : Element Msg
-displayRouteSpeciesTable =
-    Element.column
-        []
-        [ el [] <| Element.text testCounts
+removeZeroCounts : List Count -> List Count
+removeZeroCounts =
+    List.filter (\x -> x.count /= 0)
 
-        -- (withDefault "foo" (Maybe.map (\x -> x.common_name)
-        -- (List.head mbbsCounts)))
-        ]
+
+filterRoute : Route -> List Count -> List Count
+filterRoute r =
+    List.filter
+        (\x -> x.county == r.county && x.route_num == r.number)
+
+
+groupBySpecies : List Count -> Dict String (List Count)
+groupBySpecies =
+    groupBy (speciesToString << .species)
+
+
+type alias SpeciesRouteSummary =
+    { species : String
+    , totalCount : Int
+    , yearsObserved : Int
+    }
+
+
+summarizeRoute : Route -> List Count -> List SpeciesRouteSummary
+summarizeRoute r cnts =
+    let
+        totalCount : List Count -> Int
+        totalCount =
+            List.foldr (\x acc -> x.count + acc) 0
+
+        yearsObserved : List Count -> Int
+        yearsObserved =
+            Set.size << Set.fromList << List.map .year
+
+        dict : Dict String ( Int, Int )
+        dict =
+            Dict.map
+                (\_ v -> ( totalCount v, yearsObserved v ))
+                (groupBySpecies (removeZeroCounts <| filterRoute r cnts))
+    in
+    List.map
+        (\( s, ( c, o ) ) -> { species = s, totalCount = c, yearsObserved = o })
+        (Dict.toList dict)
+
+
+displayRouteSpeciesTable : Route -> Element Msg
+displayRouteSpeciesTable r =
+    case mbbsCounts of
+        Ok counts ->
+            Element.column
+                []
+                [ el [] <|
+                    Element.table []
+                        { data = summarizeRoute r counts
+                        , columns =
+                            [ { header = Element.text "Species"
+                              , width = Element.fill
+                              , view = Element.text << .species
+                              }
+                            , { header = Element.text "Years Observed"
+                              , width = Element.fill
+                              , view = Element.text << fromInt << .yearsObserved
+                              }
+                            , { header = Element.text "Total Count"
+                              , width = Element.fill
+                              , view = Element.text << fromInt << .totalCount
+                              }
+                            ]
+                        }
+                ]
+
+        Err e ->
+            Element.column [] [ el [] <| Element.text <| errorToString e ]
+
+
+displayRouteSpeciesTableM : Model -> Element Msg
+displayRouteSpeciesTableM m =
+    case m.selectedRoute of
+        Just r ->
+            displayRouteSpeciesTable r
+
+        Nothing ->
+            el [] none
 
 
 displayRouteInfo : Model -> Element Msg
@@ -208,7 +286,7 @@ view m =
                                 )
             , displayRouteInfo m
             , el [ htmlAttribute (Attr.id "vegaViz") ] none
-            , displayRouteSpeciesTable
+            , displayRouteSpeciesTableM m
             ]
 
 
