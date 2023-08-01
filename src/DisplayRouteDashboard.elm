@@ -8,16 +8,19 @@ import Data.Route exposing (..)
 import Data.Species exposing (..)
 import Dict exposing (Dict)
 import Dict.Extra exposing (..)
-import Element exposing (..)
+-- import Element exposing (..)
 import Html exposing (..)
 import Html.Attributes as Attr
 import Html.Styled as Styled
+import Html.Events exposing (onInput)
 import Json.Encode as E
 import Select exposing (..)
 import Set
 import Specs.RouteDashboard exposing (..)
 import String exposing (fromFloat, fromInt)
+import Table exposing (..)
 import VegaLite exposing (..)
+-- import Element.Region as Region
 
 
 main : Program () Model Msg
@@ -59,6 +62,9 @@ type alias Model =
     , items : List (Select.MenuItem String)
     , selectedRoute : Maybe Route
     , selectedItem : Maybe String
+    , tableData : List SpeciesRouteSummary
+    , tableState : Table.State
+    , query : String
     }
 
 
@@ -69,15 +75,31 @@ init =
     , items = routeMenuItems
     , selectedRoute = Nothing
     , selectedItem = Nothing
+    , tableData = []
+    , tableState = Table.initialSort "Year"
+    , query = ""
     }
 
 
 type Msg
     = SelectRoute (Select.Msg String)
+    | SetQuery String
+    | SetTableState Table.State
 
 
 update : (Spec -> Cmd Msg) -> Msg -> Model -> ( Model, Cmd Msg )
 update toPort msg model =
+    let
+        filterSpeciesByQuery query =
+                List.filter
+                    (\z -> String.contains (String.toLower query) z.commonName)
+                    allSpeciesRec
+
+        filterSpeciesByState m =
+                List.filter
+                    (\z -> List.member z.commonName (List.map .species m.species))
+                    allSpeciesRec
+    in
     case msg of
         SelectRoute sm ->
             let
@@ -134,6 +156,15 @@ update toPort msg model =
               }
             , Cmd.batch [ specMsg, Cmd.map SelectRoute cmds ]
             )
+        SetQuery newQuery ->
+            ( { model | query = newQuery }
+            , Cmd.none
+            )
+
+        SetTableState newState ->
+            ( { model | tableState = newState }
+            , Cmd.none
+            )
 
 
 routeToMapURL : Route -> String
@@ -144,7 +175,7 @@ routeToMapURL r =
         ++ fromFloat r.maplat
         ++ "%2C"
         ++ fromFloat r.maplon
-        ++ "&z=10"
+        ++ "&z=13"
 
 
 removeZeroCounts : List Count -> List Count
@@ -177,14 +208,14 @@ summarizeRoute r cnts =
         totalCount =
             List.foldr (\x acc -> x.count + acc) 0
 
-        yearsObserved : List Count -> Int
-        yearsObserved =
+        nYearsObserved : List Count -> Int
+        nYearsObserved =
             Set.size << Set.fromList << List.map .year
 
         dict : Dict String ( Int, Int )
         dict =
             Dict.map
-                (\_ v -> ( totalCount v, yearsObserved v ))
+                (\_ v -> ( totalCount v, nYearsObserved v ))
                 (groupBySpecies (removeZeroCounts <| filterRoute r cnts))
     in
     List.map
@@ -192,66 +223,110 @@ summarizeRoute r cnts =
         (Dict.toList dict)
 
 
-displayRouteSpeciesTable : Route -> Element Msg
+viewTable : Model -> Html Msg
+viewTable m =
+    let
+        lowerQuery =
+            String.toLower m.query
+
+        acceptableSpecies =
+            List.filter
+                (String.contains lowerQuery << String.toLower << .species)
+                m.tableData
+    in
+    div
+        []
+        [ input [ Attr.placeholder "Search by Name", onInput SetQuery ] []
+        , Table.view config m.tableState acceptableSpecies
+        ]
+
+config : Table.Config SpeciesRouteSummary Msg
+config =
+    Table.config
+        { toId = .species
+        , toMsg = SetTableState
+        , columns =
+            [ Table.stringColumn "Name" .species
+            , Table.intColumn "..." .totalCount
+            , Table.intColumn "..." .yearsObserved
+            ]
+        }
+
+displayRouteSpeciesTable : Route -> Html Msg
 displayRouteSpeciesTable r =
     case mbbsCounts of
         Ok counts ->
-            Element.column
-                []
-                [ el [] <|
-                    Element.table []
-                        { data = summarizeRoute r counts
-                        , columns =
-                            [ { header = Element.text "Species"
-                              , width = Element.fill
-                              , view = Element.text << .species
-                              }
-                            , { header = Element.text "Years Observed"
-                              , width = Element.fill
-                              , view = Element.text << fromInt << .yearsObserved
-                              }
-                            , { header = Element.text "Total Count"
-                              , width = Element.fill
-                              , view = Element.text << fromInt << .totalCount
-                              }
-                            ]
-                        }
-                ]
+            let tableData = summarizeRoute r counts
+            in
+            div 
+            [] 
+            [ Html.table [] []  
+
+            ]
+            -- Element.column
+            --     []
+            --     [ el [] <|
+            --         Element.table []
+            --             { data = summarizeRoute r counts
+            --             , columns =
+            --                 [ { header = Element.text "Species"
+            --                   , width = Element.fill
+            --                   , view = Element.text << .species
+            --                   }
+            --                 , { header = Element.text "Years Observed"
+            --                   , width = Element.fill
+            --                   , view = Element.text << fromInt << .yearsObserved
+            --                   }
+            --                 , { header = Element.text "Total Count"
+            --                   , width = Element.fill
+            --                   , view = Element.text << fromInt << .totalCount
+            --                   }
+            --                 ]
+            --             }
+            --     ]
 
         Err e ->
-            Element.column [] [ el [] <| Element.text <| errorToString e ]
+            div [] [ Html.text <| errorToString e ]
+            -- Element.column [] [ el [] <| Element.text <| errorToString e ]
 
 
-displayRouteSpeciesTableM : Model -> Element Msg
+displayRouteSpeciesTableM : Model -> Html Msg
 displayRouteSpeciesTableM m =
     case m.selectedRoute of
         Just r ->
-            displayRouteSpeciesTable r
+            viewTable m
 
         Nothing ->
-            el [] none
+            div [] []
+            -- el [] none
 
 
-displayRouteInfo : Model -> Element Msg
+displayRouteInfo : Model -> Html Msg
 displayRouteInfo m =
     case m.selectedRoute of
         Just r ->
-            Element.column []
-                [ el [] <| Element.text (countyToTitle r.county ++ "  " ++ fromInt r.number)
-                , el [] <| Element.text r.name
-                , el [] <| Element.text ("Total years surveyed: " ++ fromInt r.total_years_surveyed)
-                , el [] <|
-                    Element.html <|
-                        Html.iframe
-                            [ Attr.src (routeToMapURL r)
-                            , Attr.width 500
-                            , Attr.height 500
-                            ]
-                            []
-                ]
+            div [] 
+            [ Html.h2 [] [Html.text (countyToTitle r.county ++ "  " ++ fromInt r.number)]
+            , Html.p [] [Html.text r.name]
+            , Html.p [] [Html.text ("Total years surveyed: " ++ fromInt r.total_years_surveyed)]
+            ]
+            -- Element.column []
+            --     [ el [Region.heading 2] <| Element.text (countyToTitle r.county ++ "  " ++ fromInt r.number)
+            --     , el [] <| Element.text r.name
+            --     , el [] <| Element.text ("Total years surveyed: " ++ fromInt r.total_years_surveyed)
+            --     -- , el [] <|
+            --     --     Element.html <|
+            --     --         Html.iframe
+            --     --             [ Attr.src (routeToMapURL r)
+            --     --             , Attr.width 500
+            --     --             , Attr.height 500
+            --     --             ]
+            --     --             []
+            --     ]
 
         Nothing ->
-            el [] none
+            div [] []
+            -- el [] none
 
 
 view : Model -> Html Msg
@@ -265,16 +340,9 @@ view m =
                 _ ->
                     Nothing
     in
-    layout [] <|
-        Element.column
-            [ Element.spacing 10
-            ]
-            [ el
-                [ Element.width (Element.fill |> Element.minimum 250) -- Element.fill
-                ]
-              <|
-                Element.html <|
-                    Styled.toUnstyled <|
+    div [] 
+        [
+            Styled.toUnstyled <|
                         Styled.map SelectRoute <|
                             Select.view
                                 (Select.single selectedItem
@@ -282,12 +350,34 @@ view m =
                                     |> Select.menuItems m.items
                                     |> Select.placeholder "Select route"
                                     |> Select.searchable True
-                                    |> Select.clearable True
-                                )
-            , displayRouteInfo m
-            , el [ htmlAttribute (Attr.id "vegaViz") ] none
-            , displayRouteSpeciesTableM m
-            ]
+                                    |> Select.clearable True)
+             , displayRouteInfo m
+             , div [ Attr.id "vegaViz" ] []
+             , displayRouteSpeciesTableM m
+        ]
+    -- layout [] <|
+    --     Element.column
+    --         [ Element.spacing 10
+    --         ]
+    --         [ el
+    --             [ Element.width (Element.fill |> Element.minimum 250) -- Element.fill
+    --             ]
+    --           <|
+    --             Element.html <|
+    --                 Styled.toUnstyled <|
+    --                     Styled.map SelectRoute <|
+    --                         Select.view
+    --                             (Select.single selectedItem
+    --                                 |> Select.state m.selectState
+    --                                 |> Select.menuItems m.items
+    --                                 |> Select.placeholder "Select route"
+    --                                 |> Select.searchable True
+    --                                 |> Select.clearable True
+    --                             )
+    --         , displayRouteInfo m
+    --         , el [ htmlAttribute (Attr.id "vegaViz") ] none
+    --         , displayRouteSpeciesTableM m
+    --         ]
 
 
 port vegaPort : Spec -> Cmd msg

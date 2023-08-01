@@ -129,7 +129,12 @@ mkRouteDashboardSpec countData route =
     in
     toVegaLite
         [ countData
-        , mbbsVizConfig []
+        , mbbsVizConfig (configuration
+            (coView
+                [  vicoContinuousHeight 200
+                , vicoContinuousWidth 300
+                ]
+            ) []) 
         , title (routeToTitle route) []
         , trans []
         , vConcat [ totalSpec, speciesSpec ]
