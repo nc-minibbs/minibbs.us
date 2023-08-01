@@ -2,7 +2,7 @@ port module DisplayRouteDashboard exposing (..)
 
 import Browser
 import Csv.Decode exposing (errorToString)
-import Data.County exposing (CountyAggregation(..), countyToString)
+import Data.County exposing (CountyAggregation(..), countyToTitle)
 import Data.Mbbs exposing (..)
 import Data.Route exposing (..)
 import Data.Species exposing (..)
@@ -43,7 +43,7 @@ routeToMenuItem : Route -> Select.MenuItem String
 routeToMenuItem route =
     basicMenuItem
         { item = routeToString route
-        , label = routeToString route
+        , label = routeToTitle route
         }
 
 
@@ -237,7 +237,7 @@ displayRouteInfo m =
     case m.selectedRoute of
         Just r ->
             Element.column []
-                [ el [] <| Element.text (countyToString r.county ++ "  " ++ fromInt r.number)
+                [ el [] <| Element.text (countyToTitle r.county ++ "  " ++ fromInt r.number)
                 , el [] <| Element.text r.name
                 , el [] <| Element.text ("Total years surveyed: " ++ fromInt r.total_years_surveyed)
                 , el [] <|

@@ -130,7 +130,7 @@ mkRouteDashboardSpec countData route =
     toVegaLite
         [ countData
         , mbbsVizConfig []
-        , title (routeToString route) []
+        , title (routeToTitle route) []
         , trans []
         , vConcat [ totalSpec, speciesSpec ]
         ]

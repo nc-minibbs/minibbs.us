@@ -19,6 +19,18 @@ countyToString county =
         Orange ->
             "orange"
 
+countyToTitle : County -> String
+countyToTitle county =
+    case county of
+        Chatham ->
+            "Chatham"
+
+        Durham ->
+            "Durham"
+
+        Orange ->
+            "Orange"
+
 
 stringToCounty : String -> Maybe County
 stringToCounty x =
