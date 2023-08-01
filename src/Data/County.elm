@@ -19,6 +19,7 @@ countyToString county =
         Orange ->
             "orange"
 
+
 countyToTitle : County -> String
 countyToTitle county =
     case county of
