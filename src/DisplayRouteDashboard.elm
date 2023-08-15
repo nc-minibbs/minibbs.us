@@ -239,11 +239,6 @@ summarizeRoute r cnts =
         speciesPropRoutesEverObserved =
             Dict.map
                 (\_ x -> toFloat (Dict.size x) / totalRoutes)
-                -- let routesEverObserved = Dict.values x
-                -- in 50.0
-                -- (List.sum (
-                --         List.map (\v -> if v then 1 else 0) routesEverObserved ))
-                --    / toFloat (List.length routesEverObserved))
                 allSpeciesGrouped
 
         routeData : List Count
@@ -362,6 +357,16 @@ view m =
 
                 _ ->
                     Nothing
+
+        routeMap = 
+            case m.selectedRoute of 
+              Just r ->  iframe [
+                    Attr.src (routeToMapURL r)
+                    , Attr.width 400
+                    , Attr.height 400
+                    
+                    ] []
+              Nothing -> div [] []
     in
     div []
         [ Styled.toUnstyled <|
@@ -376,6 +381,7 @@ view m =
                     )
         , displayRouteInfo m
         , div [ Attr.id "vegaViz" ] []
+        , routeMap
         , viewTable m
         ]
 
