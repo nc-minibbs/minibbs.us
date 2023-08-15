@@ -87,16 +87,6 @@ type Msg
 
 update : (Spec -> Cmd Msg) -> Msg -> Model -> ( Model, Cmd Msg )
 update toPort msg model =
-    -- let
-    --     filterSpeciesByQuery query =
-    --             List.filter
-    --                 (\z -> String.contains (String.toLower query) z.commonName)
-    --                 allSpeciesRec
-    --     filterSpeciesByState m =
-    --             List.filter
-    --                 (\z -> List.member z.commonName (List.map .species m.species))
-    --                 allSpeciesRec
-    -- in
     case msg of
         SelectRoute sm ->
             let
