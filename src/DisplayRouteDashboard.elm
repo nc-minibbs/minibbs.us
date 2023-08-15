@@ -2,7 +2,7 @@ port module DisplayRouteDashboard exposing (..)
 
 import Browser
 import Csv.Decode exposing (errorToString)
-import Data.County exposing (CountyAggregation(..), countyToTitle)
+import Data.County exposing (..)
 import Data.Mbbs exposing (..)
 import Data.Route exposing (..)
 import Data.Species exposing (..)
@@ -19,6 +19,10 @@ import Specs.RouteDashboard exposing (..)
 import String exposing (fromFloat, fromInt)
 import Table exposing (..)
 import VegaLite exposing (..)
+
+
+
+-- import Svg.Styled.Attributes exposing (in_)
 
 
 main : Program () Model Msg
@@ -182,24 +186,73 @@ groupBySpecies =
     groupBy (speciesToString << .species)
 
 
+groupByRoute : List Count -> Dict String (List Count)
+groupByRoute =
+    groupBy (\x -> countyToString x.county ++ fromInt x.route_num)
+
+
+groupBySpeciesRoute : List Count -> Dict ( String, String ) (List Count)
+groupBySpeciesRoute =
+    groupBy
+        (\x ->
+            ( speciesToString (.species x)
+            , countyToString x.county ++ fromInt x.route_num
+            )
+        )
+
+
 type alias SpeciesRouteSummary =
     { species : String
     , avgCount : Float
     , nYearsObserved : Int
     , avgYearsObserved : Float
+    , pctRoutesEverObserved : Float
     }
 
 
 summarizeRoute : Route -> List Count -> List SpeciesRouteSummary
 summarizeRoute r cnts =
     let
+        nYearsObserved : List Count -> Int
+        nYearsObserved =
+            Set.size << Set.fromList << List.map .year
+
+        everObserved : List Count -> Bool
+        everObserved =
+            (>) 0 << nYearsObserved << removeZeroCounts
+
+        totalRoutes : Float
+        totalRoutes =
+            34.0
+
+        allSpeciesData : List Count
+        allSpeciesData =
+            removeZeroCounts cnts
+
+        allSpeciesGrouped : Dict String (Dict String Bool)
+        allSpeciesGrouped =
+            Dict.map
+                (\_ x -> Dict.map (\_ -> everObserved) (groupByRoute x))
+                (groupBySpecies allSpeciesData)
+
+        speciesPropRoutesEverObserved : Dict String Float
+        speciesPropRoutesEverObserved =
+            Dict.map
+                (\_ x -> toFloat (Dict.size x) / totalRoutes)
+                -- let routesEverObserved = Dict.values x
+                -- in 50.0
+                -- (List.sum (
+                --         List.map (\v -> if v then 1 else 0) routesEverObserved ))
+                --    / toFloat (List.length routesEverObserved))
+                allSpeciesGrouped
+
         routeData : List Count
         routeData =
-            removeZeroCounts <| filterRoute r cnts
+            filterRoute r allSpeciesData
 
         nYearsOfSurvey : Int
         nYearsOfSurvey =
-            (Set.size << Set.fromList << List.map .year) routeData
+            nYearsObserved routeData
 
         totalCount : List Count -> Int
         totalCount =
@@ -208,10 +261,6 @@ summarizeRoute r cnts =
         avgCount : List Count -> Float
         avgCount x =
             toFloat (totalCount x) / toFloat nYearsOfSurvey
-
-        nYearsObserved : List Count -> Int
-        nYearsObserved =
-            Set.size << Set.fromList << List.map .year
 
         avgYearsObserved : List Count -> Float
         avgYearsObserved x =
@@ -222,16 +271,26 @@ summarizeRoute r cnts =
             Dict.map
                 (\_ v -> ( avgCount v, nYearsObserved v, avgYearsObserved v ))
                 (groupBySpecies routeData)
+
+        merged =
+            Dict.merge
+                (\key a -> Dict.insert key ( a, 0.0 ))
+                (\key a b -> Dict.insert key ( a, b ))
+                (\key _ -> Dict.remove key)
+                dict
+                speciesPropRoutesEverObserved
+                Dict.empty
     in
     List.map
-        (\( s, ( a, b, c ) ) ->
+        (\( s, ( ( a, b, c ), d ) ) ->
             { species = s
             , avgCount = a
             , nYearsObserved = b
             , avgYearsObserved = c
+            , pctRoutesEverObserved = d
             }
         )
-        (Dict.toList dict)
+        (Dict.toList merged)
 
 
 displayRouteSpeciesTable : Table.State -> String -> Route -> Html Msg
@@ -255,6 +314,7 @@ displayRouteSpeciesTable state query r =
                             [ Table.stringColumn "Name" .species
                             , Table.floatColumn "Avg. Count/Year" (\x -> toFloat (round (x.avgCount * 100)) / 100)
                             , Table.intColumn "% Years Observed" (\x -> round (x.avgYearsObserved * 100))
+                            , Table.floatColumn "% Routes Observed (any year)" (\x -> toFloat (round (x.pctRoutesEverObserved * 100)))
                             ]
                         }
             in
