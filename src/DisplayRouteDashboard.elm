@@ -1,7 +1,5 @@
 port module DisplayRouteDashboard exposing (..)
 
--- import Element exposing (..)
-
 import Browser
 import Csv.Decode exposing (errorToString)
 import Data.County exposing (CountyAggregation(..), countyToTitle)
@@ -21,10 +19,6 @@ import Specs.RouteDashboard exposing (..)
 import String exposing (fromFloat, fromInt)
 import Table exposing (..)
 import VegaLite exposing (..)
-
-
-
--- import Element.Region as Region
 
 
 main : Program () Model Msg
@@ -250,13 +244,18 @@ summarizeRoute r cnts =
         (Dict.toList dict)
 
 
-displayRouteSpeciesTable : Table.State -> Route -> Html Msg
-displayRouteSpeciesTable state r =
+displayRouteSpeciesTable : Table.State -> String -> Route -> Html Msg
+displayRouteSpeciesTable state query r =
     case mbbsCounts of
         Ok counts ->
             let
+                lowerQuery =
+                    String.toLower query
+
                 tableData =
-                    summarizeRoute r counts
+                    List.filter
+                        (String.contains lowerQuery << String.toLower << .species)
+                        (summarizeRoute r counts)
 
                 config =
                     Table.config
@@ -281,18 +280,9 @@ displayRouteSpeciesTable state r =
 
 viewTable : Model -> Html Msg
 viewTable m =
-    let
-        lowerQuery =
-            String.toLower m.query
-
-        acceptableSpecies =
-            List.filter
-                (String.contains lowerQuery << String.toLower << .species)
-                m.tableData
-    in
     case m.selectedRoute of
         Just r ->
-            displayRouteSpeciesTable m.tableState r
+            displayRouteSpeciesTable m.tableState m.query r
 
         Nothing ->
             div [] []
