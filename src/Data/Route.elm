@@ -68,8 +68,8 @@ allRoutes =
       , years_surveyed = [ 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 ]
       , total_years_surveyed = 24
       , mapid = "1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0"
-      , maplat = 35.8797466882081
-      , maplon = -78.9570607975023
+      , maplat = 35.80735207145845
+      , maplon = -79.15685155838864
       }
     , { county = Chatham
       , number = 2
