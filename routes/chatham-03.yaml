@@ -1,0 +1,17 @@
+county: chatham
+route_num: 3
+name: Bonsal Crossroads (southeastern Chatham County)
+map: 
+  mid: 1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0
+  lat: 35.62826513
+  lon: -78.99959131
+start: > 
+    Farrington Road 1.1 miles north of the junction with Old US 1 
+    (Hillsborough Street) at Bonsal on the county line.
+directions: >
+  go south on Farrington Road (CR 1008) to Old US 1, 
+  turn right and continue to Merry Oaks center,
+  turn left on Christian Church Road (CR 1912),
+  continue 1.6 miles and turn right on Moncure Flat Road (CR 1924),
+  continue over 3 miles all the way to NC 42,
+  turn left on NC 42 through Brickhaven until you have completed 20 stops.

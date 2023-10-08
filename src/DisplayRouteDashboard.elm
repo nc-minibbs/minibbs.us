@@ -340,7 +340,7 @@ displayRouteInfo m =
             div []
                 [ Html.h2 [] [ Html.text (countyToTitle r.county ++ "  " ++ fromInt r.number) ]
                 , Html.p [] [ Html.text r.name ]
-                , Html.p [] [ Html.text ("Total years surveyed: " ++ fromInt r.total_years_surveyed) ]
+                -- , Html.p [] [ Html.text ("Total years surveyed: " ++ fromInt r.total_years_surveyed) ]
                 ]
 
         Nothing ->

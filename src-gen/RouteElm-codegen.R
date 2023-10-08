@@ -8,38 +8,18 @@ library(mbbs)
 library(yaml)
 library(purrr)
 
-#### Collect route summary data
-route_summary <-
-  bind_rows(
-    mbbs_orange,
-    mbbs_chatham,
-    mbbs_durham
-  ) |>
-  filter(count != 0) |>
-  select(mbbs_county, year, route_num) |>
-  distinct() |>
-  group_by(mbbs_county, route_num) |>
-  summarize(
-    years_surveyed = paste0(sort(year), collapse = ", "),
-    total_years_surveyed = length(year),
-    .groups = "drop"
-  )
-
 #### Read Route YAML data
 route_info <-
   purrr::map_dfr(
-    .x = list.files("routes", full.names = TRUE),
+    .x = list.files("routes", pattern = "\\.yaml", full.names = TRUE),
     .f = ~ read_yaml(.x) |> purrr::flatten()
   ) |>
-  left_join(
-    route_summary, by = c(county = "mbbs_county", "route_num")
-  ) |>
   mutate(
+    start = trimws(start),
     county = stringr::str_to_title(county)
   )
 
-
-#### Code Generation
+#### Elm Code Generation
 
 route_file <- '
 {{- 
@@ -57,8 +37,6 @@ type alias Route =
     , start : String
     , name : String
     , directions : String
-    , years_surveyed : List Int
-    , total_years_surveyed : Int
     , mapid : String
     , maplat : Float
     , maplon : Float
@@ -67,6 +45,10 @@ type alias Route =
 routeToString : Route -> String
 routeToString x =
     countyToString x.county ++ " " ++ fromInt x.number
+
+routeToTitle : Route -> String
+routeToTitle x =
+    countyToTitle x.county ++ " " ++ fromInt x.number
 
 stringToRoute : String -> Maybe Route
 stringToRoute x =
@@ -98,20 +80,18 @@ route_template <- '
     , start = "{ start }"
     , name  = "{ name }"
     , directions = "{ directions }"
-    , years_surveyed = [ { years_surveyed  } ]
-    , total_years_surveyed =  { total_years_surveyed }
     , mapid = "{ mid }"
     , maplat = { lat }
     , maplon = { lon }
     }}
 '
 
-route_records <- 
+route_records <-
  glue_data(.x = route_info, route_template) |>
  glue_collapse(sep = "\n , ")
 
 glue(
-    route_file, 
+    route_file,
     route_records = route_records
 ) |>
 cat(file = "src/Data/Route.elm")
