@@ -79,6 +79,7 @@
                     "DisplayTraits"
                     "DisplayIndividualSpecies"
                     "DisplaySpeciesTable"
+                    "DisplayRouteDashboard"
                     "Home"
                   ];
 
@@ -92,6 +93,7 @@
                     "results/index"
                     "results/individual-species"
                     "results/traits"
+                    "results/route-dashboard"
                     "routes/orange-county"
                     "routes/chatham-county"
                     "routes/durham-county"
