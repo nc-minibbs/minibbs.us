@@ -1,0 +1,23 @@
+county: chatham
+route_num: 13
+name: Coleridge Road (northwestern Chatham County)
+map: 
+  mid: 1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0
+  lat: 35.74211072
+  lon: -79.49363413
+start: > 
+    Coleridge Road (CR1102) (Blood Run Road in DeLorme Atlas)
+    at the junction with Moons Chapel Road
+    near the county line west of Siler City
+    (6 miles west of the first stoplight in Siler City)
+directions: >
+    go east on Coleridge Road (CR 1102)
+    to Old US 64 (now CR 1107) west of Siler City,
+    turn right and proceed to the center of Siler City 
+    on West Third Street after a bend to the left),
+    turn left on US 421 (North Second Avenue),
+    after two blocks turn right onto Martin Luther King Boulevard,
+    follow a bend to the left, cross US 64,
+    and then head northeast out of Siler City on Snow Camp Road (CR 1004),
+    after about 2.5 miles turn right on Jesse Bridges Road (CR 1332)
+    and continue until you have made 20 stops.
