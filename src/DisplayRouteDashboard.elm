@@ -340,6 +340,7 @@ displayRouteInfo m =
             div []
                 [ Html.h2 [] [ Html.text (countyToTitle r.county ++ "  " ++ fromInt r.number) ]
                 , Html.p [] [ Html.text r.name ]
+
                 -- , Html.p [] [ Html.text ("Total years surveyed: " ++ fromInt r.total_years_surveyed) ]
                 ]
 
@@ -358,15 +359,18 @@ view m =
                 _ ->
                     Nothing
 
-        routeMap = 
-            case m.selectedRoute of 
-              Just r ->  iframe [
-                    Attr.src (routeToMapURL r)
-                    , Attr.width 400
-                    , Attr.height 400
-                    
-                    ] []
-              Nothing -> div [] []
+        routeMap =
+            case m.selectedRoute of
+                Just r ->
+                    iframe
+                        [ Attr.src (routeToMapURL r)
+                        , Attr.width 400
+                        , Attr.height 400
+                        ]
+                        []
+
+                Nothing ->
+                    div [] []
     in
     div []
         [ Styled.toUnstyled <|
