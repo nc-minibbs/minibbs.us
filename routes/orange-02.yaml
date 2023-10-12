@@ -1,0 +1,18 @@
+county: orange
+route_num: 2
+name: Schley Road (northeastern Orange County)
+map: 
+  mid: 1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0
+  lat: 36.20275288
+  lon: -79.08106333
+start: > 
+  Schley Road 0.7 miles east of Walnut Grove Church Road
+  (about 5 miles north of Hillsborough center)
+directions: >
+  go west to Walnut Grove Church Road, 
+  urn right and continue about 4 miles to Laws Store Road,
+  turn right on Laws Store Road and then left on Brown Road,
+  continue about 3 miles to NC 157,
+  turn left on NC 157 for a short distance and
+  then right on Berry Road,
+  in about one-half mile turn right on Gary Road.
