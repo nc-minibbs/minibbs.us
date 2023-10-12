@@ -1,0 +1,19 @@
+county: durham
+route_num: 1
+name: Stagville Road NW (northeastern Durham County)
+map: 
+  mid: 1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0
+  lat: 36.16490289
+  lon: -78.88645799
+start: > 
+    junction of Stagville Road (SR 1615) and Old Oxford Highway (SR 1626).
+directions: >
+    drive northwest on Stagville to its end.
+    Turn left onto John Jones Road (SR 1618) and
+    continue to Ball Road (SR 1617) where you turn right,
+    crossing Bahama Road and railroad tracks.
+    Turn left onto Quail Roost Road (SR 1615) and
+    continue until you finish 10 miles.
+    If more road is necessary,
+    turn right on 501 and
+    left onto Conference Road (SR 1468).
