@@ -1,0 +1,25 @@
+county: orange
+route_num: 4
+name: Town Hall (central eastern Orange County)
+map: 
+  mid: 1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0
+  lat: 36.05007821
+  lon: -79.06132913
+start: > 
+  Town Hall in Hillsborough
+  (Churton Street at Corbin Street)
+directions: >
+  east on Corbin one block,
+  south to Margareet Street
+  (one short block past King Street),
+  west to Churton (NC 86),
+  south on Churton across the Eno River,
+  left following NC 86 at the traffic light,
+  right following NC 86 across I 40
+  (there is no way around this stretch along NC 86),
+  take the first left on Old NC Highway 10,
+  continue all the way to Cornwallis Road 
+  (first turn after the underpass under the railroad),
+  turn right on Cornwallis Road 
+  (if you need to room for the last count or two, 
+  turn right on Kerley Road just before reaching the county line)

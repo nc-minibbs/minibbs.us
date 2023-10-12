@@ -1,0 +1,22 @@
+county: orange
+route_num: 6
+name: Friends School Road (southeastern Orange County)
+map: 
+  mid: 1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0
+  lat: 35.97091485
+  lon: -79.08001166
+start: > 
+  Mount Sinai Church Road at Friends School Road
+directions: >
+  go west on Mt. Sinai Church Road,
+  after more than one mile turn left on Turkey Farm Road,
+  after almost two miles turn right on Whitfield Road,
+  at the end of Whitfield Road turn left over I 40 and then
+  turn right immediately on Eubanks Road,
+  continue about 1.5 miles and turn left on Rogers Road,
+  after more than one mile turn right on Homestead Road,
+  at Calvander turn left on Hillsborough Road,
+  in less than one mile turn right (actually angle right)
+  on Old Fayetteville Road
+  (cross NC 54 and continue on Old Fayetteville Road
+  if you need room for the last count or two)
