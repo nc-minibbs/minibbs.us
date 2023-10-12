@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.eh.cb === region.eQ.cb)
+	if (region.ei.cc === region.eR.cc)
 	{
-		return 'on line ' + region.eh.cb;
+		return 'on line ' + region.ei.cc;
 	}
-	return 'on lines ' + region.eh.cb + ' through ' + region.eQ.cb;
+	return 'on lines ' + region.ei.cc + ' through ' + region.eR.cc;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.g$,
-		impl.h3,
-		impl.hJ,
+		impl.g1,
+		impl.h7,
+		impl.hN,
 		function() { return function() {} }
 	);
 });
@@ -2719,9 +2719,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		fh: func(record.fh),
-		fO: record.fO,
-		fv: record.fv
+		fi: func(record.fi),
+		fN: record.fN,
+		fw: record.fw
 	}
 });
 
@@ -2989,11 +2989,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.fh;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.fO;
+		var message = !tag ? value : tag < 3 ? value.a : value.fi;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.fN;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.fv) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.fw) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3943,11 +3943,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.g$,
-		impl.h3,
-		impl.hJ,
+		impl.g1,
+		impl.h7,
+		impl.hN,
 		function(sendToApp, initialModel) {
-			var view = impl.h5;
+			var view = impl.h9;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3979,12 +3979,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.g$,
-		impl.h3,
-		impl.hJ,
+		impl.g1,
+		impl.h7,
+		impl.hN,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.ef && impl.ef(sendToApp)
-			var view = impl.h5;
+			var divertHrefToApp = impl.eg && impl.eg(sendToApp)
+			var view = impl.h9;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3992,12 +3992,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.gp);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.gn);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.hY) && (_VirtualDom_doc.title = title = doc.hY);
+				(title !== doc.h0) && (_VirtualDom_doc.title = title = doc.h0);
 			});
 		}
 	);
@@ -4053,12 +4053,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.hi;
-	var onUrlRequest = impl.hj;
+	var onUrlChange = impl.hk;
+	var onUrlRequest = impl.hl;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		ef: function(sendToApp)
+		eg: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4075,8 +4075,8 @@ function _Browser_application(impl)
 					sendToApp(onUrlRequest(
 						(next
 							&& curr.fz === next.fz
-							&& curr.e_ === next.e_
-							&& curr.fu.a === next.fu.a
+							&& curr.e$ === next.e$
+							&& curr.fv.a === next.fv.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4084,13 +4084,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		g$: function(flags)
+		g1: function(flags)
 		{
-			return A3(impl.g$, flags, _Browser_getUrl(), key);
+			return A3(impl.g1, flags, _Browser_getUrl(), key);
 		},
-		h5: impl.h5,
-		h3: impl.h3,
-		hJ: impl.hJ
+		h9: impl.h9,
+		h7: impl.h7,
+		hN: impl.hN
 	});
 }
 
@@ -4156,17 +4156,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { gU: 'hidden', gz: 'visibilitychange' }
+		? { gW: 'hidden', gx: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { gU: 'mozHidden', gz: 'mozvisibilitychange' }
+		? { gW: 'mozHidden', gx: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { gU: 'msHidden', gz: 'msvisibilitychange' }
+		? { gW: 'msHidden', gx: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { gU: 'webkitHidden', gz: 'webkitvisibilitychange' }
-		: { gU: 'hidden', gz: 'visibilitychange' };
+		? { gW: 'webkitHidden', gx: 'webkitvisibilitychange' }
+		: { gW: 'hidden', gx: 'visibilitychange' };
 }
 
 
@@ -4247,12 +4247,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		fH: _Browser_getScene(),
-		f$: {
-			f5: _Browser_window.pageXOffset,
-			aH: _Browser_window.pageYOffset,
-			f2: _Browser_doc.documentElement.clientWidth,
-			cS: _Browser_doc.documentElement.clientHeight
+		fG: _Browser_getScene(),
+		f_: {
+			f4: _Browser_window.pageXOffset,
+			aJ: _Browser_window.pageYOffset,
+			f1: _Browser_doc.documentElement.clientWidth,
+			cT: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4262,8 +4262,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		f2: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		cS: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		f1: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		cT: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4286,15 +4286,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			fH: {
-				f2: node.scrollWidth,
-				cS: node.scrollHeight
+			fG: {
+				f1: node.scrollWidth,
+				cT: node.scrollHeight
 			},
-			f$: {
-				f5: node.scrollLeft,
-				aH: node.scrollTop,
-				f2: node.clientWidth,
-				cS: node.clientHeight
+			f_: {
+				f4: node.scrollLeft,
+				aJ: node.scrollTop,
+				f1: node.clientWidth,
+				cT: node.clientHeight
 			}
 		};
 	});
@@ -4324,18 +4324,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			fH: _Browser_getScene(),
-			f$: {
-				f5: x,
-				aH: y,
-				f2: _Browser_doc.documentElement.clientWidth,
-				cS: _Browser_doc.documentElement.clientHeight
+			fG: _Browser_getScene(),
+			f_: {
+				f4: x,
+				aJ: y,
+				f1: _Browser_doc.documentElement.clientWidth,
+				cT: _Browser_doc.documentElement.clientHeight
 			},
-			_: {
-				f5: x + rect.left,
-				aH: y + rect.top,
-				f2: rect.width,
-				cS: rect.height
+			Z: {
+				f4: x + rect.left,
+				aJ: y + rect.top,
+				f1: rect.width,
+				cT: rect.height
 			}
 		};
 	});
@@ -4813,25 +4813,25 @@ var $elm$core$Array$treeFromBuilder = F2(
 	});
 var $elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.O) {
+		if (!builder.N) {
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.Q),
+				$elm$core$Elm$JsArray$length(builder.P),
 				$elm$core$Array$shiftStep,
 				$elm$core$Elm$JsArray$empty,
-				builder.Q);
+				builder.P);
 		} else {
-			var treeLen = builder.O * $elm$core$Array$branchFactor;
+			var treeLen = builder.N * $elm$core$Array$branchFactor;
 			var depth = $elm$core$Basics$floor(
 				A2($elm$core$Basics$logBase, $elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.S) : builder.S;
-			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.O);
+			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.R) : builder.R;
+			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.N);
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.Q) + treeLen,
+				$elm$core$Elm$JsArray$length(builder.P) + treeLen,
 				A2($elm$core$Basics$max, 5, depth * $elm$core$Array$shiftStep),
 				tree,
-				builder.Q);
+				builder.P);
 		}
 	});
 var $elm$core$Basics$idiv = _Basics_idiv;
@@ -4844,7 +4844,7 @@ var $elm$core$Array$initializeHelp = F5(
 				return A2(
 					$elm$core$Array$builderToArray,
 					false,
-					{S: nodeList, O: (len / $elm$core$Array$branchFactor) | 0, Q: tail});
+					{R: nodeList, N: (len / $elm$core$Array$branchFactor) | 0, P: tail});
 			} else {
 				var leaf = $elm$core$Array$Leaf(
 					A3($elm$core$Elm$JsArray$initialize, $elm$core$Array$branchFactor, fromIndex, fn));
@@ -4911,7 +4911,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {eW: fragment, e_: host, fr: path, fu: port_, fz: protocol, dc: query};
+		return {eX: fragment, e$: host, fs: path, fv: port_, fz: protocol, dd: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5298,109 +5298,109 @@ var $elm$core$Basics$negate = function (n) {
 };
 var $author$project$Data$Species$allSpeciesRec = _List_fromArray(
 	[
-		{b: 'Acadian Flycatcher', c: 'AcadianFlycatcher', d: 0.000000039428, e: 0.058421030325, f: 'Empidonax virescens', a: 0},
-		{b: 'American Crow', c: 'AmericanCrow', d: 0.012016636945, e: -0.007050178818, f: 'Corvus brachyrhynchos', a: 1},
-		{b: 'American Goldfinch', c: 'AmericanGoldfinch', d: 0.000061614066, e: -0.030696905089, f: 'Spinus tristis', a: 2},
-		{b: 'American Redstart', c: 'AmericanRedstart', d: 0.217451068881, e: -0.048616181767, f: 'Setophaga ruticilla', a: 3},
-		{b: 'American Robin', c: 'AmericanRobin', d: 0.025386938404, e: -0.017329419688, f: 'Turdus migratorius', a: 4},
-		{b: 'Bald Eagle', c: 'BaldEagle', d: 0.25368041893, e: 0.080212552979, f: 'Haliaeetus leucocephalus', a: 5},
-		{b: 'Baltimore Oriole', c: 'BaltimoreOriole', d: 1.0, e: 0.0, f: 'Icterus galbula', a: 6},
-		{b: 'Barn Swallow', c: 'BarnSwallow', d: 0.102350834243, e: -0.021445273202, f: 'Hirundo rustica', a: 7},
-		{b: 'Barred Owl', c: 'BarredOwl', d: 0.075221358218, e: 0.026448048948, f: 'Strix varia', a: 8},
-		{b: 'Belted Kingfisher', c: 'BeltedKingfisher', d: 0.132626373091, e: -0.048811074598, f: 'Megaceryle alcyon', a: 9},
-		{b: 'Black Vulture', c: 'BlackVulture', d: 0.000904658579, e: 0.076097143449, f: 'Coragyps atratus', a: 10},
-		{b: 'Black-and-white Warbler', c: 'BlackandwhiteWarbler', d: 0.074691996039, e: 0.038411981686, f: 'Mniotilta varia', a: 11},
-		{b: 'Blue Grosbeak', c: 'BlueGrosbeak', d: 0.427920775064, e: 0.007638539511, f: 'Passerina caerulea', a: 12},
-		{b: 'Blue Jay', c: 'BlueJay', d: 0.012385431928, e: -0.015543883566, f: 'Cyanocitta cristata', a: 13},
-		{b: 'Blue-gray Gnatcatcher', c: 'BluegrayGnatcatcher', d: 0.255211097046, e: 0.007546473789, f: 'Polioptila caerulea', a: 14},
-		{b: 'Blue-headed Vireo', c: 'BlueheadedVireo', d: 0.016524216224, e: -0.039291508291, f: 'Vireo solitarius', a: 15},
-		{b: 'Broad-winged Hawk', c: 'BroadwingedHawk', d: 0.000000142044, e: -0.091599407413, f: 'Buteo platypterus', a: 16},
-		{b: 'Brown Thrasher', c: 'BrownThrasher', d: 0.44529740655, e: 0.005897077165, f: 'Toxostoma rufum', a: 17},
-		{b: 'Brown-headed Cowbird', c: 'BrownheadedCowbird', d: 0.147028784891, e: 0.011822443344, f: 'Molothrus ater', a: 18},
-		{b: 'Brown-headed Nuthatch', c: 'BrownheadedNuthatch', d: 0.456218351755, e: 0.011630492577, f: 'Sitta pusilla', a: 19},
-		{b: 'Canada Goose', c: 'CanadaGoose', d: 0.096631803642, e: -0.036877674167, f: 'Branta canadensis', a: 20},
-		{b: 'Carolina Chickadee', c: 'CarolinaChickadee', d: 0.736911575122, e: 0.002031731854, f: 'Poecile carolinensis', a: 21},
-		{b: 'Carolina Wren', c: 'CarolinaWren', d: 0.01479076674, e: 0.008703975698, f: 'Thryothorus ludovicianus', a: 22},
-		{b: 'Cedar Waxwing', c: 'CedarWaxwing', d: 0.256324702266, e: -0.022593290215, f: 'Bombycilla cedrorum', a: 23},
-		{b: 'Chimney Swift', c: 'ChimneySwift', d: 0.000397312223, e: -0.034503014457, f: 'Chaetura pelagica', a: 24},
-		{b: 'Chuck-will\'s-widow', c: 'Chuckwillswidow', d: 0.097458193376, e: 0.02389125939, f: 'Antrostomus carolinensis', a: 25},
-		{b: 'Cliff Swallow', c: 'CliffSwallow', d: 0.0, e: 0.119248145008, f: 'Petrochelidon pyrrhonota', a: 26},
-		{b: 'Common Grackle', c: 'CommonGrackle', d: 0.000000024633, e: -0.053569704268, f: 'Quiscalus quiscula', a: 27},
-		{b: 'Common Yellowthroat', c: 'CommonYellowthroat', d: 0.002162733022, e: -0.029952764147, f: 'Geothlypis trichas', a: 28},
-		{b: 'Cooper\'s Hawk', c: 'CoopersHawk', d: 0.886913391604, e: -0.003406367518, f: 'Accipiter cooperii', a: 29},
-		{b: 'Dickcissel', c: 'Dickcissel', d: 1.0, e: 0.0, f: 'Spiza americana', a: 30},
-		{b: 'Double-crested Cormorant', c: 'DoublecrestedCormorant', d: 0.0555239273, e: 0.057904590874, f: 'Nannopterum auritum', a: 31},
-		{b: 'Downy Woodpecker', c: 'DownyWoodpecker', d: 0.674457061178, e: -0.003474473528, f: 'Dryobates pubescens', a: 32},
-		{b: 'Eastern Bluebird', c: 'EasternBluebird', d: 0.913925509058, e: -0.000477009335, f: 'Sialia sialis', a: 33},
-		{b: 'Eastern Kingbird', c: 'EasternKingbird', d: 0.012838237925, e: -0.031928947856, f: 'Tyrannus tyrannus', a: 34},
-		{b: 'Eastern Meadowlark', c: 'EasternMeadowlark', d: 0.023767071051, e: -0.025045487749, f: 'Sturnella magna', a: 35},
-		{b: 'Eastern Phoebe', c: 'EasternPhoebe', d: 0.314270395657, e: 0.006963598622, f: 'Sayornis phoebe', a: 36},
-		{b: 'Eastern Screech-Owl', c: 'EasternScreechOwl', d: 0.766101003812, e: 0.017002644589, f: 'Megascops asio', a: 37},
-		{b: 'Eastern Towhee', c: 'EasternTowhee', d: 0.000000001367, e: -0.024178061969, f: 'Pipilo erythrophthalmus', a: 38},
-		{b: 'Eastern Whip-poor-will', c: 'EasternWhippoorwill', d: 0.031931234974, e: -0.044136400027, f: 'Antrostomus vociferus', a: 39},
-		{b: 'Eastern Wood-Pewee', c: 'EasternWoodPewee', d: 0.336774810478, e: -0.005886421231, f: 'Contopus virens', a: 40},
-		{b: 'European Starling', c: 'EuropeanStarling', d: 0.083975101054, e: -0.024063269563, f: 'Sturnus vulgaris', a: 41},
-		{b: 'Field Sparrow', c: 'FieldSparrow', d: 0.005646759551, e: -0.042085332993, f: 'Spizella pusilla', a: 42},
-		{b: 'Fish Crow', c: 'FishCrow', d: 0.000000000003, e: 0.07269737558, f: 'Corvus ossifragus', a: 43},
-		{b: 'Grasshopper Sparrow', c: 'GrasshopperSparrow', d: 0.657990604147, e: -0.011144172857, f: 'Ammodramus savannarum', a: 44},
-		{b: 'Gray Catbird', c: 'GrayCatbird', d: 0.56929839549, e: -0.005042490417, f: 'Dumetella carolinensis', a: 45},
-		{b: 'Great Blue Heron', c: 'GreatBlueHeron', d: 0.009371962549, e: 0.026436703823, f: 'Ardea herodias', a: 46},
-		{b: 'Great Crested Flycatcher', c: 'GreatCrestedFlycatcher', d: 0.000000052348, e: 0.043531164689, f: 'Myiarchus crinitus', a: 47},
-		{b: 'Great Egret', c: 'GreatEgret', d: 1.0, e: 0.0, f: 'Ardea alba', a: 48},
-		{b: 'Great Horned Owl', c: 'GreatHornedOwl', d: 0.848368652939, e: -0.006571468905, f: 'Bubo virginianus', a: 49},
-		{b: 'Green Heron', c: 'GreenHeron', d: 0.006671460678, e: -0.05393452343, f: 'Butorides virescens', a: 50},
-		{b: 'Hairy Woodpecker', c: 'HairyWoodpecker', d: 0.415200961406, e: -0.017943311596, f: 'Dryobates villosus', a: 51},
-		{b: 'Hooded Warbler', c: 'HoodedWarbler', d: 0.00020322805, e: 0.031931031707, f: 'Setophaga citrina', a: 52},
-		{b: 'Horned Lark', c: 'HornedLark', d: 1.0, e: 0.0, f: 'Eremophila alpestris', a: 53},
-		{b: 'House Finch', c: 'HouseFinch', d: 0.42915213157, e: -0.006569004141, f: 'Haemorhous mexicanus', a: 54},
-		{b: 'House Sparrow', c: 'HouseSparrow', d: 0.000024013845, e: -0.078090790529, f: 'Passer domesticus', a: 55},
-		{b: 'House Wren', c: 'HouseWren', d: 0.141615572689, e: -0.031677405421, f: 'Troglodytes aedon', a: 56},
-		{b: 'Indigo Bunting', c: 'IndigoBunting', d: 0.000000599018, e: -0.026546352085, f: 'Passerina cyanea', a: 57},
-		{b: 'Kentucky Warbler', c: 'KentuckyWarbler', d: 0.315563071541, e: 0.036525015791, f: 'Geothlypis formosa', a: 58},
-		{b: 'Killdeer', c: 'Killdeer', d: 0.130489702485, e: -0.023458462794, f: 'Charadrius vociferus', a: 59},
-		{b: 'Loggerhead Shrike', c: 'LoggerheadShrike', d: 0.974022421248, e: -0.002519655711, f: 'Lanius ludovicianus', a: 60},
-		{b: 'Louisiana Waterthrush', c: 'LouisianaWaterthrush', d: 0.447557726859, e: 0.014623547733, f: 'Parkesia motacilla', a: 61},
-		{b: 'Mallard', c: 'Mallard', d: 0.110694028957, e: -0.031708961275, f: 'Anas platyrhynchos', a: 62},
-		{b: 'Mourning Dove', c: 'MourningDove', d: 0.00536767389, e: -0.012088340742, f: 'Zenaida macroura', a: 63},
-		{b: 'Northern Bobwhite', c: 'NorthernBobwhite', d: 0.000000000267, e: -0.118477029725, f: 'Colinus virginianus', a: 64},
-		{b: 'Northern Cardinal', c: 'NorthernCardinal', d: 0.572430531653, e: -0.001618943599, f: 'Cardinalis cardinalis', a: 65},
-		{b: 'Northern Flicker', c: 'NorthernFlicker', d: 0.02888727773, e: -0.036293076271, f: 'Colaptes auratus', a: 66},
-		{b: 'Northern Mockingbird', c: 'NorthernMockingbird', d: 0.31594040911, e: -0.005462509976, f: 'Mimus polyglottos', a: 67},
-		{b: 'Northern Parula', c: 'NorthernParula', d: 0.008410531067, e: 0.041160534857, f: 'Setophaga americana', a: 68},
-		{b: 'Northern Rough-winged Swallow', c: 'NorthernRoughwingedSwallow', d: 0.619592833683, e: 0.016362536251, f: 'Stelgidopteryx serripennis', a: 69},
-		{b: 'Orchard Oriole', c: 'OrchardOriole', d: 0.103430294926, e: -0.021611824999, f: 'Icterus spurius', a: 70},
-		{b: 'Osprey', c: 'Osprey', d: 0.068765629962, e: 0.063156905216, f: 'Pandion haliaetus', a: 71},
-		{b: 'Ovenbird', c: 'Ovenbird', d: 0.864934872347, e: -0.001010843502, f: 'Seiurus aurocapilla', a: 72},
-		{b: 'Pileated Woodpecker', c: 'PileatedWoodpecker', d: 0.013586319799, e: 0.041211393861, f: 'Dryocopus pileatus', a: 73},
-		{b: 'Prairie Warbler', c: 'PrairieWarbler', d: 0.000007843051, e: -0.040117147922, f: 'Setophaga discolor', a: 74},
-		{b: 'Prothonotary Warbler', c: 'ProthonotaryWarbler', d: 0.020513744563, e: 0.057904590874, f: 'Protonotaria citrea', a: 75},
-		{b: 'Purple Martin', c: 'PurpleMartin', d: 0.000833917808, e: 0.031033905749, f: 'Progne subis', a: 76},
-		{b: 'Red-bellied Woodpecker', c: 'RedbelliedWoodpecker', d: 0.18843420806, e: 0.005539519614, f: 'Melanerpes carolinus', a: 77},
-		{b: 'Red-eyed Vireo', c: 'RedeyedVireo', d: 0.053233926322, e: -0.011419111691, f: 'Vireo olivaceus', a: 78},
-		{b: 'Red-headed Woodpecker', c: 'RedheadedWoodpecker', d: 0.138512321937, e: 0.026525997068, f: 'Melanerpes erythrocephalus', a: 79},
-		{b: 'Red-shouldered Hawk', c: 'RedshoulderedHawk', d: 0.000000122413, e: 0.054622724209, f: 'Buteo lineatus', a: 80},
-		{b: 'Red-tailed Hawk', c: 'RedtailedHawk', d: 0.441237730953, e: 0.014151525569, f: 'Buteo jamaicensis', a: 81},
-		{b: 'Red-winged Blackbird', c: 'RedwingedBlackbird', d: 0.002638320342, e: -0.041684305359, f: 'Agelaius phoeniceus', a: 82},
-		{b: 'Rock Pigeon', c: 'RockPigeon', d: 0.051811952519, e: -0.036342850371, f: 'Columba livia', a: 83},
-		{b: 'Ruby-throated Hummingbird', c: 'RubythroatedHummingbird', d: 0.004459181924, e: -0.030088585442, f: 'Archilochus colubris', a: 84},
-		{b: 'Scarlet Tanager', c: 'ScarletTanager', d: 0.000148271527, e: -0.031633734264, f: 'Piranga olivacea', a: 85},
-		{b: 'Sharp-shinned Hawk', c: 'SharpshinnedHawk', d: 0.295190730471, e: -0.042686708968, f: 'Accipiter striatus', a: 86},
-		{b: 'Song Sparrow', c: 'SongSparrow', d: 0.011213880079, e: 0.039564412038, f: 'Melospiza melodia', a: 87},
-		{b: 'Summer Tanager', c: 'SummerTanager', d: 0.000038815189, e: 0.029782415873, f: 'Piranga rubra', a: 88},
-		{b: 'Tree Swallow', c: 'TreeSwallow', d: 0.007212665424, e: 0.154468512258, f: 'Tachycineta bicolor', a: 89},
-		{b: 'Tufted Titmouse', c: 'TuftedTitmouse', d: 0.206059807941, e: 0.005128838161, f: 'Baeolophus bicolor', a: 90},
-		{b: 'Turkey Vulture', c: 'TurkeyVulture', d: 0.689507052639, e: 0.007713348765, f: 'Cathartes aura', a: 91},
-		{b: 'Warbling Vireo', c: 'WarblingVireo', d: 0.049665254115, e: -0.173549416385, f: 'Vireo gilvus', a: 92},
-		{b: 'White-breasted Nuthatch', c: 'WhitebreastedNuthatch', d: 0.306158604154, e: 0.010414288905, f: 'Sitta carolinensis', a: 93},
-		{b: 'White-eyed Vireo', c: 'WhiteeyedVireo', d: 0.000000228765, e: 0.064733303035, f: 'Vireo griseus', a: 94},
-		{b: 'Wild Turkey', c: 'WildTurkey', d: 0.000284198585, e: 0.084598272707, f: 'Meleagris gallopavo', a: 95},
-		{b: 'Wood Duck', c: 'WoodDuck', d: 0.415565838656, e: 0.028359355508, f: 'Aix sponsa', a: 96},
-		{b: 'Wood Thrush', c: 'WoodThrush', d: 0.0, e: -0.062945957227, f: 'Hylocichla mustelina', a: 97},
-		{b: 'Yellow Warbler', c: 'YellowWarbler', d: 0.132413101859, e: 0.06731343404, f: 'Setophaga petechia', a: 98},
-		{b: 'Yellow-billed Cuckoo', c: 'YellowbilledCuckoo', d: 0.007401593566, e: 0.018788719374, f: 'Coccyzus americanus', a: 99},
-		{b: 'Yellow-breasted Chat', c: 'YellowbreastedChat', d: 0.000009029872, e: -0.03329204807, f: 'Icteria virens', a: 100},
-		{b: 'Yellow-throated Vireo', c: 'YellowthroatedVireo', d: 0.497440237101, e: -0.01111408198, f: 'Vireo flavifrons', a: 101},
-		{b: 'Yellow-throated Warbler', c: 'YellowthroatedWarbler', d: 0.000000000585, e: 0.075058651967, f: 'Setophaga dominica', a: 102}
+		{a: 'Acadian Flycatcher', b: 'AcadianFlycatcher', c: 0.000000039428, d: 0.058421030325, e: 'Empidonax virescens', hH: 0},
+		{a: 'American Crow', b: 'AmericanCrow', c: 0.012016636945, d: -0.007050178818, e: 'Corvus brachyrhynchos', hH: 1},
+		{a: 'American Goldfinch', b: 'AmericanGoldfinch', c: 0.000061614066, d: -0.030696905089, e: 'Spinus tristis', hH: 2},
+		{a: 'American Redstart', b: 'AmericanRedstart', c: 0.217451068881, d: -0.048616181767, e: 'Setophaga ruticilla', hH: 3},
+		{a: 'American Robin', b: 'AmericanRobin', c: 0.025386938404, d: -0.017329419688, e: 'Turdus migratorius', hH: 4},
+		{a: 'Bald Eagle', b: 'BaldEagle', c: 0.25368041893, d: 0.080212552979, e: 'Haliaeetus leucocephalus', hH: 5},
+		{a: 'Baltimore Oriole', b: 'BaltimoreOriole', c: 1.0, d: 0.0, e: 'Icterus galbula', hH: 6},
+		{a: 'Barn Swallow', b: 'BarnSwallow', c: 0.102350834243, d: -0.021445273202, e: 'Hirundo rustica', hH: 7},
+		{a: 'Barred Owl', b: 'BarredOwl', c: 0.075221358218, d: 0.026448048948, e: 'Strix varia', hH: 8},
+		{a: 'Belted Kingfisher', b: 'BeltedKingfisher', c: 0.132626373091, d: -0.048811074598, e: 'Megaceryle alcyon', hH: 9},
+		{a: 'Black Vulture', b: 'BlackVulture', c: 0.000904658579, d: 0.076097143449, e: 'Coragyps atratus', hH: 10},
+		{a: 'Black-and-white Warbler', b: 'BlackandwhiteWarbler', c: 0.074691996039, d: 0.038411981686, e: 'Mniotilta varia', hH: 11},
+		{a: 'Blue Grosbeak', b: 'BlueGrosbeak', c: 0.427920775064, d: 0.007638539511, e: 'Passerina caerulea', hH: 12},
+		{a: 'Blue Jay', b: 'BlueJay', c: 0.012385431928, d: -0.015543883566, e: 'Cyanocitta cristata', hH: 13},
+		{a: 'Blue-gray Gnatcatcher', b: 'BluegrayGnatcatcher', c: 0.255211097046, d: 0.007546473789, e: 'Polioptila caerulea', hH: 14},
+		{a: 'Blue-headed Vireo', b: 'BlueheadedVireo', c: 0.016524216224, d: -0.039291508291, e: 'Vireo solitarius', hH: 15},
+		{a: 'Broad-winged Hawk', b: 'BroadwingedHawk', c: 0.000000142044, d: -0.091599407413, e: 'Buteo platypterus', hH: 16},
+		{a: 'Brown Thrasher', b: 'BrownThrasher', c: 0.44529740655, d: 0.005897077165, e: 'Toxostoma rufum', hH: 17},
+		{a: 'Brown-headed Cowbird', b: 'BrownheadedCowbird', c: 0.147028784891, d: 0.011822443344, e: 'Molothrus ater', hH: 18},
+		{a: 'Brown-headed Nuthatch', b: 'BrownheadedNuthatch', c: 0.456218351755, d: 0.011630492577, e: 'Sitta pusilla', hH: 19},
+		{a: 'Canada Goose', b: 'CanadaGoose', c: 0.096631803642, d: -0.036877674167, e: 'Branta canadensis', hH: 20},
+		{a: 'Carolina Chickadee', b: 'CarolinaChickadee', c: 0.736911575122, d: 0.002031731854, e: 'Poecile carolinensis', hH: 21},
+		{a: 'Carolina Wren', b: 'CarolinaWren', c: 0.01479076674, d: 0.008703975698, e: 'Thryothorus ludovicianus', hH: 22},
+		{a: 'Cedar Waxwing', b: 'CedarWaxwing', c: 0.256324702266, d: -0.022593290215, e: 'Bombycilla cedrorum', hH: 23},
+		{a: 'Chimney Swift', b: 'ChimneySwift', c: 0.000397312223, d: -0.034503014457, e: 'Chaetura pelagica', hH: 24},
+		{a: 'Chuck-will\'s-widow', b: 'Chuckwillswidow', c: 0.097458193376, d: 0.02389125939, e: 'Antrostomus carolinensis', hH: 25},
+		{a: 'Cliff Swallow', b: 'CliffSwallow', c: 0.0, d: 0.119248145008, e: 'Petrochelidon pyrrhonota', hH: 26},
+		{a: 'Common Grackle', b: 'CommonGrackle', c: 0.000000024633, d: -0.053569704268, e: 'Quiscalus quiscula', hH: 27},
+		{a: 'Common Yellowthroat', b: 'CommonYellowthroat', c: 0.002162733022, d: -0.029952764147, e: 'Geothlypis trichas', hH: 28},
+		{a: 'Cooper\'s Hawk', b: 'CoopersHawk', c: 0.886913391604, d: -0.003406367518, e: 'Accipiter cooperii', hH: 29},
+		{a: 'Dickcissel', b: 'Dickcissel', c: 1.0, d: 0.0, e: 'Spiza americana', hH: 30},
+		{a: 'Double-crested Cormorant', b: 'DoublecrestedCormorant', c: 0.0555239273, d: 0.057904590874, e: 'Nannopterum auritum', hH: 31},
+		{a: 'Downy Woodpecker', b: 'DownyWoodpecker', c: 0.674457061178, d: -0.003474473528, e: 'Dryobates pubescens', hH: 32},
+		{a: 'Eastern Bluebird', b: 'EasternBluebird', c: 0.913925509058, d: -0.000477009335, e: 'Sialia sialis', hH: 33},
+		{a: 'Eastern Kingbird', b: 'EasternKingbird', c: 0.012838237925, d: -0.031928947856, e: 'Tyrannus tyrannus', hH: 34},
+		{a: 'Eastern Meadowlark', b: 'EasternMeadowlark', c: 0.023767071051, d: -0.025045487749, e: 'Sturnella magna', hH: 35},
+		{a: 'Eastern Phoebe', b: 'EasternPhoebe', c: 0.314270395657, d: 0.006963598622, e: 'Sayornis phoebe', hH: 36},
+		{a: 'Eastern Screech-Owl', b: 'EasternScreechOwl', c: 0.766101003812, d: 0.017002644589, e: 'Megascops asio', hH: 37},
+		{a: 'Eastern Towhee', b: 'EasternTowhee', c: 0.000000001367, d: -0.024178061969, e: 'Pipilo erythrophthalmus', hH: 38},
+		{a: 'Eastern Whip-poor-will', b: 'EasternWhippoorwill', c: 0.031931234974, d: -0.044136400027, e: 'Antrostomus vociferus', hH: 39},
+		{a: 'Eastern Wood-Pewee', b: 'EasternWoodPewee', c: 0.336774810478, d: -0.005886421231, e: 'Contopus virens', hH: 40},
+		{a: 'European Starling', b: 'EuropeanStarling', c: 0.083975101054, d: -0.024063269563, e: 'Sturnus vulgaris', hH: 41},
+		{a: 'Field Sparrow', b: 'FieldSparrow', c: 0.005646759551, d: -0.042085332993, e: 'Spizella pusilla', hH: 42},
+		{a: 'Fish Crow', b: 'FishCrow', c: 0.000000000003, d: 0.07269737558, e: 'Corvus ossifragus', hH: 43},
+		{a: 'Grasshopper Sparrow', b: 'GrasshopperSparrow', c: 0.657990604147, d: -0.011144172857, e: 'Ammodramus savannarum', hH: 44},
+		{a: 'Gray Catbird', b: 'GrayCatbird', c: 0.56929839549, d: -0.005042490417, e: 'Dumetella carolinensis', hH: 45},
+		{a: 'Great Blue Heron', b: 'GreatBlueHeron', c: 0.009371962549, d: 0.026436703823, e: 'Ardea herodias', hH: 46},
+		{a: 'Great Crested Flycatcher', b: 'GreatCrestedFlycatcher', c: 0.000000052348, d: 0.043531164689, e: 'Myiarchus crinitus', hH: 47},
+		{a: 'Great Egret', b: 'GreatEgret', c: 1.0, d: 0.0, e: 'Ardea alba', hH: 48},
+		{a: 'Great Horned Owl', b: 'GreatHornedOwl', c: 0.848368652939, d: -0.006571468905, e: 'Bubo virginianus', hH: 49},
+		{a: 'Green Heron', b: 'GreenHeron', c: 0.006671460678, d: -0.05393452343, e: 'Butorides virescens', hH: 50},
+		{a: 'Hairy Woodpecker', b: 'HairyWoodpecker', c: 0.415200961406, d: -0.017943311596, e: 'Dryobates villosus', hH: 51},
+		{a: 'Hooded Warbler', b: 'HoodedWarbler', c: 0.00020322805, d: 0.031931031707, e: 'Setophaga citrina', hH: 52},
+		{a: 'Horned Lark', b: 'HornedLark', c: 1.0, d: 0.0, e: 'Eremophila alpestris', hH: 53},
+		{a: 'House Finch', b: 'HouseFinch', c: 0.42915213157, d: -0.006569004141, e: 'Haemorhous mexicanus', hH: 54},
+		{a: 'House Sparrow', b: 'HouseSparrow', c: 0.000024013845, d: -0.078090790529, e: 'Passer domesticus', hH: 55},
+		{a: 'House Wren', b: 'HouseWren', c: 0.141615572689, d: -0.031677405421, e: 'Troglodytes aedon', hH: 56},
+		{a: 'Indigo Bunting', b: 'IndigoBunting', c: 0.000000599018, d: -0.026546352085, e: 'Passerina cyanea', hH: 57},
+		{a: 'Kentucky Warbler', b: 'KentuckyWarbler', c: 0.315563071541, d: 0.036525015791, e: 'Geothlypis formosa', hH: 58},
+		{a: 'Killdeer', b: 'Killdeer', c: 0.130489702485, d: -0.023458462794, e: 'Charadrius vociferus', hH: 59},
+		{a: 'Loggerhead Shrike', b: 'LoggerheadShrike', c: 0.974022421248, d: -0.002519655711, e: 'Lanius ludovicianus', hH: 60},
+		{a: 'Louisiana Waterthrush', b: 'LouisianaWaterthrush', c: 0.447557726859, d: 0.014623547733, e: 'Parkesia motacilla', hH: 61},
+		{a: 'Mallard', b: 'Mallard', c: 0.110694028957, d: -0.031708961275, e: 'Anas platyrhynchos', hH: 62},
+		{a: 'Mourning Dove', b: 'MourningDove', c: 0.00536767389, d: -0.012088340742, e: 'Zenaida macroura', hH: 63},
+		{a: 'Northern Bobwhite', b: 'NorthernBobwhite', c: 0.000000000267, d: -0.118477029725, e: 'Colinus virginianus', hH: 64},
+		{a: 'Northern Cardinal', b: 'NorthernCardinal', c: 0.572430531653, d: -0.001618943599, e: 'Cardinalis cardinalis', hH: 65},
+		{a: 'Northern Flicker', b: 'NorthernFlicker', c: 0.02888727773, d: -0.036293076271, e: 'Colaptes auratus', hH: 66},
+		{a: 'Northern Mockingbird', b: 'NorthernMockingbird', c: 0.31594040911, d: -0.005462509976, e: 'Mimus polyglottos', hH: 67},
+		{a: 'Northern Parula', b: 'NorthernParula', c: 0.008410531067, d: 0.041160534857, e: 'Setophaga americana', hH: 68},
+		{a: 'Northern Rough-winged Swallow', b: 'NorthernRoughwingedSwallow', c: 0.619592833683, d: 0.016362536251, e: 'Stelgidopteryx serripennis', hH: 69},
+		{a: 'Orchard Oriole', b: 'OrchardOriole', c: 0.103430294926, d: -0.021611824999, e: 'Icterus spurius', hH: 70},
+		{a: 'Osprey', b: 'Osprey', c: 0.068765629962, d: 0.063156905216, e: 'Pandion haliaetus', hH: 71},
+		{a: 'Ovenbird', b: 'Ovenbird', c: 0.864934872347, d: -0.001010843502, e: 'Seiurus aurocapilla', hH: 72},
+		{a: 'Pileated Woodpecker', b: 'PileatedWoodpecker', c: 0.013586319799, d: 0.041211393861, e: 'Dryocopus pileatus', hH: 73},
+		{a: 'Prairie Warbler', b: 'PrairieWarbler', c: 0.000007843051, d: -0.040117147922, e: 'Setophaga discolor', hH: 74},
+		{a: 'Prothonotary Warbler', b: 'ProthonotaryWarbler', c: 0.020513744563, d: 0.057904590874, e: 'Protonotaria citrea', hH: 75},
+		{a: 'Purple Martin', b: 'PurpleMartin', c: 0.000833917808, d: 0.031033905749, e: 'Progne subis', hH: 76},
+		{a: 'Red-bellied Woodpecker', b: 'RedbelliedWoodpecker', c: 0.18843420806, d: 0.005539519614, e: 'Melanerpes carolinus', hH: 77},
+		{a: 'Red-eyed Vireo', b: 'RedeyedVireo', c: 0.053233926322, d: -0.011419111691, e: 'Vireo olivaceus', hH: 78},
+		{a: 'Red-headed Woodpecker', b: 'RedheadedWoodpecker', c: 0.138512321937, d: 0.026525997068, e: 'Melanerpes erythrocephalus', hH: 79},
+		{a: 'Red-shouldered Hawk', b: 'RedshoulderedHawk', c: 0.000000122413, d: 0.054622724209, e: 'Buteo lineatus', hH: 80},
+		{a: 'Red-tailed Hawk', b: 'RedtailedHawk', c: 0.441237730953, d: 0.014151525569, e: 'Buteo jamaicensis', hH: 81},
+		{a: 'Red-winged Blackbird', b: 'RedwingedBlackbird', c: 0.002638320342, d: -0.041684305359, e: 'Agelaius phoeniceus', hH: 82},
+		{a: 'Rock Pigeon', b: 'RockPigeon', c: 0.051811952519, d: -0.036342850371, e: 'Columba livia', hH: 83},
+		{a: 'Ruby-throated Hummingbird', b: 'RubythroatedHummingbird', c: 0.004459181924, d: -0.030088585442, e: 'Archilochus colubris', hH: 84},
+		{a: 'Scarlet Tanager', b: 'ScarletTanager', c: 0.000148271527, d: -0.031633734264, e: 'Piranga olivacea', hH: 85},
+		{a: 'Sharp-shinned Hawk', b: 'SharpshinnedHawk', c: 0.295190730471, d: -0.042686708968, e: 'Accipiter striatus', hH: 86},
+		{a: 'Song Sparrow', b: 'SongSparrow', c: 0.011213880079, d: 0.039564412038, e: 'Melospiza melodia', hH: 87},
+		{a: 'Summer Tanager', b: 'SummerTanager', c: 0.000038815189, d: 0.029782415873, e: 'Piranga rubra', hH: 88},
+		{a: 'Tree Swallow', b: 'TreeSwallow', c: 0.007212665424, d: 0.154468512258, e: 'Tachycineta bicolor', hH: 89},
+		{a: 'Tufted Titmouse', b: 'TuftedTitmouse', c: 0.206059807941, d: 0.005128838161, e: 'Baeolophus bicolor', hH: 90},
+		{a: 'Turkey Vulture', b: 'TurkeyVulture', c: 0.689507052639, d: 0.007713348765, e: 'Cathartes aura', hH: 91},
+		{a: 'Warbling Vireo', b: 'WarblingVireo', c: 0.049665254115, d: -0.173549416385, e: 'Vireo gilvus', hH: 92},
+		{a: 'White-breasted Nuthatch', b: 'WhitebreastedNuthatch', c: 0.306158604154, d: 0.010414288905, e: 'Sitta carolinensis', hH: 93},
+		{a: 'White-eyed Vireo', b: 'WhiteeyedVireo', c: 0.000000228765, d: 0.064733303035, e: 'Vireo griseus', hH: 94},
+		{a: 'Wild Turkey', b: 'WildTurkey', c: 0.000284198585, d: 0.084598272707, e: 'Meleagris gallopavo', hH: 95},
+		{a: 'Wood Duck', b: 'WoodDuck', c: 0.415565838656, d: 0.028359355508, e: 'Aix sponsa', hH: 96},
+		{a: 'Wood Thrush', b: 'WoodThrush', c: 0.0, d: -0.062945957227, e: 'Hylocichla mustelina', hH: 97},
+		{a: 'Yellow Warbler', b: 'YellowWarbler', c: 0.132413101859, d: 0.06731343404, e: 'Setophaga petechia', hH: 98},
+		{a: 'Yellow-billed Cuckoo', b: 'YellowbilledCuckoo', c: 0.007401593566, d: 0.018788719374, e: 'Coccyzus americanus', hH: 99},
+		{a: 'Yellow-breasted Chat', b: 'YellowbreastedChat', c: 0.000009029872, d: -0.03329204807, e: 'Icteria virens', hH: 100},
+		{a: 'Yellow-throated Vireo', b: 'YellowthroatedVireo', c: 0.497440237101, d: -0.01111408198, e: 'Vireo flavifrons', hH: 101},
+		{a: 'Yellow-throated Warbler', b: 'YellowthroatedWarbler', c: 0.000000000585, d: 0.075058651967, e: 'Setophaga dominica', hH: 102}
 	]);
 var $billstclair$elm_sortable_table$Table$State = F2(
 	function (a, b) {
@@ -12903,7 +12903,7 @@ var $author$project$Specs$SparklineSpec$mkSparklineSpec = function (x) {
 		_List_fromArray(
 			[
 				cfg(_List_Nil),
-				$author$project$Data$Mbbs$mbbsParse('../data/' + (x.c + '-counts.csv')),
+				$author$project$Data$Mbbs$mbbsParse('../data/' + (x.b + '-counts.csv')),
 				enc(_List_Nil),
 				$gicentre$elm_vegalite$VegaLite$line(
 				_List_fromArray(
@@ -12913,7 +12913,7 @@ var $author$project$Specs$SparklineSpec$mkSparklineSpec = function (x) {
 			]));
 };
 var $author$project$DisplaySpeciesTable$sparklineVegaID = function (s) {
-	return s.c + '-sparkline';
+	return s.b + '-sparkline';
 };
 var $author$project$DisplaySpeciesTable$sparklines = function (species) {
 	return $gicentre$elm_vegalite$VegaLite$combineSpecs(
@@ -12929,9 +12929,9 @@ var $author$project$DisplaySpeciesTable$sparklines = function (species) {
 var $author$project$DisplaySpeciesTable$vegaPort = _Platform_outgoingPort('vegaPort', $elm$core$Basics$identity);
 var $author$project$DisplaySpeciesTable$init = function (species) {
 	var model = {
-		dc: '',
-		a: species,
-		dj: $billstclair$elm_sortable_table$Table$initialSort('Year')
+		dd: '',
+		hH: species,
+		dk: $billstclair$elm_sortable_table$Table$initialSort('Year')
 	};
 	return _Utils_Tuple2(
 		model,
@@ -12942,16 +12942,16 @@ var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $author$project$DisplaySpeciesTable$SpeciesTableEntry = F3(
 	function (species, sparkLineID, rateOfChange) {
-		return {fA: rateOfChange, fN: sparkLineID, a: species};
+		return {fA: rateOfChange, fM: sparkLineID, hH: species};
 	});
 var $author$project$DisplaySpeciesTable$speciesTable = A2(
 	$elm$core$List$map,
 	function (x) {
 		return A3(
 			$author$project$DisplaySpeciesTable$SpeciesTableEntry,
-			x.b,
+			x.a,
 			$author$project$DisplaySpeciesTable$sparklineVegaID(x),
-			_Utils_Tuple2(x.e, x.d));
+			_Utils_Tuple2(x.d, x.c));
 	},
 	$author$project$Data$Species$allSpeciesRec);
 var $elm$core$List$filter = F2(
@@ -13005,13 +13005,13 @@ var $author$project$DisplaySpeciesTable$update = F2(
 					function (z) {
 						return A2(
 							$elm$core$List$member,
-							z.b,
+							z.a,
 							A2(
 								$elm$core$List$map,
 								function ($) {
-									return $.a;
+									return $.hH;
 								},
-								m.a));
+								m.hH));
 					},
 					$author$project$Data$Species$allSpeciesRec));
 		};
@@ -13023,7 +13023,7 @@ var $author$project$DisplaySpeciesTable$update = F2(
 						return A2(
 							$elm$core$String$contains,
 							$elm$core$String$toLower(query),
-							z.b);
+							z.a);
 					},
 					$author$project$Data$Species$allSpeciesRec));
 		};
@@ -13032,7 +13032,7 @@ var $author$project$DisplaySpeciesTable$update = F2(
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{dc: newQuery}),
+					{dd: newQuery}),
 				$author$project$DisplaySpeciesTable$vegaPort(
 					filterSpeciesByQuery(newQuery)));
 		} else {
@@ -13040,7 +13040,7 @@ var $author$project$DisplaySpeciesTable$update = F2(
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{dj: newState}),
+					{dk: newState}),
 				$author$project$DisplaySpeciesTable$vegaPort(
 					filterSpeciesByState(model)));
 		}
@@ -13057,7 +13057,7 @@ var $billstclair$elm_sortable_table$Table$simpleRowAttrs = function (_v0) {
 };
 var $billstclair$elm_sortable_table$Table$HtmlDetails = F2(
 	function (attributes, children) {
-		return {b0: attributes, b2: children};
+		return {b1: attributes, b3: children};
 	});
 var $elm$core$Char$fromCode = _Char_fromCode;
 var $elm$core$String$fromList = _String_fromList;
@@ -13147,22 +13147,22 @@ var $billstclair$elm_sortable_table$Table$simpleThead = function (headers) {
 		_List_Nil,
 		A2($elm$core$List$map, $billstclair$elm_sortable_table$Table$simpleTheadHelp, headers));
 };
-var $billstclair$elm_sortable_table$Table$defaultCustomizations = {dx: $elm$core$Maybe$Nothing, d9: $billstclair$elm_sortable_table$Table$simpleRowAttrs, ei: _List_Nil, ej: _List_Nil, el: $elm$core$Maybe$Nothing, em: $billstclair$elm_sortable_table$Table$simpleThead};
+var $billstclair$elm_sortable_table$Table$defaultCustomizations = {dy: $elm$core$Maybe$Nothing, ea: $billstclair$elm_sortable_table$Table$simpleRowAttrs, ej: _List_Nil, ek: _List_Nil, em: $elm$core$Maybe$Nothing, en: $billstclair$elm_sortable_table$Table$simpleThead};
 var $billstclair$elm_sortable_table$Table$config = function (_v0) {
-	var toId = _v0.hZ;
-	var toMsg = _v0.h_;
-	var columns = _v0.gD;
+	var toId = _v0.h1;
+	var toMsg = _v0.h2;
+	var columns = _v0.gB;
 	return {
-		gD: A2(
+		gB: A2(
 			$elm$core$List$map,
 			function (_v1) {
 				var cData = _v1;
 				return cData;
 			},
 			columns),
-		b6: $billstclair$elm_sortable_table$Table$defaultCustomizations,
-		hZ: toId,
-		h_: toMsg
+		b7: $billstclair$elm_sortable_table$Table$defaultCustomizations,
+		h1: toId,
+		h2: toMsg
 	};
 };
 var $billstclair$elm_sortable_table$Table$Decreasing = function (a) {
@@ -13426,9 +13426,9 @@ var $author$project$DisplaySpeciesTable$viewRate = function (_v0) {
 var $author$project$DisplaySpeciesTable$rateColumn = function (f) {
 	return $billstclair$elm_sortable_table$Table$veryCustomColumn(
 		{
-			fj: ' % Change per Year',
-			fL: $billstclair$elm_sortable_table$Table$decreasingBy(f),
-			f_: function (data) {
+			fk: ' % Change per Year',
+			fK: $billstclair$elm_sortable_table$Table$decreasingBy(f),
+			fZ: function (data) {
 				return $author$project$DisplaySpeciesTable$viewRate(
 					f(data));
 			}
@@ -13463,9 +13463,9 @@ var $billstclair$elm_sortable_table$Table$unsortable = $billstclair$elm_sortable
 var $author$project$DisplaySpeciesTable$sparklineColumn = function (f) {
 	return $billstclair$elm_sortable_table$Table$veryCustomColumn(
 		{
-			fj: 'Trend',
-			fL: $billstclair$elm_sortable_table$Table$unsortable,
-			f_: function (data) {
+			fk: 'Trend',
+			fK: $billstclair$elm_sortable_table$Table$unsortable,
+			fZ: function (data) {
 				return $author$project$DisplaySpeciesTable$mkSparklineElement(
 					f(data));
 			}
@@ -13490,34 +13490,34 @@ var $billstclair$elm_sortable_table$Table$textDetails = function (str) {
 var $billstclair$elm_sortable_table$Table$stringColumn = F2(
 	function (name, toStr) {
 		return {
-			fj: name,
-			fL: $billstclair$elm_sortable_table$Table$increasingOrDecreasingBy(toStr),
-			f_: A2($elm$core$Basics$composeL, $billstclair$elm_sortable_table$Table$textDetails, toStr)
+			fk: name,
+			fK: $billstclair$elm_sortable_table$Table$increasingOrDecreasingBy(toStr),
+			fZ: A2($elm$core$Basics$composeL, $billstclair$elm_sortable_table$Table$textDetails, toStr)
 		};
 	});
 var $author$project$DisplaySpeciesTable$config = $billstclair$elm_sortable_table$Table$config(
 	{
-		gD: _List_fromArray(
+		gB: _List_fromArray(
 			[
 				A2(
 				$billstclair$elm_sortable_table$Table$stringColumn,
 				'Name',
 				function ($) {
-					return $.a;
+					return $.hH;
 				}),
 				$author$project$DisplaySpeciesTable$sparklineColumn(
 				function ($) {
-					return $.fN;
+					return $.fM;
 				}),
 				$author$project$DisplaySpeciesTable$rateColumn(
 				function ($) {
 					return $.fA;
 				})
 			]),
-		hZ: function ($) {
-			return $.a;
+		h1: function ($) {
+			return $.hH;
 		},
-		h_: $author$project$DisplaySpeciesTable$SetTableState
+		h2: $author$project$DisplaySpeciesTable$SetTableState
 	});
 var $elm$html$Html$input = _VirtualDom_node('input');
 var $elm$html$Html$Events$alwaysStop = function (x) {
@@ -13585,8 +13585,8 @@ var $billstclair$elm_sortable_table$Table$findSorter = F2(
 			if (!columnData.b) {
 				return $elm$core$Maybe$Nothing;
 			} else {
-				var name = columnData.a.fj;
-				var sorter = columnData.a.fL;
+				var name = columnData.a.fk;
+				var sorter = columnData.a.fK;
 				var remainingColumnData = columnData.b;
 				if (_Utils_eq(name, selectedColumn)) {
 					return $elm$core$Maybe$Just(sorter);
@@ -13614,10 +13614,10 @@ var $billstclair$elm_sortable_table$Table$sort = F3(
 	});
 var $billstclair$elm_sortable_table$Table$getSortedData = F3(
 	function (_v0, state, data) {
-		var toId = _v0.hZ;
-		var toMsg = _v0.h_;
-		var columns = _v0.gD;
-		var customizations = _v0.b6;
+		var toId = _v0.h1;
+		var toMsg = _v0.h2;
+		var columns = _v0.gB;
+		var customizations = _v0.b7;
 		return A3($billstclair$elm_sortable_table$Table$sort, state, columns, data);
 	});
 var $elm$virtual_dom$VirtualDom$keyedNode = function (tag) {
@@ -13663,8 +13663,8 @@ var $billstclair$elm_sortable_table$Table$toHeaderInfo = F3(
 	function (_v0, toMsg, _v1) {
 		var sortName = _v0.a;
 		var isReversed = _v0.b;
-		var name = _v1.fj;
-		var sorter = _v1.fL;
+		var name = _v1.fk;
+		var sorter = _v1.fK;
 		switch (sorter.$) {
 			case 0:
 				return _Utils_Tuple3(
@@ -13709,9 +13709,9 @@ var $elm$html$Html$Lazy$lazy3 = $elm$virtual_dom$VirtualDom$lazy3;
 var $elm$html$Html$td = _VirtualDom_node('td');
 var $billstclair$elm_sortable_table$Table$viewCell = F2(
 	function (data, _v0) {
-		var viewData = _v0.f_;
+		var viewData = _v0.fZ;
 		var details = viewData(data);
-		return A2($elm$html$Html$td, details.b0, details.b2);
+		return A2($elm$html$Html$td, details.b1, details.b3);
 	});
 var $billstclair$elm_sortable_table$Table$viewRowHelp = F3(
 	function (columns, toRowAttrs, data) {
@@ -13731,38 +13731,38 @@ var $billstclair$elm_sortable_table$Table$viewRow = F4(
 	});
 var $billstclair$elm_sortable_table$Table$view = F3(
 	function (conf, state, data) {
-		var toId = conf.hZ;
-		var toMsg = conf.h_;
-		var columns = conf.gD;
-		var customizations = conf.b6;
-		var theadDetails = customizations.em(
+		var toId = conf.h1;
+		var toMsg = conf.h2;
+		var columns = conf.gB;
+		var customizations = conf.b7;
+		var theadDetails = customizations.en(
 			A2(
 				$elm$core$List$map,
 				A2($billstclair$elm_sortable_table$Table$toHeaderInfo, state, toMsg),
 				columns));
 		var thead = A2(
 			$elm$html$Html$thead,
-			theadDetails.b0,
+			theadDetails.b1,
 			_List_fromArray(
 				[
-					A2($elm$html$Html$tr, _List_Nil, theadDetails.b2)
+					A2($elm$html$Html$tr, _List_Nil, theadDetails.b3)
 				]));
 		var sortedData = A3($billstclair$elm_sortable_table$Table$getSortedData, conf, state, data);
 		var tbody = A3(
 			$elm$html$Html$Keyed$node,
 			'tbody',
-			customizations.ej,
+			customizations.ek,
 			A2(
 				$elm$core$List$map,
-				A3($billstclair$elm_sortable_table$Table$viewRow, toId, columns, customizations.d9),
+				A3($billstclair$elm_sortable_table$Table$viewRow, toId, columns, customizations.ea),
 				sortedData));
 		var withFoot = function () {
-			var _v1 = customizations.el;
+			var _v1 = customizations.em;
 			if (_v1.$ === 1) {
 				return A2($elm$core$List$cons, tbody, _List_Nil);
 			} else {
-				var attributes = _v1.a.b0;
-				var children = _v1.a.b2;
+				var attributes = _v1.a.b1;
+				var children = _v1.a.b3;
 				return A2(
 					$elm$core$List$cons,
 					A2($elm$html$Html$tfoot, attributes, children),
@@ -13771,14 +13771,14 @@ var $billstclair$elm_sortable_table$Table$view = F3(
 		}();
 		return A2(
 			$elm$html$Html$table,
-			customizations.ei,
+			customizations.ej,
 			function () {
-				var _v0 = customizations.dx;
+				var _v0 = customizations.dy;
 				if (_v0.$ === 1) {
 					return A2($elm$core$List$cons, thead, withFoot);
 				} else {
-					var attributes = _v0.a.b0;
-					var children = _v0.a.b2;
+					var attributes = _v0.a.b1;
+					var children = _v0.a.b3;
 					return A2(
 						$elm$core$List$cons,
 						A2($elm$html$Html$caption, attributes, children),
@@ -13787,9 +13787,9 @@ var $billstclair$elm_sortable_table$Table$view = F3(
 			}());
 	});
 var $author$project$DisplaySpeciesTable$view = function (_v0) {
-	var species = _v0.a;
-	var tableState = _v0.dj;
-	var query = _v0.dc;
+	var species = _v0.hH;
+	var tableState = _v0.dk;
+	var query = _v0.dd;
 	var lowerQuery = $elm$core$String$toLower(query);
 	var acceptableSpecies = A2(
 		$elm$core$List$filter,
@@ -13800,7 +13800,7 @@ var $author$project$DisplaySpeciesTable$view = function (_v0) {
 				$elm$core$String$contains(lowerQuery),
 				$elm$core$String$toLower),
 			function ($) {
-				return $.a;
+				return $.hH;
 			}),
 		species);
 	return A2(
@@ -13821,14 +13821,14 @@ var $author$project$DisplaySpeciesTable$view = function (_v0) {
 };
 var $author$project$DisplaySpeciesTable$main = $elm$browser$Browser$element(
 	{
-		g$: function (_v0) {
+		g1: function (_v0) {
 			return $author$project$DisplaySpeciesTable$init($author$project$DisplaySpeciesTable$speciesTable);
 		},
-		hJ: function (_v1) {
+		hN: function (_v1) {
 			return $elm$core$Platform$Sub$none;
 		},
-		h3: $author$project$DisplaySpeciesTable$update,
-		h5: $author$project$DisplaySpeciesTable$view
+		h7: $author$project$DisplaySpeciesTable$update,
+		h9: $author$project$DisplaySpeciesTable$view
 	});
 _Platform_export({'DisplaySpeciesTable':{'init':$author$project$DisplaySpeciesTable$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));

@@ -1,0 +1,20 @@
+county: orange
+route_num: 5
+name: Arthur Minnis Road (southwestern Orange County)
+map: 
+  mid: 1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0
+  lat: 35.96986827
+  lon: -79.20357367
+start: > 
+  Arthur Minnis Road 0.7 miles east of Dodson's Crossroads North
+directions: >
+  west on Minnis Road to Dodson's Crossroads North,
+  turn left on Dodson's Crossroads North,
+  at the crossroads turn right on Dairy Land Road,
+  at Orange Grove crossroads turn left on Orange Grove Road,
+  after about 1 mile turn right on Teer Road,
+  after about 2 miles turn left on Stanford Road,
+  cross NC 54
+  (on the south sides of NC 54 the road is named Gold Mine Road),
+  after about one mile turn right on Morrow Mill Road,
+  after about one mile turn left on Willikan Road

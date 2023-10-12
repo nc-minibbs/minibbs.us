@@ -600,11 +600,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.em.ci === region.eV.ci)
+	if (region.en.cj === region.eW.cj)
 	{
-		return 'on line ' + region.em.ci;
+		return 'on line ' + region.en.cj;
 	}
-	return 'on lines ' + region.em.ci + ' through ' + region.eV.ci;
+	return 'on lines ' + region.en.cj + ' through ' + region.eW.cj;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.g$,
-		impl.h1,
-		impl.hJ,
+		impl.g1,
+		impl.h5,
+		impl.hN,
 		function() { return function() {} }
 	);
 });
@@ -2766,25 +2766,25 @@ var $elm$core$Array$treeFromBuilder = F2(
 	});
 var $elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.O) {
+		if (!builder.N) {
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.Q),
+				$elm$core$Elm$JsArray$length(builder.P),
 				$elm$core$Array$shiftStep,
 				$elm$core$Elm$JsArray$empty,
-				builder.Q);
+				builder.P);
 		} else {
-			var treeLen = builder.O * $elm$core$Array$branchFactor;
+			var treeLen = builder.N * $elm$core$Array$branchFactor;
 			var depth = $elm$core$Basics$floor(
 				A2($elm$core$Basics$logBase, $elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.S) : builder.S;
-			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.O);
+			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.R) : builder.R;
+			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.N);
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.Q) + treeLen,
+				$elm$core$Elm$JsArray$length(builder.P) + treeLen,
 				A2($elm$core$Basics$max, 5, depth * $elm$core$Array$shiftStep),
 				tree,
-				builder.Q);
+				builder.P);
 		}
 	});
 var $elm$core$Basics$idiv = _Basics_idiv;
@@ -2797,7 +2797,7 @@ var $elm$core$Array$initializeHelp = F5(
 				return A2(
 					$elm$core$Array$builderToArray,
 					false,
-					{S: nodeList, O: (len / $elm$core$Array$branchFactor) | 0, Q: tail});
+					{R: nodeList, N: (len / $elm$core$Array$branchFactor) | 0, P: tail});
 			} else {
 				var leaf = $elm$core$Array$Leaf(
 					A3($elm$core$Elm$JsArray$initialize, $elm$core$Array$branchFactor, fromIndex, fn));
@@ -11207,12 +11207,12 @@ var $author$project$Home$vegaPort = _Platform_outgoingPort('vegaPort', $elm$core
 var $elm$core$Platform$worker = _Platform_worker;
 var $author$project$Home$main = $elm$core$Platform$worker(
 	{
-		g$: $elm$core$Basics$always(
+		g1: $elm$core$Basics$always(
 			_Utils_Tuple2(
 				$author$project$Home$specs,
 				$author$project$Home$vegaPort($author$project$Home$specs))),
-		hJ: $elm$core$Basics$always($elm$core$Platform$Sub$none),
-		h1: F2(
+		hN: $elm$core$Basics$always($elm$core$Platform$Sub$none),
+		h5: F2(
 			function (_v0, model) {
 				return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 			})

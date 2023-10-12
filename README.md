@@ -42,14 +42,5 @@ The `mbbs` data used to build the visualizations
 in this site is contained in the `mbbs` R package.
 
 To be sure you're using the latest data,
-update the `mbbs` package dependency:
-
-```r
-renv::install("nc-minibbs/mbbs@master")
-```
-
-Then update the `renv` lockfile:
-
-```r
-renv::snapshot()
-```
+update the `mbbs` package dependency by
+changing the git commit hash for the `mbbsR` derivation in `flake.nix`.

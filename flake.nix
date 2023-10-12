@@ -1,5 +1,5 @@
 {
-  description = "A flake for the minibbs.us site ";
+  description = "The minibbs.us website";
   nixConfig = {
     bash-prompt = "minibbs.us> ";
   };
@@ -17,6 +17,29 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+
+        mbbsR = pkgs.rPackages.buildRPackage {
+          name = "mbbs";
+          src = pkgs.fetchFromGitHub {
+            owner = "nc-minibbs";
+            repo = "mbbs";
+            rev = "d6bea73c30a7b56ec7807f04db42d7160a463f4c";
+            sha256 = "NwPlU/0qGVzpUt0jur0WLATzjwOmYkrBc+VDqWLxrxc=";
+            # sha256 = pkgs.lib.fakeSha256;
+          };
+          propagatedBuildInputs = with pkgs.rPackages; [
+            purrr
+            stringr
+            lubridate
+            readr 
+            magrittr
+            dplyr
+            glue
+            assertthat
+            yaml
+          ];
+        };
+
         inherit (gitignore.lib) gitignoreSource;
 
       in
@@ -26,7 +49,6 @@
 
 
         packages = {
-
 
           # The elm bits were hacked from the code that
           #  elm2nix init produces
@@ -57,6 +79,7 @@
                     "DisplayTraits"
                     "DisplayIndividualSpecies"
                     "DisplaySpeciesTable"
+                    "DisplayRouteDashboard"
                     "Home"
                   ];
 
@@ -70,6 +93,7 @@
                     "results/index"
                     "results/individual-species"
                     "results/traits"
+                    "results/route-dashboard"
                     "routes/orange-county"
                     "routes/chatham-county"
                     "routes/durham-county"
@@ -120,24 +144,31 @@
         devShells.default = pkgs.mkShell {
           nativeBuildInputs = [ pkgs.bashInteractive ];
           buildInputs = [
-            # pkgs.openssl
-            # pkgs.openssl.dev
-            pkgs.rPackages.devtools
+            # R stuff
             pkgs.R
-            pkgs.libpng
-            pkgs.pandoc
+            pkgs.rPackages.devtools
+            pkgs.rPackages.dplyr
+            pkgs.rPackages.glue
+            pkgs.rPackages.languageserver
+            pkgs.rPackages.jsonlite
+            mbbsR
+            pkgs.rPackages.stringr
 
-            pkgs.updog # simple HTTP server for running HTTP server locally (for testing)
-
+            # Elm stuff
             pkgs.elm2nix
             pkgs.elmPackages.elm
             pkgs.elmPackages.elm-format
             pkgs.elmPackages.elm-analyse
             pkgs.elmPackages.elm-review
-            # pkgs.elmPackages.elm-live
             pkgs.nodejs
             pkgs.nodePackages.prettier
+            
+            # Other stuff
+            pkgs.libpng
+            pkgs.pandoc
 
+            # simple HTTP server for running HTTP server locally (for testing)
+            pkgs.updog
           ];
         };
 

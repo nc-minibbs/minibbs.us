@@ -1,0 +1,20 @@
+county: durham
+route_num: 3
+name: Broad Street NW (central western Durham County)
+map: 
+  mid: 1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0
+  lat: 36.06944472
+  lon: -78.9342455
+start: > 
+    intersection of Broad Street and Club Boulevard.
+directions: >
+    go north on Broad Street turning left onto Guess Road.
+    Turn left onto Carver Street.
+    Go about 1.5 miles to Rose of Sharon Road and
+    turn left and right onto Cole Mill Road.
+    Follow Cole Mill Road,
+    cross the Eno River and
+    turn right onto Umstead Road (SR 1449).
+    Follow Umstead to Guess Road and
+    turn left onto Guess Road
+    until you have completed 10 miles.
