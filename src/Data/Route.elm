@@ -161,7 +161,7 @@ allRoutes =
       , number = 12
       , start = "Sunny Slope Road (CR 1150) 0.8 miles east of Airport Road (CR 1100) about 3.5 miles north of Bennett and Bonlee-Bennett Road."
       , name = "Sunny Slope Road (southwestern Chatham County)"
-      , directions = "go south and east on Sunny Slope Road to Devil’s Tramping Ground Road (CR 1100), turn left and proceed 1.0 mile to Bonlee-Bennett Road (CR1005), turn right and go 2.1 miles to Siler City-Glendon Road (CR 1006), turn left and go 1.2 miles (this stretch repeats part of Route 5 but your stops are not likely to fall in the same places), turn right on Mount Vernon Spring Road (CR 1134), continue all the way to Mount Vernon Springs center, cross Old US 421 (the road becomes Foust Road) and immediately turn right on Buck Gunter Road (CR 2119)\n continue eastward straight across US 421 until\n you have completed 20 stops\n (if necessary turn left on Ike Brooks Road CR 2120)."
+      , directions = "go south and east on Sunny Slope Road to Devil’s Tramping Ground Road (CR 1100), turn left and proceed 1.0 mile to Bonlee-Bennett Road (CR1005), turn right and go 2.1 miles to Siler City-Glendon Road (CR 1006), turn left and go 1.2 miles (this stretch repeats part of Route 5 but your stops are not likely to fall in the same places), turn right on Mount Vernon Spring Road (CR 1134), continue all the way to Mount Vernon Springs center, cross Old US 421 (the road becomes Foust Road) and immediately turn right on Buck Gunter Road (CR 2119) continue eastward straight across US 421 until you have completed 20 stops (if necessary turn left on Ike Brooks Road CR 2120)."
       , mapid = "1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0"
       , maplat = 35.64709314
       , maplon = -79.47711654
@@ -192,6 +192,69 @@ allRoutes =
       , mapid = "1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0"
       , maplat = 36.18873604
       , maplon = -78.91688497
+      }
+    , { county = Durham
+      , number = 2
+      , start = "junction of Stagville Road (SR 1615) and Old Oxford Highway (SR 1626)."
+      , name = "Stagville Road NW (northeastern Durham County)"
+      , directions = "drive northwest on Stagville to its end. Turn left onto John Jones Road (SR 1618) and continue to Ball Road (SR 1617) where you turn right, crossing Bahama Road and railroad tracks. Turn left onto Quail Roost Road (SR 1615) and continue until you finish 10 miles. If more road is necessary, turn right on 501 and left onto Conference Road (SR 1468)."
+      , mapid = "1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0"
+      , maplat = 36.16490289
+      , maplon = -78.88645799
+      }
+    , { county = Durham
+      , number = 3
+      , start = "intersection of Broad Street and Club Boulevard."
+      , name = "Broad Street NW (central western Durham County)"
+      , directions = "go north on Broad Street turning left onto Guess Road. Turn left onto Carver Street. Go about 1.5 miles to Rose of Sharon Road and turn left and right onto Cole Mill Road. Follow Cole Mill Road, cross the Eno River and turn right onto Umstead Road (SR 1449). Follow Umstead to Guess Road and turn left onto Guess Road until you have completed 10 miles."
+      , mapid = "1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0"
+      , maplat = 36.06944472
+      , maplon = -78.9342455
+      }
+    , { county = Durham
+      , number = 4
+      , start = "junction of Goodwin (SR 1640) and 501, across from Northern High School."
+      , name = "Goodwin Road SW (central Durham County)"
+      , directions = "go east on Goodwin until Infinity Road (SR 1639), turn left and continue to the end of Infinity. Turn right onto Snow Hill (SR 1631). This takes you to Old Oxford Highway (SR 1004) where you should turn left. You will cross railroad tracks and an arm of Falls Lake. Continue until you can bear right on Teknika Parkway. Turn right onto Red Mill Road (SR 1632). Go as far as necessary until you have completed 10 miles. If necessary, turn left on East Geer Street."
+      , mapid = "1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0"
+      , maplat = 36.07832451
+      , maplon = -78.87664049
+      }
+    , { county = Durham
+      , number = 5
+      , start = "intersection of Farrington Mill Road (SR 1109) and Kepley Road (SR 1108) – Kepley is about 0.5 miles south of Barbee Chapel Road."
+      , name = "Farrington Mill Road NW (southwestern Durham County)"
+      , directions = "go north on Farrington Mill, turn right onto Farrington Road (SR 1110) and cross Hwy 54. Continue north, passing I-40. At Old Chapel Hill Road, turn right and cross New Hope Creek, turning right onto Chapel Hill Road (do not continue on University Drive). When Chapel Hill Road meets University Drive, turn right and immediately turn left onto Academy Road (751). Stay on Academy and at the major intersection and stoplight near the old university president's house, veer right onto Duke University Road and continue as far as needed to complete 10 miles."
+      , mapid = "1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0"
+      , maplat = 35.95855933
+      , maplon = -78.98165369
+      }
+    , { county = Durham
+      , number = 6
+      , start = "county line (between Durham and Wake) on Slatter Road (SR 1974) less than 0.2 miles east of I-540."
+      , name = "Slater Road NW (Cornwallis Road) (south central Durham County)"
+      , directions = "follow Slatter to Emperor Boulevard where you turn right. Turn left at Page Road and right at the stoplight of 'Imperial Corners' (still on Page Rd.). Turn right on South Miami. At about the 3-mile mark, turn left onto Cornwallis Rd. Stay on Cornwallis until 10 miles have been completed, skipping as necessary 4-lane stretches. If you skip a lot, note that Cornwallis Road does a jag at Chapel Hill Road at Hardee's."
+      , mapid = "1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0"
+      , maplat = 35.93236828
+      , maplon = -78.88585707
+      }
+    , { county = Durham
+      , number = 7
+      , start = "intersection of Mineral Springs Road (SR 1881) and Sherron Road."
+      , name = "Sherron Road NE (central eastern Durham County) (formerly Mineral Springs Road NE)"
+      , directions = "go northeast on Sherron for 3.0 miles. Turn right on Route 98 (Old Wake Forest Hwy). Go 0.7 miles (skip this section for birding) and turn left on Baptist Road. Go 1.9 miles and turn right on South View Road (SR 1809); it's gravel. Cross Rt. 98, stay on South View. Turn left on Kemp Road (SR 1902), right on Carpenter Pond Rd (SR 1901). Continue until 10 miles are completed."
+      , mapid = "1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0"
+      , maplat = 35.96972237
+      , maplon = -78.7886218
+      }
+    , { county = Durham
+      , number = 8
+      , start = "intersection of Olive Branch Road and Leesville Road."
+      , name = "Olive Branch Road NW (southeastern Durham County)"
+      , directions = "go northwest on Olive Branch Road (SR 1905) for 3.8 miles to Wake Forest Road (NC 98). Turn left onto 98 for 0.4 miles (skip this section for birding) and turn right onto Patterson Road (SR 1811) and an immediate left onto Stallings (SR 1814), which becomes Fletcher's Chapel Road (SR 1882) and go north until Cheek Road. Cross Cheek Road and Fletcher's Chapel Rd. becomes Burton Road. Follow Burton north until crossroads with Gorman. At Gorman, turn right onto Geer Street. Continue until you finish."
+      , mapid = "1NRAImHBzXvdQGpsUzcCPb6tqxUkxMx0"
+      , maplat = 36.00221376
+      , maplon = -78.79854823
       }
     , { county = Orange
       , number = 1
