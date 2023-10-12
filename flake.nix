@@ -23,8 +23,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "nc-minibbs";
             repo = "mbbs";
-            rev = "d6bea73c30a7b56ec7807f04db42d7160a463f4c";
-            sha256 = "NwPlU/0qGVzpUt0jur0WLATzjwOmYkrBc+VDqWLxrxc=";
+            rev = "3a4192e64de04001c6c26ef515f7c15f3961331c";
+            sha256 = "1qpJxRDUp3V8XlogPjJaWLc5VRNmmRkZl6wcXMLo03A=";
             # sha256 = pkgs.lib.fakeSha256;
           };
           propagatedBuildInputs = with pkgs.rPackages; [
