@@ -19,10 +19,7 @@ try_model <- function(expr) {
   options(warn = 2)
   m <- try(expr, silent = TRUE)
   if (is(m, "try-error")) {
-    return(
-      list(
-        result = "failed"
-      ))
+    return(list(result = "failed"))
   }
   options(warn = 1)
   list(
@@ -45,7 +42,7 @@ gee_model <- function(data, .formula) {
 
 extract_results <- function(fitted_model) {
   if (fitted_model$result == "failed") {
-    fitted_model
+    return(fitted_model)
   } else {
     m <- fitted_model$fit
   }
@@ -217,6 +214,7 @@ model_dt <-
     results_county = purrr::map(
       .x = fit_county,
       .f = ~ {
+    
         if (.x$result == "failed") {
           .x
         } else {
@@ -267,7 +265,6 @@ mbbs_results <-
 #------------------------------------------------------------------------------#
 # Write data ####
 
-
 ## All counts
 mbbs_results %>%
   select(common_name, sci_name, data) %>%
@@ -276,7 +273,6 @@ mbbs_results %>%
     file = "data/mbbs.csv",
     row.names = FALSE
   )
-
 
 to_species_id <- function(x) {
  stringr::str_replace_all(x, "'", "") |>
@@ -323,7 +319,6 @@ to_elm_data <-
       .f = ~ 
       if (years_observed < 6 ) {
         tibble(rate = 0, pvalue = 1, rate_lo = 0, rate_hi = 0)
-
       } else {
         .x$values %>% select(rate, pvalue, rate_lo, rate_hi)
       }
