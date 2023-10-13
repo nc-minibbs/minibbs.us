@@ -146,13 +146,16 @@
           buildInputs = [
             # R stuff
             pkgs.R
+            pkgs.rPackages.broom
             pkgs.rPackages.devtools
             pkgs.rPackages.dplyr
+            pkgs.rPackages.geepack
             pkgs.rPackages.glue
             pkgs.rPackages.languageserver
             pkgs.rPackages.jsonlite
             mbbsR
             pkgs.rPackages.stringr
+            pkgs.rPackages.tidyr
 
             # Elm stuff
             pkgs.elm2nix
