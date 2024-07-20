@@ -78,7 +78,8 @@ If you use **Merlin Sound ID** to assist you during your point counts:
     This is important because if the use of Merlin is increasing
     the average detectability of species in our survey records,
     we’d like to know when it was
-    and was not used to better interpret apparent species trends.
+    and was not used to better interpret apparent species trends.  
+    Read [this eBird post](https://ebird.org/region/US-WI/post/merlin-audio-id-how-to-merlin-mindfully) for more considerations about using Merlin.
 
 6. When submitting an eBird checklist from a particular stop
 **FOR THE FIRST TIME**,
