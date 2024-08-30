@@ -30,6 +30,7 @@ type Species
    | BeltedKingfisher
    | BlackVulture
    | BlackandwhiteWarbler
+   | BlackpollWarbler
    | BlueGrosbeak
    | BlueJay
    | BluegrayGnatcatcher
@@ -138,6 +139,7 @@ allSpecies
     , BeltedKingfisher
     , BlackVulture
     , BlackandwhiteWarbler
+    , BlackpollWarbler
     , BlueGrosbeak
     , BlueJay
     , BluegrayGnatcatcher
@@ -238,43 +240,43 @@ allSpeciesRec
   , id = "AcadianFlycatcher" 
   , commonName = "Acadian Flycatcher"
   , sciName = "Empidonax virescens"
-  , rate = 0.062644546100
-  , pvalue =  0.000000000296
+  , rate = 0.062378164501
+  , pvalue =  0.000000000007
   }
   , { species = AmericanCrow
   , id = "AmericanCrow" 
   , commonName = "American Crow"
   , sciName = "Corvus brachyrhynchos"
-  , rate = -0.007278631417
-  , pvalue =  0.006140867866
+  , rate = -0.007316855342
+  , pvalue =  0.004408774440
   }
   , { species = AmericanGoldfinch
   , id = "AmericanGoldfinch" 
   , commonName = "American Goldfinch"
   , sciName = "Spinus tristis"
-  , rate = -0.032397258251
-  , pvalue =  0.000001197079
+  , rate = -0.030990648232
+  , pvalue =  0.000000237923
   }
   , { species = AmericanRedstart
   , id = "AmericanRedstart" 
   , commonName = "American Redstart"
   , sciName = "Setophaga ruticilla"
-  , rate = -0.049020824135
-  , pvalue =  0.212895855786
+  , rate = -0.025603451278
+  , pvalue =  0.505090171995
   }
   , { species = AmericanRobin
   , id = "AmericanRobin" 
   , commonName = "American Robin"
   , sciName = "Turdus migratorius"
-  , rate = -0.020901596330
-  , pvalue =  0.005108340201
+  , rate = -0.021117571909
+  , pvalue =  0.005983852809
   }
   , { species = BaldEagle
   , id = "BaldEagle" 
   , commonName = "Bald Eagle"
   , sciName = "Haliaeetus leucocephalus"
-  , rate = 0.059177712825
-  , pvalue =  0.333200816230
+  , rate = 0.073210030176
+  , pvalue =  0.265401319617
   }
   , { species = BaltimoreOriole
   , id = "BaltimoreOriole" 
@@ -287,162 +289,169 @@ allSpeciesRec
   , id = "BarnSwallow" 
   , commonName = "Barn Swallow"
   , sciName = "Hirundo rustica"
-  , rate = -0.026385424219
-  , pvalue =  0.031559155421
+  , rate = -0.023705475918
+  , pvalue =  0.038237211162
   }
   , { species = BarredOwl
   , id = "BarredOwl" 
   , commonName = "Barred Owl"
   , sciName = "Strix varia"
-  , rate = 0.027546403524
-  , pvalue =  0.037844695702
+  , rate = 0.031986020154
+  , pvalue =  0.013548207185
   }
   , { species = BeltedKingfisher
   , id = "BeltedKingfisher" 
   , commonName = "Belted Kingfisher"
   , sciName = "Megaceryle alcyon"
-  , rate = -0.057487507314
-  , pvalue =  0.058926632658
+  , rate = -0.063368204694
+  , pvalue =  0.027778364782
   }
   , { species = BlackVulture
   , id = "BlackVulture" 
   , commonName = "Black Vulture"
   , sciName = "Coragyps atratus"
-  , rate = 0.065972678722
-  , pvalue =  0.002046832360
+  , rate = 0.061701309211
+  , pvalue =  0.008731529762
   }
   , { species = BlackandwhiteWarbler
   , id = "BlackandwhiteWarbler" 
   , commonName = "Black-and-white Warbler"
   , sciName = "Mniotilta varia"
-  , rate = 0.052103494919
-  , pvalue =  0.026866584988
+  , rate = 0.051054341055
+  , pvalue =  0.009863241413
+  }
+  , { species = BlackpollWarbler
+  , id = "BlackpollWarbler" 
+  , commonName = "Blackpoll Warbler"
+  , sciName = "Setophaga striata"
+  , rate = 0.000000000000
+  , pvalue =  1.000000000000
   }
   , { species = BlueGrosbeak
   , id = "BlueGrosbeak" 
   , commonName = "Blue Grosbeak"
   , sciName = "Passerina caerulea"
-  , rate = 0.005527760522
-  , pvalue =  0.542578292049
+  , rate = 0.008341279710
+  , pvalue =  0.316779414960
   }
   , { species = BlueJay
   , id = "BlueJay" 
   , commonName = "Blue Jay"
   , sciName = "Cyanocitta cristata"
-  , rate = -0.017200080728
-  , pvalue =  0.002928552251
+  , rate = -0.016682394040
+  , pvalue =  0.001574366107
   }
   , { species = BluegrayGnatcatcher
   , id = "BluegrayGnatcatcher" 
   , commonName = "Blue-gray Gnatcatcher"
   , sciName = "Polioptila caerulea"
-  , rate = 0.006591715679
-  , pvalue =  0.267114057330
+  , rate = 0.007673783350
+  , pvalue =  0.187896974729
   }
   , { species = BlueheadedVireo
   , id = "BlueheadedVireo" 
   , commonName = "Blue-headed Vireo"
   , sciName = "Vireo solitarius"
-  , rate = -0.048590522918
-  , pvalue =  0.001470688477
+  , rate = -0.054995003162
+  , pvalue =  0.000134340226
   }
   , { species = BroadwingedHawk
   , id = "BroadwingedHawk" 
   , commonName = "Broad-winged Hawk"
   , sciName = "Buteo platypterus"
-  , rate = -0.097871523366
-  , pvalue =  0.000000002818
+  , rate = -0.101738892815
+  , pvalue =  0.000000000102
   }
   , { species = BrownThrasher
   , id = "BrownThrasher" 
   , commonName = "Brown Thrasher"
   , sciName = "Toxostoma rufum"
-  , rate = 0.001354550520
-  , pvalue =  0.849862437025
+  , rate = 0.000669423025
+  , pvalue =  0.918512592549
   }
   , { species = BrownheadedCowbird
   , id = "BrownheadedCowbird" 
   , commonName = "Brown-headed Cowbird"
   , sciName = "Molothrus ater"
-  , rate = 0.010833456142
-  , pvalue =  0.152071709927
+  , rate = 0.009476674730
+  , pvalue =  0.174920063089
   }
   , { species = BrownheadedNuthatch
   , id = "BrownheadedNuthatch" 
   , commonName = "Brown-headed Nuthatch"
   , sciName = "Sitta pusilla"
-  , rate = 0.014062130656
-  , pvalue =  0.344895600896
+  , rate = 0.016605832753
+  , pvalue =  0.252194567463
   }
   , { species = CanadaGoose
   , id = "CanadaGoose" 
   , commonName = "Canada Goose"
   , sciName = "Branta canadensis"
-  , rate = -0.031858943738
-  , pvalue =  0.180411874325
+  , rate = -0.027940868746
+  , pvalue =  0.212709297858
   }
   , { species = CarolinaChickadee
   , id = "CarolinaChickadee" 
   , commonName = "Carolina Chickadee"
   , sciName = "Poecile carolinensis"
-  , rate = 0.001064252973
-  , pvalue =  0.845832977350
+  , rate = -0.000857196929
+  , pvalue =  0.855576355033
   }
   , { species = CarolinaWren
   , id = "CarolinaWren" 
   , commonName = "Carolina Wren"
   , sciName = "Thryothorus ludovicianus"
-  , rate = 0.007371916725
-  , pvalue =  0.034624863856
+  , rate = 0.007518093284
+  , pvalue =  0.027854192537
   }
   , { species = CedarWaxwing
   , id = "CedarWaxwing" 
   , commonName = "Cedar Waxwing"
   , sciName = "Bombycilla cedrorum"
-  , rate = -0.002688987441
-  , pvalue =  0.889075485392
+  , rate = -0.011423694789
+  , pvalue =  0.519633997816
   }
   , { species = ChimneySwift
   , id = "ChimneySwift" 
   , commonName = "Chimney Swift"
   , sciName = "Chaetura pelagica"
-  , rate = -0.034887627638
-  , pvalue =  0.000022793638
+  , rate = -0.035208215100
+  , pvalue =  0.000001528191
   }
   , { species = Chuckwillswidow
   , id = "Chuckwillswidow" 
   , commonName = "Chuck-will's-widow"
   , sciName = "Antrostomus carolinensis"
-  , rate = 0.020176264730
-  , pvalue =  0.239719462528
+  , rate = 0.011034126427
+  , pvalue =  0.530268911355
   }
   , { species = CliffSwallow
   , id = "CliffSwallow" 
   , commonName = "Cliff Swallow"
   , sciName = "Petrochelidon pyrrhonota"
-  , rate = 0.117992192365
+  , rate = 0.154849807660
   , pvalue =  0.000000000000
   }
   , { species = CommonGrackle
   , id = "CommonGrackle" 
   , commonName = "Common Grackle"
   , sciName = "Quiscalus quiscula"
-  , rate = -0.057558266909
-  , pvalue =  0.000000000345
+  , rate = -0.058301928099
+  , pvalue =  0.000000000018
   }
   , { species = CommonYellowthroat
   , id = "CommonYellowthroat" 
   , commonName = "Common Yellowthroat"
   , sciName = "Geothlypis trichas"
-  , rate = -0.029868578686
-  , pvalue =  0.000575825041
+  , rate = -0.029837694863
+  , pvalue =  0.000336562937
   }
   , { species = CoopersHawk
   , id = "CoopersHawk" 
   , commonName = "Cooper's Hawk"
   , sciName = "Accipiter cooperii"
-  , rate = -0.001746967084
-  , pvalue =  0.933571880710
+  , rate = -0.005217299201
+  , pvalue =  0.771590069733
   }
   , { species = Dickcissel
   , id = "Dickcissel" 
@@ -455,120 +464,120 @@ allSpeciesRec
   , id = "DoublecrestedCormorant" 
   , commonName = "Double-crested Cormorant"
   , sciName = "Nannopterum auritum"
-  , rate = 0.042681348381
-  , pvalue =  0.093000925819
+  , rate = 0.028708801995
+  , pvalue =  0.206561977385
   }
   , { species = DownyWoodpecker
   , id = "DownyWoodpecker" 
   , commonName = "Downy Woodpecker"
   , sciName = "Dryobates pubescens"
-  , rate = -0.000027046608
-  , pvalue =  0.997244304972
+  , rate = 0.007305946819
+  , pvalue =  0.367335867145
   }
   , { species = EasternBluebird
   , id = "EasternBluebird" 
   , commonName = "Eastern Bluebird"
   , sciName = "Sialia sialis"
-  , rate = 0.000472548626
-  , pvalue =  0.905113822429
+  , rate = 0.001512892347
+  , pvalue =  0.693420047537
   }
   , { species = EasternKingbird
   , id = "EasternKingbird" 
   , commonName = "Eastern Kingbird"
   , sciName = "Tyrannus tyrannus"
-  , rate = -0.030915331881
-  , pvalue =  0.015413808850
+  , rate = -0.018327791928
+  , pvalue =  0.126280543707
   }
   , { species = EasternMeadowlark
   , id = "EasternMeadowlark" 
   , commonName = "Eastern Meadowlark"
   , sciName = "Sturnella magna"
-  , rate = -0.026485260189
-  , pvalue =  0.007958920871
+  , rate = -0.025362634563
+  , pvalue =  0.007080999889
   }
   , { species = EasternPhoebe
   , id = "EasternPhoebe" 
   , commonName = "Eastern Phoebe"
   , sciName = "Sayornis phoebe"
-  , rate = 0.007880859301
-  , pvalue =  0.188632988760
+  , rate = 0.010934005791
+  , pvalue =  0.047127915818
   }
   , { species = EasternScreechOwl
   , id = "EasternScreechOwl" 
   , commonName = "Eastern Screech-Owl"
   , sciName = "Megascops asio"
-  , rate = 0.036708402580
-  , pvalue =  0.574792371560
+  , rate = 0.050065964402
+  , pvalue =  0.380147700871
   }
   , { species = EasternTowhee
   , id = "EasternTowhee" 
   , commonName = "Eastern Towhee"
   , sciName = "Pipilo erythrophthalmus"
-  , rate = -0.027927312196
+  , rate = -0.030362722386
   , pvalue =  0.000000000000
   }
   , { species = EasternWhippoorwill
   , id = "EasternWhippoorwill" 
   , commonName = "Eastern Whip-poor-will"
   , sciName = "Antrostomus vociferus"
-  , rate = -0.044679301471
-  , pvalue =  0.013796536842
+  , rate = -0.045654232630
+  , pvalue =  0.010320867867
   }
   , { species = EasternWoodPewee
   , id = "EasternWoodPewee" 
   , commonName = "Eastern Wood-Pewee"
   , sciName = "Contopus virens"
-  , rate = -0.007948975342
-  , pvalue =  0.169011990746
+  , rate = -0.007236552067
+  , pvalue =  0.180008563044
   }
   , { species = EuropeanStarling
   , id = "EuropeanStarling" 
   , commonName = "European Starling"
   , sciName = "Sturnus vulgaris"
-  , rate = -0.026969386090
-  , pvalue =  0.035813979520
+  , rate = -0.031023978355
+  , pvalue =  0.007332769720
   }
   , { species = FieldSparrow
   , id = "FieldSparrow" 
   , commonName = "Field Sparrow"
   , sciName = "Spizella pusilla"
-  , rate = -0.045515934985
-  , pvalue =  0.002397996172
+  , rate = -0.043789524735
+  , pvalue =  0.001664147950
   }
   , { species = FishCrow
   , id = "FishCrow" 
   , commonName = "Fish Crow"
   , sciName = "Corvus ossifragus"
-  , rate = 0.063745835094
-  , pvalue =  0.000000000003
+  , rate = 0.062656983221
+  , pvalue =  0.000000000000
   }
   , { species = GrasshopperSparrow
   , id = "GrasshopperSparrow" 
   , commonName = "Grasshopper Sparrow"
   , sciName = "Ammodramus savannarum"
-  , rate = -0.009392562853
-  , pvalue =  0.691905225186
+  , rate = -0.004158993779
+  , pvalue =  0.850168378791
   }
   , { species = GrayCatbird
   , id = "GrayCatbird" 
   , commonName = "Gray Catbird"
   , sciName = "Dumetella carolinensis"
-  , rate = -0.007536198160
-  , pvalue =  0.349848479720
+  , rate = -0.010979652397
+  , pvalue =  0.158409874370
   }
   , { species = GreatBlueHeron
   , id = "GreatBlueHeron" 
   , commonName = "Great Blue Heron"
   , sciName = "Ardea herodias"
-  , rate = 0.021438951465
-  , pvalue =  0.018140868111
+  , rate = 0.016338621519
+  , pvalue =  0.083269643502
   }
   , { species = GreatCrestedFlycatcher
   , id = "GreatCrestedFlycatcher" 
   , commonName = "Great Crested Flycatcher"
   , sciName = "Myiarchus crinitus"
-  , rate = 0.042320802760
-  , pvalue =  0.000000061355
+  , rate = 0.037603447079
+  , pvalue =  0.000000485645
   }
   , { species = GreatEgret
   , id = "GreatEgret" 
@@ -581,29 +590,29 @@ allSpeciesRec
   , id = "GreatHornedOwl" 
   , commonName = "Great Horned Owl"
   , sciName = "Bubo virginianus"
-  , rate = 0.000091564927
-  , pvalue =  0.997975500141
+  , rate = -0.013999492381
+  , pvalue =  0.668247609632
   }
   , { species = GreenHeron
   , id = "GreenHeron" 
   , commonName = "Green Heron"
   , sciName = "Butorides virescens"
-  , rate = -0.048023360582
-  , pvalue =  0.008785128090
+  , rate = -0.047951962970
+  , pvalue =  0.004899899995
   }
   , { species = HairyWoodpecker
   , id = "HairyWoodpecker" 
   , commonName = "Hairy Woodpecker"
   , sciName = "Dryobates villosus"
-  , rate = -0.010066090509
-  , pvalue =  0.647746250452
+  , rate = -0.012353535017
+  , pvalue =  0.500962720757
   }
   , { species = HoodedWarbler
   , id = "HoodedWarbler" 
   , commonName = "Hooded Warbler"
   , sciName = "Setophaga citrina"
-  , rate = 0.027570886363
-  , pvalue =  0.000262316252
+  , rate = 0.028609773239
+  , pvalue =  0.000025557547
   }
   , { species = HornedLark
   , id = "HornedLark" 
@@ -616,344 +625,344 @@ allSpeciesRec
   , id = "HouseFinch" 
   , commonName = "House Finch"
   , sciName = "Haemorhous mexicanus"
-  , rate = -0.001778361884
-  , pvalue =  0.834203005915
+  , rate = 0.001004960861
+  , pvalue =  0.895001713684
   }
   , { species = HouseSparrow
   , id = "HouseSparrow" 
   , commonName = "House Sparrow"
   , sciName = "Passer domesticus"
-  , rate = -0.077990564732
-  , pvalue =  0.000011581950
+  , rate = -0.076099796399
+  , pvalue =  0.000003530713
   }
   , { species = HouseWren
   , id = "HouseWren" 
   , commonName = "House Wren"
   , sciName = "Troglodytes aedon"
-  , rate = -0.035630373918
-  , pvalue =  0.057720175180
+  , rate = -0.041742723871
+  , pvalue =  0.020435431162
   }
   , { species = IndigoBunting
   , id = "IndigoBunting" 
   , commonName = "Indigo Bunting"
   , sciName = "Passerina cyanea"
-  , rate = -0.027089044256
-  , pvalue =  0.000000040788
+  , rate = -0.027153507223
+  , pvalue =  0.000000005263
   }
   , { species = KentuckyWarbler
   , id = "KentuckyWarbler" 
   , commonName = "Kentucky Warbler"
   , sciName = "Geothlypis formosa"
-  , rate = 0.039745931897
-  , pvalue =  0.300026218627
+  , rate = 0.033423036967
+  , pvalue =  0.348905527799
   }
   , { species = Killdeer
   , id = "Killdeer" 
   , commonName = "Killdeer"
   , sciName = "Charadrius vociferus"
-  , rate = -0.019906248311
-  , pvalue =  0.179999457904
+  , rate = -0.018658124709
+  , pvalue =  0.210102449068
   }
   , { species = LoggerheadShrike
   , id = "LoggerheadShrike" 
   , commonName = "Loggerhead Shrike"
   , sciName = "Lanius ludovicianus"
-  , rate = -0.014581246243
-  , pvalue =  0.837979199064
+  , rate = -0.001146932188
+  , pvalue =  0.987261978862
   }
   , { species = LouisianaWaterthrush
   , id = "LouisianaWaterthrush" 
   , commonName = "Louisiana Waterthrush"
   , sciName = "Parkesia motacilla"
-  , rate = 0.028085666944
-  , pvalue =  0.146257390112
+  , rate = 0.023479610352
+  , pvalue =  0.244116838073
   }
   , { species = Mallard
   , id = "Mallard" 
   , commonName = "Mallard"
   , sciName = "Anas platyrhynchos"
-  , rate = -0.041529474448
-  , pvalue =  0.025026695050
+  , rate = -0.045179605970
+  , pvalue =  0.015934798922
   }
   , { species = MourningDove
   , id = "MourningDove" 
   , commonName = "Mourning Dove"
   , sciName = "Zenaida macroura"
-  , rate = -0.012479207199
-  , pvalue =  0.003618836180
+  , rate = -0.011507871809
+  , pvalue =  0.005406557467
   }
   , { species = NorthernBobwhite
   , id = "NorthernBobwhite" 
   , commonName = "Northern Bobwhite"
   , sciName = "Colinus virginianus"
-  , rate = -0.118906224791
-  , pvalue =  0.000000000390
+  , rate = -0.115985802096
+  , pvalue =  0.000000000481
   }
   , { species = NorthernCardinal
   , id = "NorthernCardinal" 
   , commonName = "Northern Cardinal"
   , sciName = "Cardinalis cardinalis"
-  , rate = -0.003473145869
-  , pvalue =  0.198167792922
+  , rate = -0.003986349644
+  , pvalue =  0.112558781207
   }
   , { species = NorthernFlicker
   , id = "NorthernFlicker" 
   , commonName = "Northern Flicker"
   , sciName = "Colaptes auratus"
-  , rate = -0.043326851082
-  , pvalue =  0.004255503775
+  , rate = -0.042945270556
+  , pvalue =  0.002136779636
   }
   , { species = NorthernMockingbird
   , id = "NorthernMockingbird" 
   , commonName = "Northern Mockingbird"
   , sciName = "Mimus polyglottos"
-  , rate = -0.009042356071
-  , pvalue =  0.074221621781
+  , rate = -0.009505886530
+  , pvalue =  0.033563791827
   }
   , { species = NorthernParula
   , id = "NorthernParula" 
   , commonName = "Northern Parula"
   , sciName = "Setophaga americana"
-  , rate = 0.037849376539
-  , pvalue =  0.007426733805
+  , rate = 0.038301352709
+  , pvalue =  0.004566151659
   }
   , { species = NorthernRoughwingedSwallow
   , id = "NorthernRoughwingedSwallow" 
   , commonName = "Northern Rough-winged Swallow"
   , sciName = "Stelgidopteryx serripennis"
-  , rate = 0.010262557476
-  , pvalue =  0.731321885245
+  , rate = 0.010721015788
+  , pvalue =  0.693854697827
   }
   , { species = OrchardOriole
   , id = "OrchardOriole" 
   , commonName = "Orchard Oriole"
   , sciName = "Icterus spurius"
-  , rate = -0.020363080540
-  , pvalue =  0.120837223890
+  , rate = -0.018955122565
+  , pvalue =  0.096657235069
   }
   , { species = Osprey
   , id = "Osprey" 
   , commonName = "Osprey"
   , sciName = "Pandion haliaetus"
-  , rate = 0.073716040403
-  , pvalue =  0.005579016308
+  , rate = 0.066151838341
+  , pvalue =  0.001584778261
   }
   , { species = Ovenbird
   , id = "Ovenbird" 
   , commonName = "Ovenbird"
   , sciName = "Seiurus aurocapilla"
-  , rate = -0.001889570617
-  , pvalue =  0.696033327205
+  , rate = -0.001688368549
+  , pvalue =  0.698047215573
   }
   , { species = PileatedWoodpecker
   , id = "PileatedWoodpecker" 
   , commonName = "Pileated Woodpecker"
   , sciName = "Dryocopus pileatus"
-  , rate = 0.037037272474
-  , pvalue =  0.016691314775
+  , rate = 0.035876257996
+  , pvalue =  0.011215657819
   }
   , { species = PrairieWarbler
   , id = "PrairieWarbler" 
   , commonName = "Prairie Warbler"
   , sciName = "Setophaga discolor"
-  , rate = -0.040520953410
-  , pvalue =  0.000000292769
+  , rate = -0.040507464720
+  , pvalue =  0.000000022502
   }
   , { species = ProthonotaryWarbler
   , id = "ProthonotaryWarbler" 
   , commonName = "Prothonotary Warbler"
   , sciName = "Protonotaria citrea"
-  , rate = 0.039745931897
-  , pvalue =  0.072396097350
+  , rate = 0.035491251895
+  , pvalue =  0.191905921262
   }
   , { species = PurpleMartin
   , id = "PurpleMartin" 
   , commonName = "Purple Martin"
   , sciName = "Progne subis"
-  , rate = 0.021600979626
-  , pvalue =  0.016326816476
+  , rate = 0.015066150296
+  , pvalue =  0.097343519592
   }
   , { species = RedbelliedWoodpecker
   , id = "RedbelliedWoodpecker" 
   , commonName = "Red-bellied Woodpecker"
   , sciName = "Melanerpes carolinus"
-  , rate = 0.002851184046
-  , pvalue =  0.466349622270
+  , rate = 0.001996064703
+  , pvalue =  0.592590696381
   }
   , { species = RedeyedVireo
   , id = "RedeyedVireo" 
   , commonName = "Red-eyed Vireo"
   , sciName = "Vireo olivaceus"
-  , rate = -0.010480609357
-  , pvalue =  0.070478913025
+  , rate = -0.008894714327
+  , pvalue =  0.115939491360
   }
   , { species = RedheadedWoodpecker
   , id = "RedheadedWoodpecker" 
   , commonName = "Red-headed Woodpecker"
   , sciName = "Melanerpes erythrocephalus"
-  , rate = 0.019256570268
-  , pvalue =  0.251430177629
+  , rate = 0.012366234970
+  , pvalue =  0.434496756206
   }
   , { species = RedshoulderedHawk
   , id = "RedshoulderedHawk" 
   , commonName = "Red-shouldered Hawk"
   , sciName = "Buteo lineatus"
-  , rate = 0.052294264878
-  , pvalue =  0.000000269467
+  , rate = 0.053656145496
+  , pvalue =  0.000000005617
   }
   , { species = RedtailedHawk
   , id = "RedtailedHawk" 
   , commonName = "Red-tailed Hawk"
   , sciName = "Buteo jamaicensis"
-  , rate = 0.011810079654
-  , pvalue =  0.450513047582
+  , rate = 0.005585849177
+  , pvalue =  0.683106569546
   }
   , { species = RedwingedBlackbird
   , id = "RedwingedBlackbird" 
   , commonName = "Red-winged Blackbird"
   , sciName = "Agelaius phoeniceus"
-  , rate = -0.030017936565
-  , pvalue =  0.021596295873
+  , rate = -0.027305116840
+  , pvalue =  0.016432019247
   }
   , { species = RockPigeon
   , id = "RockPigeon" 
   , commonName = "Rock Pigeon"
   , sciName = "Columba livia"
-  , rate = -0.044264718325
-  , pvalue =  0.012065773431
+  , rate = -0.040308863545
+  , pvalue =  0.041456712513
   }
   , { species = RubythroatedHummingbird
   , id = "RubythroatedHummingbird" 
   , commonName = "Ruby-throated Hummingbird"
   , sciName = "Archilochus colubris"
-  , rate = -0.032718871773
-  , pvalue =  0.001439670892
+  , rate = -0.037110389963
+  , pvalue =  0.000446523961
   }
   , { species = ScarletTanager
   , id = "ScarletTanager" 
   , commonName = "Scarlet Tanager"
   , sciName = "Piranga olivacea"
-  , rate = -0.038319894462
-  , pvalue =  0.000000136509
+  , rate = -0.041320278432
+  , pvalue =  0.000000003545
   }
   , { species = SharpshinnedHawk
   , id = "SharpshinnedHawk" 
   , commonName = "Sharp-shinned Hawk"
   , sciName = "Accipiter striatus"
-  , rate = -0.051759663167
-  , pvalue =  0.182888592748
+  , rate = -0.057973987769
+  , pvalue =  0.114223189802
   }
   , { species = SongSparrow
   , id = "SongSparrow" 
   , commonName = "Song Sparrow"
   , sciName = "Melospiza melodia"
-  , rate = 0.036461464378
-  , pvalue =  0.018187345803
+  , rate = 0.032505102865
+  , pvalue =  0.026034060052
   }
   , { species = SummerTanager
   , id = "SummerTanager" 
   , commonName = "Summer Tanager"
   , sciName = "Piranga rubra"
-  , rate = 0.026048932514
-  , pvalue =  0.000066006237
+  , rate = 0.024111449766
+  , pvalue =  0.000078368127
   }
   , { species = TreeSwallow
   , id = "TreeSwallow" 
   , commonName = "Tree Swallow"
   , sciName = "Tachycineta bicolor"
-  , rate = 0.146540299870
-  , pvalue =  0.002669039721
+  , rate = 0.127386748356
+  , pvalue =  0.000089014762
   }
   , { species = TuftedTitmouse
   , id = "TuftedTitmouse" 
   , commonName = "Tufted Titmouse"
   , sciName = "Baeolophus bicolor"
-  , rate = 0.003832461798
-  , pvalue =  0.338994024983
+  , rate = 0.003870311862
+  , pvalue =  0.302864102890
   }
   , { species = TurkeyVulture
   , id = "TurkeyVulture" 
   , commonName = "Turkey Vulture"
   , sciName = "Cathartes aura"
-  , rate = 0.009502874866
-  , pvalue =  0.585137744314
+  , rate = 0.008900763607
+  , pvalue =  0.591704652869
   }
   , { species = WarblingVireo
   , id = "WarblingVireo" 
   , commonName = "Warbling Vireo"
   , sciName = "Vireo gilvus"
-  , rate = -0.176666597512
-  , pvalue =  0.039895975366
+  , rate = -0.178049204619
+  , pvalue =  0.034608426541
   }
   , { species = WhitebreastedNuthatch
   , id = "WhitebreastedNuthatch" 
   , commonName = "White-breasted Nuthatch"
   , sciName = "Sitta carolinensis"
-  , rate = 0.011387687409
-  , pvalue =  0.243622822423
+  , rate = 0.016038439153
+  , pvalue =  0.077964923812
   }
   , { species = WhiteeyedVireo
   , id = "WhiteeyedVireo" 
   , commonName = "White-eyed Vireo"
   , sciName = "Vireo griseus"
-  , rate = 0.065966902534
-  , pvalue =  0.000000060750
+  , rate = 0.068277321972
+  , pvalue =  0.000000000211
   }
   , { species = WildTurkey
   , id = "WildTurkey" 
   , commonName = "Wild Turkey"
   , sciName = "Meleagris gallopavo"
-  , rate = 0.079399594763
-  , pvalue =  0.000076521916
+  , rate = 0.069031195404
+  , pvalue =  0.000049643823
   }
   , { species = WoodDuck
   , id = "WoodDuck" 
   , commonName = "Wood Duck"
   , sciName = "Aix sponsa"
-  , rate = 0.016336174122
-  , pvalue =  0.614448555374
+  , rate = 0.025804618319
+  , pvalue =  0.397349366039
   }
   , { species = WoodThrush
   , id = "WoodThrush" 
   , commonName = "Wood Thrush"
   , sciName = "Hylocichla mustelina"
-  , rate = -0.063218168140
+  , rate = -0.060334883174
   , pvalue =  0.000000000000
   }
   , { species = YellowWarbler
   , id = "YellowWarbler" 
   , commonName = "Yellow Warbler"
   , sciName = "Setophaga petechia"
-  , rate = 0.047988532703
-  , pvalue =  0.223045304115
+  , rate = 0.033423036967
+  , pvalue =  0.341571717627
   }
   , { species = YellowbilledCuckoo
   , id = "YellowbilledCuckoo" 
   , commonName = "Yellow-billed Cuckoo"
   , sciName = "Coccyzus americanus"
-  , rate = 0.009019869482
-  , pvalue =  0.187830530518
+  , rate = 0.012922885525
+  , pvalue =  0.053450149808
   }
   , { species = YellowbreastedChat
   , id = "YellowbreastedChat" 
   , commonName = "Yellow-breasted Chat"
   , sciName = "Icteria virens"
-  , rate = -0.036039603460
-  , pvalue =  0.000000709480
+  , rate = -0.037505401028
+  , pvalue =  0.000000342825
   }
   , { species = YellowthroatedVireo
   , id = "YellowthroatedVireo" 
   , commonName = "Yellow-throated Vireo"
   , sciName = "Vireo flavifrons"
-  , rate = -0.012000835374
-  , pvalue =  0.419968488465
+  , rate = -0.009029091887
+  , pvalue =  0.521076202903
   }
   , { species = YellowthroatedWarbler
   , id = "YellowthroatedWarbler" 
   , commonName = "Yellow-throated Warbler"
   , sciName = "Setophaga dominica"
-  , rate = 0.075514510566
-  , pvalue =  0.000000000009
+  , rate = 0.075931421857
+  , pvalue =  0.000000000413
   } ] 
 
 
@@ -973,6 +982,7 @@ speciesToString species =
       BeltedKingfisher -> "Belted Kingfisher"
       BlackVulture -> "Black Vulture"
       BlackandwhiteWarbler -> "Black-and-white Warbler"
+      BlackpollWarbler -> "Blackpoll Warbler"
       BlueGrosbeak -> "Blue Grosbeak"
       BlueJay -> "Blue Jay"
       BluegrayGnatcatcher -> "Blue-gray Gnatcatcher"
