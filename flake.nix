@@ -4,7 +4,7 @@
     bash-prompt = "minibbs.us> ";
   };
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     flake-utils.url = "github:numtide/flake-utils";
     gitignore = {
       url = "github:hercules-ci/gitignore.nix";
@@ -23,20 +23,23 @@
           src = pkgs.fetchFromGitHub {
             owner = "nc-minibbs";
             repo = "mbbs";
-            rev = "3a4192e64de04001c6c26ef515f7c15f3961331c";
-            sha256 = "1qpJxRDUp3V8XlogPjJaWLc5VRNmmRkZl6wcXMLo03A=";
+            rev = "022ddfaa3842f6381155c16c4e4742fa0fb89e1f";
+            sha256 = "ODhwW6yj6rVv165cs9bU9kAx4KxaVu8yYqJzMmvw+KA=";
             # sha256 = pkgs.lib.fakeSha256;
           };
           propagatedBuildInputs = with pkgs.rPackages; [
             purrr
             stringr
             lubridate
-            readr 
+            readr
             magrittr
             dplyr
             glue
             assertthat
             yaml
+            beepr
+            readxl
+            tidyr
           ];
         };
 

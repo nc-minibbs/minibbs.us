@@ -17230,8 +17230,8 @@ var $mdgriffith$elm_ui$Internal$Model$toStyleSheetString = F2(
 			combine,
 			{dm: _List_Nil, cq: _List_Nil},
 			stylesheet);
-		var topLevel = _v0.cq;
 		var rules = _v0.dm;
+		var topLevel = _v0.cq;
 		return _Utils_ap(
 			$mdgriffith$elm_ui$Internal$Model$renderTopLevelValues(topLevel),
 			$elm$core$String$concat(rules));
@@ -19285,8 +19285,8 @@ var $mdgriffith$elm_ui$Internal$Model$toHtml = F2(
 				var html = el.a;
 				return html($mdgriffith$elm_ui$Internal$Model$asEl);
 			case 1:
-				var styles = el.a.s;
 				var html = el.a.g_;
+				var styles = el.a.s;
 				return A2(
 					html,
 					mode(styles),

@@ -5218,99 +5218,100 @@ var $author$project$Data$Species$BarredOwl = 8;
 var $author$project$Data$Species$BeltedKingfisher = 9;
 var $author$project$Data$Species$BlackVulture = 10;
 var $author$project$Data$Species$BlackandwhiteWarbler = 11;
-var $author$project$Data$Species$BlueGrosbeak = 12;
-var $author$project$Data$Species$BlueJay = 13;
-var $author$project$Data$Species$BluegrayGnatcatcher = 14;
-var $author$project$Data$Species$BlueheadedVireo = 15;
-var $author$project$Data$Species$BroadwingedHawk = 16;
-var $author$project$Data$Species$BrownThrasher = 17;
-var $author$project$Data$Species$BrownheadedCowbird = 18;
-var $author$project$Data$Species$BrownheadedNuthatch = 19;
-var $author$project$Data$Species$CanadaGoose = 20;
-var $author$project$Data$Species$CarolinaChickadee = 21;
-var $author$project$Data$Species$CarolinaWren = 22;
-var $author$project$Data$Species$CedarWaxwing = 23;
-var $author$project$Data$Species$ChimneySwift = 24;
-var $author$project$Data$Species$Chuckwillswidow = 25;
-var $author$project$Data$Species$CliffSwallow = 26;
-var $author$project$Data$Species$CommonGrackle = 27;
-var $author$project$Data$Species$CommonYellowthroat = 28;
-var $author$project$Data$Species$CoopersHawk = 29;
-var $author$project$Data$Species$Dickcissel = 30;
-var $author$project$Data$Species$DoublecrestedCormorant = 31;
-var $author$project$Data$Species$DownyWoodpecker = 32;
-var $author$project$Data$Species$EasternBluebird = 33;
-var $author$project$Data$Species$EasternKingbird = 34;
-var $author$project$Data$Species$EasternMeadowlark = 35;
-var $author$project$Data$Species$EasternPhoebe = 36;
-var $author$project$Data$Species$EasternScreechOwl = 37;
-var $author$project$Data$Species$EasternTowhee = 38;
-var $author$project$Data$Species$EasternWhippoorwill = 39;
-var $author$project$Data$Species$EasternWoodPewee = 40;
-var $author$project$Data$Species$EuropeanStarling = 41;
-var $author$project$Data$Species$FieldSparrow = 42;
-var $author$project$Data$Species$FishCrow = 43;
-var $author$project$Data$Species$GrasshopperSparrow = 44;
-var $author$project$Data$Species$GrayCatbird = 45;
-var $author$project$Data$Species$GreatBlueHeron = 46;
-var $author$project$Data$Species$GreatCrestedFlycatcher = 47;
-var $author$project$Data$Species$GreatEgret = 48;
-var $author$project$Data$Species$GreatHornedOwl = 49;
-var $author$project$Data$Species$GreenHeron = 50;
-var $author$project$Data$Species$HairyWoodpecker = 51;
-var $author$project$Data$Species$HoodedWarbler = 52;
-var $author$project$Data$Species$HornedLark = 53;
-var $author$project$Data$Species$HouseFinch = 54;
-var $author$project$Data$Species$HouseSparrow = 55;
-var $author$project$Data$Species$HouseWren = 56;
-var $author$project$Data$Species$IndigoBunting = 57;
-var $author$project$Data$Species$KentuckyWarbler = 58;
-var $author$project$Data$Species$Killdeer = 59;
-var $author$project$Data$Species$LoggerheadShrike = 60;
-var $author$project$Data$Species$LouisianaWaterthrush = 61;
-var $author$project$Data$Species$Mallard = 62;
-var $author$project$Data$Species$MourningDove = 63;
-var $author$project$Data$Species$NorthernBobwhite = 64;
-var $author$project$Data$Species$NorthernCardinal = 65;
-var $author$project$Data$Species$NorthernFlicker = 66;
-var $author$project$Data$Species$NorthernMockingbird = 67;
-var $author$project$Data$Species$NorthernParula = 68;
-var $author$project$Data$Species$NorthernRoughwingedSwallow = 69;
-var $author$project$Data$Species$OrchardOriole = 70;
-var $author$project$Data$Species$Osprey = 71;
-var $author$project$Data$Species$Ovenbird = 72;
-var $author$project$Data$Species$PileatedWoodpecker = 73;
-var $author$project$Data$Species$PrairieWarbler = 74;
-var $author$project$Data$Species$ProthonotaryWarbler = 75;
-var $author$project$Data$Species$PurpleMartin = 76;
-var $author$project$Data$Species$RedbelliedWoodpecker = 77;
-var $author$project$Data$Species$RedeyedVireo = 78;
-var $author$project$Data$Species$RedheadedWoodpecker = 79;
-var $author$project$Data$Species$RedshoulderedHawk = 80;
-var $author$project$Data$Species$RedtailedHawk = 81;
-var $author$project$Data$Species$RedwingedBlackbird = 82;
-var $author$project$Data$Species$RockPigeon = 83;
-var $author$project$Data$Species$RubythroatedHummingbird = 84;
-var $author$project$Data$Species$ScarletTanager = 85;
-var $author$project$Data$Species$SharpshinnedHawk = 86;
-var $author$project$Data$Species$SongSparrow = 87;
-var $author$project$Data$Species$SummerTanager = 88;
-var $author$project$Data$Species$TreeSwallow = 89;
-var $author$project$Data$Species$TuftedTitmouse = 90;
-var $author$project$Data$Species$TurkeyVulture = 91;
-var $author$project$Data$Species$WarblingVireo = 92;
-var $author$project$Data$Species$WhitebreastedNuthatch = 93;
-var $author$project$Data$Species$WhiteeyedVireo = 94;
-var $author$project$Data$Species$WildTurkey = 95;
-var $author$project$Data$Species$WoodDuck = 96;
-var $author$project$Data$Species$WoodThrush = 97;
-var $author$project$Data$Species$YellowWarbler = 98;
-var $author$project$Data$Species$YellowbilledCuckoo = 99;
-var $author$project$Data$Species$YellowbreastedChat = 100;
-var $author$project$Data$Species$YellowthroatedVireo = 101;
-var $author$project$Data$Species$YellowthroatedWarbler = 102;
+var $author$project$Data$Species$BlackpollWarbler = 12;
+var $author$project$Data$Species$BlueGrosbeak = 13;
+var $author$project$Data$Species$BlueJay = 14;
+var $author$project$Data$Species$BluegrayGnatcatcher = 15;
+var $author$project$Data$Species$BlueheadedVireo = 16;
+var $author$project$Data$Species$BroadwingedHawk = 17;
+var $author$project$Data$Species$BrownThrasher = 18;
+var $author$project$Data$Species$BrownheadedCowbird = 19;
+var $author$project$Data$Species$BrownheadedNuthatch = 20;
+var $author$project$Data$Species$CanadaGoose = 21;
+var $author$project$Data$Species$CarolinaChickadee = 22;
+var $author$project$Data$Species$CarolinaWren = 23;
+var $author$project$Data$Species$CedarWaxwing = 24;
+var $author$project$Data$Species$ChimneySwift = 25;
+var $author$project$Data$Species$Chuckwillswidow = 26;
+var $author$project$Data$Species$CliffSwallow = 27;
+var $author$project$Data$Species$CommonGrackle = 28;
+var $author$project$Data$Species$CommonYellowthroat = 29;
+var $author$project$Data$Species$CoopersHawk = 30;
+var $author$project$Data$Species$Dickcissel = 31;
+var $author$project$Data$Species$DoublecrestedCormorant = 32;
+var $author$project$Data$Species$DownyWoodpecker = 33;
+var $author$project$Data$Species$EasternBluebird = 34;
+var $author$project$Data$Species$EasternKingbird = 35;
+var $author$project$Data$Species$EasternMeadowlark = 36;
+var $author$project$Data$Species$EasternPhoebe = 37;
+var $author$project$Data$Species$EasternScreechOwl = 38;
+var $author$project$Data$Species$EasternTowhee = 39;
+var $author$project$Data$Species$EasternWhippoorwill = 40;
+var $author$project$Data$Species$EasternWoodPewee = 41;
+var $author$project$Data$Species$EuropeanStarling = 42;
+var $author$project$Data$Species$FieldSparrow = 43;
+var $author$project$Data$Species$FishCrow = 44;
+var $author$project$Data$Species$GrasshopperSparrow = 45;
+var $author$project$Data$Species$GrayCatbird = 46;
+var $author$project$Data$Species$GreatBlueHeron = 47;
+var $author$project$Data$Species$GreatCrestedFlycatcher = 48;
+var $author$project$Data$Species$GreatEgret = 49;
+var $author$project$Data$Species$GreatHornedOwl = 50;
+var $author$project$Data$Species$GreenHeron = 51;
+var $author$project$Data$Species$HairyWoodpecker = 52;
+var $author$project$Data$Species$HoodedWarbler = 53;
+var $author$project$Data$Species$HornedLark = 54;
+var $author$project$Data$Species$HouseFinch = 55;
+var $author$project$Data$Species$HouseSparrow = 56;
+var $author$project$Data$Species$HouseWren = 57;
+var $author$project$Data$Species$IndigoBunting = 58;
+var $author$project$Data$Species$KentuckyWarbler = 59;
+var $author$project$Data$Species$Killdeer = 60;
+var $author$project$Data$Species$LoggerheadShrike = 61;
+var $author$project$Data$Species$LouisianaWaterthrush = 62;
+var $author$project$Data$Species$Mallard = 63;
+var $author$project$Data$Species$MourningDove = 64;
+var $author$project$Data$Species$NorthernBobwhite = 65;
+var $author$project$Data$Species$NorthernCardinal = 66;
+var $author$project$Data$Species$NorthernFlicker = 67;
+var $author$project$Data$Species$NorthernMockingbird = 68;
+var $author$project$Data$Species$NorthernParula = 69;
+var $author$project$Data$Species$NorthernRoughwingedSwallow = 70;
+var $author$project$Data$Species$OrchardOriole = 71;
+var $author$project$Data$Species$Osprey = 72;
+var $author$project$Data$Species$Ovenbird = 73;
+var $author$project$Data$Species$PileatedWoodpecker = 74;
+var $author$project$Data$Species$PrairieWarbler = 75;
+var $author$project$Data$Species$ProthonotaryWarbler = 76;
+var $author$project$Data$Species$PurpleMartin = 77;
+var $author$project$Data$Species$RedbelliedWoodpecker = 78;
+var $author$project$Data$Species$RedeyedVireo = 79;
+var $author$project$Data$Species$RedheadedWoodpecker = 80;
+var $author$project$Data$Species$RedshoulderedHawk = 81;
+var $author$project$Data$Species$RedtailedHawk = 82;
+var $author$project$Data$Species$RedwingedBlackbird = 83;
+var $author$project$Data$Species$RockPigeon = 84;
+var $author$project$Data$Species$RubythroatedHummingbird = 85;
+var $author$project$Data$Species$ScarletTanager = 86;
+var $author$project$Data$Species$SharpshinnedHawk = 87;
+var $author$project$Data$Species$SongSparrow = 88;
+var $author$project$Data$Species$SummerTanager = 89;
+var $author$project$Data$Species$TreeSwallow = 90;
+var $author$project$Data$Species$TuftedTitmouse = 91;
+var $author$project$Data$Species$TurkeyVulture = 92;
+var $author$project$Data$Species$WarblingVireo = 93;
+var $author$project$Data$Species$WhitebreastedNuthatch = 94;
+var $author$project$Data$Species$WhiteeyedVireo = 95;
+var $author$project$Data$Species$WildTurkey = 96;
+var $author$project$Data$Species$WoodDuck = 97;
+var $author$project$Data$Species$WoodThrush = 98;
+var $author$project$Data$Species$YellowWarbler = 99;
+var $author$project$Data$Species$YellowbilledCuckoo = 100;
+var $author$project$Data$Species$YellowbreastedChat = 101;
+var $author$project$Data$Species$YellowthroatedVireo = 102;
+var $author$project$Data$Species$YellowthroatedWarbler = 103;
 var $author$project$Data$Species$allSpecies = _List_fromArray(
-	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102]);
+	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103]);
 var $Confidenceman02$elm_select$Select$Basic = function (a) {
 	return {$: 0, a: a};
 };
@@ -5345,184 +5346,186 @@ var $author$project$Data$Species$speciesToString = function (species) {
 		case 11:
 			return 'Black-and-white Warbler';
 		case 12:
-			return 'Blue Grosbeak';
+			return 'Blackpoll Warbler';
 		case 13:
-			return 'Blue Jay';
+			return 'Blue Grosbeak';
 		case 14:
-			return 'Blue-gray Gnatcatcher';
+			return 'Blue Jay';
 		case 15:
-			return 'Blue-headed Vireo';
+			return 'Blue-gray Gnatcatcher';
 		case 16:
-			return 'Broad-winged Hawk';
+			return 'Blue-headed Vireo';
 		case 17:
-			return 'Brown Thrasher';
+			return 'Broad-winged Hawk';
 		case 18:
-			return 'Brown-headed Cowbird';
+			return 'Brown Thrasher';
 		case 19:
-			return 'Brown-headed Nuthatch';
+			return 'Brown-headed Cowbird';
 		case 20:
-			return 'Canada Goose';
+			return 'Brown-headed Nuthatch';
 		case 21:
-			return 'Carolina Chickadee';
+			return 'Canada Goose';
 		case 22:
-			return 'Carolina Wren';
+			return 'Carolina Chickadee';
 		case 23:
-			return 'Cedar Waxwing';
+			return 'Carolina Wren';
 		case 24:
-			return 'Chimney Swift';
+			return 'Cedar Waxwing';
 		case 25:
-			return 'Chuck-will\'s-widow';
+			return 'Chimney Swift';
 		case 26:
-			return 'Cliff Swallow';
+			return 'Chuck-will\'s-widow';
 		case 27:
-			return 'Common Grackle';
+			return 'Cliff Swallow';
 		case 28:
-			return 'Common Yellowthroat';
+			return 'Common Grackle';
 		case 29:
-			return 'Cooper\'s Hawk';
+			return 'Common Yellowthroat';
 		case 30:
-			return 'Dickcissel';
+			return 'Cooper\'s Hawk';
 		case 31:
-			return 'Double-crested Cormorant';
+			return 'Dickcissel';
 		case 32:
-			return 'Downy Woodpecker';
+			return 'Double-crested Cormorant';
 		case 33:
-			return 'Eastern Bluebird';
+			return 'Downy Woodpecker';
 		case 34:
-			return 'Eastern Kingbird';
+			return 'Eastern Bluebird';
 		case 35:
-			return 'Eastern Meadowlark';
+			return 'Eastern Kingbird';
 		case 36:
-			return 'Eastern Phoebe';
+			return 'Eastern Meadowlark';
 		case 37:
-			return 'Eastern Screech-Owl';
+			return 'Eastern Phoebe';
 		case 38:
-			return 'Eastern Towhee';
+			return 'Eastern Screech-Owl';
 		case 39:
-			return 'Eastern Whip-poor-will';
+			return 'Eastern Towhee';
 		case 40:
-			return 'Eastern Wood-Pewee';
+			return 'Eastern Whip-poor-will';
 		case 41:
-			return 'European Starling';
+			return 'Eastern Wood-Pewee';
 		case 42:
-			return 'Field Sparrow';
+			return 'European Starling';
 		case 43:
-			return 'Fish Crow';
+			return 'Field Sparrow';
 		case 44:
-			return 'Grasshopper Sparrow';
+			return 'Fish Crow';
 		case 45:
-			return 'Gray Catbird';
+			return 'Grasshopper Sparrow';
 		case 46:
-			return 'Great Blue Heron';
+			return 'Gray Catbird';
 		case 47:
-			return 'Great Crested Flycatcher';
+			return 'Great Blue Heron';
 		case 48:
-			return 'Great Egret';
+			return 'Great Crested Flycatcher';
 		case 49:
-			return 'Great Horned Owl';
+			return 'Great Egret';
 		case 50:
-			return 'Green Heron';
+			return 'Great Horned Owl';
 		case 51:
-			return 'Hairy Woodpecker';
+			return 'Green Heron';
 		case 52:
-			return 'Hooded Warbler';
+			return 'Hairy Woodpecker';
 		case 53:
-			return 'Horned Lark';
+			return 'Hooded Warbler';
 		case 54:
-			return 'House Finch';
+			return 'Horned Lark';
 		case 55:
-			return 'House Sparrow';
+			return 'House Finch';
 		case 56:
-			return 'House Wren';
+			return 'House Sparrow';
 		case 57:
-			return 'Indigo Bunting';
+			return 'House Wren';
 		case 58:
-			return 'Kentucky Warbler';
+			return 'Indigo Bunting';
 		case 59:
-			return 'Killdeer';
+			return 'Kentucky Warbler';
 		case 60:
-			return 'Loggerhead Shrike';
+			return 'Killdeer';
 		case 61:
-			return 'Louisiana Waterthrush';
+			return 'Loggerhead Shrike';
 		case 62:
-			return 'Mallard';
+			return 'Louisiana Waterthrush';
 		case 63:
-			return 'Mourning Dove';
+			return 'Mallard';
 		case 64:
-			return 'Northern Bobwhite';
+			return 'Mourning Dove';
 		case 65:
-			return 'Northern Cardinal';
+			return 'Northern Bobwhite';
 		case 66:
-			return 'Northern Flicker';
+			return 'Northern Cardinal';
 		case 67:
-			return 'Northern Mockingbird';
+			return 'Northern Flicker';
 		case 68:
-			return 'Northern Parula';
+			return 'Northern Mockingbird';
 		case 69:
-			return 'Northern Rough-winged Swallow';
+			return 'Northern Parula';
 		case 70:
-			return 'Orchard Oriole';
+			return 'Northern Rough-winged Swallow';
 		case 71:
-			return 'Osprey';
+			return 'Orchard Oriole';
 		case 72:
-			return 'Ovenbird';
+			return 'Osprey';
 		case 73:
-			return 'Pileated Woodpecker';
+			return 'Ovenbird';
 		case 74:
-			return 'Prairie Warbler';
+			return 'Pileated Woodpecker';
 		case 75:
-			return 'Prothonotary Warbler';
+			return 'Prairie Warbler';
 		case 76:
-			return 'Purple Martin';
+			return 'Prothonotary Warbler';
 		case 77:
-			return 'Red-bellied Woodpecker';
+			return 'Purple Martin';
 		case 78:
-			return 'Red-eyed Vireo';
+			return 'Red-bellied Woodpecker';
 		case 79:
-			return 'Red-headed Woodpecker';
+			return 'Red-eyed Vireo';
 		case 80:
-			return 'Red-shouldered Hawk';
+			return 'Red-headed Woodpecker';
 		case 81:
-			return 'Red-tailed Hawk';
+			return 'Red-shouldered Hawk';
 		case 82:
-			return 'Red-winged Blackbird';
+			return 'Red-tailed Hawk';
 		case 83:
-			return 'Rock Pigeon';
+			return 'Red-winged Blackbird';
 		case 84:
-			return 'Ruby-throated Hummingbird';
+			return 'Rock Pigeon';
 		case 85:
-			return 'Scarlet Tanager';
+			return 'Ruby-throated Hummingbird';
 		case 86:
-			return 'Sharp-shinned Hawk';
+			return 'Scarlet Tanager';
 		case 87:
-			return 'Song Sparrow';
+			return 'Sharp-shinned Hawk';
 		case 88:
-			return 'Summer Tanager';
+			return 'Song Sparrow';
 		case 89:
-			return 'Tree Swallow';
+			return 'Summer Tanager';
 		case 90:
-			return 'Tufted Titmouse';
+			return 'Tree Swallow';
 		case 91:
-			return 'Turkey Vulture';
+			return 'Tufted Titmouse';
 		case 92:
-			return 'Warbling Vireo';
+			return 'Turkey Vulture';
 		case 93:
-			return 'White-breasted Nuthatch';
+			return 'Warbling Vireo';
 		case 94:
-			return 'White-eyed Vireo';
+			return 'White-breasted Nuthatch';
 		case 95:
-			return 'Wild Turkey';
+			return 'White-eyed Vireo';
 		case 96:
-			return 'Wood Duck';
+			return 'Wild Turkey';
 		case 97:
-			return 'Wood Thrush';
+			return 'Wood Duck';
 		case 98:
-			return 'Yellow Warbler';
+			return 'Wood Thrush';
 		case 99:
-			return 'Yellow-billed Cuckoo';
+			return 'Yellow Warbler';
 		case 100:
-			return 'Yellow-breasted Chat';
+			return 'Yellow-billed Cuckoo';
 		case 101:
+			return 'Yellow-breasted Chat';
+		case 102:
 			return 'Yellow-throated Vireo';
 		default:
 			return 'Yellow-throated Warbler';
@@ -9356,109 +9359,110 @@ var $elm$core$Basics$negate = function (n) {
 };
 var $author$project$Data$Species$allSpeciesRec = _List_fromArray(
 	[
-		{a: 'Acadian Flycatcher', b: 'AcadianFlycatcher', c: 0.000000000296, d: 0.062644546100, e: 'Empidonax virescens', hM: 0},
-		{a: 'American Crow', b: 'AmericanCrow', c: 0.006140867866, d: -0.007278631417, e: 'Corvus brachyrhynchos', hM: 1},
-		{a: 'American Goldfinch', b: 'AmericanGoldfinch', c: 0.000001197079, d: -0.032397258251, e: 'Spinus tristis', hM: 2},
-		{a: 'American Redstart', b: 'AmericanRedstart', c: 0.212895855786, d: -0.049020824135, e: 'Setophaga ruticilla', hM: 3},
-		{a: 'American Robin', b: 'AmericanRobin', c: 0.005108340201, d: -0.020901596330, e: 'Turdus migratorius', hM: 4},
-		{a: 'Bald Eagle', b: 'BaldEagle', c: 0.333200816230, d: 0.059177712825, e: 'Haliaeetus leucocephalus', hM: 5},
+		{a: 'Acadian Flycatcher', b: 'AcadianFlycatcher', c: 0.000000000007, d: 0.062378164501, e: 'Empidonax virescens', hM: 0},
+		{a: 'American Crow', b: 'AmericanCrow', c: 0.004408774440, d: -0.007316855342, e: 'Corvus brachyrhynchos', hM: 1},
+		{a: 'American Goldfinch', b: 'AmericanGoldfinch', c: 0.000000237923, d: -0.030990648232, e: 'Spinus tristis', hM: 2},
+		{a: 'American Redstart', b: 'AmericanRedstart', c: 0.505090171995, d: -0.025603451278, e: 'Setophaga ruticilla', hM: 3},
+		{a: 'American Robin', b: 'AmericanRobin', c: 0.005983852809, d: -0.021117571909, e: 'Turdus migratorius', hM: 4},
+		{a: 'Bald Eagle', b: 'BaldEagle', c: 0.265401319617, d: 0.073210030176, e: 'Haliaeetus leucocephalus', hM: 5},
 		{a: 'Baltimore Oriole', b: 'BaltimoreOriole', c: 1.000000000000, d: 0.000000000000, e: 'Icterus galbula', hM: 6},
-		{a: 'Barn Swallow', b: 'BarnSwallow', c: 0.031559155421, d: -0.026385424219, e: 'Hirundo rustica', hM: 7},
-		{a: 'Barred Owl', b: 'BarredOwl', c: 0.037844695702, d: 0.027546403524, e: 'Strix varia', hM: 8},
-		{a: 'Belted Kingfisher', b: 'BeltedKingfisher', c: 0.058926632658, d: -0.057487507314, e: 'Megaceryle alcyon', hM: 9},
-		{a: 'Black Vulture', b: 'BlackVulture', c: 0.002046832360, d: 0.065972678722, e: 'Coragyps atratus', hM: 10},
-		{a: 'Black-and-white Warbler', b: 'BlackandwhiteWarbler', c: 0.026866584988, d: 0.052103494919, e: 'Mniotilta varia', hM: 11},
-		{a: 'Blue Grosbeak', b: 'BlueGrosbeak', c: 0.542578292049, d: 0.005527760522, e: 'Passerina caerulea', hM: 12},
-		{a: 'Blue Jay', b: 'BlueJay', c: 0.002928552251, d: -0.017200080728, e: 'Cyanocitta cristata', hM: 13},
-		{a: 'Blue-gray Gnatcatcher', b: 'BluegrayGnatcatcher', c: 0.267114057330, d: 0.006591715679, e: 'Polioptila caerulea', hM: 14},
-		{a: 'Blue-headed Vireo', b: 'BlueheadedVireo', c: 0.001470688477, d: -0.048590522918, e: 'Vireo solitarius', hM: 15},
-		{a: 'Broad-winged Hawk', b: 'BroadwingedHawk', c: 0.000000002818, d: -0.097871523366, e: 'Buteo platypterus', hM: 16},
-		{a: 'Brown Thrasher', b: 'BrownThrasher', c: 0.849862437025, d: 0.001354550520, e: 'Toxostoma rufum', hM: 17},
-		{a: 'Brown-headed Cowbird', b: 'BrownheadedCowbird', c: 0.152071709927, d: 0.010833456142, e: 'Molothrus ater', hM: 18},
-		{a: 'Brown-headed Nuthatch', b: 'BrownheadedNuthatch', c: 0.344895600896, d: 0.014062130656, e: 'Sitta pusilla', hM: 19},
-		{a: 'Canada Goose', b: 'CanadaGoose', c: 0.180411874325, d: -0.031858943738, e: 'Branta canadensis', hM: 20},
-		{a: 'Carolina Chickadee', b: 'CarolinaChickadee', c: 0.845832977350, d: 0.001064252973, e: 'Poecile carolinensis', hM: 21},
-		{a: 'Carolina Wren', b: 'CarolinaWren', c: 0.034624863856, d: 0.007371916725, e: 'Thryothorus ludovicianus', hM: 22},
-		{a: 'Cedar Waxwing', b: 'CedarWaxwing', c: 0.889075485392, d: -0.002688987441, e: 'Bombycilla cedrorum', hM: 23},
-		{a: 'Chimney Swift', b: 'ChimneySwift', c: 0.000022793638, d: -0.034887627638, e: 'Chaetura pelagica', hM: 24},
-		{a: 'Chuck-will\'s-widow', b: 'Chuckwillswidow', c: 0.239719462528, d: 0.020176264730, e: 'Antrostomus carolinensis', hM: 25},
-		{a: 'Cliff Swallow', b: 'CliffSwallow', c: 0.000000000000, d: 0.117992192365, e: 'Petrochelidon pyrrhonota', hM: 26},
-		{a: 'Common Grackle', b: 'CommonGrackle', c: 0.000000000345, d: -0.057558266909, e: 'Quiscalus quiscula', hM: 27},
-		{a: 'Common Yellowthroat', b: 'CommonYellowthroat', c: 0.000575825041, d: -0.029868578686, e: 'Geothlypis trichas', hM: 28},
-		{a: 'Cooper\'s Hawk', b: 'CoopersHawk', c: 0.933571880710, d: -0.001746967084, e: 'Accipiter cooperii', hM: 29},
-		{a: 'Dickcissel', b: 'Dickcissel', c: 1.000000000000, d: 0.000000000000, e: 'Spiza americana', hM: 30},
-		{a: 'Double-crested Cormorant', b: 'DoublecrestedCormorant', c: 0.093000925819, d: 0.042681348381, e: 'Nannopterum auritum', hM: 31},
-		{a: 'Downy Woodpecker', b: 'DownyWoodpecker', c: 0.997244304972, d: -0.000027046608, e: 'Dryobates pubescens', hM: 32},
-		{a: 'Eastern Bluebird', b: 'EasternBluebird', c: 0.905113822429, d: 0.000472548626, e: 'Sialia sialis', hM: 33},
-		{a: 'Eastern Kingbird', b: 'EasternKingbird', c: 0.015413808850, d: -0.030915331881, e: 'Tyrannus tyrannus', hM: 34},
-		{a: 'Eastern Meadowlark', b: 'EasternMeadowlark', c: 0.007958920871, d: -0.026485260189, e: 'Sturnella magna', hM: 35},
-		{a: 'Eastern Phoebe', b: 'EasternPhoebe', c: 0.188632988760, d: 0.007880859301, e: 'Sayornis phoebe', hM: 36},
-		{a: 'Eastern Screech-Owl', b: 'EasternScreechOwl', c: 0.574792371560, d: 0.036708402580, e: 'Megascops asio', hM: 37},
-		{a: 'Eastern Towhee', b: 'EasternTowhee', c: 0.000000000000, d: -0.027927312196, e: 'Pipilo erythrophthalmus', hM: 38},
-		{a: 'Eastern Whip-poor-will', b: 'EasternWhippoorwill', c: 0.013796536842, d: -0.044679301471, e: 'Antrostomus vociferus', hM: 39},
-		{a: 'Eastern Wood-Pewee', b: 'EasternWoodPewee', c: 0.169011990746, d: -0.007948975342, e: 'Contopus virens', hM: 40},
-		{a: 'European Starling', b: 'EuropeanStarling', c: 0.035813979520, d: -0.026969386090, e: 'Sturnus vulgaris', hM: 41},
-		{a: 'Field Sparrow', b: 'FieldSparrow', c: 0.002397996172, d: -0.045515934985, e: 'Spizella pusilla', hM: 42},
-		{a: 'Fish Crow', b: 'FishCrow', c: 0.000000000003, d: 0.063745835094, e: 'Corvus ossifragus', hM: 43},
-		{a: 'Grasshopper Sparrow', b: 'GrasshopperSparrow', c: 0.691905225186, d: -0.009392562853, e: 'Ammodramus savannarum', hM: 44},
-		{a: 'Gray Catbird', b: 'GrayCatbird', c: 0.349848479720, d: -0.007536198160, e: 'Dumetella carolinensis', hM: 45},
-		{a: 'Great Blue Heron', b: 'GreatBlueHeron', c: 0.018140868111, d: 0.021438951465, e: 'Ardea herodias', hM: 46},
-		{a: 'Great Crested Flycatcher', b: 'GreatCrestedFlycatcher', c: 0.000000061355, d: 0.042320802760, e: 'Myiarchus crinitus', hM: 47},
-		{a: 'Great Egret', b: 'GreatEgret', c: 1.000000000000, d: 0.000000000000, e: 'Ardea alba', hM: 48},
-		{a: 'Great Horned Owl', b: 'GreatHornedOwl', c: 0.997975500141, d: 0.000091564927, e: 'Bubo virginianus', hM: 49},
-		{a: 'Green Heron', b: 'GreenHeron', c: 0.008785128090, d: -0.048023360582, e: 'Butorides virescens', hM: 50},
-		{a: 'Hairy Woodpecker', b: 'HairyWoodpecker', c: 0.647746250452, d: -0.010066090509, e: 'Dryobates villosus', hM: 51},
-		{a: 'Hooded Warbler', b: 'HoodedWarbler', c: 0.000262316252, d: 0.027570886363, e: 'Setophaga citrina', hM: 52},
-		{a: 'Horned Lark', b: 'HornedLark', c: 1.000000000000, d: 0.000000000000, e: 'Eremophila alpestris', hM: 53},
-		{a: 'House Finch', b: 'HouseFinch', c: 0.834203005915, d: -0.001778361884, e: 'Haemorhous mexicanus', hM: 54},
-		{a: 'House Sparrow', b: 'HouseSparrow', c: 0.000011581950, d: -0.077990564732, e: 'Passer domesticus', hM: 55},
-		{a: 'House Wren', b: 'HouseWren', c: 0.057720175180, d: -0.035630373918, e: 'Troglodytes aedon', hM: 56},
-		{a: 'Indigo Bunting', b: 'IndigoBunting', c: 0.000000040788, d: -0.027089044256, e: 'Passerina cyanea', hM: 57},
-		{a: 'Kentucky Warbler', b: 'KentuckyWarbler', c: 0.300026218627, d: 0.039745931897, e: 'Geothlypis formosa', hM: 58},
-		{a: 'Killdeer', b: 'Killdeer', c: 0.179999457904, d: -0.019906248311, e: 'Charadrius vociferus', hM: 59},
-		{a: 'Loggerhead Shrike', b: 'LoggerheadShrike', c: 0.837979199064, d: -0.014581246243, e: 'Lanius ludovicianus', hM: 60},
-		{a: 'Louisiana Waterthrush', b: 'LouisianaWaterthrush', c: 0.146257390112, d: 0.028085666944, e: 'Parkesia motacilla', hM: 61},
-		{a: 'Mallard', b: 'Mallard', c: 0.025026695050, d: -0.041529474448, e: 'Anas platyrhynchos', hM: 62},
-		{a: 'Mourning Dove', b: 'MourningDove', c: 0.003618836180, d: -0.012479207199, e: 'Zenaida macroura', hM: 63},
-		{a: 'Northern Bobwhite', b: 'NorthernBobwhite', c: 0.000000000390, d: -0.118906224791, e: 'Colinus virginianus', hM: 64},
-		{a: 'Northern Cardinal', b: 'NorthernCardinal', c: 0.198167792922, d: -0.003473145869, e: 'Cardinalis cardinalis', hM: 65},
-		{a: 'Northern Flicker', b: 'NorthernFlicker', c: 0.004255503775, d: -0.043326851082, e: 'Colaptes auratus', hM: 66},
-		{a: 'Northern Mockingbird', b: 'NorthernMockingbird', c: 0.074221621781, d: -0.009042356071, e: 'Mimus polyglottos', hM: 67},
-		{a: 'Northern Parula', b: 'NorthernParula', c: 0.007426733805, d: 0.037849376539, e: 'Setophaga americana', hM: 68},
-		{a: 'Northern Rough-winged Swallow', b: 'NorthernRoughwingedSwallow', c: 0.731321885245, d: 0.010262557476, e: 'Stelgidopteryx serripennis', hM: 69},
-		{a: 'Orchard Oriole', b: 'OrchardOriole', c: 0.120837223890, d: -0.020363080540, e: 'Icterus spurius', hM: 70},
-		{a: 'Osprey', b: 'Osprey', c: 0.005579016308, d: 0.073716040403, e: 'Pandion haliaetus', hM: 71},
-		{a: 'Ovenbird', b: 'Ovenbird', c: 0.696033327205, d: -0.001889570617, e: 'Seiurus aurocapilla', hM: 72},
-		{a: 'Pileated Woodpecker', b: 'PileatedWoodpecker', c: 0.016691314775, d: 0.037037272474, e: 'Dryocopus pileatus', hM: 73},
-		{a: 'Prairie Warbler', b: 'PrairieWarbler', c: 0.000000292769, d: -0.040520953410, e: 'Setophaga discolor', hM: 74},
-		{a: 'Prothonotary Warbler', b: 'ProthonotaryWarbler', c: 0.072396097350, d: 0.039745931897, e: 'Protonotaria citrea', hM: 75},
-		{a: 'Purple Martin', b: 'PurpleMartin', c: 0.016326816476, d: 0.021600979626, e: 'Progne subis', hM: 76},
-		{a: 'Red-bellied Woodpecker', b: 'RedbelliedWoodpecker', c: 0.466349622270, d: 0.002851184046, e: 'Melanerpes carolinus', hM: 77},
-		{a: 'Red-eyed Vireo', b: 'RedeyedVireo', c: 0.070478913025, d: -0.010480609357, e: 'Vireo olivaceus', hM: 78},
-		{a: 'Red-headed Woodpecker', b: 'RedheadedWoodpecker', c: 0.251430177629, d: 0.019256570268, e: 'Melanerpes erythrocephalus', hM: 79},
-		{a: 'Red-shouldered Hawk', b: 'RedshoulderedHawk', c: 0.000000269467, d: 0.052294264878, e: 'Buteo lineatus', hM: 80},
-		{a: 'Red-tailed Hawk', b: 'RedtailedHawk', c: 0.450513047582, d: 0.011810079654, e: 'Buteo jamaicensis', hM: 81},
-		{a: 'Red-winged Blackbird', b: 'RedwingedBlackbird', c: 0.021596295873, d: -0.030017936565, e: 'Agelaius phoeniceus', hM: 82},
-		{a: 'Rock Pigeon', b: 'RockPigeon', c: 0.012065773431, d: -0.044264718325, e: 'Columba livia', hM: 83},
-		{a: 'Ruby-throated Hummingbird', b: 'RubythroatedHummingbird', c: 0.001439670892, d: -0.032718871773, e: 'Archilochus colubris', hM: 84},
-		{a: 'Scarlet Tanager', b: 'ScarletTanager', c: 0.000000136509, d: -0.038319894462, e: 'Piranga olivacea', hM: 85},
-		{a: 'Sharp-shinned Hawk', b: 'SharpshinnedHawk', c: 0.182888592748, d: -0.051759663167, e: 'Accipiter striatus', hM: 86},
-		{a: 'Song Sparrow', b: 'SongSparrow', c: 0.018187345803, d: 0.036461464378, e: 'Melospiza melodia', hM: 87},
-		{a: 'Summer Tanager', b: 'SummerTanager', c: 0.000066006237, d: 0.026048932514, e: 'Piranga rubra', hM: 88},
-		{a: 'Tree Swallow', b: 'TreeSwallow', c: 0.002669039721, d: 0.146540299870, e: 'Tachycineta bicolor', hM: 89},
-		{a: 'Tufted Titmouse', b: 'TuftedTitmouse', c: 0.338994024983, d: 0.003832461798, e: 'Baeolophus bicolor', hM: 90},
-		{a: 'Turkey Vulture', b: 'TurkeyVulture', c: 0.585137744314, d: 0.009502874866, e: 'Cathartes aura', hM: 91},
-		{a: 'Warbling Vireo', b: 'WarblingVireo', c: 0.039895975366, d: -0.176666597512, e: 'Vireo gilvus', hM: 92},
-		{a: 'White-breasted Nuthatch', b: 'WhitebreastedNuthatch', c: 0.243622822423, d: 0.011387687409, e: 'Sitta carolinensis', hM: 93},
-		{a: 'White-eyed Vireo', b: 'WhiteeyedVireo', c: 0.000000060750, d: 0.065966902534, e: 'Vireo griseus', hM: 94},
-		{a: 'Wild Turkey', b: 'WildTurkey', c: 0.000076521916, d: 0.079399594763, e: 'Meleagris gallopavo', hM: 95},
-		{a: 'Wood Duck', b: 'WoodDuck', c: 0.614448555374, d: 0.016336174122, e: 'Aix sponsa', hM: 96},
-		{a: 'Wood Thrush', b: 'WoodThrush', c: 0.000000000000, d: -0.063218168140, e: 'Hylocichla mustelina', hM: 97},
-		{a: 'Yellow Warbler', b: 'YellowWarbler', c: 0.223045304115, d: 0.047988532703, e: 'Setophaga petechia', hM: 98},
-		{a: 'Yellow-billed Cuckoo', b: 'YellowbilledCuckoo', c: 0.187830530518, d: 0.009019869482, e: 'Coccyzus americanus', hM: 99},
-		{a: 'Yellow-breasted Chat', b: 'YellowbreastedChat', c: 0.000000709480, d: -0.036039603460, e: 'Icteria virens', hM: 100},
-		{a: 'Yellow-throated Vireo', b: 'YellowthroatedVireo', c: 0.419968488465, d: -0.012000835374, e: 'Vireo flavifrons', hM: 101},
-		{a: 'Yellow-throated Warbler', b: 'YellowthroatedWarbler', c: 0.000000000009, d: 0.075514510566, e: 'Setophaga dominica', hM: 102}
+		{a: 'Barn Swallow', b: 'BarnSwallow', c: 0.038237211162, d: -0.023705475918, e: 'Hirundo rustica', hM: 7},
+		{a: 'Barred Owl', b: 'BarredOwl', c: 0.013548207185, d: 0.031986020154, e: 'Strix varia', hM: 8},
+		{a: 'Belted Kingfisher', b: 'BeltedKingfisher', c: 0.027778364782, d: -0.063368204694, e: 'Megaceryle alcyon', hM: 9},
+		{a: 'Black Vulture', b: 'BlackVulture', c: 0.008731529762, d: 0.061701309211, e: 'Coragyps atratus', hM: 10},
+		{a: 'Black-and-white Warbler', b: 'BlackandwhiteWarbler', c: 0.009863241413, d: 0.051054341055, e: 'Mniotilta varia', hM: 11},
+		{a: 'Blackpoll Warbler', b: 'BlackpollWarbler', c: 1.000000000000, d: 0.000000000000, e: 'Setophaga striata', hM: 12},
+		{a: 'Blue Grosbeak', b: 'BlueGrosbeak', c: 0.316779414960, d: 0.008341279710, e: 'Passerina caerulea', hM: 13},
+		{a: 'Blue Jay', b: 'BlueJay', c: 0.001574366107, d: -0.016682394040, e: 'Cyanocitta cristata', hM: 14},
+		{a: 'Blue-gray Gnatcatcher', b: 'BluegrayGnatcatcher', c: 0.187896974729, d: 0.007673783350, e: 'Polioptila caerulea', hM: 15},
+		{a: 'Blue-headed Vireo', b: 'BlueheadedVireo', c: 0.000134340226, d: -0.054995003162, e: 'Vireo solitarius', hM: 16},
+		{a: 'Broad-winged Hawk', b: 'BroadwingedHawk', c: 0.000000000102, d: -0.101738892815, e: 'Buteo platypterus', hM: 17},
+		{a: 'Brown Thrasher', b: 'BrownThrasher', c: 0.918512592549, d: 0.000669423025, e: 'Toxostoma rufum', hM: 18},
+		{a: 'Brown-headed Cowbird', b: 'BrownheadedCowbird', c: 0.174920063089, d: 0.009476674730, e: 'Molothrus ater', hM: 19},
+		{a: 'Brown-headed Nuthatch', b: 'BrownheadedNuthatch', c: 0.252194567463, d: 0.016605832753, e: 'Sitta pusilla', hM: 20},
+		{a: 'Canada Goose', b: 'CanadaGoose', c: 0.212709297858, d: -0.027940868746, e: 'Branta canadensis', hM: 21},
+		{a: 'Carolina Chickadee', b: 'CarolinaChickadee', c: 0.855576355033, d: -0.000857196929, e: 'Poecile carolinensis', hM: 22},
+		{a: 'Carolina Wren', b: 'CarolinaWren', c: 0.027854192537, d: 0.007518093284, e: 'Thryothorus ludovicianus', hM: 23},
+		{a: 'Cedar Waxwing', b: 'CedarWaxwing', c: 0.519633997816, d: -0.011423694789, e: 'Bombycilla cedrorum', hM: 24},
+		{a: 'Chimney Swift', b: 'ChimneySwift', c: 0.000001528191, d: -0.035208215100, e: 'Chaetura pelagica', hM: 25},
+		{a: 'Chuck-will\'s-widow', b: 'Chuckwillswidow', c: 0.530268911355, d: 0.011034126427, e: 'Antrostomus carolinensis', hM: 26},
+		{a: 'Cliff Swallow', b: 'CliffSwallow', c: 0.000000000000, d: 0.154849807660, e: 'Petrochelidon pyrrhonota', hM: 27},
+		{a: 'Common Grackle', b: 'CommonGrackle', c: 0.000000000018, d: -0.058301928099, e: 'Quiscalus quiscula', hM: 28},
+		{a: 'Common Yellowthroat', b: 'CommonYellowthroat', c: 0.000336562937, d: -0.029837694863, e: 'Geothlypis trichas', hM: 29},
+		{a: 'Cooper\'s Hawk', b: 'CoopersHawk', c: 0.771590069733, d: -0.005217299201, e: 'Accipiter cooperii', hM: 30},
+		{a: 'Dickcissel', b: 'Dickcissel', c: 1.000000000000, d: 0.000000000000, e: 'Spiza americana', hM: 31},
+		{a: 'Double-crested Cormorant', b: 'DoublecrestedCormorant', c: 0.206561977385, d: 0.028708801995, e: 'Nannopterum auritum', hM: 32},
+		{a: 'Downy Woodpecker', b: 'DownyWoodpecker', c: 0.367335867145, d: 0.007305946819, e: 'Dryobates pubescens', hM: 33},
+		{a: 'Eastern Bluebird', b: 'EasternBluebird', c: 0.693420047537, d: 0.001512892347, e: 'Sialia sialis', hM: 34},
+		{a: 'Eastern Kingbird', b: 'EasternKingbird', c: 0.126280543707, d: -0.018327791928, e: 'Tyrannus tyrannus', hM: 35},
+		{a: 'Eastern Meadowlark', b: 'EasternMeadowlark', c: 0.007080999889, d: -0.025362634563, e: 'Sturnella magna', hM: 36},
+		{a: 'Eastern Phoebe', b: 'EasternPhoebe', c: 0.047127915818, d: 0.010934005791, e: 'Sayornis phoebe', hM: 37},
+		{a: 'Eastern Screech-Owl', b: 'EasternScreechOwl', c: 0.380147700871, d: 0.050065964402, e: 'Megascops asio', hM: 38},
+		{a: 'Eastern Towhee', b: 'EasternTowhee', c: 0.000000000000, d: -0.030362722386, e: 'Pipilo erythrophthalmus', hM: 39},
+		{a: 'Eastern Whip-poor-will', b: 'EasternWhippoorwill', c: 0.010320867867, d: -0.045654232630, e: 'Antrostomus vociferus', hM: 40},
+		{a: 'Eastern Wood-Pewee', b: 'EasternWoodPewee', c: 0.180008563044, d: -0.007236552067, e: 'Contopus virens', hM: 41},
+		{a: 'European Starling', b: 'EuropeanStarling', c: 0.007332769720, d: -0.031023978355, e: 'Sturnus vulgaris', hM: 42},
+		{a: 'Field Sparrow', b: 'FieldSparrow', c: 0.001664147950, d: -0.043789524735, e: 'Spizella pusilla', hM: 43},
+		{a: 'Fish Crow', b: 'FishCrow', c: 0.000000000000, d: 0.062656983221, e: 'Corvus ossifragus', hM: 44},
+		{a: 'Grasshopper Sparrow', b: 'GrasshopperSparrow', c: 0.850168378791, d: -0.004158993779, e: 'Ammodramus savannarum', hM: 45},
+		{a: 'Gray Catbird', b: 'GrayCatbird', c: 0.158409874370, d: -0.010979652397, e: 'Dumetella carolinensis', hM: 46},
+		{a: 'Great Blue Heron', b: 'GreatBlueHeron', c: 0.083269643502, d: 0.016338621519, e: 'Ardea herodias', hM: 47},
+		{a: 'Great Crested Flycatcher', b: 'GreatCrestedFlycatcher', c: 0.000000485645, d: 0.037603447079, e: 'Myiarchus crinitus', hM: 48},
+		{a: 'Great Egret', b: 'GreatEgret', c: 1.000000000000, d: 0.000000000000, e: 'Ardea alba', hM: 49},
+		{a: 'Great Horned Owl', b: 'GreatHornedOwl', c: 0.668247609632, d: -0.013999492381, e: 'Bubo virginianus', hM: 50},
+		{a: 'Green Heron', b: 'GreenHeron', c: 0.004899899995, d: -0.047951962970, e: 'Butorides virescens', hM: 51},
+		{a: 'Hairy Woodpecker', b: 'HairyWoodpecker', c: 0.500962720757, d: -0.012353535017, e: 'Dryobates villosus', hM: 52},
+		{a: 'Hooded Warbler', b: 'HoodedWarbler', c: 0.000025557547, d: 0.028609773239, e: 'Setophaga citrina', hM: 53},
+		{a: 'Horned Lark', b: 'HornedLark', c: 1.000000000000, d: 0.000000000000, e: 'Eremophila alpestris', hM: 54},
+		{a: 'House Finch', b: 'HouseFinch', c: 0.895001713684, d: 0.001004960861, e: 'Haemorhous mexicanus', hM: 55},
+		{a: 'House Sparrow', b: 'HouseSparrow', c: 0.000003530713, d: -0.076099796399, e: 'Passer domesticus', hM: 56},
+		{a: 'House Wren', b: 'HouseWren', c: 0.020435431162, d: -0.041742723871, e: 'Troglodytes aedon', hM: 57},
+		{a: 'Indigo Bunting', b: 'IndigoBunting', c: 0.000000005263, d: -0.027153507223, e: 'Passerina cyanea', hM: 58},
+		{a: 'Kentucky Warbler', b: 'KentuckyWarbler', c: 0.348905527799, d: 0.033423036967, e: 'Geothlypis formosa', hM: 59},
+		{a: 'Killdeer', b: 'Killdeer', c: 0.210102449068, d: -0.018658124709, e: 'Charadrius vociferus', hM: 60},
+		{a: 'Loggerhead Shrike', b: 'LoggerheadShrike', c: 0.987261978862, d: -0.001146932188, e: 'Lanius ludovicianus', hM: 61},
+		{a: 'Louisiana Waterthrush', b: 'LouisianaWaterthrush', c: 0.244116838073, d: 0.023479610352, e: 'Parkesia motacilla', hM: 62},
+		{a: 'Mallard', b: 'Mallard', c: 0.015934798922, d: -0.045179605970, e: 'Anas platyrhynchos', hM: 63},
+		{a: 'Mourning Dove', b: 'MourningDove', c: 0.005406557467, d: -0.011507871809, e: 'Zenaida macroura', hM: 64},
+		{a: 'Northern Bobwhite', b: 'NorthernBobwhite', c: 0.000000000481, d: -0.115985802096, e: 'Colinus virginianus', hM: 65},
+		{a: 'Northern Cardinal', b: 'NorthernCardinal', c: 0.112558781207, d: -0.003986349644, e: 'Cardinalis cardinalis', hM: 66},
+		{a: 'Northern Flicker', b: 'NorthernFlicker', c: 0.002136779636, d: -0.042945270556, e: 'Colaptes auratus', hM: 67},
+		{a: 'Northern Mockingbird', b: 'NorthernMockingbird', c: 0.033563791827, d: -0.009505886530, e: 'Mimus polyglottos', hM: 68},
+		{a: 'Northern Parula', b: 'NorthernParula', c: 0.004566151659, d: 0.038301352709, e: 'Setophaga americana', hM: 69},
+		{a: 'Northern Rough-winged Swallow', b: 'NorthernRoughwingedSwallow', c: 0.693854697827, d: 0.010721015788, e: 'Stelgidopteryx serripennis', hM: 70},
+		{a: 'Orchard Oriole', b: 'OrchardOriole', c: 0.096657235069, d: -0.018955122565, e: 'Icterus spurius', hM: 71},
+		{a: 'Osprey', b: 'Osprey', c: 0.001584778261, d: 0.066151838341, e: 'Pandion haliaetus', hM: 72},
+		{a: 'Ovenbird', b: 'Ovenbird', c: 0.698047215573, d: -0.001688368549, e: 'Seiurus aurocapilla', hM: 73},
+		{a: 'Pileated Woodpecker', b: 'PileatedWoodpecker', c: 0.011215657819, d: 0.035876257996, e: 'Dryocopus pileatus', hM: 74},
+		{a: 'Prairie Warbler', b: 'PrairieWarbler', c: 0.000000022502, d: -0.040507464720, e: 'Setophaga discolor', hM: 75},
+		{a: 'Prothonotary Warbler', b: 'ProthonotaryWarbler', c: 0.191905921262, d: 0.035491251895, e: 'Protonotaria citrea', hM: 76},
+		{a: 'Purple Martin', b: 'PurpleMartin', c: 0.097343519592, d: 0.015066150296, e: 'Progne subis', hM: 77},
+		{a: 'Red-bellied Woodpecker', b: 'RedbelliedWoodpecker', c: 0.592590696381, d: 0.001996064703, e: 'Melanerpes carolinus', hM: 78},
+		{a: 'Red-eyed Vireo', b: 'RedeyedVireo', c: 0.115939491360, d: -0.008894714327, e: 'Vireo olivaceus', hM: 79},
+		{a: 'Red-headed Woodpecker', b: 'RedheadedWoodpecker', c: 0.434496756206, d: 0.012366234970, e: 'Melanerpes erythrocephalus', hM: 80},
+		{a: 'Red-shouldered Hawk', b: 'RedshoulderedHawk', c: 0.000000005617, d: 0.053656145496, e: 'Buteo lineatus', hM: 81},
+		{a: 'Red-tailed Hawk', b: 'RedtailedHawk', c: 0.683106569546, d: 0.005585849177, e: 'Buteo jamaicensis', hM: 82},
+		{a: 'Red-winged Blackbird', b: 'RedwingedBlackbird', c: 0.016432019247, d: -0.027305116840, e: 'Agelaius phoeniceus', hM: 83},
+		{a: 'Rock Pigeon', b: 'RockPigeon', c: 0.041456712513, d: -0.040308863545, e: 'Columba livia', hM: 84},
+		{a: 'Ruby-throated Hummingbird', b: 'RubythroatedHummingbird', c: 0.000446523961, d: -0.037110389963, e: 'Archilochus colubris', hM: 85},
+		{a: 'Scarlet Tanager', b: 'ScarletTanager', c: 0.000000003545, d: -0.041320278432, e: 'Piranga olivacea', hM: 86},
+		{a: 'Sharp-shinned Hawk', b: 'SharpshinnedHawk', c: 0.114223189802, d: -0.057973987769, e: 'Accipiter striatus', hM: 87},
+		{a: 'Song Sparrow', b: 'SongSparrow', c: 0.026034060052, d: 0.032505102865, e: 'Melospiza melodia', hM: 88},
+		{a: 'Summer Tanager', b: 'SummerTanager', c: 0.000078368127, d: 0.024111449766, e: 'Piranga rubra', hM: 89},
+		{a: 'Tree Swallow', b: 'TreeSwallow', c: 0.000089014762, d: 0.127386748356, e: 'Tachycineta bicolor', hM: 90},
+		{a: 'Tufted Titmouse', b: 'TuftedTitmouse', c: 0.302864102890, d: 0.003870311862, e: 'Baeolophus bicolor', hM: 91},
+		{a: 'Turkey Vulture', b: 'TurkeyVulture', c: 0.591704652869, d: 0.008900763607, e: 'Cathartes aura', hM: 92},
+		{a: 'Warbling Vireo', b: 'WarblingVireo', c: 0.034608426541, d: -0.178049204619, e: 'Vireo gilvus', hM: 93},
+		{a: 'White-breasted Nuthatch', b: 'WhitebreastedNuthatch', c: 0.077964923812, d: 0.016038439153, e: 'Sitta carolinensis', hM: 94},
+		{a: 'White-eyed Vireo', b: 'WhiteeyedVireo', c: 0.000000000211, d: 0.068277321972, e: 'Vireo griseus', hM: 95},
+		{a: 'Wild Turkey', b: 'WildTurkey', c: 0.000049643823, d: 0.069031195404, e: 'Meleagris gallopavo', hM: 96},
+		{a: 'Wood Duck', b: 'WoodDuck', c: 0.397349366039, d: 0.025804618319, e: 'Aix sponsa', hM: 97},
+		{a: 'Wood Thrush', b: 'WoodThrush', c: 0.000000000000, d: -0.060334883174, e: 'Hylocichla mustelina', hM: 98},
+		{a: 'Yellow Warbler', b: 'YellowWarbler', c: 0.341571717627, d: 0.033423036967, e: 'Setophaga petechia', hM: 99},
+		{a: 'Yellow-billed Cuckoo', b: 'YellowbilledCuckoo', c: 0.053450149808, d: 0.012922885525, e: 'Coccyzus americanus', hM: 100},
+		{a: 'Yellow-breasted Chat', b: 'YellowbreastedChat', c: 0.000000342825, d: -0.037505401028, e: 'Icteria virens', hM: 101},
+		{a: 'Yellow-throated Vireo', b: 'YellowthroatedVireo', c: 0.521076202903, d: -0.009029091887, e: 'Vireo flavifrons', hM: 102},
+		{a: 'Yellow-throated Warbler', b: 'YellowthroatedWarbler', c: 0.000000000413, d: 0.075931421857, e: 'Setophaga dominica', hM: 103}
 	]);
 var $elm$core$List$filter = F2(
 	function (isGood, list) {
@@ -18721,8 +18725,8 @@ var $mdgriffith$elm_ui$Internal$Model$toStyleSheetString = F2(
 			combine,
 			{dp: _List_Nil, cs: _List_Nil},
 			stylesheet);
-		var topLevel = _v0.cs;
 		var rules = _v0.dp;
+		var topLevel = _v0.cs;
 		return _Utils_ap(
 			$mdgriffith$elm_ui$Internal$Model$renderTopLevelValues(topLevel),
 			$elm$core$String$concat(rules));
@@ -21482,8 +21486,8 @@ var $mdgriffith$elm_ui$Internal$Model$toHtml = F2(
 				var html = el.a;
 				return html($mdgriffith$elm_ui$Internal$Model$asEl);
 			case 1:
-				var styles = el.a.s;
 				var html = el.a.g$;
+				var styles = el.a.s;
 				return A2(
 					html,
 					mode(styles),
@@ -21786,10 +21790,10 @@ var $mdgriffith$elm_ui$Element$Input$isHiddenLabel = function (label) {
 };
 var $mdgriffith$elm_ui$Element$Input$checkbox = F2(
 	function (attrs, _v0) {
-		var label = _v0.c6;
-		var icon = _v0.g0;
-		var checked = _v0.gA;
 		var onChange = _v0.ft;
+		var checked = _v0.gA;
+		var icon = _v0.g0;
+		var label = _v0.c6;
 		var attributes = _Utils_ap(
 			_List_fromArray(
 				[
@@ -21965,10 +21969,10 @@ var $mdgriffith$elm_ui$Element$Border$widthXY = F2(
 				x));
 	});
 var $mdgriffith$elm_ui$Element$Border$widthEach = function (_v0) {
-	var bottom = _v0.gu;
-	var top = _v0.h6;
-	var left = _v0.q;
 	var right = _v0.r;
+	var left = _v0.q;
+	var top = _v0.h6;
+	var bottom = _v0.gu;
 	return (_Utils_eq(top, bottom) && _Utils_eq(left, right)) ? (_Utils_eq(top, right) ? $mdgriffith$elm_ui$Element$Border$width(top) : A2($mdgriffith$elm_ui$Element$Border$widthXY, left, top)) : A2(
 		$mdgriffith$elm_ui$Internal$Model$StyleClass,
 		$mdgriffith$elm_ui$Internal$Flag$borderWidth,
@@ -23622,10 +23626,10 @@ var $rtfeldman$elm_css$Css$Structure$compactDeclarations = function (declaration
 	return A2($rtfeldman$elm_css$Css$Structure$withKeyframeDeclarations, keyframesByName, compactedDeclarations);
 };
 var $rtfeldman$elm_css$Css$Structure$compactStylesheet = function (_v0) {
-	var charset = _v0.eS;
-	var imports = _v0.e7;
-	var namespaces = _v0.fq;
 	var declarations = _v0.gL;
+	var namespaces = _v0.fq;
+	var imports = _v0.e7;
+	var charset = _v0.eS;
 	return {
 		eS: charset,
 		gL: $rtfeldman$elm_css$Css$Structure$compactDeclarations(declarations),
@@ -23854,8 +23858,8 @@ var $rtfeldman$elm_css$Css$Structure$Output$prettyPrintDeclaration = function (d
 		case 5:
 			return 'TODO';
 		case 6:
-			var name = decl.a.ak;
 			var declaration = decl.a.gK;
+			var name = decl.a.ak;
 			return '@keyframes ' + (name + ('{' + (declaration + '}')));
 		case 7:
 			return 'TODO';
@@ -23866,10 +23870,10 @@ var $rtfeldman$elm_css$Css$Structure$Output$prettyPrintDeclaration = function (d
 	}
 };
 var $rtfeldman$elm_css$Css$Structure$Output$prettyPrint = function (_v0) {
-	var charset = _v0.eS;
-	var imports = _v0.e7;
-	var namespaces = _v0.fq;
 	var declarations = _v0.gL;
+	var namespaces = _v0.fq;
+	var imports = _v0.e7;
+	var charset = _v0.eS;
 	return $rtfeldman$elm_css$Css$Structure$Output$charsetToString(charset) + (A3($rtfeldman$elm_css$Css$String$mapJoin, $rtfeldman$elm_css$Css$Structure$Output$importToString, '\n', imports) + (A3($rtfeldman$elm_css$Css$String$mapJoin, $rtfeldman$elm_css$Css$Structure$Output$namespaceToString, '\n', namespaces) + (A3($rtfeldman$elm_css$Css$String$mapJoin, $rtfeldman$elm_css$Css$Structure$Output$prettyPrintDeclaration, '\n', declarations) + '')));
 };
 var $rtfeldman$elm_css$Css$Structure$CounterStyle = function (a) {
@@ -24888,10 +24892,10 @@ var $rtfeldman$elm_css$Css$Preprocess$Resolve$toDeclarations = function (snippet
 	}
 };
 var $rtfeldman$elm_css$Css$Preprocess$Resolve$toStructure = function (_v0) {
-	var charset = _v0.eS;
-	var imports = _v0.e7;
-	var namespaces = _v0.fq;
 	var snippets = _v0.fO;
+	var namespaces = _v0.fq;
+	var imports = _v0.e7;
+	var charset = _v0.eS;
 	var declarations = $rtfeldman$elm_css$Css$Preprocess$Resolve$extract(
 		A2($elm$core$List$concatMap, $rtfeldman$elm_css$Css$Preprocess$unwrapSnippet, snippets));
 	return {eS: charset, gL: declarations, e7: imports, fq: namespaces};
