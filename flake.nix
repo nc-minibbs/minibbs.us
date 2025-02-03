@@ -4,44 +4,22 @@
     bash-prompt = "minibbs.us> ";
   };
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     flake-utils.url = "github:numtide/flake-utils";
     gitignore = {
       url = "github:hercules-ci/gitignore.nix";
       # Use the same nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mbbs.url = "github:nc-minibbs/mbbs?ref=2024.1-pre";
   };
 
-  outputs = { self, nixpkgs, flake-utils, gitignore }:
+  outputs = { self, nixpkgs, flake-utils, gitignore, mbbs }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
-        mbbsR = pkgs.rPackages.buildRPackage {
-          name = "mbbs";
-          src = pkgs.fetchFromGitHub {
-            owner = "nc-minibbs";
-            repo = "mbbs";
-            rev = "cd66ded1df93315826f6918fe0e82638300db3cd";
-            sha256 = "uznkL9wKjXDWM8ZPIrlK9xg7QDVnaHVCihyGXl6RD88=";
-            # sha256 = pkgs.lib.fakeSha256;
-          };
-          propagatedBuildInputs = with pkgs.rPackages; [
-            purrr
-            stringr
-            lubridate
-            readr
-            magrittr
-            dplyr
-            glue
-            assertthat
-            yaml
-            beepr
-            readxl
-            tidyr
-          ];
-        };
+        mbbs-data = mbbs.packages.${system}.data;
 
         inherit (gitignore.lib) gitignoreSource;
 
@@ -49,7 +27,6 @@
       {
 
         formatter = pkgs.nixpkgs-fmt;
-
 
         packages = {
 
@@ -142,13 +119,18 @@
           };
         };
 
+        packages.mbbs-data = mbbs-data;
         packages.default = self.packages.${system}.site;
 
         devShells.default = pkgs.mkShell {
           nativeBuildInputs = [ pkgs.bashInteractive ];
           buildInputs = [
+            # MBBS
+            mbbs-data
+
             # R stuff
             pkgs.R
+            pkgs.rPackages.assertthat
             pkgs.rPackages.broom
             pkgs.rPackages.devtools
             pkgs.rPackages.dplyr
@@ -156,7 +138,7 @@
             pkgs.rPackages.glue
             pkgs.rPackages.languageserver
             pkgs.rPackages.jsonlite
-            mbbsR
+            pkgs.rPackages.readr
             pkgs.rPackages.stringr
             pkgs.rPackages.tidyr
 
