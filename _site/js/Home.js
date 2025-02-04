@@ -2840,9 +2840,9 @@ var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $author$project$Data$Species$EasternBluebird = 34;
-var $author$project$Data$Species$NorthernBobwhite = 65;
-var $author$project$Data$Species$SummerTanager = 89;
-var $author$project$Data$Species$WoodThrush = 98;
+var $author$project$Data$Species$NorthernBobwhite = 62;
+var $author$project$Data$Species$SummerTanager = 88;
+var $author$project$Data$Species$WoodThrush = 97;
 var $gicentre$elm_vegalite$VegaLite$VLData = 13;
 var $elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
@@ -10581,33 +10581,33 @@ var $author$project$Data$Species$speciesToString = function (species) {
 		case 11:
 			return 'Black-and-white Warbler';
 		case 12:
-			return 'Blackpoll Warbler';
-		case 13:
 			return 'Blue Grosbeak';
-		case 14:
+		case 13:
 			return 'Blue Jay';
-		case 15:
+		case 14:
 			return 'Blue-gray Gnatcatcher';
-		case 16:
+		case 15:
 			return 'Blue-headed Vireo';
-		case 17:
+		case 16:
 			return 'Broad-winged Hawk';
-		case 18:
+		case 17:
 			return 'Brown Thrasher';
-		case 19:
+		case 18:
 			return 'Brown-headed Cowbird';
-		case 20:
+		case 19:
 			return 'Brown-headed Nuthatch';
-		case 21:
+		case 20:
 			return 'Canada Goose';
-		case 22:
+		case 21:
 			return 'Carolina Chickadee';
-		case 23:
+		case 22:
 			return 'Carolina Wren';
-		case 24:
+		case 23:
 			return 'Cedar Waxwing';
-		case 25:
+		case 24:
 			return 'Chimney Swift';
+		case 25:
+			return 'Chipping Sparrow';
 		case 26:
 			return 'Chuck-will\'s-widow';
 		case 27:
@@ -10655,112 +10655,110 @@ var $author$project$Data$Species$speciesToString = function (species) {
 		case 48:
 			return 'Great Crested Flycatcher';
 		case 49:
-			return 'Great Egret';
-		case 50:
 			return 'Great Horned Owl';
-		case 51:
+		case 50:
 			return 'Green Heron';
-		case 52:
+		case 51:
 			return 'Hairy Woodpecker';
-		case 53:
+		case 52:
 			return 'Hooded Warbler';
-		case 54:
-			return 'Horned Lark';
-		case 55:
+		case 53:
 			return 'House Finch';
-		case 56:
+		case 54:
 			return 'House Sparrow';
-		case 57:
-			return 'House Wren';
-		case 58:
+		case 55:
 			return 'Indigo Bunting';
-		case 59:
+		case 56:
 			return 'Kentucky Warbler';
-		case 60:
+		case 57:
 			return 'Killdeer';
-		case 61:
+		case 58:
 			return 'Loggerhead Shrike';
-		case 62:
+		case 59:
 			return 'Louisiana Waterthrush';
-		case 63:
+		case 60:
 			return 'Mallard';
-		case 64:
+		case 61:
 			return 'Mourning Dove';
-		case 65:
+		case 62:
 			return 'Northern Bobwhite';
-		case 66:
+		case 63:
 			return 'Northern Cardinal';
-		case 67:
+		case 64:
 			return 'Northern Flicker';
-		case 68:
+		case 65:
+			return 'Northern House Wren';
+		case 66:
 			return 'Northern Mockingbird';
-		case 69:
+		case 67:
 			return 'Northern Parula';
-		case 70:
+		case 68:
 			return 'Northern Rough-winged Swallow';
-		case 71:
+		case 69:
 			return 'Orchard Oriole';
-		case 72:
+		case 70:
 			return 'Osprey';
-		case 73:
+		case 71:
 			return 'Ovenbird';
-		case 74:
+		case 72:
 			return 'Pileated Woodpecker';
-		case 75:
+		case 73:
+			return 'Pine Warbler';
+		case 74:
 			return 'Prairie Warbler';
-		case 76:
+		case 75:
 			return 'Prothonotary Warbler';
-		case 77:
+		case 76:
 			return 'Purple Martin';
-		case 78:
+		case 77:
 			return 'Red-bellied Woodpecker';
-		case 79:
+		case 78:
 			return 'Red-eyed Vireo';
-		case 80:
+		case 79:
 			return 'Red-headed Woodpecker';
-		case 81:
+		case 80:
 			return 'Red-shouldered Hawk';
-		case 82:
+		case 81:
 			return 'Red-tailed Hawk';
-		case 83:
+		case 82:
 			return 'Red-winged Blackbird';
-		case 84:
+		case 83:
 			return 'Rock Pigeon';
-		case 85:
+		case 84:
 			return 'Ruby-throated Hummingbird';
-		case 86:
+		case 85:
 			return 'Scarlet Tanager';
-		case 87:
+		case 86:
 			return 'Sharp-shinned Hawk';
-		case 88:
+		case 87:
 			return 'Song Sparrow';
-		case 89:
+		case 88:
 			return 'Summer Tanager';
-		case 90:
+		case 89:
 			return 'Tree Swallow';
-		case 91:
+		case 90:
 			return 'Tufted Titmouse';
-		case 92:
+		case 91:
 			return 'Turkey Vulture';
-		case 93:
+		case 92:
 			return 'Warbling Vireo';
-		case 94:
+		case 93:
 			return 'White-breasted Nuthatch';
-		case 95:
+		case 94:
 			return 'White-eyed Vireo';
-		case 96:
+		case 95:
 			return 'Wild Turkey';
-		case 97:
+		case 96:
 			return 'Wood Duck';
-		case 98:
+		case 97:
 			return 'Wood Thrush';
-		case 99:
+		case 98:
 			return 'Yellow Warbler';
-		case 100:
+		case 99:
 			return 'Yellow-billed Cuckoo';
-		case 101:
+		case 100:
 			return 'Yellow-breasted Chat';
-		case 102:
+		case 101:
 			return 'Yellow-throated Vireo';
 		default:
 			return 'Yellow-throated Warbler';
@@ -11203,7 +11201,7 @@ var $author$project$Home$specs = A2(
 	$author$project$Specs$ExampleTrends$mkExampleTrendsSpec,
 	$author$project$Data$Mbbs$mbbsData,
 	_List_fromArray(
-		[98, 65, 34, 89]));
+		[97, 62, 34, 88]));
 var $elm$json$Json$Decode$succeed = _Json_succeed;
 var $author$project$Home$vegaPort = _Platform_outgoingPort('vegaPort', $elm$core$Basics$identity);
 var $elm$core$Platform$worker = _Platform_worker;
