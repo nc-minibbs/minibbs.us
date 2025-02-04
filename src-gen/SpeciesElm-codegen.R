@@ -134,31 +134,22 @@ analysis_dt <-
     analysis_species,
      by = "common_name"
   )  
-  # %>%
-  # # For each year that a route was run,
-  # # we need 0 count for those species that were *not* observed
-  # # in that route / year.
-  # complete(
-  #   nesting(year, county, route),
-  #   nesting(common_name, sci_name),
-  #   fill = list(count = 0)
-  # )
 
 #------------------------------------------------------------------------------#
 # Integrity Checks ####
 # 1) There is no variation in the number of times that a species
 #    is in the analysis_dt for each year.
 #    E.g. adding in the zero counts didn't add spurious surveys.
-# invisible(assertthat::assert_that(
-#   analysis_dt %>%
-#     group_by(year, county, common_name) %>%
-#     tally() %>%
-#     group_by(year, county) %>%
-#     summarise(check = var(n) == 0, .groups = "drop") %>%
-#     pull(check) %>%
-#     all(),
-#   msg = "All routes should have the same number of records for all species."
-# ))
+invisible(assertthat::assert_that(
+  analysis_dt %>%
+    group_by(year, county, common_name) %>%
+    tally() %>%
+    group_by(year, county) %>%
+    summarise(check = var(n) == 0, .groups = "drop") %>%
+    pull(check) %>%
+    all(),
+  msg = "All routes should have the same number of records for all species."
+))
 
 invisible(assertthat::assert_that(
   identical(
