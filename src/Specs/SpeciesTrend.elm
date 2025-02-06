@@ -68,7 +68,7 @@ mkSpeciesTrendSpec routeDetail counties species =
                 << withCountyAggregation
                     (\x -> x)
                     (color
-                        [ mName "mbbs_county"
+                        [ mName "county"
                         , mTitle "County"
                         , mNominal
                         , mScale <|
@@ -78,7 +78,7 @@ mkSpeciesTrendSpec routeDetail counties species =
                     )
                 << detail [ dName "route" ]
                 << tooltips
-                    [ [ tName "mbbs_county"
+                    [ [ tName "county"
                       , tTitle "County"
                       ]
                     , [ tName "route_num"
@@ -111,7 +111,7 @@ mkSpeciesTrendSpec routeDetail counties species =
                 << withCountyAggregation
                     (\x -> x)
                     (color
-                        [ mName "mbbs_county"
+                        [ mName "county"
                         , mTitle "County"
                         , mNominal
                         , mScale <|
@@ -120,7 +120,7 @@ mkSpeciesTrendSpec routeDetail counties species =
                     )
                 << withCountyAggregation
                     (\x -> x)
-                    (detail [ dName "mbbs_county" ])
+                    (detail [ dName "county" ])
                 << withCountyAggregation
                     (tooltips
                         [ [ tName "year"
@@ -137,7 +137,7 @@ mkSpeciesTrendSpec routeDetail counties species =
                         ]
                     )
                     (tooltips
-                        [ [ tName "mbbs_county"
+                        [ [ tName "county"
                           , tTitle "County"
                           ]
                         , [ tName "year"
@@ -160,7 +160,7 @@ mkSpeciesTrendSpec routeDetail counties species =
                 << aggregate
                     [ opAs opSum "count" "speciesCount" ]
                     [ "year"
-                    , "mbbs_county"
+                    , "county"
                     , "route"
                     , "route_num"
                     ]

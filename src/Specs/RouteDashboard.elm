@@ -74,7 +74,7 @@ mkRouteDashboardSpec countData route =
                 << filter
                     (fiCompose
                         (and
-                            (fiEqual "mbbs_county" (str (countyToString route.county)) |> fiOp)
+                            (fiEqual "county" (str (countyToString route.county)) |> fiOp)
                             (fiEqual "route_num" (str (fromInt route.number)) |> fiOp)
                         )
                     )
@@ -86,7 +86,7 @@ mkRouteDashboardSpec countData route =
                     , opAs opDistinct "common_name" "speciesCount"
                     ]
                     [ "year"
-                    , "mbbs_county"
+                    , "county"
                     , "route"
                     , "route_num"
                     ]

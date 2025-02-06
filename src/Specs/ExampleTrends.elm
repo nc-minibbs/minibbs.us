@@ -97,7 +97,7 @@ mkExampleTrendsSpec data species =
                 << aggregate
                     [ opAs opSum "count" "speciesCount" ]
                     [ "year"
-                    , "mbbs_county"
+                    , "county"
                     , "route"
                     , "common_name"
                     , "sci_name"
@@ -107,7 +107,7 @@ mkExampleTrendsSpec data species =
                     [ opAs opSum "speciesCount" "routeCount"
                     ]
                     [ "year"
-                    , "mbbs_county"
+                    , "county"
                     , "route"
                     , "common_name"
                     , "sci_name"
@@ -120,7 +120,7 @@ mkExampleTrendsSpec data species =
                     , opAs opDistinct "route" "nRoutesRun"
                     ]
                     [ "year"
-                    , "mbbs_county"
+                    , "county"
                     , "common_name"
                     , "sci_name"
                     ]
