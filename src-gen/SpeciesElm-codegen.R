@@ -107,7 +107,7 @@ pre_dt <-
   # Summarize species counts by:
   # county year species route
   group_by(
-    county, year, common_name, sci_name, route
+    county, year, common_name, sci_name, route, route_num
   ) %>%
   summarise(
     count = sum(count),
@@ -185,7 +185,6 @@ model_dt <-
     # Results without including county in the model
     fit_nocounty = purrr::map(data, ~ gee_model(.x, .formula = count ~ time)),
     results_nocounty = purrr::map(fit_nocounty, extract_results),
-
 
     fit_county   = purrr::map(
       .x = data,
@@ -270,7 +269,7 @@ mbbs_results %>%
       .y = .$data,
       .f = ~ {
           write.csv(
-            .y %>% dplyr::select(year, county, route, count),
+            .y %>% dplyr::select(year, county, route, route_num, count),
             file = paste0("data/", to_species_id(.x), "-counts.csv"),
             row.names = FALSE
           )
