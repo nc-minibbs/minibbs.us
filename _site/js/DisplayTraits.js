@@ -13343,7 +13343,7 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 														$gicentre$elm_vegalite$VegaLite$filter,
 														A2(
 															$gicentre$elm_vegalite$VegaLite$fiEqual,
-															'mbbs_county',
+															'county',
 															$gicentre$elm_vegalite$VegaLite$str(
 																$author$project$Data$County$countyToString(county))),
 														x);
@@ -13376,7 +13376,7 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 										A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'count', 'speciesCount')
 									]),
 								_List_fromArray(
-									['year', 'group', 'mbbs_county', 'route', 'common_name']))),
+									['year', 'group', 'county', 'route', 'common_name']))),
 						A2(
 							$gicentre$elm_vegalite$VegaLite$aggregate,
 							_List_fromArray(
@@ -13384,7 +13384,7 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 									A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'speciesCount', 'routeCount')
 								]),
 							_List_fromArray(
-								['year', 'group', 'mbbs_county', 'route']))),
+								['year', 'group', 'county', 'route']))),
 					A2(
 						$gicentre$elm_vegalite$VegaLite$aggregate,
 						_List_fromArray(
@@ -13393,7 +13393,7 @@ var $author$project$Specs$TrendByTrait$mkTrendByTraitSpec = F4(
 								A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opDistinct, 'route', 'nRoutesRun')
 							]),
 						_List_fromArray(
-							['year', 'group', 'mbbs_county']))),
+							['year', 'group', 'county']))),
 				A2(
 					$gicentre$elm_vegalite$VegaLite$aggregate,
 					_List_fromArray(

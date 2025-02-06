@@ -13677,7 +13677,7 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 						A3($gicentre$elm_vegalite$VegaLite$opAs, $gicentre$elm_vegalite$VegaLite$opSum, 'count', 'speciesCount')
 					]),
 				_List_fromArray(
-					['year', 'mbbs_county', 'route', 'route_num'])));
+					['year', 'county', 'route', 'route_num'])));
 		var speciesID = function () {
 			var _v0 = $author$project$Data$Species$lookupSpecies(species);
 			if (_v0.$ === 1) {
@@ -13746,7 +13746,7 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 						$gicentre$elm_vegalite$VegaLite$color(
 							_List_fromArray(
 								[
-									$gicentre$elm_vegalite$VegaLite$mName('mbbs_county'),
+									$gicentre$elm_vegalite$VegaLite$mName('county'),
 									$gicentre$elm_vegalite$VegaLite$mTitle('County'),
 									$gicentre$elm_vegalite$VegaLite$mNominal,
 									$gicentre$elm_vegalite$VegaLite$mScale(
@@ -13760,7 +13760,7 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 					$gicentre$elm_vegalite$VegaLite$detail(
 						_List_fromArray(
 							[
-								$gicentre$elm_vegalite$VegaLite$dName('mbbs_county')
+								$gicentre$elm_vegalite$VegaLite$dName('county')
 							])))),
 			A2(
 				withCountyAggregation,
@@ -13788,7 +13788,7 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 						[
 							_List_fromArray(
 							[
-								$gicentre$elm_vegalite$VegaLite$tName('mbbs_county'),
+								$gicentre$elm_vegalite$VegaLite$tName('county'),
 								$gicentre$elm_vegalite$VegaLite$tTitle('County')
 							]),
 							_List_fromArray(
@@ -13863,7 +13863,7 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 						$gicentre$elm_vegalite$VegaLite$color(
 							_List_fromArray(
 								[
-									$gicentre$elm_vegalite$VegaLite$mName('mbbs_county'),
+									$gicentre$elm_vegalite$VegaLite$mName('county'),
 									$gicentre$elm_vegalite$VegaLite$mTitle('County'),
 									$gicentre$elm_vegalite$VegaLite$mNominal,
 									$gicentre$elm_vegalite$VegaLite$mScale(
@@ -13884,7 +13884,7 @@ var $author$project$Specs$SpeciesTrend$mkSpeciesTrendSpec = F3(
 					[
 						_List_fromArray(
 						[
-							$gicentre$elm_vegalite$VegaLite$tName('mbbs_county'),
+							$gicentre$elm_vegalite$VegaLite$tName('county'),
 							$gicentre$elm_vegalite$VegaLite$tTitle('County')
 						]),
 						_List_fromArray(
