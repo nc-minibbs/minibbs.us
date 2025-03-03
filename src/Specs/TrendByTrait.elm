@@ -103,7 +103,7 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                 << withCountyFilter
                     (\x -> x)
                     (\county x ->
-                        filter (fiEqual "mbbs_county" (str (countyToString county))) x
+                        filter (fiEqual "county" (str (countyToString county))) x
                     )
                 << withTrait
                     -- relabel diet categories
@@ -124,7 +124,7 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                     [ opAs opSum "count" "speciesCount" ]
                     [ "year"
                     , "group"
-                    , "mbbs_county"
+                    , "county"
                     , "route"
                     , "common_name"
                     ]
@@ -134,7 +134,7 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                     ]
                     [ "year"
                     , "group"
-                    , "mbbs_county"
+                    , "county"
                     , "route"
                     ]
                 -- Per year, compute both:
@@ -146,7 +146,7 @@ mkTrendByTraitSpec countData traitData trait countyFilter =
                     ]
                     [ "year"
                     , "group"
-                    , "mbbs_county"
+                    , "county"
                     ]
                 -- Compute tallies per year (across counties)
                 << aggregate

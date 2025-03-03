@@ -54,7 +54,7 @@ decoder =
     Decode.into Count
         |> Decode.pipeline (Decode.field "common_name" decodeSpecies)
         |> Decode.pipeline (Decode.field "year" Decode.int)
-        |> Decode.pipeline (Decode.field "mbbs_county" decodeCounty)
+        |> Decode.pipeline (Decode.field "county" decodeCounty)
         |> Decode.pipeline (Decode.field "route_num" Decode.int)
         |> Decode.pipeline (Decode.field "count" Decode.int)
 
