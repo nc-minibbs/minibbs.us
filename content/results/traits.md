@@ -1,5 +1,5 @@
 ---
-title: Explore NC Mini Bird Breeding Survey Species Traits
+title: Explore NC Mini Breeding Bird Survey Species Traits
 elm-vega:
   module: DisplayTraits
   app-id: app
