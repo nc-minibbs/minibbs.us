@@ -1,5 +1,5 @@
 ---
-title: History of the Mini Bird Breeding Survey
+title: History of the Mini Breeding Bird Survey
 ---
 
 An annual MBBS began in Orange County (12 routes) in 1999,

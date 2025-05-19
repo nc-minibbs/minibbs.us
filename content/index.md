@@ -1,5 +1,5 @@
 ---
-title: Mini Bird Breeding Survey
+title: Mini Breeding Bird Survey
 elm-vega:
   module: Home
   viz-id : exampleTrends
