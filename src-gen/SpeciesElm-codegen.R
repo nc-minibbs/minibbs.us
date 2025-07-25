@@ -106,7 +106,7 @@ pre_dt <-
   ) %>%
   # Remove ambiguous species
   filter(
-    common_name == "American/Fish Crow"
+    common_name != "American/Fish Crow"
   ) %>%
   # Summarize species counts by:
   # county year species route
