@@ -84,16 +84,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1738689741,
-        "narHash": "sha256-RBpYOQLa5AEw6FpYqtkZjd+FDy0yjjx6MjIxJM4cLIQ=",
+        "lastModified": 1752239927,
+        "narHash": "sha256-rOfJbOUui4Ip9Hyv7IIGvP0knoXPbFCxzN+p8QdXRDk=",
         "owner": "nc-minibbs",
         "repo": "mbbs",
-        "rev": "5f8a81662f38221873edd2314aa4336c4c29f042",
+        "rev": "27eb9d9735454db311bb8f122458e31a3644f258",
         "type": "github"
       },
       "original": {
         "owner": "nc-minibbs",
-        "ref": "5f8a81662f38221873edd2314aa4336c4c29f042",
+        "ref": "2025.1",
         "repo": "mbbs",
         "type": "github"
       }

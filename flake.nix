@@ -11,7 +11,7 @@
       # Use the same nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mbbs.url = "github:nc-minibbs/mbbs?ref=5f8a81662f38221873edd2314aa4336c4c29f042";
+    mbbs.url = "github:nc-minibbs/mbbs?ref=2025.1";
   };
 
   outputs = { self, nixpkgs, flake-utils, gitignore, mbbs }:
