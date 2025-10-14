@@ -284,16 +284,6 @@ summarizeRoute r cnts =
         )
         (Dict.toList merged)
 
--- customFloatColumnWithTitle : String -> String -> (data -> Float) -> Table.Column data msg
--- customFloatColumnWithTitle name helpText toFloat =
---     Table.veryCustomColumn
---         { name = name
---         , viewData = \data -> { attributes = _ , children = _ } _ -- String.fromFloat (toFloat data)
---         , sorter = Table.increasingOrDecreasingBy toFloat
---         -- , headAttributes = [ Html.Attributes.title helpText ]
---         -- , headHtml = [ Html.text name ]
---         }
-
 displayRouteSpeciesTable : Table.State -> String -> Route -> Html Msg
 displayRouteSpeciesTable state query r =
     case mbbsCounts of
@@ -306,6 +296,7 @@ displayRouteSpeciesTable state query r =
                     List.filter
                         (String.contains lowerQuery << String.toLower << .species)
                         (summarizeRoute r counts)
+
                 customThead : List (String, Table.Status, Attribute msg) -> Table.HtmlDetails msg
                 customThead headers =
                     Table.HtmlDetails [] (List.map customTh headers)
@@ -318,8 +309,31 @@ displayRouteSpeciesTable state query r =
                                 [ Attr.title "Percentage of routes where this species was observed in at least one year" ]
                             else
                                 []
+                        
+                        content =
+                            case status of
+                                Table.Unsortable ->
+                                    [ Html.text name ]
+                                
+                                Table.Sortable selected ->
+                                    [ Html.text name
+                                    , if selected then
+                                        Html.text " ▼"
+                                    else
+                                        Html.text ""
+                                    ]
+                                
+                                Table.Reversible Nothing ->
+                                    [ Html.text name
+                                    , Html.text " ▼"
+                                    ]
+                                
+                                Table.Reversible (Just isReversed) ->
+                                    [ Html.text name
+                                    , Html.text (if isReversed then " ▲" else " ▼")
+                                    ]
                     in
-                    Html.th (onClick :: titleAttr) [ Html.text name ]
+                      Html.th (onClick :: titleAttr) content
                     
                 config =
                     Table.customConfig
