@@ -19,6 +19,7 @@ import Specs.RouteDashboard exposing (..)
 import String exposing (fromFloat, fromInt)
 import Table exposing (..)
 import VegaLite exposing (..)
+import Css.Global exposing (children)
 
 
 
@@ -287,6 +288,15 @@ summarizeRoute r cnts =
         )
         (Dict.toList merged)
 
+-- customFloatColumnWithTitle : String -> String -> (data -> Float) -> Table.Column data msg
+-- customFloatColumnWithTitle name helpText toFloat =
+--     Table.veryCustomColumn
+--         { name = name
+--         , viewData = \data -> { attributes = _ , children = _ } _ -- String.fromFloat (toFloat data)
+--         , sorter = Table.increasingOrDecreasingBy toFloat
+--         -- , headAttributes = [ Html.Attributes.title helpText ]
+--         -- , headHtml = [ Html.text name ]
+--         }
 
 displayRouteSpeciesTable : Table.State -> String -> Route -> Html Msg
 displayRouteSpeciesTable state query r =
@@ -300,9 +310,23 @@ displayRouteSpeciesTable state query r =
                     List.filter
                         (String.contains lowerQuery << String.toLower << .species)
                         (summarizeRoute r counts)
+                customThead : List (String, Table.Status, Attribute msg) -> Table.HtmlDetails msg
+                customThead headers =
+                    Table.HtmlDetails [] (List.map customTh headers)
 
+                customTh : (String, Table.Status, Attribute msg) -> Html msg
+                customTh (name, status, onClick) =
+                    let
+                        titleAttr = 
+                            if name == "% Routes Observed (any year)" then
+                                [ Attr.title "Percentage of routes where this species was observed in at least one year" ]
+                            else
+                                []
+                    in
+                    Html.th (onClick :: titleAttr) [ Html.text name ]
+                    
                 config =
-                    Table.config
+                    Table.customConfig
                         { toId = .species
                         , toMsg = SetTableState
                         , columns =
@@ -311,6 +335,14 @@ displayRouteSpeciesTable state query r =
                             , Table.intColumn "% Years Observed" (\x -> round (x.avgYearsObserved * 100))
                             , Table.floatColumn "% Routes Observed (any year)" (\x -> toFloat (round (x.pctRoutesEverObserved * 100)))
                             ]
+                            , customizations = 
+                                { tableAttrs = []
+                                , caption = Nothing
+                                , thead = customThead
+                                , tfoot = Nothing
+                                , tbodyAttrs = []
+                                , rowAttrs = \_ -> []
+                                }
                         }
             in
             div
