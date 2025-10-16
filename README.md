@@ -32,9 +32,9 @@ To render the site, use the `./scripts/build.sh` script.
 
 ## Deploy the site
 
-The website is deployed via
+The website is deployed to
 [netlify](http://www.netlify.com)
-from the `_site` folder on the `main` branch on GitHub.
+using the [deploy](.github/workflows/deploy.yaml) workflow.
 
 ## Get the latest `mbbs` data
 
