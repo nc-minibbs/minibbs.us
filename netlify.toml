@@ -13,8 +13,8 @@
 
   publish = "_site/"
 
-  # Default build command.
-  command = "echo 'publish site'"
+  # Build is handled by GitHub Actions, so this is just a placeholder
+  command = "echo 'Site built by GitHub Actions'"
 
 # A basic redirect rule
 [[redirects]]

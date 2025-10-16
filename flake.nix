@@ -53,7 +53,7 @@
             installPhase =
               let
                 SRC = "src";
-                
+
                 elmModules =
                   [
                     "DisplayTraits"
@@ -150,7 +150,7 @@
             pkgs.elmPackages.elm-review
             pkgs.nodejs
             pkgs.nodePackages.prettier
-            
+
             # Other stuff
             pkgs.libpng
             pkgs.pandoc
