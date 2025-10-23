@@ -21,7 +21,6 @@ import Table exposing (..)
 import VegaLite exposing (..)
 
 
-
 main : Program () Model Msg
 main =
     Browser.element
@@ -284,6 +283,7 @@ summarizeRoute r cnts =
         )
         (Dict.toList merged)
 
+
 displayRouteSpeciesTable : Table.State -> String -> Route -> Html Msg
 displayRouteSpeciesTable state query r =
     case mbbsCounts of
@@ -297,44 +297,52 @@ displayRouteSpeciesTable state query r =
                         (String.contains lowerQuery << String.toLower << .species)
                         (summarizeRoute r counts)
 
-                customThead : List (String, Table.Status, Attribute msg) -> Table.HtmlDetails msg
+                customThead : List ( String, Table.Status, Attribute msg ) -> Table.HtmlDetails msg
                 customThead headers =
                     Table.HtmlDetails [] (List.map customTh headers)
 
-                customTh : (String, Table.Status, Attribute msg) -> Html msg
-                customTh (name, status, onClick) =
+                customTh : ( String, Table.Status, Attribute msg ) -> Html msg
+                customTh ( name, status, onClick ) =
                     let
-                        titleAttr = 
+                        titleAttr =
                             if name == "% Routes Observed (any year)" then
                                 [ Attr.title "Percentage of routes where this species was observed in at least one year" ]
+
                             else
                                 []
-                        
+
                         content =
                             case status of
                                 Table.Unsortable ->
                                     [ Html.text name ]
-                                
+
                                 Table.Sortable selected ->
                                     [ Html.text name
                                     , if selected then
                                         Html.text " ▼"
-                                    else
+
+                                      else
                                         Html.text ""
                                     ]
-                                
+
                                 Table.Reversible Nothing ->
                                     [ Html.text name
                                     , Html.text " ▼"
                                     ]
-                                
+
                                 Table.Reversible (Just isReversed) ->
                                     [ Html.text name
-                                    , Html.text (if isReversed then " ▲" else " ▼")
+                                    , Html.text
+                                        (if isReversed then
+                                            " ▲"
+
+                                         else
+                                            " ▼"
+                                        )
                                     ]
                     in
-                      Html.th (onClick :: titleAttr) content
-                    
+                    Html.th (onClick :: titleAttr) content
+
                 config =
                     Table.customConfig
                         { toId = .species
@@ -345,14 +353,14 @@ displayRouteSpeciesTable state query r =
                             , Table.intColumn "% Years Observed" (\x -> round (x.avgYearsObserved * 100))
                             , Table.floatColumn "% Routes Observed (any year)" (\x -> toFloat (round (x.pctRoutesEverObserved * 100)))
                             ]
-                            , customizations = 
-                                { tableAttrs = []
-                                , caption = Nothing
-                                , thead = customThead
-                                , tfoot = Nothing
-                                , tbodyAttrs = []
-                                , rowAttrs = \_ -> []
-                                }
+                        , customizations =
+                            { tableAttrs = []
+                            , caption = Nothing
+                            , thead = customThead
+                            , tfoot = Nothing
+                            , tbodyAttrs = []
+                            , rowAttrs = \_ -> []
+                            }
                         }
             in
             div

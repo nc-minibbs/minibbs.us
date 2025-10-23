@@ -106,13 +106,16 @@ mkRouteDashboardSpec countData route =
                         , line [ maColor "gray" ]
                         ]
                     , asSpec
-                        [ (encTotalCount << color
-                            [ mName "observers"
-                            , mTitle "Observers"
-                            , mNominal
-                            , mLegend []
-                            ]) [] 
-                        , point [ maFilled True , maSize 100 ]
+                        [ (encTotalCount
+                            << color
+                                [ mName "observers"
+                                , mTitle "Observers"
+                                , mNominal
+                                , mLegend []
+                                ]
+                          )
+                            []
+                        , point [ maFilled True, maSize 100 ]
                         ]
                     , asSpec
                         [ encTotalCount []
@@ -129,13 +132,16 @@ mkRouteDashboardSpec countData route =
                         , line [ maColor "gray" ]
                         ]
                     , asSpec
-                        [ (encSpeciesCount << color
-                            [ mName "observers"
-                            , mTitle "Observers"
-                            , mNominal
-                            , mLegend []
-                            ]) [] 
-                        , point [ maFilled True , maSize 100 ]
+                        [ (encSpeciesCount
+                            << color
+                                [ mName "observers"
+                                , mTitle "Observers"
+                                , mNominal
+                                , mLegend []
+                                ]
+                          )
+                            []
+                        , point [ maFilled True, maSize 100 ]
                         ]
                     , asSpec
                         [ encSpeciesCount []
