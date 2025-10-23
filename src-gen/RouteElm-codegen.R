@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------#
 
 library(glue)
-library(dplyr)
+suppressPackageStartupMessages(library(dplyr))
 library(yaml)
 library(purrr)
 

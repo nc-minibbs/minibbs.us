@@ -6,7 +6,7 @@
 #------------------------------------------------------------------------------#
 
 library(readr)
-library(dplyr)
+suppressPackageStartupMessages(library(dplyr))
 library(tidyr)
 library(glue)
 
