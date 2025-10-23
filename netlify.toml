@@ -11,7 +11,7 @@
   # a base has not been set. This sample publishes the directory
   # located at the absolute path "root/project/build-output"
 
-  publish = "_site/"
+  publish = "result/"
 
   # Build is handled by GitHub Actions, so this is just a placeholder
   command = "echo 'Site built by GitHub Actions'"
