@@ -44,6 +44,9 @@ mkRouteDashboardSpec countData route =
                       , tFormat ".0f"
                       , tAggregate opSum
                       ]
+                    , [ tName "observers"
+                      , tTitle "Observers"
+                      ]
                     ]
 
         encSpeciesCount =
@@ -67,6 +70,9 @@ mkRouteDashboardSpec countData route =
                       , tQuant
                       , tFormat ".0f"
                       ]
+                    , [ tName "observers"
+                      , tTitle "Observers"
+                      ]
                     ]
 
         trans =
@@ -89,6 +95,7 @@ mkRouteDashboardSpec countData route =
                     , "county"
                     , "route"
                     , "route_num"
+                    , "observers"
                     ]
 
         totalSpec =
@@ -99,8 +106,13 @@ mkRouteDashboardSpec countData route =
                         , line [ maColor "gray" ]
                         ]
                     , asSpec
-                        [ encTotalCount []
-                        , point [ maColor "gray" ]
+                        [ (encTotalCount << color
+                            [ mName "observers"
+                            , mTitle "Observers"
+                            , mNominal
+                            , mLegend []
+                            ]) [] 
+                        , point [ maFilled True , maSize 100 ]
                         ]
                     , asSpec
                         [ encTotalCount []
@@ -117,8 +129,13 @@ mkRouteDashboardSpec countData route =
                         , line [ maColor "gray" ]
                         ]
                     , asSpec
-                        [ encSpeciesCount []
-                        , point [ maColor "gray" ]
+                        [ (encSpeciesCount << color
+                            [ mName "observers"
+                            , mTitle "Observers"
+                            , mNominal
+                            , mLegend []
+                            ]) [] 
+                        , point [ maFilled True , maSize 100 ]
                         ]
                     , asSpec
                         [ encSpeciesCount []
