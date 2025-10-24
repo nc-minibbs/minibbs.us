@@ -6,7 +6,7 @@
 #------------------------------------------------------------------------------#
 
 library(readr)
-library(dplyr)
+suppressPackageStartupMessages(library(dplyr))
 library(tidyr)
 library(glue)
 
@@ -54,7 +54,7 @@ extract_results <- function(fitted_model) {
     estimates =
       list(tibble(
             year = min(m$data$year):max(m$data$year)
-          ) %>%
+          ) |>
           mutate(
             time = year - min(year),
             fitted = exp(predict(object = m,
@@ -62,7 +62,7 @@ extract_results <- function(fitted_model) {
           ))
 
       ,
-  ) %>%
+  ) |>
   mutate(
     # Estimated rates of change
     pvalue       = tidy_fit[[1]]$p.value[tidy_fit[[1]]$term == "time"],
@@ -98,21 +98,21 @@ pre_dt <-
       common_name = col_character(),
       sci_name = col_character(),
       count = col_integer())
-  ) %>%
+  ) |>
   # Remove any observations for unclassified species,
   # such as (Hawk sp. or duck sp.)
   filter(
     !grepl("sp\\.", common_name)
-  ) %>%
+  ) |>
   # Remove ambiguous species
   filter(
     common_name != "American/Fish Crow"
-  ) %>%
+  ) |>
   # Summarize species counts by:
   # county year species route
   group_by(
     county, year, common_name, sci_name, route, route_num
-  ) %>%
+  ) |>
   summarise(
     count = sum(count),
     .groups = "drop"
@@ -122,22 +122,51 @@ pre_dt <-
 # * at least 1 route
 # * at least 3 years
 analysis_species <-
-  pre_dt %>%
-  group_by(common_name, year) %>%
-  summarise(dummy = (sum(count) > 0) * 1L, .groups = "drop") %>%
-  group_by(common_name) %>%
-  summarise(nyears = sum(dummy), .groups = "drop") %>%
-  filter(nyears > 2) %>%
-  select(common_name) %>%
+  pre_dt |>
+  group_by(common_name, year) |>
+  summarise(dummy = (sum(count) > 0) * 1L, .groups = "drop") |>
+  group_by(common_name) |>
+  summarise(nyears = sum(dummy), .groups = "drop") |>
+  filter(nyears > 2) |>
+  select(common_name) |>
   ungroup()
 
+### Observer information
+
+observers <-
+  readr::read_csv(
+    file.path(
+      system("nix path-info .#mbbs-data", intern = TRUE)[1],
+      "surveys.csv"),
+    col_types = cols(
+      year  = col_integer(),
+      route = col_factor(),
+      obs1  = col_character(), 
+      obs2  = col_character(),
+      obs3  = col_character(),
+      total_species   = col_skip(),
+      total_abundance = col_skip(),
+      date            = col_skip(),
+    protocol_violation = col_logical())
+  ) |>
+  rowwise() |>
+  mutate(
+    observers = paste(sort(na.omit(c_across(starts_with("obs")))), collapse = " & ")
+  ) |> 
+  ungroup() |>
+  select(route, year, observers)
+
 analysis_dt <-
-  pre_dt %>%
+  pre_dt |>
   # filter down to just the analysis species
   right_join(
     analysis_species,
      by = "common_name"
-  )  
+  ) |> 
+  left_join(
+    observers,
+    by = c("route", "year")
+  )
 
 #------------------------------------------------------------------------------#
 # Integrity Checks ####
@@ -145,28 +174,28 @@ analysis_dt <-
 #    is in the analysis_dt for each year.
 #    E.g. adding in the zero counts didn't add spurious surveys.
 invisible(assertthat::assert_that(
-  analysis_dt %>%
-    group_by(year, county, common_name) %>%
-    tally() %>%
-    group_by(year, county) %>%
-    summarise(check = var(n) == 0, .groups = "drop") %>%
-    pull(check) %>%
+  analysis_dt |>
+    group_by(year, county, common_name) |>
+    tally() |>
+    group_by(year, county) |>
+    summarise(check = var(n) == 0, .groups = "drop") |>
+    pull(check) |>
     all(),
   msg = "All routes should have the same number of records for all species."
 ))
 
 invisible(assertthat::assert_that(
   identical(
-    analysis_dt %>%
-      distinct(year, county, route) %>%
-      group_by(year, county) %>%
-      tally() %>%
+    analysis_dt |>
+      distinct(year, county, route) |>
+      group_by(year, county) |>
+      tally() |>
       arrange(year, county, n),
-     pre_dt %>%
-      select(county, year, route) %>%
-      distinct() %>%
-      group_by(year, county) %>%
-      tally() %>%
+     pre_dt |>
+      select(county, year, route) |>
+      distinct() |>
+      group_by(year, county) |>
+      tally() |>
       arrange(year, county, n)
   ),
   msg = c("The number of route-surveys for each year in the analysis_dt frame",
@@ -177,14 +206,14 @@ invisible(assertthat::assert_that(
 # Estimate rates ####
 
 model_dt <-
-  analysis_dt %>%
-  mutate(time = year - min(year)) %>%
-  ungroup() %>%
+  analysis_dt |>
+  mutate(time = year - min(year)) |>
+  ungroup() |>
   arrange(
     common_name, route
-  ) %>%
-  group_by(common_name, sci_name) %>%
-  tidyr::nest() %>%
+  ) |>
+  group_by(common_name, sci_name) |>
+  tidyr::nest() |>
   mutate(
     # Results without including county in the model
     fit_nocounty = purrr::map(data, ~ gee_model(.x, .formula = count ~ time)),
@@ -206,7 +235,7 @@ model_dt <-
             expand.grid(
             year = min(m$data$year):max(m$data$year),
             county = unique(analysis_dt$county)
-          ) %>%
+          ) |>
           mutate(
             time = year - min(year),
             fitted = exp(predict(object = m,
@@ -224,22 +253,22 @@ model_dt <-
 mbbs_results <-
   # Summarize by year and species,
   # taking the average across all routes surveyed that year.
-  analysis_dt %>%
-  group_by(year, common_name) %>%
-  summarise(count = mean(count), .groups = "drop") %>%
-  group_by(common_name) %>%
-  tidyr::nest(data_grouped = c(year, count)) %>%
+  analysis_dt |>
+  group_by(year, common_name) |>
+  summarise(count = mean(count), .groups = "drop") |>
+  group_by(common_name) |>
+  tidyr::nest(data_grouped = c(year, count)) |>
   left_join(
     model_dt, by = c("common_name")
-  ) %>% 
+  ) |> 
   # Calculate the number of years observed on any route 
   mutate(
     years_observed = purrr::map_int(
       .x = data,
-      .f = ~ .x %>% 
-          group_by(year)  %>% 
-          summarise(count = sum(count)) %>%
-          summarise(years_observed = sum(count > 0)) %>% 
+      .f = ~ .x |> 
+          group_by(year)  |> 
+          summarise(count = sum(count)) |>
+          summarise(years_observed = sum(count > 0)) |> 
           pull(years_observed)
       )
   )
@@ -249,9 +278,9 @@ mbbs_results <-
 # Write data ####
 
 ## All counts
-mbbs_results %>%
-  select(common_name, sci_name, data) %>%
-  tidyr::unnest(cols = data) %>%
+mbbs_results |>
+  select(common_name, sci_name, data) |>
+  tidyr::unnest(cols = data) |>
   write.csv(
     file = "data/mbbs.csv",
     row.names = FALSE
@@ -282,29 +311,28 @@ to_species_id <- function(x) {
 }
 
 ## Counts per species
-mbbs_results %>%
-  select(common_name, data) %>%
-  {
-    dt <- .
+mbbs_results |>
+  select(common_name, data) |>
+  (\(x) {
+    dt <- x
     purrr::walk2(
-      .x = .$common_name,
-      .y = .$data,
+      .x = x$common_name,
+      .y = x$data,
       .f = ~ {
           write.csv(
-            .y %>% dplyr::select(year, county, route, route_num, count),
+            .y |> dplyr::select(year, county, route, route_num, count),
             file = paste0("data/", to_species_id(.x), "-counts.csv"),
             row.names = FALSE
           )
         }
     )
-
-  }
+  })()
 
 ## Generate Species.elm
 
 to_elm_data <-
-  mbbs_results %>%
-  select(common_name, sci_name, years_observed, results = results_nocounty) %>%
+  mbbs_results |>
+  select(common_name, sci_name, years_observed, results = results_nocounty) |>
   mutate(
     species = to_species_id(common_name),
 
@@ -321,10 +349,10 @@ to_elm_data <-
       if (years_observed < 6 ) {
         tibble(rate = 0, pvalue = 1, rate_lo = 0, rate_hi = 0)
       } else {
-        .x$values %>% select(rate, pvalue, rate_lo, rate_hi)
+        .x$values |> select(rate, pvalue, rate_lo, rate_hi)
       }
       )
-  ) %>%
+  ) |>
   tidyr::unnest(cols = results)
 
 elm_template <- '
@@ -396,11 +424,11 @@ glue(elm_template,
       string_map =
         glue('{species} -> "{common_name}"',
           species = to_elm_data$species,
-          common_name = to_elm_data$common_name) %>%
+          common_name = to_elm_data$common_name) |>
           glue_collapse(sep = "\n      ")
       ,
       speciesRecs =
-        glue_data(.x = c(to_elm_data, deuxsp = "  "), speciesrec_template) %>%
+        glue_data(.x = c(to_elm_data, deuxsp = "  "), speciesrec_template) |>
           glue_collapse(sep = "\n  , "),
-      deuxsp = "  ") %>%
+      deuxsp = "  ") |>
       cat(file = "src/Data/Species.elm")
