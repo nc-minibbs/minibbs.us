@@ -22,6 +22,9 @@ jobs:
       - name: Build site
         run: nix develop --command ./scripts/build.sh
 
+      - name: Copy build output for deployment
+        run: cp -rL result/ _site/
+
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.1
         with:
