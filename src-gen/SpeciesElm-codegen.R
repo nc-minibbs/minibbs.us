@@ -406,6 +406,21 @@ lookupSpecies x =
   List.filter (\\r -> x == r.species) allSpeciesRec 
 {deuxsp}  |> List.head
 
+-- Convert a Species to a URL-friendly slug
+speciesSlug : Species -> String
+speciesSlug species =
+    speciesToString species
+{deuxsp} |> String.toLower
+{deuxsp} |> String.replace " " "-"
+{deuxsp} |> String.replace "\'" "" \n
+
+-- Convert a URL slug back to a Species
+slugToSpecies : String -> Maybe Species
+slugToSpecies slug =
+    allSpecies
+{deuxsp}  |> List.filter (\\species -> speciesSlug species == slug)
+{deuxsp}  |> List.head
+
 '
 
 speciesrec_template <- '

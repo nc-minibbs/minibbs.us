@@ -40,6 +40,11 @@
         version = "1.1.3";
       };
 
+      "elm/url" = {
+        sha256 = "0av8x5syid40sgpl5vd7pry2rq0q4pga28b4yykn9gd9v12rs3l4";
+        version = "1.0.0";
+      };
+
       "gicentre/elm-vegalite" = {
         sha256 = "1d3n7gd1ga99b8dv1j7y9xi4qfmjf4rbs6j01mj8gm5y4k3rygy6";
         version = "5.3.0";
@@ -72,11 +77,6 @@
 
       "elm/time" = {
         sha256 = "0vch7i86vn0x8b850w1p69vplll1bnbkp8s383z7pinyg94cm2z1";
-        version = "1.0.0";
-      };
-
-      "elm/url" = {
-        sha256 = "0av8x5syid40sgpl5vd7pry2rq0q4pga28b4yykn9gd9v12rs3l4";
         version = "1.0.0";
       };
 

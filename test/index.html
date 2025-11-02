@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+   <html>
+   <head>
+     <meta charset="UTF-8">
+     <title>Mini BBS Test</title>
+     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+   </head>
+   <body>
+     <div id="app"></div>
+     <script src="Main.js"></script>
+     <script>
+       var app = Elm.Main.init({ node: document.getElementById('app') });
+       
+       // Handle vegaPort for visualizations
+        app.ports.vegaPort.subscribe(function(specs) {
+          
+          // Check if it's a single spec (has $schema) or combined specs (object of specs)
+          if (specs['$schema']) {
+            // Single spec - render to #vegaViz
+            vegaEmbed('#vegaViz', specs, { actions: false })
+              .catch(function(err) { console.error('Vega embed error:', err); });
+          } else {
+            // Combined specs (for sparklines) - render each to its own div
+            for (let key of Object.keys(specs)) {
+              if (document.getElementById(key)) {
+                vegaEmbed('#' + key, specs[key], { actions: false })
+                  .catch(function(err) { console.error('Vega embed error for ' + key + ':', err); });
+              }
+            }
+          }
+        });
+     </script>
+   </body>
+   </html>

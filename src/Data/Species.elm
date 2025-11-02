@@ -1350,3 +1350,26 @@ lookupSpecies : Species -> Maybe SpeciesRec
 lookupSpecies x =
     List.filter (\r -> x == r.species) allSpeciesRec
         |> List.head
+
+
+
+-- Convert a Species to a URL-friendly slug
+
+
+speciesSlug : Species -> String
+speciesSlug species =
+    speciesToString species
+        |> String.toLower
+        |> String.replace " " "-"
+        |> String.replace "'" ""
+
+
+
+-- Convert a URL slug back to a Species
+
+
+slugToSpecies : String -> Maybe Species
+slugToSpecies slug =
+    allSpecies
+        |> List.filter (\species -> speciesSlug species == slug)
+        |> List.head
