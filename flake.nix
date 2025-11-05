@@ -57,10 +57,11 @@
                 elmModules =
                   [
                     "DisplayTraits"
-                    "DisplayIndividualSpecies"
-                    "DisplaySpeciesTable"
+                    # "DisplayIndividualSpecies"
+                    # "DisplaySpeciesTable"
                     "DisplayRouteDashboard"
                     "Home"
+                    "Main"
                   ];
 
                 # FIXME: 
@@ -71,7 +72,7 @@
                     "index"
                     "procedures"
                     "results/index"
-                    "results/individual-species"
+                    # "results/individual-species"
                     "results/traits"
                     "results/route-dashboard"
                     "routes/orange-county"

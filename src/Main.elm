@@ -5,6 +5,7 @@ import Browser.Navigation as Nav
 import Data.Species exposing (speciesToString)
 import Html exposing (Html, div, text, nav, a, h1)
 import Html.Attributes exposing (href, class)
+import Page.Home as Home
 import Page.SpeciesDetail as SpeciesDetail
 import Page.SpeciesTable as SpeciesTable
 import Route exposing (Route(..))
@@ -36,6 +37,7 @@ main =
 type alias Model =
     { route : Route
     , navKey : Nav.Key
+    , homeModel : Maybe Home.Model
     , speciesTableModel : Maybe SpeciesTable.Model
     , speciesDetailModel : Maybe SpeciesDetail.Model
     }
@@ -46,6 +48,7 @@ type alias Model =
 type Msg
     = LinkClicked Browser.UrlRequest
     | UrlChanged Url
+    | HomeMsg Home.Msg
     | SpeciesTableMsg SpeciesTable.Msg
     | SpeciesDetailMsg SpeciesDetail.Msg
 
@@ -61,6 +64,7 @@ init _ url navKey =
         model =
             { route = route
             , navKey = navKey
+            , homeModel = Just Home.Model
             , speciesTableModel = Nothing
             , speciesDetailModel = Nothing
             }
@@ -73,6 +77,19 @@ init _ url navKey =
 initCurrentPage : Model -> ( Model, Cmd Msg )
 initCurrentPage model =
     case model.route of
+
+        Home ->
+            let
+                ( pageModel, pageCmd ) =
+                    Home.init
+            in
+            ( { model | homeModel = Just pageModel }
+            , Cmd.batch
+                [ Cmd.map HomeMsg pageCmd
+                , vegaPort (Home.toSpec pageModel)
+                ]
+            )
+
         SpeciesTable ->
             let
                 ( pageModel, pageCmd ) =
@@ -106,6 +123,21 @@ initCurrentPage model =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
+        HomeMsg subMsg ->
+            case model.homeModel of
+                Just pageModel ->
+                    let
+                        ( newPageModel, pageCmd ) =
+                            Home.update vegaPort subMsg pageModel
+                    in
+                    ( { model | homeModel = Just newPageModel }
+                    , Cmd.map HomeMsg pageCmd
+                    )
+
+                Nothing ->
+                    ( model, Cmd.none )
+
+
         LinkClicked urlRequest ->
             case urlRequest of
                 Browser.Internal url ->
@@ -169,6 +201,9 @@ view model =
 pageTitle : Route -> String
 pageTitle route =
     case route of
+        Home -> 
+            "NC Mini BBS"
+        
         SpeciesTable ->
             "NC Mini BBS - Species"
 
@@ -194,6 +229,12 @@ viewNavigation =
 viewPage : Model -> Html Msg
 viewPage model =
     case model.route of
+        Home -> case model.homeModel of
+                Just pageModel ->
+                    Html.map HomeMsg (Home.view pageModel)
+
+                Nothing ->
+                    text "Loading..."
         SpeciesTable ->
             case model.speciesTableModel of
                 Just pageModel ->
