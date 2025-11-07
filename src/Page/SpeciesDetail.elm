@@ -88,7 +88,7 @@ view model =
     div [ class "species-detail" ]
         [ h2 [] [ text (speciesToString model.species) ]
         , viewControls model
-        , div [ id "vegaViz" ] []
+        , div [ id "speciesDetail" ] []
         ]
 
 

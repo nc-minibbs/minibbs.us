@@ -56,29 +56,29 @@
 
                 elmModules =
                   [
-                    "DisplayTraits"
+                    # "DisplayTraits"
                     # "DisplayIndividualSpecies"
                     # "DisplaySpeciesTable"
-                    "DisplayRouteDashboard"
-                    "Home"
+                    # "DisplayRouteDashboard"
+                    # "Home"
                     "Main"
                   ];
 
                 # FIXME: 
                 # generate array of markdown files in content directory
                 # rather than needed to specify them here.
-                pages =
-                  [
-                    "index"
-                    "procedures"
-                    "results/index"
-                    # "results/individual-species"
-                    "results/traits"
-                    "results/route-dashboard"
-                    "routes/orange-county"
-                    "routes/chatham-county"
-                    "routes/durham-county"
-                  ];
+                # pages =
+                #   [
+                #     "index"
+                #     "procedures"
+                #     "results/index"
+                #     # "results/individual-species"
+                #     "results/traits"
+                #     "results/route-dashboard"
+                #     "routes/orange-county"
+                #     "routes/chatham-county"
+                #     "routes/durham-county"
+                #   ];
               in
               ''
                 
@@ -87,6 +87,7 @@
                 cp -R ${SRC}/img/ $out/
                 cp -R ${SRC}/css/ $out/
                 cp -R data/ $out/
+                cp ${SRC}/index.html $out/index.html
 
                 ${pkgs.lib.concatStrings (map (module : 
                  '' 
@@ -100,20 +101,7 @@
                       | ${pkgs.nodePackages.uglify-js}/bin/uglifyjs  --mangle --output $out/js/${module}.min.js
                  '') elmModules ) 
           
-                 }
-
-                ${pkgs.lib.concatStrings (map (page : 
-                 '' 
-
-                ${pkgs.pandoc}/bin/pandoc content/${page}.md \
-                    --from=markdown+link_attributes \
-                    --to=html \
-                    --output=$out/${page}.html \
-                    --template=${SRC}/template.html \
-                    --include-before-body=${SRC}/navbar.html \
-                    --css=/css/bootstrap.min.css \
-                    --standalone 
-                 '') pages ) 
+                 
           
                  }
               '';

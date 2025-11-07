@@ -6,7 +6,6 @@ import Html exposing (..)
 import Html.Attributes exposing (id, class, style)
 import Markdown.Parser as Markdown
 import Markdown.Renderer
--- import Route
 import Specs.ExampleTrends exposing (mkExampleTrendsSpec)
 import VegaLite exposing (Spec)
 
@@ -29,7 +28,7 @@ and to assess any year-to-year changes in their numbers.
 
 ## Importance
 
-The following visualizations shows trends
+The following visualization shows trends
 for 4 of the 100+ species observed in over twenty years of our survey.
 As you can see,
 
@@ -111,5 +110,5 @@ view : Model -> Html Msg
 view _ =
     div [ class "home" ]
         [ renderMarkdown homeContent
-        , div [ id "vegaViz", style "margin" "auto" ] []
+        , div [ id "exampleTrends", style "margin" "auto" ] []
         ]
