@@ -8,7 +8,6 @@
     flake-utils.url = "github:numtide/flake-utils";
     gitignore = {
       url = "github:hercules-ci/gitignore.nix";
-      # Use the same nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mbbs.url = "github:nc-minibbs/mbbs?ref=2025.1";
@@ -32,7 +31,6 @@
 
           # The elm bits were hacked from the code that
           #  elm2nix init produces
-
           # See adding-an-elm-package in README
           site = pkgs.stdenv.mkDerivation {
             name = "site";
@@ -56,29 +54,8 @@
 
                 elmModules =
                   [
-                    # "DisplayTraits"
-                    # "DisplayIndividualSpecies"
-                    # "DisplaySpeciesTable"
-                    # "DisplayRouteDashboard"
-                    # "Home"
                     "Main"
                   ];
-
-                # FIXME: 
-                # generate array of markdown files in content directory
-                # rather than needed to specify them here.
-                # pages =
-                #   [
-                #     "index"
-                #     "procedures"
-                #     "results/index"
-                #     # "results/individual-species"
-                #     "results/traits"
-                #     "results/route-dashboard"
-                #     "routes/orange-county"
-                #     "routes/chatham-county"
-                #     "routes/durham-county"
-                #   ];
               in
               ''
                 
