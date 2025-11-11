@@ -21,8 +21,8 @@
        
        app.ports.vegaPort.subscribe(function(payload) {
           // console.log('vegaPort received:', payload);
-          console.log('vegaPort received for divId:', payload.divId);
-          console.log('Div exists?', document.getElementById(payload.divId));
+          // console.log('vegaPort received for divId:', payload.divId);
+          // console.log('Div exists?', document.getElementById(payload.divId));
 
           let divId = payload.divId;
           let spec = payload.spec;
