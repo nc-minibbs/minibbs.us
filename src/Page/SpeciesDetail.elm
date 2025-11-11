@@ -1,11 +1,11 @@
-module Page.SpeciesDetail exposing (Model, Msg, init, update, view, toSpec)
+module Page.SpeciesDetail exposing (Model, Msg, init, toSpec, update, view)
 
 import Data.County exposing (CountyAggregation(..))
 import Data.Species exposing (Species, speciesToString)
-import Html exposing (Html, div, label, input, text, h2)
-import Html.Attributes exposing (type_, checked, id, class)
-import Html.Events exposing (onClick, onCheck)
-import Specs.SpeciesTrend exposing (mkSpeciesTrendSpec, RouteDetail(..))
+import Html exposing (Html, div, h2, input, label, text)
+import Html.Attributes exposing (checked, class, id, type_)
+import Html.Events exposing (onCheck, onClick)
+import Specs.SpeciesTrend exposing (RouteDetail(..), mkSpeciesTrendSpec)
 import VegaLite exposing (Spec)
 
 
@@ -35,10 +35,10 @@ init species =
             , countyAggregation = Combined
             , routeDetail = ShowRouteDetail
             }
-
     in
     ( model
-    , Cmd.none  -- Main will handle sending the spec
+    , Cmd.none
+      -- Main will handle sending the spec
     )
 
 
@@ -70,9 +70,10 @@ update sendToVega msg model =
                 newRouteDetail =
                     if showDetail then
                         ShowRouteDetail
+
                     else
                         HideRouteDetail
-                
+
                 newModel =
                     { model | routeDetail = newRouteDetail }
             in

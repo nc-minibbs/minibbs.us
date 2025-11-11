@@ -1,9 +1,9 @@
-module Page.Home exposing (Model, Msg, init, update, view, toSpec)
+module Page.Home exposing (Model, Msg, init, toSpec, update, view)
 
 import Data.Mbbs exposing (mbbsData)
 import Data.Species exposing (Species(..))
 import Html exposing (..)
-import Html.Attributes exposing (id, class, style)
+import Html.Attributes exposing (class, id, style)
 import Markdown.Parser as Markdown
 import Markdown.Renderer
 import Specs.ExampleTrends exposing (mkExampleTrendsSpec)
@@ -13,7 +13,8 @@ import VegaLite exposing (Spec)
 {-| Home page content in markdown
 -}
 homeContentTop : String
-homeContentTop = """
+homeContentTop =
+    """
 # Mini Breeding Bird Survey
 
 A *Mini Breeding Bird Survey* (MBBS) is a small-scale version of the full
@@ -37,8 +38,10 @@ As you can see,
 * species such as [Summer Tanager](summer-tanager) appear to be increasing in abundance.
 """
 
+
 homeContentBottom : String
-homeContentBottom = """
+homeContentBottom =
+    """
 [View more detailed results and analysis here](/species).
 
 ## Qualifications
@@ -108,6 +111,7 @@ renderMarkdown markdown =
         Err _ ->
             -- Fallback if markdown parsing fails
             text markdown
+
 
 view : Model -> Html Msg
 view _ =

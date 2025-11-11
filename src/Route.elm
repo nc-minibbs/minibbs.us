@@ -1,8 +1,9 @@
 module Route exposing (..)
 
-import Data.Species exposing (Species, speciesSlug, slugToSpecies)
+import Data.Species exposing (Species, slugToSpecies, speciesSlug)
 import Url exposing (Url)
 import Url.Parser as Parser exposing ((</>), Parser, oneOf, s, top)
+
 
 type Route
     = Home
@@ -11,12 +12,14 @@ type Route
     | SpeciesTraits
     | NotFound
 
+
 {-| Parse a URL into a Route
 -}
 fromUrl : Url -> Route
 fromUrl url =
     Parser.parse parser url
         |> Maybe.withDefault NotFound
+
 
 parser : Parser (Route -> a) a
 parser =
@@ -27,6 +30,7 @@ parser =
         , Parser.map SpeciesTraits (s "traits")
         ]
 
+
 {-| Custom parser that only accepts valid species slugs
 -}
 speciesParser : Parser (Species -> a) a
@@ -36,15 +40,14 @@ speciesParser =
             slugToSpecies segment
 
 
-
 {-| Convert a Route to an href string for use in links
 -}
 toHref : Route -> String
 toHref route =
     case route of
-        Home -> 
+        Home ->
             "/"
-        
+
         SpeciesTable ->
             "/species"
 

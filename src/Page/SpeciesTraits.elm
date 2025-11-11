@@ -1,10 +1,10 @@
-module Page.SpeciesTraits exposing (Model, Msg, init, update, view, toSpec)
+module Page.SpeciesTraits exposing (Model, Msg, init, toSpec, update, view)
 
 import Data.County exposing (County(..))
 import Data.Mbbs exposing (mbbsData)
 import Data.Traits exposing (Trait(..), traitsData)
 import Html exposing (..)
-import Html.Attributes exposing (type_, checked, id, class, name)
+import Html.Attributes exposing (checked, class, id, name, type_)
 import Html.Events exposing (onClick)
 import Specs.TrendByTrait exposing (CountyFilter(..), mkTrendByTraitSpec)
 import VegaLite exposing (Spec)
@@ -44,13 +44,15 @@ update sendToVega msg model =
     case msg of
         SelectTrait trait ->
             let
-                newModel = { model | selectedTrait = trait }
+                newModel =
+                    { model | selectedTrait = trait }
             in
             ( newModel, sendToVega (toSpec newModel) )
 
         SelectCountyFilter filter ->
             let
-                newModel = { model | selectedCountyFilter = filter }
+                newModel =
+                    { model | selectedCountyFilter = filter }
             in
             ( newModel, sendToVega (toSpec newModel) )
 

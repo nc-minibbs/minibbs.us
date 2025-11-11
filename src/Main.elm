@@ -3,8 +3,8 @@ port module Main exposing (main)
 import Browser
 import Browser.Navigation as Nav
 import Data.Species exposing (speciesToString)
-import Html exposing (Html, div, text, nav, a, h1, button, ul, li, span)
-import Html.Attributes as Attr exposing (href, class)
+import Html exposing (Html, a, button, div, h1, li, nav, span, text, ul)
+import Html.Attributes as Attr exposing (class, href)
 import Page.Home as Home
 import Page.SpeciesDetail as SpeciesDetail
 import Page.SpeciesTable as SpeciesTable
@@ -18,13 +18,16 @@ import VegaLite exposing (Spec)
 -}
 port vegaPort : { divId : String, spec : Spec } -> Cmd msg
 
+
 {-| Port for getting data from Vega visualizations
 -}
 port speciesClicked : (String -> msg) -> Sub msg
 
+
 subscriptions : Model -> Sub Msg
 subscriptions _ =
     speciesClicked SpeciesClickedFromViz
+
 
 {-| Main entry point
 -}
@@ -91,16 +94,17 @@ initCurrentPage model =
     -- Clear all page models first
     let
         clearedModel =
-            { model 
-            | homeModel = Nothing
-            , speciesTableModel = Nothing
-            , speciesDetailModel = Nothing
+            { model
+                | homeModel = Nothing
+                , speciesTableModel = Nothing
+                , speciesDetailModel = Nothing
             }
     in
     case model.route of
         Home ->
             let
-                ( pageModel, pageCmd ) = Home.init
+                ( pageModel, pageCmd ) =
+                    Home.init
             in
             ( { clearedModel | homeModel = Just pageModel }
             , Cmd.batch
@@ -111,7 +115,8 @@ initCurrentPage model =
 
         SpeciesDetail species ->
             let
-                ( pageModel, pageCmd ) = SpeciesDetail.init species
+                ( pageModel, pageCmd ) =
+                    SpeciesDetail.init species
             in
             ( { clearedModel | speciesDetailModel = Just pageModel }
             , Cmd.batch
@@ -122,7 +127,8 @@ initCurrentPage model =
 
         SpeciesTable ->
             let
-                ( pageModel, pageCmd ) = SpeciesTable.init
+                ( pageModel, pageCmd ) =
+                    SpeciesTable.init
             in
             ( { clearedModel | speciesTableModel = Just pageModel }
             , Cmd.batch
@@ -133,7 +139,8 @@ initCurrentPage model =
 
         SpeciesTraits ->
             let
-                ( pageModel, pageCmd ) = SpeciesTraits.init
+                ( pageModel, pageCmd ) =
+                    SpeciesTraits.init
             in
             ( { clearedModel | speciesTraitsModel = Just pageModel }
             , Cmd.batch
@@ -156,10 +163,11 @@ update msg model =
                 Just pageModel ->
                     let
                         ( newPageModel, pageCmd ) =
-                                Home.update 
-                                    (\spec -> vegaPort { divId = "exampleTrends", spec = spec })
-                                    subMsg 
-                                    pageModel
+                            Home.update
+                                (\spec -> vegaPort { divId = "exampleTrends", spec = spec })
+                                subMsg
+                                pageModel
+
                         -- ( newPageModel, pageCmd ) =
                         --     Home.update vegaPort subMsg pageModel
                     in
@@ -169,7 +177,6 @@ update msg model =
 
                 Nothing ->
                     ( model, Cmd.none )
-
 
         LinkClicked urlRequest ->
             case urlRequest of
@@ -192,11 +199,11 @@ update msg model =
             case model.speciesTableModel of
                 Just pageModel ->
                     let
-                      ( newPageModel, pageCmd ) =
-                                SpeciesTable.update 
-                                    (\spec -> vegaPort { divId = "sparklines", spec = spec })
-                                    subMsg 
-                                    pageModel
+                        ( newPageModel, pageCmd ) =
+                            SpeciesTable.update
+                                (\spec -> vegaPort { divId = "sparklines", spec = spec })
+                                subMsg
+                                pageModel
                     in
                     ( { model | speciesTableModel = Just newPageModel }
                     , Cmd.map SpeciesTableMsg pageCmd
@@ -208,28 +215,29 @@ update msg model =
         SpeciesDetailMsg subMsg ->
             case model.speciesDetailModel of
                 Just pageModel ->
-                        let
-                            ( newPageModel, pageCmd ) =
-                                SpeciesDetail.update 
-                                    (\spec -> vegaPort { divId = "speciesDetail", spec = spec })
-                                    subMsg 
-                                    pageModel
-                        in
-                        ( { model | speciesDetailModel = Just newPageModel }
-                        , Cmd.map SpeciesDetailMsg pageCmd
-                        )
+                    let
+                        ( newPageModel, pageCmd ) =
+                            SpeciesDetail.update
+                                (\spec -> vegaPort { divId = "speciesDetail", spec = spec })
+                                subMsg
+                                pageModel
+                    in
+                    ( { model | speciesDetailModel = Just newPageModel }
+                    , Cmd.map SpeciesDetailMsg pageCmd
+                    )
 
                 Nothing ->
                     ( model, Cmd.none )
 
-        SpeciesTraitsMsg subMsg ->  -- Add this case
+        SpeciesTraitsMsg subMsg ->
+            -- Add this case
             case model.speciesTraitsModel of
                 Just pageModel ->
                     let
                         ( newPageModel, pageCmd ) =
-                            SpeciesTraits.update 
+                            SpeciesTraits.update
                                 (\spec -> vegaPort { divId = "traitsViz", spec = spec })
-                                subMsg 
+                                subMsg
                                 pageModel
                     in
                     ( { model | speciesTraitsModel = Just newPageModel }
@@ -243,12 +251,13 @@ update msg model =
             case Data.Species.stringToSpecies speciesName of
                 Just species ->
                     ( model
-                    , Nav.pushUrl model.navKey 
+                    , Nav.pushUrl model.navKey
                         (Route.toHref (Route.SpeciesDetail species))
                     )
-                
+
                 Nothing ->
                     ( model, Cmd.none )
+
 
 {-| Render the application
 -}
@@ -267,9 +276,9 @@ view model =
 pageTitle : Route -> String
 pageTitle route =
     case route of
-        Home -> 
+        Home ->
             "NC Mini Breeding Bird Survey"
-        
+
         SpeciesTable ->
             "NC MiniBBS - Species"
 
@@ -289,9 +298,9 @@ viewNavigation : Html Msg
 viewNavigation =
     nav [ class "navbar navbar-expand-lg bg-body-tertiary" ]
         [ div [ class "container-fluid" ]
-            [ a [ class "navbar-brand", href (Route.toHref Home) ] 
+            [ a [ class "navbar-brand", href (Route.toHref Home) ]
                 [ text "Mini Breeding Bird Survey" ]
-            , button 
+            , button
                 [ class "navbar-toggler"
                 , Attr.type_ "button"
                 , Attr.attribute "data-bs-toggle" "collapse"
@@ -304,11 +313,11 @@ viewNavigation =
             , div [ class "collapse navbar-collapse", Attr.id "navbarSupportedContent" ]
                 [ ul [ class "navbar-nav me-auto mb-2 mb-lg-0" ]
                     [ li [ class "nav-item" ]
-                        [ a [ class "nav-link", href "/procedures.html" ] 
-                            [ text "Procedures" ] 
+                        [ a [ class "nav-link", href "/procedures.html" ]
+                            [ text "Procedures" ]
                         ]
                     , li [ class "nav-item dropdown" ]
-                        [ a 
+                        [ a
                             [ class "nav-link dropdown-toggle"
                             , href "#"
                             , Attr.attribute "role" "button"
@@ -317,23 +326,24 @@ viewNavigation =
                             ]
                             [ text "Results" ]
                         , ul [ class "dropdown-menu" ]
-                            [ li [] 
-                                [ a [ class "dropdown-item", href (Route.toHref SpeciesTable) ] 
-                                    [ text "All Species" ] 
+                            [ li []
+                                [ a [ class "dropdown-item", href (Route.toHref SpeciesTable) ]
+                                    [ text "All Species" ]
                                 ]
-                            , li [] 
-                                [ a [ class "dropdown-item", href (Route.toHref SpeciesTraits) ] 
-                                    [ text "Trends by Species Traits" ] 
+                            , li []
+                                [ a [ class "dropdown-item", href (Route.toHref SpeciesTraits) ]
+                                    [ text "Trends by Species Traits" ]
                                 ]
+
                             -- Other results links will go here when we add those pages
                             ]
                         ]
                     , li [ class "nav-item" ]
-                        [ a 
+                        [ a
                             [ class "nav-link"
                             , href "https://docs.google.com/forms/d/e/1FAIpQLSdh5F7DVnqi3HxiB91lpBPp4n9dusD_oA752fHm2FHvBuc6_g/viewform"
-                            ] 
-                            [ text "Participate" ] 
+                            ]
+                            [ text "Participate" ]
                         ]
                     ]
                 ]
@@ -346,12 +356,14 @@ viewNavigation =
 viewPage : Model -> Html Msg
 viewPage model =
     case model.route of
-        Home -> case model.homeModel of
+        Home ->
+            case model.homeModel of
                 Just pageModel ->
                     Html.map HomeMsg (Home.view pageModel)
 
                 Nothing ->
                     text "Loading..."
+
         SpeciesTable ->
             case model.speciesTableModel of
                 Just pageModel ->
@@ -368,7 +380,8 @@ viewPage model =
                 Nothing ->
                     text "Loading..."
 
-        SpeciesTraits ->  -- Add this case
+        SpeciesTraits ->
+            -- Add this case
             case model.speciesTraitsModel of
                 Just pageModel ->
                     Html.map SpeciesTraitsMsg (SpeciesTraits.view pageModel)

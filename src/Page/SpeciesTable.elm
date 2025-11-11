@@ -1,11 +1,11 @@
-module Page.SpeciesTable exposing (Model, Msg, init, update, view, toSpecs)
+module Page.SpeciesTable exposing (Model, Msg, init, toSpecs, update, view)
 
 import Data.Species exposing (SpeciesRec, allSpeciesRec)
-import Html exposing (Html, div, input, a, text)
-import Html.Attributes as Attr exposing (placeholder, href, id, style)
+import Html exposing (Html, a, div, input, text)
+import Html.Attributes as Attr exposing (href, id, placeholder, style)
 import Html.Events exposing (onInput)
-import Route
 import Round
+import Route
 import Specs.SparklineSpec exposing (mkSparklineSpec)
 import Table
 import VegaLite exposing (Spec, combineSpecs)
@@ -47,6 +47,7 @@ filteredSpecies model =
     in
     if String.isEmpty lowerQuery then
         allSpeciesRec
+
     else
         List.filter
             (\rec -> String.contains lowerQuery (String.toLower rec.commonName))
@@ -82,12 +83,14 @@ update sendToVega msg model =
                     { model | searchQuery = newQuery }
             in
             ( newModel
-            , sendToVega (toSpecs newModel)  -- Regenerate sparklines for new filter
+            , sendToVega (toSpecs newModel)
+              -- Regenerate sparklines for new filter
             )
 
         SetTableState newState ->
             ( { model | tableState = newState }
-            , Cmd.none  -- Just reorder, don't regenerate sparklines
+            , Cmd.none
+              -- Just reorder, don't regenerate sparklines
             )
 
 
@@ -128,11 +131,12 @@ speciesLinkColumn : Table.Column SpeciesRec Msg
 speciesLinkColumn =
     Table.veryCustomColumn
         { name = "Name"
-        , viewData = \rec ->
-            Table.HtmlDetails []
-                [ a [ href (Route.toHref (Route.SpeciesDetail rec.species)) ]
-                    [ text rec.commonName ]
-                ]
+        , viewData =
+            \rec ->
+                Table.HtmlDetails []
+                    [ a [ href (Route.toHref (Route.SpeciesDetail rec.species)) ]
+                        [ text rec.commonName ]
+                    ]
         , sorter = Table.increasingOrDecreasingBy .commonName
         }
 
@@ -156,12 +160,16 @@ viewRate rate pvalue =
         color =
             if rate <= 0 && pvalue < 0.01 then
                 "red"
+
             else if rate <= 0 && pvalue >= 0.01 && pvalue <= 0.05 then
                 "lightcoral"
+
             else if rate > 0 && pvalue < 0.01 then
                 "blue"
+
             else if rate > 0 && pvalue >= 0.01 && pvalue <= 0.05 then
                 "lightblue"
+
             else
                 "gray"
     in
@@ -178,8 +186,9 @@ sparklineColumn : Table.Column SpeciesRec Msg
 sparklineColumn =
     Table.veryCustomColumn
         { name = "Trend"
-        , viewData = \rec ->
-            Table.HtmlDetails []
-                [ div [ id (sparklineVegaID rec) ] [] ]
+        , viewData =
+            \rec ->
+                Table.HtmlDetails []
+                    [ div [ id (sparklineVegaID rec) ] [] ]
         , sorter = Table.unsortable
         }
