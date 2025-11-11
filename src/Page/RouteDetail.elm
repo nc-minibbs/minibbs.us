@@ -7,7 +7,7 @@ import Data.Species exposing (speciesToString)
 import Dict exposing (Dict)
 import Dict.Extra exposing (groupBy)
 import Html exposing (..)
-import Html.Attributes exposing (class, height, id, placeholder, src, width)
+import Html.Attributes exposing (class, height, title, id, placeholder, src, width)
 import Html.Events exposing (onInput)
 import Set
 import Specs.RouteDashboard exposing (mkRouteDashboardSpec)
@@ -134,24 +134,87 @@ type alias SpeciesRouteSummary =
     }
 
 
+-- tableConfig : Table.Config SpeciesRouteSummary Msg
+-- tableConfig =
+--     Table.config
+--         { toId = .species
+--         , toMsg = SetTableState
+--         , columns =
+--             [ Table.stringColumn "Species" .species
+--             , Table.floatColumn "Avg. Count/Year" (\x -> toFloat (round (x.avgCount * 100)) / 100)
+--             , Table.intColumn "% Years Observed"
+--                 (\x -> round (x.avgYearsObserved * 100))
+--             , Table.floatColumn "% Routes Observed (any year)"
+--                 (\x -> toFloat (round (x.pctRoutesEverObserved * 100)))
+--             ]
+--         }
+
+
 tableConfig : Table.Config SpeciesRouteSummary Msg
 tableConfig =
-    Table.config
+    Table.customConfig
         { toId = .species
         , toMsg = SetTableState
         , columns =
             [ Table.stringColumn "Species" .species
-            , Table.floatColumn "Avg Count/Year" .avgCount
-            , Table.intColumn "% Years Observed"
+            , Table.floatColumn "Avg. Count/Year" (\x -> toFloat (round (x.avgCount * 100)) / 100)
+            , Table.intColumn "% Years Observed" 
                 (\x -> round (x.avgYearsObserved * 100))
-            , Table.floatColumn "% Routes Observed (any year)"
+            , Table.floatColumn "% Routes Observed (any year)" 
                 (\x -> toFloat (round (x.pctRoutesEverObserved * 100)))
             ]
+        , customizations =
+            { tableAttrs = []
+            , caption = Nothing
+            , thead = customThead
+            , tfoot = Nothing
+            , tbodyAttrs = []
+            , rowAttrs = \_ -> []
+            }
         }
 
 
+customThead : List (String, Table.Status, Attribute Msg) -> Table.HtmlDetails Msg
+customThead headers =
+    Table.HtmlDetails [] (List.map customTh headers)
 
--- Helper functions from DisplayRouteDashboard
+
+customTh : (String, Table.Status, Attribute Msg) -> Html Msg
+customTh (name, status, onClickAttr) =
+    let
+        titleAttr = 
+            if name == "% Routes Observed (any year)" then
+                [ title "Percentage of routes where this species was observed in at least one year" ]
+            else
+                []
+        
+        content =
+            case status of
+                Table.Unsortable ->
+                    [ text name ]
+                
+                Table.Sortable selected ->
+                    [ text name
+                    , if selected then
+                        text " ▼"
+                    else
+                        text ""
+                    ]
+                
+                Table.Reversible Nothing ->
+                    [ text name
+                    , text " ▼"
+                    ]
+                
+                Table.Reversible (Just isReversed) ->
+                    [ text name
+                    , text (if isReversed then " ▲" else " ▼")
+                    ]
+    in
+    th (onClickAttr :: titleAttr) content
+
+
+-- Helper functions
 
 
 removeZeroCounts : List Count -> List Count
