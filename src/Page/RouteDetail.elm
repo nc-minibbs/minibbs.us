@@ -1,13 +1,13 @@
-module Page.RouteDetail exposing (Model, Msg, init, update, view, toSpec)
+module Page.RouteDetail exposing (Model, Msg, init, toSpec, update, view)
 
-import Data.County exposing (countyToTitle, countyToString)
-import Data.Mbbs exposing (mbbsData, mbbsCounts, Count)
+import Data.County exposing (countyToString, countyToTitle)
+import Data.Mbbs exposing (Count, mbbsCounts, mbbsData)
 import Data.Route exposing (Route)
 import Data.Species exposing (speciesToString)
 import Dict exposing (Dict)
 import Dict.Extra exposing (groupBy)
 import Html exposing (..)
-import Html.Attributes exposing (id, class, src, width, height, placeholder)
+import Html.Attributes exposing (class, height, id, placeholder, src, width)
 import Html.Events exposing (onInput)
 import Set
 import Specs.RouteDashboard exposing (mkRouteDashboardSpec)
@@ -107,16 +107,16 @@ viewSpeciesTable model =
                 tableData =
                     summarizeRoute model.route counts
                         |> List.filter
-                            (\summary -> 
-                                String.contains lowerQuery 
+                            (\summary ->
+                                String.contains lowerQuery
                                     (String.toLower summary.species)
                             )
             in
             div []
-                [ input 
+                [ input
                     [ placeholder "Search by Name"
-                    , onInput SetQuery 
-                    ] 
+                    , onInput SetQuery
+                    ]
                     []
                 , Table.view tableConfig model.tableState tableData
                 ]
@@ -142,15 +142,17 @@ tableConfig =
         , columns =
             [ Table.stringColumn "Species" .species
             , Table.floatColumn "Avg Count/Year" .avgCount
-            , Table.intColumn "% Years Observed" 
+            , Table.intColumn "% Years Observed"
                 (\x -> round (x.avgYearsObserved * 100))
-            , Table.floatColumn "% Routes Observed (any year)" 
+            , Table.floatColumn "% Routes Observed (any year)"
                 (\x -> toFloat (round (x.pctRoutesEverObserved * 100)))
             ]
         }
 
 
+
 -- Helper functions from DisplayRouteDashboard
+
 
 removeZeroCounts : List Count -> List Count
 removeZeroCounts =

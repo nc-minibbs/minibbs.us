@@ -76,4 +76,3 @@ numberColumn =
 nameColumn : Table.Column Route Msg
 nameColumn =
     Table.stringColumn "Name" .name
-

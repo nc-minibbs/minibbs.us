@@ -131,9 +131,11 @@ initCurrentPage model =
             , Cmd.map RouteListMsg pageCmd
             )
 
-        RouteDetail route ->  -- Replace placeholder with this
+        RouteDetail route ->
+            -- Replace placeholder with this
             let
-                ( pageModel, pageCmd ) = RouteDetail.init route
+                ( pageModel, pageCmd ) =
+                    RouteDetail.init route
             in
             ( { clearedModel | routeDetailModel = Just pageModel }
             , Cmd.batch
@@ -235,14 +237,15 @@ update msg model =
                 Nothing ->
                     ( model, Cmd.none )
 
-        RouteDetailMsg subMsg ->  -- Add this case
+        RouteDetailMsg subMsg ->
+            -- Add this case
             case model.routeDetailModel of
                 Just pageModel ->
                     let
                         ( newPageModel, pageCmd ) =
-                            RouteDetail.update 
+                            RouteDetail.update
                                 (\spec -> vegaPort { divId = "routeViz", spec = spec })
-                                subMsg 
+                                subMsg
                                 pageModel
                     in
                     ( { model | routeDetailModel = Just newPageModel }
