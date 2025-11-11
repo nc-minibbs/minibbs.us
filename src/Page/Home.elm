@@ -12,8 +12,8 @@ import VegaLite exposing (Spec)
 
 {-| Home page content in markdown
 -}
-homeContent : String
-homeContent = """
+homeContentTop : String
+homeContentTop = """
 # Mini Breeding Bird Survey
 
 A *Mini Breeding Bird Survey* (MBBS) is a small-scale version of the full
@@ -32,10 +32,13 @@ The following visualization shows trends
 for 4 of the 100+ species observed in over twenty years of our survey.
 As you can see,
 
-* species such as Wood Thrush and Northern Bobwhite have declined;
-* species such as Eastern Bluebird have no obvious trend;
-* species such as Summer Tanager appearing to be increasing in abundance.
+* species such as [Wood Thrush](species/wood-thrush) and [Northern Bobwhite](northern-bobwhite) have declined;
+* species such as [Eastern Bluebird](eastern-bluebird) have no obvious trend;
+* species such as [Summer Tanager](summer-tanager) appear to be increasing in abundance.
+"""
 
+homeContentBottom : String
+homeContentBottom = """
 [View more detailed results and analysis here](/species).
 
 ## Qualifications
@@ -109,6 +112,7 @@ renderMarkdown markdown =
 view : Model -> Html Msg
 view _ =
     div [ class "home" ]
-        [ renderMarkdown homeContent
+        [ renderMarkdown homeContentTop
         , div [ id "exampleTrends", style "margin" "auto" ] []
+        , renderMarkdown homeContentBottom
         ]

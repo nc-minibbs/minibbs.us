@@ -8,6 +8,7 @@ import Html.Attributes as Attr exposing (href, class)
 import Page.Home as Home
 import Page.SpeciesDetail as SpeciesDetail
 import Page.SpeciesTable as SpeciesTable
+import Page.SpeciesTraits as SpeciesTraits
 import Route exposing (Route(..))
 import Url exposing (Url)
 import VegaLite exposing (Spec)
@@ -47,6 +48,7 @@ type alias Model =
     , homeModel : Maybe Home.Model
     , speciesTableModel : Maybe SpeciesTable.Model
     , speciesDetailModel : Maybe SpeciesDetail.Model
+    , speciesTraitsModel : Maybe SpeciesTraits.Model
     }
 
 
@@ -58,6 +60,7 @@ type Msg
     | HomeMsg Home.Msg
     | SpeciesTableMsg SpeciesTable.Msg
     | SpeciesDetailMsg SpeciesDetail.Msg
+    | SpeciesTraitsMsg SpeciesTraits.Msg
     | SpeciesClickedFromViz String
 
 
@@ -75,6 +78,7 @@ init _ url navKey =
             , homeModel = Just Home.Model
             , speciesTableModel = Nothing
             , speciesDetailModel = Nothing
+            , speciesTraitsModel = Nothing
             }
     in
     initCurrentPage model
@@ -124,6 +128,17 @@ initCurrentPage model =
             , Cmd.batch
                 [ Cmd.map SpeciesTableMsg pageCmd
                 , vegaPort { divId = "sparklines", spec = SpeciesTable.toSpecs pageModel }
+                ]
+            )
+
+        SpeciesTraits ->
+            let
+                ( pageModel, pageCmd ) = SpeciesTraits.init
+            in
+            ( { clearedModel | speciesTraitsModel = Just pageModel }
+            , Cmd.batch
+                [ Cmd.map SpeciesTraitsMsg pageCmd
+                , vegaPort { divId = "traitsViz", spec = SpeciesTraits.toSpec pageModel }
                 ]
             )
 
@@ -207,6 +222,23 @@ update msg model =
                 Nothing ->
                     ( model, Cmd.none )
 
+        SpeciesTraitsMsg subMsg ->  -- Add this case
+            case model.speciesTraitsModel of
+                Just pageModel ->
+                    let
+                        ( newPageModel, pageCmd ) =
+                            SpeciesTraits.update 
+                                (\spec -> vegaPort { divId = "traitsViz", spec = spec })
+                                subMsg 
+                                pageModel
+                    in
+                    ( { model | speciesTraitsModel = Just newPageModel }
+                    , Cmd.map SpeciesTraitsMsg pageCmd
+                    )
+
+                Nothing ->
+                    ( model, Cmd.none )
+
         SpeciesClickedFromViz speciesName ->
             case Data.Species.stringToSpecies speciesName of
                 Just species ->
@@ -236,16 +268,19 @@ pageTitle : Route -> String
 pageTitle route =
     case route of
         Home -> 
-            "NC Mini BBS"
+            "NC Mini Breeding Bird Survey"
         
         SpeciesTable ->
-            "NC Mini BBS - Species"
+            "NC MiniBBS - Species"
 
         SpeciesDetail species ->
-            "NC Mini BBS - " ++ speciesToString species
+            "NC MiniBBS - " ++ speciesToString species
+
+        SpeciesTraits ->
+            "NC MiniBBS - Trends by Species Traits"
 
         NotFound ->
-            "NC Mini BBS - Not Found"
+            "NC MiniBBS - Not Found"
 
 
 {-| Render navigation bar
@@ -286,6 +321,10 @@ viewNavigation =
                                 [ a [ class "dropdown-item", href (Route.toHref SpeciesTable) ] 
                                     [ text "All Species" ] 
                                 ]
+                            , li [] 
+                                [ a [ class "dropdown-item", href (Route.toHref SpeciesTraits) ] 
+                                    [ text "Trends by Species Traits" ] 
+                                ]
                             -- Other results links will go here when we add those pages
                             ]
                         ]
@@ -325,6 +364,14 @@ viewPage model =
             case model.speciesDetailModel of
                 Just pageModel ->
                     Html.map SpeciesDetailMsg (SpeciesDetail.view pageModel)
+
+                Nothing ->
+                    text "Loading..."
+
+        SpeciesTraits ->  -- Add this case
+            case model.speciesTraitsModel of
+                Just pageModel ->
+                    Html.map SpeciesTraitsMsg (SpeciesTraits.view pageModel)
 
                 Nothing ->
                     text "Loading..."

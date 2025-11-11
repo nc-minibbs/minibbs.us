@@ -8,6 +8,7 @@ type Route
     = Home
     | SpeciesTable
     | SpeciesDetail Species
+    | SpeciesTraits
     | NotFound
 
 {-| Parse a URL into a Route
@@ -23,6 +24,7 @@ parser =
         [ Parser.map Home top
         , Parser.map SpeciesTable (s "species")
         , Parser.map SpeciesDetail (s "species" </> speciesParser)
+        , Parser.map SpeciesTraits (s "traits")
         ]
 
 {-| Custom parser that only accepts valid species slugs
@@ -48,6 +50,9 @@ toHref route =
 
         SpeciesDetail species ->
             "/species/" ++ speciesSlug species
+
+        SpeciesTraits ->
+            "/traits"
 
         NotFound ->
             "/not-found"
