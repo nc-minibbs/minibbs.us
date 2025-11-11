@@ -1,5 +1,6 @@
 module Route exposing (..)
 
+import Data.Route as RTE exposing (slugToRoute)
 import Data.Species exposing (Species, slugToSpecies, speciesSlug)
 import Url exposing (Url)
 import Url.Parser as Parser exposing ((</>), Parser, oneOf, s, top)
@@ -10,6 +11,8 @@ type Route
     | SpeciesTable
     | SpeciesDetail Species
     | SpeciesTraits
+    | RouteList
+    | RouteDetail RTE.Route
     | NotFound
 
 
@@ -28,6 +31,8 @@ parser =
         , Parser.map SpeciesTable (s "species")
         , Parser.map SpeciesDetail (s "species" </> speciesParser)
         , Parser.map SpeciesTraits (s "traits")
+        , Parser.map RouteList (s "routes")
+        , Parser.map RouteDetail (s "routes" </> routeParser)
         ]
 
 
@@ -38,6 +43,13 @@ speciesParser =
     Parser.custom "SPECIES" <|
         \segment ->
             slugToSpecies segment
+
+
+routeParser : Parser (RTE.Route -> a) a
+routeParser =
+    Parser.custom "ROUTE" <|
+        \segment ->
+            slugToRoute segment
 
 
 {-| Convert a Route to an href string for use in links
@@ -56,6 +68,12 @@ toHref route =
 
         SpeciesTraits ->
             "/traits"
+
+        RouteList ->
+            "/routes"
+
+        RouteDetail mbbs_route ->
+            "/routes/" ++ RTE.routeSlug mbbs_route
 
         NotFound ->
             "/not-found"

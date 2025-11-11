@@ -2,10 +2,12 @@ port module Main exposing (main)
 
 import Browser
 import Browser.Navigation as Nav
+import Data.Route exposing (routeToTitle)
 import Data.Species exposing (speciesToString)
 import Html exposing (Html, a, button, div, h1, li, nav, span, text, ul)
 import Html.Attributes as Attr exposing (class, href)
 import Page.Home as Home
+import Page.RouteList as RouteList
 import Page.SpeciesDetail as SpeciesDetail
 import Page.SpeciesTable as SpeciesTable
 import Page.SpeciesTraits as SpeciesTraits
@@ -52,6 +54,7 @@ type alias Model =
     , speciesTableModel : Maybe SpeciesTable.Model
     , speciesDetailModel : Maybe SpeciesDetail.Model
     , speciesTraitsModel : Maybe SpeciesTraits.Model
+    , routeListModel : Maybe RouteList.Model
     }
 
 
@@ -61,6 +64,7 @@ type Msg
     = LinkClicked Browser.UrlRequest
     | UrlChanged Url
     | HomeMsg Home.Msg
+    | RouteListMsg RouteList.Msg
     | SpeciesTableMsg SpeciesTable.Msg
     | SpeciesDetailMsg SpeciesDetail.Msg
     | SpeciesTraitsMsg SpeciesTraits.Msg
@@ -79,6 +83,7 @@ init _ url navKey =
             { route = route
             , navKey = navKey
             , homeModel = Just Home.Model
+            , routeListModel = Nothing
             , speciesTableModel = Nothing
             , speciesDetailModel = Nothing
             , speciesTraitsModel = Nothing
@@ -112,6 +117,19 @@ initCurrentPage model =
                 , vegaPort { divId = "exampleTrends", spec = Home.toSpec pageModel }
                 ]
             )
+
+        RouteList ->
+            let
+                ( pageModel, pageCmd ) =
+                    RouteList.init
+            in
+            ( { clearedModel | routeListModel = Just pageModel }
+            , Cmd.map RouteListMsg pageCmd
+            )
+
+        RouteDetail _ ->
+            -- placeholder for now
+            ( clearedModel, Cmd.none )
 
         SpeciesDetail species ->
             let
@@ -194,6 +212,21 @@ update msg model =
                     Route.fromUrl url
             in
             initCurrentPage { model | route = newRoute }
+
+        RouteListMsg subMsg ->
+            -- Add this case
+            case model.routeListModel of
+                Just pageModel ->
+                    let
+                        ( newPageModel, pageCmd ) =
+                            RouteList.update subMsg pageModel
+                    in
+                    ( { model | routeListModel = Just newPageModel }
+                    , Cmd.map RouteListMsg pageCmd
+                    )
+
+                Nothing ->
+                    ( model, Cmd.none )
 
         SpeciesTableMsg subMsg ->
             case model.speciesTableModel of
@@ -279,6 +312,14 @@ pageTitle route =
         Home ->
             "NC Mini Breeding Bird Survey"
 
+        RouteList ->
+            -- Add this
+            "NC MiniBBS - Routes"
+
+        RouteDetail mbbs_route ->
+            -- Add this
+            "NC MiniBBS - " ++ routeToTitle mbbs_route ++ " Dashboard"
+
         SpeciesTable ->
             "NC MiniBBS - Species"
 
@@ -334,8 +375,10 @@ viewNavigation =
                                 [ a [ class "dropdown-item", href (Route.toHref SpeciesTraits) ]
                                     [ text "Trends by Species Traits" ]
                                 ]
-
-                            -- Other results links will go here when we add those pages
+                            , li []
+                                [ a [ class "dropdown-item", href (Route.toHref RouteList) ]
+                                    [ text "By Route" ]
+                                ]
                             ]
                         ]
                     , li [ class "nav-item" ]
@@ -363,6 +406,18 @@ viewPage model =
 
                 Nothing ->
                     text "Loading..."
+
+        RouteList ->
+            case model.routeListModel of
+                Just pageModel ->
+                    Html.map RouteListMsg (RouteList.view pageModel)
+
+                Nothing ->
+                    text "Loading..."
+
+        RouteDetail _ ->
+            -- Add placeholder
+            div [] [ text "Route detail page - coming soon!" ]
 
         SpeciesTable ->
             case model.speciesTableModel of
