@@ -8,6 +8,7 @@ import Url.Parser as Parser exposing ((</>), Parser, oneOf, s, top)
 
 type Route
     = Home
+    | Procedures
     | SpeciesTable
     | SpeciesDetail Species
     | SpeciesTraits
@@ -28,6 +29,7 @@ parser : Parser (Route -> a) a
 parser =
     oneOf
         [ Parser.map Home top
+        , Parser.map Procedures (s "procedures")
         , Parser.map SpeciesTable (s "species")
         , Parser.map SpeciesDetail (s "species" </> speciesParser)
         , Parser.map SpeciesTraits (s "traits")
@@ -59,6 +61,9 @@ toHref route =
     case route of
         Home ->
             "/"
+
+        Procedures ->
+            "/procedures"
 
         SpeciesTable ->
             "/species"

@@ -7,6 +7,7 @@ import Data.Species exposing (speciesToString)
 import Html exposing (Html, a, button, div, h1, li, nav, span, text, ul)
 import Html.Attributes as Attr exposing (class, href)
 import Page.Home as Home
+import Page.Procedures as Procedures
 import Page.RouteDetail as RouteDetail
 import Page.RouteList as RouteList
 import Page.SpeciesDetail as SpeciesDetail
@@ -52,6 +53,7 @@ type alias Model =
     { route : Route
     , navKey : Nav.Key
     , homeModel : Maybe Home.Model
+    , proceduresModel : Maybe Procedures.Model
     , speciesTableModel : Maybe SpeciesTable.Model
     , speciesDetailModel : Maybe SpeciesDetail.Model
     , speciesTraitsModel : Maybe SpeciesTraits.Model
@@ -66,6 +68,7 @@ type Msg
     = LinkClicked Browser.UrlRequest
     | UrlChanged Url
     | HomeMsg Home.Msg
+    | ProceduresMsg Procedures.Msg
     | RouteListMsg RouteList.Msg
     | RouteDetailMsg RouteDetail.Msg
     | SpeciesTableMsg SpeciesTable.Msg
@@ -86,6 +89,7 @@ init _ url navKey =
             { route = route
             , navKey = navKey
             , homeModel = Just Home.Model
+            , proceduresModel = Nothing
             , routeDetailModel = Nothing
             , routeListModel = Nothing
             , speciesTableModel = Nothing
@@ -120,6 +124,15 @@ initCurrentPage model =
                 [ Cmd.map HomeMsg pageCmd
                 , vegaPort { divId = "exampleTrends", spec = Home.toSpec pageModel }
                 ]
+            )
+
+        Procedures ->
+            let
+                ( pageModel, pageCmd ) =
+                    Procedures.init
+            in
+            ( { clearedModel | proceduresModel = Just pageModel }
+            , Cmd.map ProceduresMsg pageCmd
             )
 
         RouteList ->
@@ -222,6 +235,21 @@ update msg model =
                     Route.fromUrl url
             in
             initCurrentPage { model | route = newRoute }
+
+        ProceduresMsg subMsg ->
+            -- Add this case
+            case model.proceduresModel of
+                Just pageModel ->
+                    let
+                        ( newPageModel, pageCmd ) =
+                            Procedures.update subMsg pageModel
+                    in
+                    ( { model | proceduresModel = Just newPageModel }
+                    , Cmd.map ProceduresMsg pageCmd
+                    )
+
+                Nothing ->
+                    ( model, Cmd.none )
 
         RouteListMsg subMsg ->
             case model.routeListModel of
@@ -338,6 +366,9 @@ pageTitle route =
         Home ->
             "NC Mini Breeding Bird Survey"
 
+        Procedures ->
+            "NC MiniBBS - Procedures"
+
         RouteList ->
             "NC MiniBBS - Routes"
 
@@ -378,7 +409,7 @@ viewNavigation =
             , div [ class "collapse navbar-collapse", Attr.id "navbarSupportedContent" ]
                 [ ul [ class "navbar-nav me-auto mb-2 mb-lg-0" ]
                     [ li [ class "nav-item" ]
-                        [ a [ class "nav-link", href "/procedures.html" ]
+                        [ a [ class "nav-link", href (Route.toHref Procedures) ]
                             [ text "Procedures" ]
                         ]
                     , li [ class "nav-item dropdown" ]
@@ -427,6 +458,14 @@ viewPage model =
             case model.homeModel of
                 Just pageModel ->
                     Html.map HomeMsg (Home.view pageModel)
+
+                Nothing ->
+                    text "Loading..."
+
+        Procedures ->
+            case model.proceduresModel of
+                Just pageModel ->
+                    Html.map ProceduresMsg (Procedures.view pageModel)
 
                 Nothing ->
                     text "Loading..."
