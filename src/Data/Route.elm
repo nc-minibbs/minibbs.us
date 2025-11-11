@@ -68,7 +68,7 @@ slugToRoute slug =
                         |> List.filter (\r -> r.county == county && r.number == number)
                         |> List.head
                 )
-                (stringToCounty (String.toUpper (String.left 1 countyStr) ++ String.dropLeft 1 countyStr))
+                (stringToCounty countyStr)
                 (String.toInt numberStr)
                 |> Maybe.andThen identity
 
