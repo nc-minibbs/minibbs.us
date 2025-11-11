@@ -28,6 +28,11 @@ port vegaPort : { divId : String, spec : Spec } -> Cmd msg
 port speciesClicked : (String -> msg) -> Sub msg
 
 
+{-| Port for clearing canvases showing Vega visualizations
+-}
+port clearVisualizations : () -> Cmd msg
+
+
 subscriptions : Model -> Sub Msg
 subscriptions _ =
     speciesClicked SpeciesClickedFromViz
@@ -121,7 +126,8 @@ initCurrentPage model =
             in
             ( { clearedModel | homeModel = Just pageModel }
             , Cmd.batch
-                [ Cmd.map HomeMsg pageCmd
+                [ clearVisualizations ()
+                , Cmd.map HomeMsg pageCmd
                 , vegaPort { divId = "exampleTrends", spec = Home.toSpec pageModel }
                 ]
             )
@@ -132,7 +138,10 @@ initCurrentPage model =
                     Procedures.init
             in
             ( { clearedModel | proceduresModel = Just pageModel }
-            , Cmd.map ProceduresMsg pageCmd
+            , Cmd.batch
+                [ clearVisualizations ()
+                , Cmd.map ProceduresMsg pageCmd
+                ]
             )
 
         RouteList ->
@@ -393,9 +402,9 @@ pageTitle route =
 viewNavigation : Html Msg
 viewNavigation =
     nav [ class "navbar navbar-expand-lg bg-body-tertiary" ]
-        [ div [ class "container-fluid" ]
+        [ div [ class "container" ]
             [ a [ class "navbar-brand", href (Route.toHref Home) ]
-                [ text "Mini Breeding Bird Survey" ]
+                [ text "NC Mini Breeding Bird Survey" ]
             , button
                 [ class "navbar-toggler"
                 , Attr.type_ "button"
