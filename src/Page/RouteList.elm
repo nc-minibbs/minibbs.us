@@ -50,7 +50,6 @@ tableConfig =
             [ countyColumn
             , numberColumn
             , nameColumn
-            , startColumn
             ]
         }
 
@@ -78,7 +77,3 @@ nameColumn : Table.Column Route Msg
 nameColumn =
     Table.stringColumn "Name" .name
 
-
-startColumn : Table.Column Route Msg
-startColumn =
-    Table.stringColumn "Start Location" .start

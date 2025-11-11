@@ -7,6 +7,7 @@ import Data.Species exposing (speciesToString)
 import Html exposing (Html, a, button, div, h1, li, nav, span, text, ul)
 import Html.Attributes as Attr exposing (class, href)
 import Page.Home as Home
+import Page.RouteDetail as RouteDetail
 import Page.RouteList as RouteList
 import Page.SpeciesDetail as SpeciesDetail
 import Page.SpeciesTable as SpeciesTable
@@ -55,6 +56,7 @@ type alias Model =
     , speciesDetailModel : Maybe SpeciesDetail.Model
     , speciesTraitsModel : Maybe SpeciesTraits.Model
     , routeListModel : Maybe RouteList.Model
+    , routeDetailModel : Maybe RouteDetail.Model
     }
 
 
@@ -65,6 +67,7 @@ type Msg
     | UrlChanged Url
     | HomeMsg Home.Msg
     | RouteListMsg RouteList.Msg
+    | RouteDetailMsg RouteDetail.Msg
     | SpeciesTableMsg SpeciesTable.Msg
     | SpeciesDetailMsg SpeciesDetail.Msg
     | SpeciesTraitsMsg SpeciesTraits.Msg
@@ -83,6 +86,7 @@ init _ url navKey =
             { route = route
             , navKey = navKey
             , homeModel = Just Home.Model
+            , routeDetailModel = Nothing
             , routeListModel = Nothing
             , speciesTableModel = Nothing
             , speciesDetailModel = Nothing
@@ -127,9 +131,16 @@ initCurrentPage model =
             , Cmd.map RouteListMsg pageCmd
             )
 
-        RouteDetail _ ->
-            -- placeholder for now
-            ( clearedModel, Cmd.none )
+        RouteDetail route ->  -- Replace placeholder with this
+            let
+                ( pageModel, pageCmd ) = RouteDetail.init route
+            in
+            ( { clearedModel | routeDetailModel = Just pageModel }
+            , Cmd.batch
+                [ Cmd.map RouteDetailMsg pageCmd
+                , vegaPort { divId = "routeViz", spec = RouteDetail.toSpec pageModel }
+                ]
+            )
 
         SpeciesDetail species ->
             let
@@ -185,9 +196,6 @@ update msg model =
                                 (\spec -> vegaPort { divId = "exampleTrends", spec = spec })
                                 subMsg
                                 pageModel
-
-                        -- ( newPageModel, pageCmd ) =
-                        --     Home.update vegaPort subMsg pageModel
                     in
                     ( { model | homeModel = Just newPageModel }
                     , Cmd.map HomeMsg pageCmd
@@ -214,7 +222,6 @@ update msg model =
             initCurrentPage { model | route = newRoute }
 
         RouteListMsg subMsg ->
-            -- Add this case
             case model.routeListModel of
                 Just pageModel ->
                     let
@@ -223,6 +230,23 @@ update msg model =
                     in
                     ( { model | routeListModel = Just newPageModel }
                     , Cmd.map RouteListMsg pageCmd
+                    )
+
+                Nothing ->
+                    ( model, Cmd.none )
+
+        RouteDetailMsg subMsg ->  -- Add this case
+            case model.routeDetailModel of
+                Just pageModel ->
+                    let
+                        ( newPageModel, pageCmd ) =
+                            RouteDetail.update 
+                                (\spec -> vegaPort { divId = "routeViz", spec = spec })
+                                subMsg 
+                                pageModel
+                    in
+                    ( { model | routeDetailModel = Just newPageModel }
+                    , Cmd.map RouteDetailMsg pageCmd
                     )
 
                 Nothing ->
@@ -263,7 +287,6 @@ update msg model =
                     ( model, Cmd.none )
 
         SpeciesTraitsMsg subMsg ->
-            -- Add this case
             case model.speciesTraitsModel of
                 Just pageModel ->
                     let
@@ -313,11 +336,9 @@ pageTitle route =
             "NC Mini Breeding Bird Survey"
 
         RouteList ->
-            -- Add this
             "NC MiniBBS - Routes"
 
         RouteDetail mbbs_route ->
-            -- Add this
             "NC MiniBBS - " ++ routeToTitle mbbs_route ++ " Dashboard"
 
         SpeciesTable ->
@@ -416,8 +437,12 @@ viewPage model =
                     text "Loading..."
 
         RouteDetail _ ->
-            -- Add placeholder
-            div [] [ text "Route detail page - coming soon!" ]
+            case model.routeDetailModel of
+                Just pageModel ->
+                    Html.map RouteDetailMsg (RouteDetail.view pageModel)
+
+                Nothing ->
+                    text "Loading..."
 
         SpeciesTable ->
             case model.speciesTableModel of
@@ -436,7 +461,6 @@ viewPage model =
                     text "Loading..."
 
         SpeciesTraits ->
-            -- Add this case
             case model.speciesTraitsModel of
                 Just pageModel ->
                     Html.map SpeciesTraitsMsg (SpeciesTraits.view pageModel)
@@ -447,5 +471,4 @@ viewPage model =
         NotFound ->
             div []
                 [ h1 [] [ text "Page Not Found" ]
-                , a [ href (Route.toHref SpeciesTable) ] [ text "View all species" ]
                 ]
