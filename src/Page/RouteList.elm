@@ -47,30 +47,23 @@ tableConfig =
         { toId = \route -> String.fromInt route.number ++ countyToTitle route.county
         , toMsg = SetTableState
         , columns =
-            [ countyColumn
-            , numberColumn
+            [ routeColumn
             , nameColumn
             ]
         }
 
-
-countyColumn : Table.Column Route Msg
-countyColumn =
+routeColumn : Table.Column Route Msg
+routeColumn =
     Table.veryCustomColumn
-        { name = "County"
-        , viewData =
-            \route ->
-                Table.HtmlDetails []
-                    [ a [ href (Route.toHref (Route.RouteDetail route)) ]
-                        [ text (countyToTitle route.county) ]
-                    ]
-        , sorter = Table.increasingOrDecreasingBy (.county >> Data.County.countyToString)
+        { name = "Route"
+        , viewData = \route ->
+            Table.HtmlDetails []
+                [ a [ href (Route.toHref (Route.RouteDetail route)) ]
+                    [ text (countyToTitle route.county ++ " " ++ String.fromInt route.number) ]
+                ]
+        , sorter = Table.increasingOrDecreasingBy 
+            (\route -> countyToTitle route.county ++ " " ++ String.fromInt route.number)
         }
-
-
-numberColumn : Table.Column Route Msg
-numberColumn =
-    Table.intColumn "Number" .number
 
 
 nameColumn : Table.Column Route Msg
