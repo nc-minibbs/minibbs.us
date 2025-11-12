@@ -4,7 +4,7 @@
      <meta charset="UTF-8">
      <title>Mini BBS Test</title>
       
-     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="/css/bootstrap.min.css">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
       <!-- Add Bootstrap CSS -->
      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"> -->
@@ -15,7 +15,7 @@
    </head>
    <body>
      <div id="app"></div>
-     <script src="js/Main.js"></script>
+     <script src="/js/Main.js"></script>
      <script>
        var appDiv = document.getElementById('app');
        var app = Elm.Main.init({ node: appDiv });
@@ -29,9 +29,6 @@
        }
        
        app.ports.vegaPort.subscribe(function(payload) {
-          // console.log('vegaPort received:', payload);
-          // console.log('vegaPort received for divId:', payload.divId);
-          // console.log('Div exists?', document.getElementById(payload.divId));
 
           let divId = payload.divId;
           let spec = payload.spec;
