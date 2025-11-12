@@ -64,6 +64,7 @@
                 cp -R ${SRC}/img/ $out/
                 cp -R ${SRC}/css/ $out/
                 cp -R data/ $out/
+                cp ${SRC}/_redirects $out/_redirects
                 cp ${SRC}/index.html $out/index.html
 
                 ${pkgs.lib.concatStrings (map (module : 
