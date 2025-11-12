@@ -52,17 +52,20 @@ tableConfig =
             ]
         }
 
+
 routeColumn : Table.Column Route Msg
 routeColumn =
     Table.veryCustomColumn
         { name = "Route"
-        , viewData = \route ->
-            Table.HtmlDetails []
-                [ a [ href (Route.toHref (Route.RouteDetail route)) ]
-                    [ text (countyToTitle route.county ++ " " ++ String.fromInt route.number) ]
-                ]
-        , sorter = Table.increasingOrDecreasingBy 
-            (\route -> countyToTitle route.county ++ " " ++ String.fromInt route.number)
+        , viewData =
+            \route ->
+                Table.HtmlDetails []
+                    [ a [ href (Route.toHref (Route.RouteDetail route)) ]
+                        [ text (countyToTitle route.county ++ " " ++ String.fromInt route.number) ]
+                    ]
+        , sorter =
+            Table.increasingOrDecreasingBy
+                (\route -> countyToTitle route.county ++ " " ++ String.fromInt route.number)
         }
 
 
