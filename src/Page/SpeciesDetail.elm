@@ -1,12 +1,12 @@
 module Page.SpeciesDetail exposing (Model, Msg, init, toSpec, update, view)
 
+import Browser.Navigation as Nav
 import Data.County exposing (CountyAggregation(..))
-import Data.Species exposing (Species, SpeciesRec, allSpeciesRec , speciesToString, stringToSpecies)
+import Data.Species exposing (Species, SpeciesRec, allSpeciesRec, speciesToString, stringToSpecies)
 import Html exposing (Html, div, h2, input, label, text)
-import Html.Attributes exposing (checked, class, id, style , type_)
+import Html.Attributes exposing (checked, class, id, style, type_)
 import Html.Events exposing (onCheck, onClick)
 import Html.Styled as Styled
-import Browser.Navigation as Nav
 import Route
 import Select exposing (..)
 import Specs.SpeciesTrend exposing (RouteDetail(..), mkSpeciesTrendSpec)
@@ -45,6 +45,7 @@ init species maybeCounty maybeRoute =
     , Cmd.none
     )
 
+
 {-| Get the current spec for this page's state
 Used by Main to send to vegaPort when needed
 -}
@@ -68,7 +69,7 @@ update sendToVega navKey msg model =
             , sendToVega (toSpec newModel)
             )
 
-        SelectSpecies sm -> 
+        SelectSpecies sm ->
             let
                 ( maybeAction, selectState, cmds ) =
                     Select.update sm model.selectState
@@ -118,8 +119,6 @@ update sendToVega navKey msg model =
 
                 newModel =
                     { model | routeDetail = newRouteDetail }
-
-
             in
             ( newModel
             , sendToVega (toSpec newModel)
@@ -132,6 +131,7 @@ view : Model -> Html Msg
 view model =
     div [ class "species-detail" ]
         [ viewSpeciesSelector model
+
         -- , h2 [] [ text (speciesToString model.species) ]
         , viewControls model
         , div [ id "speciesDetailViz" ] []
@@ -144,7 +144,7 @@ viewSpeciesSelector model =
         selectedItem =
             Maybe.map (\i -> Select.basicMenuItem { item = i, label = i }) model.selectedItem
     in
-    div [ class "species-selector", style "margin-bottom" "20px" , style "max-width" "400px" ]
+    div [ class "species-selector", style "margin-bottom" "20px", style "max-width" "400px" ]
         [ Styled.toUnstyled <|
             Styled.map SelectSpecies <|
                 Select.view
@@ -157,6 +157,7 @@ viewSpeciesSelector model =
                     )
         ]
 
+
 speciesMenuItems : List (Select.MenuItem String)
 speciesMenuItems =
     List.map speciesToMenuItem allSpeciesRec
@@ -168,6 +169,7 @@ speciesToMenuItem rec =
         { item = speciesToString rec.species
         , label = rec.commonName
         }
+
 
 {-| Render the control panel
 -}

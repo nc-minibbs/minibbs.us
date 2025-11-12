@@ -1,7 +1,7 @@
 module Page.SpeciesTable exposing (Model, Msg, init, toSpecs, update, view)
 
 import Data.Species exposing (SpeciesRec, allSpeciesRec)
-import Html exposing (Html, a, div, input, text,th)
+import Html exposing (Html, a, div, input, text, th)
 import Html.Attributes as Attr exposing (href, id, placeholder, style)
 import Html.Events exposing (onInput)
 import Round
@@ -121,7 +121,7 @@ tableConfig =
             , sparklineColumn
             , rateColumn
             ]
-        , customizations = 
+        , customizations =
             { tableAttrs = []
             , caption = Nothing
             , thead = customThead
@@ -132,41 +132,49 @@ tableConfig =
         }
 
 
-customThead : List (String, Table.Status, Html.Attribute Msg) -> Table.HtmlDetails Msg
+customThead : List ( String, Table.Status, Html.Attribute Msg ) -> Table.HtmlDetails Msg
 customThead headers =
     Table.HtmlDetails [] (List.map customTh headers)
 
 
-customTh : (String, Table.Status, Html.Attribute Msg) -> Html Msg
-customTh (name, status, onClickAttr) =
+customTh : ( String, Table.Status, Html.Attribute Msg ) -> Html Msg
+customTh ( name, status, onClickAttr ) =
     let
         styleAttr =
             if name == "Trend" then
                 [ Attr.style "text-align" "center" ]
+
             else
                 []
-        
+
         content =
             case status of
                 Table.Unsortable ->
                     [ text name ]
-                
+
                 Table.Sortable selected ->
                     [ text name
                     , if selected then
                         text " ▼"
+
                       else
                         text ""
                     ]
-                
+
                 Table.Reversible Nothing ->
                     [ text name
                     , text " ▼"
                     ]
-                
+
                 Table.Reversible (Just isReversed) ->
                     [ text name
-                    , text (if isReversed then " ▲" else " ▼")
+                    , text
+                        (if isReversed then
+                            " ▲"
+
+                         else
+                            " ▼"
+                        )
                     ]
     in
     th (onClickAttr :: styleAttr) content

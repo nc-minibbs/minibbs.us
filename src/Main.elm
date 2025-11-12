@@ -167,16 +167,17 @@ initCurrentPage model =
             )
 
         SpeciesDetail species ->
-            let  
+            let
                 ( maybeCounty, maybeRoute ) =
                     case model.speciesDetailModel of
                         Just existingModel ->
                             ( Just existingModel.countyAggregation
                             , Just existingModel.routeDetail
                             )
-                        
+
                         Nothing ->
                             ( Nothing, Nothing )
+
                 ( pageModel, pageCmd ) =
                     SpeciesDetail.init species maybeCounty maybeRoute
             in
