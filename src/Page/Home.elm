@@ -33,9 +33,9 @@ The following visualization shows trends
 for 4 of the 100+ species observed in over twenty years of our survey.
 As you can see,
 
-* species such as [Wood Thrush](species/wood-thrush) and [Northern Bobwhite](northern-bobwhite) have declined;
-* species such as [Eastern Bluebird](eastern-bluebird) have no obvious trend;
-* species such as [Summer Tanager](summer-tanager) appear to be increasing in abundance.
+* species such as [Wood Thrush](species/wood-thrush) and [Northern Bobwhite](species/northern-bobwhite) have declined;
+* species such as [Eastern Bluebird](species/eastern-bluebird) have no obvious trend;
+* species such as [Summer Tanager](species/summer-tanager) appear to be increasing in abundance.
 """
 
 
