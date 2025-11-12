@@ -167,14 +167,23 @@ initCurrentPage model =
             )
 
         SpeciesDetail species ->
-            let
+            let  
+                ( maybeCounty, maybeRoute ) =
+                    case model.speciesDetailModel of
+                        Just existingModel ->
+                            ( Just existingModel.countyAggregation
+                            , Just existingModel.routeDetail
+                            )
+                        
+                        Nothing ->
+                            ( Nothing, Nothing )
                 ( pageModel, pageCmd ) =
-                    SpeciesDetail.init species
+                    SpeciesDetail.init species maybeCounty maybeRoute
             in
             ( { clearedModel | speciesDetailModel = Just pageModel }
             , Cmd.batch
                 [ Cmd.map SpeciesDetailMsg pageCmd
-                , vegaPort { divId = "speciesDetail", spec = SpeciesDetail.toSpec pageModel }
+                , vegaPort { divId = "speciesDetailViz", spec = SpeciesDetail.toSpec pageModel }
                 ]
             )
 
@@ -315,7 +324,8 @@ update msg model =
                     let
                         ( newPageModel, pageCmd ) =
                             SpeciesDetail.update
-                                (\spec -> vegaPort { divId = "speciesDetail", spec = spec })
+                                (\spec -> vegaPort { divId = "speciesDetailViz", spec = spec })
+                                model.navKey
                                 subMsg
                                 pageModel
                     in
