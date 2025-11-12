@@ -1,1 +1,7 @@
-/*    /index.html   200
+# Don't redirect these paths
+/js/*     200
+/css/*    200
+/img/*    200
+
+# SPA fallback for everything else
+/*        /index.html    200
