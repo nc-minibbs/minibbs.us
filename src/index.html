@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+   <html>
+   <head>
+     <meta charset="UTF-8">
+     <title>Mini BBS Test</title>
+      
+     <link rel="stylesheet" href="/css/bootstrap.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Add Bootstrap CSS -->
+     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"> -->
+    
+     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+   </head>
+   <body>
+     <div id="app"></div>
+     <script src="/js/Main.js"></script>
+     <script>
+       var appDiv = document.getElementById('app');
+       var app = Elm.Main.init({ node: appDiv });
+
+       if (app.ports.clearVisualizations) {
+          app.ports.clearVisualizations.subscribe(function() {
+            document.querySelectorAll('canvas.marks').forEach(function(canvas) {
+              canvas.remove();
+            });
+          });
+       }
+       
+       app.ports.vegaPort.subscribe(function(payload) {
+
+          let divId = payload.divId;
+          let spec = payload.spec;
+            
+          // Clean up ALL vega canvases before rendering new ones
+          document.querySelectorAll('canvas.marks').forEach(function(canvas) {
+            canvas.remove();
+          });
+            
+          // Check if it's sparklines (combined specs) or single spec
+          if (spec['$schema']) {
+            
+            // Single spec
+            vegaEmbed('#' + divId, spec, { actions: false })
+              .then(function(result) {
+                // Add click listener only for home page
+                if (divId === 'exampleTrends') {
+                  result.view.addEventListener('click', function(event, item) {
+                    if (item && item.datum && item.datum.common_name) {
+                      if (app.ports.speciesClicked) {
+                        app.ports.speciesClicked.send(item.datum.common_name);
+                      }
+                    }
+                  });
+                }
+              })
+              .catch(function(err) { console.error('Vega embed error:', err); });
+          } else {
+            // Combined specs (sparklines)
+            for (let key of Object.keys(spec)) {
+              if (document.getElementById(key)) {
+                vegaEmbed('#' + key, spec[key], { actions: false })
+                  .catch(function(err) { console.error('Vega embed error:', err); });
+              }
+            }
+          }
+        });
+     </script>
+   </body>
+   </html>

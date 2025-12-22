@@ -52,6 +52,30 @@ stringToRoute x =
             Nothing
 
 
+routeSlug : Route -> String
+routeSlug route =
+    String.toLower (countyToString route.county) ++ "-" ++ String.fromInt route.number
+
+
+slugToRoute : String -> Maybe Route
+slugToRoute slug =
+    case String.split "-" slug of
+        [ countyStr, numberStr ] ->
+            Maybe.map2
+                (\county number ->
+                    -- Find the matching route in allRoutes
+                    allRoutes
+                        |> List.filter (\r -> r.county == county && r.number == number)
+                        |> List.head
+                )
+                (stringToCounty countyStr)
+                (String.toInt numberStr)
+                |> Maybe.andThen identity
+
+        _ ->
+            Nothing
+
+
 
 -- All Routes
 

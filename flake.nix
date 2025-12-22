@@ -8,7 +8,6 @@
     flake-utils.url = "github:numtide/flake-utils";
     gitignore = {
       url = "github:hercules-ci/gitignore.nix";
-      # Use the same nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mbbs.url = "github:nc-minibbs/mbbs?ref=2025.1";
@@ -32,7 +31,6 @@
 
           # The elm bits were hacked from the code that
           #  elm2nix init produces
-
           # See adding-an-elm-package in README
           site = pkgs.stdenv.mkDerivation {
             name = "site";
@@ -56,27 +54,7 @@
 
                 elmModules =
                   [
-                    "DisplayTraits"
-                    "DisplayIndividualSpecies"
-                    "DisplaySpeciesTable"
-                    "DisplayRouteDashboard"
-                    "Home"
-                  ];
-
-                # FIXME: 
-                # generate array of markdown files in content directory
-                # rather than needed to specify them here.
-                pages =
-                  [
-                    "index"
-                    "procedures"
-                    "results/index"
-                    "results/individual-species"
-                    "results/traits"
-                    "results/route-dashboard"
-                    "routes/orange-county"
-                    "routes/chatham-county"
-                    "routes/durham-county"
+                    "Main"
                   ];
               in
               ''
@@ -86,6 +64,8 @@
                 cp -R ${SRC}/img/ $out/
                 cp -R ${SRC}/css/ $out/
                 cp -R data/ $out/
+                cp ${SRC}/_redirects $out/_redirects
+                cp ${SRC}/index.html $out/index.html
 
                 ${pkgs.lib.concatStrings (map (module : 
                  '' 
@@ -99,20 +79,7 @@
                       | ${pkgs.nodePackages.uglify-js}/bin/uglifyjs  --mangle --output $out/js/${module}.min.js
                  '') elmModules ) 
           
-                 }
-
-                ${pkgs.lib.concatStrings (map (page : 
-                 '' 
-
-                ${pkgs.pandoc}/bin/pandoc content/${page}.md \
-                    --from=markdown+link_attributes \
-                    --to=html \
-                    --output=$out/${page}.html \
-                    --template=${SRC}/template.html \
-                    --include-before-body=${SRC}/navbar.html \
-                    --css=/css/bootstrap.min.css \
-                    --standalone 
-                 '') pages ) 
+                 
           
                  }
               '';

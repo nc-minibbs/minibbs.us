@@ -15,6 +15,11 @@
         version = "1.2.1";
       };
 
+      "dillonkearns/elm-markdown" = {
+        sha256 = "0gmajcqih4fam4ydjkc10lz4sh9rig1vq2k1jz748jijwngbbhha";
+        version = "7.0.1";
+      };
+
       "elm-community/dict-extra" = {
         sha256 = "05ll04wf03m8ic109dz2dbq6pah23m70c4wwyr35026dhmws35n0";
         version = "2.4.0";
@@ -38,6 +43,11 @@
       "elm/json" = {
         sha256 = "0kjwrz195z84kwywaxhhlnpl3p251qlbm5iz6byd6jky2crmyqyh";
         version = "1.1.3";
+      };
+
+      "elm/url" = {
+        sha256 = "0av8x5syid40sgpl5vd7pry2rq0q4pga28b4yykn9gd9v12rs3l4";
+        version = "1.0.0";
       };
 
       "gicentre/elm-vegalite" = {
@@ -70,13 +80,18 @@
         version = "8.7.0";
       };
 
-      "elm/time" = {
-        sha256 = "0vch7i86vn0x8b850w1p69vplll1bnbkp8s383z7pinyg94cm2z1";
+      "elm/parser" = {
+        sha256 = "0a3cxrvbm7mwg9ykynhp7vjid58zsw03r63qxipxp3z09qks7512";
+        version = "1.1.0";
+      };
+
+      "elm/regex" = {
+        sha256 = "0lijsp50w7n1n57mjg6clpn9phly8vvs07h0qh2rqcs0f1jqvsa2";
         version = "1.0.0";
       };
 
-      "elm/url" = {
-        sha256 = "0av8x5syid40sgpl5vd7pry2rq0q4pga28b4yykn9gd9v12rs3l4";
+      "elm/time" = {
+        sha256 = "0vch7i86vn0x8b850w1p69vplll1bnbkp8s383z7pinyg94cm2z1";
         version = "1.0.0";
       };
 
@@ -103,16 +118,6 @@
       "elm-community/intdict" = {
         sha256 = "09i1fk63gp6sr6kc6ccs8g0kxvqhw5czghi9cl8flizanrgcmva1";
         version = "3.0.0";
-      };
-
-      "elm/parser" = {
-        sha256 = "0a3cxrvbm7mwg9ykynhp7vjid58zsw03r63qxipxp3z09qks7512";
-        version = "1.1.0";
-      };
-
-      "elm/regex" = {
-        sha256 = "0lijsp50w7n1n57mjg6clpn9phly8vvs07h0qh2rqcs0f1jqvsa2";
-        version = "1.0.0";
       };
 
       "elm/svg" = {
