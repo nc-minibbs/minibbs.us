@@ -463,6 +463,14 @@ viewNavigation =
                             ]
                             [ text "Participate" ]
                         ]
+                        
+                    , li [ class "nav-item" ]
+                        [ a
+                            [ class "nav-link"
+                            , href "https://nc-minibbs.github.io/mbbs/"
+                            ]
+                            [ text "Download Data" ]
+                        ]
                     ]
                 ]
             ]
