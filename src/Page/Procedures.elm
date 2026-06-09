@@ -93,7 +93,6 @@ Use the following codes to characterize the habitat on each side of the road at 
 * **M** = Mixed pine-hardwood forest (hardwoods 50-90% of the canopy)
 * **S** = second-growth (including areas with shrubs or scattered trees)
 * **O** = Field or pasture, open areas with low vegetation (recent clear-cuts, agricultural fields including fallow and hay fields) – but not lawns and athletic fields (these are coded B as explained above)
-* **R** = Recently clear-cut or burned
 * **W** = Wetland (lake, pond, river, stream) – often used as a secondary code after one of the above codes
 
 
