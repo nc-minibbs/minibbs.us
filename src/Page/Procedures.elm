@@ -87,13 +87,14 @@ Unfortunately, there's no easy way at the moment to share all 20 checklists in o
 
 Use the following codes to characterize the habitat on each side of the road at the count location:
 
-* **B** = Building
-* **H** = Hardwood forest
-* **P** = Pine forest
-* **M** = Mixed pine-hardwood forest
-* **F** = Field or pasture
-* **R** = Recently clear-cut or burned
-* **W** = Wetland
+* **B** = Building(s) (except permanently abandoned ones) and areas heavily used by humans (lawns, athletic fields, golf courses, barnyards)
+* **H** = Hardwood forest (treetops touching each other) with hardwoods composing more than 90% of the canopy
+* **P** = Pine forest (hardwoods less than 50% of the canopy)
+* **M** = Mixed pine-hardwood forest (hardwoods 50-90% of the canopy)
+* **S** = second-growth (including areas with shrubs or scattered trees)
+* **O** = Field or pasture, open areas with low vegetation (recent clear-cuts, agricultural fields including fallow and hay fields) – but not lawns and athletic fields (these are coded B as explained above)
+* **W** = Wetland (lake, pond, river, stream) – often used as a secondary code after one of the above codes
+
 
 Notes:
 
