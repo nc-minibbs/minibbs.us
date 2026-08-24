@@ -10,7 +10,7 @@
       url = "github:hercules-ci/gitignore.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mbbs.url = "github:nc-minibbs/mbbs?ref=2025.1";
+    mbbs.url = "github:nc-minibbs/mbbs?ref=2026.1";
   };
 
   outputs = { self, nixpkgs, flake-utils, gitignore, mbbs }:

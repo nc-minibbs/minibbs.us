@@ -307,7 +307,8 @@ glue(mbbsCsv_template,
 to_species_id <- function(x) {
  stringr::str_replace_all(x, "'", "") |>
  stringr::str_replace_all(" ", "") |>
- stringr::str_replace_all("-", "")
+ stringr::str_replace_all("-", "") |>
+ stringr::str_replace_all("/", "")    -- handle (e.g.) Summer/Scarlet Tanager
 }
 
 ## Counts per species
