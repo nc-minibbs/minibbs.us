@@ -19,7 +19,7 @@ homeContentTop =
 
 A *Mini Breeding Bird Survey* (MBBS) is a small-scale version of the full
 [Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/)
-organized each year by the U.S. Fish and Wildlife Service
+co-organized each year by the U.S. Geological Survey and the Canadian Wildlife Service
 throughout North America.
 An MBBS focuses on one county.
 Volunteers count birds seen or heard
