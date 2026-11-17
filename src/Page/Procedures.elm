@@ -44,7 +44,7 @@ Watch a video demonstration to see a checklist in action:
    * Do not add birds identified by Merlin to your point count list unless you can personally verify the presence of the bird by sight or sound. Merlin is not perfect and occasionally has false positives.  
    * Please mention in the **notes** section of Stop 1 that you used Merlin Sound ID for confirmation (see example above).  
 
-6. The **Location** for each of the 20 checklists must follow a **specific naming convention**: `[County] [Route Number] Stop [Stop Number]`. Examples:  
+6. The **Location** for each of the 20 checklists must follow a **specific naming convention**: `[County] [Route Number] Stop [Stop Number]`. Examples:
    * `Orange 3 Stop 1`  
    * `Chatham 7 Stop 15`  
    * `Durham 4 Stop 8`  
