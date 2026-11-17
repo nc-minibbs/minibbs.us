@@ -32,32 +32,32 @@ Watch a video demonstration to see a checklist in action:
    * "observers=Allen Hurlbert, Sarah Pollack; weather=55 F, clear; notes=big thunderstorm last night, everything wet; used Merlin Sound ID for confirmation; vehicles=3; habitat=B,H"
 
 3. **These comments must be formatted in this very specific way** in order for us to easily extract this information later. Please make sure you use these conventions:  
-    * Separate the different types of information (**observers; weather; vehicles;** etc.) with a **semi-colon**, and only use a semi-colon for this purpose.  
-    * The key to allowable **habitat** codes can be found [below](#habitat). The convention is to specify habitat on the left side of the road first, followed by a comma, and then habitat on the right side of the road.  
-    * Instructions for counting **vehicles** can be found [here](#vehicle-count-procedure).  
+* Separate the different types of information (**observers; weather; vehicles;** etc.) with a **semi-colon**, and only use a semi-colon for this purpose.  
+* The key to allowable **habitat** codes can be found [below](#habitat). The convention is to specify habitat on the left side of the road first, followed by a comma, and then habitat on the right side of the road.  
+* Instructions for counting **vehicles** can be found [here](#vehicle-count-procedure).  
 
-4. **For Stops 2-20**, enter information about only **vehicles** and **habitat** (in particular, if habitat has never been entered before, or if it has changed since the previous year) in the checklist comments field. Two examples, including an acceptable shorthand:
-    * "vehicles=3; habitat=B,H"
-    * "v=3; h=B,H"
+4. **For Stops 2-20**, enter information about only **vehicles** and **habitat** (in particular, if habitat has never been entered before, or if it has changed since the previous year) in the checklist comments field. Two examples, including an acceptable shorthand:  
+* "vehicles=3; habitat=B,H"  
+* "v=3; h=B,H"  
 
 5. Some notes about using **Merlin Sound ID**, which some people find helpful as a means of alerting them to birds singing, or of confirming songs or calls they are on the fence on. If you use **Merlin Sound ID** to assist you during your point counts:  
-    * Do not add birds identified by Merlin to your point count list unless you can personally verify the presence of the bird by sight or sound. Merlin is not perfect and occasionally has false positives.  
-    * Please mention in the **notes** section of Stop 1 that you used Merlin Sound ID for confirmation (see example above).  
+* Do not add birds identified by Merlin to your point count list unless you can personally verify the presence of the bird by sight or sound. Merlin is not perfect and occasionally has false positives.  
+* Please mention in the **notes** section of Stop 1 that you used Merlin Sound ID for confirmation (see example above).  
 
 6. The **Location** for each of the 20 checklists must follow a **specific naming convention**: `[County] [Route Number] Stop [Stop Number]`. Examples:  
-    * `Orange 3 Stop 1`  
-    * `Chatham 7 Stop 15`  
-    * `Durham 4 Stop 8`  
+* `Orange 3 Stop 1`  
+* `Chatham 7 Stop 15`  
+* `Durham 4 Stop 8`  
 
 7. **If you have previously submitted individual stop-based eBird checklists from your survey route**, then you may be able to rename these existing locations according to our new convention in advance using the Manage My Locations feature of the eBird website.  
-    * **NOTE**: If you previously specified "Orange Co" or "Orange County" in the stop location names on eBird, that's fine and you may continue to use those names.  
-    * **Next year it will be even easier!** After you have entered these location names once for your survey route, in the future, you will simply be able to select the stop location from the list of locations that automatically pops up in the mobile app.  
+* **NOTE**: If you previously specified "Orange Co" or "Orange County" in the stop location names on eBird, that's fine and you may continue to use those names.  
+* **Next year it will be even easier!** After you have entered these location names once for your survey route, in the future, you will simply be able to select the stop location from the list of locations that automatically pops up in the mobile app.  
 
 8. **Connectivity issues**. If you have no connectivity at a survey stop, it may not let you choose the location or submit the checklist. That's ok!  
-    * Once you've finished recording birds from the 3-minute survey, simply 'X' out of the checklist in the top right. The checklist will now be listed in the **Not Submitted** section of the app.  
-    * When you get home (or elsewhere with a signal), you can then tap the checklist which will open where you left off. Tap the green **Review** button in the lower right.  
-    * Tap **Choose a location…**. Your phone's GPS should have accurately recorded your location, and you should now be able to select the named location, or if this is your first time at the stop, follow the instructions above to name it.  
-    * You should now be able to tap **Submit**.  
+* Once you've finished recording birds from the 3-minute survey, simply 'X' out of the checklist in the top right. The checklist will now be listed in the **Not Submitted** section of the app.  
+* When you get home (or elsewhere with a signal), you can then tap the checklist which will open where you left off. Tap the green **Review** button in the lower right.  
+* Tap **Choose a location…**. Your phone's GPS should have accurately recorded your location, and you should now be able to select the named location, or if this is your first time at the stop, follow the instructions above to name it.  
+* You should now be able to tap **Submit**.  
 
 ### After the survey
 
